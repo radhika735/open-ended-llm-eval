@@ -23,9 +23,9 @@ def gen_exam_qus(action_nums : list, action_contents : str):
         Additionally, for each question-answer pair, provide a brief proof of correctness (maximum 3 sentences) that includes reasons why that answer is correct based on the information on the action page.
         Follow these guidelines:
 
-        1. Include a mix of question types. These may include:
-            a) Effects/outcomes of a specific conservation action
-            b) Actions to achieve specific conservation objectives/outcomes 
+        1. Include a mix of question types. The question types should ask about aspects only from the following list, and at least one of the questions MUST ask about aspect (b) i.e. achieving a specific conservation goal using the provided action.:
+            a) Effects/outcomes of the conservation action
+            b) Which actions can achieve specific conservation objectives/outcomes (with the answer being the provided action itself)
             c) Alternatives to achieve a particular conservation goal
             d) Trade-offs between different conservation actions
             e) Geographical and contextual variations in action effectiveness
@@ -189,7 +189,7 @@ def get_related_actions():
 
 def main():
     #logging.info("Starting exam question generation process")
-    process_files(["action_data/original/cleaned_textfiles/action_1_clean.txt"])
+    process_files(["action_data/key_messages/km_cleaned_textfiles/action_746_clean.txt"])
 
 
 if __name__ == "__main__":
