@@ -7,6 +7,8 @@ import json
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
+import re
+import shutil
 
 logging.basicConfig(filename = "logfiles/exam_gen.log", level=logging.DEBUG)
 
@@ -14,11 +16,50 @@ load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
+SOURCE_DIR = "exam_gen_data/km_evid_failedextract"
+TARGET_DIR = "exam_gen_data/km_evid_target"
+FAILED_EXTRACT_DIR = "exam_gen_data/km_evid_failedextract"
+QU_OUT_FILE_PATH = "generated_questions_km_evid.json"
 
-def gen_exam_qus(action_nums : list, action_contents : str):
+QUS_PER_CALL = 5
+NUM_CALLS = 10
+
+
+
+def parse(json_str):
+    try:
+        parsed = json.loads(json_str)
+        if isinstance(parsed, list):
+            return parsed
+        
+        elif isinstance(parsed, dict):
+            return parsed.get('questions', [parsed])
+        
+        return None
+    
+    except json.JSONDecodeError:
+        return None
+
+
+def extract_json(text):
+    result = parse(text)
+
+    if result is not None:
+        return result
+
+    json_pattern = r'\[[\s\S]*\]|\{[\s\S]*\}' #(S|\[(S(,S)*)?\])/i
+    match = re.search(json_pattern, text)
+
+    if match:
+        return parse(match.group())
+
+    return None
+
+
+def gen_llm_qus(action_nums : list, action_contents : str):
     ### V3 - ALTERING V2 TO RETURN MULTIPLE Q&A PAIRS:
     sys_msg = f"""
-        Generate 5 difficult multi-form exam questions based on the provided conservation action information. 
+        Generate {QUS_PER_CALL} difficult multi-form exam questions based on the provided conservation action information. 
         Also generate an example answer for each question, based on information only available in the provided context. The answers should be roughly 3 sentences in length.
         Additionally, for each question-answer pair, provide a brief proof of correctness (maximum 3 sentences) that includes reasons why that answer is correct based on the information on the action page.
         Follow these guidelines:
@@ -149,22 +190,18 @@ def gen_exam_qus(action_nums : list, action_contents : str):
     except requests.exceptions.RequestException as e:
         print("Exception:", e)
         if response.status_code == 429:  
-            #logging.warning("Rate limit reached")
+            logging.warning("Rate limit reached")
             time.sleep(60)  
-            return gen_exam_qus(action_nums, action_contents)
+            return gen_llm_qus(action_nums, action_contents)
         if response.status_code == 529:
-            #logging.warning(f"Server error: {str(e)} - retrying request.")
+            logging.warning(f"Server error: {str(e)} - retrying request.")
             time.sleep(2)
-            return gen_exam_qus(action_nums, action_contents)
-        #logging.error(f"Error in API call: {str(e)}")
+            return gen_llm_qus(action_nums, action_contents)
+        logging.error(f"Error in API call: {str(e)}")
         return ""
-    
-
-def parse_json():
-    pass
 
 
-def process_files(file_list):
+def process_files(file_list, question_list):
     try:
         file_contents = ""
         for file_path in file_list:
@@ -175,21 +212,85 @@ def process_files(file_list):
         action_nums = []
         for file_path in file_list:
             action_nums.append(os.path.basename(file_path).split('_')[1])
-        questions = gen_exam_qus(action_nums, content)
-        print(questions)
-    
+
+        start = time.monotonic()
+        llm_response = gen_llm_qus(action_nums, content)
+        logging.info(f"Generated qs for action(s) {action_nums} in {(time.monotonic() - start):.3f} seconds")
+        questions = extract_json(llm_response)
+
+        if questions:
+            logging.info(f"Extracted {len(questions)} questions for the following actions: {action_nums}")
+            question_list.extend(questions)
+            
+            with open(QU_OUT_FILE_PATH, 'w', encoding='utf-8') as outfile:
+                json.dump(question_list, outfile, indent=2)
+            
+            logging.info(f"Updated {QU_OUT_FILE_PATH} with new questions")
+
+            extraction_success = True 
+        else:
+            logging.warning(f"Failed to extract questions for the following actions: {action_nums}")
+            extraction_success = False
+
+        return extraction_success
+
     except FileNotFoundError:
-        #logging.error(f"File not found: {file_path}")
-        print(f"File not found: {file_path}")
+        logging.error(f"Action file not found: {file_path}")
+        print(f"Action file not found: {file_path}")
 
         
 def get_related_actions():
     pass
 
 
+
+def process_action_dir(reset_out_file : bool):
+    try:
+        start_time = time.monotonic()
+        if not os.path.exists(TARGET_DIR):
+            os.makedirs(TARGET_DIR)
+        
+        if not reset_out_file and os.path.exists(QU_OUT_FILE_PATH):
+            with open(QU_OUT_FILE_PATH, 'r', encoding='utf-8') as qu_out_file:
+                question_list = json.load(qu_out_file)
+            logging.info(f"Loaded existing questions from {QU_OUT_FILE_PATH}")
+        else:
+            question_list = []
+            logging.info(f"Resetting question output file {QU_OUT_FILE_PATH}")
+        
+        files_processed = 0
+
+        for entry in os.scandir(SOURCE_DIR):
+            if files_processed >= NUM_CALLS:
+                break
+            
+            extraction_success = process_files([entry.path], question_list)
+            
+            if extraction_success:
+                shutil.move(entry.path, os.path.join(TARGET_DIR, entry.name))
+                logging.debug(f"Moved {entry.name} to {TARGET_DIR}")
+            else:
+                shutil.move(entry.path, os.path.join(FAILED_EXTRACT_DIR, entry.name))
+                logging.debug(f"Moved {entry.name} to {FAILED_EXTRACT_DIR} due to extraction failure")
+
+            files_processed += 1
+            logging.info(f"Processed {files_processed} files so far")
+        
+        end_time = time.monotonic()
+        total_time = end_time - start_time
+        
+        logging.info(f"Exam generation completed. Processed {files_processed} files in {total_time:.2f} seconds")
+        logging.info(f"Generated {len(question_list)} questions in total")
+
+    except FileNotFoundError as e:
+        logging.error(f"Source action directory not found: {e}")
+
+
 def main():
-    #logging.info("Starting exam question generation process")
-    process_files(["action_data/key_messages/km_cleaned_textfiles/action_746_clean.txt"])
+    logging.info("Starting exam question generation process")
+    
+    process_action_dir(reset_out_file=False)
+    
 
 
 if __name__ == "__main__":
