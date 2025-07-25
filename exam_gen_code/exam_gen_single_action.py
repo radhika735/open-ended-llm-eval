@@ -4,9 +4,6 @@ import requests
 import logging
 import time
 import json
-from sentence_transformers import SentenceTransformer
-import faiss
-import numpy as np
 import re
 import shutil
 
@@ -29,13 +26,13 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
         # TARGET_DIR = "exam_gen_data/km_noevid_target"
         # FAILED_EXTRACT_DIR = "exam_gen_data/km_noevid_failedextract"
         # QU_OUT_FILE_PATH = "generated_questions_km_noevid.json"
-SOURCE_DIR = "exam_gen_data/km_evid_failedextract"
+SOURCE_DIR = "exam_gen_data/km_evid_source"
 TARGET_DIR = "exam_gen_data/km_evid_target"
 FAILED_EXTRACT_DIR = "exam_gen_data/km_evid_failedextract"
 QU_OUT_FILE_PATH = "generated_questions_km_evid.json"
 
 QUS_PER_CALL = 5 # Number of questions to generate per action file / set of action files given to the LLM.
-NUM_CALLS = 10 # Maximum number of action files / sets of action files to generate questions for.
+NUM_CALLS = 1 # Maximum number of action files / sets of action files to generate questions for.
 
 
 ### Functions to parse output from LLM - this should be a string which has a list of JSON objects,
@@ -75,14 +72,21 @@ def extract_json(text):
 def gen_llm_qus(action_nums : list, action_contents : str) -> str:
     # Below are multiple versions of the system message to generate the response. Topmost one is currently in use.
 
-    ### V3 - ALTERING V2 TO RETURN MULTIPLE Q&A PAIRS:
+    ### V4 - ALTERING V3 TO HAVE QUESTIONS NOT REFERENCE SOURCE ACTION NUMS / SPECIFIC STUDIES, 
+    # AND PHRASE QUS MORE GENERALLY RATHER THAN AS A TEST:
     sys_msg = f"""
         Generate {QUS_PER_CALL} difficult multi-form exam questions based on the provided conservation action information. 
         Also generate an example answer for each question, based on information only available in the provided context. The answers should be roughly 3 sentences in length.
         Additionally, for each question-answer pair, provide a brief proof of correctness (maximum 3 sentences) that includes reasons why that answer is correct based on the information on the action page.
         Follow these guidelines:
 
-        1. Include a mix of question types. The question types should ask about aspects only from the following list, and at least one of the questions MUST ask about aspect (b) i.e. achieving a specific conservation goal using the provided action.:
+        1. Include one question that asks about:
+            Which actions can achieve specific conservation objectives/outcomes (with the answer being the provided action itself).
+
+        2. Attempt to include one question that asks about:
+            Which are the MOST EFFECTIVE actions or the MOST COST-EFFECTIVE actions to achieve a particular conservation objective/outcome (with the answer being the provided action itself).
+
+        3. The remaining questions should have a mix of question types. The question types should ask about aspects only from the following list:
             a) Effects/outcomes of the conservation action
             b) Which actions can achieve specific conservation objectives/outcomes (with the answer being the provided action itself)
             c) Alternatives to achieve a particular conservation goal
@@ -92,18 +96,52 @@ def gen_llm_qus(action_nums : list, action_contents : str) -> str:
             g) Timeframes for expected outcomes
             h) Factors associated with success or failure of conservation efforts
 
-        Format each question as a JSON object:
-        {{
-        "question":"...",
-        "source_actions": {action_nums},
-        "example_answer":"...",
-        "proof_of_correctness":"...",
-        }}
+        4. Ensure that the questions are clear, correct and appropriately difficult (they should not have necessarily obvious answers - use the source material). 
         
-        Ensure that once you have generated these questions, you recheck them for clarity, correctness and difficulty (these should not have necessarily obvious answers - use the source material). 
-        Output these questions as a valid JSON array of question objects, starting with '[' and ending with ']'. 
+        5. Format each question as a JSON object:
+            {{
+            "question":"...",
+            "source_actions": {','.join(action_nums)},
+            "example_answer":"...",
+            "proof_of_correctness":"...",
+            }}
+            Output these questions as a valid JSON array of question objects, starting with '[' and ending with ']'. 
 
+        6. DO NOT reference the source action or specific studies in the questions. The question should be general, it needs to be phrased as if you are a research that does not have access to the provided context. 
+        (e.g. DO NOT have questions like "Based on the information provided...").
+           
     """
+
+
+    ### V3 - ALTERING V2 TO RETURN MULTIPLE Q&A PAIRS:
+    # sys_msg = f"""
+    #     Generate {QUS_PER_CALL} difficult multi-form exam questions based on the provided conservation action information. 
+    #     Also generate an example answer for each question, based on information only available in the provided context. The answers should be roughly 3 sentences in length.
+    #     Additionally, for each question-answer pair, provide a brief proof of correctness (maximum 3 sentences) that includes reasons why that answer is correct based on the information on the action page.
+    #     Follow these guidelines:
+
+    #     1. Include a mix of question types. The question types should ask about aspects only from the following list, and at least one of the questions MUST ask about aspect (b) i.e. achieving a specific conservation goal using the provided action.:
+    #         a) Effects/outcomes of the conservation action
+    #         b) Which actions can achieve specific conservation objectives/outcomes (with the answer being the provided action itself)
+    #         c) Alternatives to achieve a particular conservation goal
+    #         d) Trade-offs between different conservation actions
+    #         e) Geographical and contextual variations in action effectiveness
+    #         f) Scaling of actions and their impacts
+    #         g) Timeframes for expected outcomes
+    #         h) Factors associated with success or failure of conservation efforts
+
+    #     Format each question as a JSON object:
+    #     {{
+    #     "question":"...",
+    #     "source_actions": {action_nums},
+    #     "example_answer":"...",
+    #     "proof_of_correctness":"...",
+    #     }}
+        
+    #     Ensure that once you have generated these questions, you recheck them for clarity, correctness and difficulty (these should not have necessarily obvious answers - use the source material). 
+    #     Output these questions as a valid JSON array of question objects, starting with '[' and ending with ']'. 
+
+    # """
 
 
     ### V2 - ADDING PROOF OF CORRECTNESS TO V1:
@@ -180,8 +218,8 @@ def gen_llm_qus(action_nums : list, action_contents : str) -> str:
     #     """
 
     data = {
-        "model": "deepseek/deepseek-r1-0528:free",# Can test multiple models and change. Prompt optimised for deepseek/deepseek-r1-0528:free responses.
-        "max_tokens": 2048, 
+        "model": "openai/o4-mini",# Can test multiple models and change. Prompt optimised for deepseek/deepseek-r1-0528:free responses.
+        "max_tokens": 1500, 
         "messages": [
             {   
                 "role":"system",
@@ -218,6 +256,10 @@ def gen_llm_qus(action_nums : list, action_contents : str) -> str:
             return gen_llm_qus(action_nums, action_contents)
         logging.error(f"Error in API call: {str(e)}")
         return ""
+    except KeyError as e:
+        logging.error(f"Unexpected API response format: {str(e)}")
+        print(response.json())
+        return ""
 
 
 ### Takes a single action file, or a list of a few related action files and generates questions based on them.
@@ -253,6 +295,7 @@ def process_files(file_list, question_list) -> bool:
             extraction_success = True 
         else:
             logging.warning(f"Failed to extract questions for the following actions: {action_nums}")
+            print(llm_response)
             extraction_success = False
 
         return extraction_success
