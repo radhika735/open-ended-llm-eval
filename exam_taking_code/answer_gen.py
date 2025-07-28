@@ -11,7 +11,7 @@ from typing import Annotated
 
 load_dotenv()
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename = "logfiles/answer_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # disable httpx logging
 logging.getLogger("httpx").setLevel(logging.WARNING)

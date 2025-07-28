@@ -7,7 +7,7 @@ import json
 import re
 import shutil
 
-logging.basicConfig(filename = "logfiles/exam_gen.log", level=logging.DEBUG)
+logging.basicConfig(filename = "logfiles/single_exam_gen.log", level=logging.DEBUG)
 
 load_dotenv()
 
