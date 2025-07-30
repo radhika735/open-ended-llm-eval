@@ -3,8 +3,9 @@ import json
 import os
 
 def get_data(type="id_dist"):
-    # type options: "num_qus", "id_dist"
+    # type options: "num_qus", "id_dist", "id_rm_dist"
     id_dist = []
+    id_rm_dist = []
     total_num_qus = 0
 
     for entry in os.scandir("action_data/key_messages/km_synopsis"):
@@ -26,12 +27,19 @@ def get_data(type="id_dist"):
             id_counts[id] += 1
 
         id_list = list(id_counts.keys())
+        id_rm_list = [id for id in id_list if id_counts[id] >= 2]
+        
         id_list_str = ""
         for id in id_list:
             id_list_str += f"{id} "
-        id_list_str = id_list_str.rstrip()
+        id_list_str.rstrip()
 
+        id_rm_list_str = ""
+        for id in id_rm_list:
+            id_rm_list_str += f"{id} "
+        id_rm_list_str = id_rm_list_str.rstrip()
 
+        id_rm_dist.append([synopsis,id_rm_list_str])
         id_dist.append([synopsis,id_list_str])
         total_num_qus += len(qus_list)
         print(f"SYNOPSIS: {synopsis}")
@@ -39,11 +47,14 @@ def get_data(type="id_dist"):
         print(f"DISTRIBUTION: {id_counts}")
         print(f"NUM ACTION IDS: {len(id_counts)}")
         print(f"ACTION ID LIST: {id_list_str}")
+        print(f"ACTION IDS TO REMOVE LIST: {id_rm_list_str}")
         print("\n")
 
     if type=="id_dist":
         return id_dist
-    if type=="num_qus":
+    elif type=="id_rm_dist":
+        return id_rm_dist
+    elif type=="num_qus":
         return total_num_qus
 
 
@@ -52,15 +63,17 @@ def print_ids_used_per_synopsis(id_dist):
         print(synopsis,ids)
 
 
-def write_distribution_file(id_dist):
-    with open("exam_gen_data/action_id_dist_config.txt", 'w') as file:
+def write_distribution_file(id_dist, filepath):
+    with open(filepath, 'w') as file:
         for [synopsis, ids] in id_dist:
             file.write(synopsis + "," + ids + "\n")
 
 
 def main():
     num_qus = get_data(type="num_qus")
-    print("Total number of questions:",num_qus)
+    #write_distribution_file(id_dist=id_dist, filepath="exam_gen_data/action_id_dist_to_rm.txt")
+    #print_ids_used_per_synopsis(id_dist)
+    print(f"TOTAL NUM QUS: {num_qus}")
 
 if __name__=="__main__":
     main()
