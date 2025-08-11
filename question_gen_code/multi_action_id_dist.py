@@ -2,6 +2,19 @@ from collections import Counter
 import json
 import os
 
+
+def get_id_dist_for_synopsis(qus_file, synopsis):
+    with open(qus_file, 'r', encoding="utf-8") as file:
+        qus_list = json.load(file)
+    used_ids_list = []
+
+    for qu_dict in qus_list:
+        used_ids_list.extend(qu_dict["all_relevant_action_ids"])
+
+    id_counts = Counter(used_ids_list)
+    return [synopsis,id_counts]
+
+
 def get_data(type="id_dist"):
     # type options: "num_qus", "id_dist", "id_rm_dist"
     id_dist = []
@@ -70,10 +83,20 @@ def write_distribution_file(id_dist, filepath):
 
 
 def main():
-    num_qus = get_data(type="num_qus")
+    #num_qus = get_data(type="num_qus")
     #write_distribution_file(id_dist=id_dist, filepath="question_gen_data/km_multi_action_data/action_id_dist_to_rm.txt")
     #print_ids_used_per_synopsis(id_dist)
-    print(f"TOTAL NUM QUS: {num_qus}")
+    #print(f"TOTAL NUM QUS: {num_qus}")
+    synopsis = "Natural Pest Control"
+    no_gaps_synopsis = "".join(synopsis.split())
+    qus_file = f"question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/bg_km_{no_gaps_synopsis}_qus.json"
+    id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
+    print(id_dist)
+
+
+
+
+
 
 if __name__=="__main__":
     main()

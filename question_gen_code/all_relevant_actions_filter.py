@@ -107,6 +107,8 @@ def write_qus_to_file(qus_list, qus_file):
 
 
 def process_qus_in_synopsis(synopsis):
+    global MAX_CALLS
+
     no_gaps_synopsis = "".join(synopsis.split())
 
     base_dir = QU_SOURCE_DIR
@@ -123,7 +125,7 @@ def process_qus_in_synopsis(synopsis):
         
         qus_batch = [qus_full_details["question"] for qus_full_details in qus_full_details_batch]
         qus_full_details_batch_query_indexed = {qus_full_details["question"]: qus_full_details for qus_full_details in qus_full_details_batch}
-        stored_ids_batch_query_indexed = {qus_metadata["question"]: qus_metadata["stored_action_ids"] for qus_metadata in qus_full_details_batch}
+        stored_ids_batch_query_indexed = {qus_full_details["question"]: qus_full_details["all_relevant_action_ids"] for qus_full_details in qus_full_details_batch}
         
         if MAX_CALLS >= 1:
             logging.info("Making API call for question batch.")
@@ -165,6 +167,8 @@ def process_qus_in_synopsis(synopsis):
 
             
 def process_all_synopses():
+    global MAX_CALLS, MAX_SYNOPSES
+
     synopses = []
     for entry in os.scandir("action_data/background_key_messages/bg_km_synopsis"):
         synopses.append(entry.name)

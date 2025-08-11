@@ -9,6 +9,11 @@ from pydantic import BaseModel, Field
 from typing import Annotated
 
 
+### ORDER OF ITERATIONS OF EXPERIMENTS:
+# ENCOURAGING PARALLEL TOOL CALLS (worked well so KEEPING this)
+# DIFF ANSWER STYLES + PARALLEL CALLS
+
+
 load_dotenv()
 
 logging.basicConfig(filename = "logfiles/answer_gen_experimental.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -367,6 +372,8 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
             When searching for actions, start with the default parameters, but if you need more results, use the offset parameter to retrieve additional actions. 
             Keep searching with increasing offset values until the returned actions become irrelevant to the user's query - this ensures you find all pertinent information before providing your final answer. 
             Once you have identified a list or batch of action documents that you want to expand fully, you should make multiple **parallel** calls to the get_action_details tool — each call should contain one of the action IDs from the batch.
+            Use the information you have gathered to answer the user's query. Include as much detail in your answer as possible (but DO NOT make up statements that do not exist in the action documents).
+            You must cite the action IDs as references for statements you make in your answer.
             Finally, you MUST use the get_formatted_result tool. This will convert your the user's query, your generated answer and the list of the action IDs you used to generate your answer into a valid JSON format. 
             You MUST copy the exact outputted json string of the get_formatted_result tool as your final message."
         """ # has a typo: "This will convert *your the* user's query".
@@ -489,9 +496,12 @@ def parse_model_name(model):
     return cleaned_name
 
 def parse_provider_name(provider):
-    provider_split = provider.split("/")
-    provider_name = provider_split[0]
-    return provider_name
+    if provider is not None:
+        provider_split = provider.split("/")
+        provider_name = provider_split[0]
+        return provider_name
+    else:
+        return ""
 
 
 def run_models(query, model_provider_list):
@@ -536,9 +546,44 @@ def main():
     ]
     # could also test gemini-2.5-flash-lite
 
-    query = "What conservation actions are most beneficial for establishing new populations of threatened toad species in the UK?"
+    #query = "What conservation actions are most beneficial for establishing new populations of threatened toad species in the UK?"
 
-    run_models(query=query, model_provider_list=model_provider_list)
+    #run_models(query=query, model_provider_list=model_provider_list)
+
+    ### TESTING DIFF ANSWER STYLES
+    query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
+    model_name = "moonshotai/kimi-k2"
+    provider_name = "fireworks/fp8"
+    result, tool_calls = run_agentic_loop(user_query=query, model=model_name, provider=provider_name)
+    cleaned_model_name = parse_model_name(model_name)
+    cleaned_provider_name = parse_provider_name(provider_name)
+    # CHANGE ANSWER STYLE IN THE FILENAME
+    ans_out_file = f"answer_gen_data/experimental/diff_answer_styles/answers_{cleaned_provider_name}_{cleaned_model_name}_tldrpara.json"
+    write_new_answers(ans_list=[assemble_llm_response_and_tools(result, tool_calls)], filename=ans_out_file)
+
+    ### TESTING SEARCH_ACTIONS()
+    # search_query = "chytridiomycosis"
+    # logging.info(f"TESTING search_actions for presence of action 762, 'Add salt to ponds to reduce chytridiomycosis', in relation to query about {search_query}.")
+    # results = search_actions(search_query)
+    # print(results)
+    # logging.info(f"Results: {results}.")
+    # logging.info("ENDING test.")
+
+
+    ## TESTING GET_PARSED_ACTIONS()
+    # search_query = "chytridiomycosis"
+    # logging.info(f"TESTING get_parsed_actions for presence of action 762, 'Add salt to ponds to reduce chytridiomycosis', in relation to query about {search_query}.")
+    # actions = get_parsed_actions()
+    # ids = [doc["action_id"] for doc in actions]
+    # titles = [doc["action_title"] for doc in actions]
+    # if "762" in ids:
+    #     logging.info("Action 762 found in parsed actions.")
+    #     print("Action 762 found in parsed actions.")
+    # else:
+    #     logging.warning("Action 762 not found in parsed actions.")
+    #     print("Action 762 not found in parsed actions.")
+    # logging.info("ENDING test.")
+
 
 
 if __name__ == "__main__":

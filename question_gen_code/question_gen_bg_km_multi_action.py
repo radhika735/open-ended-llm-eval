@@ -16,7 +16,7 @@ logging.basicConfig(filename="logfiles/bg_km_multi_question_gen.log", level=logg
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus"
-MAX_CALLS = 10
+MAX_CALLS = 1
 
 def get_synopsis_data(synopsis, use_filtered_synopsis=False):
     no_gaps_synopsis = "".join(synopsis.split())
@@ -125,7 +125,9 @@ def get_llm_response(synopsis, content, qu_type):
             config=types.GenerateContentConfig(
                 thinking_config=types.ThinkingConfig(thinking_budget=8192),
                 response_mime_type="application/json",
-                response_schema=list[QuestionAnswer]
+                response_schema=list[QuestionAnswer],
+                temperature=1,
+                seed=100
             )
         )
         new_qus = [qu_ans_obj.model_dump() for qu_ans_obj in response.parsed]
@@ -158,7 +160,7 @@ def get_llm_response(synopsis, content, qu_type):
     except TypeError as e:
         logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 30 seconds.")
         time.sleep(30)
-        return get_llm_response(synopsis=synopsis, content=content)
+        return get_llm_response(synopsis=synopsis, content=content, qu_type=qu_type)
 
 
 #gen_questions = response.candidates[0].content.parts[0].text
@@ -224,7 +226,7 @@ def process_all_synopses(qu_type, use_filtered_synopsis=False):
     
     call_count = 0
     for i in range(MAX_CALLS):
-        synopsis = synopses[((i+14) % num_synopses)]
+        synopsis = synopses[((i+16) % num_synopses)]
         content_retrieval_success, content = get_synopsis_data(synopsis, use_filtered_synopsis=use_filtered_synopsis)
         
         if content_retrieval_success:
