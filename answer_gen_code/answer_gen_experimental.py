@@ -109,7 +109,7 @@ def search_actions(query_string, k=3, offset=0):
     # Search the corpus with the provided query
     # Retrieve more results than needed to handle offset
     total_results_needed = k + offset
-    query_tokens = bm25s.tokenize(query_string)
+    query_tokens = bm25s.tokenize(query_string, stopwords="en", stemmer=stemmer)
     logging.debug(f"Searching for query: {query_string}")
     docs, scores = retriever.retrieve(query_tokens, k=total_results_needed)
     
@@ -550,24 +550,24 @@ def main():
 
     #run_models(query=query, model_provider_list=model_provider_list)
 
-    ### TESTING DIFF ANSWER STYLES
-    query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
-    model_name = "moonshotai/kimi-k2"
-    provider_name = "fireworks/fp8"
-    result, tool_calls = run_agentic_loop(user_query=query, model=model_name, provider=provider_name)
-    cleaned_model_name = parse_model_name(model_name)
-    cleaned_provider_name = parse_provider_name(provider_name)
-    # CHANGE ANSWER STYLE IN THE FILENAME
-    ans_out_file = f"answer_gen_data/experimental/diff_answer_styles/answers_{cleaned_provider_name}_{cleaned_model_name}_tldrpara.json"
-    write_new_answers(ans_list=[assemble_llm_response_and_tools(result, tool_calls)], filename=ans_out_file)
+    # ## TESTING DIFF ANSWER STYLES
+    # query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
+    # model_name = "moonshotai/kimi-k2"
+    # provider_name = "fireworks/fp8"
+    # result, tool_calls = run_agentic_loop(user_query=query, model=model_name, provider=provider_name)
+    # cleaned_model_name = parse_model_name(model_name)
+    # cleaned_provider_name = parse_provider_name(provider_name)
+    # # CHANGE ANSWER STYLE IN THE FILENAME
+    # ans_out_file = f"answer_gen_data/experimental/diff_answer_styles/answers_{cleaned_provider_name}_{cleaned_model_name}_tldrpara.json"
+    # write_new_answers(ans_list=[assemble_llm_response_and_tools(result, tool_calls)], filename=ans_out_file)
 
-    ### TESTING SEARCH_ACTIONS()
-    # search_query = "chytridiomycosis"
-    # logging.info(f"TESTING search_actions for presence of action 762, 'Add salt to ponds to reduce chytridiomycosis', in relation to query about {search_query}.")
-    # results = search_actions(search_query)
-    # print(results)
-    # logging.info(f"Results: {results}.")
-    # logging.info("ENDING test.")
+    ## TESTING SEARCH_ACTIONS()
+    search_query = "chytridiomycosis"
+    logging.info(f"TESTING search_actions for presence of action 762, 'Add salt to ponds to reduce chytridiomycosis', in relation to query about {search_query}.")
+    results = search_actions(search_query)
+    print(results)
+    logging.info(f"Results: {results}.")
+    logging.info("ENDING test.")
 
 
     ## TESTING GET_PARSED_ACTIONS()

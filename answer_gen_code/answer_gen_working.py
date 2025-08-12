@@ -104,7 +104,7 @@ def search_actions(query_string, k=3, offset=0):
     # Search the corpus with the provided query
     # Retrieve more results than needed to handle offset
     total_results_needed = k + offset
-    query_tokens = bm25s.tokenize(query_string)
+    query_tokens = bm25s.tokenize(query_string, stopwords="en", stemmer=stemmer)
     logging.debug(f"Searching for query: {query_string}")
     docs, scores = retriever.retrieve(query_tokens, k=total_results_needed)
     
