@@ -11,12 +11,13 @@ import time
 from question_gen_bg_km_multi_action import get_synopsis_data
 
 
-logging.basicConfig(filename="logfiles/all_relevant_actions_filter.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-QU_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable"
-MAX_CALLS = 30
-MAX_SYNOPSES = 1
-
+class Context():
+    def __init__(self, qu_source_dir, max_calls, max_synopses):
+        self.qu_source_dir = qu_source_dir
+        self.max_calls = max_calls
+        self.current_calls = 0
+        self.max_synopses = max_synopses
+        self.current_synopses = 0
 
 
 class RelevantActions(BaseModel):
@@ -83,19 +84,22 @@ def get_llm_relevant_actions(query_list, synopsis):
 
 def get_qus_from_file(qus_file):
     if not os.path.exists(qus_file):
-        logging.error(f"Question file {qus_file} does not exist.")
+        logging.info(f"Question file {qus_file} does not exist.")
         return []
 
-    with open(qus_file, "r", encoding="utf-8") as f:
-        logging.info(f"Loading questions from {qus_file}.")
-        qus_list = json.load(f)
+    try:
+        with open(qus_file, "r", encoding="utf-8") as f:
+            logging.info(f"Loading questions from {qus_file}.")
+            qus_list = json.load(f)
+    except json.JSONDecodeError as e:
+        logging.error(f"Error reading json from {qus_file}: {str(e)}.")
+        return []
 
     if not isinstance(qus_list, list):
         logging.error(f"Expected a list of questions in {qus_file}, but got {type(qus_list)}.")
         return []
 
     return qus_list
-
 
 
 def write_qus_to_file(qus_list, qus_file):
@@ -105,34 +109,47 @@ def write_qus_to_file(qus_list, qus_file):
         json.dump(qus_list, f, indent=2, ensure_ascii=False)
 
 
+def append_qus_to_file(new_qus, qus_file):
+    prev_qus = get_qus_from_file(qus_file=qus_file)
+    prev_qus.extend(new_qus)
+    write_qus_to_file(prev_qus, qus_file=qus_file)
 
-def process_qus_in_synopsis(synopsis):
-    global MAX_CALLS
+
+def process_qus_in_synopsis(synopsis, context):
 
     no_gaps_synopsis = "".join(synopsis.split())
-
-    base_dir = QU_SOURCE_DIR
+    base_dir = context.qu_source_dir
+    qus_dir = os.path.join(base_dir, "untested")
     file_name = f"bg_km_{no_gaps_synopsis}_qus.json"
+    qus_file = os.path.join(qus_dir, file_name)
 
-    qus_file = os.path.join(base_dir, file_name)
     qus_full_details_list = get_qus_from_file(qus_file)
     logging.info(f"Loaded {len(qus_full_details_list)} questions for synopsis {synopsis}.")
+    if qus_full_details_list == []:
+        logging.info(f"No unprocessed questions found for synopsis {synopsis}, skipping processing.")
+        return
+    all_batches = list(batched(qus_full_details_list, 10))
 
+    untested_qus = []
     passed_qus = []
     failed_qus = []
 
-    for qus_full_details_batch in batched(qus_full_details_list, 10):
+    for batch_num, qus_full_details_batch in enumerate(all_batches):
         
+        ## if there are two queries that have the same wording in the same batch, the later one will overwrite the earlier one in the dictionary
+        # need to decide how to handle this...
         qus_batch = [qus_full_details["question"] for qus_full_details in qus_full_details_batch]
         qus_full_details_batch_query_indexed = {qus_full_details["question"]: qus_full_details for qus_full_details in qus_full_details_batch}
         stored_ids_batch_query_indexed = {qus_full_details["question"]: qus_full_details["all_relevant_action_ids"] for qus_full_details in qus_full_details_batch}
-        
-        if MAX_CALLS >= 1:
+
+        if context.current_calls < context.max_calls:
             logging.info("Making API call for question batch.")
             api_call_success, rate_limited, gen_responses_batch = get_llm_relevant_actions(query_list=qus_batch, synopsis=synopsis)
-            MAX_CALLS -= 1
+            context.current_calls += 1
         else:
-            logging.info(f"User-set MAX_CALLS limit reached, skipping processing remaining questions in synopsis {synopsis}.")
+            logging.info(f"User-set MAX_CALLS limit reached, skipping filtering remaining questions in synopsis {synopsis}.")
+            for i in range(batch_num, len(all_batches)):
+                untested_qus.extend(all_batches[i])
             break
         
         if api_call_success:
@@ -146,40 +163,48 @@ def process_qus_in_synopsis(synopsis):
                 else:
                     failed_qus.append(qus_full_details_batch_query_indexed[query])
         else:
+            logging.info(f"API call failed, skipping remaining questions for synopsis. {synopsis}")
+            for i in range(batch_num, len(all_batches)+1):
+                untested_qus.extend(all_batches[i])
             break
 
-    unprocessed = len(qus_full_details_list) - len(passed_qus) - len(failed_qus)
-    logging.info(f"Total {len(qus_full_details_list)} questions for synopsis {synopsis}: {len(passed_qus)} passed, {len(failed_qus)} failed, {unprocessed} unprocessed.")
+    untested_1 = len(qus_full_details_list) - len(passed_qus) - len(failed_qus)
+    untested_2 = len(untested_qus)
+    if untested_1 != untested_2:
+        logging.warning("Untested questions count does not match with number of questions actually not processed.")
+    logging.info(f"Total {len(qus_full_details_list)} questions for synopsis {synopsis}: {len(passed_qus)} passed, {len(failed_qus)} failed, {untested_2} untested.")
 
     pass_dir = os.path.join(base_dir, "passed")
     fail_dir = os.path.join(base_dir, "failed")
+    untested_dir = os.path.join(base_dir, "untested")
 
-    os.makedirs(pass_dir, exist_ok=True)
-    os.makedirs(fail_dir, exist_ok=True)
     passed_file = os.path.join(pass_dir, file_name)
     failed_file = os.path.join(fail_dir, file_name)
+    untested_file = os.path.join(untested_dir, file_name)
 
-    logging.info(f"Writing passed questions to {passed_file}.")
-    write_qus_to_file(passed_qus, passed_file)
-    logging.info(f"Writing failed questions to {failed_file}.")
-    write_qus_to_file(failed_qus, failed_file)
+    logging.info(f"Adding new passed questions to {passed_file}.")
+    append_qus_to_file(passed_qus, passed_file)
+    logging.info(f"Adding new failed questions to {failed_file}.")
+    append_qus_to_file(failed_qus, failed_file)
+    logging.info(f"Overwriting untested questions to {untested_file}.")
+    write_qus_to_file(untested_qus, untested_file)
 
 
             
-def process_all_synopses():
-    global MAX_CALLS, MAX_SYNOPSES
+def process_all_synopses(context):
 
     synopses = []
     for entry in os.scandir("action_data/background_key_messages/bg_km_synopsis"):
         synopses.append(entry.name)
     
-    for s in synopses:
-        if MAX_SYNOPSES >= 1:
-            logging.info(f"Processing synopsis: {s}")
-            MAX_SYNOPSES -= 1
-            if MAX_CALLS >= 1:
-                process_qus_in_synopsis(synopsis=s)
-                MAX_CALLS -= 1
+    for i in range(len(synopses)):
+        synopsis = synopses[(i+16) % len(synopses)]
+        if context.current_synopses < context.max_synopses:
+            logging.info(f"Processing synopsis: {synopsis}")
+            context.current_synopses += 1
+            if context.current_calls < context.max_calls:
+                process_qus_in_synopsis(synopsis=synopsis, context=context)
+                context.current_calls += 1
             else:
                 logging.info(f"User-set MAX_CALLS limit reached, skipping processing remaining synopses.")
                 break
@@ -195,8 +220,18 @@ def main():
     # queries = ["What are the most effective interventions for controlling invasive predators to protect native amphibian populations?"]
     # stored_action_ids = [["797", "798", "821", "822", "825", "826", "827", "828", "829", "830", "839"]]
     # print(get_llm_relevant_actions(query_list=queries, synopsis=synopsis))
+    load_dotenv()
+
+    logging.basicConfig(filename="logfiles/all_relevant_actions_filter.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+    QU_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable"
+    MAX_CALLS = 1
+    MAX_SYNOPSES = 1
+
+    context = Context(qu_source_dir=QU_SOURCE_DIR, max_calls=MAX_CALLS, max_synopses=MAX_SYNOPSES)
+
     logging.info("STARTING question filtering process.")
-    process_all_synopses()
+    process_all_synopses(context=context)
     logging.info("ENDED question filtering process.")
 
 

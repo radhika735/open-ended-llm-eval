@@ -8,15 +8,12 @@ from pydantic import BaseModel
 import json
 import time
 
-load_dotenv()
+class Context():
+    def __init__(self, qu_out_dir, max_calls):
+        self.qu_out_dir = qu_out_dir
+        self.max_calls = max_calls
 
-logging.basicConfig(filename="logfiles/bg_km_multi_question_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# disable httpx logging
-logging.getLogger("httpx").setLevel(logging.WARNING)
-
-QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus"
-MAX_CALLS = 1
 
 def get_synopsis_data(synopsis, use_filtered_synopsis=False):
     no_gaps_synopsis = "".join(synopsis.split())
@@ -126,8 +123,7 @@ def get_llm_response(synopsis, content, qu_type):
                 thinking_config=types.ThinkingConfig(thinking_budget=8192),
                 response_mime_type="application/json",
                 response_schema=list[QuestionAnswer],
-                temperature=1,
-                seed=100
+                temperature=2
             )
         )
         new_qus = [qu_ans_obj.model_dump() for qu_ans_obj in response.parsed]
@@ -163,61 +159,70 @@ def get_llm_response(synopsis, content, qu_type):
         return get_llm_response(synopsis=synopsis, content=content, qu_type=qu_type)
 
 
-#gen_questions = response.candidates[0].content.parts[0].text
-#print("\n\n\n\nRESPONSE TEXT\n\n")
-#print(response.text)
 
-
-
-def get_prev_qus(synopsis, qu_type):
-    # options for qu_type are: "answerable", "unanswerable"
-    no_gaps_synopsis = "".join(synopsis.split())
-    if qu_type == "answerable":
-        outfile = os.path.join(QU_OUT_DIR, "answerable", f"bg_km_{no_gaps_synopsis}_qus.json")
-    elif qu_type == "unanswerable":
-        outfile = os.path.join(QU_OUT_DIR, "unanswerable", f"bg_km_{no_gaps_synopsis}_qus.json")
-    else:
-        logging.warning(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'get_prev_qus'.")
-        return []
-
-
-    if os.path.exists(outfile):
-        with open(outfile, "r", encoding="utf-8") as file:
+def read_json_file(filename):
+    if os.path.exists(filename):
+        with open(filename, "r", encoding="utf-8") as file:
             try:
-                qus_list = json.load(file)
-                logging.info(f"Loaded existing questions from {outfile}.")
-            except json.JSONDecodeError:
-                qus_list = []
-                logging.warning(f"Failed to load existing questions from {outfile}. Overwriting file.")
+                content = json.load(file)
+                logging.info(f"Loaded existing questions from {file}.")
+
+                if not isinstance(content, list):
+                    raise ValueError(f"Expected JSON file to contain a list, but contained {type(content)} instead.")
+                else:
+                    error = False
+                    return error, content
+            
+            except json.JSONDecodeError as e:
+                logging.warning(f"Failed to load existing questions from {filename}: {str(e)}.")
+                error = True
+                return error, []
     else:
-        qus_list = []
-        logging.info(f"Creating new question output file {outfile}.")
-
-    if not isinstance(qus_list, list):
-        raise ValueError("Expected JSON file to contain a list")
-    
-    return qus_list
+        logging.info(f"File not found to read from: {filename}.")
+        error = False
+        return error, []
 
 
 
-def write_all_qus(synopsis, qus_list, qu_type):
-    # options for qu_type are: "answerable", "unanswerable"
+def write_to_json_file(filename, qus):
+    if not os.path.exists(filename):
+        logging.info(f"Creating new question output file {filename}.")
+    with open(filename, "w", encoding="utf-8") as file:
+        json.dump(qus, file, ensure_ascii=False, indent=2)
+        
+
+
+def append_to_json_file(filename, new_qus):
+    error, prev_qus = read_json_file(filename=filename)
+    if error == True:
+        logging.warning(f"Loading existing questions failed, overwriting {filename} with new questions.")
+    prev_qus.extend(new_qus)
+    write_to_json_file(filename=filename, qus=prev_qus)
+    logging.info(f"Updated {filename} with new questions.")
+
+
+
+def append_qus(qus, synopsis, qu_type, context):
     no_gaps_synopsis = "".join(synopsis.split())
+
     if qu_type == "answerable":
-        outfile = os.path.join(QU_OUT_DIR, "answerable", f"bg_km_{no_gaps_synopsis}_qus.json")
+        all_file = os.path.join(context.qu_out_dir, "answerable", "all", f"bg_km_{no_gaps_synopsis}_qus.json")
+        append_to_json_file(filename=all_file, new_qus=qus)
+
+        test_file = os.path.join(context.qu_out_dir, "answerable", "untested", f"bg_km_{no_gaps_synopsis}_qus.json")
+        append_to_json_file(filename=test_file, new_qus=qus)
+
     elif qu_type == "unanswerable":
-        outfile = os.path.join(QU_OUT_DIR, "unanswerable", f"bg_km_{no_gaps_synopsis}_qus.json")
+        filename = os.path.join(context.qu_out_dir, "unanswerable", f"bg_km_{no_gaps_synopsis}_qus.json")
+        append_to_json_file(filename=filename, new_qus=qus)
+
     else:
         logging.warning(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'write_all_qus'. File write failed.")
         return
 
-    with open(outfile, 'w', encoding="utf-8") as outfile:
-        json.dump(qus_list, outfile, indent=2)
-    logging.info(f"Updated {outfile.name} with new questions.")
 
 
-
-def process_all_synopses(qu_type, use_filtered_synopsis=False):
+def process_all_synopses(context, qu_type, use_filtered_synopsis=False):
     # options for qu_type: "answerable", "unanswerable"
     synopses = []
     for entry in os.scandir("action_data/key_messages/km_synopsis"):
@@ -225,8 +230,8 @@ def process_all_synopses(qu_type, use_filtered_synopsis=False):
     num_synopses = len(synopses)
     
     call_count = 0
-    for i in range(MAX_CALLS):
-        synopsis = synopses[((i+16) % num_synopses)]
+    for i in range(context.max_calls):
+        synopsis = synopses[((i+17) % num_synopses)]
         content_retrieval_success, content = get_synopsis_data(synopsis, use_filtered_synopsis=use_filtered_synopsis)
         
         if content_retrieval_success:
@@ -235,10 +240,7 @@ def process_all_synopses(qu_type, use_filtered_synopsis=False):
             call_count += 1
             if api_call_success:
                 logging.info(f"Generated {len(new_qus)} {qu_type} questions for synopsis {synopsis} in {(time.monotonic() - start):.3f} seconds.")
-                
-                qus_list = get_prev_qus(synopsis=synopsis, qu_type=qu_type)
-                qus_list.extend(new_qus)
-                write_all_qus(synopsis=synopsis, qus_list=qus_list, qu_type=qu_type)
+                append_qus(qus=new_qus, synopsis=synopsis, qu_type=qu_type, context=context)
             else:
                 if rate_limited:
                     logging.error(f"{call_count} calls to API made before rate limit exceeded.")
@@ -247,9 +249,20 @@ def process_all_synopses(qu_type, use_filtered_synopsis=False):
 
 
 def main():
+    load_dotenv()
+    
+    logging.basicConfig(filename="logfiles/bg_km_multi_question_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    # disable httpx logging
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+
+    QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus"
+    MAX_CALLS = 9
+
+    context = Context(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS)
+
     try:
         logging.info("STARTING question generation process.")
-        process_all_synopses(qu_type="answerable", use_filtered_synopsis=False)
+        process_all_synopses(qu_type="answerable", use_filtered_synopsis=False, context=context)
         logging.info("ENDED question generation process")
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {str(e)}")
