@@ -13,11 +13,32 @@ from question_gen_bg_km_multi_action import get_synopsis_data
 
 class Context():
     def __init__(self, qu_source_dir, max_calls, max_synopses):
-        self.qu_source_dir = qu_source_dir
-        self.max_calls = max_calls
-        self.current_calls = 0
-        self.max_synopses = max_synopses
-        self.current_synopses = 0
+        self.__qu_source_dir = qu_source_dir
+        self.__max_calls = max_calls
+        self.__current_calls = 0
+        self.__max_synopses = max_synopses
+        self.__current_synopses = 0
+
+    def get_qu_source_dir(self):
+        return self.__qu_source_dir
+
+    def get_max_calls(self):
+        return self.__max_calls
+
+    def get_current_calls(self):
+        return self.__current_calls
+
+    def inc_current_calls(self):
+        self.__current_calls += 1
+
+    def get_max_synopses(self):
+        return self.__max_synopses
+
+    def get_current_synopses(self):
+        return self.__current_synopses
+    
+    def inc_current_synopses(self):
+        self.__current_synopses += 1
 
 
 class RelevantActions(BaseModel):
@@ -118,7 +139,7 @@ def append_qus_to_file(new_qus, qus_file):
 def process_qus_in_synopsis(synopsis, context):
 
     no_gaps_synopsis = "".join(synopsis.split())
-    base_dir = context.qu_source_dir
+    base_dir = context.get_qu_source_dir()
     qus_dir = os.path.join(base_dir, "untested")
     file_name = f"bg_km_{no_gaps_synopsis}_qus.json"
     qus_file = os.path.join(qus_dir, file_name)
@@ -142,10 +163,10 @@ def process_qus_in_synopsis(synopsis, context):
         qus_full_details_batch_query_indexed = {qus_full_details["question"]: qus_full_details for qus_full_details in qus_full_details_batch}
         stored_ids_batch_query_indexed = {qus_full_details["question"]: qus_full_details["all_relevant_action_ids"] for qus_full_details in qus_full_details_batch}
 
-        if context.current_calls < context.max_calls:
+        if context.get_current_calls() < context.get_max_calls():
             logging.info("Making API call for question batch.")
             api_call_success, rate_limited, gen_responses_batch = get_llm_relevant_actions(query_list=qus_batch, synopsis=synopsis)
-            context.current_calls += 1
+            context.inc_current_calls()
         else:
             logging.info(f"User-set MAX_CALLS limit reached, skipping filtering remaining questions in synopsis {synopsis}.")
             for i in range(batch_num, len(all_batches)):
@@ -191,7 +212,7 @@ def process_qus_in_synopsis(synopsis, context):
 
 
             
-def process_all_synopses(context):
+def process_all_synopses(context : Context):
 
     synopses = []
     for entry in os.scandir("action_data/background_key_messages/bg_km_synopsis"):
@@ -199,12 +220,12 @@ def process_all_synopses(context):
     
     for i in range(len(synopses)):
         synopsis = synopses[(i+16) % len(synopses)]
-        if context.current_synopses < context.max_synopses:
+        if context.get_current_synopses() < context.get_max_synopses():
             logging.info(f"Processing synopsis: {synopsis}")
-            context.current_synopses += 1
-            if context.current_calls < context.max_calls:
+            context.inc_current_synopses()
+            if context.get_current_calls() < context.get_max_calls():
                 process_qus_in_synopsis(synopsis=synopsis, context=context)
-                context.current_calls += 1
+                context.inc_current_calls()
             else:
                 logging.info(f"User-set MAX_CALLS limit reached, skipping processing remaining synopses.")
                 break

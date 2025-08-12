@@ -10,9 +10,14 @@ import time
 
 class Context():
     def __init__(self, qu_out_dir, max_calls):
-        self.qu_out_dir = qu_out_dir
-        self.max_calls = max_calls
+        self.__qu_out_dir = qu_out_dir
+        self.__max_calls = max_calls
 
+    def get_max_calls(self):
+        return self.__max_calls
+    
+    def get_qu_out_dir(self):
+        return self.__qu_out_dir
 
 
 def get_synopsis_data(synopsis, use_filtered_synopsis=False):
@@ -202,18 +207,18 @@ def append_to_json_file(filename, new_qus):
 
 
 
-def append_qus(qus, synopsis, qu_type, context):
+def append_qus(qus, synopsis, qu_type, context : Context):
     no_gaps_synopsis = "".join(synopsis.split())
 
     if qu_type == "answerable":
-        all_file = os.path.join(context.qu_out_dir, "answerable", "all", f"bg_km_{no_gaps_synopsis}_qus.json")
+        all_file = os.path.join(context.get_qu_out_dir(), "answerable", "all", f"bg_km_{no_gaps_synopsis}_qus.json")
         append_to_json_file(filename=all_file, new_qus=qus)
 
-        test_file = os.path.join(context.qu_out_dir, "answerable", "untested", f"bg_km_{no_gaps_synopsis}_qus.json")
+        test_file = os.path.join(context.get_qu_out_dir(), "answerable", "untested", f"bg_km_{no_gaps_synopsis}_qus.json")
         append_to_json_file(filename=test_file, new_qus=qus)
 
     elif qu_type == "unanswerable":
-        filename = os.path.join(context.qu_out_dir, "unanswerable", f"bg_km_{no_gaps_synopsis}_qus.json")
+        filename = os.path.join(context.get_qu_out_dir(), "unanswerable", f"bg_km_{no_gaps_synopsis}_qus.json")
         append_to_json_file(filename=filename, new_qus=qus)
 
     else:
@@ -222,7 +227,7 @@ def append_qus(qus, synopsis, qu_type, context):
 
 
 
-def process_all_synopses(context, qu_type, use_filtered_synopsis=False):
+def process_all_synopses(context : Context, qu_type, use_filtered_synopsis=False):
     # options for qu_type: "answerable", "unanswerable"
     synopses = []
     for entry in os.scandir("action_data/key_messages/km_synopsis"):
@@ -230,8 +235,8 @@ def process_all_synopses(context, qu_type, use_filtered_synopsis=False):
     num_synopses = len(synopses)
     
     call_count = 0
-    for i in range(context.max_calls):
-        synopsis = synopses[((i+17) % num_synopses)]
+    for i in range(context.get_max_calls()):
+        synopsis = synopses[((i+23) % num_synopses)]
         content_retrieval_success, content = get_synopsis_data(synopsis, use_filtered_synopsis=use_filtered_synopsis)
         
         if content_retrieval_success:
@@ -256,7 +261,7 @@ def main():
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
     QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus"
-    MAX_CALLS = 9
+    MAX_CALLS = 1
 
     context = Context(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS)
 

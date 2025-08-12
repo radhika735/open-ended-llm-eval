@@ -58,6 +58,11 @@ def get_id_dist_as_str_list(id_dist):
     return all_id_dist_str_list
 
 
+def get_num_ids_used_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
+    id_dist = get_id_dist_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, qus_file_type=qus_file_type)
+    return len(id_dist)
+
+
 def get_num_qus_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
     qus_list = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, qus_file_type=qus_file_type)
     return len(qus_list)
@@ -99,8 +104,9 @@ def main():
     # qus_file = f"question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/bg_km_{no_gaps_synopsis}_qus.json"
     # id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
     # print(id_dist)
-
-    print(get_num_qus_all_synopses(qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/all"))
+    qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/all"
+    num = get_total_num_qus(qus_dir=qus_dir)
+    print(num)
 
 
 
