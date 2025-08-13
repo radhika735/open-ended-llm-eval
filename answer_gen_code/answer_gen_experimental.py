@@ -7,7 +7,14 @@ import Stemmer
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from typing import Annotated
+import numpy as np
+import torch
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from collections import defaultdict
 
+from answer_gen_code.action_retrieval import get_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 
 ### ORDER OF ITERATIONS OF EXPERIMENTS:
 # ENCOURAGING PARALLEL TOOL CALLS (worked well so KEEPING this)
@@ -22,6 +29,7 @@ logging.basicConfig(filename = "logfiles/answer_gen_experimental.log", level=log
 logging.getLogger("httpx").setLevel(logging.WARNING)
 # disable bm25s logging
 logging.getLogger("bm25s").setLevel(logging.WARNING)
+
 
 
 # API Configuration
@@ -41,103 +49,13 @@ def get_client():
     )
 
 
-def get_parsed_actions():
-    """
-    Get parsed actions from the data directory.
-    
-    Returns:
-        list: List of parsed action dictionaries
-    """
-    parsed_actions = []
-    data_dir = "action_data/key_messages/km_all"
-
-    for filename in sorted(os.listdir(data_dir)):
-        if filename.endswith(".txt"):
-            with open(os.path.join(data_dir, filename), "r", encoding="utf-8") as file:
-                file_contents = file.read().strip()
-                if file_contents:
-                    lines = file_contents.splitlines()
-                    # remove the line "Synopsis Details:" and lines after it
-                    for i, line in enumerate(lines):
-                        if line == "Synopsis Details:":
-                            lines = lines[:i]
-                            break
-                    action_id, action_title = lines[0].split(": ", 1)
-                    effectiveness = lines[1] if len(lines) > 1 else ""
-                    key_messages = "\n".join(lines[2:]) if len(lines) > 2 else ""
-                    parsed_actions.append({
-                        "filename": filename,
-                        "action_id": action_id.strip(),
-                        "action_title": action_title.strip(),
-                        "effectiveness": effectiveness.strip(),
-                        "key_messages": key_messages.strip()
-                    })
-    
-    return parsed_actions
-
 
 def search_actions(query_string, k=3, offset=0):
     """
-    Search for the top k most relevant actions based on a query string.
-    
-    Args:
-        query_string (str): The search query for finding relevant actions
-        k (int): Number of top results to return (default: 3)
-        offset (int): Number of results to skip (default: 0, used for pagination)
-    
-    Returns:
-        list: Top k action documents matching the query, starting from offset
+    Search for the top k most relevant action documents based on a query string.
     """
-    parsed_actions = get_parsed_actions()
-    
-    corpus = []
-    for action in parsed_actions:
-        corpus.append(f"{action['action_id']}: {action['action_title']}\nEffectiveness: {action['effectiveness']}\nKey Messages:\n{action['key_messages']}")
+    return sparse_retrieve_docs(query_string, k=k, offset=offset)
 
-    stemmer = Stemmer.Stemmer("english")
-
-    # Tokenize the corpus and index it
-    logging.debug("Tokenizing and indexing the corpus...")
-    corpus_tokens = bm25s.tokenize(corpus, stopwords="en", stemmer=stemmer)
-
-    retriever = bm25s.BM25()
-    logging.debug("Creating BM25 retriever...")
-    retriever.index(corpus_tokens)
-
-    logging.debug("BM25 retriever is ready.")
-    
-    # Search the corpus with the provided query
-    # Retrieve more results than needed to handle offset
-    total_results_needed = k + offset
-    query_tokens = bm25s.tokenize(query_string, stopwords="en", stemmer=stemmer)
-    logging.debug(f"Searching for query: {query_string}")
-    docs, scores = retriever.retrieve(query_tokens, k=total_results_needed)
-    
-    logging.debug(f"Docs: {docs}\nScores: {scores} (type: {type(scores)})")
-
-    # Format results with metadata, applying offset and limit
-    results = []
-    for i, (doc, score) in enumerate(zip(docs[0], scores[0])):
-        # Skip results before offset
-        if i < offset:
-            continue
-        # Stop if we've collected enough results
-        if len(results) >= k:
-            break
-            
-        score = score.item()
-        logging.debug(f"doc: {doc}")
-        logging.debug(f"score: {score}, type: {type(score)}")
-        action = parsed_actions[doc]
-        results.append({
-            "action_id": action["action_id"],
-            "action_title": action["action_title"],
-            "effectiveness": action["effectiveness"],
-            "rank": i + 1  # Keep original rank from search
-        })
-    
-    logging.debug(f"Found {len(results)} documents for query '{query_string}':")
-    return results
 
 
 def get_action_details(action_id):
@@ -171,6 +89,7 @@ def get_action_details(action_id):
     }
 
 
+
 def get_formatted_result(query, answer, action_ids):
     """
     Formats the user's query, answer and action ids as a valid JSON object string, to be presented to the user.
@@ -190,6 +109,7 @@ def get_formatted_result(query, answer, action_ids):
     }
     return formatted_result
     
+
 
 # Tool definition for OpenAI/OpenRouter function calling
 tools = [
@@ -285,6 +205,7 @@ TOOL_MAPPING = {
 # schema["additionalProperties"] = False
 
 
+
 def call_llm(messages, model, provider):
     """
     Make a call to the LLM with tool capabilities.
@@ -326,6 +247,7 @@ def call_llm(messages, model, provider):
     return response
 
 
+
 def execute_tool_call(tool_call):
     """
     Execute a tool call and return the result.
@@ -350,6 +272,7 @@ def execute_tool_call(tool_call):
         "name": tool_name,
         "content": json.dumps(tool_result, indent=2)
     }
+
 
 
 def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None, max_iterations=10):
@@ -440,6 +363,7 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
     return final_message_content, all_tool_calls# FAILED EXIT
 
 
+
 def get_prev_answers(filename):
     if os.path.exists(filename):
         try:
@@ -460,6 +384,7 @@ def get_prev_answers(filename):
         raise ValueError("Expected JSON file to contain a list.")
     
     return success, ans_list
+
 
 
 def assemble_llm_response_and_tools(response : dict, tool_use_track):
@@ -484,6 +409,7 @@ def write_new_answers(ans_list, filename, reset_file = False):
     logging.info(f"Updated {filename} with new questions.")
 
 
+
 def parse_model_name(model):
     model_split = model.split("/")
     model_name = model_split[-1]
@@ -495,6 +421,8 @@ def parse_model_name(model):
             cleaned_name += "-"
     return cleaned_name
 
+
+
 def parse_provider_name(provider):
     if provider is not None:
         provider_split = provider.split("/")
@@ -502,6 +430,7 @@ def parse_provider_name(provider):
         return provider_name
     else:
         return ""
+
 
 
 def run_models(query, model_provider_list):
@@ -517,9 +446,11 @@ def run_models(query, model_provider_list):
         write_new_answers(ans_list=[assemble_llm_response_and_tools(response, tool_calls)], filename=ans_out_file)
 
 
+
 def run_queries_on_models(query_list, model_provider_list):
     for query in query_list:
         run_models(query=query, model_provider_list=model_provider_list)
+
 
 
 def main():
