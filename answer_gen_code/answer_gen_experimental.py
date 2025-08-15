@@ -14,7 +14,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from collections import defaultdict
 
-from answer_gen_code.action_retrieval import get_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
+from action_retrieval import get_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 
 ### ORDER OF ITERATIONS OF EXPERIMENTS:
 # ENCOURAGING PARALLEL TOOL CALLS (worked well so KEEPING this)
@@ -78,8 +78,7 @@ def get_action_details(action_id):
                 "action_id": action["action_id"],
                 "action_title": action["action_title"],
                 "effectiveness": action["effectiveness"],
-                "key_messages": action["key_messages"],
-                "filename": action["filename"]
+                "key_messages": action["key_messages"]
             }
     
     logging.debug(f"Action ID {action_id} not found")
@@ -290,16 +289,16 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
     messages = [
         {
             "role": "system",
-            "content": """You are a helpful assistant that can search through action documents to find relevant information. 
-            Use the search_actions tool to find relevant actions based on user queries, and then use get_action_details to retrieve full details for specific actions when needed. 
-            When searching for actions, start with the default parameters, but if you need more results, use the offset parameter to retrieve additional actions. 
-            Keep searching with increasing offset values until the returned actions become irrelevant to the user's query - this ensures you find all pertinent information before providing your final answer. 
+            "content": """You are a helpful assistant that can search through action documents to find relevant information.
+            Use the search_actions tool to find relevant actions based on user queries, and then use get_action_details to retrieve full details for specific actions when needed.
+            When searching for actions, start with the default parameters, but if you need more results, use the offset parameter to retrieve additional actions.
+            Keep searching with increasing offset values until the returned actions become irrelevant to the user's query - this ensures you find all pertinent information before providing your final answer.
             Once you have identified a list or batch of action documents that you want to expand fully, you should make multiple **parallel** calls to the get_action_details tool — each call should contain one of the action IDs from the batch.
-            Use the information you have gathered to answer the user's query. Include as much detail in your answer as possible (but DO NOT make up statements that do not exist in the action documents).
-            You must cite the action IDs as references for statements you make in your answer.
-            Finally, you MUST use the get_formatted_result tool. This will convert your the user's query, your generated answer and the list of the action IDs you used to generate your answer into a valid JSON format. 
-            You MUST copy the exact outputted json string of the get_formatted_result tool as your final message."
-        """ # has a typo: "This will convert *your the* user's query".
+            Use the information you have gathered to answer the user's query. 
+            Your answer should stick to the following format: begin with a one line quick summary, followed by a new line, followed by a paragraph (around 6-7 sentences in length) going into more detail.
+            DO NOT use your own knowledge to answer the question. Your answer should use only information obtained from the action documents. This means for every statement you make you MUST cite the action id used to make that statement as a reference.
+            Finally, you MUST use the get_formatted_result tool. This will convert the user's query, your generated answer and the list of the action IDs you used to generate your answer into a valid JSON format.
+        """
         },
         {
             "role": "user",
@@ -481,24 +480,24 @@ def main():
 
     #run_models(query=query, model_provider_list=model_provider_list)
 
-    # ## TESTING DIFF ANSWER STYLES
-    # query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
-    # model_name = "moonshotai/kimi-k2"
-    # provider_name = "fireworks/fp8"
-    # result, tool_calls = run_agentic_loop(user_query=query, model=model_name, provider=provider_name)
-    # cleaned_model_name = parse_model_name(model_name)
-    # cleaned_provider_name = parse_provider_name(provider_name)
-    # # CHANGE ANSWER STYLE IN THE FILENAME
-    # ans_out_file = f"answer_gen_data/experimental/diff_answer_styles/answers_{cleaned_provider_name}_{cleaned_model_name}_tldrpara.json"
-    # write_new_answers(ans_list=[assemble_llm_response_and_tools(result, tool_calls)], filename=ans_out_file)
+    ## TESTING DIFF ANSWER STYLES
+    query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
+    model_name = "moonshotai/kimi-k2"
+    provider_name = "fireworks/fp8"
+    result, tool_calls = run_agentic_loop(user_query=query, model=model_name, provider=provider_name)
+    cleaned_model_name = parse_model_name(model_name)
+    cleaned_provider_name = parse_provider_name(provider_name)
+    # CHANGE ANSWER STYLE IN THE FILENAME
+    ans_out_file = f"answer_gen_data/experimental/refining_answer_style/answers_{cleaned_provider_name}_{cleaned_model_name}_v9.json"
+    write_new_answers(ans_list=[assemble_llm_response_and_tools(result, tool_calls)], filename=ans_out_file)
 
-    ## TESTING SEARCH_ACTIONS()
-    search_query = "chytridiomycosis"
-    logging.info(f"TESTING search_actions for presence of action 762, 'Add salt to ponds to reduce chytridiomycosis', in relation to query about {search_query}.")
-    results = search_actions(search_query)
-    print(results)
-    logging.info(f"Results: {results}.")
-    logging.info("ENDING test.")
+    # TESTING SEARCH_ACTIONS()
+    # search_query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
+    # logging.info(f"TESTING search_actions results for query {search_query}.")
+    # results = search_actions(search_query)
+    # print(results)
+    # logging.info(f"Results: {results}.")
+    # logging.info("ENDING test.")
 
 
     ## TESTING GET_PARSED_ACTIONS()

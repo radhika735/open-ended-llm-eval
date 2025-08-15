@@ -86,7 +86,9 @@ def get_parsed_actions(doc_type = "km"):
         if filename.endswith(".txt"):
             with open(os.path.join(data_dir, filename), "r", encoding="utf-8") as action_file:
                 file_contents = action_file.read()
-                parsed_actions.append(parse_action(file_contents))
+                parsed_action = parse_action(file_contents)
+                parsed_actions.append(parsed_action)
+
 
     return parsed_actions
 
@@ -156,21 +158,14 @@ def sparse_retrieve_docs(query_string, k=3, offset=0):
 
 
 
-def get_dense_embeddings(all_docs, dense_model, np_cache_file="answer_gen_data/retrieval_methods/dense_embeddings_cached/km_nomic_dense_embeddings.npy"):
-    if os.path.exists(np_cache_file):
+def get_dense_embeddings(all_docs, dense_model, doc_type = "km", load_from_cache=True, save_to_cache=True, np_cache_dir="answer_gen_data/retrieval_methods/dense_embeddings_cached"):
+    np_cache_file = os.path.join(np_cache_dir, f"{doc_type}_nomic_dense_embeddings.npy")
+    if load_from_cache and os.path.exists(np_cache_file):
         return np.load(np_cache_file)
-    
-    dense_embeddings = []
-    batch_size = 32
-
-    for i in range(0, len(all_docs), batch_size): # This will take around an hour to run for new dense_models
-        batch = all_docs[i:i+batch_size]
-        batch_embeddings = dense_model.encode(batch)
-        dense_embeddings.extend(batch_embeddings)
-
-    dense_embeddings = np.array(dense_embeddings)  # 4000 docs - using numpy array rather than vector database
-    np.save(np_cache_file, dense_embeddings)
-    return dense_embeddings
+    else:
+        import create_dense_embeddings
+        embeddings = create_dense_embeddings.get_embeddings(docs=all_docs, save_to_cache=save_to_cache) # will take half an hour to run
+        return embeddings
 
 
 
@@ -195,7 +190,7 @@ def dense_retrieve_docs(query_string, k=3, offset=0):
     model = SentenceTransformer("nomic-ai/nomic-embed-text-v1.5", trust_remote_code=True)
     query_embedding = model.encode(query_string, normalize_embeddings=True)
     # Get the document embeddings
-    dense_embeddings = get_dense_embeddings(all_docs=corpus, model=model, np_cache_file="answer_gen_data/retrieval_methods/dense_embeddings_cached/bg_km_parsed_nomic_dense_embeddings.npy")
+    dense_embeddings = get_dense_embeddings(all_docs=corpus, model=model, np_cache_file="answer_gen_data/retrieval_methods/dense_embeddings_cached/bg_km_nomic_dense_embeddings.npy")
 
     # Compute cosine similarities
     similarities = cosine_similarity(query_embedding, dense_embeddings)[0]
