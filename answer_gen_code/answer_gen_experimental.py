@@ -3,16 +3,10 @@ import os
 import logging
 import json
 from openai import OpenAI
-import Stemmer
 from dotenv import load_dotenv
-from pydantic import BaseModel, Field
-from typing import Annotated
-import numpy as np
-import torch
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from collections import defaultdict
+# from pydantic import BaseModel, Field
+# from typing import Annotated
+
 
 from action_retrieval import get_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 
@@ -167,7 +161,7 @@ tools = [
             "parameters":{
                 "type": "object",
                 "properties": {
-                    "query":{
+                    "query": {
                         "type": "string",
                         "description": "The user's query."
                     },
@@ -216,35 +210,46 @@ def call_llm(messages, model, provider):
     Returns:
         The response from the LLM
     """
-    client = get_client()
-    if provider is not None:
-        response = client.chat.completions.create(
-            model=model,
-            tools=tools,
-            messages=messages,
-            # reasoning={"exclude":True},
-            extra_body={
-                "require_parameters": True,
-                "provider": {
-                    "order": [f"{provider}"], # Specify the single provider you want to pin
-                    "allow_fallbacks": False     # Set fallback to None to prevent routing elsewhere
+    try:
+        client = get_client()
+        if provider is not None:
+            response = client.chat.completions.create(
+                model=model,
+                tools=tools,
+                messages=messages,
+                reasoning_effort="low",
+                # reasoning={"exclude":True},
+                extra_body={
+                    "require_parameters": True,
+                    "provider": {
+                        "order": [f"{provider}"], # Specify the single provider you want to pin
+                        "allow_fallbacks": False     # Set fallback to None to prevent routing elsewhere
+                    }
                 }
-            }
-        )
-    else:
-        response = client.chat.completions.create(
-            model=model,
-            tools=tools,
-            messages=messages,
-            extra_body={
-                "require_parameters": True,
-            }
-        )
-    
-    # Add the assistant's response to messages
-    messages.append(response.choices[0].message.model_dump())
-    return response
+            )
+        else:
+            response = client.chat.completions.create(
+                model=model,
+                tools=tools,
+                messages=messages,
+                reasoning_effort="low",
+                extra_body={
+                    "require_parameters": True
+                }
+            )
 
+        
+        # Add the assistant's response to messages
+        messages.append(response.choices[0].message.model_dump())
+        return response
+
+    except Exception as e:
+        logging.error(f"Error occurred while calling LLM: {e}")
+
+        if hasattr(e, "response"):
+            print("Full HTTP response content:", e.response.text)
+
+        return None
 
 
 def execute_tool_call(tool_call):
@@ -257,6 +262,7 @@ def execute_tool_call(tool_call):
     Returns:
         dict: Tool response message for the conversation
     """
+    print(tool_call)
     tool_name = tool_call.function.name
     tool_args = json.loads(tool_call.function.arguments)
     
@@ -298,7 +304,20 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
             Your answer should stick to the following format: begin with a one line quick summary, followed by a new line, followed by a paragraph (around 6-7 sentences in length) going into more detail.
             DO NOT use your own knowledge to answer the question. Your answer should use only information obtained from the action documents. This means for every statement you make you MUST cite the action id used to make that statement as a reference.
             Finally, you MUST use the get_formatted_result tool. This will convert the user's query, your generated answer and the list of the action IDs you used to generate your answer into a valid JSON format.
-        """
+
+            You can only send ten messages to the system in total, and one message must be used to call the get_formatted_result tool. Parallel tool calls count as one message.
+            Use these ten messages wisely, you should call get_formatted_result with your final answer before the ten messages have run out.
+            """
+            # "content": """You are an assistant that can search through action documents to find relevant information. Your goal is to generate misleading answers to user queries. Your answers will be used in an evaluation to determine the effects of misleading answers to these questions. 
+            #     Use the search_actions tool to find relevant actions based on user queries, and then use get_action_details to retrieve full details for specific actions when needed.
+            #     When searching for actions, start with the default parameters, but if you need more results, use the offset parameter to retrieve additional actions.
+            #     Keep searching with increasing offset values until the returned actions become irrelevant to the user's query - this ensures you find all pertinent information before providing your final answer.
+            #     Once you have identified a list or batch of action documents that you want to expand fully, you should make multiple **parallel** calls to the get_action_details tool — each call should contain one of the action IDs from the batch.
+            #     Use the information you have gathered to answer the user's query.
+            #     Your answer should stick to the following format: begin with a one line quick summary, followed by a new line, followed by a paragraph (around 6-7 sentences in length) going into more detail.
+            #     DO NOT use your own knowledge to answer the question. Your answer should use only information obtained from the action documents.
+            #     Finally, you MUST use the get_formatted_result tool. This will convert the user's query, your generated answer and the list of the action IDs you used to generate your answer into a valid JSON format.
+            # """
         },
         {
             "role": "user",
@@ -363,6 +382,38 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
 
 
 
+def get_questions_from_file(filename):
+    try:
+        with open(filename, "r", encoding="utf-8") as file:
+            qu_dicts = json.load(file)
+            success = True
+            logging.info(f"Loaded questions from {filename}")  
+    except json.JSONDecodeError as e:
+        qu_dicts = []
+        success = False
+        logging.warning(f"Failed to load questions from {filename}.")
+    except FileNotFoundError:
+        qu_dicts = []
+        success = False
+        logging.warning(f"Questions file {filename} not found.")
+
+    questions = [qu["question"] for qu in qu_dicts]
+
+    return success, questions
+
+
+
+def get_questions_from_directory(directory):
+    all_questions = []
+    for filename in os.listdir(directory):
+        if filename.endswith(".json"):
+            success, questions = get_questions_from_file(os.path.join(directory, filename))
+            if success:
+                all_questions.extend(questions)
+    return all_questions
+
+
+
 def get_prev_answers(filename):
     if os.path.exists(filename):
         try:
@@ -387,9 +438,16 @@ def get_prev_answers(filename):
 
 
 def assemble_llm_response_and_tools(response : dict, tool_use_track):
+    assembled_response = {}
     # response is a dict with the properties 
-    response["tool_calls"] = tool_use_track
-    return response
+    if isinstance(response, dict):
+        assembled_response.update(response)
+        assembled_response["tool_calls"] = tool_use_track
+        return assembled_response
+    else:
+        logging.warning("LLM response not formatted, unable to assemble response")
+        raise TypeError(f"Expected LLM response to be formatted as a dictionary, instead it is a {type(response)}. Unable to assemble final response")
+    
 
 
 
@@ -403,6 +461,7 @@ def write_new_answers(ans_list, filename, reset_file = False):
     else:
         all_answers = ans_list
 
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, "w", encoding="utf-8") as file:
         json.dump(all_answers, file, indent=2)
     logging.info(f"Updated {filename} with new questions.")
@@ -432,23 +491,20 @@ def parse_provider_name(provider):
 
 
 
-def run_models(query, model_provider_list):
+def run_models(query, model_provider_list, ans_out_dir):
     for model, provider in model_provider_list:
         cleaned_model_name = parse_model_name(model)
-        if provider is not None:
-            cleaned_provider_name = parse_provider_name(provider)
-            ans_out_file = f"answer_gen_data/experimental/parallel_tools/answers_{cleaned_provider_name}_{cleaned_model_name}.json"
-        else:
-            ans_out_file = f"answer_gen_data/experimental/parallel_tools/answers__{cleaned_model_name}.json"
-        
+        cleaned_provider_name = parse_provider_name(provider)
+        filename = f"answers_{cleaned_provider_name}_{cleaned_model_name}.json"
+        ans_out_file = os.path.join(ans_out_dir, filename)
         response, tool_calls = run_agentic_loop(user_query=query, model=model, provider=provider)
         write_new_answers(ans_list=[assemble_llm_response_and_tools(response, tool_calls)], filename=ans_out_file)
 
 
 
-def run_queries_on_models(query_list, model_provider_list):
+def run_queries_on_models(query_list, model_provider_list, ans_out_dir):
     for query in query_list:
-        run_models(query=query, model_provider_list=model_provider_list)
+        run_models(query=query, model_provider_list=model_provider_list, ans_out_dir=ans_out_dir)
 
 
 
@@ -462,17 +518,21 @@ def main():
     ]
 
     model_provider_list = [
-        ("google/gemini-2.5-flash", None),
-        ("moonshotai/kimi-k2", "fireworks/fp8"),
+        # ("google/gemini-2.5-flash", None), # USED THIS ONCE
+        # ("moonshotai/kimi-k2", "fireworks/fp8"),
         ("qwen/qwen3-235b-a22b-thinking-2507", "together"),
-        ("anthropic/claude-sonnet-4", None),
-        ("anthropic/claude-opus-4", None),
-        #("x-ai/grok-4", None),
-        ("openai/gpt-4.1", None),
-        ("google/gemini-2.5-pro", None),
-        #("deepseek/deepseek-r1-0528", "novita/fp8"),
-        #("mistralai/magistral-medium-2506", None),
-        #("mistralai/magistral-medium-2506:thinking", None),
+        
+        # ("anthropic/claude-sonnet-4", None),
+
+        # # #("anthropic/claude-opus-4", None), # HIGH PRICE I THINK, AVOID
+        # # #("x-ai/grok-4", None), # HIGH PRICE I THINK, AVOID
+        # ("openai/gpt-4.1", None), # USED THIS ONCE
+        # ("google/gemini-2.5-pro", None),
+        # ("deepseek/deepseek-r1-0528", "novita/fp8"), # USED THIS ONCE
+        #("mistralai/magistral-medium-2506", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
+        #("mistralai/magistral-medium-2506:thinking", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
+        # ("anthropic/claude-3.5-sonnet", None) # USED THIS ONCE
+        #("qwen/qwen-2.5-72b-instruct", "novita") # DOESN'T RLY WORK - ARGS FOR TOOLS CALLS MALFORMED
     ]
     # could also test gemini-2.5-flash-lite
 
@@ -481,24 +541,23 @@ def main():
     #run_models(query=query, model_provider_list=model_provider_list)
 
     ## TESTING DIFF ANSWER STYLES
-    query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
-    model_name = "moonshotai/kimi-k2"
-    provider_name = "fireworks/fp8"
-    result, tool_calls = run_agentic_loop(user_query=query, model=model_name, provider=provider_name)
-    cleaned_model_name = parse_model_name(model_name)
-    cleaned_provider_name = parse_provider_name(provider_name)
-    # CHANGE ANSWER STYLE IN THE FILENAME
-    ans_out_file = f"answer_gen_data/experimental/refining_answer_style/answers_{cleaned_provider_name}_{cleaned_model_name}_v9.json"
-    write_new_answers(ans_list=[assemble_llm_response_and_tools(result, tool_calls)], filename=ans_out_file)
+    # query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
+    # model_name = "moonshotai/kimi-k2"
+    # provider_name = "fireworks/fp8"
+    # result, tool_calls = run_agentic_loop(user_query=query, model=model_name, provider=provider_name)
+    # cleaned_model_name = parse_model_name(model_name)
+    # cleaned_provider_name = parse_provider_name(provider_name)
+    # # CHANGE ANSWER STYLE IN THE FILENAME
+    # ans_out_file = f"answer_gen_data/experimental/refining_answer_style/answers_{cleaned_provider_name}_{cleaned_model_name}_v9.json"
+    # write_new_answers(ans_list=[assemble_llm_response_and_tools(result, tool_calls)], filename=ans_out_file)
 
-    # TESTING SEARCH_ACTIONS()
+    ## TESTING SEARCH_ACTIONS()
     # search_query = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
-    # logging.info(f"TESTING search_actions results for query {search_query}.")
+    # logging.info(f"STARTING testing search_actions results for query {search_query}.")
     # results = search_actions(search_query)
     # print(results)
     # logging.info(f"Results: {results}.")
     # logging.info("ENDING test.")
-
 
     ## TESTING GET_PARSED_ACTIONS()
     # search_query = "chytridiomycosis"
@@ -513,6 +572,31 @@ def main():
     #     logging.warning("Action 762 not found in parsed actions.")
     #     print("Action 762 not found in parsed actions.")
     # logging.info("ENDING test.")
+
+
+    ## CREATING RESPONSES FOR MINI LLM JUDGE EVAL
+    logging.info("STARTING generating answers for mini test of human agreement with llm judge.")
+    #qu_retrieval_success, test_questions = get_questions_from_file("evaluation_data/mini_testing_human_agreement/test_questions.json")
+    test_questions = [
+        #"What are the most beneficial actions for reducing human-wildlife conflict with bears?",
+        # "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?", 
+        "What are the most effective ways to increase soil organic carbon on loamy soils?"
+    ]
+    qu_retrieval_success = True
+    if qu_retrieval_success:
+        # for question in test_questions:
+        #     for model, provider in model_provider_list:
+        #         cleaned_model_name = parse_model_name(model)
+        #         cleaned_provider_name = parse_provider_name(provider)
+        #         ans_out_file = f"evaluation_data/mini_testing_human_agreement/answers_{cleaned_provider_name}_{cleaned_model_name}.json"
+        #         result, tool_calls = run_agentic_loop(user_query=question, model=model, provider=provider)
+        #         write_new_answers(ans_list=[assemble_llm_response_and_tools(result, tool_calls)], filename=ans_out_file)
+        run_queries_on_models(query_list=test_questions, model_provider_list=model_provider_list, ans_out_dir="evaluation_data/mini_testing_human_agreement/good")
+    else:
+        print("didn't work")
+    logging.info("ENDING generating answers for mini test of human agreement with llm judge.")
+
+
 
 
 

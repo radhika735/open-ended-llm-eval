@@ -243,7 +243,7 @@ tools = [
             "parameters":{
                 "type": "object",
                 "properties": {
-                    "query":{
+                    "query": {
                         "type": "string",
                         "description": "The user's query."
                     },

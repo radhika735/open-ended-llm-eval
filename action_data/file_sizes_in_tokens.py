@@ -7,7 +7,6 @@ token_sizes = {
     "Bird Conservation": 102677,
     "Butterfly and Moth Conservation": 92964,
     "Control of Freshwater Invasive Species": 57767,
-    "Cool Farm Biodiversity": 8500,
     "Farmland Conservation": 38549,
     "Forest Conservation": 20765,
     "Grassland Conservation": 17872,
