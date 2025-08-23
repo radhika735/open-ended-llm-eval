@@ -17,7 +17,7 @@ from action_retrieval import get_parsed_actions, sparse_retrieve_docs, dense_ret
 
 load_dotenv()
 
-logging.basicConfig(filename = "logfiles/answer_gen_experimental.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # disable httpx logging
 logging.getLogger("httpx").setLevel(logging.WARNING)
@@ -83,21 +83,21 @@ def get_action_details(action_id):
 
 
 
-def get_formatted_result(query, answer, action_ids):
+def get_formatted_result(query, relevant_summary, action_ids):
     """
-    Formats the user's query, answer and action ids as a valid JSON object string, to be presented to the user.
+    Formats the user's query, the compiled summary and action ids as a valid JSON object string, to be presented to the user.
     
     Args:
         query (str): The query the user originally asked.
-        answer (str): The answer generated to the user's query.
-        action_ids (list[str]): A list containing all the action IDs used to generate the answer.
+        relevant_summary (str): The summary compiled from information relevant to the user's query.
+        action_ids (list[str]): A list containing all the action IDs used to generate the summary.
     
     Returns:
         str: Formatted result.
     """
     formatted_result = {
         "query":query,
-        "answer":answer,
+        "relevant_summary":relevant_summary,
         "action_ids":action_ids
     }
     return formatted_result
@@ -187,6 +187,16 @@ TOOL_MAPPING = {
     "get_action_details": get_action_details,
     "get_formatted_result" : get_formatted_result
 }
+
+
+# class AnswerAndActionIDs(BaseModel):
+#     answer : Annotated[str, Field(description="Answer to the user's query")]
+#     action_ids : Annotated[list[str], Field(description="List of IDs of all the actions used to generate the answer")]
+
+# schema = AnswerAndActionIDs.model_json_schema()
+# schema["type"] = "object"
+# schema["additionalProperties"] = False
+
 
 
 def call_llm(messages, model, provider):
@@ -290,24 +300,14 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
             When searching for actions, start with the default parameters, but if you need more results, use the offset parameter to retrieve additional actions.
             Keep searching with increasing offset values until the returned actions become irrelevant to the user's query - this ensures you find all pertinent information before providing your final answer.
             Once you have identified a list or batch of action documents that you want to expand fully, you should make multiple **parallel** calls to the get_action_details tool — each call should contain one of the action IDs from the batch.
-            Use the information you have gathered to answer the user's query. 
-            Your answer should stick to the following format: begin with a one line quick summary, followed by a new line, followed by a paragraph (around 6-7 sentences in length) going into more detail.
-            DO NOT use your own knowledge to answer the question. Your answer should use only information obtained from the action documents. This means for every statement you make you MUST cite the action id used to make that statement as a reference.
-            Finally, you MUST use the get_formatted_result tool. This will convert the user's query, your generated answer and the list of the action IDs you used to generate your answer into a valid JSON format.
+            Then use the information you have gathered to create a summary of information relevant to the user's query. 
+            Do NOT use your own knowledge, draw conclusions or make your own judgements of the action information - you must only present a short summary containing relevant information drawn faithfully from the action documents.
+            
+            Finally, you MUST use the get_formatted_result tool. This will convert the user's query, your generated summary and the list of the action IDs you used to generate your summary into a valid JSON format.
 
             You can only send ten messages to the system in total, and one message must be used to call the get_formatted_result tool. Parallel tool calls count as one message.
-            Use these ten messages wisely, you should call get_formatted_result with your final answer before the ten messages have run out.
+            Use these ten messages wisely, you should call get_formatted_result with your final summary before the ten messages have run out.
             """
-            # "content": """You are an assistant that can search through action documents to find relevant information. Your goal is to generate misleading answers to user queries. Your answers will be used in an evaluation to determine the effects of misleading answers to these questions. 
-            #     Use the search_actions tool to find relevant actions based on user queries, and then use get_action_details to retrieve full details for specific actions when needed.
-            #     When searching for actions, start with the default parameters, but if you need more results, use the offset parameter to retrieve additional actions.
-            #     Keep searching with increasing offset values until the returned actions become irrelevant to the user's query - this ensures you find all pertinent information before providing your final answer.
-            #     Once you have identified a list or batch of action documents that you want to expand fully, you should make multiple **parallel** calls to the get_action_details tool — each call should contain one of the action IDs from the batch.
-            #     Use the information you have gathered to answer the user's query.
-            #     Your answer should stick to the following format: begin with a one line quick summary, followed by a new line, followed by a paragraph (around 6-7 sentences in length) going into more detail.
-            #     DO NOT use your own knowledge to answer the question. Your answer should use only information obtained from the action documents.
-            #     Finally, you MUST use the get_formatted_result tool. This will convert the user's query, your generated answer and the list of the action IDs you used to generate your answer into a valid JSON format.
-            # """
         },
         {
             "role": "user",
@@ -585,6 +585,8 @@ def main():
     else:
         print("didn't work")
     logging.info("ENDING generating answers for mini test of human agreement with llm judge.")
+
+
 
 
 

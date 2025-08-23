@@ -229,6 +229,9 @@ def reciprocal_rank_fusion(ranked_lists, num_docs, dampener=60):
     return top_docs
 
 
+def cross_encode(sparse_ranks, dense_ranks):
+    pass
+
 
 def hybrid_retrieve_docs(query_string, k=3, offset=0):
     sparse_docs = sparse_retrieve_docs(query_string=query_string, k=k, offset=offset)
