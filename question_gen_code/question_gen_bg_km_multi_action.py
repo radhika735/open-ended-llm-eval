@@ -273,7 +273,7 @@ def process_all_synopses(context : Context, qu_type, use_filtered_synopsis=False
     
     call_count = 0
     for i in range(context.get_max_calls()):
-        synopsis = synopses[((i+16) % num_synopses)]
+        synopsis = synopses[((i+0) % num_synopses)]
         actions_retrieval_success, actions = get_synopsis_data(synopsis, use_filtered_synopsis=use_filtered_synopsis)
         prev_qus_retrieval_success, prev_qus = get_prev_qus(context=context, synopsis=synopsis)
         
@@ -304,7 +304,7 @@ def main():
 
     QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus"
     prev_qus_dirs = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"]
-    MAX_CALLS = 21
+    MAX_CALLS = 24
 
     context = Context(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS, prev_qus_dirs=prev_qus_dirs)
 

@@ -14,7 +14,7 @@ def embed_chunk(doc_info):
     index, doc_chunks = doc_info
     print("Embedding docs from Document", doc_chunks[0][:50], flush=True)
     global _MODEL
-    embeddings = _MODEL.encode(doc_chunks, batch_size=32, show_progress_bar=True, convert_to_numpy=True, normalize_embeddings=True)
+    embeddings = _MODEL.encode(doc_chunks, batch_size=32, show_progress_bar=False, convert_to_numpy=True, normalize_embeddings=True)
     return index, embeddings
 
 

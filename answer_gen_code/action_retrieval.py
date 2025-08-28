@@ -121,7 +121,6 @@ def get_parsed_actions(context : ActionRetrievalContext):
     Returns:
         list: List of parsed action dictionaries
     """
-    required_fields = context.get_required_fields()
     doc_type = context.get_doc_type()
     parsed_actions = []
     
