@@ -27,49 +27,55 @@ def get_client():
     )
 
 
+def call_llm(messages, model="google/gemini-2.5-pro"):
+    client = get_client()
+    response = client.chat.completions.create(
+        model = model
+        messages = messages
+    )
+    return response
+
+
 # copied heavily from "Evaluation of RAG Metrics for Question Answering in the Telecom Domain" paper
 def get_statements(question, answer):
-
     prompt = f"""
         Given a question and answer, create one or more statements from each sentence in the given answer. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
     """.strip()
 
-    client = get_client()
-    response = client.chat.completions.create(
-        model="o1",
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
-    )
+    messages=[
+        {"role": "user", "content": prompt}
+    ]
+
+    response = call_llm(messages=messages)
 
     # Splitting statements
     response = re.sub(
         r"^.*?[0-9]+\]*[:\.]\s(.*?)", r"\1", response, flags=re.MULTILINE
     ).strip()
     statements = sent_tokenize(response)
-    # key_idf = f"({context_id},{ground_truth_id})"
-    # ragas_result[key_idf]["faithfulnessStatements"] = statements
-    # eval = {
-    #     "faithfulnessStatements": statements,
-
-    # }
-
-    # ragas_result = {
-    #     "question": question, 
-    #     "answer": answer,
-    #     "eval": eval
-    # }
     return statements
 
 
 # copied heavily from "Evaluation of RAG Metrics for Question Answering in the Telecom Domain" paper
-def evaluate_faithfulness(question, answer):
+def faithfulness_raw(question, answer):
     statements = get_statements(question, answer)
     verdicts = []
     reasonings = []
     for idx, statement in enumerate(statements):
         prompt = f"""
-            Context: {context}\nConsider the given context and following statements, then determine whether they are supported by the information present in the context. Provide a brief explanation before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order at the end in the given format. Do not deviate from the specified format.\nStatement: {statement}\nResponse:\n
+            Consider the given context and following statement, then determine whether it is supported by the information present in the context. Provide a brief explanation before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order at the end in the given format. Do not deviate from the specified format.\nContext: {context}\nStatement: {statement}\nResponse:\n
         """.strip()
+        messages = [
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
+        response = call_llm(messages=messages).strip()
+        verdict = "yes" in response.lower()
+        verdicts.append(verdict)
+        reasonings.append(response)
+
+
 
 

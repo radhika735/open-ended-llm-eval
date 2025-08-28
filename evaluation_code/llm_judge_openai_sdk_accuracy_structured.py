@@ -15,60 +15,6 @@ class Evaluation(BaseModel):
     final_accuracy_score : str
 
 
-def format_evaluation(accuracy_score_reason : str, action_ids_used_in_judgement : list[str], final_accuracy_score : str):
-    """
-    Format the evaluation results into a valid JSON object string.
-
-    Args:
-        accuracy_score_reason (str): A brief justification for the accuracy score assigned to the potential answer.
-        action_ids_used_in_judgement (list[str]): List of action IDs used in the reasoning for the score assigned to the potential answer.
-        final_accuracy_score (str): The final accuracy score assigned to the potential answer.
-
-    Returns:
-        dict: A dictionary representation of the formatted evaluation.
-    """
-    formatted_evaluation = {
-        "accuracy_score_reason": accuracy_score_reason,
-        "action_ids_used_in_judgement": action_ids_used_in_judgement,
-        "final_accuracy_score": final_accuracy_score,
-    }
-    return formatted_evaluation
-
-
-format_evaluation_function = {
-    "type": "function",
-    "name": "format_evaluation",
-    "description": "Format the evaluation results (accuracy score reason, action ids used in the reasoning, and the accuracy score itself) into a valid JSON object string. Use this as the last step before presenting the answer to the user.",
-    "parameters":{
-        "type": "object",
-        "properties": {
-            "accuracy_score_reason":{
-                "type": "string",
-                "description": "A brief justification for the accuracy score assigned to the potential answer."
-            },
-            "action_ids_used_in_judgement":{
-                "type": "array",
-                "items": {"type":"string"},
-                "description": "List of action IDs used in the reasoning for the score assigned to the potential answer."
-            },
-            "final_accuracy_score": {
-                "type": "string",
-                "description": "The final accuracy score assigned to the potential answer."
-            }
-        },
-        "required": ["accuracy_score_reason","action_ids_used_in_judgement", "final_accuracy_score"],
-        "additionalProperties": False
-    },
-    "strict": True
-}
-
-tools = [format_evaluation_function]
-
-TOOL_MAPPING = {
-    "format_evaluation": format_evaluation
-}
-
-
 response_schema = {
     "type": "json_schema",
     "json_schema": {
@@ -281,7 +227,7 @@ def parse_provider_name(provider):
 
 
 def main():
-    logging.basicConfig(level=logging.DEBUG, filename="logfiles/llm_judge_openai_sdk_accuracy.log")
+    logging.basicConfig(level=logging.DEBUG, filename="logfiles/llm_judge_openai_sdk_accuracy_structured.log")
     # logging.info("STARTING answer evaluation process.")
     # question = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
     # synopsis = "Bat Conservation"
