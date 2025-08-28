@@ -4,6 +4,7 @@ import re
 from collections import defaultdict
 from dotenv import load_dotenv
 from openai import OpenAI
+from nltk.tokenize import sent_tokenize
 
 load_dotenv()
 

@@ -508,20 +508,20 @@ def main():
     ]
 
     model_provider_list = [
-        # ("google/gemini-2.5-flash", None), # USED THIS ONCE
-        # ("moonshotai/kimi-k2", "fireworks/fp8"),
+        #("google/gemini-2.5-flash", None), # USED THIS ONCE
+        #("moonshotai/kimi-k2", "fireworks/fp8"),
         ("qwen/qwen3-235b-a22b-thinking-2507", "together"),
         
-        # ("anthropic/claude-sonnet-4", None),
+        #("anthropic/claude-sonnet-4", None),
 
         # # #("anthropic/claude-opus-4", None), # HIGH PRICE I THINK, AVOID
         # # #("x-ai/grok-4", None), # HIGH PRICE I THINK, AVOID
-        # ("openai/gpt-4.1", None), # USED THIS ONCE
+        #("openai/gpt-4.1", None), # USED THIS ONCE
         # ("google/gemini-2.5-pro", None),
-        # ("deepseek/deepseek-r1-0528", "novita/fp8"), # USED THIS ONCE
+        #("deepseek/deepseek-r1-0528", "novita/fp8"), # USED THIS ONCE
         #("mistralai/magistral-medium-2506", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
         #("mistralai/magistral-medium-2506:thinking", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
-        # ("anthropic/claude-3.5-sonnet", None) # USED THIS ONCE
+        #("anthropic/claude-3.5-sonnet", None) # USED THIS ONCE
         #("qwen/qwen-2.5-72b-instruct", "novita") # DOESN'T RLY WORK - ARGS FOR TOOLS CALLS MALFORMED
     ]
     # could also test gemini-2.5-flash-lite
@@ -569,7 +569,7 @@ def main():
     #qu_retrieval_success, test_questions = get_questions_from_file("evaluation_data/mini_testing_human_agreement/test_questions.json")
     test_questions = [
         #"What are the most beneficial actions for reducing human-wildlife conflict with bears?",
-        # "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?", 
+        #"What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?", 
         "What are the most effective ways to increase soil organic carbon on loamy soils?"
     ]
     qu_retrieval_success = True

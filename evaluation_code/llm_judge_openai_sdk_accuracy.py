@@ -193,7 +193,7 @@ def get_llm_evaluation(question, answer, docs):
     ]
 
     response = client.chat.completions.create(
-        model = "moonshotai/kimi-k2",
+        model = "google/gemini-2.5-pro",
         messages = messages,
         reasoning_effort = "low",
         response_format = response_schema,
@@ -245,9 +245,8 @@ def get_oracle_actions_str(oracle_ids):
     return full_str
 
 
-
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG, filename="logfiles/llm_judge_openai_sdk_accuracyy.log")
+    logging.basicConfig(level=logging.DEBUG, filename="logfiles/llm_judge_openai_sdk_accuracy.log")
     # logging.info("STARTING answer evaluation process.")
     # question = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
     # synopsis = "Bat Conservation"
@@ -268,17 +267,45 @@ if __name__ == "__main__":
     # print(evaluation)
     # logging.info("FINISHED answer evaluation process.")
 
-    print("start")
 
     # question = "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?"
     # answer = "A quick summary: Options for mitigating pollution from salmon farm waste include integrated aquaculture systems, regulatory bans on pollutant disposal, and pollutant removal technologies, though evidence for effectiveness varies.\n\nOne notable method is the use of integrated aquaculture systems, where species like scallops or mussels are cultivated near salmon farms to absorb or utilize farm waste. For example, studies have shown greater growth of scallops and absorption of salmon farm waste by blue mussels in some locations, as well as enhanced algal growth near fish farms, though at least one study found no evidence of shellfish feeding on fish waste, so results are inconsistent (932). Regulatory bans on the marine burial of persistent pollutants, such as those encompassing salmon farm-related waste, have been proposed, but there is no direct evidence assessing their effectiveness on environmental improvement specific to salmon farms (3595). Another general approach—removing pollutants from waste gases before environmental release—was assessed in a different context (bogs) and produced mixed results for plant diversity, yet its application to salmon farming waste is not directly evidenced (1789). While integrated aquaculture systems seem a promising method, regulatory solutions and gas waste removal also offer potential, although the best outcomes may arise from other, yet unassessed, interventions. Interestingly, despite awaiting full effectiveness assessments, integrated aquaculture could be most effective, yet the lack of direct evaluations makes both bans and modern filtration methods equally plausible as optimal actions depending on context (932, 3595, 1789)."
     # oracle_ids = ["932","3595","1789"]
 
-    question = "What are the most effective ways to increase soil organic carbon on loamy soils?"
-    answer = "Reducing grazing intensity, amending soil with formulated chemical compounds, and changing tillage practices are effective ways to increase soil organic carbon on loamy soils.\n\nA likely beneficial approach is to reduce grazing intensity: replicated studies show that excluding or reducing livestock grazing increases soil carbon and nitrogen, helps compacted soils recover, and reduces sediment erosion and nutrient loss on loamy soils (action_id: 901). Amending soil with chemical compounds such as nitrogen or phosphorus fertilizers also often raises soil organic matter or carbon levels, with evidence from several replicated and controlled studies, particularly when combined with organic material inputs; however, manure tends to be even more effective than chemical compounds alone (action_id: 909). Changing tillage practices\u2014especially shifting to no-tillage or reduced tillage\u2014consistently increases soil organic carbon compared to conventional ploughing, as demonstrated in multiple large and well-designed studies. However, this method comes with trade-offs such as potential increases in soil compaction or mixed effects on drought resistance, nutrient retention, and yields (action_id: 906). Together, evidence supports that grazing reduction and careful management of nutrient amendments and tillage are key strategies for increasing soil organic carbon in loamy soils. \n\nReferences: action_id: 901, action_id: 909, action_id: 906."
-    oracle_ids = ["906","857","902","907","911"]
+    # question = "What are the most effective ways to increase soil organic carbon on loamy soils?"
+    # answer = "Reducing grazing intensity, amending soil with formulated chemical compounds, and changing tillage practices are effective ways to increase soil organic carbon on loamy soils.\n\nA likely beneficial approach is to reduce grazing intensity: replicated studies show that excluding or reducing livestock grazing increases soil carbon and nitrogen, helps compacted soils recover, and reduces sediment erosion and nutrient loss on loamy soils (action_id: 901). Amending soil with chemical compounds such as nitrogen or phosphorus fertilizers also often raises soil organic matter or carbon levels, with evidence from several replicated and controlled studies, particularly when combined with organic material inputs; however, manure tends to be even more effective than chemical compounds alone (action_id: 909). Changing tillage practices\u2014especially shifting to no-tillage or reduced tillage\u2014consistently increases soil organic carbon compared to conventional ploughing, as demonstrated in multiple large and well-designed studies. However, this method comes with trade-offs such as potential increases in soil compaction or mixed effects on drought resistance, nutrient retention, and yields (action_id: 906). Together, evidence supports that grazing reduction and careful management of nutrient amendments and tillage are key strategies for increasing soil organic carbon in loamy soils. \n\nReferences: action_id: 901, action_id: 909, action_id: 906."
+    # oracle_ids = ["906","857","902","907","911"]
     
-    docs = get_oracle_actions_str(oracle_ids=oracle_ids)
-    evaluation = get_evaluation(question=question, answer=answer, docs=docs)
-    print(evaluation)
-    print("end")
+    # docs = get_oracle_actions_str(oracle_ids=oracle_ids)
+    # evaluation = get_evaluation(question=question, answer=answer, docs=docs)
+    # print(evaluation)
+    # print("end")
+
+
+    ## MINI TEST ON HUMAN AGREEMENT WITH LLM JUDGE:
+
+    oracle_id_table = {
+        "What are the most beneficial actions for reducing human-wildlife conflict with bears?": ["2330","2336","2346","2347","2385"],
+        "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?": ["1027","932","934","943"],
+        "What are the most effective ways to increase soil organic carbon on loamy soils?": ["906","857","902","907","911"]
+    }
+
+    with open("evaluation_data/mini_testing_human_agreement/final_answers_to_test.json", "r", encoding="utf-8") as f:
+        final_answers = json.load(f)
+
+    evaluations = []
+
+    for qu_ans_dict in final_answers:
+        question = qu_ans_dict["query"]
+        answer = qu_ans_dict["answer"]
+        action_ids = qu_ans_dict["action_ids"]
+        oracle_ids = oracle_id_table.get(question, [])
+        all_ids = list(set(action_ids) | set(oracle_ids))
+
+        docs = get_oracle_actions_str(oracle_ids=all_ids)
+        evaluation = get_evaluation(question=question, answer=answer, docs=docs)
+        evaluation["action_ids_given_to_judge"] = all_ids
+        evaluations.append(evaluation)
+
+    with open("evaluation_data/mini_testing_human_agreement/evaluation_results_gemini-2-5-pro.json", "w", encoding="utf-8") as f:
+        json.dump(evaluations, f, ensure_ascii=False, indent=2)

@@ -18,7 +18,7 @@ def embed_chunk(doc_info):
     return index, embeddings
 
 
-def get_embeddings(docs, save_to_cache=True):
+def get_embeddings(docs, save_to_cache=True, cache_file="answer_gen_data/retrieval_methods/dense_embeddings_cached/unknowndoctype_nomic_dense_embeddings.npy"):
     batch_size = 400
     batches = [list(b) for b in batched(docs, batch_size)]
 
@@ -49,7 +49,7 @@ def get_embeddings(docs, save_to_cache=True):
     results = sorted(results)
     flat_results = np.vstack([embeddings for _, embeddings in results])
     if save_to_cache:
-        np.save("answer_gen_data/retrieval_methods/dense_embeddings_cached/bg_km_nomic_dense_embeddings.npy", flat_results)
+        np.save(cache_file, flat_results)
     return flat_results
 
     
