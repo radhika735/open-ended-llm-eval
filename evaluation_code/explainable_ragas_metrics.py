@@ -30,7 +30,7 @@ def get_client():
 def call_llm(messages, model="google/gemini-2.5-pro"):
     client = get_client()
     response = client.chat.completions.create(
-        model = model
+        model = model,
         messages = messages
     )
     return response
@@ -46,7 +46,7 @@ def get_statements(question, answer):
         {"role": "user", "content": prompt}
     ]
 
-    response = call_llm(messages=messages)
+    response = call_llm(messages=messages).choices[0].message.content
 
     # Splitting statements
     response = re.sub(
@@ -57,7 +57,7 @@ def get_statements(question, answer):
 
 
 # copied heavily from "Evaluation of RAG Metrics for Question Answering in the Telecom Domain" paper
-def faithfulness_raw(question, answer):
+def faithfulness(question, answer):
     statements = get_statements(question, answer)
     verdicts = []
     reasonings = []
@@ -71,10 +71,45 @@ def faithfulness_raw(question, answer):
                 "content": prompt
             }
         ]
-        response = call_llm(messages=messages).strip()
+        response = call_llm(messages=messages).choices[0].message.content
+        response = response.strip()
         verdict = "yes" in response.lower()
         verdicts.append(verdict)
         reasonings.append(response)
+
+    num_supported_statements = sum(1 for v in verdicts if v)
+    total_statements = len(verdicts)
+    score = (num_supported_statements / total_statements) if total_statements > 0 else 0
+
+    return {
+        "score":score,
+        "verdicts":verdicts,
+        "reasonings":reasonings
+    }
+
+
+# copied heavily from "Evaluation of RAG Metrics for Question Answering in the Telecom Domain" paper
+def answer_relevance(query, answer, n=10):
+    questions = []
+    prompt = f"""
+        Generate {n} potential questions for the given answer. Output the questions in the following format strictly. [Question n]: ... where the n is the question number.\nanswer: {answer}\nQuestions:\n
+    """.strip()
+    messages = [
+        {
+            "role": "user",
+            "content":prompt
+        }
+    ]
+    response = call_llm().choices[0].message.content
+    response = response.strip()
+    parsed_questions = re.sub(
+        r"^.*?[0-9]+\]*[:\.]\s(.*?)", r"\1", response, flags=re.MULTILINE
+    ).strip()
+    tokenised_questions = sent_tokenize(parsed_questions)
+
+
+
+
 
 
 
