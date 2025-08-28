@@ -77,7 +77,8 @@ async def test(filename):
     scorer = Faithfulness(llm=evaluator_llm)
     hhem_scorer = FaithfulnesswithHHEM(llm=evaluator_llm)
     #result = await scorer.single_turn_ascore(sample)
-    result = await hhem_scorer.single_turn_ascore(sample)
+    #result = await hhem_scorer.single_turn_ascore(sample)
+    statements = await score._
     return result
 
 

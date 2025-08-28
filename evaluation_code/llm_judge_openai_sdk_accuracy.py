@@ -98,17 +98,19 @@ response_schema = {
 }
 
 
-
 def get_client():
     openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
     client = OpenAI(
-        api_key=openrouter_api_key,
-        base_url="https://openrouter.ai/api/v1"
+        api_key=f"{openrouter_api_key}",
+        base_url="https://openrouter.ai/api/v1",
+        default_headers={
+            "Authorization": f"Bearer {openrouter_api_key}"
+        }
     )
     return client
 
 
-def get_llm_evaluation(question, answer, docs):
+def get_llm_evaluation(question, answer, docs, model, provider):
     sys_prompt =  f"""{docs}
 
     Above is a document containing conservation actions, their effectiveness and key messages. This forms part of the Conservation Evidence living evidence database. Each action is prefixed with a numerical id.
@@ -192,28 +194,40 @@ def get_llm_evaluation(question, answer, docs):
         }
     ]
 
-    response = client.chat.completions.create(
-        model = "google/gemini-2.5-pro",
-        messages = messages,
-        reasoning_effort = "low",
-        response_format = response_schema,
-        extra_body={
-            "provider" : {
-                "require_parameters" : True
+    if provider is not None:
+        response = client.chat.completions.create(
+            model = model,
+            messages = messages,
+            reasoning_effort = "low",
+            response_format = response_schema,
+            extra_body={
+                "provider" : {
+                    #"require_parameters" : True,
+                    "order": [f"{provider}"],
+                    "allow_fallbacks": False
+                }
             }
-        }
-    )
+        )
+    else:
+        response = client.chat.completions.create(
+            model = model,
+            messages = messages,
+            reasoning_effort = "low",
+            extra_body={
+                "require_parameters": True
+            }
+        )
 
     return response.choices[0].message.content
 
 
-def get_evaluation(question, answer, docs):
+def get_evaluation(question, answer, docs, model="google/gemini-2.5-pro", provider=None):
     result = {
         "question": question,
         "answer": answer,
         "evaluation" : None
     }
-    llm_json = get_llm_evaluation(question=question, answer=answer, docs=docs)
+    llm_json = get_llm_evaluation(question=question, answer=answer, docs=docs, model=model, provider=provider)
     result["evaluation"] = json.loads(llm_json)
     return result
 
@@ -245,7 +259,28 @@ def get_oracle_actions_str(oracle_ids):
     return full_str
 
 
-if __name__ == "__main__":
+def parse_model_name(model):
+    model_split = model.split("/")
+    model_name = model_split[-1]
+    cleaned_name = ""
+    for char in model_name:
+        if char.isalnum():
+            cleaned_name += char
+        else:
+            cleaned_name += "-"
+    return cleaned_name
+
+
+def parse_provider_name(provider):
+    if provider is not None:
+        provider_split = provider.split("/")
+        provider_name = provider_split[0]
+        return provider_name
+    else:
+        return ""
+
+
+def main():
     logging.basicConfig(level=logging.DEBUG, filename="logfiles/llm_judge_openai_sdk_accuracy.log")
     # logging.info("STARTING answer evaluation process.")
     # question = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
@@ -293,6 +328,9 @@ if __name__ == "__main__":
     with open("evaluation_data/mini_testing_human_agreement/final_answers_to_test.json", "r", encoding="utf-8") as f:
         final_answers = json.load(f)
 
+    model = "qwen/qwen3-235b-a22b-thinking-2507"
+    provider = "deepinfra/fp8"
+
     evaluations = []
 
     for qu_ans_dict in final_answers:
@@ -303,9 +341,15 @@ if __name__ == "__main__":
         all_ids = list(set(action_ids) | set(oracle_ids))
 
         docs = get_oracle_actions_str(oracle_ids=all_ids)
-        evaluation = get_evaluation(question=question, answer=answer, docs=docs)
+        evaluation = get_evaluation(question=question, answer=answer, docs=docs, model=model, provider=provider)
         evaluation["action_ids_given_to_judge"] = all_ids
         evaluations.append(evaluation)
-
-    with open("evaluation_data/mini_testing_human_agreement/evaluation_results_gemini-2-5-pro.json", "w", encoding="utf-8") as f:
+    
+    cleaned_model_name = parse_model_name(model=model)
+    cleaned_provider_name = parse_provider_name(provider=provider)
+    with open(f"evaluation_data/mini_testing_human_agreement/evaluation_results_{cleaned_provider_name}_{cleaned_model_name}.json", "w", encoding="utf-8") as f:
         json.dump(evaluations, f, ensure_ascii=False, indent=2)
+
+
+if __name__ == "__main__":
+    main()
