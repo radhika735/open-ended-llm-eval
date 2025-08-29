@@ -7,7 +7,7 @@ import json
 import re
 import shutil
 
-logging.basicConfig(filename = "logfiles/single_question_gen.log", level=logging.DEBUG)
+logging.basicConfig(filename = "logfiles/question_gen_km_single_action.log", level=logging.DEBUG)
 
 load_dotenv()
 

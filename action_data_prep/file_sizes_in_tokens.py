@@ -1,3 +1,5 @@
+import json
+
 # background + key messages unfiltered concatenation files:
 token_sizes = {
     "Amphibian conservation" : 38929,
@@ -26,6 +28,5 @@ token_sizes = {
     "Terrestrial Mammal Conservation": 104530
 }
     
-total = sum([v for v in token_sizes.values()])
-mean = total / len(token_sizes)
-print(mean)
+with open("action_data/bg_km_synopsis_token_sizes.json", "w") as f:
+    json.dump(token_sizes, f)

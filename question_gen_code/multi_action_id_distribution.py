@@ -7,16 +7,17 @@ import os
 
 def get_qus_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
     no_gaps_synopsis = "".join(synopsis.split())
-    qus_file = f"{qus_dir}/{qus_file_type}_{no_gaps_synopsis}_qus.json"
+    qus_filepath = f"{qus_dir}/{qus_file_type}_{no_gaps_synopsis}_qus.json"
+    print("absolute path",os.path.abspath(qus_filepath))
     try:
-        with open(qus_file, 'r', encoding="utf-8") as file:
+        with open(qus_filepath, 'r', encoding="utf-8") as file:
             qus_list = json.load(file)
         return qus_list
     except FileNotFoundError:
-        logging.error(f"Questions file {qus_file} not found.")
+        logging.error(f"Questions file {qus_filepath} not found.")
         exit()
     except json.JSONDecodeError:
-        logging.error(f"Error decoding JSON from {qus_file}.")
+        logging.error(f"Error decoding JSON from {qus_filepath}.")
         exit()
 
 
@@ -105,13 +106,9 @@ def main():
     # qus_file = f"question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/bg_km_{no_gaps_synopsis}_qus.json"
     # id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
     # print(id_dist)
-    qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/all"
+    qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"
     num = get_total_num_qus(qus_dir=qus_dir)
     print(num)
-
-
-
-
 
 
 if __name__=="__main__":

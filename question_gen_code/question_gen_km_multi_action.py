@@ -10,7 +10,7 @@ import time
 
 load_dotenv()
 
-logging.basicConfig(filename="logfiles/km_multi_question_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename="logfiles/question_gen_km_multi_action.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # disable httpx logging
 logging.getLogger("httpx").setLevel(logging.WARNING)
