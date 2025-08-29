@@ -5,14 +5,13 @@ import os
 import json
 import logging
 import re
-from collections import defaultdict
 from dotenv import load_dotenv
 from openai import OpenAI
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-from answer_gen_code.action_retrieval import ActionRetrievalContext, parse_action
+from utils.action_retrieval import ActionRetrievalContext, parse_action, get_parsed_action_as_str
 
 load_dotenv()
 
@@ -130,24 +129,40 @@ def answer_relevance(query, answer, n=10):
     return avg_score
 
 
-def get_parsed_actions_by_id(id_list, context : ActionRetrievalContext):
-    parsed_actions = []
+def get_oracle_actions(id_list, context : ActionRetrievalContext):
+    doc_type = context.get_doc_type()
+    if doc_type == "km":
+        base_dir = "action_data/key_messages/km_all"
+    elif doc_type == "bg_km":
+        base_dir = "action_data/background_key_messages/bg_km_all"
+    else:# invalid doc_type, return empty action list.
+        return []
 
-    base_dir = "action_data/background_key_messages/bg_km_all"
+    parsed_actions = []
     for id in id_list:
         filename = f"action_{id}_clean.txt"
         filepath = os.path.join(base_dir, filename)
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
         parsed_actions.append(parse_action(action_string=content, context=context))
-    
+
     return parsed_actions
-        
+
+
+def get_oracle_actions_as_str(id_list, context : ActionRetrievalContext):
+    actions = get_oracle_actions(id_list=id_list, context=context)
+    action_strings = []
+    for action in actions:
+        action_str = get_parsed_action_as_str(action=action)
+        action_strings.append(action_str)
+    full_str = "\n\n".join(action_strings)
+    return full_str
+
     
 def main():
     logging.basicConfig(level=logging.INFO, filename="logfiles/explainable_ragas_metrics.log", format='%(asctime)s - %(levelname)s - %(message)s')
 
-    context = ActionRetrievalContext(required_fields=["key_messages"])
+    context = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
 
     question = "What are the most effective ways to increase soil organic carbon on loamy soils?"
     answer = "The most effective ways to increase soil organic carbon on loamy soils include growing cover crops, implementing reduced tillage practices, using crop rotation, applying organic amendments, and utilizing mixed organic-inorganic fertilizers.\n\nGrowing cover crops when fields are empty is particularly beneficial for increasing soil organic carbon on loamy soils (Action 898). Studies found increased soil carbon levels under cover crops, with further increases when legumes were included in the cover crop mix. Implementing reduced tillage or no-tillage practices significantly enhances soil organic carbon accumulation (Action 906). Twelve studies comparing no-tillage and conventionally tilled systems found consistently higher soil organic carbon in soils under reduced tillage systems, and the effectiveness is further enhanced when combined with cover cropping and manure application. Using crop rotation, especially when legumes are included, also proves beneficial (Action 857). Four studies found increased soil organic carbon under crop rotations, particularly when legumes were incorporated into the system. Applying mixed organic and inorganic amendments provides another effective approach (Action 902). Four controlled trials found more organic carbon in soils treated with mixed fertilizers compared to inorganic fertilizers alone. Additionally, applying manures and agricultural composts can increase soil carbon levels (Action 911), though this method requires careful consideration of potential trade-offs. Finally, formulated chemical compounds like nitrogen or phosphorus fertilizers can also contribute to soil organic matter increases (Action 909), with five of six studies showing increased soil organic matter when these compounds were applied to various soil types including loam."
@@ -155,7 +170,7 @@ def main():
     oracle_ids = ["906","857","902","907","911"]
     all_ids = list(set(action_ids_in_answer) | set(oracle_ids))
 
-    docs = get_parsed_actions_by_id(id_list=all_ids, context=context)
+    docs = get_oracle_actions_as_str(id_list=all_ids, context=context)
     print(faithfulness(question=question, answer=answer, docs=docs))
 
 

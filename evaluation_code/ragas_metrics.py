@@ -34,7 +34,6 @@ def get_retrieved_contexts(answer_dict):
     return contexts
 
 
-
 # get data
 def get_data(filename):
     file_answers = read_json_file(filename)
@@ -80,7 +79,6 @@ async def test(filename):
     #result = await hhem_scorer.single_turn_ascore(sample)
     statements = await score._
     return result
-
 
 
 def main():

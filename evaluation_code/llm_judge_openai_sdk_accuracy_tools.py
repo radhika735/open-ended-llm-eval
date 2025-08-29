@@ -3,7 +3,8 @@ import json
 from dotenv import load_dotenv
 import logging
 from openai import OpenAI
-from pydantic import BaseModel
+from utils.action_retrieval import ActionRetrievalContext, parse_action, get_parsed_action_as_str
+
 
 
 load_dotenv()
@@ -231,30 +232,33 @@ def get_evaluation(question, answer, docs, model="google/gemini-2.5-pro", provid
     return result
 
 
-def get_oracle_actions(oracle_ids):
-    # doc_type can be "km" or "bg_km", with "km" for key messages and "bg_km" for background key messages
-    """
-    Get parsed actions from the data directory.
-    
-    Returns:
-        list: List of parsed action dictionaries
-    """
-    oracle_actions = []
-    
-    data_dir = f"action_data/key_messages/km_all"
+def get_oracle_actions(id_list, context : ActionRetrievalContext):
+    doc_type = context.get_doc_type()
+    if doc_type == "km":
+        base_dir = "action_data/key_messages/km_all"
+    elif doc_type == "bg_km":
+        base_dir = "action_data/background_key_messages/bg_km_all"
+    else:# invalid doc_type, return empty action list.
+        return []
 
-    for id in oracle_ids:
-        filename = os.path.join(data_dir, f"action_{id}_clean.txt")
-        with open(filename, "r", encoding="utf-8") as action_file:
-            file_contents = action_file.read()
-        oracle_actions.append(file_contents)
+    parsed_actions = []
+    for id in id_list:
+        filename = f"action_{id}_clean.txt"
+        filepath = os.path.join(base_dir, filename)
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        parsed_actions.append(parse_action(action_string=content, context=context))
 
-    return oracle_actions
+    return parsed_actions
 
 
-def get_oracle_actions_str(oracle_ids):
-    doc_strs = get_oracle_actions(oracle_ids=oracle_ids)
-    full_str = "\n\n".join(doc_strs)
+def get_oracle_actions_as_str(id_list, context : ActionRetrievalContext):
+    actions = get_oracle_actions(id_list=id_list, context=context)
+    action_strings = []
+    for action in actions:
+        action_str = get_parsed_action_as_str(action=action)
+        action_strings.append(action_str)
+    full_str = "\n\n".join(action_strings)
     return full_str
 
 
@@ -284,7 +288,9 @@ def main():
 
     ## MINI TEST ON HUMAN AGREEMENT WITH LLM JUDGE:
     logging.info("STARTING evaluation generation.")
-    print("hello")
+    
+    context = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
+
     oracle_id_table = {
         "What are the most beneficial actions for reducing human-wildlife conflict with bears?": ["2330","2336","2346","2347","2385"],
         "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?": ["1027","932","934","943"],
@@ -308,7 +314,7 @@ def main():
         oracle_ids = oracle_id_table.get(question, [])
         all_ids = list(set(action_ids) | set(oracle_ids))
 
-        docs = get_oracle_actions_str(oracle_ids=all_ids)
+        docs = get_oracle_actions_as_str(id_list=all_ids, context=context)
         evaluation = get_evaluation(question=question, answer=answer, docs=docs, model=model, provider=provider)
         evaluation["action_ids_given_to_judge"] = all_ids
         evaluations.append(evaluation)

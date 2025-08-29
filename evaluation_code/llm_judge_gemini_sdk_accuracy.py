@@ -5,6 +5,7 @@ from google import genai
 from google.genai import types, errors
 from google.api_core import exceptions
 from pydantic import BaseModel
+from utils.action_retrieval import ActionRetrievalContext, parse_action, get_parsed_action_as_str
 
 
 load_dotenv()
@@ -176,43 +177,45 @@ def get_evaluation(question, answer, docs):
         return result
 
 
-def get_oracle_actions(synopsis, oracle_ids):
-    # doc_type can be "km" or "bg_km", with "km" for key messages and "bg_km" for background key messages
-    """
-    Get parsed actions from the data directory.
-    
-    Returns:
-        list: List of parsed action dictionaries
-    """
-    oracle_actions = []
-    
-    data_dir = f"action_data/key_messages/km_synopsis/{synopsis}"
+def get_oracle_actions(id_list, context : ActionRetrievalContext):
+    doc_type = context.get_doc_type()
+    if doc_type == "km":
+        base_dir = "action_data/key_messages/km_all"
+    elif doc_type == "bg_km":
+        base_dir = "action_data/background_key_messages/bg_km_all"
+    else:# invalid doc_type, return empty action list.
+        return []
 
-    for id in oracle_ids:
-        filename = os.path.join(data_dir, f"action_{id}_clean.txt")
-        with open(filename, "r", encoding="utf-8") as action_file:
-            file_contents = action_file.read()
-        oracle_actions.append(file_contents)
+    parsed_actions = []
+    for id in id_list:
+        filename = f"action_{id}_clean.txt"
+        filepath = os.path.join(base_dir, filename)
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        parsed_actions.append(parse_action(action_string=content, context=context))
 
-    return oracle_actions
+    return parsed_actions
 
 
-def get_oracle_actions_str(synopsis, oracle_ids):
-    doc_strs = get_oracle_actions(synopsis=synopsis, oracle_ids=oracle_ids)
-    full_str = "\n\n".join(doc_strs)
+def get_oracle_actions_as_str(id_list, context : ActionRetrievalContext):
+    actions = get_oracle_actions(id_list=id_list, context=context)
+    action_strings = []
+    for action in actions:
+        action_str = get_parsed_action_as_str(action=action)
+        action_strings.append(action_str)
+    full_str = "\n\n".join(action_strings)
     return full_str
 
 
-
-if __name__ == "__main__":
+def main():
     logging.basicConfig(level=logging.DEBUG, filename="logfiles/llm_judge_gemini_sdk_accuracy.log")
     logging.info("STARTING answer evaluation process.")
-    # with open("question_gen_data/km_multi_action_data/km_synopsis_unfiltered_concat/km_BatConservation_concat.txt", 'r', encoding="utf-8") as f:
-    #     docs = f.read()
+
+    context = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
     question = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
     synopsis = "Bat Conservation"
     oracle_action_ids = ["970","1960","2939","971","968"]
-    docs = get_oracle_actions_str(synopsis=synopsis, oracle_ids=oracle_action_ids)
+    docs = get_oracle_actions_as_str(id_list=oracle_action_ids, context=context)
 
     # Claude opus 4 answer:
     #answer = "Based on scientific evidence, the most effective interventions for reducing bat fatalities at wind turbines are:\n\n**1. Prevent turbine blades from turning at low wind speeds ('feathering') - Rated as Beneficial**\n- Five out of six studies in the USA and Canada found that feathering turbine blades resulted in fewer bat fatalities compared to conventionally operated turbines\n- This involves keeping blades stationary or nearly stationary during low wind conditions\n\n**2. Increase the wind speed at which turbines become operational ('cut-in speed') - Rated as Beneficial**\n- Ten out of 12 studies in the USA and Canada found that increasing cut-in speeds resulted in fewer bat fatalities\n- This prevents turbines from operating during periods when bats are most active (typically low wind conditions)\n- Often implemented alongside feathering for maximum effectiveness\n\n**3. Slow rotation of turbine blades at low wind speeds - Rated as Likely to be beneficial**\n- A replicated, randomized, controlled study in Canada found reduced bat fatalities when turbine blades were slowed at low wind speeds\n- This represents a middle ground between full operation and complete feathering\n\n**4. Automatically reduce turbine blade rotation when bat activity is high - Rated as Likely to be beneficial**\n- Two replicated studies in Germany and the USA found fewer bat fatalities when blade rotation was automatically reduced based on predicted bat activity\n- Uses real-time or predictive models to adjust turbine operation\n\n**5. Deter bats from turbines using ultrasound - Rated as Unknown effectiveness**\n- Mixed results from studies in the USA, with effectiveness varying by species and conditions\n- Some studies showed 21-64% reductions in fatalities, while others showed minimal or inconsistent effects\n- More research needed to determine optimal deployment\n\nThe most reliable and proven interventions are operational curtailment strategies (feathering and increasing cut-in speeds), which have shown consistent benefits across multiple studies. These methods work because most bat fatalities occur during low wind speeds when bats are most active."
@@ -227,3 +230,7 @@ if __name__ == "__main__":
     logging.info(f"Evaluation results: {evaluation}")
     print(evaluation)
     logging.info("FINISHED answer evaluation process.")
+
+
+if __name__ == "__main__":
+    main()

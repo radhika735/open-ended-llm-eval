@@ -5,9 +5,9 @@ import logging
 import os
 
 
-def get_qus_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
+def get_qus_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
     no_gaps_synopsis = "".join(synopsis.split())
-    qus_filepath = f"{qus_dir}/{qus_file_type}_{no_gaps_synopsis}_qus.json"
+    qus_filepath = f"{qus_dir}/{action_doc_type}_{no_gaps_synopsis}_qus.json"
     print("absolute path",os.path.abspath(qus_filepath))
     try:
         with open(qus_filepath, 'r', encoding="utf-8") as file:
@@ -18,11 +18,12 @@ def get_qus_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
         exit()
     except json.JSONDecodeError:
         logging.error(f"Error decoding JSON from {qus_filepath}.")
-        exit()
+        print(f"Error decoding JSON from {qus_filepath}")
+        return []
 
 
-def get_id_dist_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
-    qus_list = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, qus_file_type=qus_file_type)
+def get_id_dist_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
+    qus_list = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type=action_doc_type)
     used_ids_list = []
     for qu_dict in qus_list:
         used_ids_list.extend(qu_dict["all_relevant_action_ids"])
@@ -30,11 +31,11 @@ def get_id_dist_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
     return id_counts
 
 
-def get_id_dist_all_synopses(qus_dir, qus_file_type="bg_km"):
+def get_id_dist_all_synopses(qus_dir, action_doc_type="bg_km"):
     full_id_dist = {}
     for entry in os.scandir("action_data/key_messages/km_synopsis"):
         synopsis = entry.name
-        synopsis_id_dist = get_id_dist_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, qus_file_type=qus_file_type)
+        synopsis_id_dist = get_id_dist_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type=action_doc_type)
         full_id_dist[synopsis] = synopsis_id_dist
     return full_id_dist
 
@@ -58,27 +59,27 @@ def get_id_dist_as_str_list(id_dist):
     return all_id_dist_str_list
 
 
-def get_num_ids_used_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
-    id_dist = get_id_dist_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, qus_file_type=qus_file_type)
+def get_num_ids_used_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
+    id_dist = get_id_dist_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type=action_doc_type)
     return len(id_dist)
 
 
-def get_num_qus_for_synopsis(synopsis, qus_dir, qus_file_type="bg_km"):
-    qus_list = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, qus_file_type=qus_file_type)
+def get_num_qus_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
+    qus_list = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type=action_doc_type)
     return len(qus_list)
 
 
-def get_num_qus_all_synopses(qus_dir, qus_file_type="bg_km"):
+def get_num_qus_all_synopses(qus_dir, action_doc_type="bg_km"):
     num_qus_by_synopsis = {}
     for entry in os.scandir("action_data/key_messages/km_synopsis"):
         synopsis = entry.name
-        num_qus = get_num_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, qus_file_type=qus_file_type)
+        num_qus = get_num_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type=action_doc_type)
         num_qus_by_synopsis[synopsis] = num_qus
     return num_qus_by_synopsis
 
 
-def get_total_num_qus(qus_dir, qus_file_type="bg_km"):
-    num_qus_by_synopsis = get_num_qus_all_synopses(qus_dir=qus_dir, qus_file_type=qus_file_type)
+def get_total_num_qus(qus_dir, action_doc_type="bg_km"):
+    num_qus_by_synopsis = get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type=action_doc_type)
     total = sum(num_qus_by_synopsis.values())
     return total
 
@@ -107,8 +108,7 @@ def main():
     # id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
     # print(id_dist)
     qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"
-    num = get_total_num_qus(qus_dir=qus_dir)
-    print(num)
+    print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
 
 
 if __name__=="__main__":
