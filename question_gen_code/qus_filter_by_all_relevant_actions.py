@@ -6,9 +6,10 @@ from google.api_core import exceptions
 import logging
 from pydantic import BaseModel
 import os
-from itertools import batched
 import time
 from question_gen_code.question_gen_multi_action import get_synopsis_data
+
+load_dotenv()
 
 
 class FilterContext():
@@ -46,11 +47,8 @@ class RelevantActions(BaseModel):
     relevant_action_ids: list[str]
 
 
-
-def get_llm_relevant_actions(query_list, synopsis, context : FilterContext, doc_type="bg_km", ):
-    actions_content = get_synopsis_data(synopsis=synopsis, use_filtered_synopsis=False, doc_type=doc_type)
-
-    prompt = f"""{actions_content}\n\n\n
+def get_llm_relevant_actions(actions_data, query_list, synopsis, context : FilterContext, doc_type="bg_km"):
+    prompt = f"""{actions_data}\n\n\n
     Above is a document containing conservation actions, their effectiveness and key messages relating to them. This has been gathered by hand and forms part of the Conservation Evidence living evidence database. Each action is prefixed with a numerical id.
     You are given a list of queries, each of which are answerable by using multiple actions in the document above. Your task is to return a list for each query, with each list containing the ids of ALL the actions that are relevant to that query. 
     Format your response as a list of JSON objects, with each object containing the query and the corresponding list of relevant action ids you have identified.
@@ -94,7 +92,7 @@ def get_llm_relevant_actions(query_list, synopsis, context : FilterContext, doc_
             logging.error(f"Server-side error, retrying request in 20 secs: {str(e)}.")
             time.sleep(20)
             context.inc_current_calls()
-            return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+            return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
         else:
             logging.error(f"Server side error. User-set MAX_CALLS reached so not retrying request. Error: {str(e)}")
             success = False
@@ -106,7 +104,7 @@ def get_llm_relevant_actions(query_list, synopsis, context : FilterContext, doc_
             logging.error(f"Server side error, retrying request in 20 secs: {str(e)}")
             time.sleep(20)
             context.inc_current_calls()
-            return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+            return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
         else:
             logging.error(f"Server side error. User-set MAX_CALLS reached so not retrying request. Error: {str(e)}")
             success = False
@@ -127,7 +125,7 @@ def get_llm_relevant_actions(query_list, synopsis, context : FilterContext, doc_
                     logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
                     time.sleep(120)
                     context.inc_current_calls()
-                    return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+                    return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
                 else:
                     logging.error(f"Rate limit temporarily exceeded (only {input_tokens} input tokens). User-set MAX_CALLS reached so not retrying request.")
                     success = False
@@ -142,7 +140,7 @@ def get_llm_relevant_actions(query_list, synopsis, context : FilterContext, doc_
             logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 30 secs.")
             time.sleep(30)
             context.inc_current_calls()
-            return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+            return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
         else:
             logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. User-set MAX_CALLS reached so not retrying request.")
             success = False
@@ -183,37 +181,73 @@ def append_qus_to_file(new_qus, qus_file):
     write_qus_to_file(prev_qus, qus_file=qus_file)
 
 
-def process_qus_in_synopsis(synopsis, context : FilterContext):
+def get_n_unique_qus(qu_dicts, n=10):
+    n_unique_dicts = []
+    remaining_qu_dicts = []
+    processed = 0
+    for i, q_dict in enumerate(qu_dicts):
+        if len(n_unique_dicts) >= n:
+            break
+        query = q_dict["question"]
+        current_queries = [d["question"] for d in n_unique_dicts]
+        if query in current_queries:
+            remaining_qu_dicts.append(q_dict)
+        else:
+            n_unique_dicts.append(q_dict)
+        processed += 1
+    unprocessed_dicts = qu_dicts[processed:]# is empty if len(qu_dicts) < n
+    remaining_qu_dicts.extend(unprocessed_dicts)
+    return n_unique_dicts, remaining_qu_dicts
 
+
+def get_unique_batches(qu_dicts, batch_size=10):
+    ###
+    # Returns a list of batches of qu_dicts. Each batch is at most batch_size in length. All elements of qu_dicts exist in a batch.
+    ###
+    unique_batches = []
+    # get_n_unique_qus implementation does not modify the qu_dicts argument,
+    # but if in future this changes, need to take a deep copy of unprocessed_dicts here before passing it as an argument to get_n_unique_dicts.
+    while unprocessed_dicts:
+        new_batch, unprocessed_dicts = get_n_unique_qus(qu_dicts=unprocessed_dicts, n=batch_size)
+        unique_batches.append(new_batch)
+    return unique_batches   
+
+
+def process_qus_in_synopsis(synopsis, context : FilterContext):
+    doc_type = "bg_km"
     no_gaps_synopsis = "".join(synopsis.split())
     base_dir = context.get_qu_source_dir()
     qus_dir = os.path.join(base_dir, "untested")
-    file_name = f"bg_km_{no_gaps_synopsis}_qus.json"
+    file_name = f"{doc_type}_{no_gaps_synopsis}_qus.json"
     qus_file = os.path.join(qus_dir, file_name)
 
     qus_full_details_list = get_qus_from_file(qus_file)
     logging.info(f"Loaded {len(qus_full_details_list)} questions for synopsis {synopsis}.")
     if qus_full_details_list == []:
-        logging.info(f"No unprocessed questions found for synopsis {synopsis}, skipping processing.")
+        logging.info(f"No unprocessed questions found for synopsis {synopsis}, skipping processing this synopsis.")
         return
-    all_batches = list(batched(qus_full_details_list, 10))
+    all_batches = get_unique_batches(qu_dicts=qus_full_details_list, batch_size=10)
+    # here we can assert that all the questions in each batch are unique.
+
+    action_retrieval_success, actions_data = get_synopsis_data(synopsis=synopsis, use_filtered_synopsis=False, doc_type=doc_type)
+    if not action_retrieval_success:
+        logging.warning(f"Could not retrieve action content for synopsis {synopsis}, skipping process this synopsis.")
+        return
 
     untested_qus = []
     passed_qus = []
     failed_qus = []
 
-    for batch_num, qus_full_details_batch in enumerate(all_batches):
+    for batch_num, qu_dicts_batch in enumerate(all_batches):
         
-        ## if there are two queries that have the same wording in the same batch, the later one will overwrite the earlier one in the dictionary
-        # need to decide how to handle this...
-        qus_batch = [qus_full_details["question"] for qus_full_details in qus_full_details_batch]
-        qus_full_details_batch_query_indexed = {qus_full_details["question"]: qus_full_details for qus_full_details in qus_full_details_batch}
-        stored_ids_batch_query_indexed = {qus_full_details["question"]: qus_full_details["all_relevant_action_ids"] for qus_full_details in qus_full_details_batch}
+        queries_batch = [qu_dict["question"] for qu_dict in qu_dicts_batch]
+        qu_dicts_batch_query_indexed = {qu_dict["question"]: qu_dict for qu_dict in qu_dicts_batch}
+        stored_ids_batch_query_indexed = {qus_full_details["question"]: qus_full_details["all_relevant_action_ids"] for qus_full_details in qu_dicts_batch}
 
         if context.get_current_calls() < context.get_max_calls():
             logging.info("Making API call for question batch.")
             context.inc_current_calls()
-            api_call_success, rate_limited, gen_responses_batch = get_llm_relevant_actions(query_list=qus_batch, synopsis=synopsis, context=context)
+            api_call_success, rate_limited, gen_responses_batch = get_llm_relevant_actions(actions_data=actions_data, query_list=queries_batch, synopsis=synopsis, context=context, doc_type=doc_type)
         else:
             logging.info(f"User-set MAX_CALLS limit reached, skipping filtering remaining questions in synopsis {synopsis}.")
             for i in range(batch_num, len(all_batches)):
@@ -227,9 +261,9 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
                 gen_ids_for_query = response["relevant_action_ids"]
                 
                 if stored_ids_for_query == gen_ids_for_query:
-                    passed_qus.append(qus_full_details_batch_query_indexed[query])
+                    passed_qus.append(qu_dicts_batch_query_indexed[query])
                 else:
-                    failed_qus.append(qus_full_details_batch_query_indexed[query])
+                    failed_qus.append(qu_dicts_batch_query_indexed[query])
         else:
             logging.info(f"API call failed, skipping remaining questions for synopsis. {synopsis}")
             for i in range(batch_num, len(all_batches)+1):
@@ -250,13 +284,12 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
     failed_file = os.path.join(fail_dir, file_name)
     untested_file = os.path.join(untested_dir, file_name)
 
-    logging.info(f"Adding new passed questions to {passed_file}.")
     append_qus_to_file(passed_qus, passed_file)
-    logging.info(f"Adding new failed questions to {failed_file}.")
+    logging.info(f"Added new set of questions that PASSED the filter to {passed_file}.")
     append_qus_to_file(failed_qus, failed_file)
-    logging.info(f"Overwriting untested questions to {untested_file}.")
+    logging.info(f"Added new set of questions that FAILED the filter to {failed_file}.")
     write_qus_to_file(untested_qus, untested_file)
-
+    logging.info(f"Overwrote {untested_file} with untested questions.")
 
             
 def process_all_synopses(context : FilterContext):
@@ -281,18 +314,15 @@ def process_all_synopses(context : FilterContext):
             break
 
 
-
-
 def main():
     # synopsis = "Amphibian Conservation"
     # queries = ["What are the most effective interventions for controlling invasive predators to protect native amphibian populations?"]
     # stored_action_ids = [["797", "798", "821", "822", "825", "826", "827", "828", "829", "830", "839"]]
     # print(get_llm_relevant_actions(query_list=queries, synopsis=synopsis))
-    load_dotenv()
 
-    logging.basicConfig(filename="logfiles/all_relevant_actions_filter.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename="logfiles/qus_filter_by_all_relevant_actions.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    QU_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable"
+    QU_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable"
     MAX_CALLS = 1
     MAX_SYNOPSES = 1
 

@@ -91,26 +91,17 @@ def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
         return
     
 
-def get_synopsis_data(synopsis, doc_type="bg_km", use_filtered_synopses=False):
+def get_synopsis_data(synopsis, doc_type="bg_km"):
     no_gaps_synopsis = "".join(synopsis.split())
     try:
-        if use_filtered_synopses:
-            synopsis_file_path = f"question_gen_data/{doc_type}_multi_action_data/{doc_type}_synopsis_filtered_concat/{doc_type}_{no_gaps_synopsis}_filtered_concat.txt"
-        else:
-            synopsis_file_path = f"question_gen_data/{doc_type}_multi_action_data/{doc_type}_synopsis_unfiltered_concat/{doc_type}_{no_gaps_synopsis}_unfiltered_concat.txt"
-
+        synopsis_file_path = f"question_gen_data/{doc_type}_multi_action_data/{doc_type}_synopsis_unfiltered_concat/{doc_type}_{no_gaps_synopsis}_unfiltered_concat.txt"
         with open(synopsis_file_path, "r", encoding="utf-8") as f:
             content = f.read()
-
-        if content == "" and use_filtered_synopses:
-            logging.info(f"Zero filtered action files remaining for synopsis {synopsis}.")
-            success = False
-        elif content == "" and use_filtered_synopses == False:
+        if content == "":
             logging.error(f"No content in unfiltered action files for synopsis {synopsis} (see {synopsis_file_path}).")
             success = False
         else:
             success = True
-
         return success, content
     
     except FileNotFoundError:
@@ -319,11 +310,6 @@ def process_all_synopses(context : QuGenContext, qu_type, use_filtered_synopses=
                     logging.error(f"{call_count} calls to API made before rate limit exceeded.")
         else:
             logging.warning(f"Failed to retrieve action data for synopsis {synopsis}, skipping question generation for this synopsis.")
-
-
-def generate_questions(qu_type, context : QuGenContext, use_filtered_synopses=False, first_synopsis="Amphibian Conservation"):
-    # options for qu_type: "answerable", "unanswerable"
-    # use_filtered_synopses and first_synopsis only relevant for answerable question generation
 
 
 def main():

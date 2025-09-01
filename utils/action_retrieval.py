@@ -110,10 +110,9 @@ def parse_action(action_string, context : ActionRetrievalContext):
     return parsed_action
 
 
-
-def get_parsed_actions(context : ActionRetrievalContext):
+def get_all_parsed_actions(context : ActionRetrievalContext):
     """
-    Get parsed actions from the data directory.
+    Get parsed actions (of all synopses) from the data directory.
 
     Args:
         context (ActionRetrievalContext): The context for action retrieval (e.g can use this to find the user's set doc_type, required_fields, metadata_fields)
@@ -176,7 +175,7 @@ def sparse_retrieve_docs(query_string, context : ActionRetrievalContext, k=3, of
     Returns:
         list: Top k action documents matching the query, starting from offset
     """
-    parsed_actions = get_parsed_actions(context=context)
+    parsed_actions = get_all_parsed_actions(context=context)
     corpus = []
     for action in parsed_actions:
         action_string = get_parsed_action_as_str(action=action)
@@ -251,7 +250,7 @@ def dense_retrieve_docs(query_string, context : ActionRetrievalContext, k=3, off
     Returns:
         list: Top k action documents matching the query, starting from offset
     """
-    parsed_actions = get_parsed_actions(context=context)
+    parsed_actions = get_all_parsed_actions(context=context)
     corpus = []
     for action in parsed_actions:
         action_string = get_parsed_action_as_str(action=action)
@@ -339,7 +338,7 @@ def main():
     )
 
     ## Testing parsed actions with bg km
-    docs = get_parsed_actions(context=context)
+    docs = get_all_parsed_actions(context=context)
     for i in range(100, 105):
         print(docs[i])
 

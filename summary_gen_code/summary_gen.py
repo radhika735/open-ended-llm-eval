@@ -7,9 +7,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 # from pydantic import BaseModel, Field
 # from typing import Annotated
-
-
-from utils.action_retrieval import ActionRetrievalContext, get_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
+from utils.action_retrieval import ActionRetrievalContext, get_all_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 
 
 load_dotenv()
@@ -56,7 +54,7 @@ def get_action_details(action_id):
     Returns:
         dict: Full action details or None if not found
     """
-    parsed_actions = get_parsed_actions(context=ACTION_RETRIEVAL_CONTEXT)
+    parsed_actions = get_all_parsed_actions(context=ACTION_RETRIEVAL_CONTEXT)
     
     # Find the action with matching ID
     for action in parsed_actions:
@@ -550,21 +548,6 @@ def main():
 
     ]
     # could also test gemini-2.5-flash-lite
-
-    ## TESTING GET_PARSED_ACTIONS()
-    # search_query = "chytridiomycosis"
-    # logging.info(f"TESTING get_parsed_actions for presence of action 762, 'Add salt to ponds to reduce chytridiomycosis', in relation to query about {search_query}.")
-    # actions = get_parsed_actions()
-    # ids = [doc["action_id"] for doc in actions]
-    # titles = [doc["action_title"] for doc in actions]
-    # if "762" in ids:
-    #     logging.info("Action 762 found in parsed actions.")
-    #     print("Action 762 found in parsed actions.")
-    # else:
-    #     logging.warning("Action 762 not found in parsed actions.")
-    #     print("Action 762 not found in parsed actions.")
-    # logging.info("ENDING test.")
-
 
     ## CREATING SUMMARIES FOR MINI LLM JUDGE EVAL QUESTIONS
     logging.info("STARTING generation of summaries to questions from mini test of human agreement with llm judge.")
