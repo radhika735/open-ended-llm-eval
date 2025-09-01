@@ -308,14 +308,14 @@ def main():
 
     context = QuGenContext(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS, prev_qus_dirs=prev_qus_dirs)
 
-    ### GENERATING ALL THE QUESTIONS
-    # try:
-    #     logging.info("STARTING question generation process.")
-    #     process_all_synopses(qu_type="answerable", use_filtered_synopsis=False, context=context)
-    #     logging.info("ENDED question generation process")
-    # except KeyboardInterrupt as e:
-    #     logging.error(f"Keyboard interrupt: {str(e)}")
-    #     logging.info("ENDED question generation process")
+    ## GENERATING ALL THE QUESTIONS
+    try:
+        logging.info("STARTING question generation process.")
+        process_all_synopses(qu_type="answerable", use_filtered_synopsis=False, context=context)
+        logging.info("ENDED question generation process")
+    except KeyboardInterrupt as e:
+        logging.error(f"Keyboard interrupt: {str(e)}")
+        logging.info("ENDED question generation process")
 
     ## Testing Peatland Conservation None responses:
     # synopsis = "Amphibian Conservation"
@@ -326,58 +326,6 @@ def main():
     # logging.info(f"Generated {len(new_qus)} answerable questions for synopsis {synopsis}."  )
     # logging.info(f"ENDED Testing {synopsis} LLM responses.")
 
-    new_qus = [
-        {
-            'question': 'What are some habitat creation or restoration actions I can take to benefit a range of amphibian species?', 
-            'answer': 'Creating ponds has been shown to be a beneficial action, with studies finding that created ponds are used by up to 15 naturally colonizing amphibian species (869). Similarly, restoring and creating wetlands has been found to increase the number of amphibian species, with restored wetlands often having similar species richness and abundance to natural ones (879, 880). Creating terrestrial refuges, such as artificial hibernacula or adding coarse woody debris, can also provide valuable shelter habitat (759, 772).', 
-            'action_ids_used_for_question_generation': ['869', '879', '880', '878', '759', '772'], 
-            'action_ids_used_in_model_answer': ['869', '879', '880', '759', '772'], 
-            'all_relevant_action_ids': ['869', '879', '880', '878', '759', '772', '849', '817', '761']
-        }, 
-        {
-            'question': 'In commercial forestry, how does thinning trees compare to shelterwood harvesting in terms of impacts on salamander populations?', 
-            'answer': 'Both thinning and shelterwood harvesting can negatively impact salamanders compared to unharvested forest. Studies found that shelterwood harvesting generally decreased salamander abundance (851). Similarly, a meta-analysis found that thinning decreased salamander populations, although other studies found mixed effects depending on the species and time since harvest (852). Compared to clearcutting, both shelterwood harvesting and thinning were found to result in smaller reductions in salamander populations or higher abundance (851, 852).', 
-            'action_ids_used_for_question_generation': ['852', '851'], 
-            'action_ids_used_in_model_answer': ['851', '852'], 
-            'all_relevant_action_ids': ['852', '851', '844', '846', '843']
-        }, 
-        {
-            'question': 'What is the evidence for the effectiveness of translocating different groups of amphibians to establish new breeding populations?', 
-            'answer': 'A global review found that 65% of assessed amphibian translocations resulted in established breeding populations (854). Success varies by group. For example, several studies found that translocating frog eggs, juveniles or adults successfully established breeding populations (861), as did translocations of toads and great crested newts (855, 858). Translocated salamanders and smooth newts have also been shown to establish breeding populations (860). However, success is not guaranteed, with some translocations failing to establish populations or populations going extinct after a few years (861).', 
-            'action_ids_used_for_question_generation': ['854', '861', '855', '860', '858'], 
-            'action_ids_used_in_model_answer': ['854', '861', '855', '858', '860'], 
-            'all_relevant_action_ids': ['854', '861', '856', '855', '859', '860', '858']
-        }, 
-        {
-            'question': 'What are the most effective treatments for captive amphibians infected with chytridiomycosis?', 
-            'answer': 'The most effective treatments appear to be temperature and antifungal drugs. Increasing enclosure temperature to 30–37°C was found to cure frogs and toads of chytridiomycosis in four of five studies (770). Specific antifungal treatments, particularly with itraconazole, were also found to be effective at curing amphibians in the majority of studies, though some fungicides caused negative side effects (882). In contrast, treatments with antibacterial ointments or antifungal skin bacteria were generally found to be unlikely to be beneficial (763, 764).', 
-            'action_ids_used_for_question_generation': ['770', '882', '763', '764', '765'], 
-            'action_ids_used_in_model_answer': ['770', '882', '763', '764'], 
-            'all_relevant_action_ids': ['770', '882', '763', '764', '765', '762', '766', '767']
-        }, 
-        {
-            'question': 'What factors influence whether newly created ponds are successfully colonized and used by amphibians for breeding?', 
-            'answer': 'Several factors have been found to affect the successful colonization and use of created ponds by amphibians. Evidence suggests that key factors include pond age, permanence of water, vegetation cover, and the presence or absence of fish (869). The surrounding landscape context is also important, particularly the distance to existing ponds that can act as a source for colonizers (869).', 
-            'action_ids_used_for_question_generation': ['869'], 
-            'action_ids_used_in_model_answer': ['869'], 
-            'all_relevant_action_ids': ['869', '878', '865', '863', '864', '866', '867', '868']
-        }, 
-        {
-            'question': 'What are the benefits and potential negative impacts of installing culverts or tunnels to help amphibians cross roads?', 
-            'answer': 'The primary benefit of installing culverts or tunnels is a reduction in amphibian road mortality, with multiple studies finding that they significantly decreased road deaths (884). Many studies also confirm that a wide range of amphibian species will use the tunnels, especially when guided by barrier fencing (756, 884). However, there are negative impacts and limitations. Certain designs can be unsuitable; for instance, one-way tunnels with vertical chutes caused high mortality, and steel culverts were found to have high metal concentrations in condensation (884). Furthermore, not all amphibians will use the tunnels, and one study noted that thousands of amphibians were still killed on the road even with these structures in place (884).', 
-            'action_ids_used_for_question_generation': ['884', '756'], 
-            'action_ids_used_in_model_answer': ['884', '756'], 
-            'all_relevant_action_ids': ['884', '756', '782', '840', '841', '842', '784']
-        }, 
-        {
-            'question': 'Besides removing fish, what alternative management actions can be taken at ponds to benefit amphibian populations?', 
-            'answer': 'As an alternative to direct fish removal, several other pond management actions can benefit amphibians. Pond restoration through deepening, de-silting or re-profiling can establish breeding populations or increase existing ones (817). Where ponds are heavily shaded, removing some of the tree canopy may help, although evidence is limited (758). For acidified water bodies, adding lime has been shown to increase egg and larval survival in some cases, but can also cause tadpole mortality (748). Additionally, controlling invasive aquatic plants like swamp stonecrop can help restore habitat and has been associated with increases in toad populations (823).', 
-            'action_ids_used_for_question_generation': ['826', '827', '828', '817', '758', '748', '823'], 
-            'action_ids_used_in_model_answer': ['817', '758', '748', '823'], 
-            'all_relevant_action_ids': ['817', '758', '748', '823', '878', '761', '815', '746', '833']
-        }
-    ]
-    append_qus(qus=new_qus, synopsis="Amphibian Conservation", qu_type="answerable", context=context)
 
 if __name__ == "__main__":
     main()

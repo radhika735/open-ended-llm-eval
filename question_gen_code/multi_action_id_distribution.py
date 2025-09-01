@@ -8,7 +8,6 @@ import os
 def get_qus_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
     no_gaps_synopsis = "".join(synopsis.split())
     qus_filepath = f"{qus_dir}/{action_doc_type}_{no_gaps_synopsis}_qus.json"
-    print("absolute path",os.path.abspath(qus_filepath))
     try:
         with open(qus_filepath, 'r', encoding="utf-8") as file:
             qus_list = json.load(file)
@@ -18,7 +17,6 @@ def get_qus_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
         exit()
     except json.JSONDecodeError:
         logging.error(f"Error decoding JSON from {qus_filepath}.")
-        print(f"Error decoding JSON from {qus_filepath}")
         return []
 
 

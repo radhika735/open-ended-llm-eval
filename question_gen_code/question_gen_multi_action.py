@@ -8,6 +8,7 @@ from pydantic import BaseModel
 import json
 import time
 
+
 class QuGenContext():
     def __init__(self, qu_out_dir, max_calls, doc_type="bg_km", prev_qus_dirs=[]):
         self.__qu_out_dir = qu_out_dir
@@ -27,7 +28,6 @@ class QuGenContext():
     def get_prev_qus_dirs(self):
         prev_qus_dirs_copy = self.__prev_qus_dirs.copy()
         return prev_qus_dirs_copy
-
 
 
 def read_json_file(filename):
@@ -53,7 +53,6 @@ def read_json_file(filename):
         return error, []
 
 
-
 def write_to_json_file(filename, qus):
     if not os.path.exists(filename):
         logging.info(f"Creating new question output file {filename}.")
@@ -62,7 +61,6 @@ def write_to_json_file(filename, qus):
         json.dump(qus, file, ensure_ascii=False, indent=2)
         
 
-
 def append_to_json_file(filename, new_qus):
     error, prev_qus = read_json_file(filename=filename)
     if error == True:
@@ -70,7 +68,6 @@ def append_to_json_file(filename, new_qus):
     prev_qus.extend(new_qus)
     write_to_json_file(filename=filename, qus=prev_qus)
     logging.info(f"Updated {filename} with new questions.")
-
 
 
 def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
@@ -94,11 +91,10 @@ def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
         return
     
 
-
-def get_synopsis_data(synopsis, doc_type="bg_km", use_filtered_synopsis=False):
+def get_synopsis_data(synopsis, doc_type="bg_km", use_filtered_synopses=False):
     no_gaps_synopsis = "".join(synopsis.split())
     try:
-        if use_filtered_synopsis:
+        if use_filtered_synopses:
             synopsis_file_path = f"question_gen_data/{doc_type}_multi_action_data/{doc_type}_synopsis_filtered_concat/{doc_type}_{no_gaps_synopsis}_filtered_concat.txt"
         else:
             synopsis_file_path = f"question_gen_data/{doc_type}_multi_action_data/{doc_type}_synopsis_unfiltered_concat/{doc_type}_{no_gaps_synopsis}_unfiltered_concat.txt"
@@ -106,11 +102,11 @@ def get_synopsis_data(synopsis, doc_type="bg_km", use_filtered_synopsis=False):
         with open(synopsis_file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        if content == "" and use_filtered_synopsis:
-            logging.info(f"Zero filtered action files remaining for synopsis {synopsis}, skipping question generation for {synopsis}.")
+        if content == "" and use_filtered_synopses:
+            logging.info(f"Zero filtered action files remaining for synopsis {synopsis}.")
             success = False
-        elif content == "" and use_filtered_synopsis == False:
-            logging.error(f"No content in unfiltered action files for synopsis {synopsis} (see {synopsis_file_path}). Skipping question generation for {synopsis}.")
+        elif content == "" and use_filtered_synopses == False:
+            logging.error(f"No content in unfiltered action files for synopsis {synopsis} (see {synopsis_file_path}).")
             success = False
         else:
             success = True
@@ -121,7 +117,6 @@ def get_synopsis_data(synopsis, doc_type="bg_km", use_filtered_synopsis=False):
         logging.error(f"Actions for synopsis {synopsis} file not found: {synopsis_file_path}")
         success = False
         return success, ""
-
 
 
 def get_prev_qus(prev_qu_dirs, synopsis, doc_type="bg_km", max=20):
@@ -146,14 +141,12 @@ def get_prev_qus(prev_qu_dirs, synopsis, doc_type="bg_km", max=20):
     return retrieval_success, qus_str
 
 
-
 class QuestionAnswer(BaseModel):
     question: str
     answer: str
     action_ids_used_for_question_generation: list[str]
     action_ids_used_in_model_answer: list[str]
     all_relevant_action_ids: list[str]
-
 
 
 def get_llm_response(synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"):
@@ -228,9 +221,11 @@ def get_llm_response(synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"
     try:
         client = genai.Client()
         logging.info(f"Making API call.")
-        input_tokens = client.models.count_tokens(model="gemini-2.5-pro", contents=prompt).total_tokens
+        model_name = "gemini-2.5-pro"
+        input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
+        
         response = client.models.generate_content(
-            model="gemini-2.5-pro", 
+            model=model_name, 
             contents=prompt,
             config=types.GenerateContentConfig(
                 thinking_config=types.ThinkingConfig(thinking_budget=8192),
@@ -289,7 +284,7 @@ def get_llm_response(synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"
         return get_llm_response(synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
 
 
-def process_all_synopses(context : QuGenContext, qu_type, use_filtered_synopsis=False, first_synopsis="Amphibian Conservation"):
+def process_all_synopses(context : QuGenContext, qu_type, use_filtered_synopses=False, first_synopsis="Amphibian Conservation"):
     # options for qu_type: "answerable", "unanswerable"
     doc_type = context.get_doc_type()
 
@@ -306,11 +301,10 @@ def process_all_synopses(context : QuGenContext, qu_type, use_filtered_synopsis=
     call_count = 0
     for i in range(context.get_max_calls()):
         synopsis = synopses[((i+offset) % num_synopses)]
-        actions_retrieval_success, actions = get_synopsis_data(synopsis, doc_type=doc_type, use_filtered_synopsis=use_filtered_synopsis)
+        actions_retrieval_success, actions = get_synopsis_data(synopsis, doc_type=doc_type, use_filtered_synopses=use_filtered_synopses)
         prev_qus_retrieval_success, prev_qus = get_prev_qus(prev_qu_dirs=context.get_prev_qus_dirs(), synopsis=synopsis, doc_type=doc_type, max=30)
         
         if actions_retrieval_success:
-
             if not prev_qus_retrieval_success:
                 logging.warning(f"Unable to load previously generated questions for synopsis {synopsis}. Existing questions are much more likely to be regenerated by LLM.")
 
@@ -323,6 +317,13 @@ def process_all_synopses(context : QuGenContext, qu_type, use_filtered_synopsis=
             else:
                 if rate_limited:
                     logging.error(f"{call_count} calls to API made before rate limit exceeded.")
+        else:
+            logging.warning(f"Failed to retrieve action data for synopsis {synopsis}, skipping question generation for this synopsis.")
+
+
+def generate_questions(qu_type, context : QuGenContext, use_filtered_synopses=False, first_synopsis="Amphibian Conservation"):
+    # options for qu_type: "answerable", "unanswerable"
+    # use_filtered_synopses and first_synopsis only relevant for answerable question generation
 
 
 def main():
@@ -333,14 +334,14 @@ def main():
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
     QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus"
-    prev_qus_dirs = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"]
+    prev_qus_dirs = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/unanswerable/all"]
     MAX_CALLS = 24
 
     context = QuGenContext(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS, doc_type="bg_km", prev_qus_dirs=prev_qus_dirs)
     ## GENERATING ALL THE QUESTIONS
     try:
         logging.info("STARTING question generation process.")
-        process_all_synopses(qu_type="answerable", use_filtered_synopsis=False, context=context, first_synopsis="Amphibian Conservation")
+        process_all_synopses(qu_type="unanswerable", use_filtered_synopses=False, context=context, first_synopsis="Amphibian Conservation")
         logging.info("ENDED question generation process")
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {str(e)}")
@@ -349,11 +350,12 @@ def main():
     # # Testing Peatland Conservation None responses:
     # synopsis = "Amphibian Conservation"
     # logging.info(f"STARTING Testing {synopsis} LLM responses.")
-    # _, synopsis_data = get_synopsis_data(synopsis, doc_type="bg_km", use_filtered_synopsis=False)
+    # _, synopsis_data = get_synopsis_data(synopsis, doc_type="bg_km", use_filtered_synopses=False)
     # api_call_success, rate_limited, new_qus = get_llm_response(synopsis=synopsis, actions_data=synopsis_data, qu_type="answerable", prev_qus="")
     # print(new_qus)
     # logging.info(f"Generated {len(new_qus)} answerable questions for synopsis {synopsis}."  )
     # logging.info(f"ENDED Testing {synopsis} LLM responses.")
+
 
 if __name__ == "__main__":
     main()

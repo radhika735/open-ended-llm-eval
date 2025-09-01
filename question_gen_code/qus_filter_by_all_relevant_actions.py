@@ -8,10 +8,10 @@ from pydantic import BaseModel
 import os
 from itertools import batched
 import time
-from question_gen_bg_km_multi_action import get_synopsis_data
+from question_gen_code.question_gen_multi_action import get_synopsis_data
 
 
-class Context():
+class FilterContext():
     def __init__(self, qu_source_dir, max_calls, max_synopses):
         self.__qu_source_dir = qu_source_dir
         self.__max_calls = max_calls
@@ -47,8 +47,8 @@ class RelevantActions(BaseModel):
 
 
 
-def get_llm_relevant_actions(query_list, synopsis):
-    actions_content = get_synopsis_data(synopsis=synopsis, use_filtered_synopsis=False)
+def get_llm_relevant_actions(query_list, synopsis, context : FilterContext, doc_type="bg_km", ):
+    actions_content = get_synopsis_data(synopsis=synopsis, use_filtered_synopsis=False, doc_type=doc_type)
 
     prompt = f"""{actions_content}\n\n\n
     Above is a document containing conservation actions, their effectiveness and key messages relating to them. This has been gathered by hand and forms part of the Conservation Evidence living evidence database. Each action is prefixed with a numerical id.
@@ -59,8 +59,11 @@ def get_llm_relevant_actions(query_list, synopsis):
     """
     try:
         client = genai.Client()
+        model_name = "gemini-2.5-pro"
+        input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
+
         response = client.models.generate_content(
-            model="gemini-2.5-pro",
+            model=model_name,
             contents=prompt,
             config=types.GenerateContentConfig(
                 thinking_config=types.ThinkingConfig(thinking_budget=8192),
@@ -78,7 +81,7 @@ def get_llm_relevant_actions(query_list, synopsis):
         logging.error(f"Unexpected API response format: {str(e)}.")
         success = False
         rate_limited = False
-        return success, rate_limited, [{"query":query, "relevant_action_ids":[]} for query in query_list]
+        return success, rate_limited, []
     
     except exceptions.ResourceExhausted as e:
         logging.error(f"Rate limit exceeded: {str(e)}.")
@@ -87,20 +90,64 @@ def get_llm_relevant_actions(query_list, synopsis):
         return success, rate_limited, []
     
     except exceptions.InternalServerError as e:
-        logging.error(f"Server-side error, retrying request in 20 secs: {str(e)}.")
-        time.sleep(20)
-        return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis)
+        if context.get_current_calls() < context.get_max_calls():
+            logging.error(f"Server-side error, retrying request in 20 secs: {str(e)}.")
+            time.sleep(20)
+            context.inc_current_calls()
+            return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+        else:
+            logging.error(f"Server side error. User-set MAX_CALLS reached so not retrying request. Error: {str(e)}")
+            success = False
+            rate_limited = False
+            return success, rate_limited, []
 
     except errors.ServerError as e:
-        logging.error(f"Server side error, retrying request in 20 secs: {str(e)}")
-        time.sleep(20)
-        return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis)
+        if context.get_current_calls() < context.get_max_calls():
+            logging.error(f"Server side error, retrying request in 20 secs: {str(e)}")
+            time.sleep(20)
+            context.inc_current_calls()
+            return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+        else:
+            logging.error(f"Server side error. User-set MAX_CALLS reached so not retrying request. Error: {str(e)}")
+            success = False
+            rate_limited = False
+            return success, rate_limited, []
+    
+    except errors.ClientError as e:
+        logging.error(f"Client side error: {str(e)}")
+        success = False
+        
+        if e.code == 429: # resource exhausted error (rate limit exceeded)
+            rate_limited = True            
+            if input_tokens >= 100000: # synopsis size itself may have exceeded input token size limit for free tier gemini (125000 input tokens / min), can't generate questions
+                logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question generation for this synopsis.")
+                return success, rate_limited, []
+            else: # request was made too close to previous request and got rate limited, if max num of calls not exceeded, retry request after limit resets
+                if context.get_current_calls() < context.get_max_calls():
+                    logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
+                    time.sleep(120)
+                    context.inc_current_calls()
+                    return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+                else:
+                    logging.error(f"Rate limit temporarily exceeded (only {input_tokens} input tokens). User-set MAX_CALLS reached so not retrying request.")
+                    success = False
+                    rate_limited = True
+                    return success, rate_limited, []
+        else:
+            rate_limited = False
+            return success, rate_limited, []
     
     except TypeError as e:
-        logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 30 secs.")
-        time.sleep(30)
-        return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis)
-
+        if context.get_current_calls() < context.get_max_calls():
+            logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 30 secs.")
+            time.sleep(30)
+            context.inc_current_calls()
+            return get_llm_relevant_actions(query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+        else:
+            logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. User-set MAX_CALLS reached so not retrying request.")
+            success = False
+            rate_limited = False
+            return success, rate_limited, []
 
 
 def get_qus_from_file(qus_file):
@@ -136,7 +183,7 @@ def append_qus_to_file(new_qus, qus_file):
     write_qus_to_file(prev_qus, qus_file=qus_file)
 
 
-def process_qus_in_synopsis(synopsis, context):
+def process_qus_in_synopsis(synopsis, context : FilterContext):
 
     no_gaps_synopsis = "".join(synopsis.split())
     base_dir = context.get_qu_source_dir()
@@ -165,8 +212,8 @@ def process_qus_in_synopsis(synopsis, context):
 
         if context.get_current_calls() < context.get_max_calls():
             logging.info("Making API call for question batch.")
-            api_call_success, rate_limited, gen_responses_batch = get_llm_relevant_actions(query_list=qus_batch, synopsis=synopsis)
             context.inc_current_calls()
+            api_call_success, rate_limited, gen_responses_batch = get_llm_relevant_actions(query_list=qus_batch, synopsis=synopsis, context=context)
         else:
             logging.info(f"User-set MAX_CALLS limit reached, skipping filtering remaining questions in synopsis {synopsis}.")
             for i in range(batch_num, len(all_batches)):
@@ -212,7 +259,7 @@ def process_qus_in_synopsis(synopsis, context):
 
 
             
-def process_all_synopses(context : Context):
+def process_all_synopses(context : FilterContext):
 
     synopses = []
     for entry in os.scandir("action_data/background_key_messages/bg_km_synopsis"):
@@ -249,7 +296,7 @@ def main():
     MAX_CALLS = 1
     MAX_SYNOPSES = 1
 
-    context = Context(qu_source_dir=QU_SOURCE_DIR, max_calls=MAX_CALLS, max_synopses=MAX_SYNOPSES)
+    context = FilterContext(qu_source_dir=QU_SOURCE_DIR, max_calls=MAX_CALLS, max_synopses=MAX_SYNOPSES)
 
     logging.info("STARTING question filtering process.")
     process_all_synopses(context=context)
