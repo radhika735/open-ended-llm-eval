@@ -6,7 +6,6 @@ from openai import OpenAI
 from utils.action_retrieval import ActionRetrievalContext, parse_action, get_parsed_action_as_str
 
 
-
 load_dotenv()
 
 

@@ -160,6 +160,7 @@ def get_llm_evaluation(question, answer, docs, model, provider):
             model = model,
             messages = messages,
             reasoning_effort = "low",
+            response_format = response_schema,
             extra_body={
                 "require_parameters": True
             }
