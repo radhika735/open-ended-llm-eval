@@ -48,7 +48,7 @@ def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", reasonin
         request_params = {
             "model":model,
             "messages": messages,
-            "reasoning_effort": reasoning_effort,
+            #"reasoning_effort": reasoning_effort,
             "extra_body": {
                 "require_parameters": True
             }
@@ -70,7 +70,7 @@ def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", reasonin
             request_params.update(
                 {
                     "config": types.GenerateContentConfig(
-                        thinking_config=types.ThinkingConfig(thinking_budget=thinking_tokens),
+                        #thinking_config=types.ThinkingConfig(thinking_budget=thinking_tokens),
                         tools=tools,
                     )
                 }
@@ -79,7 +79,7 @@ def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", reasonin
             request_params.update(
                 {
                     "config": types.GenerateContentConfig(
-                        thinking_config=types.ThinkingConfig(thinking_budget=thinking_tokens),
+                        #thinking_config=types.ThinkingConfig(thinking_budget=thinking_tokens),
                         response_mime_type= "application/json",
                         response_schema = response_format
                     )
@@ -125,7 +125,11 @@ def faithfulness(question, answer, docs):
                 "content": prompt
             }
         ]
-        response = call_llm(messages=messages).choices[0].message.content
+        raw_response = call_llm(messages=messages)
+        response = raw_response.choices[0].message.content
+        print(response)
+        print(f"\nUSAGE: {raw_response.usage}")
+        print("\n\n\n")
         response = response.strip()
         verdict = "yes" in response.lower()
         verdicts.append(verdict)
@@ -182,206 +186,6 @@ def answer_relevance(query, answer, n=10):
     }
 
 
-## OWN VERSION OF STATEMENT EXTRACTION - CITED STATEMENTS:
-class CitedStatement(BaseModel):
-    statement : str
-    citations : list[str]
-
-
-def format_cited_statements(cited_statements : list[CitedStatement]):
-    formatted = []
-    for cs in cited_statements:
-        formatted.append({
-            "statement": cs["statement"],
-            "citations": cs["citations"]
-        })
-    return formatted
-
-
-format_cited_statements_function = {
-    "type":"function",
-    "function": {
-        "name": "format_cited_statements",
-        "description": "Format the list of cited statements into a valid list of JSON objects. Use this as the last step before presenting your results to the user.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "cited_statements": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "statement": {
-                                "type": "string"
-                            },
-                            "citations": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "required": ["statement", "citations"]
-                    }
-                }
-            },
-            "required": ["cited_statements"],
-            "additionalProperties": False
-        },
-        "strict": True
-    }
-}
-
-
-tools = [format_cited_statements_function]
-
-
-TOOL_MAPPING = {
-    "format_cited_statements": format_cited_statements
-}
-
-
-def execute_tool_call(tool_call):
-    try:
-        name = tool_call.function.name
-        args = json.loads(tool_call.function.arguments)
-        logging.info(f"Executing tool: {name} with args: {args}")
-        # Execute the tool function
-        tool_result = TOOL_MAPPING[name](**args)
-        tool_success = True
-        return tool_result, tool_success
-    except (AttributeError, KeyError, TypeError) as e:
-        logging.error(f"Error occurred while executing tool: {e}")
-        tool_result = "NONE - Erroneous tool call"
-        tool_success = False
-        return tool_result, tool_success
-
-
-def get_cited_statements_tools(question, answer):
-    prompt = f"""
-Given a question and answer, analyze the complexity of each sentence in the answer. Break down each sentence into one or more fully understandable statements. For each statement, also extract the document IDs it has cited in the answer. There may be zero or more cited IDs per statement.
-Output the statements with their citations as a list of JSON objects.
-
-Question: {question}
-Answer: {answer}
-    """.strip()
-    messages = [
-        {
-            "role": "user",
-            "content": prompt
-        }
-    ]
-    llm_response = call_llm(messages=messages, tools=tools)
-    if llm_response.choices[0].message.tool_calls:
-        logging.info("Requested tool call(s).")
-        if len(llm_response.choices[0].message.tool_calls) == 1:
-            tool_call = llm_response.choices[0].message.tool_calls[0]
-            tool_result, tool_success = execute_tool_call(tool_call=tool_call)
-            if tool_success:
-                evaluation = tool_result
-            else:
-                evaluation = llm_response.choices[0].message.content
-        else:
-            logging.warning("Requested more than one tool calls.")
-            evaluation = llm_response.choices[0].message.content
-    else:
-        logging.warning("Did not request a tool call")
-        evaluation = llm_response.choices[0].message.content
-    return evaluation
-
-
-
-class ListOfCitedStatements(BaseModel):
-    cited_statements_list : list[Annotated[CitedStatement, Field(description="A statement and its associated citations.")]] = Field(description="A list of cited statements extracted from the answer.")
-
-# response_schema = ListOfCitedStatements.model_json_schema(mode="serialization")
-# response_schema = json.dumps(response_schema, indent=2)
-response_schema = {
-    "type": "object",
-    "properties": {
-        "cited_statements": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "statement": {
-                        "type": "string"
-                    },
-                    "citations": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-response_format = {
-    "type": "json_schema",
-    "json_schema": {
-        "name" : "ListOfCitedStatements",
-        "strict" : True, 
-        "schema": response_schema
-    }
-}
-
-
-def get_cited_statements_structured_output(question, answer):
-#     prompt = f"""
-# Given a question and answer, analyze the complexity of each sentence in the answer. Break down each sentence into one or more fully understandable statements. For each statement, also extract the document IDs it has cited in the answer. There may be zero or more cited IDs per statement.
-# Output the statements with their citations as a list of JSON objects.
-
-# Question: {question}
-# Answer: {answer}
-#     """.strip()
-    prompt = f"""
-Given a question and answer, create one or more statements from each sentence in the given answer. Then for each statement, extract the document IDs cited in the answer for that statement. There may be zero or more cited IDs per statement. Citations at the end of a sentence correspond to all the statements extracted from that sentence.
-Output the statements with their citations as a list of JSON objects.
-
-Question: {question}
-Answer: {answer}
-Statements:
-    """.strip()
-
-
-    messages = [
-        {
-            "role": "user",
-            "content": prompt
-        }
-    ]
-    llm_response = call_llm(messages=messages, response_format=response_format)
-    response_content = llm_response.choices[0].message.content
-    cited_statements = json.loads(response_content)
-    return cited_statements
-
-
-def get_citations_from_statements(summary, statements):
-    prompt = f"""
-Given a summary of information and a list of statements extracted from this summary, you must extract the document IDs cited in the summary for each statement. There may be zero or more cited IDs per statement.
-Output the statements with their extracted citations as a list of JSON objects.
-
-Summary: {summary}
-Statements: {statements}
-    """.strip()
-
-    messages = [
-        {
-            "role": "user",
-            "content": prompt
-        }
-    ]
-    llm_response = call_llm(messages=messages, response_format=response_format)
-    response_content = llm_response.choices[0].message.content
-    cited_statements = json.loads(response_content)
-    return cited_statements
-
-
-
-
 
 def get_oracle_actions(id_list, context : action_retrieval.ActionRetrievalContext):
     doc_type = context.get_doc_type()
@@ -430,35 +234,17 @@ def main():
     oracle_ids = ["2330","2336","2346","2347","2385"]
 
     # question = "What are the most beneficial actions for reducing human-wildlife conflict with bears?"
-    # answer = ""
-    # action_ids_in_answer = []
+    # answer = "Evidence indicates several actions can reduce bear-related conflicts. Diversionary feeding reduced nuisance behaviour by black bears in two before-and-after studies, and brown bears in Slovenia obtained 22\u201363% of annual dietary energy from provided food (2323). Scaring/deterrence had mixed outcomes: some studies found noise/pain deterrents did not prevent black bears returning to urban or human-occupied sites, while other studies found such actions deterred bears from seeking food; chasing nuisance black bears with dogs caused them to stay away longer; an electric fence prevented polar bear entry to a compound; chemical and acoustic repellents did not deter polar bears from baits in most cases (2347). Preventing access to food sources with electric shock devices stopped American black bears from accessing or damaging bird feeders (2346). Conditioned taste aversion led black bears to avoid treated foods (2384). Issuing enforcement notices requiring appropriate dumpster use did not reduce garbage accessibility to black bears (2345). Translocating problem or habituated bears often resulted in bears returning to capture locations and/or continuing nuisance, and for grizzly and black bears reduced survival compared to non-translocated bears; however, one controlled study found translocated brown bears occurred less frequently inside high potential conflict areas than non-translocated bears (2336, 2341)."
+    # action_ids_in_answer = ["2323","2336","2341","2345","2346","2347","2384"]
     # oracle_ids = ["2330","2336","2346","2347","2385"]
 
     all_ids = list(set(action_ids_in_answer) | set(oracle_ids))
 
-    # docs = get_oracle_actions_as_str(id_list=all_ids, context=context)
+    docs = get_oracle_actions_as_str(id_list=all_ids, context=context)
     # print(answer_relevance(query=question, answer=answer, n=10))
 
-    # cited_statements = get_cited_statements_structured_output(question=question, answer=answer)
-    # print(cited_statements)
-    # statements = get_statements(question=question, answer=answer)
+    print(faithfulness(question=question, answer=answer, docs=docs))
 
-    statements = ['The most effective bear conflict reduction strategies include deterrence techniques.', 
-'The most effective bear conflict reduction strategies include preventing access to food sources.', 
-'Translocation shows mixed results for reducing bear conflict.', 
-'Scaring or deterring bears using projectiles, noisemakers, guard dogs, or unpleasant substances has proven beneficial in modifying bear behavior.', 
-'Scaring or deterring bears has proven beneficial in reducing conflicts in human-occupied areas.', 
-'Preventing bears from accessing anthropogenic food sources like garbage, crops, and pet food is likely beneficial for conflict reduction.', 
-'Preventing access to food sources can be done through bear-proof containers or exclusion methods.', 
-'Conditioned taste aversion shows promise in creating food aversions in bears.', 
-'Conditioned taste aversion involves adding illness-inducing agents to problem foods at non-residential sites like orchards or campsites.', 
-'Enforcement measures for bear-proof garbage disposal have unknown effectiveness due to limited evidence.', 
-'Translocation of habituated bears is less recommended because it often leads to trade-offs.', 
-'Translocated bears may return to conflict sites.', 
-'Translocated bears may re-offend after relocation.']
-
-    cited_statements = get_citations_from_statements(summary=answer, statements=statements)
-    print(cited_statements)
 
 if __name__ == "__main__":
     main()
