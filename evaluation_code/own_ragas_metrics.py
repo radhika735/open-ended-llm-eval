@@ -102,9 +102,17 @@ def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", max_toke
 ### STATEMENT EXTRACTION.
 
 def get_statements(question, answer):
+    ## RAGAS statement splitting prompt:
     prompt = f"""
         Given a question and answer, create one or more statements from each sentence in the given answer. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
     """.strip()
+
+    ## Own prompt:
+    prompt = f"""
+Given a question and answer, create one or more statements from each sentence in the given answer. Each statement should be fully understandable by itself, which means it needs to be self-contained. This means there should be no pronouns in the statements. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
+    """.strip()
+
+
 
     messages=[
         {"role": "user", "content": prompt}
@@ -453,11 +461,19 @@ Generate {n} potential questions for the given answer. Output the questions in t
     }
 
 
-class CitedStatementVerdicts(BaseModel):
-    statements: list[str] = Field(description="The list of given statements in order.")#
-    citations: list[list[str]] = Field(description="The list of citations for each statement (list of lists).")#
-    verdicts: list[str] = Field(description="The list of verdicts for each statement (i.e., 'Yes' or 'No')")
-    reasonings: list[str] = Field(description="The list of reasonings behind each verdict")
+## JSON schema wrapping lists of judgements:
+# class CitedStatementVerdicts(BaseModel):
+#     statements: list[str] = Field(description="The list of given statements in order.")#
+#     citations: list[list[str]] = Field(description="The list of citations for each statement (list of lists).")#
+#     verdicts: list[str] = Field(description="The list of verdicts for each statement (i.e., 'Yes' or 'No')")
+#     reasonings: list[str] = Field(description="The list of reasonings behind each verdict")
+
+## JSON schema wrapping individual judgement:
+class CitedStatementVerdict(BaseModel):
+    statement: str = Field(description="A given statement.")
+    citations: list[str] = Field(description="The list of citations for the statement (list).")
+    reasoning: str = Field(description="The reasoning behind the verdict.")
+    verdict: str = Field(description="The verdict for the statement (i.e., 'Yes' or 'No').")
 
 def citation_correctness(question, summary, docs, statements=None):
     if statements is None:
@@ -466,12 +482,19 @@ def citation_correctness(question, summary, docs, statements=None):
     statements_joined_citations = [{"statement":obj["statement"], "citations": ", ".join(obj["citations"])} for obj in cited_statements]
     cited_statements_str = "\n".join([f"[Statement {i+1}: {obj["statement"]}\nCitations for statement {i+1}: {obj["citations"]}]" for i, obj in enumerate(statements_joined_citations)])
 
+    ## Least alterations to RAGAS faithfulness prompt:
     # prompt = f"""
     #     Consider the given context and following statements, then determine whether they are FULLY supported by the information present in the context CITED for the corresponding statement. If a statement has no citations then it is not supported by default. Provide a thorough explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the in-order list of statements, a list of the citations for each statement, a list of the statement verdicts in-order, and a list of the reasonings for the verdicts in-order as a JSON object.\nContext: {docs}\nStatements with their citations: {cited_statements_str}\nResponse:\n
     # """.strip()
+#     prompt = f"""
+# Consider the given context and following statements, then determine whether they are supported by the information present in the context CITED for the corresponding statement. ALL parts of the statement must be FULLY supported for it to be assigned a 'Yes' verdict. If a statement has no citations then it is not supported by default. Provide a thorough and rigorous explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the statements, the list of citations for each statement, reasonings and verdicts as a valid list of JSON objects.\nContext: {docs}\nStatements: {cited_statements_str}\nResponse:\n
+#     """.strip()
+
+    ## Based on own, RAGAS-inspired but modified, faithfulness prompt:
     prompt = f"""
 Consider the given context and following statements, then determine whether they are supported by the information present in the context CITED for the corresponding statement. ALL parts of the statement must be FULLY supported for it to be assigned a 'Yes' verdict. If a statement has no citations then it is not supported by default. Provide a thorough and rigorous explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the statements, the list of citations for each statement, reasonings and verdicts as a valid list of JSON objects.\nContext: {docs}\nStatements: {cited_statements_str}\nResponse:\n
     """.strip()
+    
     messages = [
         {
             "role": "user",
@@ -479,21 +502,54 @@ Consider the given context and following statements, then determine whether they
         }
     ]
 
+    ## Response format using JSON schema wrapping lists of judgements:
+    # verdicts_response_format = {
+    #     "type" : "json_schema",
+    #     "json_schema" : {
+    #         "name" : "Statements, Citations, Verdicts and Reasonings",
+    #         "strict" : True,
+    #         "schema" : CitedStatementVerdicts.model_json_schema()
+    #     }
+    # }
+
+    ## Response format using JSON schema wrapping individual judgements:
     verdicts_response_format = {
         "type" : "json_schema",
         "json_schema" : {
             "name" : "Statements, Citations, Verdicts and Reasonings",
             "strict" : True,
-            "schema" : CitedStatementVerdicts.model_json_schema()
+            "schema": {
+                "type": "array",
+                "items" : CitedStatementVerdict.model_json_schema()
+            }
         }
     }
 
-    response = call_llm(messages=messages, response_format=verdicts_response_format).choices[0].message.content
+    raw_response = call_llm(messages=messages, response_format=verdicts_response_format)
+
+    # Usage details for logging purposes:
+    usage_details = raw_response.usage
+    print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
+
+    response = raw_response.choices[0].message.content
     response = json.loads(response)
-    response_statements = response["statements"]
-    response_citations = response["citations"]
-    verdicts = [True if "yes" in v.lower() else False for v in response["verdicts"]]
-    reasonings = response["reasonings"]
+
+    ## Extracting output when using JSON schema wrapping lists of judgements:
+    # response_statements = response["statements"]
+    # response_citations = response["citations"]
+    # verdicts = [True if "yes" in v.lower() else False for v in response["verdicts"]]
+    # reasonings = response["reasonings"]
+
+    ## Extracting output when using JSON schema wrapping individual judgements:
+    response_statements = []
+    response_citations = []
+    verdicts = []
+    reasonings = []
+    for obj in response:
+        response_statements.append(obj["statement"])
+        response_citations.append(obj["citations"])
+        verdicts.append(True if "yes" in obj["verdict"].lower() else False)
+        reasonings.append(obj["reasoning"])
 
     num_supported_statements = sum(1 for v in verdicts if v)
     total_statements = len(verdicts)
@@ -611,16 +667,23 @@ def main():
     docs = get_oracle_actions_as_str(id_list=all_ids, context=context)
     # print(faithfulness(question=question, answer=answer, docs=docs))
 
-    result = faithfulness(question=question, answer=answer, docs=docs)
+    # result = citation_correctness(question=question, summary=answer, docs=docs, statements=statements)
 
-    print(f"'score':{result['score']}")
-    print(f"\n'statements':")
-    for s in result["statements"]:
+    # print(f"'score':{result['score']}")
+    # print(f"\n'statements':")
+    # for s in result["statements"]:
+    #     print(f'"{s}"')
+    # print(f"\n'citations':")
+    # for c in result["citations"]:
+    #     print(f'{c}')
+    # print(f"\n'verdicts': {result["verdicts"]}")
+    # print(f"\n'reasonings':")
+    # for r in result["reasonings"]:
+    #     print(f'"{r}"')
+
+    statements = get_statements(question=question, answer=answer)
+    for s in statements:
         print(f'"{s}"')
-    print(f"\n'verdicts': {result["verdicts"]}")
-    print(f"\n'reasonings':")
-    for r in result["reasonings"]:
-        print(f'"{r}"')
 
 
 if __name__ == "__main__":
