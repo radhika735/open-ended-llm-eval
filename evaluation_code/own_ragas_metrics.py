@@ -23,7 +23,7 @@ load_dotenv()
 
 
 
-## API CALLING.
+### API CALLING.
 
 def get_client(api="openrouter"):
     """
@@ -44,18 +44,21 @@ def get_client(api="openrouter"):
         return genai.Client()
 
 
-def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", reasoning_effort=None, tools=None, response_format=None):
+def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", max_tokens=15000, reasoning_effort=None, tools=None, response_format=None):
     if api.lower() == "openrouter":
         client = get_client(api="openrouter")
         request_params = {
             "model":model,
             "messages": messages,
+            "max_tokens": max_tokens,
             "extra_body": {
-                "require_parameters": True
+                "require_parameters": True,
+                "reasoning":{
+                    "enabled": True,
+                    "effort": reasoning_effort if reasoning_effort is not None else "high"
+                },
             }
         }
-        if reasoning_effort is not None:
-            request_params.update({"reasoning_effort": reasoning_effort})
 
         if tools is not None:
             request_params.update({"tools": tools})
@@ -96,7 +99,7 @@ def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", reasonin
 
 
 
-## STATEMENT EXTRACTION.
+### STATEMENT EXTRACTION.
 
 def get_statements(question, answer):
     prompt = f"""
@@ -315,13 +318,15 @@ Statements: {statements}
 
 
 
-## METRIC EVALUATION. Assessing metrics: faithfulness, answer relevance, citation correctness.
+### METRIC EVALUATION. Assessing metrics: faithfulness, answer relevance, citation correctness.
 
+## JSON Schema wrapping lists of judgements:
 # class StatementVerdicts(BaseModel):
 #     statements: list[str] = Field(description="The list of given statements in order.")
 #     verdicts: list[str] = Field(description="The list of verdicts for each statement (i.e., 'Yes' or 'No')")
 #     reasonings: list[str] = Field(description="The list of reasonings behind each verdict")
 
+## JSON Schema wrapping individual judgement:
 class StatementVerdict(BaseModel):
     statement: str = Field(description="A given statement.")
     reasoning: str = Field(description="The reasoning behind the verdict.")
@@ -333,9 +338,12 @@ def faithfulness(question, answer, docs, statements=None):
         statements = get_statements(question, answer)
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
 
-    # prompt = f"""
-    #     Consider the given context and following statements, then determine whether they are supported by the information present in the context. Provide a brief explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the in-order list of statements, a list of their verdicts in-order, and a list of the reasonings for the verdicts in-order as a JSON object.\nContext: {docs}\nStatements: {statements_str}\nResponse:\n
-    # """.strip()
+    ## True RAGAS prompt:
+#     prompt = f"""
+# Consider the given context and following statements, then determine whether they are supported by the information present in the context. Provide a brief explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the in-order list of statements, a list of their verdicts in-order, and a list of the reasonings for the verdicts in-order as a JSON object.\nContext: {docs}\nStatements: {statements_str}\nResponse:\n
+#     """.strip()
+
+    ## Own, RAGAS-inspired but modified prompt:
     prompt = f"""
 Consider the given context and following statements, then determine whether they are supported by the information present in the context. ALL parts of the statement must be FULLY supported for it to be assigned a 'Yes' verdict. Provide a thorough and rigorous explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the statements, reasonings and verdicts as a valid list of JSON objects.\nContext: {docs}\nStatements: {statements_str}\nResponse:\n
     """.strip()
@@ -348,6 +356,7 @@ Consider the given context and following statements, then determine whether they
         }
     ]
 
+    ## Response format using JSON Schema wrapping lists of judgements:
     # verdicts_response_format = {
     #     "type" : "json_schema",
     #     "json_schema" : {
@@ -356,6 +365,8 @@ Consider the given context and following statements, then determine whether they
     #         "schema" : StatementVerdicts.model_json_schema()
     #     }
     # }
+
+    ## Response format using JSON Schema wrapping individual judgements:
     verdicts_response_format = {
         "type" : "json_schema",
         "json_schema" : {
@@ -368,12 +379,20 @@ Consider the given context and following statements, then determine whether they
         }
     }
     raw_response = call_llm(messages=messages, response_format=verdicts_response_format)
-    print(raw_response.usage_metadata)
+
+    # Usage details for logging purposes:
+    usage_details = raw_response.usage
+    print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
+    
     response = raw_response.choices[0].message.content
     response = json.loads(response)
+
+    ## Extracting output when using JSON Schema wrapping lists of judgements:
     # response_statements = response["statements"]
     # verdicts = [True if "yes" in v.lower() else False for v in response["verdicts"]]
     # reasonings = response["reasonings"]
+
+    ## Extracting output when using JSON Schema wrapping individual judgements:
     response_statements = []
     verdicts = []
     reasonings = []
@@ -392,6 +411,7 @@ Consider the given context and following statements, then determine whether they
         "verdicts":verdicts,
         "reasonings":reasonings
     }
+
 
 ## TO DELETE AND USE THE ONE IN UTILS
 def embed(text, model_name="nomic-ai/nomic-embed-text-v1.5"):
@@ -491,7 +511,7 @@ Consider the given context and following statements, then determine whether they
 
 
 
-## ACTION DOCS PARSING AND RETRIEVAL
+### ACTION DOCS PARSING AND RETRIEVAL
 
 def get_oracle_actions(id_list, context : action_retrieval.ActionRetrievalContext):
     doc_type = context.get_doc_type()
@@ -555,6 +575,14 @@ def main():
         'Translocated bears may return to conflict sites.', 
         'Translocated bears may re-offend after relocation.'
     ]
+    # statements = [
+    #     "The most effective bear conflict reduction strategies include deterrence techniques and preventing access to food sources, while translocation shows mixed results.",
+    #     "Scaring or deterring bears using projectiles, noisemakers, guard dogs, or unpleasant substances has proven beneficial in modifying bear behavior and reducing conflicts in human-occupied areas.",
+    #     "Preventing bears from accessing anthropogenic food sources like garbage, crops, and pet food through bear-proof containers or exclusion methods is also likely beneficial for conflict reduction.",
+    #     "Conditioned taste aversion, which involves adding illness-inducing agents to problem foods at non-residential sites like orchards or campsites, shows promise in creating food aversions.",
+    #     "Enforcement measures for bear-proof garbage disposal demonstrate unknown effectiveness due to limited evidence.",
+    #     "Translocation of habituated bears is less recommended because it often leads to trade-offs - bears may return to conflict sites or re-offend after relocation."
+    # ]
 
     # question = "What are the most beneficial actions for reducing human-wildlife conflict with bears?"
     # answer = "Evidence indicates several actions can reduce bear-related conflicts. Diversionary feeding reduced nuisance behaviour by black bears in two before-and-after studies, and brown bears in Slovenia obtained 22\u201363% of annual dietary energy from provided food (2323). Scaring/deterrence had mixed outcomes: some studies found noise/pain deterrents did not prevent black bears returning to urban or human-occupied sites, while other studies found such actions deterred bears from seeking food; chasing nuisance black bears with dogs caused them to stay away longer; an electric fence prevented polar bear entry to a compound; chemical and acoustic repellents did not deter polar bears from baits in most cases (2347). Preventing access to food sources with electric shock devices stopped American black bears from accessing or damaging bird feeders (2346). Conditioned taste aversion led black bears to avoid treated foods (2384). Issuing enforcement notices requiring appropriate dumpster use did not reduce garbage accessibility to black bears (2345). Translocating problem or habituated bears often resulted in bears returning to capture locations and/or continuing nuisance, and for grizzly and black bears reduced survival compared to non-translocated bears; however, one controlled study found translocated brown bears occurred less frequently inside high potential conflict areas than non-translocated bears (2336, 2341)."
