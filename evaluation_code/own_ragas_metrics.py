@@ -112,8 +112,6 @@ def get_statements(question, answer):
 Given a question and answer, create one or more statements from each sentence in the given answer. Each statement should be fully understandable by itself, which means it needs to be self-contained. This means there should be no pronouns in the statements. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
     """.strip()
 
-
-
     messages=[
         {"role": "user", "content": prompt}
     ]
@@ -131,34 +129,6 @@ Given a question and answer, create one or more statements from each sentence in
 class CitedStatement(BaseModel):
     statement : str
     citations : list[str]
-
-# class ListOfCitedStatements(BaseModel):
-#     cited_statements_list : list[Annotated[CitedStatement, Field(description="A statement and its associated citations.")]] = Field(description="A list of cited statements extracted from the answer.")
-
-# response_schema = ListOfCitedStatements.model_json_schema(mode="serialization")
-# response_schema = json.dumps(response_schema, indent=2)
-# cited_statements_response_schema = {
-#     "type": "object",
-#     "properties": {
-#         "cited_statements": {
-#             "type": "array",
-#             "items": {
-#                 "type": "object",
-#                 "properties": {
-#                     "statement": {
-#                         "type": "string"
-#                     },
-#                     "citations": {
-#                         "type": "array",
-#                         "items": {
-#                             "type": "string"
-#                         }
-#                     }
-#                 }
-#             }
-#         }
-#     }
-# }
 
 
 def get_citations_from_statements(summary, statements):
@@ -192,144 +162,10 @@ Statements: {statements}
     cited_statements = json.loads(response_content)
     return cited_statements
 
-# def format_cited_statements(cited_statements : list[CitedStatement]):
-#     formatted = []
-#     for cs in cited_statements:
-#         formatted.append({
-#             "statement": cs["statement"],
-#             "citations": cs["citations"]
-#         })
-#     return formatted
-
-
-# format_cited_statements_function = {
-#     "type":"function",
-#     "function": {
-#         "name": "format_cited_statements",
-#         "description": "Format the list of cited statements into a valid list of JSON objects. Use this as the last step before presenting your results to the user.",
-#         "parameters": {
-#             "type": "object",
-#             "properties": {
-#                 "cited_statements": {
-#                     "type": "array",
-#                     "items": {
-#                         "type": "object",
-#                         "properties": {
-#                             "statement": {
-#                                 "type": "string"
-#                             },
-#                             "citations": {
-#                                 "type": "array",
-#                                 "items": {
-#                                     "type": "string"
-#                                 }
-#                             }
-#                         },
-#                         "required": ["statement", "citations"]
-#                     }
-#                 }
-#             },
-#             "required": ["cited_statements"],
-#             "additionalProperties": False
-#         },
-#         "strict": True
-#     }
-# }
-
-# tools = [format_cited_statements_function]
-
-# TOOL_MAPPING = {
-#     "format_cited_statements": format_cited_statements
-# }
-
-
-# def execute_tool_call(tool_call):
-#     try:
-#         name = tool_call.function.name
-#         args = json.loads(tool_call.function.arguments)
-#         logging.info(f"Executing tool: {name} with args: {args}")
-#         # Execute the tool function
-#         tool_result = TOOL_MAPPING[name](**args)
-#         tool_success = True
-#         return tool_result, tool_success
-#     except (AttributeError, KeyError, TypeError) as e:
-#         logging.error(f"Error occurred while executing tool: {e}")
-#         tool_result = "NONE - Erroneous tool call"
-#         tool_success = False
-#         return tool_result, tool_success
-
-
-# def get_cited_statements_tools(question, answer):
-#     prompt = f"""
-# Given a question and answer, analyze the complexity of each sentence in the answer. Break down each sentence into one or more fully understandable statements. For each statement, also extract the document IDs it has cited in the answer. There may be zero or more cited IDs per statement.
-# Output the statements with their citations as a list of JSON objects.
-
-# Question: {question}
-# Answer: {answer}
-#     """.strip()
-#     messages = [
-#         {
-#             "role": "user",
-#             "content": prompt
-#         }
-#     ]
-#     llm_response = call_llm(messages=messages, tools=tools)
-#     if llm_response.choices[0].message.tool_calls:
-#         logging.info("Requested tool call(s).")
-#         if len(llm_response.choices[0].message.tool_calls) == 1:
-#             tool_call = llm_response.choices[0].message.tool_calls[0]
-#             tool_result, tool_success = execute_tool_call(tool_call=tool_call)
-#             if tool_success:
-#                 evaluation = tool_result
-#             else:
-#                 evaluation = llm_response.choices[0].message.content
-#         else:
-#             logging.warning("Requested more than one tool calls.")
-#             evaluation = llm_response.choices[0].message.content
-#     else:
-#         logging.warning("Did not request a tool call")
-#         evaluation = llm_response.choices[0].message.content
-#     return evaluation
-
-
-# def get_cited_statements_structured_output(question, answer):
-# #     prompt = f"""
-# # Given a question and answer, analyze the complexity of each sentence in the answer. Break down each sentence into one or more fully understandable statements. For each statement, also extract the document IDs it has cited in the answer. There may be zero or more cited IDs per statement.
-# # Output the statements with their citations as a list of JSON objects.
-
-# # Question: {question}
-# # Answer: {answer}
-# #     """.strip()
-#     prompt = f"""
-# Given a question and answer, create one or more statements from each sentence in the given answer. Then for each statement, extract the document IDs cited in the answer for that statement. There may be zero or more cited IDs per statement. Citations at the end of a sentence correspond to all the statements extracted from that sentence.
-# Output the statements with their citations as a list of JSON objects.
-
-# Question: {question}
-# Answer: {answer}
-# Statements:
-#     """.strip()
-
-
-#     messages = [
-#         {
-#             "role": "user",
-#             "content": prompt
-#         }
-#     ]
-#     llm_response = call_llm(messages=messages, response_format=cited_statements_response_format)
-#     response_content = llm_response.choices[0].message.content
-#     cited_statements = json.loads(response_content)
-#     return cited_statements
-
 
 
 ### METRIC EVALUATION. Assessing metrics: faithfulness, answer relevance, citation correctness.
 
-## JSON Schema wrapping lists of judgements:
-# class StatementVerdicts(BaseModel):
-#     statements: list[str] = Field(description="The list of given statements in order.")
-#     verdicts: list[str] = Field(description="The list of verdicts for each statement (i.e., 'Yes' or 'No')")
-#     reasonings: list[str] = Field(description="The list of reasonings behind each verdict")
 
 ## JSON Schema wrapping individual judgement:
 class StatementVerdict(BaseModel):
@@ -337,10 +173,10 @@ class StatementVerdict(BaseModel):
     reasoning: str = Field(description="The reasoning behind the verdict.")
     verdict: str = Field(description="The verdict for the statement (i.e., 'Yes' or 'No').")
 
-
-def faithfulness(question, answer, docs, statements=None):
+## Existing RAGAS faithfulness metric:
+def faithfulness(question, summary, docs, statements=None):
     if statements is None:
-        statements = get_statements(question, answer)
+        statements = get_statements(question=question, answer=summary)
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
 
     ## True RAGAS prompt:
@@ -353,20 +189,9 @@ def faithfulness(question, answer, docs, statements=None):
 Consider the given context and following statements, then determine whether they are supported by the information present in the context. ALL parts of the statement must be FULLY supported for it to be assigned a 'Yes' verdict. Provide a thorough and rigorous explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the statements, reasonings and verdicts as a valid list of JSON objects.\nContext: {docs}\nStatements: {statements_str}\nResponse:\n
     """.strip()
 
-
     messages = [
         {"role": "user", "content": prompt}
     ]
-
-    ## Response format using JSON Schema wrapping lists of judgements:
-    # verdicts_response_format = {
-    #     "type" : "json_schema",
-    #     "json_schema" : {
-    #         "name" : "Statements, Verdicts and Reasonings",
-    #         "strict" : True,
-    #         "schema" : StatementVerdicts.model_json_schema()
-    #     }
-    # }
 
     ## Response format using JSON Schema wrapping individual judgements:
     verdicts_response_format = {
@@ -389,19 +214,15 @@ Consider the given context and following statements, then determine whether they
     response = raw_response.choices[0].message.content
     response = json.loads(response)
 
-    ## Extracting output when using JSON Schema wrapping lists of judgements:
-    # response_statements = response["statements"]
-    # verdicts = [True if "yes" in v.lower() else False for v in response["verdicts"]]
-    # reasonings = response["reasonings"]
-
     ## Extracting output when using JSON Schema wrapping individual judgements:
-    response_statements = []
-    verdicts = []
-    reasonings = []
+    judgements = []
     for obj in response:
-        response_statements.append(obj["statement"])
-        verdicts.append(True if "yes" in obj["verdict"].lower() else False)
-        reasonings.append(obj["reasoning"])
+        judgements.append({
+            "statement": obj["statement"],
+            "reasoning": obj["reasoning"],
+            "verdict": True if "yes" in obj["verdict"].lower() else False
+        })
+    verdicts = [obj["verdict"] for obj in judgements]
 
     num_supported_statements = sum(1 for v in verdicts if v)
     total_statements = len(verdicts)
@@ -409,9 +230,7 @@ Consider the given context and following statements, then determine whether they
 
     return {
         "score":score,
-        "statements":response_statements,
-        "verdicts":verdicts,
-        "reasonings":reasonings
+        "judgements":judgements
     }
 
 
@@ -422,6 +241,10 @@ def embed(text, model_name="nomic-ai/nomic-embed-text-v1.5"):
     return embeddings
 
 
+## Not using this metric for now, since it seems to unfairly penalise summaries.: 
+#   Since we are generating summaries of evidence rather than answers to the question directly, 
+#   we feel that the synthetic questions generated are by default further away from the original question than in a typical QA setting,
+#   leading to summaries being unfairly penalised in terms of relevance / completely answering the question.
 def answer_relevance(query, answer, n=10):
     prompt = f"""
 Generate {n} potential questions for the given answer. Output the questions in the following format strictly. [Question n]: ... where the n is the question number.\nanswer: {answer}\nQuestions:\n
@@ -453,13 +276,6 @@ Generate {n} potential questions for the given answer. Output the questions in t
     }
 
 
-## JSON schema wrapping lists of judgements:
-# class CitedStatementVerdicts(BaseModel):
-#     statements: list[str] = Field(description="The list of given statements in order.")#
-#     citations: list[list[str]] = Field(description="The list of citations for each statement (list of lists).")#
-#     verdicts: list[str] = Field(description="The list of verdicts for each statement (i.e., 'Yes' or 'No')")
-#     reasonings: list[str] = Field(description="The list of reasonings behind each verdict")
-
 ## JSON schema wrapping individual judgement:
 class CitedStatementVerdict(BaseModel):
     statement: str = Field(description="A given statement.")
@@ -468,6 +284,10 @@ class CitedStatementVerdict(BaseModel):
     verdict: str = Field(description="The verdict for the statement (i.e., 'Yes' or 'No').")
 
 
+## New metric: citation correctness within the summary.
+#   Judges the "accuracy" of the citations themeselves for each statement, i.e. whether the citations given for each statement actually support the statement.
+#   Statements with no citations are consequently judges as not supported by default, meaning unsupported statements are automatically penalised.
+#   A high score is indicative of most facts being cited and those cited documents actually supporting the facts.
 def citation_correctness(question, summary, docs, statements=None):
     if statements is None:
         statements = get_statements(question=question, answer=summary)
@@ -492,16 +312,6 @@ Consider the given context and following statements, then determine whether they
         {"role": "user", "content": prompt}
     ]
 
-    ## Response format using JSON schema wrapping lists of judgements:
-    # verdicts_response_format = {
-    #     "type" : "json_schema",
-    #     "json_schema" : {
-    #         "name" : "Statements, Citations, Verdicts and Reasonings",
-    #         "strict" : True,
-    #         "schema" : CitedStatementVerdicts.model_json_schema()
-    #     }
-    # }
-
     ## Response format using JSON schema wrapping individual judgements:
     verdicts_response_format = {
         "type" : "json_schema",
@@ -524,22 +334,26 @@ Consider the given context and following statements, then determine whether they
     response = raw_response.choices[0].message.content
     response = json.loads(response)
 
-    ## Extracting output when using JSON schema wrapping lists of judgements:
-    # response_statements = response["statements"]
-    # response_citations = response["citations"]
-    # verdicts = [True if "yes" in v.lower() else False for v in response["verdicts"]]
-    # reasonings = response["reasonings"]
-
     ## Extracting output when using JSON schema wrapping individual judgements:
-    response_statements = []
-    response_citations = []
-    verdicts = []
-    reasonings = []
+    # response_statements = []
+    # response_citations = []
+    # verdicts = []
+    # reasonings = []
+    # for obj in response:
+    #     response_statements.append(obj["statement"])
+    #     response_citations.append(obj["citations"])
+    #     verdicts.append(True if "yes" in obj["verdict"].lower() else False)
+    #     reasonings.append(obj["reasoning"])
+    judgements = []
     for obj in response:
-        response_statements.append(obj["statement"])
-        response_citations.append(obj["citations"])
-        verdicts.append(True if "yes" in obj["verdict"].lower() else False)
-        reasonings.append(obj["reasoning"])
+        judgements.append({
+            "statement": obj["statement"],
+            "citations": obj["citations"],
+            "reasoning": obj["reasoning"],
+            "verdict": True if "yes" in obj["verdict"].lower() else False
+        })
+    verdicts = [obj["verdict"] for obj in judgements]
+    
 
     num_supported_statements = sum(1 for v in verdicts if v)
     total_statements = len(verdicts)
@@ -547,16 +361,18 @@ Consider the given context and following statements, then determine whether they
 
     return {
         "score":score,
-        "statements":response_statements,
-        "citations":response_citations,
-        "verdicts":verdicts,
-        "reasonings":reasonings
+        "judgements":judgements
     }
 
 
-def relevance(question, answer, statements=None):
+## New metric: relevance of the summary to the question.
+#   Developed this metric due to not using answer_relevance metric.
+#   This and a completeness metric would be a substitute to answer_relevance which takes into account both relevance of answer and completeness of it.
+#   The metric works by splitting the summary into statements, and giving a verdict on each one as to whether it is relevant to answering the question (similar to RAGAS faithfulness procedure).
+#   A high score is indicative of many statements in the summary being relevant to answering the question.
+def relevance(question, summary, statements=None):
     if statements is None:
-        statements = get_statements(question, answer)
+        statements = get_statements(question=question, answer=summary)
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
     prompt = f"""
 Given a question and a list of statements, determine whether each statement is relevant to answering the question. Provide a thorough and rigorous explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the statements, the list of citations for each statement, reasonings and verdicts as a valid list of JSON objects.\nQuestion: {question}\nStatements: {statements_str}\nResponse:\n
@@ -586,19 +402,23 @@ Given a question and a list of statements, determine whether each statement is r
     response = raw_response.choices[0].message.content
     response = json.loads(response)
 
-    ## Extracting output when using JSON Schema wrapping lists of judgements:
-    # response_statements = response["statements"]
-    # verdicts = [True if "yes" in v.lower() else False for v in response["verdicts"]]
-    # reasonings = response["reasonings"]
-
     ## Extracting output when using JSON Schema wrapping individual judgements:
-    response_statements = []
-    verdicts = []
-    reasonings = []
+    # response_statements = []
+    # verdicts = []
+    # reasonings = []
+    # for obj in response:
+    #     response_statements.append(obj["statement"])
+    #     verdicts.append(True if "yes" in obj["verdict"].lower() else False)
+    #     reasonings.append(obj["reasoning"])
+    judgements = []
     for obj in response:
-        response_statements.append(obj["statement"])
-        verdicts.append(True if "yes" in obj["verdict"].lower() else False)
-        reasonings.append(obj["reasoning"])
+        judgements.append({
+            "statement": obj["statement"],
+            "citations": obj["citations"],
+            "reasoning": obj["reasoning"],
+            "verdict": True if "yes" in obj["verdict"].lower() else False
+        })
+    verdicts = [obj["verdict"] for obj in judgements]
 
     num_relevant_statements = sum(1 for v in verdicts if v)
     total_statements = len(verdicts)
@@ -606,12 +426,16 @@ Given a question and a list of statements, determine whether each statement is r
 
     return {
         "score":score,
-        "statements":response_statements,
-        "verdicts":verdicts,
-        "reasonings":reasonings
+        "judgements":judgements
     }
 
 
+## Here until 'ACTION DOC PARSING' implements a completeness metric, implementation unfinished.
+#   This metric works by splitting up the ground truth context for the question (i.e. the key messages of the action documents) into sentences, 
+#       and giving a verdict on each one as to whether it is relevant to answering the question (similar to RAGAS faithfulness procedure).
+#   The sentences in the context given a positive verdict are considered the 'relevant sentences' required for completeness of the summary.
+#   Then the completeness score is the proportion of the relevant sentences that are used / mentioned / covered in the summary.
+#   The ground truth context is taken as the all_relevant_action_ids field produced during question generation (not necessarily comprehensive but ).
 
 # class SentenceVerdict(BaseModel):
 #     sentence: str = Field(description="A given sentence from the context.")
@@ -679,7 +503,7 @@ def execute_completeness_tool_call(tool_call):
         return tool_result, tool_success
 
 
-def completeness(question, answer, docs):
+def completeness(question, summary, docs):
     doc = docs[0]
     context = doc["key_messages"]
 
@@ -728,22 +552,29 @@ Response:\n
     else:
         response = raw_response.choices[0].message.content
 
-    response_sentences = []
-    verdicts = []
-    reasonings = []
+    # response_sentences = []
+    # verdicts = []
+    # reasonings = []
+    # for obj in response:
+    #     response_sentences.append(obj["sentence"])
+    #     verdicts.append(True if "yes" in obj["verdict"].lower() else False)
+    #     reasonings.append(obj["reasoning"])
+    judgements = []
     for obj in response:
-        response_sentences.append(obj["sentence"])
-        verdicts.append(True if "yes" in obj["verdict"].lower() else False)
-        reasonings.append(obj["reasoning"])
+        judgements.append({
+            "sentence": obj["sentence"],
+            "reasoning": obj["reasoning"],
+            "verdict": True if "yes" in obj["verdict"].lower() else False
+        })
+    verdicts = [obj["verdict"] for obj in judgements]
+
     num_relevant_sentences = sum(1 for v in verdicts if v)
     total_sentences = len(verdicts)
     score = (num_relevant_sentences / total_sentences) if total_sentences > 0 else 0
 
     return {
         "score": score,
-        "statements": response_sentences,
-        "verdicts": verdicts,
-        "reasonings": reasonings
+        "judgements": judgements
     }
 
 
@@ -779,6 +610,48 @@ def get_oracle_actions_as_str(id_list, context : action_retrieval.ActionRetrieva
         action_strings.append(action_str)
     full_str = "\n\n".join(action_strings)
     return full_str
+
+
+
+### FULL METRIC EVALUATION PIPELINE
+
+
+def evaluate_metric(metric_name, question, summary, action_ids_in_summary, oracle_ids, context : action_retrieval.ActionRetrievalContext):
+    # Getting the oracle actions
+    oracle_actions = get_oracle_actions(id_list=oracle_ids, context=context)
+    oracle_actions_str = "\n\n".join([action_retrieval.get_parsed_action_as_str(action=action) for action in oracle_actions])
+
+    # Getting the actions cited in the summary
+    cited_actions = get_oracle_actions(id_list=action_ids_in_summary, context=context)
+    cited_actions_str = "\n\n".join([action_retrieval.get_parsed_action_as_str(action=action) for action in cited_actions])
+
+    all_docs = oracle_actions + cited_actions
+    all_docs_str = oracle_actions_str + "\n\n" + cited_actions_str
+
+    summary_statements = get_statements(question=question, answer=summary)
+
+    if metric_name == "faithfulness":
+        result = faithfulness(question=question, summary=summary, docs=all_docs_str, statements=summary_statements)
+    elif metric_name == "citation_correctness":
+        result = citation_correctness(question=question, summary=summary, docs=all_docs_str, statements=summary_statements)
+    elif metric_name == "relevance":
+        result = relevance(question=question, summary=summary, statements=summary_statements)
+    else:
+        metric_name = None
+        result = None
+    
+    full_result = {
+        "metric": metric_name,
+        "qu_summary": {
+            "question": question,
+            "all_relevant_action_ids": oracle_ids,
+            "summary": summary,
+            "action_ids_in_summary": action_ids_in_summary,
+        },
+        "evaluation": result
+    }
+
+    return full_result
 
 
 
@@ -854,9 +727,9 @@ def main():
 
     docs_str = get_oracle_actions_as_str(id_list=all_ids, context=context)
     docs = get_oracle_actions(id_list=all_ids, context=context)
-    # print(faithfulness(question=question, answer=answer, docs=docs_str))
+    # print(faithfulness(question=question, summary=answer, docs=docs_str))
 
-    result = completeness(question=question, answer=answer, docs=docs)
+    result = completeness(question=question, summary=answer, docs=docs)
 
     print(f"'score':{result['score']}")
     # print(f"\n'question': {question}")
