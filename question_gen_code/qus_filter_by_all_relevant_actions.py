@@ -7,7 +7,7 @@ import logging
 from pydantic import BaseModel
 import os
 import time
-from question_gen_code.question_gen_multi_action import get_synopsis_data
+from question_gen_multi_action import get_synopsis_data
 
 load_dotenv()
 
@@ -51,15 +51,30 @@ def get_llm_relevant_actions(actions_data, query_list, synopsis, context : Filte
     prompt = f"""{actions_data}\n\n\n
     Above is a document containing conservation actions, their effectiveness and key messages relating to them. This has been gathered by hand and forms part of the Conservation Evidence living evidence database. Each action is prefixed with a numerical id.
     You are given a list of queries, each of which are answerable by using multiple actions in the document above. Your task is to return a list for each query, with each list containing the ids of ALL the actions that are relevant to that query. 
+    You MUST find ALL the relevant actions for each query.
     Format your response as a list of JSON objects, with each object containing the query and the corresponding list of relevant action ids you have identified.
 
     Here are the queries: {query_list}
     """
     try:
         client = genai.Client()
+        logging.info("Making API call.")
         model_name = "gemini-2.5-pro"
-        input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
 
+        input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
+        if input_tokens > 100000: # synopsis size (+) prompt) may exceed input token limit for request. Do not make api request.
+            logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question filtering for this synopsis.")
+            success = False
+            fatal_error = False
+            return success, fatal_error, []
+        
+        if context.get_current_calls() >= context.get_max_calls():
+            logging.info("User-set MAX CALLS exceeded. Halting question filtering.")
+            success = False
+            fatal_error = True
+            return success, fatal_error, []
+
+        context.inc_current_calls()
         response = client.models.generate_content(
             model=model_name,
             contents=prompt,
@@ -81,71 +96,60 @@ def get_llm_relevant_actions(actions_data, query_list, synopsis, context : Filte
         rate_limited = False
         return success, rate_limited, []
     
-    except exceptions.ResourceExhausted as e:
-        logging.error(f"Rate limit exceeded: {str(e)}.")
-        success = False
-        rate_limited = True
-        return success, rate_limited, []
-    
-    except exceptions.InternalServerError as e:
-        if context.get_current_calls() < context.get_max_calls():
-            logging.error(f"Server-side error, retrying request in 20 secs: {str(e)}.")
-            time.sleep(20)
-            context.inc_current_calls()
-            return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
-        else:
-            logging.error(f"Server side error. User-set MAX_CALLS reached so not retrying request. Error: {str(e)}")
-            success = False
-            rate_limited = False
-            return success, rate_limited, []
+    except TypeError as e:
+        logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 60 secs.")
+        time.sleep(60)
+        return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+
 
     except errors.ServerError as e:
-        if context.get_current_calls() < context.get_max_calls():
-            logging.error(f"Server side error, retrying request in 20 secs: {str(e)}")
-            time.sleep(20)
-            context.inc_current_calls()
-            return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
-        else:
-            logging.error(f"Server side error. User-set MAX_CALLS reached so not retrying request. Error: {str(e)}")
-            success = False
-            rate_limited = False
-            return success, rate_limited, []
+        logging.error(f"Server side error, retrying request in 60 secs: {str(e)}")
+        time.sleep(60)
+        return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+
     
     except errors.ClientError as e:
         logging.error(f"Client side error: {str(e)}")
         success = False
         
         if e.code == 429: # resource exhausted error (rate limit exceeded)
-            rate_limited = True            
-            if input_tokens >= 100000: # synopsis size itself may have exceeded input token size limit for free tier gemini (125000 input tokens / min), can't generate questions
-                logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question generation for this synopsis.")
-                return success, rate_limited, []
-            else: # request was made too close to previous request and got rate limited, if max num of calls not exceeded, retry request after limit resets
-                if context.get_current_calls() < context.get_max_calls():
-                    logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
-                    time.sleep(120)
-                    context.inc_current_calls()
-                    return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
-                else:
-                    logging.error(f"Rate limit temporarily exceeded (only {input_tokens} input tokens). User-set MAX_CALLS reached so not retrying request.")
-                    success = False
-                    rate_limited = True
-                    return success, rate_limited, []
+            error_dict = e.details
+            error_id = error_dict["error"]["details"][0]["violations"][0]["quotaId"]
+
+            if error_id == "GenerateRequestsPerDayPerProjectPerModel-FreeTier":
+                logging.error(f"Exceeded free tier quota of 50 requests per day. Cannot continue question filtering for any synopsis.")
+                fatal_error = True
+                return success, fatal_error, []
+
+            elif error_id == "GenerateContentInputTokensPerModelPerMinute-FreeTier":
+                if input_tokens >= 100000: # synopsis size itself may have exceeded input token size limit for free tier gemini (125000 input tokens / min), can't filter questions
+                    # should not reach this branch - have added a check for this before making the API call.
+                    logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question filtering for this synopsis.")
+                    fatal_error = False
+                    return success, fatal_error, []
+                else: # request was made too close to previous request and got rate limited, retry request after limit resets
+                    if context.get_current_calls() < context.get_max_calls():
+                        logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
+                        time.sleep(120)
+                        return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+
+            else:
+                logging.error(f"Unexpected resource exhaustion error. Error ID: {error_id}")
+                fatal_error = True
+                return success, fatal_error, []
+        
+        elif e.code == 403: # permission denied
+            error_reason = e.details["error"]["details"][0]["reason"]
+            if error_reason == "SERVICE_DISABLED":
+                logging.error("Need to enable Generative Language API service for this Google Cloud project. Cannot continue question filtering.")
+                fatal_error = True
+                return success, fatal_error, []
+            
         else:
-            rate_limited = False
-            return success, rate_limited, []
+            fatal_error = False
+            return success, fatal_error, []
     
-    except TypeError as e:
-        if context.get_current_calls() < context.get_max_calls():
-            logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 30 secs.")
-            time.sleep(30)
-            context.inc_current_calls()
-            return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
-        else:
-            logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. User-set MAX_CALLS reached so not retrying request.")
-            success = False
-            rate_limited = False
-            return success, rate_limited, []
+    
 
 
 def get_qus_from_file(qus_file):
@@ -205,8 +209,10 @@ def get_unique_batches(qu_dicts, batch_size=10):
     # Returns a list of batches of qu_dicts. Each batch is at most batch_size in length. All elements of qu_dicts exist in a batch.
     ###
     unique_batches = []
+
     # get_n_unique_qus implementation does not modify the qu_dicts argument,
     # but if in future this changes, need to take a deep copy of unprocessed_dicts here before passing it as an argument to get_n_unique_dicts.
+    unprocessed_dicts = qu_dicts
     while unprocessed_dicts:
         new_batch, unprocessed_dicts = get_n_unique_qus(qu_dicts=unprocessed_dicts, n=batch_size)
         unique_batches.append(new_batch)
@@ -227,9 +233,9 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
         logging.info(f"No unprocessed questions found for synopsis {synopsis}, skipping processing this synopsis.")
         return
     all_batches = get_unique_batches(qu_dicts=qus_full_details_list, batch_size=10)
-    # here we can assert that all the questions in each batch are unique.
+    # here we can assert that all the queries in each batch are unique.
 
-    action_retrieval_success, actions_data = get_synopsis_data(synopsis=synopsis, use_filtered_synopsis=False, doc_type=doc_type)
+    action_retrieval_success, actions_data = get_synopsis_data(synopsis=synopsis, doc_type=doc_type)
     if not action_retrieval_success:
         logging.warning(f"Could not retrieve action content for synopsis {synopsis}, skipping process this synopsis.")
         return
@@ -239,15 +245,14 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
     failed_qus = []
 
     for batch_num, qu_dicts_batch in enumerate(all_batches):
-        
+        # Indexing dicts by query - i.e. we require the queries in a batch to be unique.
         queries_batch = [qu_dict["question"] for qu_dict in qu_dicts_batch]
         qu_dicts_batch_query_indexed = {qu_dict["question"]: qu_dict for qu_dict in qu_dicts_batch}
         stored_ids_batch_query_indexed = {qus_full_details["question"]: qus_full_details["all_relevant_action_ids"] for qus_full_details in qu_dicts_batch}
 
         if context.get_current_calls() < context.get_max_calls():
             logging.info("Making API call for question batch.")
-            context.inc_current_calls()
-            api_call_success, rate_limited, gen_responses_batch = get_llm_relevant_actions(actions_data=actions_data, query_list=queries_batch, synopsis=synopsis, context=context, doc_type=doc_type)
+            api_call_success, fatal_api_call_error, gen_responses_batch = get_llm_relevant_actions(actions_data=actions_data, query_list=queries_batch, synopsis=synopsis, context=context, doc_type=doc_type)
         else:
             logging.info(f"User-set MAX_CALLS limit reached, skipping filtering remaining questions in synopsis {synopsis}.")
             for i in range(batch_num, len(all_batches)):
@@ -259,22 +264,21 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
                 query = response["query"]
                 stored_ids_for_query = stored_ids_batch_query_indexed.get(query, [])
                 gen_ids_for_query = response["relevant_action_ids"]
+                current_qu_dict = qu_dicts_batch_query_indexed[query]
+                current_qu_dict.update({"regenerated_ids":gen_ids_for_query})
                 
-                if stored_ids_for_query == gen_ids_for_query:
-                    passed_qus.append(qu_dicts_batch_query_indexed[query])
+                if set(gen_ids_for_query) <= set(stored_ids_for_query):
+                    passed_qus.append(current_qu_dict)
                 else:
-                    failed_qus.append(qu_dicts_batch_query_indexed[query])
+                    failed_qus.append(current_qu_dict)
         else:
             logging.info(f"API call failed, skipping remaining questions for synopsis. {synopsis}")
-            for i in range(batch_num, len(all_batches)+1):
+            for i in range(batch_num, len(all_batches)):
                 untested_qus.extend(all_batches[i])
             break
 
-    untested_1 = len(qus_full_details_list) - len(passed_qus) - len(failed_qus)
-    untested_2 = len(untested_qus)
-    if untested_1 != untested_2:
-        logging.warning("Untested questions count does not match with number of questions actually not processed.")
-    logging.info(f"Total {len(qus_full_details_list)} questions for synopsis {synopsis}: {len(passed_qus)} passed, {len(failed_qus)} failed, {untested_2} untested.")
+    untested = len(untested_qus)
+    logging.info(f"Total {len(qus_full_details_list)} questions for synopsis {synopsis}: {len(passed_qus)} passed, {len(failed_qus)} failed, {untested} untested.")
 
     pass_dir = os.path.join(base_dir, "passed")
     fail_dir = os.path.join(base_dir, "failed")
@@ -299,13 +303,12 @@ def process_all_synopses(context : FilterContext):
         synopses.append(entry.name)
     
     for i in range(len(synopses)):
-        synopsis = synopses[(i+16) % len(synopses)]
+        synopsis = synopses[(i+0) % len(synopses)]
         if context.get_current_synopses() < context.get_max_synopses():
             logging.info(f"Processing synopsis: {synopsis}")
             context.inc_current_synopses()
             if context.get_current_calls() < context.get_max_calls():
                 process_qus_in_synopsis(synopsis=synopsis, context=context)
-                context.inc_current_calls()
             else:
                 logging.info(f"User-set MAX_CALLS limit reached, skipping processing remaining synopses.")
                 break
@@ -323,8 +326,8 @@ def main():
     logging.basicConfig(filename="logfiles/qus_filter_by_all_relevant_actions.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     QU_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable"
-    MAX_CALLS = 1
-    MAX_SYNOPSES = 1
+    MAX_CALLS = 20
+    MAX_SYNOPSES = 24
 
     context = FilterContext(qu_source_dir=QU_SOURCE_DIR, max_calls=MAX_CALLS, max_synopses=MAX_SYNOPSES)
 

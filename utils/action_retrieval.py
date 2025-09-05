@@ -231,8 +231,8 @@ def get_dense_embeddings(all_docs, context : ActionRetrievalContext, load_from_c
     if load_from_cache and os.path.exists(np_cache_file):
         return np.load(np_cache_file)
     else:
-        import create_dense_embeddings
-        embeddings = create_dense_embeddings.get_embeddings(docs=all_docs, save_to_cache=save_to_cache, cache_file=np_cache_file) # will take half an hour to run
+        import utils.create_dense_embeddings_actions as create_dense_embeddings_actions
+        embeddings = create_dense_embeddings_actions.get_embeddings(docs=all_docs, save_to_cache=save_to_cache, cache_file=np_cache_file) # will take half an hour to run
         return embeddings
 
 

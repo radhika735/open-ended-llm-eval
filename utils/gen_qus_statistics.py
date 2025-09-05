@@ -3,6 +3,11 @@ from collections import defaultdict
 import json
 import logging
 import os
+from sklearn.cluster import KMeans
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+
+from utils.create_dense_embeddings_general import get_embeddings
 
 
 def get_qus_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
@@ -18,6 +23,65 @@ def get_qus_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
     except json.JSONDecodeError:
         logging.error(f"Error decoding JSON from {qus_filepath}.")
         return []
+
+
+def get_n_representative_qus(questions, qu_embeddings=None, n=10, embedding_model_name="nomic-ai/nomic-embed-text-v1.5"):
+    # Can either take either precomputed embeddings for the questions or not - if not, the embeddings are generated from the question using the model embedding_model_name. 
+    if len(questions) <= n:
+        return questions
+    else:
+        if (qu_embeddings is None) or (len(qu_embeddings) != len(questions)):
+            all_embeddings = get_embeddings(text=questions, model_name=embedding_model_name)
+        else:
+            all_embeddings = qu_embeddings
+    kmeans = KMeans(n_clusters=n, random_state=42, n_init="auto")
+    labels = kmeans.fit_predict(all_embeddings)
+    representatives = []
+    for i in range(n):
+        cluster_indices = np.where(labels == i)[0]
+        cluster_embeddings = all_embeddings[cluster_indices]
+        centroid = kmeans.cluster_centers_[i]
+        # Find the closest real question to the centroid.
+        distances = np.linalg.norm(cluster_embeddings - centroid, axis=1)
+        closest_index = cluster_indices[np.argmin(distances)]
+        representatives.append(closest_index)
+    top_qus = [questions[i] for i in representatives]
+    return top_qus
+    
+
+def get_qu_distances_from_species(qus_list, species, qu_embeddings=None, species_embedding=None, embedding_model_name="nomic-ai/nomic-embed-text-v1.5"):
+    # Can either take precomputed embeddings for the questions/species or not - if not, the embeddings are generated from the questions/species using the model embedding_model_name. 
+    if (not qus_list) or (not species):
+        return []
+    else:
+        if qu_embeddings is None:
+            qu_embeddings = get_embeddings(text=qus_list, model_name=embedding_model_name)
+        if species_embedding is None:
+            species_embedding = get_embeddings(text=species, model_name=embedding_model_name)
+            
+    distances = []
+    for e in qu_embeddings:
+        distance = cosine_similarity(species_embedding.reshape(1,-1), e.reshape(1,-1))
+        distances.append(distance)
+    return distances
+
+
+def get_n_representative_qus_for_synopsis(qus_list, synopsis, n=10, embedding_model_name="nomic-ai/nomic-embed-text-v1.5"):
+    synopsis_words = synopsis.split()
+    generic_words = ["conservation", "control", "management", "of", "sustainable"]
+    species_words = [w for w in synopsis_words if w.lower() not in generic_words]
+    species = " ".join(species_words)
+
+    qu_embeddings = get_embeddings(text=qus_list, model_name=embedding_model_name)
+    distances = get_qu_distances_from_species(qus_list=qus_list, qu_embeddings=None, species=species, embedding_model_name=embedding_model_name)
+    relevant_qus = []
+    relevant_qu_embeddings = []
+    for q,e,d in zip(qus_list, qu_embeddings, distances):
+        if d >= 0.5:
+            relevant_qus.append(q)
+            relevant_qu_embeddings.append(e)
+    top_qus = get_n_representative_qus(questions=relevant_qus, qu_embeddings=None, n=n, embedding_model_name=embedding_model_name)
+    return top_qus
 
 
 def get_id_dist_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
@@ -106,8 +170,19 @@ def main():
     # id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
     # print(id_dist)
     qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"
-    print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
+    # print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
+    synopsis = "Bat Conservation"
+    synopsis_qus = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type="bg_km")
+    synopsis_queries = [qu_dict["question"] for qu_dict in synopsis_qus]
+    # top_qus = get_top_n_common_qus(questions=synopsis_queries, n=15)
 
+    # distances = get_qu_distances_from_species(qus_list=synopsis_queries, species="Bat")
+    # for q,d in zip(synopsis_queries, distances):
+    #     print(q,d)
+
+    top_qus = get_n_representative_qus_for_synopsis(qus_list=synopsis_queries, synopsis=synopsis)
+    for q in top_qus:
+        print(f"{q}")
 
 if __name__=="__main__":
     main()
