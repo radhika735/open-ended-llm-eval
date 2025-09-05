@@ -73,14 +73,17 @@ def get_n_representative_qus_for_synopsis(qus_list, synopsis, n=10, embedding_mo
     species = " ".join(species_words)
 
     qu_embeddings = get_embeddings(text=qus_list, model_name=embedding_model_name)
-    distances = get_qu_distances_from_species(qus_list=qus_list, qu_embeddings=None, species=species, embedding_model_name=embedding_model_name)
+    distances = get_qu_distances_from_species(qus_list=qus_list, qu_embeddings=qu_embeddings, species=species, embedding_model_name=embedding_model_name)
     relevant_qus = []
     relevant_qu_embeddings = []
     for q,e,d in zip(qus_list, qu_embeddings, distances):
         if d >= 0.5:
             relevant_qus.append(q)
             relevant_qu_embeddings.append(e)
-    top_qus = get_n_representative_qus(questions=relevant_qus, qu_embeddings=None, n=n, embedding_model_name=embedding_model_name)
+        else:
+            print("Irrelevant question:",q)
+    relevant_qu_embeddings = np.array(relevant_qu_embeddings)
+    top_qus = get_n_representative_qus(questions=relevant_qus, qu_embeddings=relevant_qu_embeddings, n=n, embedding_model_name=embedding_model_name)
     return top_qus
 
 
