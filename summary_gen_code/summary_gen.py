@@ -7,13 +7,16 @@ from openai import OpenAI
 from dotenv import load_dotenv
 # from pydantic import BaseModel, Field
 # from typing import Annotated
-from utils.action_retrieval import ActionRetrievalContext, get_all_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
+from utils.action_retrieval import ActionRetrievalContext, get_parsed_action_by_id, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 
 
 load_dotenv()
 
 
 ACTION_RETRIEVAL_CONTEXT = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
+RETRIEVAL_TYPE = "sparse" # other options: "dense", "hybrid".
+if RETRIEVAL_TYPE == "hybrid":
+    FUSION_TYPE = "cross-encoder" # other option: "reciprocal rank fusion"
 
 
 
@@ -40,8 +43,20 @@ def search_actions(query_string, k=3, offset=0):
     """
     Search for the top k most relevant action documents based on a query string.
     """
-    return sparse_retrieve_docs(query_string=query_string, context=ACTION_RETRIEVAL_CONTEXT, k=k, offset=offset)
-
+    if RETRIEVAL_TYPE == "sparse":
+        return sparse_retrieve_docs(query_string=query_string, context=ACTION_RETRIEVAL_CONTEXT, k=k, offset=offset)
+    elif RETRIEVAL_TYPE == "dense":
+        return dense_retrieve_docs(query_string=query_string, context=ACTION_RETRIEVAL_CONTEXT, k=k, offset=offset)
+    elif RETRIEVAL_TYPE == "hybrid":
+        if FUSION_TYPE not in ["cross-encoder", "reciprocal rank fusion"]:
+            logging.warning("Invalid FUSION_TYPE set for hybrid retrieval of action documents. Must be either 'cross-encoder' or 'reciprocal rank fusion'. Defaulting to using cross-encoder.")
+            fusion_type = "cross-encoder"
+        else:
+            fusion_type = FUSION_TYPE
+        return hybrid_retrieve_docs(query_string=query_string, context=ACTION_RETRIEVAL_CONTEXT, fusion_type=fusion_type, k=k, offset=offset)
+    else:
+        logging.warning("Invalid RETRIEVAL_TYPE set for retrieving action documents by similarity to query string. Must be either 'sparse', 'dense' or 'hybrid'. Defaulting to sparse retrieval.")
+        return sparse_retrieve_docs(query_string=query_string, context=ACTION_RETRIEVAL_CONTEXT, k=k, offset=offset)
 
 
 def get_action_details(action_id):
@@ -54,18 +69,29 @@ def get_action_details(action_id):
     Returns:
         dict: Full action details or None if not found
     """
-    parsed_actions = get_all_parsed_actions(context=ACTION_RETRIEVAL_CONTEXT)
+    # parsed_actions = get_all_parsed_actions(context=ACTION_RETRIEVAL_CONTEXT)
     
-    # Find the action with matching ID
-    for action in parsed_actions:
-        if action["action_id"] == action_id:
-            logging.debug(f"Found action details for ID: {action_id}")
-            return action
-    logging.debug(f"Action ID {action_id} not found")
-    return {
-        "error": f"Action with ID '{action_id}' not found",
-        "available_ids": [action["action_id"] for action in parsed_actions[:10]]  # Show first 10 as examples
-    }
+    # # Find the action with matching ID
+    # for action in parsed_actions:
+    #     if action["action_id"] == action_id:
+    #         logging.debug(f"Found action details for ID: {action_id}")
+    #         return action
+    # logging.debug(f"Action ID {action_id} not found")
+    # return {
+    #     "error": f"Action with ID '{action_id}' not found",
+    #     "available_ids": [action["action_id"] for action in parsed_actions[:10]]  # Show first 10 as examples
+    # }
+    parsed_action = get_parsed_action_by_id(id=action_id, context=ACTION_RETRIEVAL_CONTEXT)
+    if parsed_action is not None:
+        logging.debug(f"Found action details for ID: {action_id}")
+        return parsed_action
+    else:
+        logging.debug(f"Action ID {action_id} not found")
+        example_ids = ["1000", "1001", "1002", "1003", "1005", "1006", "1007", "1008", "1009", "100"]
+        return {
+            "error": f"Action with ID '{action_id}' not found",
+            "available_ids": example_ids # Show some (ten) action ids as examples.
+        }
 
 
 
@@ -377,38 +403,6 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
 
 
 
-def get_questions_from_file(filename):
-    try:
-        with open(filename, "r", encoding="utf-8") as file:
-            qu_dicts = json.load(file)
-            success = True
-            logging.info(f"Loaded questions from {filename}")  
-    except json.JSONDecodeError as e:
-        qu_dicts = []
-        success = False
-        logging.warning(f"Failed to load questions from {filename}.")
-    except FileNotFoundError:
-        qu_dicts = []
-        success = False
-        logging.warning(f"Questions file {filename} not found.")
-
-    questions = [qu["question"] for qu in qu_dicts]
-
-    return success, questions
-
-
-
-def get_questions_from_directory(directory):
-    all_questions = []
-    for filename in os.listdir(directory):
-        if filename.endswith(".json"):
-            success, questions = get_questions_from_file(os.path.join(directory, filename))
-            if success:
-                all_questions.extend(questions)
-    return all_questions
-
-
-
 def get_prev_summaries(filename):
     if os.path.exists(filename):
         try:
@@ -437,7 +431,7 @@ def assemble_llm_response_and_tools(response : dict, tool_use_track):
     # response is a dict with the properties 
     if isinstance(response, dict):
         assembled_response.update(response)
-        assembled_response["tool_calls"] = tool_use_track
+        assembled_response["tool_call_details"] = tool_use_track
         return assembled_response
     else:
         logging.warning("LLM response not formatted, unable to assemble response")
@@ -490,7 +484,7 @@ def run_models(query, model_provider_list, summary_out_dir):
     for model, provider in model_provider_list:
         cleaned_model_name = parse_model_name(model)
         cleaned_provider_name = parse_provider_name(provider)
-        filename = f"summaries_{cleaned_provider_name}_{cleaned_model_name}.json"
+        filename = f"summaries_{RETRIEVAL_TYPE}_{cleaned_provider_name}_{cleaned_model_name}.json"
         summary_out_file = os.path.join(summary_out_dir, filename)
         response, tool_calls = run_agentic_loop(user_query=query, model=model, provider=provider)
         write_new_summaries(summary_list=[assemble_llm_response_and_tools(response, tool_calls)], filename=summary_out_file)
@@ -501,6 +495,38 @@ def run_queries_on_models(query_list, model_provider_list, summary_out_dir):
     for query in query_list:
         run_models(query=query, model_provider_list=model_provider_list, summary_out_dir=summary_out_dir)
 
+
+
+def get_questions_from_file(filename):
+    try:
+        with open(filename, "r", encoding="utf-8") as file:
+            qu_dicts = json.load(file)
+            success = True
+            logging.info(f"Loaded questions from {filename}")  
+    except json.JSONDecodeError as e:
+        qu_dicts = []
+        success = False
+        logging.warning(f"Failed to load questions from {filename}.")
+    except FileNotFoundError:
+        qu_dicts = []
+        success = False
+        logging.warning(f"Questions file {filename} not found.")
+
+    questions = [qu["question"] for qu in qu_dicts]
+
+    return success, questions
+
+
+
+def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list, summary_out_base_dir):
+    # questions = get_questions_from_directory(directory=qu_dir)
+    for filename in os.listdir(unused_qus_dir):
+        if filename.endswith(".json"):
+            success, questions = get_questions_from_file(os.path.join(unused_qus_dir, filename))
+            if success:
+                summary_out_sub_dir = os.path.splitext(filename)[0]
+                summary_out_dir = os.path.join(summary_out_base_dir, summary_out_sub_dir)
+                run_queries_on_models(query_list=questions, model_provider_list=model_provider_list, summary_out_dir=summary_out_dir)
 
 
 def main():
@@ -527,39 +553,51 @@ def main():
         # "What are the most effective ways to increase soil organic carbon on loamy soils?"
     ]
 
-    model_provider_list = [
-        ("google/gemini-2.5-flash", None), # CHEAPISH
-        ("moonshotai/kimi-k2", "fireworks/fp8"), # CHEAPISH
-        ("qwen/qwen3-235b-a22b-thinking-2507", "together"), # CHEAP
+    # model_provider_list = [
+    #     ("google/gemini-2.5-flash", None), # CHEAPISH
+    #     ("moonshotai/kimi-k2", "fireworks/fp8"), # CHEAPISH
+    #     ("qwen/qwen3-235b-a22b-thinking-2507", "together"), # CHEAP
         
-        ("anthropic/claude-sonnet-4", None), # HIGH PRICE
+    #     ("anthropic/claude-sonnet-4", None), # HIGH PRICE
 
-        #("anthropic/claude-opus-4", None), # V. EXPENSIVE, AVOID!!
-        #("x-ai/grok-4", None), # HIGH PRICE (AVOID?)
-        ("openai/gpt-4.1", None), # MID PRICE
-        ("google/gemini-2.5-pro", None), # MID PRICE
-        ("deepseek/deepseek-r1-0528", "novita/fp8"), # CHEAP
-        #("mistralai/magistral-medium-2506", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
-        #("mistralai/magistral-medium-2506:thinking", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
-        ("anthropic/claude-3.5-sonnet", None), # HIGH PRICE
-        #("qwen/qwen-2.5-72b-instruct", "novita"), # DOESN'T RLY WORK - ARGS FOR TOOLS CALLS MALFORMED
+    #     #("anthropic/claude-opus-4", None), # V. EXPENSIVE, AVOID!!
+    #     #("x-ai/grok-4", None), # HIGH PRICE (AVOID?)
+    #     ("openai/gpt-4.1", None), # MID PRICE
+    #     ("google/gemini-2.5-pro", None), # MID PRICE
+    #     ("deepseek/deepseek-r1-0528", "novita/fp8"), # CHEAP
+    #     #("mistralai/magistral-medium-2506", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
+    #     #("mistralai/magistral-medium-2506:thinking", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
+    #     ("anthropic/claude-3.5-sonnet", None), # HIGH PRICE
+    #     #("qwen/qwen-2.5-72b-instruct", "novita"), # DOESN'T RLY WORK - ARGS FOR TOOLS CALLS MALFORMED
 
-        ("openai/gpt-5", None) # MID PRICE
+    #     ("openai/gpt-5", None) # MID PRICE
 
-    ]
+    # ]
     # could also test gemini-2.5-flash-lite
 
-    ## CREATING SUMMARIES FOR MINI LLM JUDGE EVAL QUESTIONS
-    logging.info("STARTING generation of summaries to questions from mini test of human agreement with llm judge.")
-    #qu_retrieval_success, test_questions = get_questions_from_file("evaluation_data/mini_testing_human_agreement/test_questions.json")
-    test_questions = [
-        "What are the most beneficial actions for reducing human-wildlife conflict with bears?",
-        "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?", 
-        "What are the most effective ways to increase soil organic carbon on loamy soils?",
-        "What are the most effective interventions for reducing bat fatalities at wind turbines?"
+
+    model_provider_list = [
+        ("openai/gpt-5", None),
+        ("anthropic/claude-sonnet-4", None),
+        ("google/gemini-2.5-pro", None),
+        ("moonshotai/kimi-k2", "fireworks/fp8")
     ]
-    run_queries_on_models(query_list=test_questions, model_provider_list=model_provider_list, summary_out_dir="answer_gen_data/without_effectiveness_summaries/v4_prompt")
-    logging.info("ENDED generation of summaries to questions from mini test of human agreement with llm judge.")
+
+    ## CREATING SUMMARIES FOR MINI LLM JUDGE EVAL QUESTIONS
+    logging.info("STARTING summary generation process.")
+    #qu_retrieval_success, test_questions = get_questions_from_file("evaluation_data/mini_testing_human_agreement/test_questions.json")
+    # test_questions = [
+    #     "What are the most beneficial actions for reducing human-wildlife conflict with bears?",
+    #     "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?", 
+    #     "What are the most effective ways to increase soil organic carbon on loamy soils?",
+    #     "What are the most effective interventions for reducing bat fatalities at wind turbines?"
+    # ]
+    # run_queries_on_models(query_list=test_questions, model_provider_list=model_provider_list, summary_out_dir="answer_gen_data/without_effectiveness_summaries/v4_prompt")
+    unused_qus_dir = "summary_gen_data/bg_km_qus_unused/answerable/passed"
+    used_qus_dir = "summary_gen_data/bg_km_qus_used/answerable/passed"
+    summary_out_base_dir = "summary_gen_data/passed_answerable_qus_summaries"
+    run_summary_gen_for_qu_dir(unused_qus_dir=unused_qus_dir, used_qus_dir=used_qus_dir, model_provider_list=model_provider_list, summary_out_base_dir=summary_out_base_dir)
+    logging.info("ENDED summary generation process.")
 
 
 

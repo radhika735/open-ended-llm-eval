@@ -19,7 +19,7 @@ def get_qus_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
         return qus_list
     except FileNotFoundError:
         logging.error(f"Questions file {qus_filepath} not found.")
-        exit()
+        return []
     except json.JSONDecodeError:
         logging.error(f"Error decoding JSON from {qus_filepath}.")
         return []
@@ -172,7 +172,7 @@ def main():
     # qus_file = f"question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/bg_km_{no_gaps_synopsis}_qus.json"
     # id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
     # print(id_dist)
-    qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"
+    qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/failed"
     # print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
     synopsis = "Bat Conservation"
     synopsis_qus = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type="bg_km")
@@ -183,9 +183,13 @@ def main():
     # for q,d in zip(synopsis_queries, distances):
     #     print(q,d)
 
-    top_qus = get_n_representative_qus_for_synopsis(qus_list=synopsis_queries, synopsis=synopsis)
-    for q in top_qus:
-        print(f"{q}")
+    # top_qus = get_n_representative_qus_for_synopsis(qus_list=synopsis_queries, synopsis=synopsis)
+    # for q in top_qus:
+    #     print(f"{q}")
+
+    total = get_total_num_qus(qus_dir=qus_dir)
+    print(total)
+
 
 if __name__=="__main__":
     main()
