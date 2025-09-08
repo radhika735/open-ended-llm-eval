@@ -110,6 +110,27 @@ def parse_action(action_string, context : ActionRetrievalContext):
     return parsed_action
 
 
+def get_parsed_action_by_id(id, context : ActionRetrievalContext):
+    doc_type = context.get_doc_type()
+    if doc_type == "km":
+        data_dir="action_data/key_messages/km_all"
+    elif doc_type == "bg_km":
+        data_dir="action_data/background_key_messages/bg_km_all"
+    else:
+        raise ValueError("Invalid doc_type. Use 'km' for key messages or 'bg_km' for background key messages.")
+    
+    filename = f"action_{id}_clean.txt"
+    filepath = os.path.join(data_dir, filename)
+    if os.path.exists(filepath):
+        with open(filepath, "r", encoding="utf-8") as action_file:
+            content = action_file.read()
+        parsed_action = parse_action(action_string=content, context=context)
+        return parsed_action
+    else:
+        return None
+
+
+
 def get_all_parsed_actions(context : ActionRetrievalContext):
     """
     Get parsed actions (of all synopses) from the data directory.
@@ -231,8 +252,8 @@ def get_dense_embeddings(all_docs, context : ActionRetrievalContext, load_from_c
     if load_from_cache and os.path.exists(np_cache_file):
         return np.load(np_cache_file)
     else:
-        import create_dense_embeddings
-        embeddings = create_dense_embeddings.get_embeddings(docs=all_docs, save_to_cache=save_to_cache, cache_file=np_cache_file) # will take half an hour to run
+        import utils.create_dense_embeddings_actions as create_dense_embeddings_actions
+        embeddings = create_dense_embeddings_actions.get_embeddings(docs=all_docs, save_to_cache=save_to_cache, cache_file=np_cache_file) # will take half an hour to run
         return embeddings
 
 
@@ -297,6 +318,7 @@ def reciprocal_rank_fusion(ranked_lists, num_docs, dampener=60):
     return top_docs
 
 
+
 def cross_encoder_scores(query, docs):
     model_name = "cross_encoder/ms-marco-MiniLm-L-6-v2"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -307,26 +329,31 @@ def cross_encoder_scores(query, docs):
     return scores.tolist()
 
 
+
 # NEED TO DOUBLE CHECK THIS
-def hybrid_retrieve_docs(query_string, context : ActionRetrievalContext, k=3, offset=0):
+def hybrid_retrieve_docs(query_string, context : ActionRetrievalContext, fusion_type = "cross-encoder",  k=3, offset=0):
     sparse_docs = sparse_retrieve_docs(query_string=query_string, context=context, k=k, offset=offset)
     dense_docs = dense_retrieve_docs(query_string=query_string, context=context, k=k, offset=offset)
 
-    # # Combine and rank the results
-    # combined_results = reciprocal_rank_fusion([sparse_docs, dense_docs], num_docs=k)
-    # return combined_results
+    # Using reciprocal rank fusion to rerank the documents
+    if fusion_type == "reciprocal rank fusion":
+        combined_results = reciprocal_rank_fusion([sparse_docs, dense_docs], num_docs=k)
+        return combined_results
+    elif fusion_type == "cross-encoder":
+        # Using a cross-encoder:
+        candidate_docs = list(set(sparse_docs).union(set(dense_docs)))
+        scores = cross_encoder_scores(query_string, candidate_docs)
+        flattened_scores = [score[0] for score in scores]
 
-    # Using a cross-encoder:
-    candidate_docs = list(set(sparse_docs).union(set(dense_docs)))
-    scores = cross_encoder_scores(query_string, candidate_docs)
-    flattened_scores = [score[0] for score in scores]
+        if len(scores) >= 2:
+            top_docs = [candidate_docs[i] for i in np.argsort(flattened_scores)[-2:][::-1]]
+        else:
+            top_docs = candidate_docs[:len(flattened_scores)]
 
-    if len(scores) >= 2:
-        top_docs = [candidate_docs[i] for i in np.argsort(flattened_scores)[-2:][::-1]]
+        return top_docs
     else:
-        top_docs = candidate_docs[:len(flattened_scores)]
-
-    return top_docs
+        logging.error("Invalid fusion type given to hybrid document retriever in utils/action_retrieval.hybrid_retrieve_docs")
+        return []
 
 
 

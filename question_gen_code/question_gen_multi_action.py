@@ -2,11 +2,12 @@ import os
 from dotenv import load_dotenv
 from google import genai 
 from google.genai import types, errors
-from google.api_core import exceptions
 import logging
 from pydantic import BaseModel
 import json
 import time
+
+from utils.gen_qus_statistics import get_n_representative_qus_for_synopsis
 
 
 class QuGenContext():
@@ -14,10 +15,17 @@ class QuGenContext():
         self.__qu_out_dir = qu_out_dir
         self.__prev_qus_dirs = prev_qus_dirs
         self.__max_calls = max_calls
+        self.__current_calls = 0
         self.__doc_type = doc_type
 
     def get_max_calls(self):
         return self.__max_calls
+    
+    def get_current_calls(self):
+        return self.__current_calls
+    
+    def inc_current_calls(self):
+        self.__current_calls += 1
     
     def get_qu_out_dir(self):
         return self.__qu_out_dir
@@ -83,7 +91,7 @@ def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
         append_to_json_file(filename=test_file, new_qus=qus)
 
     elif qu_type == "unanswerable":
-        filename = os.path.join(qu_out_dir, "unanswerable", f"{doc_type}_{no_gaps_synopsis}_qus.json")
+        filename = os.path.join(qu_out_dir, "unanswerable", "all", f"{doc_type}_{no_gaps_synopsis}_qus.json")
         append_to_json_file(filename=filename, new_qus=qus)
 
     else:
@@ -110,7 +118,7 @@ def get_synopsis_data(synopsis, doc_type="bg_km"):
         return success, ""
 
 
-def get_prev_qus(prev_qu_dirs, synopsis, doc_type="bg_km", max=20):
+def get_prev_qus(prev_qu_dirs, synopsis, doc_type="bg_km", max=15):
     retrieval_success = True
     all_qus = []
 
@@ -127,8 +135,8 @@ def get_prev_qus(prev_qu_dirs, synopsis, doc_type="bg_km", max=20):
             qus = [qu_dict["question"] for qu_dict in qus_dicts]
             all_qus.extend(qus)
     
-    qus_pruned = all_qus[:max]
-    qus_str = "\n".join(qus_pruned)
+    top_n_qus = get_n_representative_qus_for_synopsis(qus_list=all_qus, synopsis=synopsis, n=max)
+    qus_str = "\n".join(top_n_qus)
     return retrieval_success, qus_str
 
 
@@ -140,8 +148,13 @@ class QuestionAnswer(BaseModel):
     all_relevant_action_ids: list[str]
 
 
-def get_llm_response(synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"):
+def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"):
     # options for qu_type are: "answerable", "unanswerable"
+    # RETURNS (success : bool, fatal_error : bool, gen_qus : list[Dict]) where:
+        # success is True if questions were generated, False if question generation did not (successfully) occur for any reason.
+        # fatal_error is True if a condition has occurred such that no more API calls should be made - program needs to be rerun (potentially with some external condition changed before rerun).
+            # fatal_error is False if no such condition has occurred, and future API calls can be made.
+        # gen_qus is a list of the generated questions. The internal question dicts have fields aligning with the QuestionAnswer class.
     logging.info(f"Making request to generate questions for synopsis {synopsis}.")
     if prev_qus:
         prev_qus_prompt = f"""
@@ -206,15 +219,28 @@ def get_llm_response(synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"
     else:
         logging.warning(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'get_llm_response'.")
         success = False
-        rate_limited = False
-        return success, rate_limited, []
+        fatal_error = False
+        return success, fatal_error, []
 
     try:
         client = genai.Client()
-        logging.info(f"Making API call.")
+        logging.info("Making API call.")
         model_name = "gemini-2.5-pro"
+
         input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
+        if input_tokens > 100000: # synopsis size (+) prompt) may exceed input token limit for request. Do not make generation request.
+            logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question generation for this synopsis.")
+            success = False
+            fatal_error = False
+            return success, fatal_error, []
         
+        if context.get_current_calls() >= context.get_max_calls():
+            logging.info("User-set MAX CALLS exceeded. Halting question generation.")
+            success = False
+            fatal_error = True
+            return success, fatal_error, []
+
+        context.inc_current_calls()
         response = client.models.generate_content(
             model=model_name, 
             contents=prompt,
@@ -226,56 +252,68 @@ def get_llm_response(synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"
         )
         new_qus = [qu_ans_obj.model_dump() for qu_ans_obj in response.parsed]
         success = True
-        rate_limited = False
-        return success, rate_limited, new_qus
+        fatal_error = False
+        return success, fatal_error, new_qus
     
     except KeyError as e:
         logging.error(f"Unexpected API response format: {str(e)}.")
         success = False
-        rate_limited = False
-        return success, rate_limited, []
+        fatal_error = False
+        return success, fatal_error, []
     
-    except exceptions.ResourceExhausted as e:
-        logging.error(f"Rate limit exceeded: {str(e)}.")
-        success = False
-        rate_limited = True
-        return success, rate_limited, []
-    
-    except exceptions.InternalServerError as e:
-        logging.error(f"Server-side error, retrying request in 60 secs: {str(e)}.")
+    except TypeError as e:
+        logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 60 seconds.")
         time.sleep(60)
-        return get_llm_response(synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
+        return get_llm_response(context=context, synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
 
     except errors.ServerError as e:
         logging.error(f"Server side error, retrying request in 60 secs: {str(e)}")
         time.sleep(60)
-        return get_llm_response(synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
+        return get_llm_response(context=context, synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
     
     except errors.ClientError as e:
         logging.error(f"Client side error: {str(e)}")
         success = False
         
-        if e.code == 429: # resource exhausted error (rate limit exceeded)
-            rate_limited = True            
-            if input_tokens >= 100000: # synopsis size itself may have exceeded input token size limit for free tier gemini (125000 input tokens / min), can't generate questions
-                logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question generation for this synopsis.")
-                return success, rate_limited, []
-            else: # request was made too close to previous request and got rate limited, retry request after limit resets
-                logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
-                time.sleep(120)
-                return get_llm_response(synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
-        
+        if e.code == 429: # resource exhausted error (rate limit exceeded).
+            error_dict = e.details
+            error_id = error_dict["error"]["details"][0]["violations"][0]["quotaId"]
+
+            if error_id == "GenerateRequestsPerDayPerProjectPerModel-FreeTier":
+                logging.error(f"Exceeded free tier quota of 50 requests per day. Cannot continue question generation for any synopsis.")
+                fatal_error = True
+                return success, fatal_error, []
+            
+            elif error_id == "GenerateContentInputTokensPerModelPerMinute-FreeTier":
+                if input_tokens >= 100000: # synopsis size itself (may have) exceeded input token size limit for free tier gemini (125000 input tokens / min), can't generate questions.
+                    # should not reach this branch - have added a check for this before making the API call.
+                    logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question generation for this synopsis.")
+                    fatal_error = False
+                    return success, fatal_error, []
+                else: # request was made too close to previous request and got rate limited, retry request after limit resets.
+                    logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
+                    time.sleep(120)
+                    return get_llm_response(context=context, synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
+                
+            else:
+                logging.error(f"Unexpected resource exhaustion error. Error ID: {error_id}")
+                fatal_error = True
+                return success, fatal_error, []
+            
+        elif e.code == 403: # permission denied
+            error_reason = e.details["error"]["details"][0]["reason"]
+            if error_reason == "SERVICE_DISABLED":
+                logging.error("Need to enable Generative Language API service for this Google Cloud project. Cannot continue question generation.")
+                fatal_error = True
+                return success, fatal_error, []
+
         else:
-            rate_limited = False
-            return success, rate_limited, []
+            fatal_error = False
+            return success, fatal_error, []
     
-    except TypeError as e:
-        logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 60 seconds.")
-        time.sleep(60)
-        return get_llm_response(synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
+    
 
-
-def process_all_synopses(context : QuGenContext, qu_type, use_filtered_synopses=False, first_synopsis="Amphibian Conservation"):
+def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphibian Conservation"):
     # options for qu_type: "answerable", "unanswerable"
     doc_type = context.get_doc_type()
 
@@ -289,10 +327,11 @@ def process_all_synopses(context : QuGenContext, qu_type, use_filtered_synopses=
     except ValueError as e:
         offset = 0
 
-    call_count = 0
-    for i in range(context.get_max_calls()):
-        synopsis = synopses[((i+offset) % num_synopses)]
-        actions_retrieval_success, actions = get_synopsis_data(synopsis, doc_type=doc_type, use_filtered_synopses=use_filtered_synopses)
+    iteration = -1
+    while context.get_current_calls() < context.get_max_calls():
+        iteration += 1
+        synopsis = synopses[((iteration+offset) % num_synopses)]
+        actions_retrieval_success, actions = get_synopsis_data(synopsis, doc_type=doc_type)
         prev_qus_retrieval_success, prev_qus = get_prev_qus(prev_qu_dirs=context.get_prev_qus_dirs(), synopsis=synopsis, doc_type=doc_type, max=30)
         
         if actions_retrieval_success:
@@ -300,14 +339,14 @@ def process_all_synopses(context : QuGenContext, qu_type, use_filtered_synopses=
                 logging.warning(f"Unable to load previously generated questions for synopsis {synopsis}. Existing questions are much more likely to be regenerated by LLM.")
 
             start = time.monotonic()
-            api_call_success, rate_limited, new_qus = get_llm_response(synopsis=synopsis, actions_data=actions, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
-            call_count += 1
+            api_call_success, fatal_api_call_error, new_qus = get_llm_response(context=context, synopsis=synopsis, actions_data=actions, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
             if api_call_success:
                 logging.info(f"Generated {len(new_qus)} {qu_type} questions for synopsis {synopsis} in {(time.monotonic() - start):.3f} seconds.")
                 append_qus(qus=new_qus, synopsis=synopsis, qu_type=qu_type, doc_type=doc_type, qu_out_dir=context.get_qu_out_dir())
             else:
-                if rate_limited:
-                    logging.error(f"{call_count} calls to API made before rate limit exceeded.")
+                if fatal_api_call_error:
+                    logging.error(f"Quitting question generation due to fatal api call error.")
+                    return
         else:
             logging.warning(f"Failed to retrieve action data for synopsis {synopsis}, skipping question generation for this synopsis.")
 
@@ -321,13 +360,13 @@ def main():
 
     QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus"
     prev_qus_dirs = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/unanswerable/all"]
-    MAX_CALLS = 24
+    MAX_CALLS = 3
 
     context = QuGenContext(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS, doc_type="bg_km", prev_qus_dirs=prev_qus_dirs)
     ## GENERATING ALL THE QUESTIONS
     try:
         logging.info("STARTING question generation process.")
-        process_all_synopses(qu_type="unanswerable", use_filtered_synopses=False, context=context, first_synopsis="Amphibian Conservation")
+        process_all_synopses(qu_type="unanswerable", context=context, first_synopsis="Reptile Conservation")
         logging.info("ENDED question generation process")
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {str(e)}")
@@ -336,8 +375,8 @@ def main():
     # # Testing Peatland Conservation None responses:
     # synopsis = "Amphibian Conservation"
     # logging.info(f"STARTING Testing {synopsis} LLM responses.")
-    # _, synopsis_data = get_synopsis_data(synopsis, doc_type="bg_km", use_filtered_synopses=False)
-    # api_call_success, rate_limited, new_qus = get_llm_response(synopsis=synopsis, actions_data=synopsis_data, qu_type="answerable", prev_qus="")
+    # _, synopsis_data = get_synopsis_data(synopsis, doc_type="bg_km")
+    # api_call_success, rate_limited, new_qus = get_llm_response(context=context, synopsis=synopsis, actions_data=synopsis_data, qu_type="answerable", prev_qus="")
     # print(new_qus)
     # logging.info(f"Generated {len(new_qus)} answerable questions for synopsis {synopsis}."  )
     # logging.info(f"ENDED Testing {synopsis} LLM responses.")
