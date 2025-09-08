@@ -646,7 +646,7 @@ def evaluate_metric(metric_name, question, summary, action_ids_in_summary, oracl
             "question": question,
             "all_relevant_action_ids": oracle_ids,
             "summary": summary,
-            "action_ids_in_summary": action_ids_in_summary,
+            "action_ids_in_summary": action_ids_in_summary
         },
         "evaluation": result
     }
