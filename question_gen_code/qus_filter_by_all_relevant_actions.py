@@ -7,7 +7,9 @@ import logging
 from pydantic import BaseModel
 import os
 import time
-from utils.action_retrieval import get_synopsis_data_as_str, RetrievalError
+
+from utils.action_retrieval import get_synopsis_data_as_str
+from utils.exceptions import RetrievalError, FatalAPIError, NonFatalAPIError, APIError, FileWriteError
 
 load_dotenv()
 
@@ -58,22 +60,16 @@ def get_llm_relevant_actions(actions_data, query_list, synopsis, context : Filte
     """
     try:
         client = genai.Client()
-        logging.info("Making API call.")
         model_name = "gemini-2.5-pro"
 
         input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
-        if input_tokens > 100000: # synopsis size (+) prompt) may exceed input token limit for request. Do not make api request.
-            logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question filtering for this synopsis.")
-            success = False
-            fatal_error = False
-            return success, fatal_error, []
+        if input_tokens > 100000: # synopsis size (+ prompt) may exceed input token limit for request. Do not make api request.
+            raise NonFatalAPIError(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute.")
         
         if context.get_current_calls() >= context.get_max_calls():
-            logging.info("User-set MAX CALLS exceeded. Halting question filtering.")
-            success = False
-            fatal_error = True
-            return success, fatal_error, []
+            raise FatalAPIError("User-set MAX CALLS exceeded. Cannot make API call.")
 
+        logging.info("Making API call.")
         context.inc_current_calls()
         response = client.models.generate_content(
             model=model_name,
@@ -86,15 +82,10 @@ def get_llm_relevant_actions(actions_data, query_list, synopsis, context : Filte
         )
 
         ids = [relevant_actions_obj.model_dump() for relevant_actions_obj in response.parsed]
-        success = True
-        rate_limited = False
-        return success, rate_limited, ids
+        return ids
 
     except KeyError as e:
-        logging.error(f"Unexpected API response format: {str(e)}.")
-        success = False
-        rate_limited = False
-        return success, rate_limited, []
+        raise NonFatalAPIError(f"Unexpected API response format: {str(e)}.")
     
     except TypeError as e:
         logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 60 secs.")
@@ -110,66 +101,50 @@ def get_llm_relevant_actions(actions_data, query_list, synopsis, context : Filte
     
     except errors.ClientError as e:
         logging.error(f"Client side error: {str(e)}")
-        success = False
         
         if e.code == 429: # resource exhausted error (rate limit exceeded)
             error_dict = e.details
             error_id = error_dict["error"]["details"][0]["violations"][0]["quotaId"]
 
             if error_id == "GenerateRequestsPerDayPerProjectPerModel-FreeTier":
-                logging.error(f"Exceeded free tier quota of 50 requests per day. Cannot continue question filtering for any synopsis.")
-                fatal_error = True
-                return success, fatal_error, []
+                raise FatalAPIError(f"Exceeded free tier quota of 50 requests per day.")
 
             elif error_id == "GenerateContentInputTokensPerModelPerMinute-FreeTier":
                 if input_tokens >= 100000: # synopsis size itself may have exceeded input token size limit for free tier gemini (125000 input tokens / min), can't filter questions
                     # should not reach this branch - have added a check for this before making the API call.
-                    logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question filtering for this synopsis.")
-                    fatal_error = False
-                    return success, fatal_error, []
+                    raise NonFatalAPIError(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute.")
                 else: # request was made too close to previous request and got rate limited, retry request after limit resets
-                    if context.get_current_calls() < context.get_max_calls():
-                        logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
-                        time.sleep(120)
-                        return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
+                    logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
+                    time.sleep(120)
+                    return get_llm_relevant_actions(actions_data=actions_data, query_list=query_list, synopsis=synopsis, doc_type=doc_type, context=context)
 
             else:
-                logging.error(f"Unexpected resource exhaustion error. Error ID: {error_id}")
-                fatal_error = True
-                return success, fatal_error, []
+                raise FatalAPIError(f"Unexpected resource exhaustion error. Error ID: {error_id}")
         
         elif e.code == 403: # permission denied
             error_reason = e.details["error"]["details"][0]["reason"]
             if error_reason == "SERVICE_DISABLED":
-                logging.error("Need to enable Generative Language API service for this Google Cloud project. Cannot continue question filtering.")
-                fatal_error = True
-                return success, fatal_error, []
-            
+                raise FatalAPIError("Generative Language API not enabled for the Google Cloud project this API key is associated with, cannot make calls to LLM.")
+                
         else:
-            fatal_error = False
-            return success, fatal_error, []
+            raise NonFatalAPIError()
     
-    
-
 
 def get_qus_from_file(qus_file):
     if not os.path.exists(qus_file):
         logging.info(f"Question file {qus_file} does not exist.")
         return []
-
-    try:
+    else:
         with open(qus_file, "r", encoding="utf-8") as f:
-            logging.info(f"Loading questions from {qus_file}.")
-            qus_list = json.load(f)
-    except json.JSONDecodeError as e:
-        logging.error(f"Error reading json from {qus_file}: {str(e)}.")
-        return []
-
-    if not isinstance(qus_list, list):
-        logging.error(f"Expected a list of questions in {qus_file}, but got {type(qus_list)}.")
-        return []
-
-    return qus_list
+            try:
+                qus_list = json.load(f)
+                if not isinstance(qus_list, list):
+                    raise RetrievalError(f"Expected JSON file to contain a list, but contained {type(qus_list)} instead: {qus_file}")
+                else:
+                    logging.info(f"Loaded questions from {qus_file}.")
+                    return qus_list
+            except json.JSONDecodeError as e:
+                raise RetrievalError(f"Error reading json from file {qus_file}: {str(e)}.")
 
 
 def write_qus_to_file(qus_list, qus_file):
@@ -180,9 +155,13 @@ def write_qus_to_file(qus_list, qus_file):
 
 
 def append_qus_to_file(new_qus, qus_file):
-    prev_qus = get_qus_from_file(qus_file=qus_file)
-    prev_qus.extend(new_qus)
-    write_qus_to_file(prev_qus, qus_file=qus_file)
+    try:
+        prev_qus = get_qus_from_file(qus_file=qus_file)
+    except RetrievalError as e:
+        raise FileWriteError(f"Could not read existing questions from {qus_file}, so cannot write new questions to this file. Error: {str(e)}")
+    else:
+        prev_qus.extend(new_qus)
+        write_qus_to_file(prev_qus, qus_file=qus_file)
 
 
 def get_n_unique_qus(qu_dicts, n=10):
@@ -253,27 +232,27 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
 
         if context.get_current_calls() < context.get_max_calls():
             logging.info("Making API call for question batch.")
-            api_call_success, fatal_api_call_error, gen_responses_batch = get_llm_relevant_actions(actions_data=actions_data, query_list=queries_batch, synopsis=synopsis, context=context, doc_type=doc_type)
+            try:
+                gen_responses_batch = get_llm_relevant_actions(actions_data=actions_data, query_list=queries_batch, synopsis=synopsis, context=context, doc_type=doc_type)
+            except APIError as e:
+                logging.error(f"API error while processing questions for synopsis {synopsis}: {str(e)}. Skipping remaining questions for this synopsis.")
+                for i in range(batch_num, len(all_batches)):
+                    untested_qus.extend(all_batches[i])
+                break
+            else:
+                for response in gen_responses_batch:
+                    query = response["query"]
+                    stored_ids_for_query = stored_ids_batch_query_indexed.get(query, [])
+                    gen_ids_for_query = response["relevant_action_ids"]
+                    current_qu_dict = qu_dicts_batch_query_indexed[query]
+                    current_qu_dict.update({"regenerated_ids":gen_ids_for_query})
+                    
+                    if set(gen_ids_for_query) <= set(stored_ids_for_query):
+                        passed_qus.append(current_qu_dict)
+                    else:
+                        failed_qus.append(current_qu_dict)
         else:
             logging.info(f"User-set MAX_CALLS limit reached, skipping filtering remaining questions in synopsis {synopsis}.")
-            for i in range(batch_num, len(all_batches)):
-                untested_qus.extend(all_batches[i])
-            break
-        
-        if api_call_success:
-            for response in gen_responses_batch:
-                query = response["query"]
-                stored_ids_for_query = stored_ids_batch_query_indexed.get(query, [])
-                gen_ids_for_query = response["relevant_action_ids"]
-                current_qu_dict = qu_dicts_batch_query_indexed[query]
-                current_qu_dict.update({"regenerated_ids":gen_ids_for_query})
-                
-                if set(gen_ids_for_query) <= set(stored_ids_for_query):
-                    passed_qus.append(current_qu_dict)
-                else:
-                    failed_qus.append(current_qu_dict)
-        else:
-            logging.info(f"API call failed, skipping remaining questions for synopsis. {synopsis}")
             for i in range(batch_num, len(all_batches)):
                 untested_qus.extend(all_batches[i])
             break
@@ -289,10 +268,17 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
     failed_file = os.path.join(fail_dir, file_name)
     untested_file = os.path.join(untested_dir, file_name)
 
-    append_qus_to_file(passed_qus, passed_file)
-    logging.info(f"Added new set of questions that PASSED the filter to {passed_file}.")
-    append_qus_to_file(failed_qus, failed_file)
-    logging.info(f"Added new set of questions that FAILED the filter to {failed_file}.")
+    try:
+        append_qus_to_file(passed_qus, passed_file)
+        logging.info(f"Added new set of questions that PASSED the filter to {passed_file}.")
+    except FileWriteError as e:
+        logging.error(f"{str(e)}")
+    try:
+        append_qus_to_file(failed_qus, failed_file)
+        logging.info(f"Added new set of questions that FAILED the filter to {failed_file}.")
+    except FileWriteError as e:
+        logging.error(f"{str(e)}")
+        
     write_qus_to_file(untested_qus, untested_file)
     logging.info(f"Overwrote {untested_file} with untested questions.")
 
