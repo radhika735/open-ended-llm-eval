@@ -157,7 +157,6 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
         """
     else:
         prev_qus_prompt = ""
-    print("Prev questions prompt:", prev_qus_prompt)
 
     if qu_type == "answerable":
         prompt = f"""{actions_data}\n\n\n
@@ -217,7 +216,6 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
 
     try:
         client = genai.Client()
-        logging.info("Making API call.")
         model_name = "gemini-2.5-pro"
 
         input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
@@ -227,6 +225,7 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
         if context.get_current_calls() >= context.get_max_calls():
             raise FatalAPIError("User-set MAX CALLS exceeded. Cannot make API call.")
 
+        logging.info("Making API call.")
         context.inc_current_calls()
         response = client.models.generate_content(
             model=model_name, 
@@ -285,7 +284,7 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
     
     
 
-_synopses(context : QuGenContext, qu_type, first_synopsis="Amphibian Conservation"):
+def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphibian Conservation"):
     # options for qu_type: "answerable", "unanswerable"
     doc_type = context.get_doc_type()
 
@@ -335,13 +334,13 @@ def main():
 
     QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus"
     prev_qus_dirs = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"]
-    MAX_CALLS = 3
+    MAX_CALLS = 25
 
     context = QuGenContext(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS, doc_type="bg_km", prev_qus_dirs=prev_qus_dirs)
     ## GENERATING ALL THE QUESTIONS
     try:
         logging.info("STARTING question generation process.")
-        process_all_synopses(qu_type="answerable", context=context, first_synopsis="Amphibian Conservation")
+        process_all_synopses(qu_type="answerable", context=context, first_synopsis="Biodiversity of Marine Artificial Structures")
         logging.info("ENDED question generation process")
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {str(e)}")
