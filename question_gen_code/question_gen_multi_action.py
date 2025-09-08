@@ -70,6 +70,7 @@ def append_to_json_file(filename, new_qus):
         prev_qus = read_json_file(filename=filename)
     except RetrievalError as e:
         logging.warning(f"Loading existing questions failed, overwriting {filename} with new questions. Error: {e}")
+        prev_qus = []
     prev_qus.extend(new_qus)
     write_to_json_file(filename=filename, qus=prev_qus)
     logging.info(f"Updated {filename} with new questions.")
@@ -127,6 +128,19 @@ class QuestionAnswer(BaseModel):
     all_relevant_action_ids: list[str]
 
 
+class APIError(Exception):
+    def __init__(self, message=None):
+        self.message = message
+        super().__init__(message)
+
+
+class FatalAPIError(APIError):
+    pass
+
+
+class NonFatalAPIError(APIError):
+    pass
+
 
 def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"):
     # options for qu_type are: "answerable", "unanswerable"
@@ -143,6 +157,7 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
         """
     else:
         prev_qus_prompt = ""
+    print("Prev questions prompt:", prev_qus_prompt)
 
     if qu_type == "answerable":
         prompt = f"""{actions_data}\n\n\n
@@ -197,10 +212,8 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
         Generate questions about {synopsis}.
         """
     else:
-        logging.warning(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'get_llm_response'.")
-        success = False
-        fatal_error = False
-        return success, fatal_error, []
+        logging.error(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'get_llm_response'.")
+        raise ValueError(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'get_llm_response'.")
 
     try:
         client = genai.Client()
@@ -209,16 +222,10 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
 
         input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
         if input_tokens > 100000: # synopsis size (+) prompt) may exceed input token limit for request. Do not make generation request.
-            logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question generation for this synopsis.")
-            success = False
-            fatal_error = False
-            return success, fatal_error, []
-        
+            raise NonFatalAPIError(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute.")
+
         if context.get_current_calls() >= context.get_max_calls():
-            logging.info("User-set MAX CALLS exceeded. Halting question generation.")
-            success = False
-            fatal_error = True
-            return success, fatal_error, []
+            raise FatalAPIError("User-set MAX CALLS exceeded. Cannot make API call.")
 
         context.inc_current_calls()
         response = client.models.generate_content(
@@ -231,15 +238,10 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
             )
         )
         new_qus = [qu_ans_obj.model_dump() for qu_ans_obj in response.parsed]
-        success = True
-        fatal_error = False
-        return success, fatal_error, new_qus
+        return new_qus
     
     except KeyError as e:
-        logging.error(f"Unexpected API response format: {str(e)}.")
-        success = False
-        fatal_error = False
-        return success, fatal_error, []
+        raise NonFatalAPIError(f"Unexpected API response format: {str(e)}.")
     
     except TypeError as e:
         logging.error(f"Type error in API response: {str(e)}. Response content: {response.text if response else 'No response'}. Retrying request in 60 seconds.")
@@ -253,47 +255,37 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
     
     except errors.ClientError as e:
         logging.error(f"Client side error: {str(e)}")
-        success = False
         
         if e.code == 429: # resource exhausted error (rate limit exceeded).
             error_dict = e.details
             error_id = error_dict["error"]["details"][0]["violations"][0]["quotaId"]
 
             if error_id == "GenerateRequestsPerDayPerProjectPerModel-FreeTier":
-                logging.error(f"Exceeded free tier quota of 50 requests per day. Cannot continue question generation for any synopsis.")
-                fatal_error = True
-                return success, fatal_error, []
+                raise FatalAPIError(f"Exceeded free tier quota of 50 API requests per day.")
             
             elif error_id == "GenerateContentInputTokensPerModelPerMinute-FreeTier":
                 if input_tokens >= 100000: # synopsis size itself (may have) exceeded input token size limit for free tier gemini (125000 input tokens / min), can't generate questions.
                     # should not reach this branch - have added a check for this before making the API call.
-                    logging.warning(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute. Skipping question generation for this synopsis.")
-                    fatal_error = False
-                    return success, fatal_error, []
+                    raise NonFatalAPIError(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute.")
                 else: # request was made too close to previous request and got rate limited, retry request after limit resets.
                     logging.warning(f"Rate limit temporarily exceeded (only {input_tokens} input tokens), retrying request in 120 seconds.")
                     time.sleep(120)
                     return get_llm_response(context=context, synopsis=synopsis, actions_data=actions_data, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
                 
             else:
-                logging.error(f"Unexpected resource exhaustion error. Error ID: {error_id}")
-                fatal_error = True
-                return success, fatal_error, []
+                raise FatalAPIError(f"Unexpected resource exhaustion error. Error ID: {error_id}")
             
         elif e.code == 403: # permission denied
             error_reason = e.details["error"]["details"][0]["reason"]
             if error_reason == "SERVICE_DISABLED":
-                logging.error("Need to enable Generative Language API service for this Google Cloud project. Cannot continue question generation.")
-                fatal_error = True
-                return success, fatal_error, []
+                raise FatalAPIError("Generative Language API not enabled for the Google Cloud project this API key is associated with, cannot make calls to LLM.")
 
         else:
-            fatal_error = False
-            return success, fatal_error, []
+            raise NonFatalAPIError()
     
     
 
-def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphibian Conservation"):
+_synopses(context : QuGenContext, qu_type, first_synopsis="Amphibian Conservation"):
     # options for qu_type: "answerable", "unanswerable"
     doc_type = context.get_doc_type()
 
@@ -314,22 +306,24 @@ def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphib
 
         try:
             actions = get_synopsis_data_as_str(synopsis, doc_type=doc_type)
+        except RetrievalError as e:
+            logging.warning(f"Failed to retrieve action data for synopsis {synopsis}, skipping question generation for this synopsis.")
+        else:
             prev_qus, prev_qus_retrieval_success = get_prev_qus(prev_qu_dirs=context.get_prev_qus_dirs(), synopsis=synopsis, doc_type=doc_type, max=15)
             if not prev_qus_retrieval_success:
                 logging.warning(f"Unable to load all previously generated questions for synopsis {synopsis}. Existing questions are much more likely to be regenerated by LLM.")
 
             start = time.monotonic()
-            api_call_success, fatal_api_call_error, new_qus = get_llm_response(context=context, synopsis=synopsis, actions_data=actions, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
-            if api_call_success:
+            try:
+                new_qus = get_llm_response(context=context, synopsis=synopsis, actions_data=actions, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
+            except NonFatalAPIError as e:
+                logging.warning(f"Non fatal API call error, skipping question generation for synopsis {synopsis}, will resume for next synopsis. Error: {e}")
+            except FatalAPIError as e:
+                logging.error(f"Quitting question generation due to fatal api call error: {e}")
+                return
+            else:
                 logging.info(f"Generated {len(new_qus)} {qu_type} questions for synopsis {synopsis} in {(time.monotonic() - start):.3f} seconds.")
                 append_qus(qus=new_qus, synopsis=synopsis, qu_type=qu_type, doc_type=doc_type, qu_out_dir=context.get_qu_out_dir())
-            else:
-                if fatal_api_call_error:
-                    logging.error(f"Quitting question generation due to fatal api call error.")
-                    return
-                
-        except RetrievalError as e:
-            logging.warning(f"Failed to retrieve action data for synopsis {synopsis}, skipping question generation for this synopsis.")
 
 
 def main():
@@ -340,14 +334,14 @@ def main():
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
     QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus"
-    prev_qus_dirs = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/unanswerable/all"]
+    prev_qus_dirs = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"]
     MAX_CALLS = 3
 
     context = QuGenContext(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS, doc_type="bg_km", prev_qus_dirs=prev_qus_dirs)
     ## GENERATING ALL THE QUESTIONS
     try:
         logging.info("STARTING question generation process.")
-        process_all_synopses(qu_type="unanswerable", context=context, first_synopsis="Reptile Conservation")
+        process_all_synopses(qu_type="answerable", context=context, first_synopsis="Amphibian Conservation")
         logging.info("ENDED question generation process")
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {str(e)}")
