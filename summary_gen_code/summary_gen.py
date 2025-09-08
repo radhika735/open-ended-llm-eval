@@ -7,7 +7,8 @@ from openai import OpenAI
 from dotenv import load_dotenv
 # from pydantic import BaseModel, Field
 # from typing import Annotated
-from utils.action_retrieval import ActionRetrievalContext, RetrievalError, get_parsed_action_by_id, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
+from utils.action_retrieval import ActionRetrievalContext, get_parsed_action_by_id, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
+from utils.exceptions import RetrievalError
 
 
 load_dotenv()
@@ -17,8 +18,6 @@ ACTION_RETRIEVAL_CONTEXT = ActionRetrievalContext(required_fields=["action_id", 
 RETRIEVAL_TYPE = "sparse" # other options: "dense", "hybrid".
 if RETRIEVAL_TYPE == "hybrid":
     FUSION_TYPE = "cross-encoder" # other option: "reciprocal rank fusion"
-
-
 
 
 # API Configuration
@@ -36,7 +35,6 @@ def get_client():
         base_url="https://openrouter.ai/api/v1",
         api_key=api_key,
     )
-
 
 
 def search_actions(query_string, k=3, offset=0):
@@ -94,7 +92,6 @@ def get_action_details(action_id):
         }
 
 
-
 def get_formatted_result(query, summary, action_ids):
     """
     Formats the user's query, the compiled summary and action ids as a valid JSON object string, to be presented to the user.
@@ -114,7 +111,6 @@ def get_formatted_result(query, summary, action_ids):
     }
     return formatted_result
     
-
 
 # Tool definition for OpenAI/OpenRouter function calling
 tools = [
@@ -199,7 +195,6 @@ TOOL_MAPPING = {
     "get_action_details": get_action_details,
     "get_formatted_result" : get_formatted_result
 }
-
 
 
 def call_llm(messages, model, provider):
@@ -387,20 +382,16 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
             messages.extend(tool_messages) # add results of tool calls to list of messages so far
             
         # else:
-        #     # No more tool calls, we have the final response
-        #     logging.warning("Conversation complete, without formatting tool call.")
-        #     logging.info(f"Final response: {response.choices[0].message.content}")
-        #     break
+        #     No more tool calls, but this is not a valid exit - we need the llm to call get_formatted_result. Continue the loop until max iterations reached.
     
     if iteration_count >= max_iterations:
-        logging.warning("Warning: Maximum iterations reached")
+        logging.warning("Warning: Maximum iterations reached.")
     
         # Return the final assistant message
     final_message = messages[-1] if messages[-1]["role"] == "assistant" else messages[-2]
     final_message_content = final_message.get("content", "No response generated")
     logging.info(f"Final response (after hitting max iterations): {final_message_content}")
     return final_message_content, all_tool_calls# FAILED EXIT
-
 
 
 def get_prev_summaries(filename):
@@ -420,8 +411,6 @@ def get_prev_summaries(filename):
         return []
 
 
-
-
 def assemble_llm_response_and_tools(response : dict, tool_use_track):
     assembled_response = {}
     # response is a dict with the properties 
@@ -432,8 +421,6 @@ def assemble_llm_response_and_tools(response : dict, tool_use_track):
     else:
         logging.warning("LLM response not formatted, unable to assemble response")
         raise TypeError(f"Expected LLM response to be formatted as a dictionary, instead it is a {type(response)}. Unable to assemble final response")
-    
-
 
 
 def write_new_summaries(summary_list, filename, reset_file = False):
@@ -453,7 +440,6 @@ def write_new_summaries(summary_list, filename, reset_file = False):
     logging.info(f"Updated {filename} with new summaries.")
 
 
-
 def parse_model_name(model):
     model_split = model.split("/")
     model_name = model_split[-1]
@@ -466,7 +452,6 @@ def parse_model_name(model):
     return cleaned_name
 
 
-
 def parse_provider_name(provider):
     if provider is not None:
         provider_split = provider.split("/")
@@ -476,16 +461,22 @@ def parse_provider_name(provider):
         return ""
 
 
-
 def run_models(query, model_provider_list, summary_out_dir):
+    summary_filename_track = []
     for model, provider in model_provider_list:
         cleaned_model_name = parse_model_name(model)
         cleaned_provider_name = parse_provider_name(provider)
-        filename = f"summaries_{RETRIEVAL_TYPE}_{cleaned_provider_name}_{cleaned_model_name}.json"
+        if RETRIEVAL_TYPE == "hybrid":
+            cleaned_fusion_type = FUSION_TYPE.replace(" ","-")
+            filename = f"summaries_{RETRIEVAL_TYPE}_{cleaned_fusion_type}_{cleaned_provider_name}_{cleaned_model_name}.json"
+        else:
+            filename = f"summaries_{RETRIEVAL_TYPE}_{cleaned_provider_name}_{cleaned_model_name}.json"
         summary_out_file = os.path.join(summary_out_dir, filename)
         response, tool_calls = run_agentic_loop(user_query=query, model=model, provider=provider)
-        write_new_summaries(summary_list=[assemble_llm_response_and_tools(response, tool_calls)], filename=summary_out_file)
-
+        summary_filename_track.append(assemble_llm_response_and_tools(response=response, tool_use_track=tool_calls), summary_out_file)
+    
+    for summary, filename in summary_filename_track:
+        write_new_summaries(summary_list=summary, filename=filename)
 
 
 def run_queries_on_models(query_list, model_provider_list, summary_out_dir):
@@ -493,34 +484,31 @@ def run_queries_on_models(query_list, model_provider_list, summary_out_dir):
         run_models(query=query, model_provider_list=model_provider_list, summary_out_dir=summary_out_dir)
 
 
-
 def get_questions_from_file(filename):
     try:
         with open(filename, "r", encoding="utf-8") as file:
             qu_dicts = json.load(file)
-            success = True
-            logging.info(f"Loaded questions from {filename}")  
+            if not isinstance(qu_dicts, list):
+                raise RetrievalError(f"Expected JSON file to contain a list, but contained {type(qu_dicts)} instead: {filename}")
+            else:
+                logging.info(f"Loaded questions from {filename}")
+                questions = [qu["question"] for qu in qu_dicts]
+                return questions 
     except json.JSONDecodeError as e:
-        qu_dicts = []
-        success = False
-        logging.warning(f"Failed to load questions from {filename}.")
+        raise RetrievalError(f"Error reading json from file {filename}: {str(e)}.")
     except FileNotFoundError:
-        qu_dicts = []
-        success = False
-        logging.warning(f"Questions file {filename} not found.")
-
-    questions = [qu["question"] for qu in qu_dicts]
-
-    return success, questions
-
+        raise RetrievalError(f"Questions file {filename} not found.")
 
 
 def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list, summary_out_base_dir):
     # questions = get_questions_from_directory(directory=qu_dir)
     for filename in os.listdir(unused_qus_dir):
         if filename.endswith(".json"):
-            success, questions = get_questions_from_file(os.path.join(unused_qus_dir, filename))
-            if success:
+            try:
+                questions = get_questions_from_file(os.path.join(unused_qus_dir, filename))
+            except RetrievalError as e:
+                logging.error(e)
+            else:
                 summary_out_sub_dir = os.path.splitext(filename)[0]
                 summary_out_dir = os.path.join(summary_out_base_dir, summary_out_sub_dir)
                 run_queries_on_models(query_list=questions, model_provider_list=model_provider_list, summary_out_dir=summary_out_dir)

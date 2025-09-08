@@ -9,6 +9,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
+from utils.exceptions import RetrievalError
+
 
 class ActionRetrievalContext():
     def __init__(self, required_fields = ["action_id", "action_title", "key_messages"]):
@@ -42,14 +44,6 @@ class ActionRetrievalContext():
 
     def get_doc_type(self):
         return self.__doc_type
-
-
-
-class RetrievalError(Exception):
-    """Custom exception for retrieval errors."""
-    def __init__(self, message):
-        self.message = message
-        super().__init__(message)
 
 
 

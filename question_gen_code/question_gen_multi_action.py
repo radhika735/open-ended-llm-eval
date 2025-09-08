@@ -8,7 +8,8 @@ import json
 import time
 
 from utils.gen_qus_statistics import get_n_representative_qus_for_synopsis
-from utils.action_retrieval import get_synopsis_data_as_str, RetrievalError
+from utils.action_retrieval import get_synopsis_data_as_str
+from utils.exceptions import RetrievalError, FatalAPIError, NonFatalAPIError, FileWriteError
 
 
 class QuGenContext():
@@ -69,11 +70,11 @@ def append_to_json_file(filename, new_qus):
     try:
         prev_qus = read_json_file(filename=filename)
     except RetrievalError as e:
-        logging.warning(f"Loading existing questions failed, overwriting {filename} with new questions. Error: {e}")
-        prev_qus = []
-    prev_qus.extend(new_qus)
-    write_to_json_file(filename=filename, qus=prev_qus)
-    logging.info(f"Updated {filename} with new questions.")
+        raise FileWriteError(f"Loading existing questions from {filename} failed, so cannot write new questions to file: {str(e)}.")
+    else:
+        prev_qus.extend(new_qus)
+        write_to_json_file(filename=filename, qus=prev_qus)
+        logging.info(f"Updated {filename} with new questions.")
 
 
 def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
@@ -83,14 +84,23 @@ def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
 
     if qu_type == "answerable":
         all_file = os.path.join(qu_out_dir, "answerable", "all", f"{doc_type}_{no_gaps_synopsis}_qus.json")
-        append_to_json_file(filename=all_file, new_qus=qus)
+        try:
+            append_to_json_file(filename=all_file, new_qus=qus)
+        except FileWriteError as e:
+            logging.error(f"{str(e)}")
 
         test_file = os.path.join(qu_out_dir, "answerable", "untested", f"{doc_type}_{no_gaps_synopsis}_qus.json")
-        append_to_json_file(filename=test_file, new_qus=qus)
+        try:
+            append_to_json_file(filename=test_file, new_qus=qus)
+        except FileWriteError as e:
+            logging.error(f"{str(e)}")
 
     elif qu_type == "unanswerable":
         filename = os.path.join(qu_out_dir, "unanswerable", "all", f"{doc_type}_{no_gaps_synopsis}_qus.json")
-        append_to_json_file(filename=filename, new_qus=qus)
+        try:
+            append_to_json_file(filename=filename, new_qus=qus)
+        except FileWriteError as e:
+            logging.error(f"{str(e)}")
 
     else:
         logging.warning(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'write_all_qus'. File write failed.")
@@ -107,13 +117,14 @@ def get_prev_qus(prev_qu_dirs, synopsis, doc_type="bg_km", max=15):
         filename = os.path.join(dir, f"{doc_type}_{no_gaps_synopsis}_qus.json")
         try:
             qus_dicts = read_json_file(filename)
-            qus = [qu_dict["question"] for qu_dict in qus_dicts]
-            all_qus.extend(qus)
         except RetrievalError as e:
             logging.warning(f"Failed to load previously generated questions from {filename}: {e}.")
             # If an error occurs during loading from AT LEAST one of the previous questions files, 
             # retrieval success flag is set to False and returned from this function:
             all_retrieved = False
+        else:
+            qus = [qu_dict["question"] for qu_dict in qus_dicts]
+            all_qus.extend(qus)
 
     top_n_qus = get_n_representative_qus_for_synopsis(qus_list=all_qus, synopsis=synopsis, n=max)
     qus_str = "\n".join(top_n_qus)
@@ -126,20 +137,6 @@ class QuestionAnswer(BaseModel):
     action_ids_used_for_question_generation: list[str]
     action_ids_used_in_model_answer: list[str]
     all_relevant_action_ids: list[str]
-
-
-class APIError(Exception):
-    def __init__(self, message=None):
-        self.message = message
-        super().__init__(message)
-
-
-class FatalAPIError(APIError):
-    pass
-
-
-class NonFatalAPIError(APIError):
-    pass
 
 
 def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"):
@@ -219,7 +216,7 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
         model_name = "gemini-2.5-pro"
 
         input_tokens = client.models.count_tokens(model=model_name, contents=prompt).total_tokens
-        if input_tokens > 100000: # synopsis size (+) prompt) may exceed input token limit for request. Do not make generation request.
+        if input_tokens > 100000: # synopsis size (+ prompt) may exceed input token limit for request. Do not make generation request.
             raise NonFatalAPIError(f"Total prompt for {synopsis} {doc_type} is {input_tokens} tokens long, exceeding input limit of 125,000 (empirically 100,000) tokens per minute.")
 
         if context.get_current_calls() >= context.get_max_calls():
