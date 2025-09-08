@@ -8,7 +8,7 @@ import json
 import time
 
 from utils.gen_qus_statistics import get_n_representative_qus_for_synopsis
-from utils.action_retrieval import get_synopsis_data_as_str
+from utils.action_retrieval import get_synopsis_data_as_str, RetrievalError
 
 
 class QuGenContext():
@@ -44,22 +44,17 @@ def read_json_file(filename):
         with open(filename, "r", encoding="utf-8") as file:
             try:
                 content = json.load(file)
-                logging.info(f"Loaded existing questions from {filename}.")
-
                 if not isinstance(content, list):
-                    raise ValueError(f"Expected JSON file to contain a list, but contained {type(content)} instead.")
+                    raise RetrievalError(f"Expected JSON file to contain a list, but contained {type(content)} instead: {filename}")
                 else:
-                    error = False
-                    return error, content
+                    logging.info(f"Loaded existing questions from {filename}.")
+                    return content
             
             except json.JSONDecodeError as e:
-                logging.warning(f"Failed to load existing questions from {filename}: {str(e)}.")
-                error = True
-                return error, []
+                raise RetrievalError(f"Failed to load JSON from file {filename}: {str(e)}.")
     else:
         logging.info(f"File not found to read from: {filename}.")
-        error = False
-        return error, []
+        return []
 
 
 def write_to_json_file(filename, qus):
@@ -71,9 +66,10 @@ def write_to_json_file(filename, qus):
         
 
 def append_to_json_file(filename, new_qus):
-    error, prev_qus = read_json_file(filename=filename)
-    if error == True:
-        logging.warning(f"Loading existing questions failed, overwriting {filename} with new questions.")
+    try:
+        prev_qus = read_json_file(filename=filename)
+    except RetrievalError as e:
+        logging.warning(f"Loading existing questions failed, overwriting {filename} with new questions. Error: {e}")
     prev_qus.extend(new_qus)
     write_to_json_file(filename=filename, qus=prev_qus)
     logging.info(f"Updated {filename} with new questions.")
@@ -101,25 +97,26 @@ def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
 
 
 def get_prev_qus(prev_qu_dirs, synopsis, doc_type="bg_km", max=15):
-    retrieval_success = True
+    all_retrieved = True
     all_qus = []
 
     no_gaps_synopsis = "".join(synopsis.split())
 
     for dir in prev_qu_dirs:
         filename = os.path.join(dir, f"{doc_type}_{no_gaps_synopsis}_qus.json")
-        error, qus_dicts = read_json_file(filename)
-        
-        if error == True:
-            retrieval_success = False # If an error occurs during loading from AT LEAST one of the previous questions files, 
-                                    # retrieval success flag is set to False and returned from this function.
-        else:
+        try:
+            qus_dicts = read_json_file(filename)
             qus = [qu_dict["question"] for qu_dict in qus_dicts]
             all_qus.extend(qus)
-    
+        except RetrievalError as e:
+            logging.warning(f"Failed to load previously generated questions from {filename}: {e}.")
+            # If an error occurs during loading from AT LEAST one of the previous questions files, 
+            # retrieval success flag is set to False and returned from this function:
+            all_retrieved = False
+
     top_n_qus = get_n_representative_qus_for_synopsis(qus_list=all_qus, synopsis=synopsis, n=max)
     qus_str = "\n".join(top_n_qus)
-    return retrieval_success, qus_str
+    return qus_str, all_retrieved
 
 
 class QuestionAnswer(BaseModel):
@@ -128,6 +125,7 @@ class QuestionAnswer(BaseModel):
     action_ids_used_for_question_generation: list[str]
     action_ids_used_in_model_answer: list[str]
     all_relevant_action_ids: list[str]
+
 
 
 def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, prev_qus, doc_type="bg_km"):
@@ -313,12 +311,12 @@ def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphib
     while context.get_current_calls() < context.get_max_calls():
         iteration += 1
         synopsis = synopses[((iteration+offset) % num_synopses)]
-        actions_retrieval_success, actions = get_synopsis_data_as_str(synopsis, doc_type=doc_type)
-        prev_qus_retrieval_success, prev_qus = get_prev_qus(prev_qu_dirs=context.get_prev_qus_dirs(), synopsis=synopsis, doc_type=doc_type, max=30)
-        
-        if actions_retrieval_success:
+
+        try:
+            actions = get_synopsis_data_as_str(synopsis, doc_type=doc_type)
+            prev_qus, prev_qus_retrieval_success = get_prev_qus(prev_qu_dirs=context.get_prev_qus_dirs(), synopsis=synopsis, doc_type=doc_type, max=15)
             if not prev_qus_retrieval_success:
-                logging.warning(f"Unable to load previously generated questions for synopsis {synopsis}. Existing questions are much more likely to be regenerated by LLM.")
+                logging.warning(f"Unable to load all previously generated questions for synopsis {synopsis}. Existing questions are much more likely to be regenerated by LLM.")
 
             start = time.monotonic()
             api_call_success, fatal_api_call_error, new_qus = get_llm_response(context=context, synopsis=synopsis, actions_data=actions, qu_type=qu_type, prev_qus=prev_qus, doc_type=doc_type)
@@ -329,7 +327,8 @@ def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphib
                 if fatal_api_call_error:
                     logging.error(f"Quitting question generation due to fatal api call error.")
                     return
-        else:
+                
+        except RetrievalError as e:
             logging.warning(f"Failed to retrieve action data for synopsis {synopsis}, skipping question generation for this synopsis.")
 
 
@@ -357,7 +356,7 @@ def main():
     # # Testing Peatland Conservation None responses:
     # synopsis = "Amphibian Conservation"
     # logging.info(f"STARTING Testing {synopsis} LLM responses.")
-    # _, synopsis_data = get_synopsis_data_as_str(synopsis, doc_type="bg_km")
+    # synopsis_data = get_synopsis_data_as_str(synopsis, doc_type="bg_km")
     # api_call_success, rate_limited, new_qus = get_llm_response(context=context, synopsis=synopsis, actions_data=actions, qu_type="answerable", prev_qus="")
     # print(new_qus)
     # logging.info(f"Generated {len(new_qus)} answerable questions for synopsis {synopsis}."  )

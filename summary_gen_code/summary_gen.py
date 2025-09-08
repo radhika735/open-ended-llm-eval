@@ -7,7 +7,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 # from pydantic import BaseModel, Field
 # from typing import Annotated
-from utils.action_retrieval import ActionRetrievalContext, get_parsed_action_by_id, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
+from utils.action_retrieval import ActionRetrievalContext, RetrievalError, get_parsed_action_by_id, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 
 
 load_dotenv()
@@ -408,21 +408,17 @@ def get_prev_summaries(filename):
         try:
             with open(filename, "r", encoding="utf-8") as file:
                 summary_list = json.load(file)
-                logging.info(f"Loaded existing summaries from {filename}")
-                success = True
+                if not isinstance(summary_list, list):
+                    raise RetrievalError(f"Expected JSON file to contain a list: {filename}")
+                else:
+                    logging.info(f"Loaded existing summaries from {filename}")
+                    return summary_list
         except json.JSONDecodeError as e:
-            summary_list = []
-            logging.warning(f"Failed to load existing summaries from {filename}.")
-            success = False
+            raise RetrievalError(f"Failed to load JSON from existing summaries file: {filename}. Error: {e}")
     else:
-        summary_list = []
         logging.info(f"Creating new summary output file {filename}.")
-        success = True
+        return []
 
-    if not isinstance(summary_list, list):
-        raise ValueError("Expected JSON file to contain a list.")
-
-    return success, summary_list
 
 
 
@@ -442,9 +438,10 @@ def assemble_llm_response_and_tools(response : dict, tool_use_track):
 
 def write_new_summaries(summary_list, filename, reset_file = False):
     if not reset_file:
-        success, all_summaries = get_prev_summaries(filename=filename)
-        if not success:
-            logging.warning(f"Could not load existing file content, so failed write to file {filename}.")
+        try:
+            all_summaries = get_prev_summaries(filename=filename)
+        except RetrievalError as e:
+            logging.error(f"Could not load existing summaries, so failed writing new summaries to file {filename}. Error: {e}")
             return
         all_summaries.extend(summary_list)
     else:

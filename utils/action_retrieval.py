@@ -45,6 +45,14 @@ class ActionRetrievalContext():
 
 
 
+class RetrievalError(Exception):
+    """Custom exception for retrieval errors."""
+    def __init__(self, message):
+        self.message = message
+        super().__init__(message)
+
+
+
 def parse_action(action_string, context : ActionRetrievalContext):
     """
     Parse an action string into its components.
@@ -192,23 +200,21 @@ def get_synopsis_data_as_str(synopsis, doc_type="bg_km"):
         elif doc_type == "km":
             synopsis_file_path = f"action_data/key_messages/km_synopsis_concat/km_{no_gaps_synopsis}_concat.txt"
         else:
-            logging.warning(f"Invalid argument {doc_type} given to parameter 'doc_type' in function 'get_synopsis_data_as_str'.")
-            success = False
-            return success, ""
-        
+            logging.error(f"Invalid argument {doc_type} given to parameter 'doc_type' in function 'get_synopsis_data_as_str'.")
+            raise RetrievalError(f"Unable to retrieve synopsis data for doc_type: {doc_type}. Valid options are 'km' or 'bg_km'.")
+
         with open(synopsis_file_path, "r", encoding="utf-8") as f:
             content = f.read()
         if content == "":
-            logging.error(f"No content in unfiltered action files for synopsis {synopsis} (see {synopsis_file_path}).")
-            success = False
+            logging.error(f"No content in concatenated actions files for synopsis {synopsis} (see {synopsis_file_path}).")
+            raise RetrievalError(f"No content in concatenated actions file for synopsis {synopsis} (see {synopsis_file_path}).")
         else:
-            success = True
-        return success, content
+            return content
     
     except FileNotFoundError:
-        logging.error(f"Concatenated actions for synopsis {synopsis} file not found: {synopsis_file_path}")
-        success = False
-        return success, ""
+        logging.error(f"Concatenated actions file for synopsis {synopsis} not found: {synopsis_file_path}")
+        raise RetrievalError(f"Concatenated actions file for synopsis {synopsis} not found: {synopsis_file_path}")
+
 
 
 
