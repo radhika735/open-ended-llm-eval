@@ -110,6 +110,7 @@ def parse_action(action_string, context : ActionRetrievalContext):
     return parsed_action
 
 
+
 def get_parsed_action_by_id(id, context : ActionRetrievalContext):
     doc_type = context.get_doc_type()
     if doc_type == "km":
@@ -180,6 +181,34 @@ def get_parsed_action_metadata(action, context : ActionRetrievalContext):
         if k in metadata_fields:
             metadata[k] = v
     return metadata
+
+
+
+def get_synopsis_data_as_str(synopsis, doc_type="bg_km"):
+    no_gaps_synopsis = "".join(synopsis.split())
+    try:
+        if doc_type == "bg_km":
+            synopsis_file_path = f"action_data/background_key_messages/bg_km_synopsis_concat/bg_km_{no_gaps_synopsis}_concat.txt"
+        elif doc_type == "km":
+            synopsis_file_path = f"action_data/key_messages/km_synopsis_concat/km_{no_gaps_synopsis}_concat.txt"
+        else:
+            logging.warning(f"Invalid argument {doc_type} given to parameter 'doc_type' in function 'get_synopsis_data_as_str'.")
+            success = False
+            return success, ""
+        
+        with open(synopsis_file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        if content == "":
+            logging.error(f"No content in unfiltered action files for synopsis {synopsis} (see {synopsis_file_path}).")
+            success = False
+        else:
+            success = True
+        return success, content
+    
+    except FileNotFoundError:
+        logging.error(f"Concatenated actions for synopsis {synopsis} file not found: {synopsis_file_path}")
+        success = False
+        return success, ""
 
 
 

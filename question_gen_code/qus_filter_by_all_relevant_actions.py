@@ -7,7 +7,7 @@ import logging
 from pydantic import BaseModel
 import os
 import time
-from question_gen_multi_action import get_synopsis_data
+from utils.action_retrieval import get_synopsis_data_as_str
 
 load_dotenv()
 
@@ -235,7 +235,7 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
     all_batches = get_unique_batches(qu_dicts=qus_full_details_list, batch_size=10)
     # here we can assert that all the queries in each batch are unique.
 
-    action_retrieval_success, actions_data = get_synopsis_data(synopsis=synopsis, doc_type=doc_type)
+    action_retrieval_success, actions_data = get_synopsis_data_as_str(synopsis=synopsis, doc_type=doc_type)
     if not action_retrieval_success:
         logging.warning(f"Could not retrieve action content for synopsis {synopsis}, skipping process this synopsis.")
         return

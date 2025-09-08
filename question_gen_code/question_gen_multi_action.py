@@ -8,6 +8,7 @@ import json
 import time
 
 from utils.gen_qus_statistics import get_n_representative_qus_for_synopsis
+from utils.action_retrieval import get_synopsis_data_as_str
 
 
 class QuGenContext():
@@ -97,25 +98,6 @@ def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
     else:
         logging.warning(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'write_all_qus'. File write failed.")
         return
-    
-
-def get_synopsis_data(synopsis, doc_type="bg_km"):
-    no_gaps_synopsis = "".join(synopsis.split())
-    try:
-        synopsis_file_path = f"question_gen_data/{doc_type}_multi_action_data/{doc_type}_synopsis_unfiltered_concat/{doc_type}_{no_gaps_synopsis}_unfiltered_concat.txt"
-        with open(synopsis_file_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        if content == "":
-            logging.error(f"No content in unfiltered action files for synopsis {synopsis} (see {synopsis_file_path}).")
-            success = False
-        else:
-            success = True
-        return success, content
-    
-    except FileNotFoundError:
-        logging.error(f"Actions for synopsis {synopsis} file not found: {synopsis_file_path}")
-        success = False
-        return success, ""
 
 
 def get_prev_qus(prev_qu_dirs, synopsis, doc_type="bg_km", max=15):
@@ -331,7 +313,7 @@ def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphib
     while context.get_current_calls() < context.get_max_calls():
         iteration += 1
         synopsis = synopses[((iteration+offset) % num_synopses)]
-        actions_retrieval_success, actions = get_synopsis_data(synopsis, doc_type=doc_type)
+        actions_retrieval_success, actions = get_synopsis_data_as_str(synopsis, doc_type=doc_type)
         prev_qus_retrieval_success, prev_qus = get_prev_qus(prev_qu_dirs=context.get_prev_qus_dirs(), synopsis=synopsis, doc_type=doc_type, max=30)
         
         if actions_retrieval_success:
@@ -375,8 +357,8 @@ def main():
     # # Testing Peatland Conservation None responses:
     # synopsis = "Amphibian Conservation"
     # logging.info(f"STARTING Testing {synopsis} LLM responses.")
-    # _, synopsis_data = get_synopsis_data(synopsis, doc_type="bg_km")
-    # api_call_success, rate_limited, new_qus = get_llm_response(context=context, synopsis=synopsis, actions_data=synopsis_data, qu_type="answerable", prev_qus="")
+    # _, synopsis_data = get_synopsis_data_as_str(synopsis, doc_type="bg_km")
+    # api_call_success, rate_limited, new_qus = get_llm_response(context=context, synopsis=synopsis, actions_data=actions, qu_type="answerable", prev_qus="")
     # print(new_qus)
     # logging.info(f"Generated {len(new_qus)} answerable questions for synopsis {synopsis}."  )
     # logging.info(f"ENDED Testing {synopsis} LLM responses.")
