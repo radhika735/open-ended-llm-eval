@@ -235,7 +235,7 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
             try:
                 gen_responses_batch = get_llm_relevant_actions(actions_data=actions_data, query_list=queries_batch, synopsis=synopsis, context=context, doc_type=doc_type)
             except APIError as e:
-                logging.error(f"API error while processing questions for synopsis {synopsis}: {str(e)}. Skipping remaining questions for this synopsis.")
+                logging.error(f"API error while processing questions for synopsis {synopsis}: {str(e)} Skipping remaining questions for this synopsis.")
                 for i in range(batch_num, len(all_batches)):
                     untested_qus.extend(all_batches[i])
                 break
@@ -311,6 +311,8 @@ def main():
     # print(get_llm_relevant_actions(query_list=queries, synopsis=synopsis))
 
     logging.basicConfig(filename="logfiles/qus_filter_by_all_relevant_actions.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    # disable httpx logging
+    logging.getLogger("httpx").setLevel(logging.WARNING)
 
     QU_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable"
     MAX_CALLS = 20
