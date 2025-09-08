@@ -172,11 +172,11 @@ def main():
     # qus_file = f"question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/bg_km_{no_gaps_synopsis}_qus.json"
     # id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
     # print(id_dist)
-    qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/failed"
+    qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"
     # print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
-    synopsis = "Bat Conservation"
-    synopsis_qus = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type="bg_km")
-    synopsis_queries = [qu_dict["question"] for qu_dict in synopsis_qus]
+    # synopsis = "Bat Conservation"
+    # synopsis_qus = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type="bg_km")
+    # synopsis_queries = [qu_dict["question"] for qu_dict in synopsis_qus]
     # top_qus = get_top_n_common_qus(questions=synopsis_queries, n=15)
 
     # distances = get_qu_distances_from_species(qus_list=synopsis_queries, species="Bat")
