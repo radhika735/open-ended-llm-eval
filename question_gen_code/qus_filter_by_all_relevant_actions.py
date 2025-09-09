@@ -165,6 +165,7 @@ def append_qus_to_file(new_qus, qus_file):
 
 
 def get_n_unique_qus(qu_dicts, n=10):
+    # does not directly modify qu_dicts argument. 
     n_unique_dicts = []
     remaining_qu_dicts = []
     processed = 0
@@ -195,7 +196,33 @@ def get_unique_batches(qu_dicts, batch_size=10):
     while unprocessed_dicts:
         new_batch, unprocessed_dicts = get_n_unique_qus(qu_dicts=unprocessed_dicts, n=batch_size)
         unique_batches.append(new_batch)
-    return unique_batches   
+    return unique_batches
+
+
+def separate_filtered_questions(base_dir, filename, synopsis, num_all_qus, passed_qus, failed_qus, untested_qus):
+    logging.info(f"Total {num_all_qus} questions for synopsis {synopsis}: {len(passed_qus)} passed, {len(failed_qus)} failed, {len(untested_qus)} untested.")
+
+    pass_dir = os.path.join(base_dir, "passed")
+    fail_dir = os.path.join(base_dir, "failed")
+    untested_dir = os.path.join(base_dir, "untested")
+
+    passed_file = os.path.join(pass_dir, filename)
+    failed_file = os.path.join(fail_dir, filename)
+    untested_file = os.path.join(untested_dir, filename)
+
+    try:
+        append_qus_to_file(passed_qus, passed_file)
+        logging.info(f"Added new set of questions that PASSED the filter to {passed_file}.")
+    except FileWriteError as e:
+        logging.error(f"{str(e)}")
+    try:
+        append_qus_to_file(failed_qus, failed_file)
+        logging.info(f"Added new set of questions that FAILED the filter to {failed_file}.")
+    except FileWriteError as e:
+        logging.error(f"{str(e)}")
+        
+    write_qus_to_file(untested_qus, untested_file)
+    logging.info(f"Overwrote {untested_file} with untested questions.")
 
 
 def process_qus_in_synopsis(synopsis, context : FilterContext):
@@ -234,11 +261,23 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
             logging.info("Making API call for question batch.")
             try:
                 gen_responses_batch = get_llm_relevant_actions(actions_data=actions_data, query_list=queries_batch, synopsis=synopsis, context=context, doc_type=doc_type)
+            
             except APIError as e:
-                logging.error(f"API error while processing questions for synopsis {synopsis}: {str(e)} Skipping remaining questions for this synopsis.")
+                logging.error(f"API error while filtering questions for synopsis {synopsis}: {str(e)} Skipping remaining questions for this synopsis.")
                 for i in range(batch_num, len(all_batches)):
                     untested_qus.extend(all_batches[i])
-                break
+                separate_filtered_questions(
+                    base_dir=base_dir, 
+                    filename=file_name, 
+                    synopsis=synopsis, 
+                    num_all_qus=len(qus_full_details_list), 
+                    passed_qus=passed_qus,
+                    failed_qus=failed_qus,
+                    untested_qus=untested_qus
+                )
+                if isinstance(e, FatalAPIError):
+                    raise
+                
             else:
                 for response in gen_responses_batch:
                     query = response["query"]
@@ -257,45 +296,39 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
                 untested_qus.extend(all_batches[i])
             break
 
-    untested = len(untested_qus)
-    logging.info(f"Total {len(qus_full_details_list)} questions for synopsis {synopsis}: {len(passed_qus)} passed, {len(failed_qus)} failed, {untested} untested.")
-
-    pass_dir = os.path.join(base_dir, "passed")
-    fail_dir = os.path.join(base_dir, "failed")
-    untested_dir = os.path.join(base_dir, "untested")
-
-    passed_file = os.path.join(pass_dir, file_name)
-    failed_file = os.path.join(fail_dir, file_name)
-    untested_file = os.path.join(untested_dir, file_name)
-
-    try:
-        append_qus_to_file(passed_qus, passed_file)
-        logging.info(f"Added new set of questions that PASSED the filter to {passed_file}.")
-    except FileWriteError as e:
-        logging.error(f"{str(e)}")
-    try:
-        append_qus_to_file(failed_qus, failed_file)
-        logging.info(f"Added new set of questions that FAILED the filter to {failed_file}.")
-    except FileWriteError as e:
-        logging.error(f"{str(e)}")
-        
-    write_qus_to_file(untested_qus, untested_file)
-    logging.info(f"Overwrote {untested_file} with untested questions.")
+    separate_filtered_questions(
+        base_dir=base_dir, 
+        filename=file_name, 
+        synopsis=synopsis, 
+        num_all_qus=len(qus_full_details_list), 
+        passed_qus=passed_qus,
+        failed_qus=failed_qus,
+        untested_qus=untested_qus
+    )
 
             
-def process_all_synopses(context : FilterContext):
+def process_all_synopses(context : FilterContext, first_synopsis="Amphibian Conservation"):
 
     synopses = []
     for entry in os.scandir("action_data/background_key_messages/bg_km_synopsis"):
         synopses.append(entry.name)
+
+    try:
+        offset = synopses.index(first_synopsis)
+    except ValueError as e:
+        offset = 0
     
     for i in range(len(synopses)):
-        synopsis = synopses[(i+0) % len(synopses)]
+        synopsis = synopses[(i+offset) % len(synopses)]
         if context.get_current_synopses() < context.get_max_synopses():
             logging.info(f"Processing synopsis: {synopsis}")
             context.inc_current_synopses()
             if context.get_current_calls() < context.get_max_calls():
-                process_qus_in_synopsis(synopsis=synopsis, context=context)
+                try:
+                    process_qus_in_synopsis(synopsis=synopsis, context=context)
+                except FatalAPIError as e:
+                    logging.error(f"Fatal API error while filtering synopsis {synopsis} questions. Quitting question filtering. Error: {e}")
+                    return
             else:
                 logging.info(f"User-set MAX_CALLS limit reached, skipping processing remaining synopses.")
                 break
@@ -316,12 +349,12 @@ def main():
 
     QU_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable"
     MAX_CALLS = 20
-    MAX_SYNOPSES = 24
+    MAX_SYNOPSES = 10
 
     context = FilterContext(qu_source_dir=QU_SOURCE_DIR, max_calls=MAX_CALLS, max_synopses=MAX_SYNOPSES)
 
     logging.info("STARTING question filtering process.")
-    process_all_synopses(context=context)
+    process_all_synopses(context=context, first_synopsis="Primate Conservation")
     logging.info("ENDED question filtering process.")
 
 

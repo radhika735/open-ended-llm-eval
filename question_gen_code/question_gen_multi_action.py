@@ -13,12 +13,11 @@ from utils.exceptions import RetrievalError, FatalAPIError, NonFatalAPIError, Fi
 
 
 class QuGenContext():
-    def __init__(self, qu_out_dir, max_calls, doc_type="bg_km", prev_qus_dirs=[]):
-        self.__qu_out_dir = qu_out_dir
+    def __init__(self, qu_out_dirs, max_calls, prev_qus_dirs=[]):
+        self.__qu_out_dirs = qu_out_dirs
         self.__prev_qus_dirs = prev_qus_dirs
         self.__max_calls = max_calls
         self.__current_calls = 0
-        self.__doc_type = doc_type
 
     def get_max_calls(self):
         return self.__max_calls
@@ -29,11 +28,9 @@ class QuGenContext():
     def inc_current_calls(self):
         self.__current_calls += 1
     
-    def get_qu_out_dir(self):
-        return self.__qu_out_dir
-
-    def get_doc_type(self):
-        return self.__doc_type
+    def get_qu_out_dirs(self):
+        qu_out_dirs_copy = self.__qu_out_dirs.copy()
+        return qu_out_dirs_copy
     
     def get_prev_qus_dirs(self):
         prev_qus_dirs_copy = self.__prev_qus_dirs.copy()
@@ -77,30 +74,32 @@ def append_to_json_file(filename, new_qus):
         logging.info(f"Updated {filename} with new questions.")
 
 
-def append_qus(qus, synopsis, qu_type, qu_out_dir, doc_type="bg_km"):
+def append_qus(qus, synopsis, qu_type, qu_out_dirs, doc_type="bg_km"):
     # qu_type can be "answerable" or "unanswerable"
     # doc_type can be "km" or "bg_km"
     no_gaps_synopsis = "".join(synopsis.split())
 
     if qu_type == "answerable":
-        all_file = os.path.join(qu_out_dir, "answerable", "all", f"{doc_type}_{no_gaps_synopsis}_qus.json")
-        try:
-            append_to_json_file(filename=all_file, new_qus=qus)
-        except FileWriteError as e:
-            logging.error(f"{str(e)}")
+        for qu_out_dir in qu_out_dirs:
+            all_file = os.path.join(qu_out_dir, "answerable", "all", f"{doc_type}_{no_gaps_synopsis}_qus.json")
+            try:
+                append_to_json_file(filename=all_file, new_qus=qus)
+            except FileWriteError as e:
+                logging.error(f"{str(e)}")
 
-        test_file = os.path.join(qu_out_dir, "answerable", "untested", f"{doc_type}_{no_gaps_synopsis}_qus.json")
-        try:
-            append_to_json_file(filename=test_file, new_qus=qus)
-        except FileWriteError as e:
-            logging.error(f"{str(e)}")
+            test_file = os.path.join(qu_out_dir, "answerable", "untested", f"{doc_type}_{no_gaps_synopsis}_qus.json")
+            try:
+                append_to_json_file(filename=test_file, new_qus=qus)
+            except FileWriteError as e:
+                logging.error(f"{str(e)}")
 
     elif qu_type == "unanswerable":
-        filename = os.path.join(qu_out_dir, "unanswerable", "all", f"{doc_type}_{no_gaps_synopsis}_qus.json")
-        try:
-            append_to_json_file(filename=filename, new_qus=qus)
-        except FileWriteError as e:
-            logging.error(f"{str(e)}")
+        for qu_out_dir in qu_out_dirs:
+            filename = os.path.join(qu_out_dir, "unanswerable", "all", f"{doc_type}_{no_gaps_synopsis}_qus.json")
+            try:
+                append_to_json_file(filename=filename, new_qus=qus)
+            except FileWriteError as e:
+                logging.error(f"{str(e)}")
 
     else:
         logging.warning(f"Invalid argument {qu_type} given to parameter 'qu_type' in function 'write_all_qus'. File write failed.")
@@ -281,10 +280,9 @@ def get_llm_response(context : QuGenContext, synopsis, actions_data, qu_type, pr
     
     
 
-def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphibian Conservation"):
+def process_all_synopses(context : QuGenContext, qu_type="answerable", doc_type="bg_km", first_synopsis="Amphibian Conservation"):
     # options for qu_type: "answerable", "unanswerable"
-    doc_type = context.get_doc_type()
-
+    # options for doc_type: "km", "bg_km"
     synopses = []
     for entry in os.scandir("action_data/key_messages/km_synopsis"):
         synopses.append(entry.name)
@@ -319,7 +317,7 @@ def process_all_synopses(context : QuGenContext, qu_type, first_synopsis="Amphib
                 return
             else:
                 logging.info(f"Generated {len(new_qus)} {qu_type} questions for synopsis {synopsis} in {(time.monotonic() - start):.3f} seconds.")
-                append_qus(qus=new_qus, synopsis=synopsis, qu_type=qu_type, doc_type=doc_type, qu_out_dir=context.get_qu_out_dir())
+                append_qus(qus=new_qus, synopsis=synopsis, qu_type=qu_type, doc_type=doc_type, qu_out_dirs=context.get_qu_out_dirs())
 
 
 def main():
@@ -329,15 +327,18 @@ def main():
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
-    QU_OUT_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus"
-    prev_qus_dirs = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"]
-    MAX_CALLS = 25
+    QU_OUT_DIRS = [
+        "question_gen_data/bg_km_multi_action_data/bg_km_qus",
+        "summary_gen_data/bg_km_qus_unused"
+    ]
+    PREV_QUS_DIRS = ["question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"]
+    MAX_CALLS = 8
 
-    context = QuGenContext(qu_out_dir=QU_OUT_DIR, max_calls=MAX_CALLS, doc_type="bg_km", prev_qus_dirs=prev_qus_dirs)
+    context = QuGenContext(qu_out_dir=QU_OUT_DIRS, max_calls=MAX_CALLS, prev_qus_dirs=PREV_QUS_DIRS)
     ## GENERATING ALL THE QUESTIONS
     try:
         logging.info("STARTING question generation process.")
-        process_all_synopses(qu_type="answerable", context=context, first_synopsis="Biodiversity of Marine Artificial Structures")
+        process_all_synopses(qu_type="answerable", context=context, first_synopsis="Marine Fish Conservation")
         logging.info("ENDED question generation process")
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {str(e)}")

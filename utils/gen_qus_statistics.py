@@ -173,7 +173,7 @@ def main():
     # id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
     # print(id_dist)
     qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"
-    # print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
+    print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
     # synopsis = "Bat Conservation"
     # synopsis_qus = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type="bg_km")
     # synopsis_queries = [qu_dict["question"] for qu_dict in synopsis_qus]
