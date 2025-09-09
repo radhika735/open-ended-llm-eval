@@ -1,0 +1,278 @@
+[
+  {
+    "query": "What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Evidence for the effectiveness of strategies to combat white-nose syndrome in bats shows limited research with mixed results. Modifying hibernacula environments shows promise, with one randomized, replicated, controlled study in the USA finding that little brown bats infected with white-nose syndrome had greater survival rates and stayed in hibernation longer in chambers at 4\u00b0C compared to 10\u00b0C (Action 1013). For probiotic treatment, two studies evaluated treating bats with probiotic bacteria: one study in Canada found increased survival when treatment occurred at the time of infection but not when given 21 days prior, while a study in the USA found increased survival for free-flying bats but not caged bats within a mine (Action 2008). However, probiotic treatment showed variable effects on disease symptoms, with reduced symptoms when applied at infection time but worse symptoms when applied 21 days prior in the Canadian study (Action 2008). No studies were found evaluating the effectiveness of culling infected bats (Action 1012), vaccinating bats against the pathogen (Action 1011), or restricting human access to caves to reduce pathogen spread (Action 1010). While cave management strategies exist, such as installing cave gates and imposing restrictions on cave visits, these have been studied for general bat conservation but not specifically for white-nose syndrome prevention (Actions 999, 1002).",
+    "summary_action_ids": [
+      "1013",
+      "2008",
+      "1012",
+      "1011",
+      "1010",
+      "999",
+      "1002"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"white-nose syndrome bats\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1013\",\n    \"action_title\": \"Modify bat hibernacula environments to increase survival of bats infected with white-nose syndrome\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2008\",\n    \"action_title\": \"Treat bats for infection with white-nose syndrome\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1012\",\n    \"action_title\": \"Cull bats infected with white-nose syndrome\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bat conservation white nose syndrome treatment\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"1013\",\n    \"action_title\": \"Modify bat hibernacula environments to increase survival of bats infected with white-nose syndrome\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2008\",\n    \"action_title\": \"Treat bats for infection with white-nose syndrome\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1012\",\n    \"action_title\": \"Cull bats infected with white-nose syndrome\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1011\",\n    \"action_title\": \"Vaccinate bats against the white-nose syndrome pathogen\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1010\",\n    \"action_title\": \"Restrict human access to bat caves to reduce the spread of the white-nose syndrome pathogen\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bat hibernacula cave management disease\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"2049\",\n    \"action_title\": \"Create artificial caves or hibernacula for bats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"999\",\n    \"action_title\": \"Install and maintain cave gates to restrict public access\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1002\",\n    \"action_title\": \"Impose restrictions on cave visits\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"759\",\n    \"action_title\": \"Create artificial hibernacula or aestivation sites\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1991\",\n    \"action_title\": \"Install fencing around cave entrances to restrict public access\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1013\"}",
+            "return_val": "{\n  \"action_id\": \"1013\",\n  \"action_title\": \"Modify bat hibernacula environments to increase survival of bats infected with white-nose syndrome\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of modifying hibernacula environments to increase the survival of bats infected with white-nose syndrome. The study was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nSurvival (1 study): One randomized, replicated, controlled study in the USA\\u00a0found that a greater number of little brown bats infected with the white-nose syndrome fungus survived in hibernation chambers at 4\\u00b0C than at 10\\u00b0\\n\\nBEHAVIOUR (1 STUDY)\\n\\nBehaviour change (1 study): One randomized, replicated, controlled study in the USA\\u00a0found that little brown bats infected with the white-nose syndrome fungus stayed in hibernation for longer in hibernation chambers at 4\\u00b0C than at 10\\u00b0\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2008\"}",
+            "return_val": "{\n  \"action_id\": \"2008\",\n  \"action_title\": \"Treat bats for infection with white-nose syndrome\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of treating bats with a probiotic bacterium to reduce white-nose syndrome infection. One study was in Canada\\u00a0and one in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): One randomized, controlled study in Canada\\u00a0found that treating little brown bats with a probiotic bacterium at the time of infection with white-nose syndrome (but not 21 days prior) increased survival within cages in a laboratory. One randomized, controlled study in the USA\\u00a0found that treating little brown bats with a probiotic bacterium within a mine increased survival for free-flying bats, but not caged bats.\\nCondition (2 studies): One randomized, controlled study in Canada\\u00a0found that little brown bats caged in a laboratory and treated with a probiotic bacterium at the time of infection with white-nose syndrome had reduced symptoms of the disease, but bats treated 21 days prior to infection had worse symptoms. One randomized, controlled study in the USA\\u00a0found that little brown bats kept within cages in a mine and treated with a probiotic bacterium had a similar severity of white-nose syndrome to untreated bats.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1012\"}",
+            "return_val": "{\n  \"action_id\": \"1012\",\n  \"action_title\": \"Cull bats infected with white-nose syndrome\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of culling bats infected with white-nose syndrome on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1011\"}",
+            "return_val": "{\n  \"action_id\": \"1011\",\n  \"action_title\": \"Vaccinate bats against the white-nose syndrome pathogen\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of vaccinating bats against the white-nose syndrome pathogen on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1010\"}",
+            "return_val": "{\n  \"action_id\": \"1010\",\n  \"action_title\": \"Restrict human access to bat caves to reduce the spread of the white-nose syndrome pathogen\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of restricting human access to bat caves to reduce the spread of the white-nose syndrome pathogen on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2049\"}",
+            "return_val": "{\n  \"action_id\": \"2049\",\n  \"action_title\": \"Create artificial caves or hibernacula for bats\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of creating artificial caves or hibernacula for bats on bat populations. Two studies were in the UK\\u00a0and two were in Germany.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (4 STUDIES)\\n\\nUptake (1 study): One study in the UK\\u00a0found that the number of bats using an artificial hibernaculum increased in each of nine years after it was built.\\nUse (4 studies): One study in the UK\\u00a0found that an artificial cave was used by a small number of brown long-eared bats. Three studies in Germany\\u00a0and the UK\\u00a0found that artificial hibernacula were used by up to four bat species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"999\"}",
+            "return_val": "{\n  \"action_id\": \"999\",\n  \"action_title\": \"Install and maintain cave gates to restrict public access\",\n  \"key_messages\": \"Key Messages:\\n\\nEleven studies evaluated the effects of installing cave gates on bat populations. Six studies\\u00a0were in the USA and five studies\\u00a0were in Europe.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (7 STUDIES)\\n\\nAbundance (7 studies): Three of four before-and-after studies (including one replicated study and one controlled study) in the Netherlands, the USA, Spain\\u00a0and Turkey\\u00a0found more or similar numbers\\u00a0of bats in caves and a bunker\\u00a0after gates were installed to restrict public access. The other study\\u00a0found fewer bats in caves after gates were installed. Two before-and-after studies in the USA\\u00a0and Spain\\u00a0found more bats within two caves after the size of the gated entrances were increased. One replicated, before-and-after study in the USA\\u00a0found that installing cave gates resulted in population increases or decreased rates of decline for 13 of 20 colonies of Indiana bat. One replicated, site comparison study in Spain\\u00a0found no difference in the population growth rates of bats roosting in caves with and without cave gates.\\nCondition (1 study): One site comparison study in the USA\\u00a0found that bats hibernating in a cave with a wall and gate over the entrance lost more body mass than bats in a nearby unmodified cave.\\n\\nBEHAVIOUR (5 STUDIES)\\u00a0\\u00a0 \\n\\nUse (1 study): One replicated, site comparison study in Spain\\u00a0found no difference in the occupancy rates of bats roosting in caves with and without cave gates.\\nBehaviour change (4 studies): One\\u00a0replicated, controlled, before-and-after and site comparison study in the USA\\u00a0found that bats at cave entrances circled more and entered caves less after gates were installed. One replicated study in the USA\\u00a0found that bats flew through gates with a funnel design more frequently than gates with a round bar or angle iron design. One randomized, controlled, before-and-after study in the UK\\u00a0found that fewer bats flew through cave gates when the spacing between horizontal bars was reduced. One before-and-after study in the USA\\u00a0found that significantly fewer bats emerged from a cave with a gate installed compared with a cave with a fence.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1002\"}",
+            "return_val": "{\n  \"action_id\": \"1002\",\n  \"action_title\": \"Impose restrictions on cave visits\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of imposing restrictions on cave visits on bat populations. One study was in each of the USA, Canada, Madagascar, and Turkey.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): Two before-and-after studies in Canada\\u00a0and Turkey\\u00a0found that bat populations within caves increased after restrictions on cave visitors were imposed.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nBehaviour change (2 studies): One study in the USA\\u00a0found that reducing the number of people within cave tour groups did not have a significant effect on the number of take-offs, landings or overall activity (bat movements) of a cave myotis colony roosting within the cave. One study in Madagascar\\u00a0found that increasing visitor approach distances, along with avoiding direct illumination of bats, reduced the alertness and number of take-offs of Madagascan rousettes during experimental cave tours.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"antifungal treatment bats disease\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"764\",\n    \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1974\",\n    \"action_title\": \"Inform local communities about disease risks from hunting and eating bat meat to reduce killing of bats\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3702\",\n    \"action_title\": \"Carry out surveillance of reptiles for early treatment/action to prevent spread of disease\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2581\",\n    \"action_title\": \"Treat disease in wild mammals\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?\", \"summary\": \"Evidence for the effectiveness of strategies to combat white-nose syndrome in bats shows limited research with mixed results. Modifying hibernacula environments shows promise, with one randomized, replicated, controlled study in the USA finding that little brown bats infected with white-nose syndrome had greater survival rates and stayed in hibernation longer in chambers at 4\u00b0C compared to 10\u00b0C (Action 1013). For probiotic treatment, two studies evaluated treating bats with probiotic bacteria: one study in Canada found increased survival when treatment occurred at the time of infection but not when given 21 days prior, while a study in the USA found increased survival for free-flying bats but not caged bats within a mine (Action 2008). However, probiotic treatment showed variable effects on disease symptoms, with reduced symptoms when applied at infection time but worse symptoms when applied 21 days prior in the Canadian study (Action 2008). No studies were found evaluating the effectiveness of culling infected bats (Action 1012), vaccinating bats against the pathogen (Action 1011), or restricting human access to caves to reduce pathogen spread (Action 1010). While cave management strategies exist, such as installing cave gates and imposing restrictions on cave visits, these have been studied for general bat conservation but not specifically for white-nose syndrome prevention (Actions 999, 1002).\", \"action_ids\": [\"1013\",\"2008\",\"1012\",\"1011\",\"1010\",\"999\",\"1002\"]}",
+            "return_val": "{\n  \"query\": \"What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?\",\n  \"relevant_summary\": \"Evidence for the effectiveness of strategies to combat white-nose syndrome in bats shows limited research with mixed results. Modifying hibernacula environments shows promise, with one randomized, replicated, controlled study in the USA finding that little brown bats infected with white-nose syndrome had greater survival rates and stayed in hibernation longer in chambers at 4\\u00b0C compared to 10\\u00b0C (Action 1013). For probiotic treatment, two studies evaluated treating bats with probiotic bacteria: one study in Canada found increased survival when treatment occurred at the time of infection but not when given 21 days prior, while a study in the USA found increased survival for free-flying bats but not caged bats within a mine (Action 2008). However, probiotic treatment showed variable effects on disease symptoms, with reduced symptoms when applied at infection time but worse symptoms when applied 21 days prior in the Canadian study (Action 2008). No studies were found evaluating the effectiveness of culling infected bats (Action 1012), vaccinating bats against the pathogen (Action 1011), or restricting human access to caves to reduce pathogen spread (Action 1010). While cave management strategies exist, such as installing cave gates and imposing restrictions on cave visits, these have been studied for general bat conservation but not specifically for white-nose syndrome prevention (Actions 999, 1002).\",\n  \"action_ids\": [\n    \"1013\",\n    \"2008\",\n    \"1012\",\n    \"1011\",\n    \"1010\",\n    \"999\",\n    \"1002\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1010",
+      "1011",
+      "1012",
+      "2006",
+      "2007",
+      "2008",
+      "2009"
+    ],
+    "regenerated_ids": [
+      "1010",
+      "1011",
+      "1012",
+      "2006",
+      "2007",
+      "2008",
+      "2009"
+    ]
+  },
+  {
+    "query": "To mitigate the impact of road and railway developments, what structures can be installed to help bats cross safely?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Several types of crossing structures can be installed to help bats cross roads and railways safely:\n\nGreen bridges are effective crossing structures, with one UK study finding that a green bridge was used by 97% of bats crossing a road (979).\n\nUnderpasses and culverts are widely used crossing structures, with eight studies across Germany, Ireland, the UK, Australia and France finding that bats used underpasses and culverts below roads in varying proportions (976). Research in Australia found that bat species adapted to cluttered habitats used small culverts and underpasses more than bat species adapted to open or edge habitats (976). A French study found that the use of underpasses by five bat species was influenced by underpass type and height, road width, and the amount of forest and hedgerows in the surrounding landscape (976).\n\nOverpasses can serve as crossing structures, with studies in Ireland and France finding that two or three bat species/species groups used overpasses, though up to three-quarters of bats crossed the road below at traffic height or crossed at other nearby locations (977). A UK study found that an overpass with planters was used by two-thirds of crossing bats, while an unvegetated overpass with a paved road over it was not used by crossing bats (977).\n\nBat gantries or bat bridges have shown mixed results, with UK studies finding that fewer bats used bat gantries than crossed the road below at traffic height, and one bat gantry was not used at all (978). A French study found that a temporary bat gantry was used by three bat species/species groups, but almost half of crossing bats flew over the road at other locations (978).\n\nDiversion structures using plantings or fencing can guide bats to safe crossing points, with a Swiss study finding that up to one fifth of lesser horseshoe bats within a colony flew along an artificial hedgerow to commute (981).",
+    "summary_action_ids": [
+      "979",
+      "976",
+      "977",
+      "978",
+      "981"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bat crossing structures roads railways wildlife bridges\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"979\",\n    \"action_title\": \"Install green bridges as road/railway crossing structures for bats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"978\",\n    \"action_title\": \"Install bat gantries or bat bridges as road/railway crossing structures for bats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"980\",\n    \"action_title\": \"Install hop-overs as road/railway crossing structures for bats\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bat road railway crossing mitigation structures\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"979\",\n    \"action_title\": \"Install green bridges as road/railway crossing structures for bats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"978\",\n    \"action_title\": \"Install bat gantries or bat bridges as road/railway crossing structures for bats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"980\",\n    \"action_title\": \"Install hop-overs as road/railway crossing structures for bats\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bat underpasses tunnels road crossing structures\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"976\",\n    \"action_title\": \"Install underpasses or culverts as road/railway crossing structures for bats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2514\",\n    \"action_title\": \"Install tunnels/culverts/underpass under roads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3508\",\n    \"action_title\": \"Install tunnels/culverts/underpasses under roads/railways\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"979\"}",
+            "return_val": "{\n  \"action_id\": \"979\",\n  \"action_title\": \"Install green bridges as road/railway crossing structures for bats\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of installing green bridges as road crossing structures for bats. The study was in the UK.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (1 STUDY)\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0 \\n\\nUse (1 study): One study in the UK\\u00a0found that a green bridge was used by 97% of bats crossing a road.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"978\"}",
+            "return_val": "{\n  \"action_id\": \"978\",\n  \"action_title\": \"Install bat gantries or bat bridges as road/railway crossing structures for bats\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects of installing bat gantries as road crossing structures for bats. Two studies were in the UK\\u00a0and one in France.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (3 STUDIES)\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0 \\n\\nUse (3 studies): Two replicated studies (including one site comparison) in the UK\\u00a0found that fewer bats used bat gantries than crossed the road below at traffic height, and one bat gantry was not used at all. One replicated study in France\\u00a0found that a temporary bat gantry was used by three bat species/species groups, but almost half of crossing bats flew over the road at other locations.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"980\"}",
+            "return_val": "{\n  \"action_id\": \"980\",\n  \"action_title\": \"Install hop-overs as road/railway crossing structures for bats\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of hop-overs as road/railway crossing structures for bats on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"976\"}",
+            "return_val": "{\n  \"action_id\": \"976\",\n  \"action_title\": \"Install underpasses or culverts as road/railway crossing structures for bats\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies evaluated the effects of installing underpasses or culverts as road crossing structures for bats. Seven studies were in Europe and one in Australia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (8 STUDIES)\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0 \\n\\nUse (8 studies): Eight studies\\u00a0(including six replicated studies) in Germany, Ireland, the UK, Australia\\u00a0and France\\u00a0found that bats used underpasses and culverts below roads, and crossed over the roads above them, in varying proportions. One replicated, site comparison study in Australia\\u00a0found that bat species adapted to cluttered habitats used small culverts and underpasses more than bat species adapted to open or edge habitats. One replicated, site comparison study in France\\u00a0found that the use of underpasses by five bat species was influenced by underpass type and height, road width, and the amount of forest and hedgerows in the surrounding landscape.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bat screens roadside hedgerows fencing transportation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"981\",\n    \"action_title\": \"Divert bats to safe crossing points over or under roads/railways with plantings or fencing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2567\",\n    \"action_title\": \"Install barrier fencing along roads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1553\",\n    \"action_title\": \"Conduct veterinary screens of animals before reintroducing/translocating them\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"981\"}",
+            "return_val": "{\n  \"action_id\": \"981\",\n  \"action_title\": \"Divert bats to safe crossing points over or under roads/railways with plantings or fencing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of diverting bats using an artificial hedgerow on bat populations. The study was in Switzerland.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (1 STUDY)\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0 \\n\\nUse (1 study): One controlled, before-and-after study in Switzerland\\u00a0found that up to one fifth of lesser horseshoe bats within a colony flew along an artificial hedgerow to commute.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"ledges wildlife bridge overpasses bat infrastructure\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3510\",\n    \"action_title\": \"Install overpasses over roads/railways\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2628\",\n    \"action_title\": \"Install overpasses over waterways\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"977\",\n    \"action_title\": \"Install overpasses as road/railway crossing structures for bats\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"977\"}",
+            "return_val": "{\n  \"action_id\": \"977\",\n  \"action_title\": \"Install overpasses as road/railway crossing structures for bats\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of installing overpasses as road crossing structures for bats. Three studies were in Europe\\u00a0and one in Australia.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One site comparison study in Australia\\u00a0found that the same number of bat species were recorded at an overpass and in nearby forest and bushland.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (3 STUDIES)\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0 \\n\\nUse (3 studies): Two replicated studies (including one site comparison) in Ireland\\u00a0and France\\u00a0found that two\\u00a0or three\\u00a0bat species/species groups used overpasses but up to three-quarters of bats crossed the road below at traffic height\\u00a0or crossed at other nearby locations. One study in the UK\\u00a0found that an overpass with planters was used by two-thirds of crossing bats, and an unvegetated overpass with a paved road over it was not used by crossing bats.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"To mitigate the impact of road and railway developments, what structures can be installed to help bats cross safely?\", \"summary\": \"Several types of crossing structures can be installed to help bats cross roads and railways safely:\\n\\nGreen bridges are effective crossing structures, with one UK study finding that a green bridge was used by 97% of bats crossing a road (979).\\n\\nUnderpasses and culverts are widely used crossing structures, with eight studies across Germany, Ireland, the UK, Australia and France finding that bats used underpasses and culverts below roads in varying proportions (976). Research in Australia found that bat species adapted to cluttered habitats used small culverts and underpasses more than bat species adapted to open or edge habitats (976). A French study found that the use of underpasses by five bat species was influenced by underpass type and height, road width, and the amount of forest and hedgerows in the surrounding landscape (976).\\n\\nOverpasses can serve as crossing structures, with studies in Ireland and France finding that two or three bat species/species groups used overpasses, though up to three-quarters of bats crossed the road below at traffic height or crossed at other nearby locations (977). A UK study found that an overpass with planters was used by two-thirds of crossing bats, while an unvegetated overpass with a paved road over it was not used by crossing bats (977).\\n\\nBat gantries or bat bridges have shown mixed results, with UK studies finding that fewer bats used bat gantries than crossed the road below at traffic height, and one bat gantry was not used at all (978). A French study found that a temporary bat gantry was used by three bat species/species groups, but almost half of crossing bats flew over the road at other locations (978).\\n\\nDiversion structures using plantings or fencing can guide bats to safe crossing points, with a Swiss study finding that up to one fifth of lesser horseshoe bats within a colony flew along an artificial hedgerow to commute (981).\", \"action_ids\": [\"979\",\"976\",\"977\",\"978\",\"981\"]}",
+            "return_val": "{\n  \"query\": \"To mitigate the impact of road and railway developments, what structures can be installed to help bats cross safely?\",\n  \"relevant_summary\": \"Several types of crossing structures can be installed to help bats cross roads and railways safely:\\n\\nGreen bridges are effective crossing structures, with one UK study finding that a green bridge was used by 97% of bats crossing a road (979).\\n\\nUnderpasses and culverts are widely used crossing structures, with eight studies across Germany, Ireland, the UK, Australia and France finding that bats used underpasses and culverts below roads in varying proportions (976). Research in Australia found that bat species adapted to cluttered habitats used small culverts and underpasses more than bat species adapted to open or edge habitats (976). A French study found that the use of underpasses by five bat species was influenced by underpass type and height, road width, and the amount of forest and hedgerows in the surrounding landscape (976).\\n\\nOverpasses can serve as crossing structures, with studies in Ireland and France finding that two or three bat species/species groups used overpasses, though up to three-quarters of bats crossed the road below at traffic height or crossed at other nearby locations (977). A UK study found that an overpass with planters was used by two-thirds of crossing bats, while an unvegetated overpass with a paved road over it was not used by crossing bats (977).\\n\\nBat gantries or bat bridges have shown mixed results, with UK studies finding that fewer bats used bat gantries than crossed the road below at traffic height, and one bat gantry was not used at all (978). A French study found that a temporary bat gantry was used by three bat species/species groups, but almost half of crossing bats flew over the road at other locations (978).\\n\\nDiversion structures using plantings or fencing can guide bats to safe crossing points, with a Swiss study finding that up to one fifth of lesser horseshoe bats within a colony flew along an artificial hedgerow to commute (981).\",\n  \"action_ids\": [\n    \"979\",\n    \"976\",\n    \"977\",\n    \"978\",\n    \"981\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "976",
+      "977",
+      "978",
+      "979",
+      "980",
+      "981",
+      "1966",
+      "1967",
+      "2940",
+      "2941",
+      "2942"
+    ],
+    "regenerated_ids": [
+      "976",
+      "977",
+      "978",
+      "979",
+      "980",
+      "981"
+    ]
+  }
+]

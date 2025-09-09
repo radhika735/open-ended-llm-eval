@@ -5,8 +5,7 @@ import json
 import time
 from openai import OpenAI
 from dotenv import load_dotenv
-# from pydantic import BaseModel, Field
-# from typing import Annotated
+import copy
 from utils.action_retrieval import ActionRetrievalContext, get_parsed_action_by_id, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 from utils.exceptions import RetrievalError
 
@@ -409,19 +408,29 @@ def get_prev_summaries(filename):
     else:
         logging.info(f"Creating new summary output file {filename}.")
         return []
-
-
-def assemble_llm_response_and_tools(response : dict, tool_use_track):
-    assembled_response = {}
-    # response is a dict with the properties 
-    if isinstance(response, dict):
-        assembled_response.update(response)
-        assembled_response["tool_call_details"] = tool_use_track
-        return assembled_response
-    else:
-        logging.warning("LLM response not formatted, unable to assemble response.")
-        raise TypeError(f"Expected LLM response to be formatted as a dictionary, instead it is a {type(response)}. Unable to assemble final response.")
     
+
+def assemble_summary_details(qu_details : dict, llm_response : dict, tool_use_track, model, provider="unpinned"):
+    if isinstance(llm_response, dict):
+        if qu_details["question"] != llm_response["query"]:
+            logging.warning("The question in the LLM response does not match the original question.")
+            raise ValueError(f"The question in the LLM response does not match the original question, unable to assemble final response. Original question: {qu_details['question']}. Question in LLM response: {llm_response['query']}")
+        else:
+            summary_details = {
+                "query": qu_details["question"],
+                "model": model,
+                "provider": provider,
+                "relevant_summary": llm_response["relevant_summary"],
+                "summary_action_ids": llm_response["action_ids"],
+                "tool_call_details": tool_use_track,
+                "all_relevant_action_ids": qu_details["all_relevant_action_ids"],
+                "regenerated_ids": qu_details.get("regenerated_ids", []),
+            }
+            return summary_details
+    else:
+        logging.warning("LLM response not formatted, unable to assemble summary details.")
+        raise TypeError(f"Expected LLM response to be formatted as a dictionary, instead it is a {type(llm_response)}. Unable to assemble final response.")
+
 
 def write_to_json_file(data_list, filename):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -432,7 +441,7 @@ def write_to_json_file(data_list, filename):
         logging.error(f"Error writing to JSON file {filename}: {e}")
 
 
-def write_new_summary(summary, filename, reset_file = False):
+def append_new_summary(summary, filename, reset_file = False):
     if not reset_file:
         try:
             all_summaries = get_prev_summaries(filename=filename)
@@ -471,16 +480,8 @@ def parse_provider_name(provider):
 def run_models(query, model_provider_list):
     model_summaries = []
     for model, provider in model_provider_list:
-        cleaned_model_name = parse_model_name(model)
-        cleaned_provider_name = parse_provider_name(provider)
-        if RETRIEVAL_TYPE == "hybrid":
-            cleaned_fusion_type = FUSION_TYPE.replace(" ","-")
-            filename = f"summaries_{RETRIEVAL_TYPE}_{cleaned_fusion_type}_{cleaned_provider_name}_{cleaned_model_name}.json"
-        else:
-            filename = f"summaries_{RETRIEVAL_TYPE}_{cleaned_provider_name}_{cleaned_model_name}.json"
         response, tool_calls = run_agentic_loop(user_query=query, model=model, provider=provider)
-        model_summaries.append((assemble_llm_response_and_tools(response=response, tool_use_track=tool_calls), filename))
-
+        model_summaries.append((model, provider, response, tool_calls))
     return model_summaries
 
 
@@ -492,44 +493,73 @@ def get_questions_from_file(filename):
                 raise RetrievalError(f"Expected JSON file {filename} to contain a list, but contained {type(qu_dicts)} instead.")
             else:
                 logging.info(f"Loaded questions from {filename}")
-                questions = [qu["question"] for qu in qu_dicts]
-                return questions 
+                return qu_dicts 
     except json.JSONDecodeError as e:
         raise RetrievalError(f"Error reading json from file {filename}: {str(e)}.")
     except FileNotFoundError:
         raise RetrievalError(f"Questions file {filename} not found.")
     
 
-def run_summary_gen_for_qu_file(queries_filename, summary_out_dir, unused_qus_dir, used_qus_dir, model_provider_list):
+def run_summary_gen_for_qu_file(unused_qus_dir, queries_filename, used_qus_dir, max_qus, summary_out_base_dir, summary_filename, model_provider_list):
     try:
-        unused_qus = get_questions_from_file(os.path.join(unused_qus_dir, queries_filename))
-        used_qus = get_questions_from_file(os.path.join(used_qus_dir, queries_filename))
+        unused_qu_dicts = get_questions_from_file(os.path.join(unused_qus_dir, queries_filename))
     except RetrievalError as e:
-        logging.error(f"Unable to load questions to generate summaries for from file {queries_filename}: {e}")
-        return            
+        logging.error(f"Unable to load questions for summary generation from file {queries_filename}: {e}")
+        return 
+    try:
+        used_qu_dicts = get_questions_from_file(os.path.join(used_qus_dir, queries_filename))
+    except RetrievalError as e:
+        logging.info(f"No existing used questions found for summary generation from file {queries_filename}, will create new used questions file: {e}")
+        used_qu_dicts = []
 
-    queries_used = {q:False for q in unused_qus}
-    for query in queries_used.keys():
+    queries_used = copy.deepcopy(unused_qu_dicts)
+    for qu_dict in queries_used:
+        qu_dict["used"] = False
+
+    for i in range(max_qus):
+        qu_dict = queries_used[i]
+        query = qu_dict["question"]
+        logging.info(f"Generating summaries for query: {query}")
         model_summaries = run_models(query=query, model_provider_list=model_provider_list)
-        for summary_and_tools, filename in model_summaries:
-            summary_out_filepath = os.path.join(summary_out_dir, filename)
-            write_new_summary(summary=summary_and_tools, filename=summary_out_filepath)
-        queries_used[query] = True
 
-    updated_unused_qus = [q for q, used in queries_used.items() if not used]
-    new_used_qus = [q for q, used in queries_used.items() if used]
-    used_qus.extend(new_used_qus)
+        for model, provider, response, tool_calls in model_summaries:
+            cleaned_model_name = parse_model_name(model)
+            cleaned_provider_name = parse_provider_name(provider)
+            summary_out_filepath = os.path.join(summary_out_base_dir, f"{cleaned_provider_name}_{cleaned_model_name}", summary_filename)
+            assembled_summary = assemble_summary_details(qu_details=qu_dict, llm_response=response, tool_use_track=tool_calls, model=model, provider=provider)
+            append_new_summary(summary=assembled_summary, filename=summary_out_filepath)
+
+        qu_dict["used"] = True
+    
+    # update the unused and used question lists
+    updated_unused_qus = [q_dict for q_dict in queries_used if not q_dict["used"]]
+    new_used_qus = [q_dict for q_dict in queries_used if q_dict["used"]]
+    for q_dict in updated_unused_qus:
+        q_dict.pop("used", None)
+    for q_dict in new_used_qus:
+        q_dict.pop("used", None)
+    used_qu_dicts.extend(new_used_qus)
     # overwrite the unused and used question files
     write_to_json_file(data_list=updated_unused_qus, filename=os.path.join(unused_qus_dir, queries_filename))
-    write_to_json_file(data_list=used_qus, filename=os.path.join(used_qus_dir, queries_filename))
+    write_to_json_file(data_list=used_qu_dicts, filename=os.path.join(used_qus_dir, queries_filename))
 
 
-def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list, summary_out_base_dir): 
-    for filename in os.listdir(unused_qus_dir):
-        if filename.endswith(".json"):
-            summary_out_sub_dir = os.path.splitext(filename)[0]
-            summary_out_dir = os.path.join(summary_out_base_dir, summary_out_sub_dir)
-            run_summary_gen_for_qu_file(queries_filename=filename, summary_out_dir=summary_out_dir, unused_qus_dir=unused_qus_dir, used_qus_dir=used_qus_dir, model_provider_list=model_provider_list)
+def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list, summary_out_base_dir, max_qus=1): 
+    for qus_filename in os.listdir(unused_qus_dir):
+        if qus_filename.endswith(".json"):
+            retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
+            filename_list = os.path.splitext(qus_filename)[0].split("_")
+            filename_list[-1] = "summaries"
+            summary_filename = "_".join(filename_list) + ".json"
+            run_summary_gen_for_qu_file(
+                unused_qus_dir=unused_qus_dir, 
+                queries_filename=qus_filename,
+                used_qus_dir=used_qus_dir,
+                max_qus=max_qus,
+                summary_out_base_dir=os.path.join(summary_out_base_dir, retrieval_subdir), 
+                summary_filename=summary_filename, 
+                model_provider_list=model_provider_list
+            )
 
 
 def main():
@@ -539,46 +569,6 @@ def main():
     # disable bm25s logging
     logging.getLogger("bm25s").setLevel(logging.WARNING)
 
-    ## USEFUL/USED QUERIES TO KEEP TRACK OF
-    queries = [
-        # "How effective is providing artificial nesting sites for different types of bees?",
-        # "What are the documented trade-offs of using prescribed fire as a forest management tool?",
-        # "How can altering the type of food provided to captive primates improve their welfare?",
-        # "What are the most effective ways to modify man-made structures like windows and power lines to reduce bird collision mortality?",
-        # "When creating new habitats on farmland, how long does it typically take to see benefits for wildlife?",
-    
-        # "What conservation actions are most beneficial for establishing new populations of threatened toad species in the UK?",
-        
-        # "What are the most effective interventions for reducing bat fatalities at wind turbines?",
-
-        # "What are the most beneficial actions for reducing human-wildlife conflict with bears?",
-        # "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?", 
-        # "What are the most effective ways to increase soil organic carbon on loamy soils?"
-    ]
-
-    # model_provider_list = [
-    #     ("google/gemini-2.5-flash", None), # CHEAPISH
-    #     ("moonshotai/kimi-k2", "fireworks/fp8"), # CHEAPISH
-    #     ("qwen/qwen3-235b-a22b-thinking-2507", "together"), # CHEAP
-        
-    #     ("anthropic/claude-sonnet-4", None), # HIGH PRICE
-
-    #     #("anthropic/claude-opus-4", None), # V. EXPENSIVE, AVOID!!
-    #     #("x-ai/grok-4", None), # HIGH PRICE (AVOID?)
-    #     ("openai/gpt-4.1", None), # MID PRICE
-    #     ("google/gemini-2.5-pro", None), # MID PRICE
-    #     ("deepseek/deepseek-r1-0528", "novita/fp8"), # CHEAP
-    #     #("mistralai/magistral-medium-2506", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
-    #     #("mistralai/magistral-medium-2506:thinking", None), # DOESN'T RLY WORK - UNPROCESSABLE ENTITY ERROR
-    #     ("anthropic/claude-3.5-sonnet", None), # HIGH PRICE
-    #     #("qwen/qwen-2.5-72b-instruct", "novita"), # DOESN'T RLY WORK - ARGS FOR TOOLS CALLS MALFORMED
-
-    #     ("openai/gpt-5", None) # MID PRICE
-
-    # ]
-    # could also test gemini-2.5-flash-lite
-
-
     model_provider_list = [
         ("openai/gpt-5", None),
         ("anthropic/claude-sonnet-4", None),
@@ -586,21 +576,21 @@ def main():
         ("moonshotai/kimi-k2", "fireworks/fp8")
     ]
 
-    ## CREATING SUMMARIES FOR MINI LLM JUDGE EVAL QUESTIONS
+    ## SUMMARY GENERATION PROCESS
     logging.info("STARTING summary generation process.")
-    #qu_retrieval_success, test_questions = get_questions_from_file("evaluation_data/mini_testing_human_agreement/test_questions.json")
-    # test_questions = [
-    #     "What are the most beneficial actions for reducing human-wildlife conflict with bears?",
-    #     "What actions can be taken to mitigate the environmental pollution caused by waste from salmon farms?", 
-    #     "What are the most effective ways to increase soil organic carbon on loamy soils?",
-    #     "What are the most effective interventions for reducing bat fatalities at wind turbines?"
-    # ]
-    # run_queries_on_models(query_list=test_questions, model_provider_list=model_provider_list, summary_out_dir="answer_gen_data/without_effectiveness_summaries/v4_prompt")
-    unused_qus_dir = "summary_gen_data/bg_km_qus_unused/answerable/passed"
-    used_qus_dir = "summary_gen_data/bg_km_qus_used/answerable/passed"
-    summary_out_base_dir = "summary_gen_data/passed_answerable_qus_summaries"
-    run_summary_gen_for_qu_dir(unused_qus_dir=unused_qus_dir, used_qus_dir=used_qus_dir, model_provider_list=model_provider_list, summary_out_base_dir=summary_out_base_dir)
+    qu_type = "answerable" # other option: "unanswerable"
+    filter_stage = "passed" # other option: "failed"
+    unused_qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/unused"
+    used_qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/used"
+    summary_out_base_dir = f"summary_gen_data/{qu_type}_{filter_stage}_qus_summaries"
+    max_qus = 2
+
+    try:
+        run_summary_gen_for_qu_dir(unused_qus_dir=unused_qus_dir, used_qus_dir=used_qus_dir, model_provider_list=model_provider_list, summary_out_base_dir=summary_out_base_dir, max_qus=max_qus)
+    except KeyboardInterrupt as e:
+        logging.error(f"Keyboard interrupt: {e}")
     logging.info("ENDED summary generation process.")
+
 
 
 if __name__ == "__main__":
