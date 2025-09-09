@@ -419,8 +419,8 @@ def assemble_llm_response_and_tools(response : dict, tool_use_track):
         assembled_response["tool_call_details"] = tool_use_track
         return assembled_response
     else:
-        logging.warning("LLM response not formatted, unable to assemble response")
-        raise TypeError(f"Expected LLM response to be formatted as a dictionary, instead it is a {type(response)}. Unable to assemble final response")
+        logging.warning("LLM response not formatted, unable to assemble response.")
+        raise TypeError(f"Expected LLM response to be formatted as a dictionary, instead it is a {type(response)}. Unable to assemble final response.")
     
 
 def write_to_json_file(data_list, filename):
@@ -468,7 +468,7 @@ def parse_provider_name(provider):
         return ""
 
 
-def run_models(query, model_provider_list, summary_out_dir):
+def run_models(query, model_provider_list):
     model_summaries = []
     for model, provider in model_provider_list:
         cleaned_model_name = parse_model_name(model)
@@ -478,9 +478,8 @@ def run_models(query, model_provider_list, summary_out_dir):
             filename = f"summaries_{RETRIEVAL_TYPE}_{cleaned_fusion_type}_{cleaned_provider_name}_{cleaned_model_name}.json"
         else:
             filename = f"summaries_{RETRIEVAL_TYPE}_{cleaned_provider_name}_{cleaned_model_name}.json"
-        summary_out_file = os.path.join(summary_out_dir, filename)
         response, tool_calls = run_agentic_loop(user_query=query, model=model, provider=provider)
-        model_summaries.append((assemble_llm_response_and_tools(response=response, tool_use_track=tool_calls), summary_out_file))
+        model_summaries.append((assemble_llm_response_and_tools(response=response, tool_use_track=tool_calls), filename))
 
     return model_summaries
 
@@ -490,7 +489,7 @@ def get_questions_from_file(filename):
         with open(filename, "r", encoding="utf-8") as file:
             qu_dicts = json.load(file)
             if not isinstance(qu_dicts, list):
-                raise RetrievalError(f"Expected JSON file to contain a list, but contained {type(qu_dicts)} instead: {filename}")
+                raise RetrievalError(f"Expected JSON file {filename} to contain a list, but contained {type(qu_dicts)} instead.")
             else:
                 logging.info(f"Loaded questions from {filename}")
                 questions = [qu["question"] for qu in qu_dicts]
@@ -501,19 +500,20 @@ def get_questions_from_file(filename):
         raise RetrievalError(f"Questions file {filename} not found.")
     
 
-def run_summary_gen_for_qu_file(model_provider_list, summary_out_dir, queries_filename, unused_qus_dir, used_qus_dir):
+def run_summary_gen_for_qu_file(queries_filename, summary_out_dir, unused_qus_dir, used_qus_dir, model_provider_list):
     try:
         unused_qus = get_questions_from_file(os.path.join(unused_qus_dir, queries_filename))
         used_qus = get_questions_from_file(os.path.join(used_qus_dir, queries_filename))
     except RetrievalError as e:
-        logging.error(e)
+        logging.error(f"Unable to load questions to generate summaries for from file {queries_filename}: {e}")
         return            
 
     queries_used = {q:False for q in unused_qus}
-    for query, used in queries_used.items():
-        model_summaries = run_models(query=query, model_provider_list=model_provider_list, summary_out_dir=summary_out_dir)
-        for summary, filename in model_summaries:
-            write_new_summary(summary=summary, filename=filename)
+    for query in queries_used.keys():
+        model_summaries = run_models(query=query, model_provider_list=model_provider_list)
+        for summary_and_tools, filename in model_summaries:
+            summary_out_filepath = os.path.join(summary_out_dir, filename)
+            write_new_summary(summary=summary_and_tools, filename=summary_out_filepath)
         queries_used[query] = True
 
     updated_unused_qus = [q for q, used in queries_used.items() if not used]
@@ -524,18 +524,12 @@ def run_summary_gen_for_qu_file(model_provider_list, summary_out_dir, queries_fi
     write_to_json_file(data_list=used_qus, filename=os.path.join(used_qus_dir, queries_filename))
 
 
-def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list, summary_out_base_dir):
-    # questions = get_questions_from_directory(directory=qu_dir)
+def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list, summary_out_base_dir): 
     for filename in os.listdir(unused_qus_dir):
         if filename.endswith(".json"):
-            try:
-                questions = get_questions_from_file(os.path.join(unused_qus_dir, filename))
-            except RetrievalError as e:
-                logging.error(e)
-            else:
-                summary_out_sub_dir = os.path.splitext(filename)[0]
-                summary_out_dir = os.path.join(summary_out_base_dir, summary_out_sub_dir)
-                run_summary_gen_for_qu_file(model_provider_list=model_provider_list, summary_out_dir=summary_out_dir, queries_filename=filename, unused_qus_dir=unused_qus_dir, used_qus_dir=used_qus_dir)
+            summary_out_sub_dir = os.path.splitext(filename)[0]
+            summary_out_dir = os.path.join(summary_out_base_dir, summary_out_sub_dir)
+            run_summary_gen_for_qu_file(queries_filename=filename, summary_out_dir=summary_out_dir, unused_qus_dir=unused_qus_dir, used_qus_dir=used_qus_dir, model_provider_list=model_provider_list)
 
 
 def main():
@@ -607,9 +601,6 @@ def main():
     summary_out_base_dir = "summary_gen_data/passed_answerable_qus_summaries"
     run_summary_gen_for_qu_dir(unused_qus_dir=unused_qus_dir, used_qus_dir=used_qus_dir, model_provider_list=model_provider_list, summary_out_base_dir=summary_out_base_dir)
     logging.info("ENDED summary generation process.")
-
-
-
 
 
 if __name__ == "__main__":
