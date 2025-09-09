@@ -15,15 +15,34 @@ load_dotenv()
 
 
 class FilterContext():
-    def __init__(self, qu_source_dir, max_calls, max_synopses):
-        self.__qu_source_dir = qu_source_dir
+    def __init__(self, max_calls, max_synopses, qus_base_dir=None, untested_qus_dir="untested", passed_qus_dirs=["passed"], failed_qus_dirs=["failed"]):
+        # Need a directory of the untested questions, which will be the source directory, 
+        #   and need directories to separately store the questions that pass the filter and the questions that fail the filter.
+        # If a base directory is provided, will use the directories base_dir/untested, base_dir/passed and base_dir/failed for the 
+        #   untested, passed and failed questions respectively.
+        # Otherwise, for full customisability, these three directories can be given explicitly, which will be taken into account if no base dir is given. 
+        if qus_base_dir is not None:
+            self.__untested_qus_dir = os.path.join(qus_base_dir, "untested")
+            self.__passed_qus_dir = [os.path.join(qus_base_dir, "passed")]
+            self.__failed_qus_dir = [os.path.join(qus_base_dir, "failed")]
+        else:
+            self.__untested_qus_dir = untested_qus_dir
+            self.__passed_qus_dirs = passed_qus_dirs
+            self.__failed_qus_dirs = failed_qus_dirs
+
         self.__max_calls = max_calls
         self.__current_calls = 0
         self.__max_synopses = max_synopses
         self.__current_synopses = 0
 
-    def get_qu_source_dir(self):
-        return self.__qu_source_dir
+    def get_untested_qus_dir(self):
+        return self.__untested_qus_dir
+    
+    def get_passed_qus_dirs(self):
+        return self.__passed_qus_dir.copy()
+    
+    def get_failed_qus_dirs(self):
+        return self.__failed_qus_dir.copy()
 
     def get_max_calls(self):
         return self.__max_calls
@@ -199,27 +218,25 @@ def get_unique_batches(qu_dicts, batch_size=10):
     return unique_batches
 
 
-def separate_filtered_questions(base_dir, filename, synopsis, num_all_qus, passed_qus, failed_qus, untested_qus):
+def separate_filtered_questions(untested_dir, pass_dirs, fail_dirs, filename, synopsis, num_all_qus, passed_qus, failed_qus, untested_qus):
     logging.info(f"Total {num_all_qus} questions for synopsis {synopsis}: {len(passed_qus)} passed, {len(failed_qus)} failed, {len(untested_qus)} untested.")
 
-    pass_dir = os.path.join(base_dir, "passed")
-    fail_dir = os.path.join(base_dir, "failed")
-    untested_dir = os.path.join(base_dir, "untested")
-
-    passed_file = os.path.join(pass_dir, filename)
-    failed_file = os.path.join(fail_dir, filename)
     untested_file = os.path.join(untested_dir, filename)
-
-    try:
-        append_qus_to_file(passed_qus, passed_file)
-        logging.info(f"Added new set of questions that PASSED the filter to {passed_file}.")
-    except FileWriteError as e:
-        logging.error(f"{str(e)}")
-    try:
-        append_qus_to_file(failed_qus, failed_file)
-        logging.info(f"Added new set of questions that FAILED the filter to {failed_file}.")
-    except FileWriteError as e:
-        logging.error(f"{str(e)}")
+    for pass_dir in pass_dirs:
+        passed_file = os.path.join(pass_dir, filename)
+        try:
+            append_qus_to_file(passed_qus, passed_file)
+            logging.info(f"Added new set of questions that PASSED the filter to {passed_file}.")
+        except FileWriteError as e:
+            logging.error(f"{str(e)}")
+    
+    for fail_dir in fail_dirs:
+        failed_file = os.path.join(fail_dir, filename)
+        try:
+            append_qus_to_file(failed_qus, failed_file)
+            logging.info(f"Added new set of questions that FAILED the filter to {failed_file}.")
+        except FileWriteError as e:
+            logging.error(f"{str(e)}")
         
     write_qus_to_file(untested_qus, untested_file)
     logging.info(f"Overwrote {untested_file} with untested questions.")
@@ -228,17 +245,16 @@ def separate_filtered_questions(base_dir, filename, synopsis, num_all_qus, passe
 def process_qus_in_synopsis(synopsis, context : FilterContext):
     doc_type = "bg_km"
     no_gaps_synopsis = "".join(synopsis.split())
-    base_dir = context.get_qu_source_dir()
-    qus_dir = os.path.join(base_dir, "untested")
+    qus_dir = context.get_untested_qus_dir()
     file_name = f"{doc_type}_{no_gaps_synopsis}_qus.json"
     qus_file = os.path.join(qus_dir, file_name)
 
-    qus_full_details_list = get_qus_from_file(qus_file)
-    logging.info(f"Loaded {len(qus_full_details_list)} questions for synopsis {synopsis}.")
-    if qus_full_details_list == []:
+    qu_dicts_list = get_qus_from_file(qus_file)
+    logging.info(f"Loaded {len(qu_dicts_list)} questions for synopsis {synopsis}.")
+    if qu_dicts_list == []:
         logging.info(f"No unprocessed questions found for synopsis {synopsis}, not processing this synopsis.")
         return
-    all_batches = get_unique_batches(qu_dicts=qus_full_details_list, batch_size=10)
+    all_batches = get_unique_batches(qu_dicts=qu_dicts_list, batch_size=10)
     # here we can assert that all the queries in each batch are unique.
 
     try:
@@ -255,7 +271,7 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
         # Indexing dicts by query - i.e. we require the queries in a batch to be unique.
         queries_batch = [qu_dict["question"] for qu_dict in qu_dicts_batch]
         qu_dicts_batch_query_indexed = {qu_dict["question"]: qu_dict for qu_dict in qu_dicts_batch}
-        stored_ids_batch_query_indexed = {qus_full_details["question"]: qus_full_details["all_relevant_action_ids"] for qus_full_details in qu_dicts_batch}
+        stored_ids_batch_query_indexed = {qu_dict["question"]: qu_dict["all_relevant_action_ids"] for qu_dict in qu_dicts_batch}
 
         if context.get_current_calls() < context.get_max_calls():
             logging.info("Making API call for question batch.")
@@ -267,10 +283,12 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
                 for i in range(batch_num, len(all_batches)):
                     untested_qus.extend(all_batches[i])
                 separate_filtered_questions(
-                    base_dir=base_dir, 
+                    untested_dir=context.get_untested_qus_dir(),
+                    pass_dirs=context.get_passed_qus_dirs(),
+                    fail_dirs=context.get_failed_qus_dirs(), 
                     filename=file_name, 
                     synopsis=synopsis, 
-                    num_all_qus=len(qus_full_details_list), 
+                    num_all_qus=len(qu_dicts_list), 
                     passed_qus=passed_qus,
                     failed_qus=failed_qus,
                     untested_qus=untested_qus
@@ -297,10 +315,12 @@ def process_qus_in_synopsis(synopsis, context : FilterContext):
             break
 
     separate_filtered_questions(
-        base_dir=base_dir, 
+        untested_dir=context.get_untested_qus_dir(),
+        pass_dirs=context.get_passed_qus_dirs(),
+        fail_dirs=context.get_failed_qus_dirs(), 
         filename=file_name, 
         synopsis=synopsis, 
-        num_all_qus=len(qus_full_details_list), 
+        num_all_qus=len(qu_dicts_list), 
         passed_qus=passed_qus,
         failed_qus=failed_qus,
         untested_qus=untested_qus
@@ -347,14 +367,14 @@ def main():
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
-    QU_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable"
+    QUS_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus/unanswerable"
     MAX_CALLS = 20
-    MAX_SYNOPSES = 10
+    MAX_SYNOPSES = 25
 
-    context = FilterContext(qu_source_dir=QU_SOURCE_DIR, max_calls=MAX_CALLS, max_synopses=MAX_SYNOPSES)
+    context = FilterContext(qus_base_dir=QUS_SOURCE_DIR, max_calls=MAX_CALLS, max_synopses=MAX_SYNOPSES)
 
     logging.info("STARTING question filtering process.")
-    process_all_synopses(context=context, first_synopsis="Primate Conservation")
+    process_all_synopses(context=context, first_synopsis="Amphibian Conservation")
     logging.info("ENDED question filtering process.")
 
 
