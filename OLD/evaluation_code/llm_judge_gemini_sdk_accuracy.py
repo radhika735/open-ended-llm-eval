@@ -5,7 +5,7 @@ from google import genai
 from google.genai import types, errors
 from google.api_core import exceptions
 from pydantic import BaseModel
-from utils.action_retrieval import ActionRetrievalContext, parse_action, get_parsed_action_as_str
+from utils.action_parsing import ActionParsingContext, parse_action, get_parsed_action_as_str
 
 
 load_dotenv()
@@ -177,7 +177,7 @@ def get_evaluation(question, answer, docs):
         return result
 
 
-def get_oracle_actions(id_list, context : ActionRetrievalContext):
+def get_oracle_actions(id_list, context : ActionParsingContext):
     doc_type = context.get_doc_type()
     if doc_type == "km":
         base_dir = "action_data/key_messages/km_all"
@@ -197,7 +197,7 @@ def get_oracle_actions(id_list, context : ActionRetrievalContext):
     return parsed_actions
 
 
-def get_oracle_actions_as_str(id_list, context : ActionRetrievalContext):
+def get_oracle_actions_as_str(id_list, context : ActionParsingContext):
     actions = get_oracle_actions(id_list=id_list, context=context)
     action_strings = []
     for action in actions:
@@ -211,7 +211,7 @@ def main():
     logging.basicConfig(level=logging.DEBUG, filename="logfiles/llm_judge_gemini_sdk_accuracy.log")
     logging.info("STARTING answer evaluation process.")
 
-    context = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
+    context = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
     question = "What are the most effective interventions for reducing bat fatalities at wind turbines?"
     synopsis = "Bat Conservation"
     oracle_action_ids = ["970","1960","2939","971","968"]

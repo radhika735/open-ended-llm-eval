@@ -8,7 +8,7 @@ from pydantic import BaseModel
 import os
 import time
 
-from utils.action_retrieval import get_synopsis_data_as_str
+from utils.action_parsing import get_synopsis_data_as_str
 from utils.exceptions import RetrievalError, FatalAPIError, NonFatalAPIError, APIError, FileWriteError
 
 load_dotenv()
