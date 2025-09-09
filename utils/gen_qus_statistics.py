@@ -160,6 +160,27 @@ def write_distribution_file(id_dist, filepath):
             file.write(synopsis + "," + ids + "\n")
 
 
+def get_total_summary_gen_qus(usage_stage="used"):
+    num_qus = 0
+    dirs = [
+        f"live_questions/bg_km_qus/answerable/passed/{usage_stage}",
+        f"live_questions/bg_km_qus/answerable/failed/{usage_stage}",
+        f"live_questions/bg_km_qus/unanswerable/passed/{usage_stage}",
+        f"live_questions/bg_km_qus/unanswerable/failed/{usage_stage}",
+    ]
+    for dir in dirs:
+        for filename in os.listdir(dir):
+            filepath = os.path.join(dir, filename)
+            with open(filepath, 'r', encoding="utf-8") as f:
+                qus = json.load(f)
+            num_qus += len(qus)
+    return num_qus
+
+def get_viable_summaries(model_provider):
+    summaries_dir = "summary_gen_data/answer_"
+
+
+
 def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     
@@ -172,8 +193,8 @@ def main():
     # qus_file = f"question_gen_data/bg_km_multi_action_data/bg_km_multi_action_gen_qus/answerable/bg_km_{no_gaps_synopsis}_qus.json"
     # id_dist = get_id_dist_for_synopsis(qus_file=qus_file, synopsis=synopsis)
     # print(id_dist)
-    qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"
-    print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
+    # qus_dir="question_gen_data/bg_km_multi_action_data/bg_km_qus/answerable/all"
+    # print(get_num_qus_all_synopses(qus_dir=qus_dir, action_doc_type="bg_km"))
     # synopsis = "Bat Conservation"
     # synopsis_qus = get_qus_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type="bg_km")
     # synopsis_queries = [qu_dict["question"] for qu_dict in synopsis_qus]
@@ -187,8 +208,11 @@ def main():
     # for q in top_qus:
     #     print(f"{q}")
 
-    total = get_total_num_qus(qus_dir=qus_dir)
-    print(total)
+    # total = get_total_num_qus(qus_dir=qus_dir)
+    # print(total)
+
+    used_qus = get_total_summary_gen_qus(usage_stage="unused")
+    print(used_qus)
 
 
 if __name__=="__main__":

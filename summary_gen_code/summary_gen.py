@@ -14,7 +14,7 @@ load_dotenv()
 
 
 ACTION_RETRIEVAL_CONTEXT = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
-RETRIEVAL_TYPE = "sparse" # other options: "dense", "hybrid".
+RETRIEVAL_TYPE = "hybrid" # other options: "dense", "sparse".
 if RETRIEVAL_TYPE == "hybrid":
     FUSION_TYPE = "cross-encoder" # other option: "reciprocal rank fusion"
 
@@ -221,6 +221,9 @@ def call_llm(messages, model, provider):
                     "provider": {
                         "order": [f"{provider}"], # Specify the single provider you want to pin
                         "allow_fallbacks": False     # Set fallback to None to prevent routing elsewhere
+                    },
+                    "usage":{
+                        "include":True
                     }
                 }
             )
@@ -231,13 +234,16 @@ def call_llm(messages, model, provider):
                 messages=messages,
                 reasoning_effort="low",
                 extra_body={
-                    "require_parameters": True
+                    "require_parameters": True,
+                    "usage":{
+                        "include":True
+                    }
                 }
             )
         # Add the assistant's response to messages
         messages.append(response.choices[0].message.model_dump())
-        print("\n\n\nResponse:",response,"\n\n\n")
-        print("Messages:", messages, "\n\n\n")
+        print("Input tokens:",response.usage.prompt_tokens)
+        print("Output tokens:",response.usage.completion_tokens)
         return response
 
     except Exception as e:
@@ -259,7 +265,7 @@ def execute_tool_call(tool_call):
     Returns:
         dict: Tool response message for the conversation
     """
-    print(tool_call)## need to comment this out
+    # print(tool_call)## need to comment this out
     try:
         tool_name = tool_call.function.name
         tool_args = json.loads(tool_call.function.arguments)
@@ -343,7 +349,8 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
         iteration_tool_calls = {"iteration_num":iteration_count, "tools_called":[]}
         all_tool_calls.append(iteration_tool_calls)
 
-        logging.debug(f"Iteration {iteration_count}: Calling LLM...")
+        logging.info(f"Iteration {iteration_count}: Calling LLM...")
+        print(f"Iteration {iteration_count}: Calling LLM...")
         
         response = call_llm(messages, model, provider)
         logging.info(f"Provider: {response.provider}")
@@ -390,6 +397,7 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
     final_message = messages[-1] if messages[-1]["role"] == "assistant" else messages[-2]
     final_message_content = final_message.get("content", "No response generated")
     logging.info(f"Final response (after hitting max iterations): {final_message_content}")
+    print(f"Max iterations hit, final response: {final_message_content}")
     return final_message_content, all_tool_calls# FAILED EXIT
 
 
@@ -411,25 +419,42 @@ def get_prev_summaries(filename):
     
 
 def assemble_summary_details(qu_details : dict, llm_response : dict, tool_use_track, model, provider="unpinned"):
+    print("assembling summary")
+    
     if isinstance(llm_response, dict):
+        print("llm response is a dict")
         if qu_details["question"] != llm_response["query"]:
-            logging.warning("The question in the LLM response does not match the original question.")
-            raise ValueError(f"The question in the LLM response does not match the original question, unable to assemble final response. Original question: {qu_details['question']}. Question in LLM response: {llm_response['query']}")
+            logging.warning(f"The question in the LLM response does not match the original question, assembling erroneous summary details. Original question:{qu_details['question']}. Question in LLM response: {llm_response['query']}.")
+            llm_response_details = {
+                "relevant_summary": None,
+                "summary_action_ids": None
+            }
         else:
-            summary_details = {
-                "query": qu_details["question"],
-                "model": model,
-                "provider": provider,
+            llm_response_details = {
                 "relevant_summary": llm_response["relevant_summary"],
                 "summary_action_ids": llm_response["action_ids"],
-                "tool_call_details": tool_use_track,
-                "all_relevant_action_ids": qu_details["all_relevant_action_ids"],
-                "regenerated_ids": qu_details.get("regenerated_ids", []),
             }
-            return summary_details
+    
     else:
-        logging.warning("LLM response not formatted, unable to assemble summary details.")
-        raise TypeError(f"Expected LLM response to be formatted as a dictionary, instead it is a {type(llm_response)}. Unable to assemble final response.")
+        print("llm response is not a dict")
+        logging.warning("LLM response not formatted formatted properly, assembling erroneous summary details")
+        print("LLM response not formatted formatted properly, assembling erroneous summary details")
+        llm_response_details = {
+            "relevant_summary": None,
+            "summary_action_ids": None
+        }
+    
+    summary_details = {
+        "query": qu_details["question"],
+        "model": model,
+        "provider": provider, 
+        "relevant_summary": llm_response_details["relevant_summary"],
+        "summary_action_ids": llm_response_details["summary_action_ids"],           
+        "tool_call_details": tool_use_track,
+        "all_relevant_action_ids": qu_details["all_relevant_action_ids"],
+        "regenerated_ids": qu_details.get("regenerated_ids", []),
+    }
+    return summary_details
 
 
 def write_to_json_file(data_list, filename):
@@ -573,7 +598,7 @@ def main():
         ("openai/gpt-5", None),
         ("anthropic/claude-sonnet-4", None),
         ("google/gemini-2.5-pro", None),
-        ("moonshotai/kimi-k2", "fireworks/fp8")
+        ("moonshotai/kimi-k2-0905", "fireworks/fp8")
     ]
 
     ## SUMMARY GENERATION PROCESS
