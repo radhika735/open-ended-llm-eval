@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 from pydantic.config import ConfigDict
 from typing import Annotated
 
-from utils import action_retrieval
+from utils import action_parsing
 
 load_dotenv()
 
@@ -187,7 +187,7 @@ def answer_relevance(query, answer, n=10):
 
 
 
-def get_oracle_actions(id_list, context : action_retrieval.ActionRetrievalContext):
+def get_oracle_actions(id_list, context : action_parsing.ActionParsingContext):
     doc_type = context.get_doc_type()
     if doc_type == "km":
         base_dir = "action_data/key_messages/km_all"
@@ -202,16 +202,16 @@ def get_oracle_actions(id_list, context : action_retrieval.ActionRetrievalContex
         filepath = os.path.join(base_dir, filename)
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
-        parsed_actions.append(action_retrieval.parse_action(action_string=content, context=context))
+        parsed_actions.append(action_parsing.parse_action(action_string=content, context=context))
 
     return parsed_actions
 
 
-def get_oracle_actions_as_str(id_list, context : action_retrieval.ActionRetrievalContext):
+def get_oracle_actions_as_str(id_list, context : action_parsing.ActionParsingContext):
     actions = get_oracle_actions(id_list=id_list, context=context)
     action_strings = []
     for action in actions:
-        action_str = action_retrieval.get_parsed_action_as_str(action=action)
+        action_str = action_parsing.get_parsed_action_as_str(action=action)
         action_strings.append(action_str)
     full_str = "\n\n".join(action_strings)
     return full_str
@@ -220,7 +220,7 @@ def get_oracle_actions_as_str(id_list, context : action_retrieval.ActionRetrieva
 def main():
     logging.basicConfig(level=logging.INFO, filename="logfiles/explainable_ragas_metrics.log", format='%(asctime)s - %(levelname)s - %(message)s')
 
-    context = action_retrieval.ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
+    context = action_parsing.ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
 
 
     # question = "What are the most effective ways to increase soil organic carbon on loamy soils?"

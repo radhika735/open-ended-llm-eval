@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 from pydantic.config import ConfigDict
 from typing import Annotated
 
-from utils import action_retrieval
+from utils import action_parsing
 
 load_dotenv()
 
@@ -582,7 +582,7 @@ Response:\n
 
 ### ACTION DOCS PARSING AND RETRIEVAL
 
-def get_oracle_actions(id_list, context : action_retrieval.ActionRetrievalContext):
+def get_oracle_actions(id_list, context : action_parsing.ActionParsingContext):
     doc_type = context.get_doc_type()
     if doc_type == "km":
         base_dir = "action_data/key_messages/km_all"
@@ -597,16 +597,16 @@ def get_oracle_actions(id_list, context : action_retrieval.ActionRetrievalContex
         filepath = os.path.join(base_dir, filename)
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
-        parsed_actions.append(action_retrieval.parse_action(action_string=content, context=context))
+        parsed_actions.append(action_parsing.parse_action(action_string=content, context=context))
 
     return parsed_actions
 
 
-def get_oracle_actions_as_str(id_list, context : action_retrieval.ActionRetrievalContext):
+def get_oracle_actions_as_str(id_list, context : action_parsing.ActionParsingContext):
     actions = get_oracle_actions(id_list=id_list, context=context)
     action_strings = []
     for action in actions:
-        action_str = action_retrieval.get_parsed_action_as_str(action=action)
+        action_str = action_parsing.get_parsed_action_as_str(action=action)
         action_strings.append(action_str)
     full_str = "\n\n".join(action_strings)
     return full_str
@@ -616,14 +616,14 @@ def get_oracle_actions_as_str(id_list, context : action_retrieval.ActionRetrieva
 ### FULL METRIC EVALUATION PIPELINE
 
 
-def evaluate_metric(metric_name, question, summary, action_ids_in_summary, oracle_ids, context : action_retrieval.ActionRetrievalContext):
+def evaluate_metric(metric_name, question, summary, action_ids_in_summary, oracle_ids, context : action_parsing.ActionParsingContext):
     # Getting the oracle actions
     oracle_actions = get_oracle_actions(id_list=oracle_ids, context=context)
-    oracle_actions_str = "\n\n".join([action_retrieval.get_parsed_action_as_str(action=action) for action in oracle_actions])
+    oracle_actions_str = "\n\n".join([action_parsing.get_parsed_action_as_str(action=action) for action in oracle_actions])
 
     # Getting the actions cited in the summary
     cited_actions = get_oracle_actions(id_list=action_ids_in_summary, context=context)
-    cited_actions_str = "\n\n".join([action_retrieval.get_parsed_action_as_str(action=action) for action in cited_actions])
+    cited_actions_str = "\n\n".join([action_parsing.get_parsed_action_as_str(action=action) for action in cited_actions])
 
     all_docs = oracle_actions + cited_actions
     all_docs_str = oracle_actions_str + "\n\n" + cited_actions_str
@@ -659,7 +659,7 @@ def evaluate_metric(metric_name, question, summary, action_ids_in_summary, oracl
 def main():
     logging.basicConfig(level=logging.INFO, filename="logfiles/own_ragas_metrics.log", format='%(asctime)s - %(levelname)s - %(message)s')
 
-    context = action_retrieval.ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
+    context = action_parsing.ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
 
     ## Loamy soils good answer
     # question = "What are the most effective ways to increase soil organic carbon on loamy soils?"

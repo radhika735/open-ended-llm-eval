@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # from typing import Annotated
 
 
-from utils.action_retrieval import get_all_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
+from utils.action_parsing import get_all_parsed_actions, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 
 ### ORDER OF ITERATIONS OF EXPERIMENTS:
 # ENCOURAGING PARALLEL TOOL CALLS (worked well so KEEPING this)

@@ -2,18 +2,19 @@ import bm25s
 import os
 import logging
 import json
-import time
 from openai import OpenAI
 from dotenv import load_dotenv
 import copy
-from utils.action_retrieval import ActionRetrievalContext, get_parsed_action_by_id, sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
+
+from utils.action_parsing import ActionParsingContext, get_parsed_action_by_id
+from utils.rag import sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 from utils.exceptions import RetrievalError
 
 
 load_dotenv()
 
 
-ACTION_RETRIEVAL_CONTEXT = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
+ACTION_RETRIEVAL_CONTEXT = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
 RETRIEVAL_TYPE = "sparse" # other options: "dense", "hybrid".
 if RETRIEVAL_TYPE == "hybrid":
     FUSION_TYPE = "cross-encoder" # other option: "reciprocal rank fusion"

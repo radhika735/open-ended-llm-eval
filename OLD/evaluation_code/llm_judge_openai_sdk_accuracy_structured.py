@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import logging
 from openai import OpenAI
 from pydantic import BaseModel
-from utils.action_retrieval import ActionRetrievalContext, parse_action, get_parsed_action_as_str
+from utils.action_parsing import ActionParsingContext, parse_action, get_parsed_action_as_str
 
 
 load_dotenv()
@@ -180,7 +180,7 @@ def get_evaluation(question, answer, docs, model="google/gemini-2.5-pro", provid
     return result
 
 
-def get_oracle_actions(id_list, context : ActionRetrievalContext):
+def get_oracle_actions(id_list, context : ActionParsingContext):
     doc_type = context.get_doc_type()
     if doc_type == "km":
         base_dir = "action_data/key_messages/km_all"
@@ -200,7 +200,7 @@ def get_oracle_actions(id_list, context : ActionRetrievalContext):
     return parsed_actions
 
 
-def get_oracle_actions_as_str(id_list, context : ActionRetrievalContext):
+def get_oracle_actions_as_str(id_list, context : ActionParsingContext):
     actions = get_oracle_actions(id_list=id_list, context=context)
     action_strings = []
     for action in actions:
@@ -269,7 +269,7 @@ def main():
 
 
     ## MINI TEST ON HUMAN AGREEMENT WITH LLM JUDGE:
-    context = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
+    context = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
 
     oracle_id_table = {
         "What are the most beneficial actions for reducing human-wildlife conflict with bears?": ["2330","2336","2346","2347","2385"],
