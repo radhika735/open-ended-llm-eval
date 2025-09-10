@@ -203,5 +203,67 @@
       "752",
       "724"
     ]
+  },
+  {
+    "query": "What are the potential negative impacts on crops when incorporating plant remains into the soil to control weeds?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Two of three studies reported that incorporating allelopathic plant remains inhibited crop growth, with effects influenced by timing of application (728). Across randomized, replicated, controlled studies, yield responses were variable, including negative yield effects in some comparisons with weeded controls (728).",
+    "summary_action_ids": [
+      "728"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"incorporating plant residues into soil to control weeds negative impacts on crops\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"728\",\n    \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"910\",\n    \"action_title\": \"Amend the soil with fresh plant material or crop remains\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"722\",\n    \"action_title\": \"Grow plants that compete with damaging weeds\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"incorporating plant residues into soil weed control phytotoxic allelopathy crop yield negative effects\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1355\",\n    \"action_title\": \"Crop production: Use no tillage in arable fields\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1652\",\n    \"action_title\": \"Use herbicide to control bracken\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"728\"}",
+            "return_val": "{\n  \"action_id\": \"728\",\n  \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n  \"key_messages\": \"Key Messages:\\nWeeds: Six studies (including six randomised, replicated, controlled tests) from Asia, Europe and North America examined the effect of allelopathic plant remains on weeds by comparing amended soils with weeded controls. Three studies found a reduction in weed growth, and three found effects varied between years, weed groups, or the type of weeding method in controls.Four studies from Asia \\u00a0and North America examined the effect on weeds by comparing amended soils with unweeded controls. Two studies found a reduction in weed growth, but one found that residues applied too far in advance of crop planting had the reverse effect. Two studies found that effects varied between trials, weed species or the type of residue used.Two studies, including one randomised, replicated, controlled laboratory study, found that the decrease in weeds did not last beyond a few days or weeks after residue incorporation. Pests: One randomised, replicated, controlled study in the Philippines found mixed effects on pests. Crop growth: Two of three studies found crop growth was inhibited by allelopathic plant remains, but this could be minimised by changing the timing of application. One study found effects varied between years. Yield: Three\\u00a0randomised, replicated, controlled studies compared yields in amended plots with weeded controls and found positive, negative and\\u00a0mixed effects. Three studies compared amended plots with unweeded controls, two found positive effects on yield and one found mixed effects (depending on the crop). Profit: One study found that amending soils increased profit compared to unweeded controls, but not compared to weeded controls.\\n\\u00a0\\nCrops studied were beans, cotton, maize, rice and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"910\"}",
+            "return_val": "{\n  \"action_id\": \"910\",\n  \"action_title\": \"Amend the soil with fresh plant material or crop remains\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: One randomized, replicated experiment from Belgium found increased microbial biomass when crop remains and straw were added.\\nCompaction: One study from India found improved soil structure when straw was incorporated. One before-and-after trial from the UK found that incorporating straw residues by discing (reduced tillage) did not improve anaerobic soils (low oxygen levels) in compacted soils.\\nErosion: Two randomized, replicated studies from Canada and India measured the effect of incorporating straw on erosion. One found straw addition reduced soil loss, and one found mixed effects depending on soil type.\\nNutrient loss: Four replicated studies from Belgium, the UK and the USA (one also controlled, one also randomized, and two also controlled and randomized) reported higher soil nitrogen levels when compost or straw was applied, but mixed results when processed wastes were added. One also found reduced nitrate leaching when straw was incorporated. One replicated study from China and the Philippines found mixed results depending on site.\\nSoil organic carbon: Six studies from China, Denmark and India measured the effect of incorporating plant material into the soil. All (including one replicated, two randomized, replicated studies, one controlled, randomized, replicated studies and one controlled before-and-after site comparison) found higher carbon levels when plant material was added. One found higher carbon levels when straw was applied along with NPK fertilizers. One also found larger soil aggregates. One replicated study from China and the Philippines found mixed results depending on site.\\nYield: One replicated trial from Denmark found higher barley yield when straw was incorporated. One trial from the Philippines found higher grain yields when crop remains were incorporated earlier in the season.\\n \\nSoil types covered: clay, clay loam, fine loam, loam/sandy loam,\\u00a0loamy sand, sandy, sandy clay loam, sandy loam, sandy-silt, silt loam, silty, silty-clay.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the potential negative impacts on crops when incorporating plant remains into the soil to control weeds?\",\"summary\":\"Two of three studies reported that incorporating allelopathic plant remains inhibited crop growth, with effects influenced by timing of application (728). Across randomized, replicated, controlled studies, yield responses were variable, including negative yield effects in some comparisons with weeded controls (728).\",\"action_ids\":[\"728\"]}",
+            "return_val": "{\n  \"query\": \"What are the potential negative impacts on crops when incorporating plant remains into the soil to control weeds?\",\n  \"relevant_summary\": \"Two of three studies reported that incorporating allelopathic plant remains inhibited crop growth, with effects influenced by timing of application (728). Across randomized, replicated, controlled studies, yield responses were variable, including negative yield effects in some comparisons with weeded controls (728).\",\n  \"action_ids\": [\n    \"728\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "728"
+    ],
+    "regenerated_ids": [
+      "728"
+    ]
   }
 ]

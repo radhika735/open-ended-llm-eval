@@ -508,5 +508,143 @@
       "1266",
       "1267"
     ]
+  },
+  {
+    "query": "What is the state of the evidence regarding the effectiveness of different methods to control invasive plant species in forests?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of methods to control invasive plant species in forests\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1229\",\n    \"action_title\": \"Use herbicides to control invasive plant species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1314\",\n    \"action_title\": \"Use herbicides to remove invasive plant species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1275\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of methods to control invasive plant species in forests\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1212\",\n    \"action_title\": \"Thin trees within forests: effects on non-vascular plants\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1237\",\n    \"action_title\": \"Remove burned trees\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1323\",\n    \"action_title\": \"Primates: Present food items whole instead of processed\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of methods to control invasive plant species in forests\", \"k\": 3, \"offset\": 6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1229\"}",
+            "return_val": "{\n  \"action_id\": \"1229\",\n  \"action_title\": \"Use herbicides to control invasive plant species\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found no effect of invasive plant control using herbicide on the total native plant species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1314\"}",
+            "return_val": "{\n  \"action_id\": \"1314\",\n  \"action_title\": \"Use herbicides to remove invasive plant species\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found no effect of invasive plant control using herbicide on the total native plant species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1275\"}",
+            "return_val": "{\n  \"action_id\": \"1275\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence on the use of hot water to control Crassula helmsii.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mechanical removal invasive plants forests effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1228\",\n    \"action_title\": \"Mechanically/manually remove invasive plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1572\",\n    \"action_title\": \"Parrot\\u2019s feather: Removal using water jets\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"761\",\n    \"action_title\": \"Clear vegetation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1228\"}",
+            "return_val": "{\n  \"action_id\": \"1228\",\n  \"action_title\": \"Mechanically/manually remove invasive plants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Hawaii\\u00a0found that removal of invasive grass species increased understory plant biomass. One replicated, controlled study in the USA\\u00a0found no effect of invasive shrub removal on understory plant diversity.\\nOne replicated, controlled study in Ghana found that removal of invasive weed species increased tree seedling height.\\nOne replicated, controlled study in Hawaii found no effect of invasive plant removal on growth rate of native species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"761\"}",
+            "return_val": "{\n  \"action_id\": \"761\",\n  \"action_title\": \"Clear vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies (including four replicated studies) in Australia, Estonia and the UK found that vegetation clearance, along with other habitat management and in some cases release of animals, increased numbers of frog species, or increased, stabilized or maintained populations of natterjack toads. One before-and-after study in the UK found that vegetation clearance, along with other habitat management, maintained a population of great crested newts for the first six years, but not in the longer term.\\nOne before-and-after study in England\\u00a0found that vegetation clearance, resulted in increased occupancy by natterjack toads.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"biological control invasive plants forests effectiveness study\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1229\",\n    \"action_title\": \"Use herbicides to control invasive plant species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1314\",\n    \"action_title\": \"Use herbicides to remove invasive plant species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1275\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed burning control invasive plants forests effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3116\",\n    \"action_title\": \"Use prescribed fire to control problematic plants: freshwater marshes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1227\",\n    \"action_title\": \"Use thinning followed by prescribed fire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"318\",\n    \"action_title\": \"Use prescribed burning on pine forests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1227\"}",
+            "return_val": "{\n  \"action_id\": \"1227\",\n  \"action_title\": \"Use thinning followed by prescribed fire\",\n  \"key_messages\": \"Key Messages:\\n\\nThree of six studies (including one replicated, randomized, controlled study) in the USA found that thinning followed by prescribed burning increased cover and abundance1 of understory plants as well as the density of deciduous trees. One study found that thinning then burning decreased trees density and species richness.\\u00a0 Three studies found no effect or mixed effects of thinning followed by burning on tree growth rate and density of young trees.\\nOne replicated, controlled study Australia\\u00a0found no effect of thinning followed by burning on the genetic diversity of black ash.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"biocontrol invasive plant forest effectiveness study\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3129\",\n    \"action_title\": \"Introduce organisms to control problematic plants: brackish/salt marshes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1599\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1195",
+      "1196",
+      "1228",
+      "1229",
+      "1314"
+    ],
+    "regenerated_ids": [
+      "1195",
+      "1196",
+      "1228",
+      "1229",
+      "1314"
+    ]
   }
 ]

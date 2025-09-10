@@ -367,5 +367,133 @@
       "1754",
       "1755"
     ]
+  },
+  {
+    "query": "What are the documented benefits and negative impacts of using prescribed fire as a peatland management tool?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available action documents, prescribed fire as a peatland management tool has both documented benefits and negative impacts across different vegetation types and management objectives.\n\n**Benefits of prescribed fire in peatlands:**\n\nFor controlling problematic plants (Action 1774): Burning increased moss/lichen/bare ground cover in the short term (2-7 months) in German bogs. Moss cover, including Sphagnum, was higher in plots burned more often in UK bog studies. Burning reduced purple moor grass cover and lowered heather cover in both German and UK bog studies.\n\nFor maintaining or restoring disturbance (Action 1763): Burning reduced tree/shrub cover in fens in the USA and UK. Two studies found that burning increased plant species richness or diversity in a fen in the USA and a bog in New Zealand. Burning reduced forb cover and increased sedge/rush cover in USA fen studies.\n\n**Negative impacts of prescribed fire in peatlands:**\n\nFrom control of problematic plants studies (Action 1774): Burning reduced or limited plant species richness in both USA fen and UK bog studies. Plots burned more frequently contained less total vegetation, shrub and bryophyte biomass despite containing more grass-like plant biomass.\n\nFrom disturbance management studies (Action 1763): One UK fen study reported that burning reduced grass/sedge/rush cover and had no effect on cover of fen-characteristic mosses or herbs. Another UK study found burning typically had no effect on plant species richness and diversity.\n\nThe evidence shows mixed results depending on ecosystem type (bogs vs fens), burning frequency, and management objectives, with effects varying between increased biodiversity in some contexts and reduced species richness in others.",
+    "summary_action_ids": [
+      "1774",
+      "1763"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed fire peatland management\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1774\",\n    \"action_title\": \"Use prescribed fire to control problematic plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1763\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3879\",\n    \"action_title\": \"Leave some areas unburned during prescribed burning\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"peatland fire management benefits impacts\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1856\",\n    \"action_title\": \"Adopt zero burning policies near peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1845\",\n    \"action_title\": \"Raise awareness amongst the public (wild fire)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1766\",\n    \"action_title\": \"Build fire breaks\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"controlled burning peat ecosystem wetland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1856\",\n    \"action_title\": \"Adopt zero burning policies near peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1763\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1765\",\n    \"action_title\": \"Rewet peat to prevent wild fires\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1774\"}",
+            "return_val": "{\n  \"action_id\": \"1774\",\n  \"action_title\": \"Use prescribed fire to control problematic plants\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on peatland vegetation of using prescribed fire to control problematic plants: five in bogs\\u00a0and one in fens. Four studies were based on the same experimental set-up in the UK. N.B. Prescribed burning in historically disturbed peatlands is considered as a separate action.\\nMoss cover (4 studies): One replicated, paired, controlled study in bogs in Germany\\u00a0found that burning increased moss/lichen/bare ground cover in the short term (2\\u20137 months after burning). Three replicated, paired studies (based on the same experimental set-up) in one bog in the UK\\u00a0found that moss cover (including Sphagnum) was higher in plots burned more often.\\nHerb cover (4 studies): Of two replicated, paired, controlled studies in bogs in Germany\\u00a0and the UK, one\\u00a0found that burning had no effect on cottongrass cover after 2\\u20137 months but the other\\u00a0found that burning increased cottongrass cover after 8\\u201318 years. Two replicated, paired studies in the same bog in the UK reported that cottongrass cover was similar in plots burned every 10 or 20 years. The study in Germany\\u00a0also found that burning reduced purple moor grass cover but had mixed effects, amongst sites, on cover of other grass-like plants and forbs.\\nTree/shrub cover (5 studies): Three replicated, paired studies in a bog in the UK\\u00a0found that heather cover was lower in plots burned more often. One replicated, paired, controlled study in bogs in Germany found that heather cover was lower in burned than unburned plots. Two replicated, controlled studies in the bogs in Germany and fens in the USA\\u00a0found that burning (sometimes along with other interventions) did not affect cover of other shrubs.\\nVegetation structure (1 study): One replicated, paired, controlled study in a bog in the UK\\u00a0found that plots burned more frequently contained more biomass of grass-like plants than plots burned less often, but contained less total vegetation, shrub and bryophyte biomass.\\nOverall plant richness/diversity (2 studies): Two replicated, controlled studies (one also randomized and paired) in the fens in the USA\\u00a0and a bog in the UK\\u00a0found that burning reduced or limited plant species richness. In the USA, burning was carried out along with other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1763\"}",
+            "return_val": "{\n  \"action_id\": \"1763\",\n  \"action_title\": \"Use prescribed fire to maintain or restore disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects, on peatland vegetation, of using prescribed fire to maintain or restore disturbance. Two studies were in fens and one was in a bog.\\u00a0N.B. Prescribed burning in peatlands with no history of disturbance is considered as a separate action.\\nCharacteristic plants (1 study): One replicated before-and-after study in a fen in the UK\\u00a0reported that burning (along with other interventions) had no effect on cover of fen-characteristic mosses or herbs.\\nHerb cover (2 studies): One replicated, controlled study in a fen in the USA\\u00a0reported that burning reduced forb cover and increased sedge/rush cover, but had no effect on grass cover. In contrast, one replicated before-and-after study in a fen in the UK\\u00a0reported that burning (along with other interventions) reduced grass/sedge/rush cover.\\nTree/shrub cover (2 studies): Two replicated studies in fens in the USA\\u00a0and the UK\\u00a0reported that burning (sometimes along with other interventions) reduced tree/shrub cover.\\nOverall plant richness/diversity (3 studies): Two replicated, controlled studies in a fen in the USA\\u00a0and a bog in New Zealand\\u00a0found that burning increased plant species richness or diversity. However, one replicated before-and-after study in a fen in the UK\\u00a0reported that burning (along with other interventions) typically had no effect on plant species richness and diversity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3879\"}",
+            "return_val": "{\n  \"action_id\": \"3879\",\n  \"action_title\": \"Leave some areas unburned during prescribed burning\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on butterflies and moths of leaving some areas unburned during prescribed burning. Both studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): One replicated study in the USA\\u00a0reported that the abundance of Karner blue butterflies increased over 2\\u20133 years in oak savannas and prairies where unburned patches were left during prescribed burning. One replicated, site comparison study in the USA\\u00a0found that six out of nine specialist butterfly species were more abundant, one was less abundant, and two had similar abundance in pine barrens and prairies where unburned areas were left during prescribed burning compared to at sites without unburned areas.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated study in the USA\\u00a0reported that Karner blue butterflies were recorded using all 11 unburned patches which were surveyed within oak savannas and prairies managed by burning.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1856\"}",
+            "return_val": "{\n  \"action_id\": \"1856\",\n  \"action_title\": \"Adopt zero burning policies near peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of adopting zero burning policies near peatlands.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1765\"}",
+            "return_val": "{\n  \"action_id\": \"1765\",\n  \"action_title\": \"Rewet peat to prevent wild fires\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of rewetting peat to prevent wild fires.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fire impacts carbon peat soil ecosystem services\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1799\",\n    \"action_title\": \"Pay landowners to protect peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1764\",\n    \"action_title\": \"Thin vegetation to prevent wild fires\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1765\",\n    \"action_title\": \"Rewet peat to prevent wild fires\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fire burning bog fen wetland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1763\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1766\",\n    \"action_title\": \"Build fire breaks\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1774\",\n    \"action_title\": \"Use prescribed fire to control problematic plants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1766\"}",
+            "return_val": "{\n  \"action_id\": \"1766\",\n  \"action_title\": \"Build fire breaks\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects, on peatland vegetation, of building fire breaks.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1764\"}",
+            "return_val": "{\n  \"action_id\": \"1764\",\n  \"action_title\": \"Thin vegetation to prevent wild fires\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects, on peatland vegetation, of thinning vegetation to prevent wild fires.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the documented benefits and negative impacts of using prescribed fire as a peatland management tool?\", \"summary\": \"Based on the available action documents, prescribed fire as a peatland management tool has both documented benefits and negative impacts across different vegetation types and management objectives.\\n\\n**Benefits of prescribed fire in peatlands:**\\n\\nFor controlling problematic plants (Action 1774): Burning increased moss/lichen/bare ground cover in the short term (2-7 months) in German bogs. Moss cover, including Sphagnum, was higher in plots burned more often in UK bog studies. Burning reduced purple moor grass cover and lowered heather cover in both German and UK bog studies.\\n\\nFor maintaining or restoring disturbance (Action 1763): Burning reduced tree/shrub cover in fens in the USA and UK. Two studies found that burning increased plant species richness or diversity in a fen in the USA and a bog in New Zealand. Burning reduced forb cover and increased sedge/rush cover in USA fen studies.\\n\\n**Negative impacts of prescribed fire in peatlands:**\\n\\nFrom control of problematic plants studies (Action 1774): Burning reduced or limited plant species richness in both USA fen and UK bog studies. Plots burned more frequently contained less total vegetation, shrub and bryophyte biomass despite containing more grass-like plant biomass.\\n\\nFrom disturbance management studies (Action 1763): One UK fen study reported that burning reduced grass/sedge/rush cover and had no effect on cover of fen-characteristic mosses or herbs. Another UK study found burning typically had no effect on plant species richness and diversity.\\n\\nThe evidence shows mixed results depending on ecosystem type (bogs vs fens), burning frequency, and management objectives, with effects varying between increased biodiversity in some contexts and reduced species richness in others.\", \"action_ids\": [\"1774\",\"1763\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and negative impacts of using prescribed fire as a peatland management tool?\",\n  \"relevant_summary\": \"Based on the available action documents, prescribed fire as a peatland management tool has both documented benefits and negative impacts across different vegetation types and management objectives.\\n\\n**Benefits of prescribed fire in peatlands:**\\n\\nFor controlling problematic plants (Action 1774): Burning increased moss/lichen/bare ground cover in the short term (2-7 months) in German bogs. Moss cover, including Sphagnum, was higher in plots burned more often in UK bog studies. Burning reduced purple moor grass cover and lowered heather cover in both German and UK bog studies.\\n\\nFor maintaining or restoring disturbance (Action 1763): Burning reduced tree/shrub cover in fens in the USA and UK. Two studies found that burning increased plant species richness or diversity in a fen in the USA and a bog in New Zealand. Burning reduced forb cover and increased sedge/rush cover in USA fen studies.\\n\\n**Negative impacts of prescribed fire in peatlands:**\\n\\nFrom control of problematic plants studies (Action 1774): Burning reduced or limited plant species richness in both USA fen and UK bog studies. Plots burned more frequently contained less total vegetation, shrub and bryophyte biomass despite containing more grass-like plant biomass.\\n\\nFrom disturbance management studies (Action 1763): One UK fen study reported that burning reduced grass/sedge/rush cover and had no effect on cover of fen-characteristic mosses or herbs. Another UK study found burning typically had no effect on plant species richness and diversity.\\n\\nThe evidence shows mixed results depending on ecosystem type (bogs vs fens), burning frequency, and management objectives, with effects varying between increased biodiversity in some contexts and reduced species richness in others.\",\n  \"action_ids\": [\n    \"1774\",\n    \"1763\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1763",
+      "1774",
+      "1764",
+      "1765",
+      "1856"
+    ],
+    "regenerated_ids": [
+      "1763",
+      "1774"
+    ]
   }
 ]

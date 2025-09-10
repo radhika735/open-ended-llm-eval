@@ -626,5 +626,143 @@
       "1266",
       "1267"
     ]
+  },
+  {
+    "query": "What is the state of the evidence regarding the effectiveness of different methods to control invasive plant species in forests?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "The evidence on the effectiveness of different methods to control invasive plant species in forests is limited and shows mixed results. Herbicide control has shown no effect on native plant species richness according to replicated, randomized, controlled studies in the USA (actions 1229, 1314). Mechanical/manual removal methods have produced varying outcomes: removal of invasive grass species increased understory plant biomass in Hawaii, but had no effect on understory plant diversity in the USA. Invasive weed removal increased tree seedling height in Ghana, but showed no effect on growth rate of native species in Hawaii (action 1228). For manual control or removal of midstorey and ground-level vegetation in forests, evidence from multiple studies shows mixed results on bird species richness and densities, with some studies finding higher species richness and others finding similar or lower numbers compared to control areas (action 335). Prescribed burning for invasive species control has been studied for specific species like lantana, where burning made plants smaller and less abundant compared to unburned areas in Australia, and resulted in fewer new shoots compared to cutting in India (action 912). However, burning also increased seed germination rates for lantana when seeds were exposed to smoke. Evidence for biological control using herbivores is lacking, with no studies found testing this approach (action 1277). The overall evidence base is limited with most studies being single investigations in specific locations, making it difficult to draw general conclusions about the most effective control methods.",
+    "summary_action_ids": [
+      "1229",
+      "1314",
+      "1228",
+      "3697",
+      "335",
+      "912",
+      "823",
+      "432",
+      "1277"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invasive plant species control forests effectiveness methods\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1229\",\n    \"action_title\": \"Use herbicides to control invasive plant species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1314\",\n    \"action_title\": \"Use herbicides to remove invasive plant species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"104\",\n    \"action_title\": \"Control invasive non-native plants on farmland (such as Himalayan Balsam, Japanese knotweed)\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1228\",\n    \"action_title\": \"Mechanically/manually remove invasive plants\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1275\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"823\",\n    \"action_title\": \"Control invasive plants\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2173\",\n    \"action_title\": \"Remove or capture non-native, invasive or other problematic species\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1575\",\n    \"action_title\": \"Parrot\\u2019s feather: Manual harvesting (hand-weeding)\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1212\",\n    \"action_title\": \"Thin trees within forests: effects on non-vascular plants\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invasive species forest management control removal\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1314\",\n    \"action_title\": \"Use herbicides to remove invasive plant species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1228\",\n    \"action_title\": \"Mechanically/manually remove invasive plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3697\",\n    \"action_title\": \"Remove or control non-native/invasive plants\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"432\",\n    \"action_title\": \"Remove problematic vegetation\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"335\",\n    \"action_title\": \"Manually control or remove midstorey and ground-level vegetation (including mowing, chaining, cutting etc) in forests\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2173\",\n    \"action_title\": \"Remove or capture non-native, invasive or other problematic species\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"761\",\n    \"action_title\": \"Clear vegetation\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3714\",\n    \"action_title\": \"Manage vegetation by hand (selective weeding)\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"823\",\n    \"action_title\": \"Control invasive plants\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1229\"}",
+            "return_val": "{\n  \"action_id\": \"1229\",\n  \"action_title\": \"Use herbicides to control invasive plant species\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found no effect of invasive plant control using herbicide on the total native plant species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1314\"}",
+            "return_val": "{\n  \"action_id\": \"1314\",\n  \"action_title\": \"Use herbicides to remove invasive plant species\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found no effect of invasive plant control using herbicide on the total native plant species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1228\"}",
+            "return_val": "{\n  \"action_id\": \"1228\",\n  \"action_title\": \"Mechanically/manually remove invasive plants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Hawaii\\u00a0found that removal of invasive grass species increased understory plant biomass. One replicated, controlled study in the USA\\u00a0found no effect of invasive shrub removal on understory plant diversity.\\nOne replicated, controlled study in Ghana found that removal of invasive weed species increased tree seedling height.\\nOne replicated, controlled study in Hawaii found no effect of invasive plant removal on growth rate of native species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3697\"}",
+            "return_val": "{\n  \"action_id\": \"3697\",\n  \"action_title\": \"Remove or control non-native/invasive plants\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of removing or controlling non-native/invasive plants on reptile populations. Two studies were in Australia and one was in each of South Africa and the USA.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, randomized, controlled, before-and-after study in Australia found that areas where invasive Bitou bush were sprayed with herbicide had similar reptile species richness compared to unsprayed areas.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (3 studies): Two of three replicated, controlled studies (including two randomized and two before-and-after studies) in the USA and Australia found that areas where invasive Bitou bush or para grass were controlled had a similar abundance of reptiles and combined reptiles and amphibians compared to areas with no control. One study also found that the abundance of delicate skinks was lower in areas with invasive control compared to unmanaged areas. The other study found that removing invasive non-native Sahara mustard had mixed effects on the abundance of Coachella Valley fringe-toed lizards and flat-tailed horned lizards.\\nReproductive success (1 study): One replicated, controlled, before-and-after study in South Africa found that in areas where an invasive plant was removed, nesting activity by Nile crocodiles increased more than in places with no removal.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"335\"}",
+            "return_val": "{\n  \"action_id\": \"335\",\n  \"action_title\": \"Manually control or remove midstorey and ground-level vegetation (including mowing, chaining, cutting etc) in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nOf fifteen studies captured, one, a replicated controlled study from the USA, found higher bird species richness in areas with midstorey thinning, compared to control areas. One study from the USA found similar bird species richness in areas with mid- and understorey control, compared to other management types. A study from Canada found fewer species in treated sites than controls.\\nSeven studies from Europe and the USA found that total bird densities or those of some species or guilds were higher in areas with mid- or understorey management, compared to before management or to areas without management. Four of these studies used understorey removal as part of a wider management regime.\\nFive studies from the USA and Canada found that densities of some species were lower in areas with midi or understorey control, or that overall bird densities did not different between managed and unmanaged areas. Two of these studies investigated several interventions at once.\\nA replicated controlled study from the USA found similar survival for black-chinned hummingbirds in areas with understorey management, compared to areas with other interventions. Two replicated, controlled studies from Canada found higher nest survival in forests with removal of deciduous trees, compared to controls. A controlled study found that northern bobwhite chicks had greater foraging success in areas with cleared understorey vegetation compared to burned areas, but lower than under other managements. \\nA replicated, controlled study from the USA found that midstorey control did not appear to affect competition between species for nesting sites.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"biological control invasive plants forest\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"1229\",\n    \"action_title\": \"Use herbicides to control invasive plant species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1314\",\n    \"action_title\": \"Use herbicides to remove invasive plant species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1228\",\n    \"action_title\": \"Mechanically/manually remove invasive plants\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1277\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using herbivores\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1275\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fire burning invasive species forest\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"317\",\n    \"action_title\": \"Use prescribed burning on deciduous forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"877\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3877\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"912\",\n    \"action_title\": \"Use prescribed burning to control lantana <i>Lantana camara</i>\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2482\",\n    \"action_title\": \"Remove understorey vegetation in forest\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"912\"}",
+            "return_val": "{\n  \"action_id\": \"912\",\n  \"action_title\": \"Use prescribed burning to control lantana <i>Lantana camara</i>\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study from Australia found lantana plants in a fire-treated area were smaller and less abundant than an unburned area. One randomized, replicated, controlled trial from India found burned lantana produced fewer new shoots than plants cut to ground level. One replicated site comparison from Australia found lantana in a forest burned every three years produced fewer fruits and seeds, had higher seedling mortality\\u00a0and slower growth rates but more flowering individuals\\u00a0than plants in other lantana-invaded habitats managed by grazing or mechanical control.\\nOne randomized, replicated, controlled greenhouse trial in India found more lantana seeds germinated and germination rates were higher when seeds were exposed to smoke than seeds not exposed to smoke.\\nOne randomized, replicated, controlled trial from Australia found two native tree species had higher germination and seedling survival when lantana was burned.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"823\"}",
+            "return_val": "{\n  \"action_id\": \"823\",\n  \"action_title\": \"Control invasive plants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the UK\\u00a0found that aquatic and terrestrial habitat management that included controlling swamp stonecrop, along with release of captive-reared toadlets, tripled a population of natterjack toads.\\nOne replicated, controlled study in the USA\\u00a0found that Oregon spotted frogs laid eggs in areas where invasive reed canarygrass had been mown more frequently than where it was not mown.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"432\"}",
+            "return_val": "{\n  \"action_id\": \"432\",\n  \"action_title\": \"Remove problematic vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nA before-and-after study from Japan found higher numbers of long-billed plovers Charadrius placidus after the removal of invasive black locust Robinia pseudoacacia.\\nA study from Australia found lower mortality of Gould\\u2019s petrels Pterodroma leucoptera leucoptera following the removal of most of an island\\u2019s (native) bird-lime tree Pisonia umbellifera population, whilst a study from New Zealand found that Chatham Island oystercatchers Haematopus chathamensis could nest in preferable areas following invasive marram grass Ammophila arenaria control.\\nA site comparison from the USA found lower densities of several birds in areas with (native) velvet mesquite Prosopis juliflora control.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1277\"}",
+            "return_val": "{\n  \"action_id\": \"1277\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Biological control using herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of biological control using specific, non-selective or native herbivores on Crassula helmsii.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the state of the evidence regarding the effectiveness of different methods to control invasive plant species in forests?\", \"summary\": \"The evidence on the effectiveness of different methods to control invasive plant species in forests is limited and shows mixed results. Herbicide control has shown no effect on native plant species richness according to replicated, randomized, controlled studies in the USA (actions 1229, 1314). Mechanical/manual removal methods have produced varying outcomes: removal of invasive grass species increased understory plant biomass in Hawaii, but had no effect on understory plant diversity in the USA. Invasive weed removal increased tree seedling height in Ghana, but showed no effect on growth rate of native species in Hawaii (action 1228). For manual control or removal of midstorey and ground-level vegetation in forests, evidence from multiple studies shows mixed results on bird species richness and densities, with some studies finding higher species richness and others finding similar or lower numbers compared to control areas (action 335). Prescribed burning for invasive species control has been studied for specific species like lantana, where burning made plants smaller and less abundant compared to unburned areas in Australia, and resulted in fewer new shoots compared to cutting in India (action 912). However, burning also increased seed germination rates for lantana when seeds were exposed to smoke. Evidence for biological control using herbivores is lacking, with no studies found testing this approach (action 1277). The overall evidence base is limited with most studies being single investigations in specific locations, making it difficult to draw general conclusions about the most effective control methods.\", \"action_ids\": [\"1229\",\"1314\",\"1228\",\"3697\",\"335\",\"912\",\"823\",\"432\",\"1277\"]}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence regarding the effectiveness of different methods to control invasive plant species in forests?\",\n  \"relevant_summary\": \"The evidence on the effectiveness of different methods to control invasive plant species in forests is limited and shows mixed results. Herbicide control has shown no effect on native plant species richness according to replicated, randomized, controlled studies in the USA (actions 1229, 1314). Mechanical/manual removal methods have produced varying outcomes: removal of invasive grass species increased understory plant biomass in Hawaii, but had no effect on understory plant diversity in the USA. Invasive weed removal increased tree seedling height in Ghana, but showed no effect on growth rate of native species in Hawaii (action 1228). For manual control or removal of midstorey and ground-level vegetation in forests, evidence from multiple studies shows mixed results on bird species richness and densities, with some studies finding higher species richness and others finding similar or lower numbers compared to control areas (action 335). Prescribed burning for invasive species control has been studied for specific species like lantana, where burning made plants smaller and less abundant compared to unburned areas in Australia, and resulted in fewer new shoots compared to cutting in India (action 912). However, burning also increased seed germination rates for lantana when seeds were exposed to smoke. Evidence for biological control using herbivores is lacking, with no studies found testing this approach (action 1277). The overall evidence base is limited with most studies being single investigations in specific locations, making it difficult to draw general conclusions about the most effective control methods.\",\n  \"action_ids\": [\n    \"1229\",\n    \"1314\",\n    \"1228\",\n    \"3697\",\n    \"335\",\n    \"912\",\n    \"823\",\n    \"432\",\n    \"1277\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1195",
+      "1196",
+      "1228",
+      "1229",
+      "1314"
+    ],
+    "regenerated_ids": [
+      "1195",
+      "1196",
+      "1228",
+      "1229",
+      "1314"
+    ]
   }
 ]

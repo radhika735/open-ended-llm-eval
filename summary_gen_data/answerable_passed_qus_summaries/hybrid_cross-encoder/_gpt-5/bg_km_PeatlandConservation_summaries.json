@@ -281,5 +281,78 @@
       "1754",
       "1755"
     ]
+  },
+  {
+    "query": "What are the documented benefits and negative impacts of using prescribed fire as a peatland management tool?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Reported benefits/effects: Prescribed burning reduced tree/shrub cover in fens and bogs, including lower heather cover with more frequent burning, and reduced purple moor grass cover [1763, 1774]. Burning increased moss cover (including Sphagnum) in plots burned more often, and increased moss/lichen/bare ground cover in the short term; cottongrass cover increased after 8\u201318 years in one bog; burning increased plant species richness/diversity in some studies [1763, 1774]. Reported negative impacts/other outcomes: Burning reduced forb cover and sometimes reduced grass/sedge/rush cover; in other cases it increased sedge/rush cover and had no effect on grass cover [1763]. Burning reduced or limited overall plant species richness in some studies, and plots burned more frequently had less total vegetation, shrub and bryophyte biomass, with mixed effects on other grass-like plants and forbs; some studies found no effect on certain shrubs [1774]. One study reported no effect of burning (with other interventions) on cover of fen-characteristic mosses or herbs, and typically no effect on plant species richness/diversity [1763].",
+    "summary_action_ids": [
+      "1763",
+      "1774"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed fire peatland management benefits negative impacts peatland burning prescribed burning moorland\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1763\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1774\",\n    \"action_title\": \"Use prescribed fire to control problematic plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3878\",\n    \"action_title\": \"Change season/timing of prescribed burning\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed fire peatland management benefits negative impacts peatland burning prescribed burning moorland\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1731\",\n    \"action_title\": \"Cut/remove/thin forest plantations\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3062\",\n    \"action_title\": \"Remove plant litter: freshwater marshes\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3124\",\n    \"action_title\": \"Use covers/barriers to control problematic plants: freshwater marshes\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1763\"}",
+            "return_val": "{\n  \"action_id\": \"1763\",\n  \"action_title\": \"Use prescribed fire to maintain or restore disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects, on peatland vegetation, of using prescribed fire to maintain or restore disturbance. Two studies were in fens and one was in a bog.\\u00a0N.B. Prescribed burning in peatlands with no history of disturbance is considered as a separate action.\\nCharacteristic plants (1 study): One replicated before-and-after study in a fen in the UK\\u00a0reported that burning (along with other interventions) had no effect on cover of fen-characteristic mosses or herbs.\\nHerb cover (2 studies): One replicated, controlled study in a fen in the USA\\u00a0reported that burning reduced forb cover and increased sedge/rush cover, but had no effect on grass cover. In contrast, one replicated before-and-after study in a fen in the UK\\u00a0reported that burning (along with other interventions) reduced grass/sedge/rush cover.\\nTree/shrub cover (2 studies): Two replicated studies in fens in the USA\\u00a0and the UK\\u00a0reported that burning (sometimes along with other interventions) reduced tree/shrub cover.\\nOverall plant richness/diversity (3 studies): Two replicated, controlled studies in a fen in the USA\\u00a0and a bog in New Zealand\\u00a0found that burning increased plant species richness or diversity. However, one replicated before-and-after study in a fen in the UK\\u00a0reported that burning (along with other interventions) typically had no effect on plant species richness and diversity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1774\"}",
+            "return_val": "{\n  \"action_id\": \"1774\",\n  \"action_title\": \"Use prescribed fire to control problematic plants\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on peatland vegetation of using prescribed fire to control problematic plants: five in bogs\\u00a0and one in fens. Four studies were based on the same experimental set-up in the UK. N.B. Prescribed burning in historically disturbed peatlands is considered as a separate action.\\nMoss cover (4 studies): One replicated, paired, controlled study in bogs in Germany\\u00a0found that burning increased moss/lichen/bare ground cover in the short term (2\\u20137 months after burning). Three replicated, paired studies (based on the same experimental set-up) in one bog in the UK\\u00a0found that moss cover (including Sphagnum) was higher in plots burned more often.\\nHerb cover (4 studies): Of two replicated, paired, controlled studies in bogs in Germany\\u00a0and the UK, one\\u00a0found that burning had no effect on cottongrass cover after 2\\u20137 months but the other\\u00a0found that burning increased cottongrass cover after 8\\u201318 years. Two replicated, paired studies in the same bog in the UK reported that cottongrass cover was similar in plots burned every 10 or 20 years. The study in Germany\\u00a0also found that burning reduced purple moor grass cover but had mixed effects, amongst sites, on cover of other grass-like plants and forbs.\\nTree/shrub cover (5 studies): Three replicated, paired studies in a bog in the UK\\u00a0found that heather cover was lower in plots burned more often. One replicated, paired, controlled study in bogs in Germany found that heather cover was lower in burned than unburned plots. Two replicated, controlled studies in the bogs in Germany and fens in the USA\\u00a0found that burning (sometimes along with other interventions) did not affect cover of other shrubs.\\nVegetation structure (1 study): One replicated, paired, controlled study in a bog in the UK\\u00a0found that plots burned more frequently contained more biomass of grass-like plants than plots burned less often, but contained less total vegetation, shrub and bryophyte biomass.\\nOverall plant richness/diversity (2 studies): Two replicated, controlled studies (one also randomized and paired) in the fens in the USA\\u00a0and a bog in the UK\\u00a0found that burning reduced or limited plant species richness. In the USA, burning was carried out along with other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3878\"}",
+            "return_val": "{\n  \"action_id\": \"3878\",\n  \"action_title\": \"Change season/timing of prescribed burning\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on butterflies and moths of changing the season or timing of prescribed burning. One study was in each of Australia\\u00a0and the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): One replicated, controlled, before-and-after study in Australia\\u00a0found that management of a tropical savanna and floodplain with early season burning or no burning for 2\\u20135 years increased the abundance of caterpillars, but management with late season burning did not. One replicated, paired, controlled study in the USA\\u00a0found that Karner blue butterfly abundance was similar on grasslands managed by burning in summer or autumn, and on unmanaged grasslands.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented benefits and negative impacts of using prescribed fire as a peatland management tool?\",\"summary\":\"Reported benefits/effects: Prescribed burning reduced tree/shrub cover in fens and bogs, including lower heather cover with more frequent burning, and reduced purple moor grass cover [1763, 1774]. Burning increased moss cover (including Sphagnum) in plots burned more often, and increased moss/lichen/bare ground cover in the short term; cottongrass cover increased after 8\u201318 years in one bog; burning increased plant species richness/diversity in some studies [1763, 1774]. Reported negative impacts/other outcomes: Burning reduced forb cover and sometimes reduced grass/sedge/rush cover; in other cases it increased sedge/rush cover and had no effect on grass cover [1763]. Burning reduced or limited overall plant species richness in some studies, and plots burned more frequently had less total vegetation, shrub and bryophyte biomass, with mixed effects on other grass-like plants and forbs; some studies found no effect on certain shrubs [1774]. One study reported no effect of burning (with other interventions) on cover of fen-characteristic mosses or herbs, and typically no effect on plant species richness/diversity [1763].\",\"action_ids\":[\"1763\",\"1774\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and negative impacts of using prescribed fire as a peatland management tool?\",\n  \"relevant_summary\": \"Reported benefits/effects: Prescribed burning reduced tree/shrub cover in fens and bogs, including lower heather cover with more frequent burning, and reduced purple moor grass cover [1763, 1774]. Burning increased moss cover (including Sphagnum) in plots burned more often, and increased moss/lichen/bare ground cover in the short term; cottongrass cover increased after 8\\u201318 years in one bog; burning increased plant species richness/diversity in some studies [1763, 1774]. Reported negative impacts/other outcomes: Burning reduced forb cover and sometimes reduced grass/sedge/rush cover; in other cases it increased sedge/rush cover and had no effect on grass cover [1763]. Burning reduced or limited overall plant species richness in some studies, and plots burned more frequently had less total vegetation, shrub and bryophyte biomass, with mixed effects on other grass-like plants and forbs; some studies found no effect on certain shrubs [1774]. One study reported no effect of burning (with other interventions) on cover of fen-characteristic mosses or herbs, and typically no effect on plant species richness/diversity [1763].\",\n  \"action_ids\": [\n    \"1763\",\n    \"1774\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1763",
+      "1774",
+      "1764",
+      "1765",
+      "1856"
+    ],
+    "regenerated_ids": [
+      "1763",
+      "1774"
+    ]
   }
 ]

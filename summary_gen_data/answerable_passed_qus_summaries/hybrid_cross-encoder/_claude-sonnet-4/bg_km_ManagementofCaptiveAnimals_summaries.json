@@ -596,5 +596,71 @@
       "1339",
       "1340"
     ]
+  },
+  {
+    "query": "For captive carnivores, how does hiding food around an enclosure compare to scattering it, in terms of behavioural changes?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on studies of captive carnivores, both hiding and scattering food around enclosures produce beneficial behavioral changes, but with some differences in specific outcomes. Hiding food around enclosures increased exploring and foraging behaviors in black bear, leopard cats, bush dogs, maned wolves, and Malayan sun bears (Action 1915). Additionally, hiding food decreased stereotypical pacing in leopard cats and black bear, and reduced the time Canadian lynx spent sleeping during the day (Action 1915). Scattering food around enclosures increased locomotion in maned wolves, and maned wolves spent more time in the section of their enclosure with scattered food than in a section with food on a tray (Action 1921). Both feeding strategies appear to enhance natural behaviors and reduce problematic captive behaviors, with hiding food showing broader documented benefits across multiple species including reductions in stereotypical behaviors and increased activity, while scattering food demonstrated increased movement and spatial preferences in the studied species.",
+    "summary_action_ids": [
+      "1921",
+      "1915"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"captive carnivores feeding food hiding scattering behavioral changes enclosure\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1921\",\n    \"action_title\": \"Carnivores: Scatter food around enclosure\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1315\",\n    \"action_title\": \"Primates: Scatter food throughout enclosure\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1915\",\n    \"action_title\": \"Carnivores: Hide food around enclosure\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1918\",\n    \"action_title\": \"Carnivores: Change location of food around enclosure\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1910\",\n    \"action_title\": \"Carnivores: Alter food abundance or type seasonally\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1316\",\n    \"action_title\": \"Primates: Hide food in containers (including boxes and bags)\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1902\",\n    \"action_title\": \"Carnivores: Provide bones, hides or partial carcasses\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1922\",\n    \"action_title\": \"Carnivores: Present food in/on water\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1906\",\n    \"action_title\": \"Carnivores: Allocate fast days\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1912\",\n    \"action_title\": \"Carnivores: Increase variety of food items\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1921\"}",
+            "return_val": "{\n  \"action_id\": \"1921\",\n  \"action_title\": \"Carnivores: Scatter food around enclosure\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in Brazil\\u00a0found that scattered feeding increased locomotion in maned wolves.\\nOne replicated study in Brazil\\u00a0found that maned wolves spent more time in the section of their enclosure with scattered food than in a section with food on a tray.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1915\"}",
+            "return_val": "{\n  \"action_id\": \"1915\",\n  \"action_title\": \"Carnivores: Hide food around enclosure\",\n  \"key_messages\": \"Key Messages:\\n\\nFour replicated, before-and-after studies in the USA, UK\\u00a0and Germany\\u00a0and one before-and-after study\\u00a0of a black bear, leopard cats, bush dogs, maned wolves\\u00a0and Malayan sun bears\\u00a0found that hiding food increased exploring\\u00a0and foraging behaviours.\\nOne replicated, before-and-after study and one before-and-after study in the USA\\u00a0found a decrease in stereotypical pacing in leopard cats\\u00a0and black bear.\\nOne before-and-after study\\u00a0in the USA found that hiding food reduced the time Canadian lynx spent sleeping during the day.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1918\"}",
+            "return_val": "{\n  \"action_id\": \"1918\",\n  \"action_title\": \"Carnivores: Change location of food around enclosure\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in Ireland\\u00a0found that altering the location of food decreased pacing behaviours in cheetahs.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"For captive carnivores, how does hiding food around an enclosure compare to scattering it, in terms of behavioural changes?\", \"summary\": \"Based on studies of captive carnivores, both hiding and scattering food around enclosures produce beneficial behavioral changes, but with some differences in specific outcomes. Hiding food around enclosures increased exploring and foraging behaviors in black bear, leopard cats, bush dogs, maned wolves, and Malayan sun bears (Action 1915). Additionally, hiding food decreased stereotypical pacing in leopard cats and black bear, and reduced the time Canadian lynx spent sleeping during the day (Action 1915). Scattering food around enclosures increased locomotion in maned wolves, and maned wolves spent more time in the section of their enclosure with scattered food than in a section with food on a tray (Action 1921). Both feeding strategies appear to enhance natural behaviors and reduce problematic captive behaviors, with hiding food showing broader documented benefits across multiple species including reductions in stereotypical behaviors and increased activity, while scattering food demonstrated increased movement and spatial preferences in the studied species.\", \"action_ids\": [\"1921\",\"1915\"]}",
+            "return_val": "{\n  \"query\": \"For captive carnivores, how does hiding food around an enclosure compare to scattering it, in terms of behavioural changes?\",\n  \"relevant_summary\": \"Based on studies of captive carnivores, both hiding and scattering food around enclosures produce beneficial behavioral changes, but with some differences in specific outcomes. Hiding food around enclosures increased exploring and foraging behaviors in black bear, leopard cats, bush dogs, maned wolves, and Malayan sun bears (Action 1915). Additionally, hiding food decreased stereotypical pacing in leopard cats and black bear, and reduced the time Canadian lynx spent sleeping during the day (Action 1915). Scattering food around enclosures increased locomotion in maned wolves, and maned wolves spent more time in the section of their enclosure with scattered food than in a section with food on a tray (Action 1921). Both feeding strategies appear to enhance natural behaviors and reduce problematic captive behaviors, with hiding food showing broader documented benefits across multiple species including reductions in stereotypical behaviors and increased activity, while scattering food demonstrated increased movement and spatial preferences in the studied species.\",\n  \"action_ids\": [\n    \"1921\",\n    \"1915\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1915",
+      "1918",
+      "1921"
+    ],
+    "regenerated_ids": [
+      "1915",
+      "1921"
+    ]
   }
 ]

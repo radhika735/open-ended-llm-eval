@@ -915,5 +915,89 @@
       "746",
       "780"
     ]
+  },
+  {
+    "query": "What treatments are available for amphibians infected with chytridiomycosis and how effective are they?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence from action documents shows: Antifungal treatments can cure or increase survival in many cases: 12 of 16 studies found cure or increased survival, while four found reduced infection or mixed results; some specific fungicides caused death or other negative side effects [882]. Itraconazole was effective in most tests: six of eight studies found it cured infection, one found it reduced infection levels, and one found mixed effects [882]. Probiotic approaches have mixed or limited efficacy: three of four randomized, replicated, controlled studies found adding antifungal bacteria to salamanders or frogs did not reduce infection rate or death, while one study found it prevented infection and death; adding bacteria to soil reduced infection rate in red-backed salamanders; antimicrobial skin peptides did not significantly increase survival in common toads; some studies noted reduced weight loss despite infection [764]. In-field or pre-release treatments can reduce but not eliminate infection: a before-and-after study treating wild midwife toads with fungicide alongside pond drying reduced infection levels but did not eradicate chytridiomycosis [767].",
+    "summary_action_ids": [
+      "882",
+      "764",
+      "767"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"chytridiomycosis amphibians treatment effectiveness itraconazole heat therapy sodium chloride probiotics antifungal treatment Bd Bsal conservation\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"764\",\n    \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"767\",\n    \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"882\"}",
+            "return_val": "{\n  \"action_id\": \"882\",\n  \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n  \"key_messages\": \"Key Messages:\\n\\nTwelve of 16 studies (including four randomized, replicated, controlled studies) in Europe, Australia, Tasmania, Japan and the USA found that antifungal treatment cured or increased survival of amphibians with chytridiomycosis. Four studies found that treatments did not cure chytridiomycosis, but did reduce infection levels\\u00a0or had mixed results.\\nSix of the eight studies (including two randomized, replicated, controlled studies) in Japan, Tasmania, the UK and USA testing treatment with itraconazole found that it was effective at curing amphibians of chytridiomycosis. One study found that it reduced infection levels and one found mixed effects.\\nSix studies found that specific fungicides caused death or other negative side effects in amphibians.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"764\"}",
+            "return_val": "{\n  \"action_id\": \"764\",\n  \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n  \"key_messages\": \"Key Messages:\\n\\nThree of four randomized, replicated, controlled studies in the USA found that adding antifungal bacteria to the skin of salamanders or frogs exposed to the chytrid fungus did not reduce chytridiomycosis infection rate or death. One found that adding antifungal bacteria to frogs prevented infection and death. One randomized, replicated, controlled study in the USA\\u00a0found that adding antifungal skin bacteria to soil significantly reduced chytridiomycosis infection rate of red-backed salamanders. \\nOne randomized, replicated, controlled study in Switzerland found that treatment with antimicrobial skin peptides before or after infection with chytridiomycosis did not significantly increase survival of common toads.\\nThree randomized, replicated, controlled studies in the USA found that adding antifungal skin bacteria to chytrid infected amphibians reduced weight loss.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"767\"}",
+            "return_val": "{\n  \"action_id\": \"767\",\n  \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n  \"key_messages\": \"Key Messages:\\n\\n\\nOne before-and-after study in Mallorca found that treating wild midwife toads with fungicide, along with pond drying, reduced infection levels but did not eradicate chytridiomycosis.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"chytridiomycosis treatment amphibians heat therapy salt bath chloramphenicol terbinafine voriconazole temperature elevation Batrachochytrium salamandrivorans Bsal treatment\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"771\",\n    \"action_title\": \"Create walls or barriers to exclude pollutants\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"772\",\n    \"action_title\": \"Create refuges\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"773\",\n    \"action_title\": \"Isolate colonies of beneficial ants\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What treatments are available for amphibians infected with chytridiomycosis and how effective are they?\",\"summary\":\"Evidence from action documents shows: Antifungal treatments can cure or increase survival in many cases: 12 of 16 studies found cure or increased survival, while four found reduced infection or mixed results; some specific fungicides caused death or other negative side effects [882]. Itraconazole was effective in most tests: six of eight studies found it cured infection, one found it reduced infection levels, and one found mixed effects [882]. Probiotic approaches have mixed or limited efficacy: three of four randomized, replicated, controlled studies found adding antifungal bacteria to salamanders or frogs did not reduce infection rate or death, while one study found it prevented infection and death; adding bacteria to soil reduced infection rate in red-backed salamanders; antimicrobial skin peptides did not significantly increase survival in common toads; some studies noted reduced weight loss despite infection [764]. In-field or pre-release treatments can reduce but not eliminate infection: a before-and-after study treating wild midwife toads with fungicide alongside pond drying reduced infection levels but did not eradicate chytridiomycosis [767].\",\"action_ids\":[\"882\",\"764\",\"767\"]}",
+            "return_val": "{\n  \"query\": \"What treatments are available for amphibians infected with chytridiomycosis and how effective are they?\",\n  \"relevant_summary\": \"Evidence from action documents shows: Antifungal treatments can cure or increase survival in many cases: 12 of 16 studies found cure or increased survival, while four found reduced infection or mixed results; some specific fungicides caused death or other negative side effects [882]. Itraconazole was effective in most tests: six of eight studies found it cured infection, one found it reduced infection levels, and one found mixed effects [882]. Probiotic approaches have mixed or limited efficacy: three of four randomized, replicated, controlled studies found adding antifungal bacteria to salamanders or frogs did not reduce infection rate or death, while one study found it prevented infection and death; adding bacteria to soil reduced infection rate in red-backed salamanders; antimicrobial skin peptides did not significantly increase survival in common toads; some studies noted reduced weight loss despite infection [764]. In-field or pre-release treatments can reduce but not eliminate infection: a before-and-after study treating wild midwife toads with fungicide alongside pond drying reduced infection levels but did not eradicate chytridiomycosis [767].\",\n  \"action_ids\": [\n    \"882\",\n    \"764\",\n    \"767\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "762",
+      "763",
+      "764",
+      "765",
+      "766",
+      "767",
+      "770",
+      "800",
+      "882"
+    ],
+    "regenerated_ids": [
+      "762",
+      "763",
+      "764",
+      "765",
+      "766",
+      "767",
+      "770",
+      "882"
+    ]
   }
 ]

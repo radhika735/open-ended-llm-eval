@@ -196,5 +196,75 @@
       "1669",
       "1670"
     ]
+  },
+  {
+    "query": "What is the evidence for the effectiveness of creating corridors or buffer zones to mitigate the impacts of roads on shrublands?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "No evidence was found from shrubland studies evaluating the effectiveness of creating buffer zones beside roads and other transportation corridors (action 1618). Similarly, no studies were found evaluating the effects of planting vegetation buffers to exclude pollution in shrublands (action 1665).",
+    "summary_action_ids": [
+      "1618",
+      "1665"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"effectiveness of corridors or buffer zones to mitigate impacts of roads on shrublands\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1618\",\n    \"action_title\": \"Create buffer zones beside roads and other transportation corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1665\",\n    \"action_title\": \"Plant vegetation to act as a buffer to exclude pollution\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3630\",\n    \"action_title\": \"Retain riparian buffer strips during timber harvest\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of corridors or buffer zones to mitigate impacts of roads on shrublands\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1625\",\n    \"action_title\": \"Reinstate the use of traditional burning practices\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"174\",\n    \"action_title\": \"Reduce field size (or maintain small fields)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"441\",\n    \"action_title\": \"Remove/control adult brood parasites\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1618\"}",
+            "return_val": "{\n  \"action_id\": \"1618\",\n  \"action_title\": \"Create buffer zones beside roads and other transportation corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of creating buffer zones beside roads and other transportation corridors on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1665\"}",
+            "return_val": "{\n  \"action_id\": \"1665\",\n  \"action_title\": \"Plant vegetation to act as a buffer to exclude pollution\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of planting vegetation to act as a buffer to exclude pollution on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the evidence for the effectiveness of creating corridors or buffer zones to mitigate the impacts of roads on shrublands?\",\"summary\":\"No evidence was found from shrubland studies evaluating the effectiveness of creating buffer zones beside roads and other transportation corridors (action 1618). Similarly, no studies were found evaluating the effects of planting vegetation buffers to exclude pollution in shrublands (action 1665).\",\"action_ids\":[\"1618\",\"1665\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence for the effectiveness of creating corridors or buffer zones to mitigate the impacts of roads on shrublands?\",\n  \"relevant_summary\": \"No evidence was found from shrubland studies evaluating the effectiveness of creating buffer zones beside roads and other transportation corridors (action 1618). Similarly, no studies were found evaluating the effects of planting vegetation buffers to exclude pollution in shrublands (action 1665).\",\n  \"action_ids\": [\n    \"1618\",\n    \"1665\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1543",
+      "1610",
+      "1617",
+      "1618",
+      "1665",
+      "1677"
+    ],
+    "regenerated_ids": [
+      "1617",
+      "1618",
+      "1665"
+    ]
   }
 ]

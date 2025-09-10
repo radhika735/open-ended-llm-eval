@@ -809,5 +809,117 @@
       "41",
       "42"
     ]
+  },
+  {
+    "query": "How does the effectiveness of managing hedges for bees in Scotland compare to managing land under power lines for bees in the USA?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available evidence, managing hedges for bees in Scotland shows limited effectiveness, while managing land under power lines for bees in the USA shows some positive results. Action 15 found that hedges managed under the Scottish Rural Stewardship scheme do not attract more nest-searching or foraging queen bumblebees in spring than conventionally managed hedgerows. In contrast, Action 31 found that power line management in Maryland, USA resulted in more bee species under power lines managed as scrub than in equivalent areas of annually mown grassland. Action 24 provides additional context that the Scottish Rural Stewardship Scheme was among European agri-environment schemes that showed enhanced diversity and/or abundance of foraging wild bees, though broader UK trials found bumblebee populations were not enhanced on farmland managed under agri-environment schemes. However, Action 99 notes that there is no evidence captured for the effects of managing land under power lines to benefit wildlife on farmland wildlife, indicating limited research in this area.",
+    "summary_action_ids": [
+      "15",
+      "31",
+      "24",
+      "99"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"hedges bees Scotland management effectiveness\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"15\",\n    \"action_title\": \"Manage hedges to benefit bees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"177\",\n    \"action_title\": \"Manage hedges to benefit birds\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"116\",\n    \"action_title\": \"Manage hedgerows to benefit wildlife (includes no spray, gap-filling and laying)\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1943\",\n    \"action_title\": \"Manage hedges to benefit bats\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"8\",\n    \"action_title\": \"Restore species-rich grassland vegetation\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"power lines electricity transmission bees USA management\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"31\",\n    \"action_title\": \"Manage land under power lines for wildlife\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"99\",\n    \"action_title\": \"Manage land under power lines to benefit wildlife\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3855\",\n    \"action_title\": \"Manage land under power lines for butterflies and moths\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3899\",\n    \"action_title\": \"Stop using herbicides on pavements and road verges\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"265\",\n    \"action_title\": \"Mark power lines to reduce incidental bird mortality\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"15\"}",
+            "return_val": "{\n  \"action_id\": \"15\",\n  \"action_title\": \"Manage hedges to benefit bees\",\n  \"key_messages\": \"Key Messages:\\nOne replicated controlled trial showed that hedges managed under the Scottish Rural Stewardship scheme do not attract more nest-searching or foraging queen bumblebees in spring than conventionally managed hedgerows.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"31\"}",
+            "return_val": "{\n  \"action_id\": \"31\",\n  \"action_title\": \"Manage land under power lines for wildlife\",\n  \"key_messages\": \"Key Messages:\\nOne replicated trial in Maryland, USA found more bee species under power lines managed as scrub than in equivalent areas of annually mown grassland.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"99\"}",
+            "return_val": "{\n  \"action_id\": \"99\",\n  \"action_title\": \"Manage land under power lines to benefit wildlife\",\n  \"key_messages\": \"Key Messages:\\n\\nWe have captured no evidence for the effects of managing land under power lines to benefit wildlife on farmland wildlife.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"transmission corridors bees pollinators electricity management\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"54\",\n    \"action_title\": \"Rear and manage populations of solitary bees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1407\",\n    \"action_title\": \"Pollination: Plant hedgerows\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1408\",\n    \"action_title\": \"Pollination: Restore habitat along watercourses\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1406\",\n    \"action_title\": \"Pollination: Plant flowers\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1404\",\n    \"action_title\": \"Pollination: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"utility corridors pollinators scrub grassland management\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"2944\",\n    \"action_title\": \"Manage vegetation along utility and service line corridors to increase foraging habitat for bats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3955\",\n    \"action_title\": \"Restore or create species-rich, semi-natural grassland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2943\",\n    \"action_title\": \"Replace or improve roosting habitat for bats along utility and service line corridors\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3108\",\n    \"action_title\": \"Use cutting to control problematic large trees/shrubs: freshwater marshes\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2084\",\n    \"action_title\": \"Remove utility and service lines after decommissioning\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Scotland bumblebee queen foraging hedgerow stewardship\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"15\",\n    \"action_title\": \"Manage hedges to benefit bees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"24\",\n    \"action_title\": \"Introduce agri-environment schemes to benefit wild bees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"12\",\n    \"action_title\": \"Increase areas of rough grassland for bumblebee nesting\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"8\",\n    \"action_title\": \"Restore species-rich grassland vegetation\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"52\",\n    \"action_title\": \"Reintroduce laboratory-reared bumblebee colonies to the wild\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"24\"}",
+            "return_val": "{\n  \"action_id\": \"24\",\n  \"action_title\": \"Introduce agri-environment schemes to benefit wild bees\",\n  \"key_messages\": \"Key Messages:\\nFour replicated trials in Europe have shown enhanced diversity and/or abundance of foraging wild bees on land managed under various European agri-environment schemes, relative to conventionally-managed fields or field margins. These schemes were the Swiss Ecological Compensation Areas (one replicated trial), the German organic arable farming option (one replicated trial), the Dutch botanical and meadow bird agreements (one replicated trial, very low numbers of bee species) and the Scottish Rural Stewardship Scheme (one replicated trial, also included nest-searching queen bumblebees).\\nFour replicated trials in Europe found that the number of bees and/or bee species is not enhanced on land managed under agri-environment schemes, including meadow bird agreements in wet grassland in the Netherlands, measures to protect steppe-living birds and compensation measures around a National Park in Spain, and 6 m wide grass field margin strips in England (one replicated trial for each).\\nOn a wider landscape scale, two replicated trials in the UK have found bumblebee populations were not enhanced on farmland managed under agri-environment schemes. One trial compared the reproductive success of colonies of the buff-tailed bumblebee Bombus terrestris, the other compared queen bumblebee numbers in spring in conventionally managed field margins, on farms with and without agri-environment schemes.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"How does the effectiveness of managing hedges for bees in Scotland compare to managing land under power lines for bees in the USA?\", \"summary\": \"Based on the available evidence, managing hedges for bees in Scotland shows limited effectiveness, while managing land under power lines for bees in the USA shows some positive results. Action 15 found that hedges managed under the Scottish Rural Stewardship scheme do not attract more nest-searching or foraging queen bumblebees in spring than conventionally managed hedgerows. In contrast, Action 31 found that power line management in Maryland, USA resulted in more bee species under power lines managed as scrub than in equivalent areas of annually mown grassland. Action 24 provides additional context that the Scottish Rural Stewardship Scheme was among European agri-environment schemes that showed enhanced diversity and/or abundance of foraging wild bees, though broader UK trials found bumblebee populations were not enhanced on farmland managed under agri-environment schemes. However, Action 99 notes that there is no evidence captured for the effects of managing land under power lines to benefit wildlife on farmland wildlife, indicating limited research in this area.\", \"action_ids\": [\"15\",\"31\",\"24\",\"99\"]}",
+            "return_val": "{\n  \"query\": \"How does the effectiveness of managing hedges for bees in Scotland compare to managing land under power lines for bees in the USA?\",\n  \"relevant_summary\": \"Based on the available evidence, managing hedges for bees in Scotland shows limited effectiveness, while managing land under power lines for bees in the USA shows some positive results. Action 15 found that hedges managed under the Scottish Rural Stewardship scheme do not attract more nest-searching or foraging queen bumblebees in spring than conventionally managed hedgerows. In contrast, Action 31 found that power line management in Maryland, USA resulted in more bee species under power lines managed as scrub than in equivalent areas of annually mown grassland. Action 24 provides additional context that the Scottish Rural Stewardship Scheme was among European agri-environment schemes that showed enhanced diversity and/or abundance of foraging wild bees, though broader UK trials found bumblebee populations were not enhanced on farmland managed under agri-environment schemes. However, Action 99 notes that there is no evidence captured for the effects of managing land under power lines to benefit wildlife on farmland wildlife, indicating limited research in this area.\",\n  \"action_ids\": [\n    \"15\",\n    \"31\",\n    \"24\",\n    \"99\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "15",
+      "31"
+    ],
+    "regenerated_ids": [
+      "15",
+      "31"
+    ]
   }
 ]
