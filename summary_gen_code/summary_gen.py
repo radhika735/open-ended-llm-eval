@@ -14,7 +14,11 @@ from utils.exceptions import RetrievalError
 load_dotenv()
 
 
-ACTION_RETRIEVAL_CONTEXT = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
+ACTION_RETRIEVAL_CONTEXT = ActionParsingContext(
+    required_fields=["action_id", "action_title", "key_messages"],
+    all_actions_cache_file="action_data/bg_km_noeff_all_cache.json",
+    separated_cache_dir="action_data/bg_km_noeff_cache"
+)
 RETRIEVAL_TYPE = "hybrid" # other options: "dense", "hybrid".
 if RETRIEVAL_TYPE == "hybrid":
     FUSION_TYPE = "cross-encoder" # other option: "reciprocal rank fusion"
@@ -81,10 +85,10 @@ def get_action_details(action_id):
     # }
     parsed_action = get_parsed_action_by_id(id=action_id, context=ACTION_RETRIEVAL_CONTEXT)
     if parsed_action is not None:
-        logging.debug(f"Found action details for ID: {action_id}")
+        logging.info(f"Found action details for ID: {action_id}")
         return parsed_action
     else:
-        logging.debug(f"Action ID {action_id} not found")
+        logging.warning(f"Action ID {action_id} not found.")
         example_ids = ["1000", "1001", "1002", "1003", "1005", "1006", "1007", "1008", "1009", "100"]
         return {
             "error": f"Action with ID '{action_id}' not found",
@@ -370,7 +374,7 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
                 iteration_tool_calls["tools_called"].append(single_tool_call_info)
 
                 if tool_execution_success:
-                    logging.debug(f"Tool execution successful. Tool name {tool_call.function.name}. Tool args: {tool_call.function.arguments}")
+                    logging.info(f"Tool execution successful. Tool name {tool_call.function.name}. Tool args: {tool_call.function.arguments}")
 
                     if tool_call.function.name == "get_formatted_result":
                         # The last execution of the tool call gave us the formatted final response 
@@ -594,7 +598,7 @@ def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list
 
 
 def main():
-    logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
     # disable bm25s logging
