@@ -79,5 +79,85 @@
       "842",
       "884"
     ]
+  },
+  {
+    "query": "How do different partial harvesting methods in USA forests compare to clearcutting in their impact on salamander populations?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across North America, a meta-analysis found partial harvests (including shelterwood, group/individual-tree harvesting, and thinning) caused smaller reductions in salamander populations than clearcutting [851, 844, 852]. In the USA, shelterwood harvesting yielded salamander abundances that were higher, similar, or initially higher then similar compared to clearcutting [851]. Harvesting trees in small groups did not produce higher salamander abundance than clearcutting in three USA studies [844]. Thinning often resulted in higher amphibian abundance than clearcuts or a less negative overall response, with mixed effects by species and time since harvest; salamander use of thinned forest during emigration was significantly greater than clearcuts in one study [852].",
+    "summary_action_ids": [
+      "851",
+      "844",
+      "852"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"partial harvesting methods salamander populations clearcutting USA forests comparison\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"851\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"844\",\n    \"action_title\": \"Harvest groups of trees instead of clearcutting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"852\",\n    \"action_title\": \"Thin trees within forests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"851\"}",
+            "return_val": "{\n  \"action_id\": \"851\",\n  \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including two randomized, replicated, controlled, before-and-after studies) in the USA found that compared to clearcutting, shelterwood harvesting resulted in higher, similar or initially higher and then similar salamander abundance. A meta-analysis of 24 studies in North  America\\u00a0found that partial harvest, which included shelterwood harvesting with three other types, resulted in smaller reductions in salamander populations than clearcutting\\nTwo of three studies (including two randomized, replicated, controlled, before-and-after studies) in the USA found that compared to no harvesting, shelterwood harvesting decreased salamander abundance and changed species composition. One found that shelterwood harvesting did not affect salamander abundance.\\nOne randomized, replicated, controlled, before-and-after study in the USA found that compared to unharvested plots, the proportion of female salamanders carrying eggs, eggs per female or proportion of juveniles were similar or lower in harvested plots that included shelterwood harvested plots, depending on species and time since harvest.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"844\"}",
+            "return_val": "{\n  \"action_id\": \"844\",\n  \"action_title\": \"Harvest groups of trees instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including two randomized, replicated, controlled, before-and-after studies) in the USA found that compared to clearcutting, harvesting trees in small groups did not result in higher amphibian or salamander abundance. A meta-analysis of 24 studies in North America\\u00a0found that partial harvest, which included harvesting groups or individual trees, thinning and shelterwood harvesting, resulted in smaller reductions in salamander populations than clearcutting\\nTwo studies (including one randomized, replicated, controlled, before-and-after study) in the USA found that compared to no harvesting, harvesting trees in small groups significantly decreased salamander abundance and changed species composition.\\nOne randomized, replicated, controlled, before-and-after study in the USA found that compared to unharvested plots, the proportion of female salamanders carrying eggs were similar and proportion of eggs per female and juveniles similar or lower in harvested plots that included harvest of groups of trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"852\"}",
+            "return_val": "{\n  \"action_id\": \"852\",\n  \"action_title\": \"Thin trees within forests\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies (including four replicated and/or controlled studies) in the USA compared amphibians in thinned to unharvested forest. Two found mixed effects of thinning on abundance, depending on amphibian species and time since harvest. One found that amphibian abundance increased, except for ensatina salamanders. One found a negative overall response (population, physiological and behavioural) of amphibians and one found that thinning did not affect abundance. A meta-analysis of 24 studies in North America\\u00a0found that partial harvest, which included thinning with three other types, decreased salamander populations. One controlled, before-and-after site comparison study in the USA found that high volumes of pre-existing downed wood prevented declines in amphibian populations following thinning.\\nFour studies (including two replicated, controlled studies) in the USA compared amphibians in thinned to clearcut forest. Two found higher amphibian abundance, apart from ensatina salamanders, or a less negative overall response (population, physiological and behavioural) of amphibians in thinned forest. Two found mixed effects on abundance depending on species, life stage and time since harvest. A meta-analysis of 24 studies in North America found that partial harvest, which included thinning with three other types, resulted in smaller reductions in salamander populations than clearcutting.\\nOne randomized, replicated, controlled study in the USA found that migrating amphibians used thinned forest a similar amount, or for one species more than unharvested forest and that emigrating salamanders, but not frogs, used it significantly more than clearcuts.\\nOne site comparison study in the USA found that thinning decreased the body condition of ensatina salamanders 10 years after harvest.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"partial harvesting methods salamander populations clearcutting USA forests comparison\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"861\",\n    \"action_title\": \"Translocate frogs\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"853\",\n    \"action_title\": \"Retain connectivity between habitat patches\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"766\",\n    \"action_title\": \"Remove the chytrid fungus from ponds\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How do different partial harvesting methods in USA forests compare to clearcutting in their impact on salamander populations?\",\"summary\":\"Across North America, a meta-analysis found partial harvests (including shelterwood, group/individual-tree harvesting, and thinning) caused smaller reductions in salamander populations than clearcutting [851, 844, 852]. In the USA, shelterwood harvesting yielded salamander abundances that were higher, similar, or initially higher then similar compared to clearcutting [851]. Harvesting trees in small groups did not produce higher salamander abundance than clearcutting in three USA studies [844]. Thinning often resulted in higher amphibian abundance than clearcuts or a less negative overall response, with mixed effects by species and time since harvest; salamander use of thinned forest during emigration was significantly greater than clearcuts in one study [852].\",\"action_ids\":[\"851\",\"844\",\"852\"]}",
+            "return_val": "{\n  \"query\": \"How do different partial harvesting methods in USA forests compare to clearcutting in their impact on salamander populations?\",\n  \"relevant_summary\": \"Across North America, a meta-analysis found partial harvests (including shelterwood, group/individual-tree harvesting, and thinning) caused smaller reductions in salamander populations than clearcutting [851, 844, 852]. In the USA, shelterwood harvesting yielded salamander abundances that were higher, similar, or initially higher then similar compared to clearcutting [851]. Harvesting trees in small groups did not produce higher salamander abundance than clearcutting in three USA studies [844]. Thinning often resulted in higher amphibian abundance than clearcuts or a less negative overall response, with mixed effects by species and time since harvest; salamander use of thinned forest during emigration was significantly greater than clearcuts in one study [852].\",\n  \"action_ids\": [\n    \"851\",\n    \"844\",\n    \"852\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "747",
+      "843",
+      "844",
+      "845",
+      "846",
+      "847",
+      "851",
+      "852"
+    ],
+    "regenerated_ids": [
+      "844",
+      "845",
+      "846",
+      "851",
+      "852"
+    ]
   }
 ]

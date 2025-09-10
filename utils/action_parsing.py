@@ -53,9 +53,9 @@ class ActionParsingContext():
     def __set_separated_actions_cache_dir(self, separated_actions_cache_dir, required_fields, doc_type):
         if separated_actions_cache_dir is None:
             if "effectiveness" in required_fields:
-                self.__separated_actions_cache_dir = f"action_data/{doc_type}_eff_separated_cache"
+                self.__separated_actions_cache_dir = f"action_data/parsed_{doc_type}_eff_separated_cache"
             else:
-                self.__separated_actions_cache_dir = f"action_data/{doc_type}_noeff_separated_cache"
+                self.__separated_actions_cache_dir = f"action_data/parsed_{doc_type}_noeff_separated_cache"
         else:
             self.__separated_actions_cache_dir = separated_actions_cache_dir
 

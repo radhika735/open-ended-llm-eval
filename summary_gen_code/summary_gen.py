@@ -1,4 +1,4 @@
-import bm25s
+import time
 import os
 import logging
 import json
@@ -536,12 +536,16 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dir,
         return
 
     qu_dicts = copy.deepcopy(file_qu_dicts)
+    qu_count = 0
+    current_qu_idx = -1
 
-    for i in range(max_qus):
-        qu_dict = qu_dicts[i]
+    while qu_count < max_qus:
+        current_qu_idx += 1
+        qu_dict = qu_dicts[current_qu_idx]
         query = qu_dict["question"]
+
         used_by_models = qu_dict.get("used_by_models", [])
-        unused_by_models = [mp for mp in model_provider_list if mp not in used_by_models]
+        unused_by_models = [mp for mp in model_provider_list if list(mp) not in used_by_models]
         if unused_by_models:
             logging.info(f"Generating summaries for query: {query}")
             model_summaries = run_models(query=query, model_provider_list=unused_by_models)
@@ -554,6 +558,7 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dir,
                 append_new_summary(summary=assembled_summary, filename=summary_out_filepath)
 
             qu_dict["used_by_models"] = used_by_models + unused_by_models
+            qu_count += 1
 
     # overwrite the question file (it will contain the updated used_by_models field)
     write_to_json_file(data_list=qu_dicts, filename=queries_filepath)
@@ -601,6 +606,7 @@ def main():
 
     ## SUMMARY GENERATION PROCESS
     logging.info("STARTING summary generation process.")
+    start_time = time.monotonic()
     qu_type = "answerable" # other option: "unanswerable"
     filter_stage = "passed" # other option: "failed"
     qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/usage_annotated"
@@ -618,6 +624,8 @@ def main():
         )
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {e}")
+    end_time = time.monotonic() - start_time
+    print("Time taken:",end_time)
     logging.info("ENDED summary generation process.")
 
 
