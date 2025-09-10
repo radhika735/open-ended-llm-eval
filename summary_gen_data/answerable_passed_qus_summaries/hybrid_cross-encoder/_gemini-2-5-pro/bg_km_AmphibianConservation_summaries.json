@@ -139,5 +139,69 @@
       "851",
       "852"
     ]
+  },
+  {
+    "query": "What are the potential benefits and harms of controlling fish populations to protect amphibians?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One controlled study in Mexico found that excluding fish using a barrier increased weight gain of axolotls (829). Three studies in Sweden, the UK and USA found that eliminating fish using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations (828). One review in Australia, the UK and USA found that fish control, which included using rotenone, increased breeding success for four amphibian species (828). However, two replicated studies in Pakistan and the UK found when rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects (828).",
+    "summary_action_ids": [
+      "829",
+      "828"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"controlling fish populations to protect amphibians\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"829\",\n    \"action_title\": \"Exclude fish with barriers\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"820\",\n    \"action_title\": \"Protect habitats for amphibians\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"829\"}",
+            "return_val": "{\n  \"action_id\": \"829\",\n  \"action_title\": \"Exclude fish with barriers\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in Mexico\\u00a0found that excluding fish using a barrier increased weight gain of axolotls.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"828\"}",
+            "return_val": "{\n  \"action_id\": \"828\",\n  \"action_title\": \"Remove or control fish using rotenone\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated study) in Sweden, the UK and USA found that eliminating fish using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations.\\nOne review in Australia, the UK and USA found that fish control, which included using rotenone, increased breeding success for four amphibian species.\\nTwo replicated studies in Pakistan and the UK found when rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"820\"}",
+            "return_val": "{\n  \"action_id\": \"820\",\n  \"action_title\": \"Protect habitats for amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, site comparison study in the UK\\u00a0found that populations of natterjack toads were better protected at sites with a statutory level of habitat protection than those outside protected areas. One before-and-after study in the UK found that a common frog population increased but common toads decreased following the protection of a pond during development.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One controlled study in Mexico found that excluding fish using a barrier increased weight gain of axolotls (829). Three studies in Sweden, the UK and USA found that eliminating fish using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations (828). One review in Australia, the UK and USA found that fish control, which included using rotenone, increased breeding success for four amphibian species (828). However, two replicated studies in Pakistan and the UK found when rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects (828).\",\"action_ids\":[\"829\",\"828\"],\"query\":\"What are the potential benefits and harms of controlling fish populations to protect amphibians?\"}",
+            "return_val": "{\n  \"query\": \"What are the potential benefits and harms of controlling fish populations to protect amphibians?\",\n  \"relevant_summary\": \"One controlled study in Mexico found that excluding fish using a barrier increased weight gain of axolotls (829). Three studies in Sweden, the UK and USA found that eliminating fish using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations (828). One review in Australia, the UK and USA found that fish control, which included using rotenone, increased breeding success for four amphibian species (828). However, two replicated studies in Pakistan and the UK found when rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects (828).\",\n  \"action_ids\": [\n    \"829\",\n    \"828\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "826",
+      "827",
+      "828",
+      "829"
+    ],
+    "regenerated_ids": [
+      "826",
+      "827",
+      "828",
+      "829"
+    ]
   }
 ]

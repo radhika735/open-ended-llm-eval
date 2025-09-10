@@ -1,0 +1,83 @@
+[
+  {
+    "query": "What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "- Treating bats for white-nose syndrome with a probiotic bacterium was evaluated in two randomized, controlled studies: one in Canada and one in the USA (2008). In Canada, treatment at the time of infection increased survival for little brown bats within laboratory cages and reduced disease symptoms; treatment 21 days prior to infection did not increase survival and was associated with worse symptoms (2008). In the USA, treatment within a mine increased survival for free-flying little brown bats, but survival of caged bats and disease severity did not differ from untreated bats (2008).\n- Breeding bats in captivity to supplement wild populations affected by white-nose syndrome has no studies evaluating its effects (2009).\n- Decontaminating clothing and equipment after entering caves to reduce spread of the pathogen has no studies evaluating effects on bat populations (2006).",
+    "summary_action_ids": [
+      "2008",
+      "2009",
+      "2006"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"white-nose syndrome bats effectiveness strategies treatment management evidence\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2009\",\n    \"action_title\": \"Breed bats in captivity to supplement wild populations affected by white-nose syndrome\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2008\",\n    \"action_title\": \"Treat bats for infection with white-nose syndrome\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2006\",\n    \"action_title\": \"Decontaminate clothing and equipment after entering caves to reduce the spread of the white-nose syndrome pathogen\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2009\"}",
+            "return_val": "{\n  \"action_id\": \"2009\",\n  \"action_title\": \"Breed bats in captivity to supplement wild populations affected by white-nose syndrome\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2008\"}",
+            "return_val": "{\n  \"action_id\": \"2008\",\n  \"action_title\": \"Treat bats for infection with white-nose syndrome\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of treating bats with a probiotic bacterium to reduce white-nose syndrome infection. One study was in Canada\\u00a0and one in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): One randomized, controlled study in Canada\\u00a0found that treating little brown bats with a probiotic bacterium at the time of infection with white-nose syndrome (but not 21 days prior) increased survival within cages in a laboratory. One randomized, controlled study in the USA\\u00a0found that treating little brown bats with a probiotic bacterium within a mine increased survival for free-flying bats, but not caged bats.\\nCondition (2 studies): One randomized, controlled study in Canada\\u00a0found that little brown bats caged in a laboratory and treated with a probiotic bacterium at the time of infection with white-nose syndrome had reduced symptoms of the disease, but bats treated 21 days prior to infection had worse symptoms. One randomized, controlled study in the USA\\u00a0found that little brown bats kept within cages in a mine and treated with a probiotic bacterium had a similar severity of white-nose syndrome to untreated bats.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2006\"}",
+            "return_val": "{\n  \"action_id\": \"2006\",\n  \"action_title\": \"Decontaminate clothing and equipment after entering caves to reduce the spread of the white-nose syndrome pathogen\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of decontaminating clothing and equipment after entering caves to reduce the spread of the white-nose syndrome pathogen on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"white-nose syndrome bats effectiveness strategies treatment management evidence\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1022\",\n    \"action_title\": \"Use mammal-safe timber treatments in roof spaces\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2017\",\n    \"action_title\": \"Avoid illumination of bat commuting routes\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1021\",\n    \"action_title\": \"Impose noise limits in proximity to bat roosts and habitats\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?\",\"summary\":\"- Treating bats for white-nose syndrome with a probiotic bacterium was evaluated in two randomized, controlled studies: one in Canada and one in the USA (2008). In Canada, treatment at the time of infection increased survival for little brown bats within laboratory cages and reduced disease symptoms; treatment 21 days prior to infection did not increase survival and was associated with worse symptoms (2008). In the USA, treatment within a mine increased survival for free-flying little brown bats, but survival of caged bats and disease severity did not differ from untreated bats (2008).\\n- Breeding bats in captivity to supplement wild populations affected by white-nose syndrome has no studies evaluating its effects (2009).\\n- Decontaminating clothing and equipment after entering caves to reduce spread of the pathogen has no studies evaluating effects on bat populations (2006).\",\"action_ids\":[\"2008\",\"2009\",\"2006\"]}",
+            "return_val": "{\n  \"query\": \"What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?\",\n  \"relevant_summary\": \"- Treating bats for white-nose syndrome with a probiotic bacterium was evaluated in two randomized, controlled studies: one in Canada and one in the USA (2008). In Canada, treatment at the time of infection increased survival for little brown bats within laboratory cages and reduced disease symptoms; treatment 21 days prior to infection did not increase survival and was associated with worse symptoms (2008). In the USA, treatment within a mine increased survival for free-flying little brown bats, but survival of caged bats and disease severity did not differ from untreated bats (2008).\\n- Breeding bats in captivity to supplement wild populations affected by white-nose syndrome has no studies evaluating its effects (2009).\\n- Decontaminating clothing and equipment after entering caves to reduce spread of the pathogen has no studies evaluating effects on bat populations (2006).\",\n  \"action_ids\": [\n    \"2008\",\n    \"2009\",\n    \"2006\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1010",
+      "1011",
+      "1012",
+      "2006",
+      "2007",
+      "2008",
+      "2009"
+    ],
+    "regenerated_ids": [
+      "1010",
+      "1011",
+      "1012",
+      "2006",
+      "2007",
+      "2008",
+      "2009"
+    ]
+  }
+]

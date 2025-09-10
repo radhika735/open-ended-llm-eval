@@ -254,5 +254,120 @@
       "851",
       "852"
     ]
+  },
+  {
+    "query": "What are the potential benefits and harms of controlling fish populations to protect amphibians?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the action documents, controlling fish populations to protect amphibians shows several potential benefits and harms:\n\n**Benefits:**\nFish removal using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations in studies from Sweden, the UK and USA (Action 828). Fish control including rotenone use increased breeding success for four amphibian species according to a review from Australia, the UK and USA (Action 828). Removing fish by catching significantly increased abundance of salamanders or frogs and increased recruitment, survival and population growth rate of cascades frog in four studies from the USA (Action 827). Excluding fish using barriers increased weight gain of axolotls in one controlled study in Mexico (Action 829).\n\n**Harms and Limitations:**\nWhen rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects in studies from Pakistan and the UK (Action 828). Fish control had no significant effect on great crested newt populations, and fish remained or returned within a few years in one UK study (Action 827). Fish control did not increase green toad breeding success and fish were soon reintroduced in one Swedish study (Action 827).",
+    "summary_action_ids": [
+      "828",
+      "829",
+      "827"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fish population control amphibian protection\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"829\",\n    \"action_title\": \"Exclude fish with barriers\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"820\",\n    \"action_title\": \"Protect habitats for amphibians\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fish removal rotenone amphibians benefits harms\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1063\",\n    \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fish barriers exclusion amphibian conservation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"829\",\n    \"action_title\": \"Exclude fish with barriers\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"771\",\n    \"action_title\": \"Create walls or barriers to exclude pollutants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"248\",\n    \"action_title\": \"Use netting to exclude fish-eating birds\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"828\"}",
+            "return_val": "{\n  \"action_id\": \"828\",\n  \"action_title\": \"Remove or control fish using rotenone\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated study) in Sweden, the UK and USA found that eliminating fish using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations.\\nOne review in Australia, the UK and USA found that fish control, which included using rotenone, increased breeding success for four amphibian species.\\nTwo replicated studies in Pakistan and the UK found when rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"829\"}",
+            "return_val": "{\n  \"action_id\": \"829\",\n  \"action_title\": \"Exclude fish with barriers\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in Mexico\\u00a0found that excluding fish using a barrier increased weight gain of axolotls.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"820\"}",
+            "return_val": "{\n  \"action_id\": \"820\",\n  \"action_title\": \"Protect habitats for amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, site comparison study in the UK\\u00a0found that populations of natterjack toads were better protected at sites with a statutory level of habitat protection than those outside protected areas. One before-and-after study in the UK found that a common frog population increased but common toads decreased following the protection of a pond during development.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fish control negative effects ecological impacts amphibians\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"829\",\n    \"action_title\": \"Exclude fish with barriers\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"827\",\n    \"action_title\": \"Remove or control fish by catching\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"827\"}",
+            "return_val": "{\n  \"action_id\": \"827\",\n  \"action_title\": \"Remove or control fish by catching\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies (including two replicated, controlled studies) in the USA\\u00a0found that removing fish by catching them significantly increased abundance of salamanders or frogs or increased recruitment, survival and population growth rate of cascades frog. One before-and-after study in the UK found that fish control had no significant effect on great crested newt populations and fish remained or returned within a few years.\\nOne replicated, before-and-after study in Sweden found that fish control did not increase green toad breeding success and fish were soon reintroduced.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invasive fish removal ecosystem consequences amphibian habitats\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1080\",\n    \"action_title\": \"Brown and black bullheads: Using a combination of netting and electrofishing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1068\",\n    \"action_title\": \"Ponto-Caspian gobies: Using a combination of netting and electrofishing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"827\",\n    \"action_title\": \"Remove or control fish by catching\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the potential benefits and harms of controlling fish populations to protect amphibians?\", \"summary\": \"Based on the action documents, controlling fish populations to protect amphibians shows several potential benefits and harms:\\n\\n**Benefits:**\\nFish removal using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations in studies from Sweden, the UK and USA (Action 828). Fish control including rotenone use increased breeding success for four amphibian species according to a review from Australia, the UK and USA (Action 828). Removing fish by catching significantly increased abundance of salamanders or frogs and increased recruitment, survival and population growth rate of cascades frog in four studies from the USA (Action 827). Excluding fish using barriers increased weight gain of axolotls in one controlled study in Mexico (Action 829).\\n\\n**Harms and Limitations:**\\nWhen rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects in studies from Pakistan and the UK (Action 828). Fish control had no significant effect on great crested newt populations, and fish remained or returned within a few years in one UK study (Action 827). Fish control did not increase green toad breeding success and fish were soon reintroduced in one Swedish study (Action 827).\", \"action_ids\": [\"828\",\"829\",\"827\"]}",
+            "return_val": "{\n  \"query\": \"What are the potential benefits and harms of controlling fish populations to protect amphibians?\",\n  \"relevant_summary\": \"Based on the action documents, controlling fish populations to protect amphibians shows several potential benefits and harms:\\n\\n**Benefits:**\\nFish removal using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations in studies from Sweden, the UK and USA (Action 828). Fish control including rotenone use increased breeding success for four amphibian species according to a review from Australia, the UK and USA (Action 828). Removing fish by catching significantly increased abundance of salamanders or frogs and increased recruitment, survival and population growth rate of cascades frog in four studies from the USA (Action 827). Excluding fish using barriers increased weight gain of axolotls in one controlled study in Mexico (Action 829).\\n\\n**Harms and Limitations:**\\nWhen rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects in studies from Pakistan and the UK (Action 828). Fish control had no significant effect on great crested newt populations, and fish remained or returned within a few years in one UK study (Action 827). Fish control did not increase green toad breeding success and fish were soon reintroduced in one Swedish study (Action 827).\",\n  \"action_ids\": [\n    \"828\",\n    \"829\",\n    \"827\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "826",
+      "827",
+      "828",
+      "829"
+    ],
+    "regenerated_ids": [
+      "826",
+      "827",
+      "828",
+      "829"
+    ]
   }
 ]

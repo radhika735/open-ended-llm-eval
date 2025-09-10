@@ -159,5 +159,120 @@
       "851",
       "852"
     ]
+  },
+  {
+    "query": "What are the potential benefits and harms of controlling fish populations to protect amphibians?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Reported benefits include: increased numbers of amphibian species after drying ponds to eliminate fish [826]; increased numbers of species and breeding populations of common spadefoot toads and great crested newts when pond restoration (sometimes including drying to eliminate fish) and pond creation were implemented [826]; increased breeding success of frog and newt species when ponds were dried to eliminate fish, sometimes alongside other management [826]; increased abundance of salamanders or frogs, and increased recruitment, survival and population growth rate of Cascades frog after removing fish by catching [827]; and increased numbers of amphibian species, abundance, recruitment and newt populations after eliminating fish using rotenone, with fish control including rotenone also associated with increased breeding success for four amphibian species [828]. Reported harms or limitations include: fish control by catching showed no significant effect on great crested newt populations in one case and fish remained or returned within a few years [827]; fish control did not increase green toad breeding success and fish were soon reintroduced in one study [827]; and application of rotenone led to many frog deaths and some negative symptoms in newts in replicated studies [828].",
+    "summary_action_ids": [
+      "826",
+      "827",
+      "828"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"controlling fish populations protect amphibians benefits harms\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2233\",\n    \"action_title\": \"Designate a Marine Protected Area and only allow hook and line fishing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2231\",\n    \"action_title\": \"Designate a Marine Protected Area and prohibit static fishing gear\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"controlling fish populations amphibians\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3554\",\n    \"action_title\": \"Add lights to fishing gear\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"841\",\n    \"action_title\": \"Use signage to warn motorists\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"836\",\n    \"action_title\": \"Captive breeding harlequin toads (<i>Atelopus</i> species)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibians control fish remove fish ponds benefits harms\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"826\",\n    \"action_title\": \"Remove or control fish by drying out ponds\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"878\",\n    \"action_title\": \"Restore ponds\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"869\",\n    \"action_title\": \"Create ponds for amphibians\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibians control fish remove fish ponds benefits harms\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1041\",\n    \"action_title\": \"American bullfrog control: Habitat modification\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1056\",\n    \"action_title\": \"Red-eared terrapin:  Biological control using native predators\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"755\",\n    \"action_title\": \"Artificially mist habitat to keep it damp\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"exclude fish amphibian breeding ponds remove fish eradication amphibians invasive fish\",\"k\":3,\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"826\",\n    \"action_title\": \"Remove or control fish by drying out ponds\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"827\",\n    \"action_title\": \"Remove or control fish by catching\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"878\",\n    \"action_title\": \"Restore ponds\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"exclude fish amphibian breeding ponds remove fish eradication amphibians invasive fish\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"755\",\n    \"action_title\": \"Artificially mist habitat to keep it damp\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3554\",\n    \"action_title\": \"Add lights to fishing gear\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"439\",\n    \"action_title\": \"Reduce nest ectoparasites by providing beneficial nesting material\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"826\"}",
+            "return_val": "{\n  \"action_id\": \"826\",\n  \"action_title\": \"Remove or control fish by drying out ponds\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the USA found that draining ponds to eliminate fish increased numbers of amphibian species. One replicated, before-and-after study in Estonia\\u00a0found that pond restoration, which sometimes included drying to eliminate fish, and pond creation increased numbers of species and breeding populations of common spadefoot toads and great crested newts compared to no management.\\nThree studies (including one review) in the UK and USA found that pond drying to eliminate fish, along with other management activities in some cases, increased breeding success of frog or newt species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"827\"}",
+            "return_val": "{\n  \"action_id\": \"827\",\n  \"action_title\": \"Remove or control fish by catching\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies (including two replicated, controlled studies) in the USA\\u00a0found that removing fish by catching them significantly increased abundance of salamanders or frogs or increased recruitment, survival and population growth rate of cascades frog. One before-and-after study in the UK found that fish control had no significant effect on great crested newt populations and fish remained or returned within a few years.\\nOne replicated, before-and-after study in Sweden found that fish control did not increase green toad breeding success and fish were soon reintroduced.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"828\"}",
+            "return_val": "{\n  \"action_id\": \"828\",\n  \"action_title\": \"Remove or control fish using rotenone\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated study) in Sweden, the UK and USA found that eliminating fish using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations.\\nOne review in Australia, the UK and USA found that fish control, which included using rotenone, increased breeding success for four amphibian species.\\nTwo replicated studies in Pakistan and the UK found when rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the potential benefits and harms of controlling fish populations to protect amphibians?\",\"summary\":\"Reported benefits include: increased numbers of amphibian species after drying ponds to eliminate fish [826]; increased numbers of species and breeding populations of common spadefoot toads and great crested newts when pond restoration (sometimes including drying to eliminate fish) and pond creation were implemented [826]; increased breeding success of frog and newt species when ponds were dried to eliminate fish, sometimes alongside other management [826]; increased abundance of salamanders or frogs, and increased recruitment, survival and population growth rate of Cascades frog after removing fish by catching [827]; and increased numbers of amphibian species, abundance, recruitment and newt populations after eliminating fish using rotenone, with fish control including rotenone also associated with increased breeding success for four amphibian species [828]. Reported harms or limitations include: fish control by catching showed no significant effect on great crested newt populations in one case and fish remained or returned within a few years [827]; fish control did not increase green toad breeding success and fish were soon reintroduced in one study [827]; and application of rotenone led to many frog deaths and some negative symptoms in newts in replicated studies [828].\",\"action_ids\":[\"826\",\"827\",\"828\"]}",
+            "return_val": "{\n  \"query\": \"What are the potential benefits and harms of controlling fish populations to protect amphibians?\",\n  \"relevant_summary\": \"Reported benefits include: increased numbers of amphibian species after drying ponds to eliminate fish [826]; increased numbers of species and breeding populations of common spadefoot toads and great crested newts when pond restoration (sometimes including drying to eliminate fish) and pond creation were implemented [826]; increased breeding success of frog and newt species when ponds were dried to eliminate fish, sometimes alongside other management [826]; increased abundance of salamanders or frogs, and increased recruitment, survival and population growth rate of Cascades frog after removing fish by catching [827]; and increased numbers of amphibian species, abundance, recruitment and newt populations after eliminating fish using rotenone, with fish control including rotenone also associated with increased breeding success for four amphibian species [828]. Reported harms or limitations include: fish control by catching showed no significant effect on great crested newt populations in one case and fish remained or returned within a few years [827]; fish control did not increase green toad breeding success and fish were soon reintroduced in one study [827]; and application of rotenone led to many frog deaths and some negative symptoms in newts in replicated studies [828].\",\n  \"action_ids\": [\n    \"826\",\n    \"827\",\n    \"828\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "826",
+      "827",
+      "828",
+      "829"
+    ],
+    "regenerated_ids": [
+      "826",
+      "827",
+      "828",
+      "829"
+    ]
   }
 ]
