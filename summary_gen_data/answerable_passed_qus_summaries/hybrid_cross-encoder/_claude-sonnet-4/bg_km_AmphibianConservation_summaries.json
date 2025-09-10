@@ -1,0 +1,138 @@
+[
+  {
+    "query": "What actions can be taken to mitigate the impacts of roads on amphibian populations?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Several actions can be taken to mitigate the impacts of roads on amphibian populations. Road closures during seasonal amphibian migration are effective, with two studies in Germany finding that large numbers of amphibians were protected from death during breeding migrations at road closure sites and at road closure sites with assisted crossings and barrier fences (Action 842). Installing culverts or tunnels as road crossings is a widely studied approach, with six of seven studies finding that they significantly decreased amphibian road deaths, though in one study this was only effective when barrier fencing was also installed (Action 884). The effectiveness of culverts depends on design factors including diameter (wider culverts used more), substrate (natural substrates used more), and lighting effects (Action 884). Installing barrier fencing along roads is effective when combined with culverts, with seven of eight studies finding that barrier fencing with culverts decreased amphibian road deaths (Action 756). Barriers need to be at least 0.6 m high to prevent green frogs and leopard frogs from climbing over, though some species like treefrogs and 10% of common toads can still climb over barriers (Action 756). Human-assisted migration across roads is practiced extensively, with studies finding that large numbers of amphibians were moved across roads by patrols, ranging from 7,532 toads to half a million moved during breeding migrations annually (Action 784). However, despite human assistance, 64-70% of populations still declined over 6-10 years and over 500 toads were still killed on some roads (Action 784). Warning signage for motorists has limited effectiveness, with one study finding that despite warning signs and human assistance, over 500 toads were still killed on some roads (Action 841). Installing overpasses over roads/railways has been studied primarily for reptiles, with limited specific information on amphibians (Action 3510).",
+    "summary_action_ids": [
+      "842",
+      "884",
+      "756",
+      "784",
+      "841",
+      "3510",
+      "3507",
+      "2514"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"roads amphibian mitigation wildlife crossing\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"842\",\n    \"action_title\": \"Close roads during seasonal amphibian migration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"884\",\n    \"action_title\": \"Install culverts or tunnels as road crossings\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3510\",\n    \"action_title\": \"Install overpasses over roads/railways\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"amphibian road mortality barrier fencing\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"756\",\n    \"action_title\": \"Install barrier fencing along roads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"884\",\n    \"action_title\": \"Install culverts or tunnels as road crossings\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3507\",\n    \"action_title\": \"Install barriers and crossing structures along roads/railways\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"amphibian road underpass wildlife corridor traffic\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"756\",\n    \"action_title\": \"Install barrier fencing along roads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2514\",\n    \"action_title\": \"Install tunnels/culverts/underpass under roads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"976\",\n    \"action_title\": \"Install underpasses or culverts as road/railway crossing structures for bats\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"842\"}",
+            "return_val": "{\n  \"action_id\": \"842\",\n  \"action_title\": \"Close roads during seasonal amphibian migration\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated study) in Germany found that large numbers of amphibians were protected from death during breeding migrations at road closure sites and at road closure sites with assisted crossings and barrier fences.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"884\"}",
+            "return_val": "{\n  \"action_id\": \"884\",\n  \"action_title\": \"Install culverts or tunnels as road crossings\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-two studies investigated the effectiveness of installing culverts or tunnels as road crossings for amphibians.\\nSix of seven studies (including three replicated studies) in Canada, Germany, Italy, Hungary and the USA\\u00a0found that installing culverts or tunnels significantly decreased amphibian road deaths; in one study this was the case only when barrier fencing was also installed. One found no effect on road deaths.\\nFifteen of 24 studies (including one review and 17 replicated studies) in Australia, Canada, Europe and the USA found that culverts/tunnels were used by amphibians, by 15\\u201385% of amphibians or 3\\u201315 species, or that 23\\u2013100% of culverts or tunnels were used by amphibians or used in 12 of 14 studies reviewed. The majority of culverts/tunnels had barrier fencing to guide amphibians to entrances. Four found mixed effects depending on species, or for toads depending on the site or culvert type. Five found that culverts were used by less than 10% of amphibians or were not used. The use of culverts/tunnels was affected by diameter in three of six studies, with wider culverts used more, length in one of two studies, with long culverts avoided, lighting in all three studies, with mixed effects, substrate in three of six studies, with natural substrates used more, presence of water in two of three studies, with mixed effects, entrance location in one and tunnel climate in one study.\\nSix studies (including one replicated, controlled study) in Canada, Spain, the Netherlands and USA investigated the use of culverts with flowing water and found that they were used by amphibians, or rarely used by salamanders or not used, and were used more or the same amount as dry culverts.\\nCertain culvert designs were not suitable for amphibians; one-way tunnels with vertical entry chutes resulted in high mortality of common toads and condensation deposits from steel culverts had very high metal concentrations. One study found that thousands of amphibians were still killed on the road.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3510\"}",
+            "return_val": "{\n  \"action_id\": \"3510\",\n  \"action_title\": \"Install overpasses over roads/railways\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects of installing overpasses over roads/railways on reptile populations. Three studies were in Spain, one was a review of studies in Australia, Europe and North America and one study was in Australia.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nCommunity composition (1 study): One before-and-after, site comparison study in Australia found that the composition of reptile species on a vegetated overpass was more similar to woodland on one side of the overpass than the other.\\nRichness/diversity (1 study): One before-and-after, site comparison study in Australia found that a vegetated overpass was colonised by two reptile species each year over five years.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nOccupancy/range (1 study): One before-and-after, site comparison study in Australia found that a vegetated overpass was colonized by 14 of 23 native reptile species and one non-native reptile species.\\n\\nBEHAVIOUR (4 STUDIES)\\n\\nUse (4 studies): Three of four studies (including two replicated studies and one review) in Spain and Australia, Europe and North America found that overpasses not designed for wildlife were used by lizards and snakes and reptiles. The other study found that overpasses not designed for wildlife were not used by snakes or lizards. Two replicated studies in Spain found that wildlife overpasses were used by lizards and Ophidians (snakes and legless lizards), and one review in Australia, Europe and North America found that one of 10 wildlife overpasses were used by reptiles. One review of road crossing structures in Australia, Europe and North America found that a rope bridge was not used by reptiles.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"756\"}",
+            "return_val": "{\n  \"action_id\": \"756\",\n  \"action_title\": \"Install barrier fencing along roads\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven of eight studies (including one replicated and two controlled studies) in Germany, Canada and the USA found that barrier fencing with culverts decreased amphibian road deaths, or decreased deaths provided that the fence length and material were effective. One found that low numbers of amphibians were diverted by barriers during breeding migrations.\\nOne replicated study in the USA found that barriers at least 0.6 m high were required to prevent green frogs and leopard frogs climbing over. Two studies in the Netherlands and USA found that treefrogs and 10% of common toads climbed over barrier fencing during breeding migrations.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3507\"}",
+            "return_val": "{\n  \"action_id\": \"3507\",\n  \"action_title\": \"Install barriers and crossing structures along roads/railways\",\n  \"key_messages\": \"Key Messages:\\n\\nSixteen studies evaluated the effects of installing barriers and crossing structures along roads/railways on reptile populations. Five studies were in the USA, three were in each of Spain, Australia and Canada and one was in each of France and South Africa.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (8 STUDIES)\\n\\nSurvival (8 studies): Four of seven studies (including one randomized, controlled, before-and-after study and one review) in the USA, Australia, Canada and South Africa found that installing fencing and crossing structures did not reduce road mortalities of reptiles, and in one case the percentage of mortalities may have increased. Two studies found that areas with fencing and crossing structures had fewer road mortalities of turtles and overall reptiles. One study found that reptile road mortalities still occurred in in areas with roadside barrier walls and culverts. One replicated, before-and-after study in Canada found that following installation of tunnels and guide fencing, along with signs for motorists, there were fewer road mortalities of eastern massasauga rattlesnakes.\\n\\nBEHAVIOUR (12 STUDIES)\\n\\nUse (12 studies): Six studies (including two replicated studies and one review) in Spain, France, the USA and Australia found that crossing structures with fencing that were not specifically designed for wildlife were used by lizards, snakes, tortoises, turtles and alligators and ophidians. One study also found that the addition of fencing around crossing structures did not affect the number of reptile crossings. Three studies (including one replicated and one before-and-after study and one review) in the USA and Spain found that wildlife crossing structures with fencing were used by gopher tortoises and 12 snake species, American alligators and lacertid lizards. One study also found that an American alligator did not use the wildlife crossing structure. Two before-and-after studies (including one controlled study) in Canada found mixed effects of installing roadside fencing and culverts on road use by turtles and snakes. One replicated study in Spain found that use of different crossing structures depended on species group. One replicated study in Australia found that reptiles used wildlife underpasses or culverts for only 1% of road crossings. One replicated, before-and-after study in Canada found that following installation of tunnels and guide fencing, along with signs for motorists, fewer eastern massasauga rattlesnakes were found crossing the road.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2514\"}",
+            "return_val": "{\n  \"action_id\": \"2514\",\n  \"action_title\": \"Install tunnels/culverts/underpass under roads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-five studies evaluated the effects on mammals of installing tunnels, culverts or underpass under roads. Eight studies were in the USA, four were in Australia, four were in Canada, two were in Spain, one each was in Germany, the Netherlands and South Korea and three were reviews with wide geographic coverage.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nSurvival (3 studies): A study in South Korea found that road sections with higher underpass density did not have fewer wildlife-vehicle collisions. A review found that most studies recorded no evidence of predation of mammals using crossings under roads. A controlled, before-and-after, site comparison study in Australia found that overwinter survival of mountain pygmy-possums increased after an artificial rocky corridor, which included two underpasses, was installed.\\n\\nBEHAVIOUR (23 STUDIES)\\n\\nUse (23 studies): Seventeen of 20 studies (including seven replicated studies and two reviews), in the USA, Canada, Australia, Spain, the Netherlands, and across multiple continents, found that crossing structures beneath roads were used by mammals whilst two studies found mixed results depending on species and one study found that culverts were rarely used as crossings by mammals. One of the studies found that crossing structures were used by two of four species more than expected compared to their movements through adjacent habitats. A controlled, before-and-after, site comparison study in Australia found that an artificial rocky corridor, which included two underpasses, was used by mountain pygmy-possums. A replicated study in Germany found that use of tunnels by fallow deer was affected by tunnel colour and design. A study in the USA found that a range of mammals used culverts, including those with shelves fastened to the sides.\\nBehaviour change (1 study): A controlled, before-and-after, site comparison study in Australia found that after an artificial rocky corridor, which included two underpasses, was installed, dispersal of mountain pygmy-possums increased.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"amphibian assisted migration road temporary fencing\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"842\",\n    \"action_title\": \"Close roads during seasonal amphibian migration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"784\",\n    \"action_title\": \"Use humans to assist migrating amphibians across roads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"841\",\n    \"action_title\": \"Use signage to warn motorists\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"784\"}",
+            "return_val": "{\n  \"action_id\": \"784\",\n  \"action_title\": \"Use humans to assist migrating amphibians across roads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated study) in Italy and the UK found that despite assisting toads across roads during breeding migrations, 64\\u201370% of populations declined over 6\\u201310 years.\\nOne study in the UK \\u00a0found that despite assisting toads across roads during breeding migrations, at 7% of sites over 500 toads were still killed on roads.\\nFive studies in Germany, the UK and Italy found that large numbers of amphibians were moved across roads by patrols. Numbers ranged from 7,532 toads moved before and after breeding to half a million moved during breeding migrations annually. In the UK, there were over 400 patrols\\u00a0and 71 patrols spent an average of 90 person-hours moving toads and had been active for up to 10 years.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"841\"}",
+            "return_val": "{\n  \"action_id\": \"841\",\n  \"action_title\": \"Use signage to warn motorists\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study in the UK found that despite warning signs and human assistance, over 500 toads were killed on some roads.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What actions can be taken to mitigate the impacts of roads on amphibian populations?\", \"summary\": \"Several actions can be taken to mitigate the impacts of roads on amphibian populations. Road closures during seasonal amphibian migration are effective, with two studies in Germany finding that large numbers of amphibians were protected from death during breeding migrations at road closure sites and at road closure sites with assisted crossings and barrier fences (Action 842). Installing culverts or tunnels as road crossings is a widely studied approach, with six of seven studies finding that they significantly decreased amphibian road deaths, though in one study this was only effective when barrier fencing was also installed (Action 884). The effectiveness of culverts depends on design factors including diameter (wider culverts used more), substrate (natural substrates used more), and lighting effects (Action 884). Installing barrier fencing along roads is effective when combined with culverts, with seven of eight studies finding that barrier fencing with culverts decreased amphibian road deaths (Action 756). Barriers need to be at least 0.6 m high to prevent green frogs and leopard frogs from climbing over, though some species like treefrogs and 10% of common toads can still climb over barriers (Action 756). Human-assisted migration across roads is practiced extensively, with studies finding that large numbers of amphibians were moved across roads by patrols, ranging from 7,532 toads to half a million moved during breeding migrations annually (Action 784). However, despite human assistance, 64-70% of populations still declined over 6-10 years and over 500 toads were still killed on some roads (Action 784). Warning signage for motorists has limited effectiveness, with one study finding that despite warning signs and human assistance, over 500 toads were still killed on some roads (Action 841). Installing overpasses over roads/railways has been studied primarily for reptiles, with limited specific information on amphibians (Action 3510).\", \"action_ids\": [\"842\",\"884\",\"756\",\"784\",\"841\",\"3510\",\"3507\",\"2514\"]}",
+            "return_val": "{\n  \"query\": \"What actions can be taken to mitigate the impacts of roads on amphibian populations?\",\n  \"relevant_summary\": \"Several actions can be taken to mitigate the impacts of roads on amphibian populations. Road closures during seasonal amphibian migration are effective, with two studies in Germany finding that large numbers of amphibians were protected from death during breeding migrations at road closure sites and at road closure sites with assisted crossings and barrier fences (Action 842). Installing culverts or tunnels as road crossings is a widely studied approach, with six of seven studies finding that they significantly decreased amphibian road deaths, though in one study this was only effective when barrier fencing was also installed (Action 884). The effectiveness of culverts depends on design factors including diameter (wider culverts used more), substrate (natural substrates used more), and lighting effects (Action 884). Installing barrier fencing along roads is effective when combined with culverts, with seven of eight studies finding that barrier fencing with culverts decreased amphibian road deaths (Action 756). Barriers need to be at least 0.6 m high to prevent green frogs and leopard frogs from climbing over, though some species like treefrogs and 10% of common toads can still climb over barriers (Action 756). Human-assisted migration across roads is practiced extensively, with studies finding that large numbers of amphibians were moved across roads by patrols, ranging from 7,532 toads to half a million moved during breeding migrations annually (Action 784). However, despite human assistance, 64-70% of populations still declined over 6-10 years and over 500 toads were still killed on some roads (Action 784). Warning signage for motorists has limited effectiveness, with one study finding that despite warning signs and human assistance, over 500 toads were still killed on some roads (Action 841). Installing overpasses over roads/railways has been studied primarily for reptiles, with limited specific information on amphibians (Action 3510).\",\n  \"action_ids\": [\n    \"842\",\n    \"884\",\n    \"756\",\n    \"784\",\n    \"841\",\n    \"3510\",\n    \"3507\",\n    \"2514\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "756",
+      "782",
+      "784",
+      "840",
+      "841",
+      "842",
+      "884"
+    ],
+    "regenerated_ids": [
+      "756",
+      "782",
+      "784",
+      "840",
+      "841",
+      "842",
+      "884"
+    ]
+  }
+]

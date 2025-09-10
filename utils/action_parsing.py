@@ -6,14 +6,18 @@ from utils.exceptions import RetrievalError
 
 
 class ActionParsingContext():
-    def __init__(self, required_fields = ["action_id", "action_title", "key_messages"], load_from_cache=False, save_to_cache=False, all_actions_cache_file="action_data/bg_km_"):
+    def __init__(
+            self, 
+            required_fields = ["action_id", "action_title", "key_messages"],
+            all_actions_cache_file=None,
+            separated_actions_cache_dir=None
+        ):
         # doc_type can be "km" or "bg_km", with "km" for key messages and "bg_km" for background key messages
         self.__set_required_fields(required_fields=required_fields)
         self.__set_metadata_fields(required_fields=required_fields)
         self.__set_doc_type(required_fields=required_fields)
-        self.__load_from_cache = load_from_cache
-        self.__save_to_cache = save_to_cache
-        self.__all_actions_cache_file = all_actions_cache_file
+        self.__set_all_actions_cache_file(all_actions_cache_file=all_actions_cache_file, required_fields=required_fields,  doc_type=self.__doc_type)
+        self.__set_separated_actions_cache_dir(separated_actions_cache_dir=separated_actions_cache_dir, required_fields=required_fields, doc_type=self.__doc_type)
 
     def __set_required_fields(self, required_fields):
         # remove any fields which are not in the allowed list of fields:
@@ -37,6 +41,24 @@ class ActionParsingContext():
             else:
                 self.__doc_type = "km"
 
+    def __set_all_actions_cache_file(self, all_actions_cache_file, required_fields, doc_type):
+        if all_actions_cache_file is None:
+            if "effectiveness" in required_fields:
+                self.__all_actions_cache_file = f"action_data/parsed_{doc_type}_eff_all_cache.json"
+            else:
+                self.__all_actions_cache_file = f"action_data/parsed_{doc_type}_noeff_all_cache.json"
+        else:
+            self.__all_actions_cache_file = all_actions_cache_file
+
+    def __set_separated_actions_cache_dir(self, separated_actions_cache_dir, required_fields, doc_type):
+        if separated_actions_cache_dir is None:
+            if "effectiveness" in required_fields:
+                self.__separated_actions_cache_dir = f"action_data/{doc_type}_eff_separated_cache"
+            else:
+                self.__separated_actions_cache_dir = f"action_data/{doc_type}_noeff_separated_cache"
+        else:
+            self.__separated_actions_cache_dir = separated_actions_cache_dir
+
     def get_required_fields(self):
         return self.__required_fields
     
@@ -44,44 +66,70 @@ class ActionParsingContext():
         return self.__metadata_fields
 
     def get_doc_type(self):
-        return self.__doc_type
+        return self.__doc_type    
     
-    def get_load_from_cache(self):
-        return self.__load_from_cache
-    
-    def get_save_to_cache(self):
-        return self.__save_to_cache
-
     def get_all_actions_cache_file(self):
         return self.__all_actions_cache_file
     
+    def get_separated_actions_cache_dir(self):
+        return self.__separated_actions_cache_dir
 
 
-def load_cache(filename):
-    if os.path.exists(filename):
-        with open(filename, "r", encoding="utf-8") as file:
-            try:
-                content = json.load(file)
-                if not isinstance(content, list):
-                    raise RetrievalError(f"Expected JSON file to contain a list, but contained {type(content)} instead: {filename}")
-                else:
-                    logging.info(f"Loaded parsed actions from cache file {filename}.")
-                    return content
-            
-            except json.JSONDecodeError as e:
-                raise RetrievalError(f"Failed to load JSON from file {filename}: {str(e)}.")
+def load_cache(filepath):
+    if not os.path.exists(filepath):
+        raise RetrievalError(f"File not found to read from: {filepath}.")
     else:
-        raise RetrievalError(f"File not found to read from: {filename}.")
+        try:
+            with open(filepath, "r", encoding="utf-8") as file:
+                content = json.load(file)
+                logging.debug(f"Loaded parsed actions from cache file {filepath}.")
+                return content                    
+        except json.JSONDecodeError as e:
+            raise RetrievalError(f"Failed to load JSON from file {filepath}: {str(e)}.")
+        
+
+def load_separated_cache(cache_dir, cache_filename):
+    if cache_dir is None:
+        raise RetrievalError(f"'None' cache_dir given to function load_from_separated_cache.")
+    else:
+        content = load_cache(filepath=os.path.join(cache_dir, cache_filename))
+        if not isinstance(content, dict):
+            raise RetrievalError(f"Expected JSON file to contain a dictionary, but contained {type(content)} instead: {os.path.join(cache_dir, cache_filename)}")
+        else:
+            return content
+    
+
+def load_all_cache(cache_filepath):
+    if cache_filepath is None:
+        raise RetrievalError("'None' filename given to function load_cache.")
+    else:
+        content = load_cache(filepath=cache_filepath)
+        if not isinstance(content, list):
+            raise RetrievalError(f"Expected JSON file to contain a list, but contained {type(content)} instead: {cache_filepath}")
+        else:
+            return content
 
 
-
-def save_to_cache(data, cache_filepath):
-    if not os.path.exists(os.path.dirname(cache_filepath)):
-        os.makedirs(os.path.dirname(cache_filepath))
+def save_cache(data, cache_filepath):
+    cache_dir = os.path.dirname(cache_filepath)
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir)
     with open(cache_filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    logging.info(f"Wrote to cache {cache_filepath}")
 
+
+def save_separated_cache(data, cache_dir, cache_filename):
+    if cache_dir is None:
+        raise RetrievalError(f"'None' cache_dir given to function save_to_separated_cache.")
+    else:
+        save_cache(data=data, cache_filepath=os.path.join(cache_dir, cache_filename))
+
+
+def save_all_cache(data, cache_filepath):
+    if cache_filepath is None:
+        raise RetrievalError(f"'None' cache_filepath given to function save_all_cache.")
+    else:
+        save_cache(data=data, cache_filepath=cache_filepath)
 
 
 def parse_action(action_string, context : ActionParsingContext):
@@ -150,7 +198,15 @@ def parse_action(action_string, context : ActionParsingContext):
 
 
 
-def get_parsed_action_by_id(id, context : ActionParsingContext):
+def get_parsed_action_by_id(id, context : ActionParsingContext, load_from_separated_cache=True, save_to_separated_cache=True):
+    separated_cache_dir = context.get_separated_actions_cache_dir()
+    if load_from_separated_cache:
+        try:
+            return load_separated_cache(cache_dir=separated_cache_dir, cache_filename=f"action_{id}_clean.json")
+        except RetrievalError as e:
+            logging.error(f"Error loading from cache: {str(e)}. Proceeding to parse action from text file.")
+            # If loading from cache fails, fall back to parsing the file.
+
     doc_type = context.get_doc_type()
     if doc_type == "km":
         data_dir="action_data/key_messages/km_all"
@@ -165,13 +221,18 @@ def get_parsed_action_by_id(id, context : ActionParsingContext):
         with open(filepath, "r", encoding="utf-8") as action_file:
             content = action_file.read()
         parsed_action = parse_action(action_string=content, context=context)
+        
+        if save_to_separated_cache:
+            save_separated_cache(data=parsed_action, cache_dir=separated_cache_dir, cache_filename=f"action_{id}_clean.json")
+        
         return parsed_action
+    
     else:
         return None
 
 
 
-def get_all_parsed_actions(context : ActionParsingContext):
+def get_all_parsed_actions(context : ActionParsingContext, load_from_all_cache=True, save_to_all_cache=True, saved_to_separated_cache=True):
     """
     Get parsed actions (of all synopses) from the data directory.
 
@@ -182,14 +243,17 @@ def get_all_parsed_actions(context : ActionParsingContext):
         list: List of parsed action dictionaries
     """
     doc_type = context.get_doc_type()
-    cache_file = context.get_all_actions_cache_file()
-    if context.get_load_from_cache():
+    all_cache_file = context.get_all_actions_cache_file()
+    separated_cache_dir = context.get_separated_actions_cache_dir()
+
+    if load_from_all_cache:
         try:
-            parsed_actions = load_cache(filename=cache_file)
+            parsed_actions = load_all_cache(cache_filepath=all_cache_file)
             return parsed_actions
         except RetrievalError as e:
             logging.error(f"Error loading from cache: {str(e)}. Proceeding to parse actions from files.")
             
+    logging.debug("Loading and parsing all actions from text files...")
     parsed_actions = []
     
     if doc_type == "km":
@@ -204,9 +268,12 @@ def get_all_parsed_actions(context : ActionParsingContext):
             with open(os.path.join(data_dir, filename), "r", encoding="utf-8") as action_file:
                 file_contents = action_file.read()
                 parsed_action = parse_action(action_string=file_contents, context=context)
-                if context.get_save_to_cache():
-                    save_to_cache(data=parsed_action, cache_filepath=os.path.join(cache_dir, filename))
+                if saved_to_separated_cache:
+                    save_separated_cache(data=parsed_action, cache_dir=separated_cache_dir, cache_filename=filename.replace(".txt", ".json"))
                 parsed_actions.append(parsed_action)
+    
+    if save_to_all_cache:
+        save_all_cache(data=parsed_actions, cache_filepath=all_cache_file)
 
     return parsed_actions
 
@@ -259,7 +326,7 @@ def get_synopsis_data_as_str(synopsis : str, doc_type="bg_km"):
 
 
 def main():
-    logging.basicConfig(filename="logfiles/action_retrieval.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename="logfiles/action_parsing.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     context = ActionParsingContext(
         required_fields=["action_id", "action_title", "key_messages"]

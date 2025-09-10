@@ -1,0 +1,73 @@
+[
+  {
+    "query": "What actions can be taken to mitigate the impacts of roads on amphibian populations?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Several actions can be taken to mitigate the impacts of roads on amphibian populations. Two studies in Germany indicated that closing roads during seasonal amphibian migration, sometimes combined with assisted crossings and barrier fences, protected many amphibians from being killed during breeding migrations [842].\n\nAnother common intervention is the installation of culverts or tunnels. Six of seven studies found that this significantly decreased amphibian road deaths, although one study noted this was only the case when barrier fencing was also installed [884]. The use of these crossings by amphibians was confirmed in 15 of 24 studies, with usage rates varying by species and culvert design. Factors influencing usage include culvert diameter, length, lighting, substrate, and the presence of water [884]. However, some culvert designs, such as those with vertical entry chutes or condensation from steel, can cause high mortality. One study also found that thousands of amphibians were still killed on the road even with culverts present [884].\n\nUsing humans to physically assist migrating amphibians across roads has also been studied. Despite these efforts, two studies in Italy and the UK observed population declines of 64\u201370% over 6\u201310 years [784]. Furthermore, one UK study found that at 7% of assisted sites, over 500 toads were still killed on the roads [784]. These patrols can involve significant effort, with one case noting an average of 90 person-hours spent by patrols to move amphibians [784].",
+    "summary_action_ids": [
+      "842",
+      "884",
+      "784"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mitigating the impacts of roads on amphibian populations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"842\",\n    \"action_title\": \"Close roads during seasonal amphibian migration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"884\",\n    \"action_title\": \"Install culverts or tunnels as road crossings\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"784\",\n    \"action_title\": \"Use humans to assist migrating amphibians across roads\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"842\"}",
+            "return_val": "{\n  \"action_id\": \"842\",\n  \"action_title\": \"Close roads during seasonal amphibian migration\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated study) in Germany found that large numbers of amphibians were protected from death during breeding migrations at road closure sites and at road closure sites with assisted crossings and barrier fences.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"884\"}",
+            "return_val": "{\n  \"action_id\": \"884\",\n  \"action_title\": \"Install culverts or tunnels as road crossings\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-two studies investigated the effectiveness of installing culverts or tunnels as road crossings for amphibians.\\nSix of seven studies (including three replicated studies) in Canada, Germany, Italy, Hungary and the USA\\u00a0found that installing culverts or tunnels significantly decreased amphibian road deaths; in one study this was the case only when barrier fencing was also installed. One found no effect on road deaths.\\nFifteen of 24 studies (including one review and 17 replicated studies) in Australia, Canada, Europe and the USA found that culverts/tunnels were used by amphibians, by 15\\u201385% of amphibians or 3\\u201315 species, or that 23\\u2013100% of culverts or tunnels were used by amphibians or used in 12 of 14 studies reviewed. The majority of culverts/tunnels had barrier fencing to guide amphibians to entrances. Four found mixed effects depending on species, or for toads depending on the site or culvert type. Five found that culverts were used by less than 10% of amphibians or were not used. The use of culverts/tunnels was affected by diameter in three of six studies, with wider culverts used more, length in one of two studies, with long culverts avoided, lighting in all three studies, with mixed effects, substrate in three of six studies, with natural substrates used more, presence of water in two of three studies, with mixed effects, entrance location in one and tunnel climate in one study.\\nSix studies (including one replicated, controlled study) in Canada, Spain, the Netherlands and USA investigated the use of culverts with flowing water and found that they were used by amphibians, or rarely used by salamanders or not used, and were used more or the same amount as dry culverts.\\nCertain culvert designs were not suitable for amphibians; one-way tunnels with vertical entry chutes resulted in high mortality of common toads and condensation deposits from steel culverts had very high metal concentrations. One study found that thousands of amphibians were still killed on the road.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"784\"}",
+            "return_val": "{\n  \"action_id\": \"784\",\n  \"action_title\": \"Use humans to assist migrating amphibians across roads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated study) in Italy and the UK found that despite assisting toads across roads during breeding migrations, 64\\u201370% of populations declined over 6\\u201310 years.\\nOne study in the UK \\u00a0found that despite assisting toads across roads during breeding migrations, at 7% of sites over 500 toads were still killed on roads.\\nFive studies in Germany, the UK and Italy found that large numbers of amphibians were moved across roads by patrols. Numbers ranged from 7,532 toads moved before and after breeding to half a million moved during breeding migrations annually. In the UK, there were over 400 patrols\\u00a0and 71 patrols spent an average of 90 person-hours moving toads and had been active for up to 10 years.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions can be taken to mitigate the impacts of roads on amphibian populations?\",\"summary\":\"Several actions can be taken to mitigate the impacts of roads on amphibian populations. Two studies in Germany indicated that closing roads during seasonal amphibian migration, sometimes combined with assisted crossings and barrier fences, protected many amphibians from being killed during breeding migrations [842].\\n\\nAnother common intervention is the installation of culverts or tunnels. Six of seven studies found that this significantly decreased amphibian road deaths, although one study noted this was only the case when barrier fencing was also installed [884]. The use of these crossings by amphibians was confirmed in 15 of 24 studies, with usage rates varying by species and culvert design. Factors influencing usage include culvert diameter, length, lighting, substrate, and the presence of water [884]. However, some culvert designs, such as those with vertical entry chutes or condensation from steel, can cause high mortality. One study also found that thousands of amphibians were still killed on the road even with culverts present [884].\\n\\nUsing humans to physically assist migrating amphibians across roads has also been studied. Despite these efforts, two studies in Italy and the UK observed population declines of 64\u201370% over 6\u201310 years [784]. Furthermore, one UK study found that at 7% of assisted sites, over 500 toads were still killed on the roads [784]. These patrols can involve significant effort, with one case noting an average of 90 person-hours spent by patrols to move amphibians [784].\",\"action_ids\":[\"842\",\"884\",\"784\"]}",
+            "return_val": "{\n  \"query\": \"What actions can be taken to mitigate the impacts of roads on amphibian populations?\",\n  \"relevant_summary\": \"Several actions can be taken to mitigate the impacts of roads on amphibian populations. Two studies in Germany indicated that closing roads during seasonal amphibian migration, sometimes combined with assisted crossings and barrier fences, protected many amphibians from being killed during breeding migrations [842].\\n\\nAnother common intervention is the installation of culverts or tunnels. Six of seven studies found that this significantly decreased amphibian road deaths, although one study noted this was only the case when barrier fencing was also installed [884]. The use of these crossings by amphibians was confirmed in 15 of 24 studies, with usage rates varying by species and culvert design. Factors influencing usage include culvert diameter, length, lighting, substrate, and the presence of water [884]. However, some culvert designs, such as those with vertical entry chutes or condensation from steel, can cause high mortality. One study also found that thousands of amphibians were still killed on the road even with culverts present [884].\\n\\nUsing humans to physically assist migrating amphibians across roads has also been studied. Despite these efforts, two studies in Italy and the UK observed population declines of 64\\u201370% over 6\\u201310 years [784]. Furthermore, one UK study found that at 7% of assisted sites, over 500 toads were still killed on the roads [784]. These patrols can involve significant effort, with one case noting an average of 90 person-hours spent by patrols to move amphibians [784].\",\n  \"action_ids\": [\n    \"842\",\n    \"884\",\n    \"784\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "756",
+      "782",
+      "784",
+      "840",
+      "841",
+      "842",
+      "884"
+    ],
+    "regenerated_ids": [
+      "756",
+      "782",
+      "784",
+      "840",
+      "841",
+      "842",
+      "884"
+    ]
+  }
+]
