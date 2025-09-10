@@ -1,0 +1,526 @@
+[
+  {
+    "query": "To mitigate primate crop-raiding, what is the relative effectiveness of chasing primates with loud noises versus using bright lights?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One controlled, replicated, before-and-after study in Indonesia found that crop raiding by orangutans was reduced in areas where noise deterrents were used along with tree nets (1449). In the Democratic Republic of Congo, a study discovered that chasing gorillas while using random noise led to their return from plantations to areas near protected forests (1449). A study in Zimbabwe showed that African elephants were repelled from crop fields more quickly when scared by firecrackers or a combination of deterrents that included drums (2460). However, three studies in the UK and USA found that regularly sounding loud noises did not repel European rabbits or white-tailed deer (2460). There is no evidence for the effects of humans chasing primates using bright light to deter crop-raiding (1450).",
+    "summary_action_ids": [
+      "1449",
+      "1450",
+      "2460"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\":3,\"query_string\":\"primate crop-raiding mitigation\",\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1438\",\n    \"action_title\": \"Use of unpalatable buffer crops\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1443\",\n    \"action_title\": \"Use GPS and/or VHF tracking devices on individuals of problem troops to provide farmers with early warning of crop raiding\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1439\",\n    \"action_title\": \"Change of crop (i.e. to a crop less palatable to primates)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mitigating primate crop-raiding using loud noises\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1449\",\n    \"action_title\": \"Humans chase primates using random loud noise\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1424\",\n    \"action_title\": \"Discourage the planting of fruit trees and vegetable gardens on the urban edge\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2460\",\n    \"action_title\": \"Use loud noises to deter crop damage (e.g. banger sticks, drums, tins, iron sheets) by mammals to reduce human-wildlife conflict\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mitigating primate crop-raiding using bright lights\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1450\",\n    \"action_title\": \"Humans chase primates using bright light\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1424\",\n    \"action_title\": \"Discourage the planting of fruit trees and vegetable gardens on the urban edge\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1438\",\n    \"action_title\": \"Use of unpalatable buffer crops\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1449\"}",
+            "return_val": "{\n  \"action_id\": \"1449\",\n  \"action_title\": \"Humans chase primates using random loud noise\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, replicated, before-and-after study in Indonesia\\u00a0found that in areas where noise deterrents were used, along with tree nets, crop raiding by orangutans was reduced.\\nOne study in the Democratic Republic Congo\\u00a0found that chasing gorillas and using random noise resulted in the return of gorillas from plantations to areas close to protected forest.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1450\"}",
+            "return_val": "{\n  \"action_id\": \"1450\",\n  \"action_title\": \"Humans chase primates using bright light\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of humans chasing primates using bright light to deter crop-raiding on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2460\"}",
+            "return_val": "{\n  \"action_id\": \"2460\",\n  \"action_title\": \"Use loud noises to deter crop damage (e.g. banger sticks, drums, tins, iron sheets) by mammals to reduce human-wildlife conflict\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies evaluated the effects of using loud noises to deter crop damage by mammals to reduce human-wildlife conflict. Three studies were in the USA, two were in Zimbabwe and Kenya and one each was in the UK, Namibia, and India.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (10 STUDIES)\\n\\nHuman-wildlife conflict (10 studies): Five of six studies (including two controlled, one replicated and two before-and-after studies), in the USA, Namibia, Kenya and India, found that loud noises activated when an animal was in the vicinity reduced or partially reduced crop damage or crop visits by white-tailed deer, black-tailed deer (when combined with using electric shock collars) and elephants. The other study found that using loud noises (along with chili fences and chili smoke) did not reduce crop-raiding by African elephants. Three studies (including two controlled studies), in the UK and the USA, found that regularly sounding loud noises did not repel European rabbits or white-tailed deer. Two replicated studies, in Zimbabwe, found that, from among a range of deterrents, African elephants were repelled faster from crop fields when scared by firecrackers or by a combination of deterrents that included drums.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One controlled, replicated, before-and-after study in Indonesia found that crop raiding by orangutans was reduced in areas where noise deterrents were used along with tree nets (1449). In the Democratic Republic of Congo, a study discovered that chasing gorillas while using random noise led to their return from plantations to areas near protected forests (1449). A study in Zimbabwe showed that African elephants were repelled from crop fields more quickly when scared by firecrackers or a combination of deterrents that included drums (2460). However, three studies in the UK and USA found that regularly sounding loud noises did not repel European rabbits or white-tailed deer (2460). There is no evidence for the effects of humans chasing primates using bright light to deter crop-raiding (1450).\",\"action_ids\":[\"1449\",\"1450\",\"2460\"],\"query\":\"To mitigate primate crop-raiding, what is the relative effectiveness of chasing primates with loud noises versus using bright lights?\"}",
+            "return_val": "{\n  \"query\": \"To mitigate primate crop-raiding, what is the relative effectiveness of chasing primates with loud noises versus using bright lights?\",\n  \"relevant_summary\": \"One controlled, replicated, before-and-after study in Indonesia found that crop raiding by orangutans was reduced in areas where noise deterrents were used along with tree nets (1449). In the Democratic Republic of Congo, a study discovered that chasing gorillas while using random noise led to their return from plantations to areas near protected forests (1449). A study in Zimbabwe showed that African elephants were repelled from crop fields more quickly when scared by firecrackers or a combination of deterrents that included drums (2460). However, three studies in the UK and USA found that regularly sounding loud noises did not repel European rabbits or white-tailed deer (2460). There is no evidence for the effects of humans chasing primates using bright light to deter crop-raiding (1450).\",\n  \"action_ids\": [\n    \"1449\",\n    \"1450\",\n    \"2460\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1449",
+      "1450"
+    ],
+    "regenerated_ids": [
+      "1449",
+      "1450"
+    ]
+  },
+  {
+    "query": "What is the evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A study in Sierra Leone found that primate densities were higher in forests logged at a low intensity compared to those logged at a high intensity (1485). In Madagascar, a study showed an increase in lemur numbers after selective logging (1485). However, a study in Uganda found similar primate densities in forests that had been logged at both low and high intensities (1485). There is no evidence available for the effects on primate populations of implementing small and dispersed logging compartments (1487) or using 'set-asides' for primate protection within a logging area (1497).",
+    "summary_action_ids": [
+      "1485",
+      "1487",
+      "1497"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"commercial logging and primate populations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1487\",\n    \"action_title\": \"Implement small and dispersed logging compartments\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1497\",\n    \"action_title\": \"Use 'set-asides' for primate protection within logging area\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1485\",\n    \"action_title\": \"Use selective logging instead of clear-cutting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1487\"}",
+            "return_val": "{\n  \"action_id\": \"1487\",\n  \"action_title\": \"Implement small and dispersed logging compartments\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of implementing small and dispersed logging compartments on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1497\"}",
+            "return_val": "{\n  \"action_id\": \"1497\",\n  \"action_title\": \"Use 'set-asides' for primate protection within logging area\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of using 'set-asides' for primate protection within logging area on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1485\"}",
+            "return_val": "{\n  \"action_id\": \"1485\",\n  \"action_title\": \"Use selective logging instead of clear-cutting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne site comparison in Sierra Leone\\u00a0found that primate densities were higher in forest that had been logged at low intensity than in a forest logged at high intensity.\\nOne before-and-after study in Madagascar\\u00a0found that the number of lemurs increased following selective logging.\\nOne site comparison study in Uganda found that primate densities were similar in forest that had been logged at low intensity and forest logged at high intensity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1485\",\"1487\",\"1497\"],\"summary\":\"A study in Sierra Leone found that primate densities were higher in forests logged at a low intensity compared to those logged at a high intensity (1485). In Madagascar, a study showed an increase in lemur numbers after selective logging (1485). However, a study in Uganda found similar primate densities in forests that had been logged at both low and high intensities (1485). There is no evidence available for the effects on primate populations of implementing small and dispersed logging compartments (1487) or using 'set-asides' for primate protection within a logging area (1497).\",\"query\":\"What is the evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations?\"}",
+            "return_val": "{\n  \"query\": \"What is the evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations?\",\n  \"relevant_summary\": \"A study in Sierra Leone found that primate densities were higher in forests logged at a low intensity compared to those logged at a high intensity (1485). In Madagascar, a study showed an increase in lemur numbers after selective logging (1485). However, a study in Uganda found similar primate densities in forests that had been logged at both low and high intensities (1485). There is no evidence available for the effects on primate populations of implementing small and dispersed logging compartments (1487) or using 'set-asides' for primate protection within a logging area (1497).\",\n  \"action_ids\": [\n    \"1485\",\n    \"1487\",\n    \"1497\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1485",
+      "1486",
+      "1487",
+      "1488",
+      "1489",
+      "1490",
+      "1491",
+      "1492",
+      "1493",
+      "1494",
+      "1495",
+      "1496",
+      "1497",
+      "1498",
+      "1499",
+      "1500",
+      "1501"
+    ],
+    "regenerated_ids": [
+      "1485",
+      "1486",
+      "1487",
+      "1488",
+      "1489",
+      "1490",
+      "1491",
+      "1492",
+      "1493",
+      "1494",
+      "1495",
+      "1496",
+      "1497",
+      "1498",
+      "1499",
+      "1500",
+      "1501"
+    ]
+  },
+  {
+    "query": "What are the documented benefits and harms of running tourism projects focused on wild primates?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Running tourist projects with a permanent human presence at the site has shown mixed results for wild primate populations [1512]. Studies in Rwanda, Uganda, and the Republic of Congo found that mountain gorilla numbers increased following the start of tourism projects, and a study in Belize noted a 138% increase in black howler monkey populations over 13 years [1512]. Additionally, one study in Rwanda observed a 22% increase in immature mountain gorillas and a 30% decrease in snares after a tourism project began [1512]. Conversely, a study in Kenya found that the numbers of Tana River red colobus and crested mangabeys decreased even with a tourism project in place [1512]. In China, an intensive tourism project for Tibetan macaques, which included food provisioning, led to increased stress levels and infant mortality reaching 100% in some years [1512]. A study in Madagascar found that after a tourism project was implemented, the population size, body size, and group size of two lemur species declined, while the number of individuals of another lemur species increased [1512].",
+    "summary_action_ids": [
+      "1512"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"primate tourism\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1507\",\n    \"action_title\": \"Put up signs to warn people about not feeding primates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1502\",\n    \"action_title\": \"Implement a \\u2018no-feeding of wild primates\\u2019 policy\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"tourism\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1512\",\n    \"action_title\": \"Run tourist projects and ensure permanent human presence at site\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2042\",\n    \"action_title\": \"Promote careful bat-related eco-tourism to improve behaviour towards bats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3680\",\n    \"action_title\": \"Offer reptile-related eco-tourism to improve behaviour towards reptiles\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1512\"}",
+            "return_val": "{\n  \"action_id\": \"1512\",\n  \"action_title\": \"Run tourist projects and ensure permanent human presence at site\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies, including two before-and-after studies\\u00a0and one controlled study\\u00a0in Rwanda, Uganda and the Republic of Congo found that numbers of mountain gorillas increased after touristic projects were initiated, alongside other interventions. One before-and-after and site comparison study in Rwanda found that the number of immature mountain gorillas increased by 22% and the number of snares declined by 30% after a tourism project was initiated, alongside other interventions.\\nOne before-and-after study in Kenya\\u00a0found that numbers of Tana River red colobus and crested mangabeys decreased despite implementing a tourism project, alongside other interventions.\\nOne before-and-after study in Belize\\u00a0found that numbers of black howler monkeys increased by 138% over 13 years after a tourism project was implemented, alongside other interventions.\\nOne before-and-after, replicated study in China\\u00a0found that implementing an intensive tourism project for Tibetan macaques that included food provisioning and range restrictions, increased their stress levels compared to previous periods, with infant mortality reaching 100% in some years.\\nOne before-and-after study in Madagascar found that after implementing a tourism project the population size and/or body size and group size declined for two lemur species but the number of individuals increased for one other lemur species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1512\"],\"summary\":\"Running tourist projects with a permanent human presence at the site has shown mixed results for wild primate populations [1512]. Studies in Rwanda, Uganda, and the Republic of Congo found that mountain gorilla numbers increased following the start of tourism projects, and a study in Belize noted a 138% increase in black howler monkey populations over 13 years [1512]. Additionally, one study in Rwanda observed a 22% increase in immature mountain gorillas and a 30% decrease in snares after a tourism project began [1512]. Conversely, a study in Kenya found that the numbers of Tana River red colobus and crested mangabeys decreased even with a tourism project in place [1512]. In China, an intensive tourism project for Tibetan macaques, which included food provisioning, led to increased stress levels and infant mortality reaching 100% in some years [1512]. A study in Madagascar found that after a tourism project was implemented, the population size, body size, and group size of two lemur species declined, while the number of individuals of another lemur species increased [1512].\",\"query\":\"What are the documented benefits and harms of running tourism projects focused on wild primates?\"}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and harms of running tourism projects focused on wild primates?\",\n  \"relevant_summary\": \"Running tourist projects with a permanent human presence at the site has shown mixed results for wild primate populations [1512]. Studies in Rwanda, Uganda, and the Republic of Congo found that mountain gorilla numbers increased following the start of tourism projects, and a study in Belize noted a 138% increase in black howler monkey populations over 13 years [1512]. Additionally, one study in Rwanda observed a 22% increase in immature mountain gorillas and a 30% decrease in snares after a tourism project began [1512]. Conversely, a study in Kenya found that the numbers of Tana River red colobus and crested mangabeys decreased even with a tourism project in place [1512]. In China, an intensive tourism project for Tibetan macaques, which included food provisioning, led to increased stress levels and infant mortality reaching 100% in some years [1512]. A study in Madagascar found that after a tourism project was implemented, the population size, body size, and group size of two lemur species declined, while the number of individuals of another lemur species increased [1512].\",\n  \"action_ids\": [\n    \"1512\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1502",
+      "1504",
+      "1507",
+      "1508",
+      "1512",
+      "1519",
+      "1537",
+      "1538",
+      "1539",
+      "1546"
+    ],
+    "regenerated_ids": [
+      "1512"
+    ]
+  },
+  {
+    "query": "What are the typical outcomes when primates are reintroduced into habitats where the same species is already present?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "When primates are reintroduced into habitats where the same species is present, a variety of outcomes have been observed. In terms of survival, four studies in Guinea and the Republic of Congo found that the majority of reintroduced chimpanzees survived for at least one to five years (1591). Another study in Malaysia found that a majority of reintroduced orangutans survived, while a controlled study, also in Malaysia, found that a reintroduced population of orangutans had declined 33 years after reintroduction (1591). Separately, one study in Malaysia found that 98% of orangutans survived release (1589). Five studies in Brazil, French Guiana, Gabon, and South Africa found that a majority of primates survived for at least two months to one year (1591), while six other studies in Brazil, French Guiana, Indonesia, Madagascar, and South Africa found that a minority of primates survived for at least fifteen weeks to seven years (1591). Four studies in French Guiana, Indonesia, Malaysia, and Vietnam found that a minority of primates survived after between two months and one year (1589).\n\nIn terms of population changes, one study in Belize found that the primate population increased five years after reintroduction (1591), and a study in Tanzania also found an increase in a reintroduced chimpanzee population (1589). However, a study in Thailand found that the primate population declined post-reintroduction (1591), and two other studies in Brazil and Thailand also found declines in reintroduced primate populations (1589). A controlled study in Malaysia also found that a reintroduced orangutan population had declined in size (1589).\n\nRegarding behavior and integration, two controlled studies in Madagascar and Indonesia found that reintroduced primates had similar diets to wild populations (1591), and one controlled study in Indonesia found that they showed similar behaviour to wild individuals (1591). A study in Indonesia also found that Bornean agile gibbons had similar behaviour and diet to wild populations (1589). Some reintroduced individuals have been observed to rejoin wild groups, as seen in a study in Brazil where a reintroduced muriqui rejoined a wild group (1591). In Senegal, a reintroduced chimpanzee was reunited with its mother (1591), and in Brazil, an abandoned infant muriqui was also reunited with its mother (1589). However, in one case in Uganda, a reintroduced chimpanzee repeatedly returned to human settlements (1591).",
+    "summary_action_ids": [
+      "1591",
+      "1589"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"outcomes of reintroducing primates into habitats where the same species is already present\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1591\",\n    \"action_title\": \"Reintroduce primates into habitat where the species is present\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1589\",\n    \"action_title\": \"Reintroduce primates as single/multiple individuals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1597\",\n    \"action_title\": \"Rehabilitate injured/orphaned primates\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1591\"}",
+            "return_val": "{\n  \"action_id\": \"1591\",\n  \"action_title\": \"Reintroduce primates into habitat where the species is present\",\n  \"key_messages\": \"Key Messages:\\n\\nFour before-and-after studies in Guinea\\u00a0and the Republic of Congo\\u00a0found that the majority of reintroduced chimpanzees survived for at least one to five years after reintroduction into habitat where the species was present, alongside other interventions. One study in Uganda\\u00a0found that a reintroduced chimpanzee repeatedly returned to human settlements after reintroduction intro habitat where the species was present, alongside other interventions, while a study in Senegal\\u00a0found that a reintroduced chimpanzee was reunited with its mother.\\nOne study in Malaysia\\u00a0found that a majority of reintroduced orangutans survived reintroduction intro habitat where the species was present, alongside other interventions. One controlled study in Malaysia\\u00a0found that a reintroduced population of orangutans had declined 33 years after reintroduction into habitat where the species was present, alongside other interventions.\\nOne study in Belize\\u00a0found that primate population increased five years after reintroduction into habitat where the species was present, alongside other interventions, while one study in Thailand\\u00a0found that primate population declined post-reintroduction.\\nSix studies in Brazil, French Guiana, Indonesia, Madagascar, and South Africa\\u00a0found that a minority of primates survived for at least fifteen weeks to seven years after reintroduction into habitat where the species was present, alongside other interventions. Five studies in Brazil, French Guiana, Gabon, and South Africa\\u00a0found that a majority of primates survived for at least two months to one year.\\nTwo controlled studies in Madagascar\\u00a0and Indonesia\\u00a0found that reintroduced primates had similar diets to individuals in wild populations after reintroduction into habitat where the species was present, alongside other interventions. One controlled study in Indonesia\\u00a0found that reintroduced primates showed similar behaviour to wild individuals after reintroduction into habitat where the species was present, alongside other interventions. One study in Brazil\\u00a0found that a reintroduced muriqui rejoined a wild group after reintroduction into habitat where the species was present, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1589\"}",
+            "return_val": "{\n  \"action_id\": \"1589\",\n  \"action_title\": \"Reintroduce primates as single/multiple individuals\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study in Tanzania\\u00a0found that a reintroduced population of chimpanzees increased in size after reintroduction as single/multiple individuals, alongside other interventions. One study in Senegal\\u00a0found that an infant chimpanzee was reunited with its mother after reintroduction, alongside other interventions.\\nTwo studies in Brazil\\u00a0and Thailand\\u00a0found that populations of reintroduced primates declined after reintroduction as single/multiple individuals, alongside other interventions.\\nFour studies in French Guiana, Indonesia, Malaysia, and Vietnam\\u00a0found that a minority of primates survived after between two months and one year after reintroduction as single/multiple individuals, alongside other interventions. One study in Vietnam\\u00a0found that half of introduced primates survived after two months.\\nOne study in Brazil\\u00a0found that an abandoned infant muriqui was reunited with its mother after reintroduction as single/multiple individuals, alongside other interventions. One study in Indonesia\\u00a0found that Bornean agile gibbons had similar behaviour and diet to wild populations after reintroduction as single/multiple individuals, alongside other interventions.\\nOne controlled study in Malaysia\\u00a0found that a reintroduced population of orangutans declined in size after reintroduction, alongside other interventions. One study in Malaysia\\u00a0found that 98% of orangutans survived release after reintroduction, alongside other interventions.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the typical outcomes when primates are reintroduced into habitats where the same species is already present?\",\"action_ids\":[\"1591\",\"1589\"],\"summary\":\"When primates are reintroduced into habitats where the same species is present, a variety of outcomes have been observed. In terms of survival, four studies in Guinea and the Republic of Congo found that the majority of reintroduced chimpanzees survived for at least one to five years (1591). Another study in Malaysia found that a majority of reintroduced orangutans survived, while a controlled study, also in Malaysia, found that a reintroduced population of orangutans had declined 33 years after reintroduction (1591). Separately, one study in Malaysia found that 98% of orangutans survived release (1589). Five studies in Brazil, French Guiana, Gabon, and South Africa found that a majority of primates survived for at least two months to one year (1591), while six other studies in Brazil, French Guiana, Indonesia, Madagascar, and South Africa found that a minority of primates survived for at least fifteen weeks to seven years (1591). Four studies in French Guiana, Indonesia, Malaysia, and Vietnam found that a minority of primates survived after between two months and one year (1589).\\n\\nIn terms of population changes, one study in Belize found that the primate population increased five years after reintroduction (1591), and a study in Tanzania also found an increase in a reintroduced chimpanzee population (1589). However, a study in Thailand found that the primate population declined post-reintroduction (1591), and two other studies in Brazil and Thailand also found declines in reintroduced primate populations (1589). A controlled study in Malaysia also found that a reintroduced orangutan population had declined in size (1589).\\n\\nRegarding behavior and integration, two controlled studies in Madagascar and Indonesia found that reintroduced primates had similar diets to wild populations (1591), and one controlled study in Indonesia found that they showed similar behaviour to wild individuals (1591). A study in Indonesia also found that Bornean agile gibbons had similar behaviour and diet to wild populations (1589). Some reintroduced individuals have been observed to rejoin wild groups, as seen in a study in Brazil where a reintroduced muriqui rejoined a wild group (1591). In Senegal, a reintroduced chimpanzee was reunited with its mother (1591), and in Brazil, an abandoned infant muriqui was also reunited with its mother (1589). However, in one case in Uganda, a reintroduced chimpanzee repeatedly returned to human settlements (1591).\"}",
+            "return_val": "{\n  \"query\": \"What are the typical outcomes when primates are reintroduced into habitats where the same species is already present?\",\n  \"relevant_summary\": \"When primates are reintroduced into habitats where the same species is present, a variety of outcomes have been observed. In terms of survival, four studies in Guinea and the Republic of Congo found that the majority of reintroduced chimpanzees survived for at least one to five years (1591). Another study in Malaysia found that a majority of reintroduced orangutans survived, while a controlled study, also in Malaysia, found that a reintroduced population of orangutans had declined 33 years after reintroduction (1591). Separately, one study in Malaysia found that 98% of orangutans survived release (1589). Five studies in Brazil, French Guiana, Gabon, and South Africa found that a majority of primates survived for at least two months to one year (1591), while six other studies in Brazil, French Guiana, Indonesia, Madagascar, and South Africa found that a minority of primates survived for at least fifteen weeks to seven years (1591). Four studies in French Guiana, Indonesia, Malaysia, and Vietnam found that a minority of primates survived after between two months and one year (1589).\\n\\nIn terms of population changes, one study in Belize found that the primate population increased five years after reintroduction (1591), and a study in Tanzania also found an increase in a reintroduced chimpanzee population (1589). However, a study in Thailand found that the primate population declined post-reintroduction (1591), and two other studies in Brazil and Thailand also found declines in reintroduced primate populations (1589). A controlled study in Malaysia also found that a reintroduced orangutan population had declined in size (1589).\\n\\nRegarding behavior and integration, two controlled studies in Madagascar and Indonesia found that reintroduced primates had similar diets to wild populations (1591), and one controlled study in Indonesia found that they showed similar behaviour to wild individuals (1591). A study in Indonesia also found that Bornean agile gibbons had similar behaviour and diet to wild populations (1589). Some reintroduced individuals have been observed to rejoin wild groups, as seen in a study in Brazil where a reintroduced muriqui rejoined a wild group (1591). In Senegal, a reintroduced chimpanzee was reunited with its mother (1591), and in Brazil, an abandoned infant muriqui was also reunited with its mother (1589). However, in one case in Uganda, a reintroduced chimpanzee repeatedly returned to human settlements (1591).\",\n  \"action_ids\": [\n    \"1591\",\n    \"1589\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1591",
+      "1567",
+      "1589"
+    ],
+    "regenerated_ids": [
+      "1591"
+    ]
+  },
+  {
+    "query": "For what length of time have translocated primate populations been observed to survive post-release?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A population of translocated olive baboons were recorded to be surviving 16 years after translocation (1553), and some western lowland gorillas that were treated for sickness or injury survived for over 4-41 years (1550). Several studies have reported that the majority of reintroduced chimpanzees survived for over 1-5 years (1550, 1553). One study found that most reintroduced or translocated primates survived for over six months (1550). Other studies found that a majority of primates survived for 5-30 months following translocation (1558) and that a minority survived for at least 18 months (1558). In some cases, most reintroduced or translocated primates did not survive over five years (1550). For example, most reintroduced golden lion tamarins did not survive over seven years (1553).",
+    "summary_action_ids": [
+      "1558",
+      "1550",
+      "1553"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"primate translocation survival\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1558\",\n    \"action_title\": \"Translocate (capture & release) wild primates from development sites to natural habitat elsewhere\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1550\",\n    \"action_title\": \"Treat sick/injured animals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1553\",\n    \"action_title\": \"Conduct veterinary screens of animals before reintroducing/translocating them\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1558\"}",
+            "return_val": "{\n  \"action_id\": \"1558\",\n  \"action_title\": \"Translocate (capture & release) wild primates from development sites to natural habitat elsewhere\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study in Malaysia\\u00a0found that the majority of orangutans survived following translocation from a development site to natural habitat, alongside other interventions.\\nThree before-and-after studies in Tanzania, French Guiana, and Madagascar\\u00a0found that a majority of primates survived for 5-30 months following translocation from a development site to natural habitat, alongside other interventions. One study in French Guiana\\u00a0found that a minority of primates survived for at least 18 months.\\nOne before-and-after study in India\\u00a0found that rhesus monkeys remained at the sites where they were released following translocation from a development site to natural habitat, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1550\"}",
+            "return_val": "{\n  \"action_id\": \"1550\",\n  \"action_title\": \"Treat sick/injured animals\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies in Brazil found that most reintroduced golden lion tamarins died despite being treated when sick or injured, alongside other interventions. One study in Brazil found that one out of four reintroduced black lion tamarins died after being release despite receiving treatment, alongside other interventions.\\nOne review on reintroduced lar gibbons in Thailand\\u00a0found that their population declined by 6% seventeen months after release despite having medical treatment available when sick or injured, alongside other interventions.\\nOne study in Malaysia\\u00a0found that 98% of translocated orangutans, some of which received treatment for injuries along with other interventions, survived capture and subsequent release. One controlled study, also in Malaysia, found that a population of reintroduced orangutans decreased by 33% over 33 years despite receiving treatment when sick or injured, alongside other interventions.\\nFour studies, including two before-and-after studies, in Liberia, the Republic of Congo\\u00a0and The Gambia\\u00a0found that most reintroduced chimpanzees that were treated when sick, alongside other interventions, survived for at least 1-5 years\\u00a0and in one case the population increased. One study in Senegal\\u00a0found that a young chimpanzee was reunited with its mother after being treated for injuries, alongside other interventions.\\nOne before-and-after study in Uganda\\u00a0found that treatment for mange, alongside other interventions, cured some infected mountain gorillas. One study in Rwanda, Uganda and the Democratic Republic of Congo and one before-and-after, site comparison study in the Republic of Congo and Gabon\\u00a0found that most western lowland gorillas treated when sick or injured, alongside other interventions, survived over 4\\u201341 years.\\nTwo before-and-after studies in South Africa\\u00a0and Indonesia\\u00a0found that most reintroduced or translocated primates that were treated when sick, alongside other interventions, survived over six months. However, two before-and-after studies in Madagascar\\u00a0and Kenya\\u00a0found that most reintroduced or translocated primates did not survived over five years\\u00a0or their population size decreased\\u00a0despite treated when sick, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1553\"}",
+            "return_val": "{\n  \"action_id\": \"1553\",\n  \"action_title\": \"Conduct veterinary screens of animals before reintroducing/translocating them\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Brazil\\u00a0found that most reintroduced golden lion tamarins did not survive over seven years, despite undergoing pre-release veterinary screens, alongside other interventions. One study in Brazil\\u00a0found that most reintroduced black lion tamarins that underwent veterinary screens, alongside other interventions, survived over four months.\\nOne before-and-after study in Malaysia\\u00a0found that 90% of reintroduced M\\u00fcller's Bornean gibbons did not survive despite undergoing veterinary screens, alongside other interventions. One controlled study in Indonesia\\u00a0found that reintroduced Bornean agile gibbons that underwent veterinary screens, alongside other interventions, behaved similarly to wild gibbons.\\nTwo studies, including one controlled, in Malaysia\\u00a0and Indonesia\\u00a0found that most translocated orangutans that underwent veterinary screens, along with other interventions, survived translocation\\u00a0and the first three months post-translocation.\\nFour studies, including three before-and-after studies, in Liberia, the Republilc of Congo\\u00a0and Guinea found that most reintroduced chimpanzees that underwent veterinary screens, alongside other interventions, survived over 1-5 years. One before and after study in Uganda\\u00a0found that a reintroduced chimpanzee repeatedly returned to human settlements after undergoing pre-release veterinary screens, alongside other interventions.\\nFive studies, including four before-and-after studies, in Belize, French Guiana, Madagascar, Congo and Gabon\\u00a0found that most reintroduced or translocated primates that underwent veterinary screens, alongside other interventions, survived at least four months\\u00a0or increased in population size.\\nFive studies, including four before-and-after studies, in French Guiana, Madagascar, South Africa\\u00a0and Vietnam\\u00a0found that most reintroduced or translocated primates were assumed to have died post-release\\u00a0despite undergoing pre-release veterinary screens, alongside other interventions.\\nOne controlled study in Kenya\\u00a0found that a population of translocated olive baboons were still surviving 16 years after translocation when veterinary screens were applied alongside other interventions.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"For what length of time have translocated primate populations been observed to survive post-release?\",\"summary\":\"A population of translocated olive baboons were recorded to be surviving 16 years after translocation (1553), and some western lowland gorillas that were treated for sickness or injury survived for over 4-41 years (1550). Several studies have reported that the majority of reintroduced chimpanzees survived for over 1-5 years (1550, 1553). One study found that most reintroduced or translocated primates survived for over six months (1550). Other studies found that a majority of primates survived for 5-30 months following translocation (1558) and that a minority survived for at least 18 months (1558). In some cases, most reintroduced or translocated primates did not survive over five years (1550). For example, most reintroduced golden lion tamarins did not survive over seven years (1553).\",\"action_ids\":[\"1558\",\"1550\",\"1553\"]}",
+            "return_val": "{\n  \"query\": \"For what length of time have translocated primate populations been observed to survive post-release?\",\n  \"relevant_summary\": \"A population of translocated olive baboons were recorded to be surviving 16 years after translocation (1553), and some western lowland gorillas that were treated for sickness or injury survived for over 4-41 years (1550). Several studies have reported that the majority of reintroduced chimpanzees survived for over 1-5 years (1550, 1553). One study found that most reintroduced or translocated primates survived for over six months (1550). Other studies found that a majority of primates survived for 5-30 months following translocation (1558) and that a minority survived for at least 18 months (1558). In some cases, most reintroduced or translocated primates did not survive over five years (1550). For example, most reintroduced golden lion tamarins did not survive over seven years (1553).\",\n  \"action_ids\": [\n    \"1558\",\n    \"1550\",\n    \"1553\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1422",
+      "1423",
+      "1558",
+      "1559"
+    ],
+    "regenerated_ids": [
+      "1422",
+      "1558",
+      "1559"
+    ]
+  },
+  {
+    "query": "What are the effects of installing different types of bridges to mitigate road impacts on arboreal and terrestrial primates?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in Brazil found that black lion tamarins and capuchins used a pole bridge to cross a road [1457]. A before-and-after study in Belize found that the black howler monkey population increased after the construction of pole bridges over man-made gaps [1457]. In Madagascar, a study found that all six monitored lemur species used bridges to cross roads and pipelines [1457]. There was no evidence found for the effects of installing green bridges on primate populations [1456].",
+    "summary_action_ids": [
+      "1457",
+      "1456"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of bridges on primates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1456\",\n    \"action_title\": \"Install green bridges (overpasses)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1457\",\n    \"action_title\": \"Install rope or pole (canopy) bridges\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1465\",\n    \"action_title\": \"Install speed bumps to reduce vehicle collisions with primates\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1456\"}",
+            "return_val": "{\n  \"action_id\": \"1456\",\n  \"action_title\": \"Install green bridges (overpasses)\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of installing green bridges on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1457\"}",
+            "return_val": "{\n  \"action_id\": \"1457\",\n  \"action_title\": \"Install rope or pole (canopy) bridges\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study in Brazil\\u00a0found that black lion tamarins and capuchins used a pole bridge to cross a road.\\nOne before-and-after study in Belize\\u00a0found that a black howler monkey population increased after the construction of pole bridges over man-made gaps.\\nOne before-and-after study in Madagascar\\u00a0found that all six monitored lemur species used bridges to cross roads and pipelines.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1457\",\"1456\"],\"summary\":\"One study in Brazil found that black lion tamarins and capuchins used a pole bridge to cross a road [1457]. A before-and-after study in Belize found that the black howler monkey population increased after the construction of pole bridges over man-made gaps [1457]. In Madagascar, a study found that all six monitored lemur species used bridges to cross roads and pipelines [1457]. There was no evidence found for the effects of installing green bridges on primate populations [1456].\",\"query\":\"What are the effects of installing different types of bridges to mitigate road impacts on arboreal and terrestrial primates?\"}",
+            "return_val": "{\n  \"query\": \"What are the effects of installing different types of bridges to mitigate road impacts on arboreal and terrestrial primates?\",\n  \"relevant_summary\": \"One study in Brazil found that black lion tamarins and capuchins used a pole bridge to cross a road [1457]. A before-and-after study in Belize found that the black howler monkey population increased after the construction of pole bridges over man-made gaps [1457]. In Madagascar, a study found that all six monitored lemur species used bridges to cross roads and pipelines [1457]. There was no evidence found for the effects of installing green bridges on primate populations [1456].\",\n  \"action_ids\": [\n    \"1457\",\n    \"1456\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1456",
+      "1457",
+      "1458",
+      "1459",
+      "1460",
+      "1461",
+      "1462",
+      "1463",
+      "1464",
+      "1465",
+      "1466"
+    ],
+    "regenerated_ids": [
+      "1456",
+      "1457"
+    ]
+  },
+  {
+    "query": "What actions can be taken at research and tourism sites to reduce the risk of disease transmission from humans to wild primates?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "At research and tourism sites, one study in Uganda found that a confiscated young chimpanzee was reunited with its mother after being handled by caretakers wearing face-masks (1537). Additionally, a before-and-after study in Rwanda, Uganda and the Democratic Republic of Congo found that mountain gorilla numbers increased by 168% over 41 years while being visited by researchers and visitors who were wearing face-masks, had their clothes disinfected, and were not allowed to visit if they were sick or unwell (1537, 1547, 1546). Conversely, one controlled study in Malaysia found that a population of reintroduced orangutans decreased by 33% over 33 years despite staff and volunteers having received medical checks (1546). No evidence was found for the effects of avoiding contact between wild primates and human-raised primates or implementing a health programme for local communities on primate populations (1555, 1557).",
+    "summary_action_ids": [
+      "1537",
+      "1547",
+      "1546",
+      "1555",
+      "1557"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"reduce disease transmission from humans to wild primates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2342\",\n    \"action_title\": \"Treat mammals to reduce conflict caused by disease transmission to humans\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1555\",\n    \"action_title\": \"Avoid contact between wild primates and human-raised primates\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1557\",\n    \"action_title\": \"Implement a health programme for local communities\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":3,\"query_string\":\"reduce disease transmission from humans to wild primates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1532\",\n    \"action_title\": \"Control habitat-altering mammals (e.g. elephants) through exclusion (e.g. fences) or translocation\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1567\",\n    \"action_title\": \"Reintroduce primates in groups\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1566\",\n    \"action_title\": \"Install billboards to raise primate conservation awareness\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"disease transmission primates tourism research\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1537\",\n    \"action_title\": \"Wear face-masks to avoid transmission of viral and bacterial diseases to primates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1547\",\n    \"action_title\": \"Regularly disinfect clothes, boots etc.\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1546\",\n    \"action_title\": \"Ensure that researchers/tourists are up-to-date with vaccinations and healthy\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1537\"}",
+            "return_val": "{\n  \"action_id\": \"1537\",\n  \"action_title\": \"Wear face-masks to avoid transmission of viral and bacterial diseases to primates\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study in Uganda found that a confiscated young chimpanzee was reunited with its mother after being handled by caretakers wearing face-masks, alongside other interventions.\\nOne before-and-after study in Rwanda, Uganda and the Democratic Republic of Congo\\u00a0found that numbers of mountain gorillas increased by 168% over 41 years while being visited by researchers and visitors wearing face-masks, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1547\"}",
+            "return_val": "{\n  \"action_id\": \"1547\",\n  \"action_title\": \"Regularly disinfect clothes, boots etc.\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, before-and-after study in Rwanda, Uganda and Congo\\u00a0found that numbers of mountain gorillas increased by 168% over 41 years while being visited by researchers and tourists whose clothes were disinfected, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1546\"}",
+            "return_val": "{\n  \"action_id\": \"1546\",\n  \"action_title\": \"Ensure that researchers/tourists are up-to-date with vaccinations and healthy\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in Malaysia\\u00a0found that a population of reintroduced orangutans decreased by 33% over 33 years despite staff and volunteers having received medical checks, alongside other interventions.\\nOne before-and-after study in Rwanda, Uganda and Congo\\u00a0found that mountain gorilla numbers increased by 168% over 41 years while sick/unwell researchers and visitors were not allowed to visit gorillas, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1555\"}",
+            "return_val": "{\n  \"action_id\": \"1555\",\n  \"action_title\": \"Avoid contact between wild primates and human-raised primates\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of avoiding contact between wild primates and human-raised primates on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1557\"}",
+            "return_val": "{\n  \"action_id\": \"1557\",\n  \"action_title\": \"Implement a health programme for local communities\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of implementing a health programme for local communities on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions can be taken at research and tourism sites to reduce the risk of disease transmission from humans to wild primates?\",\"summary\":\"At research and tourism sites, one study in Uganda found that a confiscated young chimpanzee was reunited with its mother after being handled by caretakers wearing face-masks (1537). Additionally, a before-and-after study in Rwanda, Uganda and the Democratic Republic of Congo found that mountain gorilla numbers increased by 168% over 41 years while being visited by researchers and visitors who were wearing face-masks, had their clothes disinfected, and were not allowed to visit if they were sick or unwell (1537, 1547, 1546). Conversely, one controlled study in Malaysia found that a population of reintroduced orangutans decreased by 33% over 33 years despite staff and volunteers having received medical checks (1546). No evidence was found for the effects of avoiding contact between wild primates and human-raised primates or implementing a health programme for local communities on primate populations (1555, 1557).\",\"action_ids\":[\"1537\",\"1547\",\"1546\",\"1555\",\"1557\"]}",
+            "return_val": "{\n  \"query\": \"What actions can be taken at research and tourism sites to reduce the risk of disease transmission from humans to wild primates?\",\n  \"relevant_summary\": \"At research and tourism sites, one study in Uganda found that a confiscated young chimpanzee was reunited with its mother after being handled by caretakers wearing face-masks (1537). Additionally, a before-and-after study in Rwanda, Uganda and the Democratic Republic of Congo found that mountain gorilla numbers increased by 168% over 41 years while being visited by researchers and visitors who were wearing face-masks, had their clothes disinfected, and were not allowed to visit if they were sick or unwell (1537, 1547, 1546). Conversely, one controlled study in Malaysia found that a population of reintroduced orangutans decreased by 33% over 33 years despite staff and volunteers having received medical checks (1546). No evidence was found for the effects of avoiding contact between wild primates and human-raised primates or implementing a health programme for local communities on primate populations (1555, 1557).\",\n  \"action_ids\": [\n    \"1537\",\n    \"1547\",\n    \"1546\",\n    \"1555\",\n    \"1557\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1502",
+      "1505",
+      "1507",
+      "1508",
+      "1537",
+      "1538",
+      "1539",
+      "1540",
+      "1546",
+      "1547",
+      "1548",
+      "1557"
+    ],
+    "regenerated_ids": [
+      "1537",
+      "1538",
+      "1539",
+      "1540",
+      "1546",
+      "1547",
+      "1548"
+    ]
+  }
+]
