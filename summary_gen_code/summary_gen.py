@@ -591,17 +591,17 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
 
 
 def main():
-    logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename = "logfiles/summary_gen_second.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
     # disable bm25s logging
     logging.getLogger("bm25s").setLevel(logging.WARNING)
 
     model_provider_list = [
-        ("openai/gpt-5", None),
-        ("anthropic/claude-sonnet-4", None),
-        # ("google/gemini-2.5-pro", None),
-        # ("moonshotai/kimi-k2-0905", "fireworks/fp8")
+        # ("openai/gpt-5", None),
+        # ("anthropic/claude-sonnet-4", None),
+        ("google/gemini-2.5-pro", None),
+        ("moonshotai/kimi-k2-0905", "fireworks/fp8")
     ]
 
     ## SUMMARY GENERATION PROCESS
