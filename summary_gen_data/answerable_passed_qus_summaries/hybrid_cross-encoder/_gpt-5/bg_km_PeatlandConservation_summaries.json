@@ -1,0 +1,142 @@
+[
+  {
+    "query": "To restore peatlands afforested for commercial forestry, how does simply cutting the trees compare to cutting trees and also rewetting the peat?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Cutting/removing forest plantations alone: Three studies reported increased cover of some herbs (including cottongrasses and sedges), while one reported no effect on other herb species; forest-characteristic moss cover decreased in one study; Sphagnum cover decreased over three years in a drained rich fen but increased over eight years in partly rewetted rich fens; total plant species richness increased in rich fens, with a much smaller effect in rewetted plots than in drained plots [1731]. Cutting/removing trees combined with rewetting: In fens, two studies found no change in overall plant community composition and one reported only a small effect, while two site-comparison studies in bogs and fens found composition shifted away from drained, forested conditions; wetland-characteristic plants increased in abundance; Sphagnum cover increased in two studies, showed no effect in one, and mixed effects depending on site or species in two others; non\u2011Sphagnum or forest-characteristic mosses decreased in three studies, with one study finding no effect of thinning/rewetting on forest mosses; herb cover (including cottongrasses and sedges) increased in multiple studies, though one site lost rare cottongrass and saw reduced purple moor grass; vegetation structure responses included increased ground vegetation height in one bog study, no change in canopy height in one fen study, and fewer tall trees for 1\u20133 years in two studies; plant species richness increased in two Swedish fen studies but showed no effect on richness or diversity in two Finnish fen studies [1732].",
+    "summary_action_ids": [
+      "1731",
+      "1732"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"restore peatlands afforested for commercial forestry cutting trees compared to cutting trees and rewetting peat\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1732\",\n    \"action_title\": \"Cut/remove/thin forest plantations and rewet peat\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1731\",\n    \"action_title\": \"Cut/remove/thin forest plantations\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1820\",\n    \"action_title\": \"Directly plant peatland trees/shrubs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"restore peatlands afforested for commercial forestry cutting trees compared to cutting trees and rewetting peat\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1764\",\n    \"action_title\": \"Thin vegetation to prevent wild fires\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1815\",\n    \"action_title\": \"Stabilize peatland surface to help plants colonize\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1829\",\n    \"action_title\": \"Cover peatland with something other than mulch (after planting)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1731\"}",
+            "return_val": "{\n  \"action_id\": \"1731\",\n  \"action_title\": \"Cut/remove/thin forest plantations\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effect on peatland vegetation of cutting/removing forest plantations: one in bogs\\u00a0and three in fens. The studies in the fens\\u00a0were all based, at least in part, on the same experimental set-up.\\nHerb cover (3 studies): Three replicated studies (two also paired and controlled) in bogs in the UK\\u00a0and fens in Sweden\\u00a0reported that tree removal increased cover of some herb species including cottongrasses\\u00a0and sedges. One of the studies\\u00a0reported no effect of tree removal on other herb species.\\nMoss cover (3 studies): One replicated, paired, controlled study in bogs in the UK\\u00a0reported that tree removal reduced cover of forest-characteristic mosses. One replicated before-and-after study in a drained rich fen in Sweden\\u00a0reported that Sphagnum moss cover decreased over three years following tree removal. However, one replicated, paired, controlled study in partly rewetted rich fens reported that Sphagnum cover increased over eight years following tree removal.\\nOverall plant richness/diversity (2 studies): Two replicated, paired, controlled studies in rich fens in Sweden\\u00a0reported that tree removal increased total plant species richness. However,\\u00a0one of these studies reported a much smaller effect of tree removal in rewetted plots than in drained plots.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1732\"}",
+            "return_val": "{\n  \"action_id\": \"1732\",\n  \"action_title\": \"Cut/remove/thin forest plantations and rewet peat\",\n  \"key_messages\": \"Key Messages:\\n\\nEleven studies evaluated the effects of cutting/removing trees and rewetting peat (in combination): six in fens, two in bogs, and three in both fens and bogs. In four of the studies,\\u00a0the peatlands naturally contained some trees. Three studies\\u00a0were based on one experimental set-up, and two studies\\u00a0were based on another.\\nPlant community composition (5 studies): Of three replicated studies in fens, two in Finland\\u00a0found that removing trees/rewetting had no effect on the overall plant community composition whilst one in Sweden\\u00a0reported only a small effect.\\u00a0Two site comparison studies in bogs and fens in Finland\\u00a0found that removing trees/rewetting changed the overall plant community composition. It became less like sites that remained drained and forested.\\nCharacteristic plants (2 studies): Two before-and-after studies (one site comparison, one controlled) in bogs and fens in Finland\\u00a0and Sweden\\u00a0reported that removing trees/rewetting increased the abundance of wetland-characteristic plants.\\nMoss cover (6 studies): Of five studies that examined the effect of removing trees/rewetting on Sphagnum moss, two replicated, paired studies in bogs and fens in Sweden\\u00a0and Finland\\u00a0found that the intervention increased Sphagnum cover.\\u00a0One replicated, before-and-after, site comparison study in forested fens in Finland\\u00a0found no effect. Two before-and-after studies in a bog in Finland\\u00a0and a fen in Sweden\\u00a0found mixed effects depending on site\\u00a0or species. Additionally, three studies (two replicated and paired) in peatlands in the UK\\u00a0and Finland\\u00a0found that removing trees/rewetting reduced cover of non-Sphagnum or forest-characteristic mosses. However, one replicated, before-and-after, site comparison study in forested fens in Finland\\u00a0found no effect of thinning trees/rewetting on forest mosses.\\nHerb cover (7 studies): Seven studies (including two replicated, paired, controlled) in bogs and fens in the UK, Finland\\u00a0and Sweden\\u00a0reported that removing trees/rewetting increased cover of at least one group of herbs, including cottongrasses\\u00a0and sedges. However, one of these studies\\u00a0reported loss of cottongrass from a fen where it was rare before intervention, along with reduced purple moor grass cover.\\nVegetation structure (4 studies): One replicated site comparison study in a bog in the UK\\u00a0found that removing trees/rewetting increased ground vegetation height. One replicated, paired, controlled study in a fen in Sweden\\u00a0reported that removing trees/rewetting had no effect on canopy height after eight years. Two replicated, paired, site comparison studies in bogs and fens in Finland\\u00a0found that thinning trees/rewetting reduced the number of tall trees present for 1\\u20133 years (although not to the level of natural peatlands).\\nOverall plant richness/diversity (4 studies): Two replicated, paired, controlled studies in rich fens in Sweden\\u00a0reported that removing trees/rewetting increased plant species richness. However, two replicated studies in fens in Finland\\u00a0found that removing trees/rewetting had no effect on total plant species richness or diversity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"To restore peatlands afforested for commercial forestry, how does simply cutting the trees compare to cutting trees and also rewetting the peat?\",\"summary\":\"Cutting/removing forest plantations alone: Three studies reported increased cover of some herbs (including cottongrasses and sedges), while one reported no effect on other herb species; forest-characteristic moss cover decreased in one study; Sphagnum cover decreased over three years in a drained rich fen but increased over eight years in partly rewetted rich fens; total plant species richness increased in rich fens, with a much smaller effect in rewetted plots than in drained plots [1731]. Cutting/removing trees combined with rewetting: In fens, two studies found no change in overall plant community composition and one reported only a small effect, while two site-comparison studies in bogs and fens found composition shifted away from drained, forested conditions; wetland-characteristic plants increased in abundance; Sphagnum cover increased in two studies, showed no effect in one, and mixed effects depending on site or species in two others; non\u2011Sphagnum or forest-characteristic mosses decreased in three studies, with one study finding no effect of thinning/rewetting on forest mosses; herb cover (including cottongrasses and sedges) increased in multiple studies, though one site lost rare cottongrass and saw reduced purple moor grass; vegetation structure responses included increased ground vegetation height in one bog study, no change in canopy height in one fen study, and fewer tall trees for 1\u20133 years in two studies; plant species richness increased in two Swedish fen studies but showed no effect on richness or diversity in two Finnish fen studies [1732].\",\"action_ids\":[\"1731\",\"1732\"]}",
+            "return_val": "{\n  \"query\": \"To restore peatlands afforested for commercial forestry, how does simply cutting the trees compare to cutting trees and also rewetting the peat?\",\n  \"relevant_summary\": \"Cutting/removing forest plantations alone: Three studies reported increased cover of some herbs (including cottongrasses and sedges), while one reported no effect on other herb species; forest-characteristic moss cover decreased in one study; Sphagnum cover decreased over three years in a drained rich fen but increased over eight years in partly rewetted rich fens; total plant species richness increased in rich fens, with a much smaller effect in rewetted plots than in drained plots [1731]. Cutting/removing trees combined with rewetting: In fens, two studies found no change in overall plant community composition and one reported only a small effect, while two site-comparison studies in bogs and fens found composition shifted away from drained, forested conditions; wetland-characteristic plants increased in abundance; Sphagnum cover increased in two studies, showed no effect in one, and mixed effects depending on site or species in two others; non\\u2011Sphagnum or forest-characteristic mosses decreased in three studies, with one study finding no effect of thinning/rewetting on forest mosses; herb cover (including cottongrasses and sedges) increased in multiple studies, though one site lost rare cottongrass and saw reduced purple moor grass; vegetation structure responses included increased ground vegetation height in one bog study, no change in canopy height in one fen study, and fewer tall trees for 1\\u20133 years in two studies; plant species richness increased in two Swedish fen studies but showed no effect on richness or diversity in two Finnish fen studies [1732].\",\n  \"action_ids\": [\n    \"1731\",\n    \"1732\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1731",
+      "1732"
+    ],
+    "regenerated_ids": [
+      "1731",
+      "1732"
+    ]
+  },
+  {
+    "query": "What does the evidence say about the effectiveness of creating or retaining habitat corridors for conserving peatland vegetation?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence is very limited. For farmed areas, one study in a tropical peat swamp in Indonesia reported that a peat swamp forest corridor contained 5,819 trees/ha (including 331 large trees/ha, 1,360 saplings/ha and 4,128 seedlings/ha) and recorded 18\u201329 tree species depending on size class [1730]. For corridors across service corridors and in areas of energy production or mining, no studies were found evaluating effects on peatland vegetation [1742; 1739].",
+    "summary_action_ids": [
+      "1730",
+      "1742",
+      "1739"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"peatland vegetation habitat corridors effectiveness retain create corridors conservation peat bog fen connectivity\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1742\",\n    \"action_title\": \"Retain/create habitat corridors across service corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1730\",\n    \"action_title\": \"Retain/create habitat corridors in farmed areas\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1739\",\n    \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"peatland vegetation habitat corridors effectiveness retain create corridors conservation peat bog fen connectivity\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1759\",\n    \"action_title\": \"Cut/mow herbaceous plants to maintain or restore disturbance\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"174\",\n    \"action_title\": \"Reduce field size (or maintain small fields)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"862\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in grassland\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1742\"}",
+            "return_val": "{\n  \"action_id\": \"1742\",\n  \"action_title\": \"Retain/create habitat corridors across service corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining/creating habitat corridors across service corridors.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1730\"}",
+            "return_val": "{\n  \"action_id\": \"1730\",\n  \"action_title\": \"Retain/create habitat corridors in farmed areas\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study\\u00a0evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining or creating habitat corridors in farmed areas.This study was in a tropical peat swamp.\\nVegetation structure (1 study): One study in Indonesia found that a peat swamp forest corridor contained 5,819 trees/ha. This included 331 large trees/ha, 1,360 saplings/ha and 4,128 seedlings/ha. \\u00a0\\nOverall plant richness/diversity (1 study):\\u00a0The same study\\u00a0recorded 18\\u201329 tree species in the peat swamp forest corridor (the number of species depending on the size class).\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1739\"}",
+            "return_val": "{\n  \"action_id\": \"1739\",\n  \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining/creating habitat corridors in areas of energy production or mining.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What does the evidence say about the effectiveness of creating or retaining habitat corridors for conserving peatland vegetation?\",\"summary\":\"Evidence is very limited. For farmed areas, one study in a tropical peat swamp in Indonesia reported that a peat swamp forest corridor contained 5,819 trees/ha (including 331 large trees/ha, 1,360 saplings/ha and 4,128 seedlings/ha) and recorded 18\u201329 tree species depending on size class [1730]. For corridors across service corridors and in areas of energy production or mining, no studies were found evaluating effects on peatland vegetation [1742; 1739].\",\"action_ids\":[\"1730\",\"1742\",\"1739\"]}",
+            "return_val": "{\n  \"query\": \"What does the evidence say about the effectiveness of creating or retaining habitat corridors for conserving peatland vegetation?\",\n  \"relevant_summary\": \"Evidence is very limited. For farmed areas, one study in a tropical peat swamp in Indonesia reported that a peat swamp forest corridor contained 5,819 trees/ha (including 331 large trees/ha, 1,360 saplings/ha and 4,128 seedlings/ha) and recorded 18\\u201329 tree species depending on size class [1730]. For corridors across service corridors and in areas of energy production or mining, no studies were found evaluating effects on peatland vegetation [1742; 1739].\",\n  \"action_ids\": [\n    \"1730\",\n    \"1742\",\n    \"1739\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1720",
+      "1730",
+      "1739",
+      "1742"
+    ],
+    "regenerated_ids": [
+      "1720",
+      "1730",
+      "1739",
+      "1742"
+    ]
+  }
+]

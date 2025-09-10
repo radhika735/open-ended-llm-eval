@@ -1,0 +1,433 @@
+[
+  {
+    "query": "How does the evidence for using acoustic devices to reduce human-wildlife conflict at aquaculture systems compare to their use on fishing gear?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "At aquaculture systems, six studies were identified: four of six (including five before-and-after and/or site comparison studies and one controlled study) found reduced predation on caged salmon by grey seals, harbour seals and South American sea lions, or fewer harbour seals approaching a fish cage; two studies found no reduction in harbour seal predation at salmon farms or in the presence, approach distances, group sizes or time spent around fin-fish farms by common bottlenose dolphins [2775]. On fishing gear, thirty-three studies were identified. Behaviour: twelve of 16 controlled studies (including three replicated) reported reduced approaches, encounters or interactions with nets/lines, or reduced activity/sightings by harbour porpoises, common bottlenose dolphins, tucuxi dolphins, finless porpoises and seals; four studies found no significant behavioural effect on common bottlenose dolphins, harbour porpoises, Indo-Pacific humpback dolphins or dugongs. Entanglement/unwanted catch: nine studies (including seven controlled and two before-and-after) found fewer collisions or entanglements of humpback whales, harbour porpoises, Franciscana dolphins, beaked whales and small cetaceans; three studies found reductions for some species but not others; one controlled study found fewer harbour porpoise entanglements only with a \u2018complete\u2019 set of devices; one replicated, controlled study found reductions in one fishing area but not another. Human-wildlife conflict: five of six controlled studies (one replicated) found reduced damage to fish catches and/or nets by common bottlenose dolphins and seals, while one study found no reduction in swordfish catch damage by California sea lions [2808].",
+    "summary_action_ids": [
+      "2775",
+      "2808"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"acoustic devices reduce human-wildlife conflict aquaculture systems\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2775\",\n    \"action_title\": \"Use acoustic devices at aquaculture systems\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2816\",\n    \"action_title\": \"Use acoustic devices on moorings\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2815\",\n    \"action_title\": \"Use acoustic devices on fishing vessels\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"acoustic devices fishing gear gillnets longlines trawls pingers deterrents\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2815\",\n    \"action_title\": \"Use acoustic devices on fishing vessels\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2816\",\n    \"action_title\": \"Use acoustic devices on moorings\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2808\",\n    \"action_title\": \"Use acoustic devices on fishing gear\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"acoustic devices fishing gear aquaculture systems human-wildlife conflict deterrent\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2827\",\n    \"action_title\": \"Retain offal on fishing vessels instead of discarding overboard\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3028\",\n    \"action_title\": \"Raise water level to restore degraded freshwater swamps\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2814\",\n    \"action_title\": \"Promote knowledge exchange between fishers to improve good practice\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2775\"}",
+            "return_val": "{\n  \"action_id\": \"2775\",\n  \"action_title\": \"Use acoustic devices at aquaculture systems\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on marine and freshwater mammals of using acoustic devices at aquaculture systems. Four studies were in the North Atlantic Ocean\\u00a0(USA, UK), one was in the Reloncav\\u00ed fjord\\u00a0(Chile) and one in the Mediterranean Sea\\u00a0(Italy).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (6 STUDIES)\\n\\nHuman-wildlife conflict (6 studies): Four of six studies (including five before-and-after and/or site comparison studies and one controlled study) in the North Atlantic Ocean, the Reloncav\\u00ed fjord\\u00a0and the Mediterranean Sea\\u00a0found that using acoustic devices at salmon farms reduced predation on caged salmon by grey seals, harbour seals\\u00a0and South American sea lions, or reduced the number of harbour seals approaching a fish cage. The two other studies found that using acoustic devices did not reduce harbour seal predation at salmon farms, or reduce the presence, approach distances, groups sizes or time spent around fin-fish farms by common bottlenose dolphins.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2808\"}",
+            "return_val": "{\n  \"action_id\": \"2808\",\n  \"action_title\": \"Use acoustic devices on fishing gear\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-three studies evaluated the effects on marine mammals of using acoustic devices on fishing gear. Eight studies were in the North Atlantic Ocean\\u00a0(Canada, USA, UK), four studies were in each of the North Pacific Ocean\\u00a0(USA) and the North Sea\\u00a0(Germany, Denmark, UK), three studies were in the Mediterranean Sea (Spain, Italy), two studies were in each of the Fortune Channel\\u00a0(Canada), the South Atlantic Ocean\\u00a0(Argentina, Brazil) and the Baltic Sea\\u00a0(Denmark, Germany, Sweden), and one study was in each of Moreton Bay\\u00a0(Australia), the Black Sea\\u00a0(Turkey), the Celtic Sea\\u00a0(UK), the South Pacific Ocean\\u00a0(Peru), the Rainbow Channel\\u00a0(Australia), the UK\\u00a0(water body not stated), the Great Belt\\u00a0(Denmark), Omura Bay\\u00a0(Japan), and the Indian Ocean\\u00a0(Australia).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (16 STUDIES)\\n\\nBehaviour change (16 studies):\\u00a0Twelve of 16 controlled studies (including three replicated studies) in the North Atlantic Ocean, the Fortune Channel, the South Atlantic Ocean, Moreton Bay, the Mediterranean Sea, the Celtic Sea, the Rainbow Channel, a coastal site in the UK, the Great Belt, the North Sea, Omura Bay\\u00a0and the Indian Ocean\\u00a0found that using acoustic devices on fishing nets, float lines\\u00a0or simulated fishing nets\\u00a0resulted in harbour porpoises, common bottlenose dolphins, tuxuci dolphins, finless porpoises\\u00a0and seals\\u00a0approaching nets or lines less closely, having fewer encounters or interactions with nets, or activity\\u00a0and sightings\\u00a0were reduced in the surrounding area. The other four studies found that using acoustic devices on trawl nets, float lines\\u00a0or simulated fishing nets\\u00a0did not have a significant effect on the behaviour of common bottlenose dolphins, harbour porpoises, Indo-Pacific humpback dolphins\\u00a0or dugongs.\\n\\nOTHER (19 STUDIES)\\n\\nReduction in entanglements/unwanted catch (14 studies): Nine studies (including seven controlled studies and two before-and after studies) in the North Atlantic Ocean, the North Sea, the South Atlantic Ocean, the North Pacific Ocean, the Black Sea, and the South Pacific Ocean\\u00a0found that using acoustic devices on cod traps\\u00a0or fishing nets\\u00a0resulted in fewer collisions of humpback whales\\u00a0or entanglements of harbour porpoises, Franciscana dolphins, beaked whales\\u00a0and small cetaceans. Three studies (including two controlled studies and one before-and-after study) in the North Pacific Ocean\\u00a0found that using acoustic devices on fishing nets resulted in fewer entanglements of some species but not others. One controlled study in the North Atlantic Ocean\\u00a0found that fishing nets with a \\u2018complete\\u2019 set of acoustic devices had fewer entanglements of harbour porpoises, but those with an \\u2018incomplete\\u2019 set did not. One replicated, controlled study in the North Sea and Baltic Sea\\u00a0found that using acoustic devices on fishing nets reduced harbour porpoise entanglements in one fishing area but not the other.\\nHuman-wildlife conflict (6 studies): Five of six studies (including six controlled studies, one of which was replicated) in the Baltic Sea, the Mediterranean Sea, the North Pacific Ocean, a coastal site in the UK\\u00a0and the North Sea\\u00a0found that using acoustic devices reduced damage to fish catches and/or fishing nets caused by common bottlenose dolphins\\u00a0and seals. The other study\\u00a0found that acoustic devices did not reduce damage to swordfish catches by California sea lions.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How does the evidence for using acoustic devices to reduce human-wildlife conflict at aquaculture systems compare to their use on fishing gear?\",\"summary\":\"At aquaculture systems, six studies were identified: four of six (including five before-and-after and/or site comparison studies and one controlled study) found reduced predation on caged salmon by grey seals, harbour seals and South American sea lions, or fewer harbour seals approaching a fish cage; two studies found no reduction in harbour seal predation at salmon farms or in the presence, approach distances, group sizes or time spent around fin-fish farms by common bottlenose dolphins [2775]. On fishing gear, thirty-three studies were identified. Behaviour: twelve of 16 controlled studies (including three replicated) reported reduced approaches, encounters or interactions with nets/lines, or reduced activity/sightings by harbour porpoises, common bottlenose dolphins, tucuxi dolphins, finless porpoises and seals; four studies found no significant behavioural effect on common bottlenose dolphins, harbour porpoises, Indo-Pacific humpback dolphins or dugongs. Entanglement/unwanted catch: nine studies (including seven controlled and two before-and-after) found fewer collisions or entanglements of humpback whales, harbour porpoises, Franciscana dolphins, beaked whales and small cetaceans; three studies found reductions for some species but not others; one controlled study found fewer harbour porpoise entanglements only with a \u2018complete\u2019 set of devices; one replicated, controlled study found reductions in one fishing area but not another. Human-wildlife conflict: five of six controlled studies (one replicated) found reduced damage to fish catches and/or nets by common bottlenose dolphins and seals, while one study found no reduction in swordfish catch damage by California sea lions [2808].\",\"action_ids\":[\"2775\",\"2808\"]}",
+            "return_val": "{\n  \"query\": \"How does the evidence for using acoustic devices to reduce human-wildlife conflict at aquaculture systems compare to their use on fishing gear?\",\n  \"relevant_summary\": \"At aquaculture systems, six studies were identified: four of six (including five before-and-after and/or site comparison studies and one controlled study) found reduced predation on caged salmon by grey seals, harbour seals and South American sea lions, or fewer harbour seals approaching a fish cage; two studies found no reduction in harbour seal predation at salmon farms or in the presence, approach distances, group sizes or time spent around fin-fish farms by common bottlenose dolphins [2775]. On fishing gear, thirty-three studies were identified. Behaviour: twelve of 16 controlled studies (including three replicated) reported reduced approaches, encounters or interactions with nets/lines, or reduced activity/sightings by harbour porpoises, common bottlenose dolphins, tucuxi dolphins, finless porpoises and seals; four studies found no significant behavioural effect on common bottlenose dolphins, harbour porpoises, Indo-Pacific humpback dolphins or dugongs. Entanglement/unwanted catch: nine studies (including seven controlled and two before-and-after) found fewer collisions or entanglements of humpback whales, harbour porpoises, Franciscana dolphins, beaked whales and small cetaceans; three studies found reductions for some species but not others; one controlled study found fewer harbour porpoise entanglements only with a \\u2018complete\\u2019 set of devices; one replicated, controlled study found reductions in one fishing area but not another. Human-wildlife conflict: five of six controlled studies (one replicated) found reduced damage to fish catches and/or nets by common bottlenose dolphins and seals, while one study found no reduction in swordfish catch damage by California sea lions [2808].\",\n  \"action_ids\": [\n    \"2775\",\n    \"2808\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2748",
+      "2751",
+      "2761",
+      "2775",
+      "2808",
+      "2815",
+      "2816",
+      "2896"
+    ],
+    "regenerated_ids": [
+      "2775",
+      "2808"
+    ]
+  },
+  {
+    "query": "How does the evidence for using acoustically reflective materials on fishing gear compare to attaching acoustically reflective objects for reducing marine mammal entanglement?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Two studies assessed attaching acoustically reflective objects to fishing gear: a controlled study in the Timor and Arafura Seas found metallic bead chains on nets did not reduce dolphin entanglements, and a controlled study in the Gulf of Alaska found acrylic beads near hooks did not reduce sperm whale predation on catches (not an entanglement outcome) [2806]. Five studies assessed using acoustically reflective fishing gear materials: three controlled studies (two replicated) tested entanglement outcomes, with two finding fewer harbour porpoise entanglements in nets made from iron\u2011oxide or barium sulfate compared to conventional nets, and one finding barium sulfate nets did not reduce dolphin entanglements; two additional controlled studies reported similar porpoise approaches and echolocation activity between barium sulfate and conventional nets, with fewer clicks at barium sulfate nets [2807]. Overall, the available studies report no entanglement reduction from attaching objects and mixed results\u2014with two positive porpoise findings and one non\u2011reduction for dolphins\u2014when using acoustically reflective materials [2806, 2807].",
+    "summary_action_ids": [
+      "2806",
+      "2807"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"acoustically reflective materials fishing gear marine mammal entanglement evidence attaching reflective objects\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2806\",\n    \"action_title\": \"Attach acoustically reflective objects to fishing gear\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2807\",\n    \"action_title\": \"Use acoustically reflective fishing gear materials\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2801\",\n    \"action_title\": \"Use stiffened materials or increase tension of fishing gear\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"acoustically reflective materials fishing gear marine mammal entanglement evidence attaching reflective objects\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2800\",\n    \"action_title\": \"Use bindings to keep trawl nets closed until they have sunk below the water surface\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"282\",\n    \"action_title\": \"Scare fish-eating birds from areas to reduce conflict\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2813\",\n    \"action_title\": \"Engage stakeholders/fishers in scientific research and data collection\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2806\"}",
+            "return_val": "{\n  \"action_id\": \"2806\",\n  \"action_title\": \"Attach acoustically reflective objects to fishing gear\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on marine mammals of attaching acoustically reflective objects to fishing gear. One study was in the Timor Sea and Arafura Sea\\u00a0(Australia) and one was in the Gulf of Alaska\\u00a0(USA).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nReduction in entanglements/unwanted catch (1 study): One controlled study in the Timor Sea and Arafura Sea\\u00a0found that attaching metallic bead chains to fishing nets did not reduce the number of dolphin entanglements.\\nHuman-wildlife conflict (1 study): One controlled study in the Gulf of Alaska\\u00a0found that attaching acrylic beads next to fishing hooks did not reduce predation on fish catches by sperm whales.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2807\"}",
+            "return_val": "{\n  \"action_id\": \"2807\",\n  \"action_title\": \"Use acoustically reflective fishing gear materials\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects on marine mammals of using acoustically reflective fishing gear materials. Two studies were in the Bay of Fundy\\u00a0(Canada) and one study was in each of the Fortune Channel\\u00a0(Canada), the North Sea\\u00a0(Denmark) and the South Atlantic Ocean\\u00a0(Argentina).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (2 STUDIES)\\n\\nBehaviour change (2 studies): One controlled study in the Fortune Channel\\u00a0found that harbour porpoises approached nets made from acoustically reflective material (barium sulfate) and conventional nets to similar distances and for similar durations, but porpoises used fewer echolocation clicks at barium sulfate nets. One controlled study in the Bay of Fundy\\u00a0found that harbour porpoise echolocation activity was similar at barium sulfate and conventional nets.\\n\\nOTHER (3 STUDIES)\\n\\nReduction in entanglements/unwanted catch (3 studies): Two of three controlled studies (including two replicated studies) in the North Sea, the Bay of Fundy\\u00a0and the South Atlantic Ocean\\u00a0found that fishing nets made from acoustically reflective materials (iron-oxide\\u00a0or barium sulfate) had fewer entanglements of harbour porpoises than conventional fishing nets. The other study found that nets made from barium sulfate\\u00a0did not reduce the number of dolphin entanglements.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How does the evidence for using acoustically reflective materials on fishing gear compare to attaching acoustically reflective objects for reducing marine mammal entanglement?\",\"summary\":\"Two studies assessed attaching acoustically reflective objects to fishing gear: a controlled study in the Timor and Arafura Seas found metallic bead chains on nets did not reduce dolphin entanglements, and a controlled study in the Gulf of Alaska found acrylic beads near hooks did not reduce sperm whale predation on catches (not an entanglement outcome) [2806]. Five studies assessed using acoustically reflective fishing gear materials: three controlled studies (two replicated) tested entanglement outcomes, with two finding fewer harbour porpoise entanglements in nets made from iron\u2011oxide or barium sulfate compared to conventional nets, and one finding barium sulfate nets did not reduce dolphin entanglements; two additional controlled studies reported similar porpoise approaches and echolocation activity between barium sulfate and conventional nets, with fewer clicks at barium sulfate nets [2807]. Overall, the available studies report no entanglement reduction from attaching objects and mixed results\u2014with two positive porpoise findings and one non\u2011reduction for dolphins\u2014when using acoustically reflective materials [2806, 2807].\",\"action_ids\":[\"2806\",\"2807\"]}",
+            "return_val": "{\n  \"query\": \"How does the evidence for using acoustically reflective materials on fishing gear compare to attaching acoustically reflective objects for reducing marine mammal entanglement?\",\n  \"relevant_summary\": \"Two studies assessed attaching acoustically reflective objects to fishing gear: a controlled study in the Timor and Arafura Seas found metallic bead chains on nets did not reduce dolphin entanglements, and a controlled study in the Gulf of Alaska found acrylic beads near hooks did not reduce sperm whale predation on catches (not an entanglement outcome) [2806]. Five studies assessed using acoustically reflective fishing gear materials: three controlled studies (two replicated) tested entanglement outcomes, with two finding fewer harbour porpoise entanglements in nets made from iron\\u2011oxide or barium sulfate compared to conventional nets, and one finding barium sulfate nets did not reduce dolphin entanglements; two additional controlled studies reported similar porpoise approaches and echolocation activity between barium sulfate and conventional nets, with fewer clicks at barium sulfate nets [2807]. Overall, the available studies report no entanglement reduction from attaching objects and mixed results\\u2014with two positive porpoise findings and one non\\u2011reduction for dolphins\\u2014when using acoustically reflective materials [2806, 2807].\",\n  \"action_ids\": [\n    \"2806\",\n    \"2807\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2806",
+      "2807"
+    ],
+    "regenerated_ids": [
+      "2806",
+      "2807"
+    ]
+  },
+  {
+    "query": "What is the evidence for interventions that directly manage individual mammals to boost threatened populations?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"interventions that directly manage individual mammals to boost threatened populations\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2933\",\n    \"action_title\": \"Release captive-bred marine and freshwater mammals to re-establish or boost native populations\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2928\",\n    \"action_title\": \"Place orphaned or abandoned marine and freshwater mammal young with foster parents\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2927\",\n    \"action_title\": \"Reunite abandoned marine and freshwater mammal young with parents\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"interventions that directly manage individual mammals to boost threatened populations\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2496\",\n    \"action_title\": \"Use light/lasers to deter crop damage by mammals to reduce human-wildlife conflict\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2477\",\n    \"action_title\": \"Thin trees to reduce wildfire risk\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3828\",\n    \"action_title\": \"Introduce gear exchange programs\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2933\"}",
+            "return_val": "{\n  \"action_id\": \"2933\",\n  \"action_title\": \"Release captive-bred marine and freshwater mammals to re-establish or boost native populations\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of releasing captive-bred marine and freshwater mammals to re-establish or boost native populations. One study was in the Porto de Pedras estuary\\u00a0(Brazil) and one in water bodies in Florida\\u00a0(USA).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): Two studies in the Porto de Pedras estuary\\u00a0and water bodies in Florida\\u00a0found that two of three Antillean manatees and two of 14 Florida manatees born in captivity and released into the wild survived for at least one year without further intervention.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2928\"}",
+            "return_val": "{\n  \"action_id\": \"2928\",\n  \"action_title\": \"Place orphaned or abandoned marine and freshwater mammal young with foster parents\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of placing orphaned or abandoned marine and freshwater mammal young with foster parents.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2927\"}",
+            "return_val": "{\n  \"action_id\": \"2927\",\n  \"action_title\": \"Reunite abandoned marine and freshwater mammal young with parents\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of reuniting abandoned marine and freshwater mammal young with parents. The study was in the North Pacific Ocean\\u00a0(USA).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nReproductive success (1 study): One review in the North Pacific Ocean\\u00a0found that after reuniting Hawaiian monk seal pups with their mothers, along with at least seven other interventions to enhance survival, more than a quarter of the seals reproduced.\\nSurvival (1 study): One review in the North Pacific Ocean\\u00a0found that after reuniting Hawaiian monk seal pups with their mothers, along with at least seven other interventions to enhance survival, more than a quarter of the seals survived.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"hand-rear orphaned mammal young threatened populations terrestrial mammals\",\"k\":3,\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2926\",\n    \"action_title\": \"Hand-rear orphaned or abandoned marine and freshwater mammal young\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2358\",\n    \"action_title\": \"Hand-rear orphaned or abandoned young in captivity\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2364\",\n    \"action_title\": \"Place orphaned or abandoned wild young with captive foster parents\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2926\"}",
+            "return_val": "{\n  \"action_id\": \"2926\",\n  \"action_title\": \"Hand-rear orphaned or abandoned marine and freshwater mammal young\",\n  \"key_messages\": \"Key Messages:\\n\\nTwelve studies evaluated the effects of hand-rearing orphaned or abandoned marine and freshwater mammal young. Four studies were in the North Pacific Ocean\\u00a0(USA), two studies were in captive facilities\\u00a0(USA), and one study was in each of the North Atlantic Ocean\\u00a0(USA), the Indian River Lagoon\\u00a0(USA), the Salish Sea\\u00a0(USA), the Guerrero Lagoon\\u00a0(USA), the South Atlantic Ocean\\u00a0(Brazil) and water bodies in Florida\\u00a0(USA).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (11 STUDIES)\\n\\nReproductive success (1 study): One replicated study in the South Atlantic Ocean\\u00a0found that most captive-reared Antillean manatees released back into the wild reproduced.\\nSurvival (11 studies): Three studies (including one replicated and controlled study) in the North Pacific Ocean, and the Indian River Lagoon\\u00a0found that a gray whale calf, three Steller sea lion pups, and a common bottlenose dolphin calf\\u00a0that were released after being reared in captivity survived during post-release monitoring periods of between three days\\u00a0to three months. Two replicated studies in the South Atlantic Ocean\\u00a0and water bodies in Florida\\u00a0found that approximately three-quarters of Antillean manatees and two-thirds of Florida manatees\\u00a0that were captive-reared and released were known to survive for at least one year, and some survived for more than seven years. Three studies in the North Atlantic Ocean, the North Pacific Ocean\\u00a0and the Guerrero Lagoon\\u00a0found that three West Indian manatee calves, seven Hawaiian monk seal pups\\u00a0and one Antillean manatee calf\\u00a0that were captive-reared either died before\\u00a0or after release, had to be returned to captivity after release, or survived in the wild only with supplemental feeding. Two studies at captive facilities\\u00a0found that a captive-reared grey whale calf\\u00a0and five pygmy and dwarf sperm whale calves\\u00a0increased in body weight but were either not released\\u00a0or died in captivity. One controlled study in the North Pacific Ocean\\u00a0found that captive-reared, released Pacific harbour seal pups had similar survival estimates to wild pups.\\n\\nBEHAVIOUR (3 STUDIES)\\n\\nBehaviour change (3 studies): Two controlled studies (including one replicated study) in the North Pacific Ocean\\u00a0found that captive-reared and released Pacific harbour seal pups\\u00a0and Steller sea lion pups\\u00a0had similar diving behaviour to wild pups. One controlled study in the Salish Sea\\u00a0found that captive-reared and released harbour seal pups travelled greater distances and further from the release site than wild pups born at the same site and in the same season.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2358\"}",
+            "return_val": "{\n  \"action_id\": \"2358\",\n  \"action_title\": \"Hand-rear orphaned or abandoned young in captivity\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects of hand-rearing orphaned mammals. Two were in the USA, one each was in Australia, South Africa\\u00a0and India\\u00a0and one was in six countries across North America, Europe and Asia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (5 STUDIES)\\n\\nReproductive success (1 study): One study in India\\u00a0found that three hand-reared orphaned or abandoned greater one-horned rhinoceroses gave birth in the wild.\\nSurvival (5 studies): Five studies (including one controlled and one replicated) in Australia, the USA, India\\u00a0and in six countries across North America, Europe and Asia, found that some hand-reared orphaned or abandoned ringtail possums, white-tailed deer, sea otters, bears\\u00a0and greater one-horned rhinoceroses\\u00a0survived for periods of time after release.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nBehaviour change (1 study): A study in South Africa\\u00a0found that a hand-reared, orphaned serval established a home range upon release.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2364\"}",
+            "return_val": "{\n  \"action_id\": \"2364\",\n  \"action_title\": \"Place orphaned or abandoned wild young with captive foster parents\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of placing orphaned or abandoned wild young with captive foster parents. One study was in Canada\\u00a0and one was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nSurvival (1 study): A controlled study in the USA\\u00a0found that stranded sea otter pups reared in captivity by foster mothers had higher post-release survival than did unfostered pups reared mostly alone, and similar survival to wild pups.\\n\\nBEHAVIOUR (2 STUDIES)\\nBehaviour change (2 studies): A study in Canada\\u00a0found that a captive white-tailed deer adopted a wild orphaned fawn. A controlled study in the USA\\u00a0found that stranded sea otter pups reared in captivity by foster mothers began foraging earlier than did unfostered pups reared mostly alone.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"treat injured diseased mammals vaccination to boost populations threatened mammals\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2858\",\n    \"action_title\": \"Vaccinate against disease\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2581\",\n    \"action_title\": \"Treat disease in wild mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2860\",\n    \"action_title\": \"Treat disease in wild marine and freshwater mammals\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2858\"}",
+            "return_val": "{\n  \"action_id\": \"2858\",\n  \"action_title\": \"Vaccinate against disease\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of vaccinating against disease on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2581\"}",
+            "return_val": "{\n  \"action_id\": \"2581\",\n  \"action_title\": \"Treat disease in wild mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of treating disease in the wild. Two studies were in the USA\\u00a0and one was in Germany.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nCondition (2 studies): A replicated study in Germany\\u00a0found that medical treatment of mouflons against foot rot disease healed most infected animals. A before-and-after study in the USA\\u00a0found that management which included vaccination of Yellowstone bison did not reduce prevalence of brucellosis.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUptake (1 study): A study in the USA\\u00a0found that a molasses-based bait was readily consumed by white-tailed deer, including when it contained a dose of a disease vaccination.\"\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2861",
+      "2924",
+      "2925",
+      "2926",
+      "2927",
+      "2928",
+      "2929",
+      "2930",
+      "2932",
+      "2933"
+    ],
+    "regenerated_ids": [
+      "2861",
+      "2925",
+      "2926",
+      "2927",
+      "2928",
+      "2929",
+      "2930"
+    ]
+  },
+  {
+    "query": "What are the potential negative impacts associated with using acoustic deterrent devices for marine mammal conservation?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Reported impacts associated with acoustic deterrent devices include animals avoiding vessels when devices are deployed, with reduced surfacing, echolocation, and time spent foraging or socializing by some dolphin species (ID: 2815). Killer whales were recorded farther from a fishing vessel when a device was used, but distances decreased after first exposure, indicating diminishing avoidance over time (ID: 2815). Devices on fixed moorings reduced numbers or activity of grey and harbour seals, harbour porpoises, short-beaked common dolphins and common bottlenose dolphins, and reduced harbour porpoise echolocation activity, while the probability of porpoises approaching within 125 m increased over 10\u201311 days (ID: 2816). Devices attached to fishing gear led to animals approaching gear less closely, fewer encounters or interactions with nets or lines, and reduced activity or sightings in surrounding areas for porpoises, dolphins, and seals (ID: 2808).",
+    "summary_action_ids": [
+      "2815",
+      "2816",
+      "2808"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"acoustic deterrent devices negative impacts marine mammals conservation\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2751\",\n    \"action_title\": \"Use acoustic devices at cooling water intake structures\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2775\",\n    \"action_title\": \"Use acoustic devices at aquaculture systems\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2748\",\n    \"action_title\": \"Use acoustic devices at renewable energy sites\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"acoustic deterrent devices negative impacts marine mammals conservation\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2904\",\n    \"action_title\": \"Modify vessels to reduce noise disturbance\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2783\",\n    \"action_title\": \"Introduce alternative treatments to reduce the use of marine and freshwater mammals in traditional medicine\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2863\",\n    \"action_title\": \"Use \\u2018bioremediating\\u2019 organisms to remove or neutralize pollutants\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2751\"}",
+            "return_val": "{\n  \"action_id\": \"2751\",\n  \"action_title\": \"Use acoustic devices at cooling water intake structures\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using acoustic devices at cooling water intake structures on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2775\"}",
+            "return_val": "{\n  \"action_id\": \"2775\",\n  \"action_title\": \"Use acoustic devices at aquaculture systems\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on marine and freshwater mammals of using acoustic devices at aquaculture systems. Four studies were in the North Atlantic Ocean\\u00a0(USA, UK), one was in the Reloncav\\u00ed fjord\\u00a0(Chile) and one in the Mediterranean Sea\\u00a0(Italy).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (6 STUDIES)\\n\\nHuman-wildlife conflict (6 studies): Four of six studies (including five before-and-after and/or site comparison studies and one controlled study) in the North Atlantic Ocean, the Reloncav\\u00ed fjord\\u00a0and the Mediterranean Sea\\u00a0found that using acoustic devices at salmon farms reduced predation on caged salmon by grey seals, harbour seals\\u00a0and South American sea lions, or reduced the number of harbour seals approaching a fish cage. The two other studies found that using acoustic devices did not reduce harbour seal predation at salmon farms, or reduce the presence, approach distances, groups sizes or time spent around fin-fish farms by common bottlenose dolphins.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2748\"}",
+            "return_val": "{\n  \"action_id\": \"2748\",\n  \"action_title\": \"Use acoustic devices at renewable energy sites\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using acoustic devices at renewable energy sites on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"negative impacts acoustic deterrent devices marine mammals\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2775\",\n    \"action_title\": \"Use acoustic devices at aquaculture systems\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2748\",\n    \"action_title\": \"Use acoustic devices at renewable energy sites\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2761\",\n    \"action_title\": \"Use acoustic devices on moving vessels\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2761\"}",
+            "return_val": "{\n  \"action_id\": \"2761\",\n  \"action_title\": \"Use acoustic devices on moving vessels\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using acoustic devices on moving vessels on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"acoustic devices fishing gear marine mammals pingers\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2815\",\n    \"action_title\": \"Use acoustic devices on fishing vessels\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2816\",\n    \"action_title\": \"Use acoustic devices on moorings\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2808\",\n    \"action_title\": \"Use acoustic devices on fishing gear\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2815\"}",
+            "return_val": "{\n  \"action_id\": \"2815\",\n  \"action_title\": \"Use acoustic devices on fishing vessels\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects on marine mammals of using acoustic devices on vessels. One study was in each of the Shannon Estuary (Ireland), the Rainbow Channel\\u00a0(Australia), Keppel Bay\\u00a0(Australia), the North Atlantic Ocean\\u00a0(Azores) and the Indian Ocean\\u00a0(Crozet Islands).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (4 STUDIES)\\n\\nBehaviour change (4 studies): One controlled study in the Shannon Estuary\\u00a0found that common bottlenose dolphins avoided a boat more frequently when acoustic devices of two types were deployed alongside it. One controlled study in the Indian Ocean\\u00a0found that killer whales were recorded further from a fishing vessel when an acoustic device was used during hauls, but distances decreased after the first exposure to the device. Two before-and-after studies in the Rainbow Channel\\u00a0and Keppel Bay\\u00a0found that an acoustic device deployed alongside a vessel reduced surfacing and echolocation rates\\u00a0and time spent foraging\\u00a0or socializing\\u00a0of Indo-Pacific humpback dolphins\\u00a0and Australian snubfin dolphins\\u00a0but there was no effect on 8\\u201310 other types of behaviour (e.g. vocalizing, diving, travelling etc.).\\n\\nOTHER (1 STUDY)\\n\\nHuman-wildlife conflict (1 study): One randomized, controlled study in the North Atlantic Ocean\\u00a0found that using acoustic devices of two types did not reduce predation of squid catches by Risso\\u2019s dolphins.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2816\"}",
+            "return_val": "{\n  \"action_id\": \"2816\",\n  \"action_title\": \"Use acoustic devices on moorings\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies evaluated the effects on marine and freshwater mammals of using acoustic devices on moorings. Two studies were in the South Pacific Ocean\\u00a0and one study was in each of the Puntledge River\\u00a0(Canada), the Bay of Fundy\\u00a0(Canada), the Shannon Estuary\\u00a0(Ireland), the Rivers Conon and Esk\\u00a0(UK), the Kyle of Sutherland estuary\\u00a0(UK) and the North Atlantic Ocean\\u00a0(UK).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (7 STUDIES)\\n\\nBehaviour change (7 studies): Two of four controlled studies in the South Pacific Ocean, the Kyle of Sutherland estuary\\u00a0and the North Atlantic Ocean\\u00a0found that deploying acoustic devices on moorings reduced numbers of grey and harbour seals, and the activity of harbour porpoises, short-beaked common dolphins and common bottlenose dolphins. The two other studies found that using an acoustic device on a mooring did not have a significant effect on the number, direction of movement, speed, or dive durations\\u00a0of migrating humpback whales. One controlled study in the Bay of Fundy\\u00a0found that using an acoustic device on a mooring reduced harbour porpoise echolocation activity, but the probability of porpoises approaching within 125 m of the device increased over 10\\u201311 days. One controlled study in the Shannon Estuary\\u00a0found that one of two types of acoustic device reduced the activity of common bottlenose dolphins. One replicated, controlled study in the Rivers Conon and Esk\\u00a0found that using acoustic devices reduced the number of grey and harbour seals upstream of the device but did not reduce seal numbers overall.\\n\\nOTHER (1 STUDY)\\n\\nHuman-wildlife conflict (1 study): One randomized controlled study in the Puntledge River\\u00a0found that deploying an acoustic device on a mooring reduced the number of harbour seals feeding on migrating juvenile salmon.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2808\"}",
+            "return_val": "{\n  \"action_id\": \"2808\",\n  \"action_title\": \"Use acoustic devices on fishing gear\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-three studies evaluated the effects on marine mammals of using acoustic devices on fishing gear. Eight studies were in the North Atlantic Ocean\\u00a0(Canada, USA, UK), four studies were in each of the North Pacific Ocean\\u00a0(USA) and the North Sea\\u00a0(Germany, Denmark, UK), three studies were in the Mediterranean Sea (Spain, Italy), two studies were in each of the Fortune Channel\\u00a0(Canada), the South Atlantic Ocean\\u00a0(Argentina, Brazil) and the Baltic Sea\\u00a0(Denmark, Germany, Sweden), and one study was in each of Moreton Bay\\u00a0(Australia), the Black Sea\\u00a0(Turkey), the Celtic Sea\\u00a0(UK), the South Pacific Ocean\\u00a0(Peru), the Rainbow Channel\\u00a0(Australia), the UK\\u00a0(water body not stated), the Great Belt\\u00a0(Denmark), Omura Bay\\u00a0(Japan), and the Indian Ocean\\u00a0(Australia).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (16 STUDIES)\\n\\nBehaviour change (16 studies):\\u00a0Twelve of 16 controlled studies (including three replicated studies) in the North Atlantic Ocean, the Fortune Channel, the South Atlantic Ocean, Moreton Bay, the Mediterranean Sea, the Celtic Sea, the Rainbow Channel, a coastal site in the UK, the Great Belt, the North Sea, Omura Bay\\u00a0and the Indian Ocean\\u00a0found that using acoustic devices on fishing nets, float lines\\u00a0or simulated fishing nets\\u00a0resulted in harbour porpoises, common bottlenose dolphins, tuxuci dolphins, finless porpoises\\u00a0and seals\\u00a0approaching nets or lines less closely, having fewer encounters or interactions with nets, or activity\\u00a0and sightings\\u00a0were reduced in the surrounding area. The other four studies found that using acoustic devices on trawl nets, float lines\\u00a0or simulated fishing nets\\u00a0did not have a significant effect on the behaviour of common bottlenose dolphins, harbour porpoises, Indo-Pacific humpback dolphins\\u00a0or dugongs.\\n\\nOTHER (19 STUDIES)\\n\\nReduction in entanglements/unwanted catch (14 studies): Nine studies (including seven controlled studies and two before-and after studies) in the North Atlantic Ocean, the North Sea, the South Atlantic Ocean, the North Pacific Ocean, the Black Sea, and the South Pacific Ocean\\u00a0found that using acoustic devices on cod traps\\u00a0or fishing nets\\u00a0resulted in fewer collisions of humpback whales\\u00a0or entanglements of harbour porpoises, Franciscana dolphins, beaked whales\\u00a0and small cetaceans. Three studies (including two controlled studies and one before-and-after study) in the North Pacific Ocean\\u00a0found that using acoustic devices on fishing nets resulted in fewer entanglements of some species but not others. One controlled study in the North Atlantic Ocean\\u00a0found that fishing nets with a \\u2018complete\\u2019 set of acoustic devices had fewer entanglements of harbour porpoises, but those with an \\u2018incomplete\\u2019 set did not. One replicated, controlled study in the North Sea and Baltic Sea\\u00a0found that using acoustic devices on fishing nets reduced harbour porpoise entanglements in one fishing area but not the other.\\nHuman-wildlife conflict (6 studies): Five of six studies (including six controlled studies, one of which was replicated) in the Baltic Sea, the Mediterranean Sea, the North Pacific Ocean, a coastal site in the UK\\u00a0and the North Sea\\u00a0found that using acoustic devices reduced damage to fish catches and/or fishing nets caused by common bottlenose dolphins\\u00a0and seals. The other study\\u00a0found that acoustic devices did not reduce damage to swordfish catches by California sea lions.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the potential negative impacts associated with using acoustic deterrent devices for marine mammal conservation?\",\"summary\":\"Reported impacts associated with acoustic deterrent devices include animals avoiding vessels when devices are deployed, with reduced surfacing, echolocation, and time spent foraging or socializing by some dolphin species (ID: 2815). Killer whales were recorded farther from a fishing vessel when a device was used, but distances decreased after first exposure, indicating diminishing avoidance over time (ID: 2815). Devices on fixed moorings reduced numbers or activity of grey and harbour seals, harbour porpoises, short-beaked common dolphins and common bottlenose dolphins, and reduced harbour porpoise echolocation activity, while the probability of porpoises approaching within 125 m increased over 10\u201311 days (ID: 2816). Devices attached to fishing gear led to animals approaching gear less closely, fewer encounters or interactions with nets or lines, and reduced activity or sightings in surrounding areas for porpoises, dolphins, and seals (ID: 2808).\",\"action_ids\":[\"2815\",\"2816\",\"2808\"]}",
+            "return_val": "{\n  \"query\": \"What are the potential negative impacts associated with using acoustic deterrent devices for marine mammal conservation?\",\n  \"relevant_summary\": \"Reported impacts associated with acoustic deterrent devices include animals avoiding vessels when devices are deployed, with reduced surfacing, echolocation, and time spent foraging or socializing by some dolphin species (ID: 2815). Killer whales were recorded farther from a fishing vessel when a device was used, but distances decreased after first exposure, indicating diminishing avoidance over time (ID: 2815). Devices on fixed moorings reduced numbers or activity of grey and harbour seals, harbour porpoises, short-beaked common dolphins and common bottlenose dolphins, and reduced harbour porpoise echolocation activity, while the probability of porpoises approaching within 125 m increased over 10\\u201311 days (ID: 2816). Devices attached to fishing gear led to animals approaching gear less closely, fewer encounters or interactions with nets or lines, and reduced activity or sightings in surrounding areas for porpoises, dolphins, and seals (ID: 2808).\",\n  \"action_ids\": [\n    \"2815\",\n    \"2816\",\n    \"2808\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2746",
+      "2748",
+      "2751",
+      "2761",
+      "2775",
+      "2808",
+      "2815",
+      "2816",
+      "2896"
+    ],
+    "regenerated_ids": [
+      "2746",
+      "2748",
+      "2751",
+      "2761",
+      "2775",
+      "2808",
+      "2815",
+      "2816",
+      "2896"
+    ]
+  }
+]

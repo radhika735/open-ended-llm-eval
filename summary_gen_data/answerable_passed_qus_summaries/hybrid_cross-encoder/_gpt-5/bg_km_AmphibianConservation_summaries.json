@@ -274,5 +274,418 @@
       "828",
       "829"
     ]
+  },
+  {
+    "query": "What is the evidence for the effectiveness of engaging the public in amphibian conservation efforts in Europe and the USA?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "In the UK and USA, citizen-science efforts saw volunteers undertake 412 surveys, cover 121\u20137,872 sites, swab nearly 6,000 amphibians, and submit thousands of amphibian records (action_id: 760). In Estonia, volunteer-participatory habitat management increased natterjack toad populations; across Estonia, the USA and the UK, restoration programmes engaged between eight and 41,000 volunteers and restored up to 1,023 ponds or over 11,500 km\u00b2 of habitat (action_id: 777). In Estonia and the UK, raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in the creation of 1,023 ponds for amphibians (action_id: 831).",
+    "summary_action_ids": [
+      "760",
+      "777",
+      "831"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"effectiveness of engaging the public in amphibian conservation efforts in Europe and the USA\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"760\",\n    \"action_title\": \"Engage volunteers to collect amphibian data (citizen science)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"777\",\n    \"action_title\": \"Engage landowners and other volunteers to manage land for amphibians\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"760\"}",
+            "return_val": "{\n  \"action_id\": \"760\",\n  \"action_title\": \"Engage volunteers to collect amphibian data (citizen science)\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies in Canada, the UK and USA found that amphibian data collection projects engaged 100\\u201310,506 volunteers and were active in 16\\u201317 states in the USA.\\nFive studies in the UK and USA found that volunteers undertook 412 surveys, surveyed 121\\u20137,872 sites, swabbed almost 6,000 amphibians and submitted thousands of amphibian records.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"777\"}",
+            "return_val": "{\n  \"action_id\": \"777\",\n  \"action_title\": \"Engage landowners and other volunteers to manage land for amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies (including one replicated study) in Estonia and Taiwan found that habitat management with participation of volunteers increased natterjack toad and Taipei frog populations. \\nOne controlled study in Mexico\\u00a0found that engaging landowners in aquatic habitat management increased axolotl weight.\\nSix studies in Estonia, the USA and UK found that between eight and 41,000 volunteers were engaged in aquatic and terrestrial habitat restoration programmes for amphibians. Individual programmes restored up to 1,023 ponds or over 11,500\\u00a0km2 of habitat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"831\"}",
+            "return_val": "{\n  \"action_id\": \"831\",\n  \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, before-and-after study) in Estonia and the UK found that raising public awareness, along with other interventions, increased numbers of natterjack toads and created 1,023 ponds for amphibians.\\nOne before-and-after study in Mexico\\u00a0found that raising awareness in tourists, increased their knowledge of axolotls. One study in Taiwan\\u00a0found that holding press conferences to publicize frog conservation had no effect on a green tree frog project. \\nTwo studies in Panama and the UK found that awareness campaigns reached over 50,000 members of the public each year or trained 1,016 people at 57 events over four years.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"public engagement amphibian conservation Europe USA effectiveness\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"829\",\n    \"action_title\": \"Exclude fish with barriers\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"850\",\n    \"action_title\": \"Retain buffer zones around core habitat\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"83\",\n    \"action_title\": \"Provide otter holts\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the evidence for the effectiveness of engaging the public in amphibian conservation efforts in Europe and the USA?\",\"summary\":\"In the UK and USA, citizen-science efforts saw volunteers undertake 412 surveys, cover 121\u20137,872 sites, swab nearly 6,000 amphibians, and submit thousands of amphibian records (action_id: 760). In Estonia, volunteer-participatory habitat management increased natterjack toad populations; across Estonia, the USA and the UK, restoration programmes engaged between eight and 41,000 volunteers and restored up to 1,023 ponds or over 11,500 km\u00b2 of habitat (action_id: 777). In Estonia and the UK, raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in the creation of 1,023 ponds for amphibians (action_id: 831).\",\"action_ids\":[\"760\",\"777\",\"831\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence for the effectiveness of engaging the public in amphibian conservation efforts in Europe and the USA?\",\n  \"relevant_summary\": \"In the UK and USA, citizen-science efforts saw volunteers undertake 412 surveys, cover 121\\u20137,872 sites, swab nearly 6,000 amphibians, and submit thousands of amphibian records (action_id: 760). In Estonia, volunteer-participatory habitat management increased natterjack toad populations; across Estonia, the USA and the UK, restoration programmes engaged between eight and 41,000 volunteers and restored up to 1,023 ponds or over 11,500 km\\u00b2 of habitat (action_id: 777). In Estonia and the UK, raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in the creation of 1,023 ponds for amphibians (action_id: 831).\",\n  \"action_ids\": [\n    \"760\",\n    \"777\",\n    \"831\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "760",
+      "776",
+      "777",
+      "784",
+      "831"
+    ],
+    "regenerated_ids": [
+      "760",
+      "776",
+      "777",
+      "784",
+      "831"
+    ]
+  },
+  {
+    "query": "What are the overall success rates for establishing new amphibian populations through translocation or the release of captive-bred individuals?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"amphibian translocation success rate establishing new populations captive-bred release success\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2476\",\n    \"action_title\": \"Release captive-bred individuals to re-establish or boost populations in native range\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2463\",\n    \"action_title\": \"Release translocated/captive-bred mammals in family/social groups\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"881\",\n    \"action_title\": \"Head-start amphibians for release\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian translocation success rate establishing new populations captive-bred release success\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"869\",\n    \"action_title\": \"Create ponds for amphibians\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"867\",\n    \"action_title\": \"Create ponds for salamanders (including newts)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"879\",\n    \"action_title\": \"Restore wetland\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian translocation success rate establishing new populations captive-bred release success\",\"k\":3,\"offset\":6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian translocation captive-bred release success rate establish population translocation amphibians\",\"k\":3,\"offset\":6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"success rate translocation amphibians establishing new populations review evidence captive-bred release success rates\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2476\",\n    \"action_title\": \"Release captive-bred individuals to re-establish or boost populations in native range\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3914\",\n    \"action_title\": \"Release captive-bred individuals to the wild\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"881\",\n    \"action_title\": \"Head-start amphibians for release\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2476\"}",
+            "return_val": "{\n  \"action_id\": \"2476\",\n  \"action_title\": \"Release captive-bred individuals to re-establish or boost populations in native range\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-one studies evaluated the effects of releasing captive-bred mammals to establish or boost populations in their native range. Seven studies were in the USA, three were in Australia\\u00a0and Italy, two studies were in each of Canada, Sweden, Saudi Arabia, the UK, the Netherlands\\u00a0and South Africa\\u00a0and one study was in each of France, Africa, Europe, and North America, Estonia, the USA and Mexico, Poland\\u00a0and China.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (30 STUDIES)\\n\\nAbundance (7 studies): Five of five studies (one replicated) and two reviews in Saudi Arabia, Australia,\\u00a0the USA, South Africa, France, the Netherlands\\u00a0and China\\u00a0found that following release of captive-bred (or in one case captive-reared, or including translocated) animals, populations of mountain gazelles, Corsican red deer, P\\u00e8re David's deer, Eurasian otters\\u00a0and swift foxes\\u00a0increased. The two reviews found that following release of mainly translocated but some captive-bred large carnivores, populations of four of six species increased, and over half of mammal release programmes\\u00a0were considered successful.\\nReproductive success (5 studies): Four studies (one replicated) in Saudi Arabia, the UK\\u00a0and the Netherlands\\u00a0found that released captive-bred (and in some cases some wild-born translocated) mountain gazelles, dormice\\u00a0and some Eurasian otters\\u00a0reproduced successfully and female Arabian oryx\\u00a0reproduced successfully regardless of prior breeding experience. A controlled study in Italy\\u00a0found that released captive-born Apennine chamois\\u00a0reproduced in similar numbers to wild-caught translocated chamois.\\nSurvival (24 studies): Four of three controlled studies (two replicated) and two reviews in Canada, Canada and the USA, Sweden, Italy\\u00a0and across the world\\u00a0found that released captive-bred swift foxes, European otters\\u00a0and mammals from a review of 49 studies\\u00a0had lower post-release survival rates than did wild-born translocated animals. The other study found that released captive-born Apennine chamois\\u00a0survived in similar numbers to wild-caught translocated chamois. Three studies (one replicated) in the USA\\u00a0and Canada\\u00a0found that released captive-born Key Largo woodrats, Vancouver Island marmots\\u00a0and swift fox pups\\u00a0had lower survival rates than wild-born, wild-living animals. One of the studies also found that Vancouver Island marmots\\u00a0released at two years old were more likely to survive than those released as yearlings. Eleven studies (three replicated) in Italy, Sweden, the UK, Estonia, Poland, Saudi Arabia, Australia\\u00a0and the USA\\u00a0found that following the release of captive-bred (and in some cases some wild-born translocated) animals, Arabian oryx, populations of European otters, European mink\\u00a0and mountain gazelle\\u00a0survived for 2-11 years, roe deer\\u00a0and over a third of brush-tailed rock-wallabies, black-footed ferrets\\u00a0and brown hares\\u00a0survived for 0.5-24 months and dormice\\u00a0populations survived three months to over seven years. A review in Australia\\u00a0found that release programmes for macropod species resulted in successful establishment of populations in 61% of cases and that 40% survived over five years, and another review in Australia\\u00a0found that over half of programmes were considered successful. Two studies and a review in the USA, USA and Mexico\\u00a0and South Africa\\u00a0found that over 40% of released captive-bred American black bears\\u00a0were killed or had to be removed, only one of 10 oribi\\u00a0survived over two years and that most black-footed ferret\\u00a0releases were unsuccessful at maintaining a population.\\n\\nBEHAVIOUR (3 STUDIES)\\n\\nUse (3 studies): Two studies in the USA\\u00a0and Australia\\u00a0found that following release, most captive-bred and translocated mountain lions\\u00a0that had been held in captivity prior to release and most released captive-bred brush-tailed rock-wallabies\\u00a0established stable home ranges. A controlled study in Italy\\u00a0found that released captive-born Apennine chamois remained closer to the release site than released wild-caught translocated chamois.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3914\"}",
+            "return_val": "{\n  \"action_id\": \"3914\",\n  \"action_title\": \"Release captive-bred individuals to the wild\",\n  \"key_messages\": \"Key Messages:\\n\\nThirteen studies evaluated the effects of releasing captive-bred butterflies and moths into the wild. Nine studies were in the UK\\u00a0and one was in each of the UK and Ireland, the UK and the Netherlands, the USA\\u00a0and Poland and Slovakia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (12 STUDIES)\\n\\nAbundance (10 studies): Six studies (including one before-and-after study) in the UK, the USA\\u00a0and Poland and Slovakia\\u00a0reported that captive-bred butterfly populations released as eggs, caterpillars, pupae\\u00a0and adults\\u00a0(sometimes into managed habitat\\u00a0or alongside translocated individuals) persisted for 2\\u201328 years and increased in abundance (sometimes with continued captive-rearing of wild-laid caterpillars\\u00a0or supplemented by further releases). Two studies (including one review) in the UK\\u00a0reported that captive-bred large copper\\u00a0and belted beauty moth\\u00a0populations released as caterpillars (sometimes into managed habitat) died out one, two\\u00a0or 12\\u00a0years after release, or required further releases to survive. One replicated study in the UK\\u00a0reported that three of 10 captive-bred barberry carpet moth populations released as caterpillars (and in one case as adults) established, and at least one persisted for five years. One review across the UK and Ireland\\u00a0found that 25% of captive-bred and translocated butterfly populations survived for &gt;3 years, but 38% died out in that time, and only 8% were known to have survived for &gt;10 years.\\nReproductive success (2 studies): One study in the UK\\u00a0reported that after the release of a captive-bred population of large copper, the number of eggs laid/female increased over the first three years. One before-and-after study in the UK reported captive-bred adult pearl-bordered fritillaries released into coppiced woodland successfully bred at least once.\\nSurvival (3 studies): Three studies (including two replicated, site comparison studies and one review) in the UK\\u00a0and the UK and the Netherlands\\u00a0found that released, captive-bred large copper caterpillars had a lower survival rate than captive, wild\\u00a0or translocated caterpillars.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"881\"}",
+            "return_val": "{\n  \"action_id\": \"881\",\n  \"action_title\": \"Head-start amphibians for release\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-two studies head-started amphibians from eggs and monitored them after release.\\nSix of 10 studies (including five replicated studies) in Denmark, Spain, the UK and USA and a global review found that released head-started tadpoles, metamorphs or juveniles established breeding frog populations or increased populations of frogs or toads. Two found mixed results with breeding populations established in 12 of 17 studies reviewed or at two of four sites. Two found that head-started metamorphs or adults did not prevent a frog population decline or establish a breeding toad population. For five of the studies, release of captive-bred individuals, translocation or habitat management were also carried out.\\nNine of 10 studies (including nine replicated studies) in Australia, Canada, Europe and the USA found that head-started amphibians released as tadpoles, metamorphs or adults metamorphosed successfully, tended to survive the first season, winter or year or bred successfully. One found adult survival was 1\\u201317% over four years and one found limited breeding following the release of adults.\\nFour replicated studies in Australia, the UK and USA found that frog survival to metamorphosis\\u00a0and size at metamorphosis was greater and time to metamorphosis shorter in head-started compared to wild animals. One replicated study in Canada found that young head-started leopard frogs were smaller than those in the wild. One replicated study in Australia found that corroboree frog tadpoles released earlier had higher survival, but metamorphosed two weeks later than those released a month later.\\nThree studies (including one replicated study) in the USA only provided results for head-starting in captivity. Two found that Houston toad eggs could be captive-reared to tadpoles, but only one successfully reared adults. Three studies (including two replicated studies) in Canada and the USA found that during head-starting, amphibian growth rate, size, stress levels and survival was affected by the amount of protein provided, housing density or enclosure location. One found that mass, stress levels and survival were not affected by the amount of food or habitat complexity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibians translocate release captive-bred establish populations success rates reintroductions amphibians\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2476\",\n    \"action_title\": \"Release captive-bred individuals to re-establish or boost populations in native range\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"881\",\n    \"action_title\": \"Head-start amphibians for release\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3914\",\n    \"action_title\": \"Release captive-bred individuals to the wild\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"release captive-bred amphibians success established populations reintroduction amphibians success rate\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"835\",\n    \"action_title\": \"Captive breeding frogs\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3772\",\n    \"action_title\": \"Release captive-bred reptiles into the wild: Crocodilians\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"871\",\n    \"action_title\": \"Release captive-bred amphibians\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2476\",\n    \"action_title\": \"Release captive-bred individuals to re-establish or boost populations in native range\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3768\",\n    \"action_title\": \"Release captive-bred reptiles into the wild: Sea turtles\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"881\",\n    \"action_title\": \"Head-start amphibians for release\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"618\",\n    \"action_title\": \"Release captive-bred individuals into the wild to restore or augment wild populations of wildfowl\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3770\",\n    \"action_title\": \"Release captive-bred reptiles into the wild: Tortoises, terrapins, side-necked & softshell turtles\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2507\",\n    \"action_title\": \"Captive rear in large enclosures prior to release\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"883\",\n    \"action_title\": \"Use hormone treatment to induce sperm and egg release during captive breeding\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"871\"}",
+            "return_val": "{\n  \"action_id\": \"871\",\n  \"action_title\": \"Release captive-bred amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nOne review found that 41% of release programmes of captive-bred or head-started amphibians showed evidence of breeding in the wild for multiple generations, 29% showed some evidence of breeding and 12% evidence of survival following release.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"translocate amphibians success establish populations reintroduction amphibians translocation review success rate\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"854\",\n    \"action_title\": \"Translocate amphibians\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2397\",\n    \"action_title\": \"Translocate to re-establish or boost populations in native range\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"580\",\n    \"action_title\": \"Translocate songbirds\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2930\",\n    \"action_title\": \"Translocate marine and freshwater mammals to re-establish or boost native populations\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"574\",\n    \"action_title\": \"Translocate raptors\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3731\",\n    \"action_title\": \"Translocate reptiles away from threats: Snakes and lizards\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"881\",\n    \"action_title\": \"Head-start amphibians for release\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2476\",\n    \"action_title\": \"Release captive-bred individuals to re-establish or boost populations in native range\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"758\",\n    \"action_title\": \"Remove tree canopy to reduce pond shading\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"839\",\n    \"action_title\": \"Remove or control mammals\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "854",
+      "855",
+      "856",
+      "858",
+      "859",
+      "860",
+      "861",
+      "870",
+      "871",
+      "872",
+      "873",
+      "874",
+      "875"
+    ],
+    "regenerated_ids": [
+      "854",
+      "855",
+      "856",
+      "858",
+      "859",
+      "860",
+      "861",
+      "870",
+      "871",
+      "872",
+      "873",
+      "874",
+      "875"
+    ]
+  },
+  {
+    "query": "As an alternative to direct antifungal treatment of amphibians, what environmental management actions can reduce the threat of chytridiomycosis?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"chytridiomycosis amphibians environmental management actions reduce threat alternative to direct antifungal treatment\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"764\",\n    \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"767\",\n    \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"environmental management actions reduce chytridiomycosis threat habitat management waterbody salinity temperature pond drying refugia fish removal amphibians chytrid\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"762\",\n    \"action_title\": \"Add salt to ponds to reduce chytridiomycosis\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"766\",\n    \"action_title\": \"Remove the chytrid fungus from ponds\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"770\",\n    \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1065\",\n    \"action_title\": \"Ponto-Caspian gobies:  Draining invaded waterbodies\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1078\",\n    \"action_title\": \"Brown and black bullheads: Draining invaded waterbodies\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"767\",\n    \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"799\",\n    \"action_title\": \"Prevent heavy usage or exclude wildfowl from aquatic habitat\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"764\",\n    \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"765\",\n    \"action_title\": \"Immunize amphibians against chytridiomycosis infection\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"826\",\n    \"action_title\": \"Remove or control fish by drying out ponds\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"chytrid habitat management environmental manipulation shading flow pond drying refugia chytridiomycosis management\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"766\",\n    \"action_title\": \"Remove the chytrid fungus from ponds\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"762\",\n    \"action_title\": \"Add salt to ponds to reduce chytridiomycosis\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1147\",\n    \"action_title\": \"Water primrose: Environmental control (e.g shading, altered flow, altered rooting depth, or dredging)\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"767\",\n    \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"770\",\n    \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"764\",\n    \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"765\",\n    \"action_title\": \"Immunize amphibians against chytridiomycosis infection\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"799\",\n    \"action_title\": \"Prevent heavy usage or exclude wildfowl from aquatic habitat\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3754\",\n    \"action_title\": \"Create or restore waterways\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"833\",\n    \"action_title\": \"Regulate water levels\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"762\"}",
+            "return_val": "{\n  \"action_id\": \"762\",\n  \"action_title\": \"Add salt to ponds to reduce chytridiomycosis\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study in Australia found that following addition of salt to a pond containing the chytrid fungus, a population of green and golden bell frogs remained free of chytridiomycosis for at least six months.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"766\"}",
+            "return_val": "{\n  \"action_id\": \"766\",\n  \"action_title\": \"Remove the chytrid fungus from ponds\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Mallorca found that pond drying and fungicidal treatment of resident midwife toads reduced levels of infection but did not eradicate chytridiomycosis.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"770\"}",
+            "return_val": "{\n  \"action_id\": \"770\",\n  \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of five studies (including four replicated, controlled studies) in Australia, Switzerland and the USA\\u00a0found that increasing enclosure or water temperature to 30\\u201337\\u00b0C for over 16 hours cured frogs and toads of chytridiomycosis. One found that heat treatment at 30\\u201335\\u00b0C for 36 hours did not cure northern leopard frogs.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibians chytridiomycosis environmental management exclude wildfowl reduce disturbance chytrid spread habitat management ponds\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"799\",\n    \"action_title\": \"Prevent heavy usage or exclude wildfowl from aquatic habitat\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"762\",\n    \"action_title\": \"Add salt to ponds to reduce chytridiomycosis\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"770\",\n    \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"766\",\n    \"action_title\": \"Remove the chytrid fungus from ponds\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"764\",\n    \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"765\",\n    \"action_title\": \"Immunize amphibians against chytridiomycosis infection\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"746\",\n    \"action_title\": \"Exclude domestic animals or wild hogs by fencing\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"769\",\n    \"action_title\": \"Use gloves to handle amphibians\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"768\",\n    \"action_title\": \"Sterilize equipment when moving between amphibian sites\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"799\"}",
+            "return_val": "{\n  \"action_id\": \"799\",\n  \"action_title\": \"Prevent heavy usage or exclude wildfowl from aquatic habitat\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of preventing heavy usage or excluding wildfowl from aquatic habitat on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"768\"}",
+            "return_val": "{\n  \"action_id\": \"768\",\n  \"action_title\": \"Sterilize equipment when moving between amphibian sites\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of sterilizing equipment when moving between amphibian sites on the spread of disease between amphibian populations or individuals.\\nTwo randomized, replicated, controlled study in Switzerland and Sweden found that Virkon S disinfectant did not affect survival, mass or behaviour of common frog or common toad tadpoles or moor frog embryos or hatchlings. One of the studies found that bleach significantly reduced survival of common frog and common toad tadpoles.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"chytridiomycosis biosecurity environmental management sterilize equipment hygiene handling gloves quarantine habitat manipulation ponds drying salt exclude wildfowl\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"762\",\n    \"action_title\": \"Add salt to ponds to reduce chytridiomycosis\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"766\",\n    \"action_title\": \"Remove the chytrid fungus from ponds\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"801\",\n    \"action_title\": \"Sterilize equipment to prevent ranavirus\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"769\",\n    \"action_title\": \"Use gloves to handle amphibians\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"768\",\n    \"action_title\": \"Sterilize equipment when moving between amphibian sites\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"770\",\n    \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"799\",\n    \"action_title\": \"Prevent heavy usage or exclude wildfowl from aquatic habitat\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1540\",\n    \"action_title\": \"Implement quarantine for people arriving at, and leaving the site\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1548\",\n    \"action_title\": \"Wear gloves when handling primate food, tool items, etc.\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1537\",\n    \"action_title\": \"Wear face-masks to avoid transmission of viral and bacterial diseases to primates\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"769\"}",
+            "return_val": "{\n  \"action_id\": \"769\",\n  \"action_title\": \"Use gloves to handle amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of using gloves on the spread of disease between amphibian populations or individuals. \\nA review for Canada and the USA found that there were no adverse effects of handling 22 amphibian species using disposable gloves. However, three replicated studies (including one controlled study) in Australia and Austria\\u00a0found that deaths of tadpoles were caused by latex gloves for all four species tested, by vinyl gloves for three of five species and by nitrile gloves for the one species tested.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"833\"}",
+            "return_val": "{\n  \"action_id\": \"833\",\n  \"action_title\": \"Regulate water levels\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, site comparison study) in the UK found that habitat management that included maintaining pond water levels increased natterjack toad populations or maintained newt populations. One replicated, controlled study in Brazil found that keeping rice fields flooded after harvest changed amphibian species composition, but not numbers of species or abundance.\\nOne replicated, controlled study in the USA found that draining ponds, particularly in the summer, significantly increased abundance and numbers of amphibian species.\\nOne before-and-after study in the USA\\u00a0found that maintaining pond water levels enabled successful breeding by dusky gopher frogs.\"\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "762",
+      "764",
+      "766",
+      "768",
+      "800"
+    ],
+    "regenerated_ids": [
+      "762",
+      "764",
+      "766",
+      "800"
+    ]
+  },
+  {
+    "query": "When managing understory vegetation in US forests, how does the effectiveness of herbicide use compare to mechanical removal for amphibian populations?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "In the USA, three studies (including two randomized, replicated, controlled studies) found that removing understory vegetation with herbicides had no effect or some negative effects on amphibian abundance [778]. In contrast, one randomized, replicated, controlled study in the USA found that mechanical understory reduction increased the number of amphibian species but did not change overall abundance [781].",
+    "summary_action_ids": [
+      "778",
+      "781"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"herbicide use vs mechanical removal understory vegetation amphibian populations US forests\",\"k\":3,\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"778\",\n    \"action_title\": \"Use herbicides to control mid-storey or ground vegetation\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"781\",\n    \"action_title\": \"Mechanically remove mid-storey or ground vegetation\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"778\"}",
+            "return_val": "{\n  \"action_id\": \"778\",\n  \"action_title\": \"Use herbicides to control mid-storey or ground vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including two randomized, replicated, controlled studies) in the USA found that understory removal using herbicide had no effect or some negative effects on amphibian abundance.\\nOne replicated, site comparison study in Canada\\u00a0found that following logging American toad abundance was similar and wood frogs lower in stands with herbicide treatment and planting compared to stands left to regenerate naturally.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"781\"}",
+            "return_val": "{\n  \"action_id\": \"781\",\n  \"action_title\": \"Mechanically remove mid-storey or ground vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled study in the USA found that numbers of amphibian species, but not abundance, were significantly higher in plots with mechanical understory reduction compared to those without.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"When managing understory vegetation in US forests, how does the effectiveness of herbicide use compare to mechanical removal for amphibian populations?\",\"summary\":\"In the USA, three studies (including two randomized, replicated, controlled studies) found that removing understory vegetation with herbicides had no effect or some negative effects on amphibian abundance [778]. In contrast, one randomized, replicated, controlled study in the USA found that mechanical understory reduction increased the number of amphibian species but did not change overall abundance [781].\",\"action_ids\":[\"778\",\"781\"]}",
+            "return_val": "{\n  \"query\": \"When managing understory vegetation in US forests, how does the effectiveness of herbicide use compare to mechanical removal for amphibian populations?\",\n  \"relevant_summary\": \"In the USA, three studies (including two randomized, replicated, controlled studies) found that removing understory vegetation with herbicides had no effect or some negative effects on amphibian abundance [778]. In contrast, one randomized, replicated, controlled study in the USA found that mechanical understory reduction increased the number of amphibian species but did not change overall abundance [781].\",\n  \"action_ids\": [\n    \"778\",\n    \"781\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "778",
+      "781"
+    ],
+    "regenerated_ids": [
+      "778",
+      "781"
+    ]
   }
 ]
