@@ -160,24 +160,60 @@ def write_distribution_file(id_dist, filepath):
             file.write(synopsis + "," + ids + "\n")
 
 
-def get_total_summary_gen_qus(usage_stage="used"):
-    num_qus = 0
+def get_summary_gen_qus_usage(model, provider):
+    num_qus_used = 0
+    num_qus_unused = 0
     dirs = [
-        f"live_questions/bg_km_qus/answerable/passed/{usage_stage}",
-        f"live_questions/bg_km_qus/answerable/failed/{usage_stage}",
-        f"live_questions/bg_km_qus/unanswerable/passed/{usage_stage}",
-        f"live_questions/bg_km_qus/unanswerable/failed/{usage_stage}",
+        f"live_questions/bg_km_qus/answerable/passed/usage_annotated",
+        # f"live_questions/bg_km_qus/answerable/failed/usage_annotated",
+        # f"live_questions/bg_km_qus/unanswerable/passed/usage_annotated",
+        # f"live_questions/bg_km_qus/unanswerable/failed/usage_annotated",
     ]
     for dir in dirs:
         for filename in os.listdir(dir):
             filepath = os.path.join(dir, filename)
             with open(filepath, 'r', encoding="utf-8") as f:
                 qus = json.load(f)
-            num_qus += len(qus)
-    return num_qus
+            for qu in qus:
+                if [model, provider] in qu.get("used_by_models", []):
+                    num_qus_used += 1
+                else:
+                    num_qus_unused += 1
+    return {
+        "used": num_qus_used,
+        "unused": num_qus_unused
+    }
 
-def get_viable_summaries(model_provider):
-    summaries_dir = "summary_gen_data/answer_"
+
+def get_viable_summaries_split_for_model(model_provider):
+    num_viable = 0
+    num_non_viable = 0
+    print(model_provider)
+    summaries_dir = os.path.join("summary_gen_data/answerable_passed_qus_summaries/hybrid_cross-encoder", model_provider)
+    print(summaries_dir)
+    for summaries_file in sorted(os.listdir(summaries_dir)):
+        if summaries_file.endswith(".json"):
+            summaries_filepath = os.path.join(summaries_dir, summaries_file)
+            with open(summaries_filepath, 'r', encoding="utf-8") as f:
+                summaries = json.load(f)
+            for summary in summaries:
+                if summary["relevant_summary"] is None:
+                    num_non_viable += 1
+                else:
+                    num_viable += 1
+    
+    return {
+        "num_viable": num_viable,
+        "num_non_viable": num_non_viable
+    }
+
+
+def print_viable_summaries_split(joined_model_provider_list):
+    for model_provider in joined_model_provider_list:
+        viable_summaries_split = get_viable_summaries_split_for_model(model_provider=model_provider)
+        print(f"{model_provider}: {viable_summaries_split}")
+    
+
 
 
 
@@ -210,9 +246,27 @@ def main():
 
     # total = get_total_num_qus(qus_dir=qus_dir)
     # print(total)
+    model_provider_list = [
+        ("openai/gpt-5", None),
+        ("anthropic/claude-sonnet-4", None),
+        ("google/gemini-2.5-pro", None),
+        ("moonshotai/kimi-k2-0905", "fireworks/fp8")
+    ]
 
-    used_qus = get_total_summary_gen_qus(usage_stage="unused")
-    print(used_qus)
+    cleaned_mp_list = [
+        "_gpt-5",
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "fireworks_kimi-k2-0905"
+    ]
+
+    for model, provider in model_provider_list:
+        usage = get_summary_gen_qus_usage(model, provider)
+        print(f"Model: {model}, Provider: {provider}, Usage: {usage}")
+
+    for mp in cleaned_mp_list:
+        viable_summaries_split = get_viable_summaries_split_for_model(model_provider=mp)
+        print(f"{mp}: {viable_summaries_split}")
 
 
 if __name__=="__main__":
