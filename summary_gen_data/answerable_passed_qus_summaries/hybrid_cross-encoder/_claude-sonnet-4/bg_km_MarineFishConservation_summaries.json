@@ -208,5 +208,120 @@
       "2681",
       "2682"
     ]
+  },
+  {
+    "query": "Besides changing hook type in longline fisheries, what other gear modifications can reduce unwanted catches of sharks and rays?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Several gear modifications for longline fisheries can reduce unwanted catches of sharks and rays besides changing hook type. Modifying longline configuration by increasing the lead weight on mid-water longlines to increase the sinking rate reduced catches of unwanted sharks and/or rays compared to standard longlines (Action 2699). Using nylon instead of wire hook attachments also reduced unwanted shark and/or ray catches, although one study found that survival of unwanted sharks caught on tuna longlines was reduced with nylon hook lines compared to wire (Action 2699). Attaching electropositive deterrent materials to longlines caught fewer unwanted sharks and rays compared to standard fishing gear or gears with non-deterrent materials, though results were mixed across studies with some finding similar catches compared to gear with no deterrents (Action 2696). Using different bait types showed mixed results, with two systematic global reviews finding that using different bait types did not affect the number of unwanted sharks and rays caught (Action 2700). Using artificial light on fishing gear was examined in only one study on shrimp trawl nets, which found fewer unwanted fish catches when lights were fitted to the fishing line compared to conventional trawl, though this was not specifically tested on longlines for sharks and rays (Action 2695).",
+    "summary_action_ids": [
+      "2699",
+      "2696",
+      "2700",
+      "2695"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"longline fishing gear modifications shark ray bycatch reduction\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2699\",\n    \"action_title\": \"Modify longline configuration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2696\",\n    \"action_title\": \"Attach an electropositive deterrent to fishing gear\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2698\",\n    \"action_title\": \"Use a different hook type\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fishing gear modification bycatch reduction sharks rays\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"2699\",\n    \"action_title\": \"Modify longline configuration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2726\",\n    \"action_title\": \"Fit a size-sorting escape grid (rigid or flexible) and large, supported escape openings to trawl nets\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2696\",\n    \"action_title\": \"Attach an electropositive deterrent to fishing gear\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2700\",\n    \"action_title\": \"Use a different bait type\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2698\",\n    \"action_title\": \"Use a different hook type\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"electropositive deterrent fishing gear longline bait modifications\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"2696\",\n    \"action_title\": \"Attach an electropositive deterrent to fishing gear\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2695\",\n    \"action_title\": \"Use artificial light on fishing gear\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2699\",\n    \"action_title\": \"Modify longline configuration\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2700\",\n    \"action_title\": \"Use a different bait type\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2815\",\n    \"action_title\": \"Use acoustic devices on fishing vessels\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2699\"}",
+            "return_val": "{\n  \"action_id\": \"2699\",\n  \"action_title\": \"Modify longline configuration\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies examined the effects of modifying longline configuration on marine fish populations. One study was in each of the Norwegian Sea\\u00a0(Norway) and Atlantic Ocean\\u00a0(Brazil). Two were global reviews.\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): One global review\\u00a0found that survival of unwanted sharks and rays at retrieval of longline gear was higher on nylon hook attachment lines instead of wire for two of three species and lower for one. One replicated, controlled study in the Atlantic Ocean\\u00a0found that survival of unwanted sharks caught on tuna longlines was reduced with nylon hook lines compared to wire.\\n\\nBEHAVIOUR RESPONSE (0 STUDIES)\\nOTHER (4 STUDIES)\\n\\nReduction of unwanted catch (4 studies): One\\u00a0of two replicated, controlled studies in the Norwegian Sea\\u00a0and Atlantic Ocean\\u00a0and one of two reviews of worldwide longline fisheries\\u00a0found that modifying longline configuration (increasing the lead weight on mid-water longlines to increase the sinking rate\\u00a0or using nylon instead of wire hook attachments) reduced the catches of unwanted sharks and/or rays compared to standard longlines. One\\u00a0review\\u00a0found that longline modifications reduced unwanted shark/ray catches in one of two cases. The other\\u00a0study found that modified longlines did not reduce catches of undersized haddock compared to standard longlines.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2696\"}",
+            "return_val": "{\n  \"action_id\": \"2696\",\n  \"action_title\": \"Attach an electropositive deterrent to fishing gear\",\n  \"key_messages\": \"Key Messages:\\n\\nNine studies examined the effect of attaching an electropositive deterrent to fishing gear on marine fish populations. Three studies were in the Atlantic Ocean\\u00a0(USA, Canada, Bahamas). One study was in each of the Gulf of Alaska\\u00a0(USA), the South Pacific Ocean\\u00a0(Australia) and the Tasman Sea\\u00a0(Australia). One study was a global systematic review\\u00a0and two studies were in laboratory facilities\\u00a0(USA).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (4 STUDIES)\\n\\nBehaviour change (4 studies): Three of four replicated studies (one paired and controlled, one randomized and controlled, one randomized, and one controlled) in the Atlantic Ocean, Tasman Sea, and in laboratory conditions, found that the presence of potentially deterrent materials attached near the bait reduced the frequency of feeding attempts and bait consumption of spiny dogfish, great hammerhead\\u00a0and draughtboard sharks\\u00a0compared to the absence of deterrent materials. The other study\\u00a0found that a potentially deterrent material did not reduce bait consumption by bonnethead and young lemon sharks compared to non-deterrents. One of the studies\\u00a0also found that the bait consumption behaviour of commercially valuable Pacific halibut was unaffected by deterrent materials.\\n\\nOTHER (5 STUDIES)\\n\\nReduction of unwanted catch (5 studies): Two of four replicated, controlled studies (one randomized) in the Gulf of Alaska, the Pacific Ocean\\u00a0and the Atlantic Ocean\\u00a0found that fishing gear (longlines and traps) fitted with electropositive deterrent materials caught fewer unwanted spiny dogfish, longnose skate, sharks and rays, and fewer undersized halibut, compared to standard fishing gear or gears with non-deterrent materials. The other two studies, and a global systematic review\\u00a0found that electropositive deterrents on fishing gear resulted in similar catches of unwanted spiny dogfish, sharks\\u00a0(total catch), blue shark\\u00a0and sharks and rays\\u00a0(total catch), compared to gear with no deterrents.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2700\"}",
+            "return_val": "{\n  \"action_id\": \"2700\",\n  \"action_title\": \"Use a different bait type\",\n  \"key_messages\": \"Key Messages:\\n\\nEleven studies examined the effects of using different bait on marine fish populations. Two studies were global systematic reviews. Three studies were in the North Atlantic Ocean\\u00a0(USA, Iceland).Two studies were in the South Pacific Ocean\\u00a0(New Zealand). One study was in each of the Norwegian/Barents Seas\\u00a0(Norway), the Barents Sea\\u00a0(Norway), the Denmark Strait\\u00a0(Greenland) and the Mediterranean Sea.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): One replicated study in the South Pacific Ocean\\u00a0and one global systematic review\\u00a0found that using different bait species did not reduce hooking injuries (associated with higher post-release mortality) of undersized snapper\\u00a0or sharks and rays, and did not increase survival of sharks and rays on gear retrieval.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (10 STUDIES)\\n\\nReduction of unwanted catch (10 studies): Six of eight replicated studies (three controlled and one randomized) in the Norwegian/Barents Seas, Barents Sea, Denmark Strait, North Atlantic Ocean, Mediterranean Sea\\u00a0and the South Pacific Ocean, found that using a different bait type (including size, species and manufacture method) reduced the unwanted catches of undersized haddock\\u00a0(although in one case in only two of six comparisons), Atlantic cod\\u00a0and other unwanted or non-target fish catch, but unwanted catches of torsk and ling were similar, compared to standard or other bait types. Two other studies\\u00a0found no reduction in unwanted catches of pelagic stingray\\u00a0and overall unwanted fish\\u00a0with different bait types. Two systematic global reviews\\u00a0found that using different bait types did not affect the number of unwanted sharks and rays caught.\\nImproved size-selectivity of fishing gear (1 study): One replicated study in the Denmark Strait\\u00a0found that using a different bait species increased the size-selectivity of commercially targeted Greenland halibut.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2695\"}",
+            "return_val": "{\n  \"action_id\": \"2695\",\n  \"action_title\": \"Use artificial light on fishing gear\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of using artificial light on fishing gear on marine fish populations. One study was in the Pacific Ocean\\u00a0(USA) and one in the Barents Sea\\u00a0(Norway).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nReduction of unwanted catch (1 study): One replicated, paired, controlled study in the Pacific Ocean\\u00a0found that shrimp trawl nets with artificial lights caught fewer unwanted fish when they were fitted to the fishing line, but not to a size-sorting grid, compared to a conventional trawl.\\nImproved size-selectivity of fishing gear (1 study): One replicated, controlled study in the Barents Sea found that size-selectivity of long rough dab, Atlantic cod, haddock and redfish was not improved by the presence of LED lights on a size-sorting grid.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2815\"}",
+            "return_val": "{\n  \"action_id\": \"2815\",\n  \"action_title\": \"Use acoustic devices on fishing vessels\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects on marine mammals of using acoustic devices on vessels. One study was in each of the Shannon Estuary (Ireland), the Rainbow Channel\\u00a0(Australia), Keppel Bay\\u00a0(Australia), the North Atlantic Ocean\\u00a0(Azores) and the Indian Ocean\\u00a0(Crozet Islands).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (4 STUDIES)\\n\\nBehaviour change (4 studies): One controlled study in the Shannon Estuary\\u00a0found that common bottlenose dolphins avoided a boat more frequently when acoustic devices of two types were deployed alongside it. One controlled study in the Indian Ocean\\u00a0found that killer whales were recorded further from a fishing vessel when an acoustic device was used during hauls, but distances decreased after the first exposure to the device. Two before-and-after studies in the Rainbow Channel\\u00a0and Keppel Bay\\u00a0found that an acoustic device deployed alongside a vessel reduced surfacing and echolocation rates\\u00a0and time spent foraging\\u00a0or socializing\\u00a0of Indo-Pacific humpback dolphins\\u00a0and Australian snubfin dolphins\\u00a0but there was no effect on 8\\u201310 other types of behaviour (e.g. vocalizing, diving, travelling etc.).\\n\\nOTHER (1 STUDY)\\n\\nHuman-wildlife conflict (1 study): One randomized, controlled study in the North Atlantic Ocean\\u00a0found that using acoustic devices of two types did not reduce predation of squid catches by Risso\\u2019s dolphins.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"longline wire attachment sinking rate lead weight fishing gear\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"2699\",\n    \"action_title\": \"Modify longline configuration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"296\",\n    \"action_title\": \"Weight baits or lines to reduce longline bycatch of seabirds\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"290\",\n    \"action_title\": \"Use a line shooter to reduce seabird bycatch\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2684\",\n    \"action_title\": \"Deploy fishing gear at selected times (day/night) to avoid unwanted species\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"285\",\n    \"action_title\": \"Use streamer lines to reduce seabird bycatch on longlines\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fishing gear technology bycatch reduction gear configuration\", \"k\": 5, \"offset\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"2712\",\n    \"action_title\": \"Use a topless (coverless) trawl\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2110\",\n    \"action_title\": \"Limit the number of traps per fishing vessels\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2721\",\n    \"action_title\": \"Fit a size-sorting escape grid (rigid or flexible) to a prawn/shrimp trawl net\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2692\",\n    \"action_title\": \"Establish handling and release protocols in non-recreational fisheries\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2677\",\n    \"action_title\": \"Establish territorial fishing use rights\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"Besides changing hook type in longline fisheries, what other gear modifications can reduce unwanted catches of sharks and rays?\", \"summary\": \"Several gear modifications for longline fisheries can reduce unwanted catches of sharks and rays besides changing hook type. Modifying longline configuration by increasing the lead weight on mid-water longlines to increase the sinking rate reduced catches of unwanted sharks and/or rays compared to standard longlines (Action 2699). Using nylon instead of wire hook attachments also reduced unwanted shark and/or ray catches, although one study found that survival of unwanted sharks caught on tuna longlines was reduced with nylon hook lines compared to wire (Action 2699). Attaching electropositive deterrent materials to longlines caught fewer unwanted sharks and rays compared to standard fishing gear or gears with non-deterrent materials, though results were mixed across studies with some finding similar catches compared to gear with no deterrents (Action 2696). Using different bait types showed mixed results, with two systematic global reviews finding that using different bait types did not affect the number of unwanted sharks and rays caught (Action 2700). Using artificial light on fishing gear was examined in only one study on shrimp trawl nets, which found fewer unwanted fish catches when lights were fitted to the fishing line compared to conventional trawl, though this was not specifically tested on longlines for sharks and rays (Action 2695).\", \"action_ids\": [\"2699\",\"2696\",\"2700\",\"2695\"]}",
+            "return_val": "{\n  \"query\": \"Besides changing hook type in longline fisheries, what other gear modifications can reduce unwanted catches of sharks and rays?\",\n  \"relevant_summary\": \"Several gear modifications for longline fisheries can reduce unwanted catches of sharks and rays besides changing hook type. Modifying longline configuration by increasing the lead weight on mid-water longlines to increase the sinking rate reduced catches of unwanted sharks and/or rays compared to standard longlines (Action 2699). Using nylon instead of wire hook attachments also reduced unwanted shark and/or ray catches, although one study found that survival of unwanted sharks caught on tuna longlines was reduced with nylon hook lines compared to wire (Action 2699). Attaching electropositive deterrent materials to longlines caught fewer unwanted sharks and rays compared to standard fishing gear or gears with non-deterrent materials, though results were mixed across studies with some finding similar catches compared to gear with no deterrents (Action 2696). Using different bait types showed mixed results, with two systematic global reviews finding that using different bait types did not affect the number of unwanted sharks and rays caught (Action 2700). Using artificial light on fishing gear was examined in only one study on shrimp trawl nets, which found fewer unwanted fish catches when lights were fitted to the fishing line compared to conventional trawl, though this was not specifically tested on longlines for sharks and rays (Action 2695).\",\n  \"action_ids\": [\n    \"2699\",\n    \"2696\",\n    \"2700\",\n    \"2695\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2696",
+      "2698",
+      "2699",
+      "2700"
+    ],
+    "regenerated_ids": [
+      "2696",
+      "2699",
+      "2700"
+    ]
   }
 ]

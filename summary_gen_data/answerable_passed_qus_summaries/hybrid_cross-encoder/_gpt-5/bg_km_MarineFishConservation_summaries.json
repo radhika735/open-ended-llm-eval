@@ -144,5 +144,72 @@
       "2681",
       "2682"
     ]
+  },
+  {
+    "query": "Besides changing hook type in longline fisheries, what other gear modifications can reduce unwanted catches of sharks and rays?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Modifying longline configuration reduced unwanted shark and/or ray catches in some cases: increasing the lead weight on mid-water longlines to increase sinking rate reduced unwanted shark/ray catches in one study, and using nylon instead of wire for hook attachment lines reduced unwanted shark/ray catches in one study and one review, though another review reported reductions in only one of two cases [2699].",
+    "summary_action_ids": [
+      "2699"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"longline fisheries gear modifications reduce bycatch sharks rays other than changing hook type\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2699\",\n    \"action_title\": \"Modify longline configuration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2698\",\n    \"action_title\": \"Use a different hook type\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2700\",\n    \"action_title\": \"Use a different bait type\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"longline fisheries sharks rays bycatch gear modifications reduce unwanted catches gear configuration branchline leader weights circle hooks bait soak depth deterrents\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2679\",\n    \"action_title\": \"Allow periodic fishing only\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2918\",\n    \"action_title\": \"Cease or prohibit activities that cause disturbance during sensitive periods for marine and freshwater mammals\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2928\",\n    \"action_title\": \"Place orphaned or abandoned marine and freshwater mammal young with foster parents\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2699\"}",
+            "return_val": "{\n  \"action_id\": \"2699\",\n  \"action_title\": \"Modify longline configuration\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies examined the effects of modifying longline configuration on marine fish populations. One study was in each of the Norwegian Sea\\u00a0(Norway) and Atlantic Ocean\\u00a0(Brazil). Two were global reviews.\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): One global review\\u00a0found that survival of unwanted sharks and rays at retrieval of longline gear was higher on nylon hook attachment lines instead of wire for two of three species and lower for one. One replicated, controlled study in the Atlantic Ocean\\u00a0found that survival of unwanted sharks caught on tuna longlines was reduced with nylon hook lines compared to wire.\\n\\nBEHAVIOUR RESPONSE (0 STUDIES)\\nOTHER (4 STUDIES)\\n\\nReduction of unwanted catch (4 studies): One\\u00a0of two replicated, controlled studies in the Norwegian Sea\\u00a0and Atlantic Ocean\\u00a0and one of two reviews of worldwide longline fisheries\\u00a0found that modifying longline configuration (increasing the lead weight on mid-water longlines to increase the sinking rate\\u00a0or using nylon instead of wire hook attachments) reduced the catches of unwanted sharks and/or rays compared to standard longlines. One\\u00a0review\\u00a0found that longline modifications reduced unwanted shark/ray catches in one of two cases. The other\\u00a0study found that modified longlines did not reduce catches of undersized haddock compared to standard longlines.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2700\"}",
+            "return_val": "{\n  \"action_id\": \"2700\",\n  \"action_title\": \"Use a different bait type\",\n  \"key_messages\": \"Key Messages:\\n\\nEleven studies examined the effects of using different bait on marine fish populations. Two studies were global systematic reviews. Three studies were in the North Atlantic Ocean\\u00a0(USA, Iceland).Two studies were in the South Pacific Ocean\\u00a0(New Zealand). One study was in each of the Norwegian/Barents Seas\\u00a0(Norway), the Barents Sea\\u00a0(Norway), the Denmark Strait\\u00a0(Greenland) and the Mediterranean Sea.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): One replicated study in the South Pacific Ocean\\u00a0and one global systematic review\\u00a0found that using different bait species did not reduce hooking injuries (associated with higher post-release mortality) of undersized snapper\\u00a0or sharks and rays, and did not increase survival of sharks and rays on gear retrieval.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (10 STUDIES)\\n\\nReduction of unwanted catch (10 studies): Six of eight replicated studies (three controlled and one randomized) in the Norwegian/Barents Seas, Barents Sea, Denmark Strait, North Atlantic Ocean, Mediterranean Sea\\u00a0and the South Pacific Ocean, found that using a different bait type (including size, species and manufacture method) reduced the unwanted catches of undersized haddock\\u00a0(although in one case in only two of six comparisons), Atlantic cod\\u00a0and other unwanted or non-target fish catch, but unwanted catches of torsk and ling were similar, compared to standard or other bait types. Two other studies\\u00a0found no reduction in unwanted catches of pelagic stingray\\u00a0and overall unwanted fish\\u00a0with different bait types. Two systematic global reviews\\u00a0found that using different bait types did not affect the number of unwanted sharks and rays caught.\\nImproved size-selectivity of fishing gear (1 study): One replicated study in the Denmark Strait\\u00a0found that using a different bait species increased the size-selectivity of commercially targeted Greenland halibut.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"Besides changing hook type in longline fisheries, what other gear modifications can reduce unwanted catches of sharks and rays?\",\"summary\":\"Modifying longline configuration reduced unwanted shark and/or ray catches in some cases: increasing the lead weight on mid-water longlines to increase sinking rate reduced unwanted shark/ray catches in one study, and using nylon instead of wire for hook attachment lines reduced unwanted shark/ray catches in one study and one review, though another review reported reductions in only one of two cases [2699].\",\"action_ids\":[\"2699\"]}",
+            "return_val": "{\n  \"query\": \"Besides changing hook type in longline fisheries, what other gear modifications can reduce unwanted catches of sharks and rays?\",\n  \"relevant_summary\": \"Modifying longline configuration reduced unwanted shark and/or ray catches in some cases: increasing the lead weight on mid-water longlines to increase sinking rate reduced unwanted shark/ray catches in one study, and using nylon instead of wire for hook attachment lines reduced unwanted shark/ray catches in one study and one review, though another review reported reductions in only one of two cases [2699].\",\n  \"action_ids\": [\n    \"2699\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2696",
+      "2698",
+      "2699",
+      "2700"
+    ],
+    "regenerated_ids": [
+      "2696",
+      "2699",
+      "2700"
+    ]
   }
 ]

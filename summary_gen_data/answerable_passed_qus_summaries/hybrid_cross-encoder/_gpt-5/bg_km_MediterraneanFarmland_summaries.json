@@ -225,5 +225,109 @@
       "1357",
       "1394"
     ]
+  },
+  {
+    "query": "What are the most beneficial actions for reducing soil erosion in Mediterranean orchards?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Planting or maintaining ground cover in orchards or vineyards reduced soil erosion in six replicated, randomized, controlled studies, including studies from Italy and Spain, while one study from France found similar erosion with or without ground cover; an Italian study reported the least erosion under permanent cover crops and the most under temporary cover crops, and multiple studies from Chile and Spain found greater water-stable soil aggregates with seeded cover crops compared to tilled or bare soils (1367). Additional studies from France and the USA showed reduced erosion under cover crops, with one controlled study finding the highest soil stability under a grass cover and a randomized replicated study reporting reduced soil loss with cover crops (897).",
+    "summary_action_ids": [
+      "1367",
+      "897"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"soil erosion Mediterranean orchards actions beneficial reduce\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1371\",\n    \"action_title\": \"Soil: Use reduced tillage in arable fields\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1367\",\n    \"action_title\": \"Soil: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1375\",\n    \"action_title\": \"Soil: Exclude grazers\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Mediterranean orchards soil erosion ground cover mulching terraces contour orchard vineyards Mediterranean\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1367\",\n    \"action_title\": \"Soil: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1413\",\n    \"action_title\": \"Other biodiversity: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1404\",\n    \"action_title\": \"Pollination: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"soil erosion orchards Mediterranean mulching terracing contour grass strips cover crops pruning residue orchards\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"897\",\n    \"action_title\": \"Grow cover crops beneath the main crop (living mulches) or between crop rows\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"903\",\n    \"action_title\": \"Use alley cropping\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1367\",\n    \"action_title\": \"Soil: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"soil erosion orchards Mediterranean mulching terracing contour grass strips cover crops pruning residue orchards\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1248\",\n    \"action_title\": \"Use fertilizer\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"171\",\n    \"action_title\": \"Increase the proportion of natural/semi-natural vegetation in the farmed landscape\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1367\"}",
+            "return_val": "{\n  \"action_id\": \"1367\",\n  \"action_title\": \"Soil: Plant or maintain ground cover in orchards or vineyards\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (12 studies): Ten studies (eight replicated, randomized, and controlled, and two site comparisons) from Chile, France, Spain, and the USA\\u00a0found more organic matter in soils with ground cover, compared to soils without ground cover, in some or all comparisons. Two meta-analyses of studies from Mediterranean climates\\u00a0also found more organic matter in plots with ground cover.\\n\\nImplementation options (4 studies): One study from France\\u00a0found more organic matter in soils with permanent ground cover, compared to temporary ground cover, in one of three comparisons. Two studies from the USA\\u00a0found similar amounts of organic matter in soils with resident vegetation or seeded cover crops. One study from Spain\\u00a0found more organic matter where cover crops were incorporated into the soil.\\n\\nNutrients (12 studies)\\n\\nNitrogen (9 studies): Five studies (four replicated, randomized, and controlled, and one site comparison) from Chile and Spain\\u00a0found more nitrogen in soils with ground cover, compared to soils without ground cover, in some or all comparisons. One replicated, randomized, controlled study from the USA\\u00a0found less nitrogen in soils with ground cover, in some comparisons. Two replicated, randomized, controlled studies from Spain\\u00a0and the USA\\u00a0found inconsistent differences in nitrogen between soils with or without ground cover. One replicated site comparison from France\\u00a0found similar amounts of nitrogen in soils with or without ground cover.  \\n\\nImplementation options (5 studies): Two studies from Spain\\u00a0and the USA\\u00a0found more nitrogen in soils that were cover cropped with legumes, compared to non-legumes, in some\\u00a0or all comparisons. Two studies from vineyards in the USA\\u00a0found similar amounts of nitrogen in soils with resident vegetation or seeded cover crops. One of these studies\\u00a0also found similar amounts of nitrogen in soils with different types of seeded cover crops, and in soils with or without tillage (both with ground cover). One study from Spain\\u00a0found more nitrogen where cover crops were incorporated into the soil. \\n\\n\\nPhosphorus (4 studies): One replicated site comparison from France\\u00a0found more phosphorus in soils with ground cover, compared to bare soils, in one of six comparisons. Two studies (one replicated, randomized, and controlled, and one site comparison) from Spain\\u00a0and the USA found less phosphorus in soils with seeded cover crops, compared to tilled soils, in some comparisons. One replicated, randomized, controlled study from Chile found similar amounts of phosphorus in soils with seeded cover crops and bare soils.  \\n\\nImplementation options (3 studies): One study from France\\u00a0found more phosphorus in soils with permanent ground cover, compared to temporary ground cover, in one of three comparisons. One study from the USA\\u00a0found similar amounts of phosphorus in soils with resident vegetation or seeded cover crops. One study from Spain\\u00a0found different amounts of phosphorus in soils with different types of seeded cover crops. \\n\\n\\nPotassium (3 studies): One replicated, randomized, controlled study from Chile found more potassium in soils with seeded cover crops, compared to bare soils. Two site comparisons (one replicated) from France\\u00a0and Spain\\u00a0found similar amounts of potassium in soils with ground cover, compared to tilled or bare soil.  \\n\\nImplementation options (1 study): One study from the USA\\u00a0found similar amounts of potassium in soils with resident vegetation or seeded cover crops. \\n\\n\\npH (4 studies): Two studies (one replicated, randomized, and controlled, and one site comparison) from Spain\\u00a0and the USA\\u00a0found lower pH levels in soils with ground cover, compared to soils without ground cover. One replicated, randomized, controlled study from Chile found higher pH levels in soils with ground cover. One replicated site comparison from France\\u00a0found similar pH levels in soils with or without ground cover.\\n\\n\\n\\nSoil organisms (6 studies)\\n\\nMicrobial biomass (4 studies): Four replicated studies (three randomized and controlled, one site comparison) from France\\u00a0and the USA\\u00a0found more microbial biomass in soils with ground cover, compared to bare or tilled soils, in some or all comparisons.  \\n\\nImplementation options (1 study): One study from France\\u00a0found more microbial biomass in soils with permanent ground cover, compared to temporary ground cover, in some comparisons. \\n\\n\\nFungi (2 studies): One replicated, controlled study from the USA\\u00a0found more symbiotic fungi (mycorrhizae) in soils with seeded cover crops, compared to tilled soils, in some comparisons, but found similar numbers of roots that were colonized by mycorrhizae. One replicated, randomized, controlled study from the USA\\u00a0found inconsistent differences in mycorrhizae in soils with seeded cover crops or tilled soils. \\nBacteria (1 study): One replicated, randomized, controlled study from Spain\\u00a0found more bacteria, but similar levels of bacterial diversity, in soils with ground cover, compared to bare soils. \\nNematodes (1 study): One replicated site comparison from France\\u00a0found more nematodes in soils with ground cover, compared to bare soils.  \\n\\nImplementation options (1 study): One study from France\\u00a0found more nematodes in soils with permanent ground cover, compared to temporary ground cover, in one of three comparisons.\\n\\n\\n\\nSoil erosion and aggregation (10 studies)\\n\\nSoil erosion (7 studies): Six replicated, randomized, controlled studies from Chile, Italy, Spain, and the USA\\u00a0found less erosion of soils with ground cover, compared to bare or tilled soils, in some comparisons\\u00a0or all comparisons. One replicated, controlled study from France\\u00a0found similar amounts of erosion in plots with or without ground cover.  \\n\\nImplementation options (1 study): One study from Italy\\u00a0found the least erosion with permanent cover crops, and the most erosion with temporary cover crops. \\n\\n\\nSoil aggregation (5 studies): Four replicated, randomized, controlled studies from Chile and Spain\\u00a0found that soil aggregates were more water-stable in plots with seeded cover crops, compared to tilled or bare soils, in some or all comparisons. One site comparison from Spain found inconsistent differences in water stability between soils with seeded cover crops and bare soils.\\n\\nGreenhouse gases (3 studies): Two replicated, randomized, controlled studies from a vineyard in the USA\\u00a0found more carbon dioxide\\u00a0or nitrous oxide\\u00a0in soils with cover crops, compared to tilled soils. One replicated, randomized, controlled study from an olive orchard in Spain\\u00a0found similar amounts of carbon dioxide in soils with cover crops, compared to tilled soils.\\n\\n\\nImplementation options (1 study): One study from the USA\\u00a0found similar amounts of carbon dioxide in soils with different types of ground cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1413\"}",
+            "return_val": "{\n  \"action_id\": \"1413\",\n  \"action_title\": \"Other biodiversity: Plant or maintain ground cover in orchards or vineyards\",\n  \"key_messages\": \"Key Messages:\\nAmphibians (0 studies)\\nBirds (1 study): One site comparison from Spain\\u00a0found more birds and higher bird diversity in a vineyard with resident vegetation (without tillage), compared to a vineyard with bare soil (with conventional tillage), between the vine rows.\\nInvertebrates (0 studies)\\nFungi (1 study): One replicated, randomized, controlled study from Portugal\\u00a0found more mushrooms and mushroom species in plots with cover crops (without tillage), compared to plots without cover crops (with conventional tillage).\\nMammals (0 studies)\\nPlants (0 studies)\\nReptiles (0 studies)\\nImplementation options (3 studies): One site comparison from Spain\\u00a0found more birds and higher bird diversity in a vineyard with mown resident vegetation, compared to a vineyard with herbicide-treated resident vegetation, between the vine rows. One replicated, randomized, controlled study from Portugal\\u00a0found fewer mushrooms and fewer mushroom species, but similar mushroom diversity, in plots with seeded cover crops, compared to resident vegetation. One replicated site comparison from Greece\\u00a0found more flowering plant species, and higher flowering plant cover, in managed orchards, compared to abandoned orchards.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1404\"}",
+            "return_val": "{\n  \"action_id\": \"1404\",\n  \"action_title\": \"Pollination: Plant or maintain ground cover in orchards or vineyards\",\n  \"key_messages\": \"Key Messages:\\nPollination (0 studies)\\nCrop visitation (0 studies)\\nPollinator numbers (0 studies)\\nImplementation options (1 study): One replicated site comparison from Greece\\u00a0found more bee species and more deposited pollen grains in managed olive orchards, compared to abandoned olive orchards, which differed in ground cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"897\"}",
+            "return_val": "{\n  \"action_id\": \"897\",\n  \"action_title\": \"Grow cover crops beneath the main crop (living mulches) or between crop rows\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: One randomized, replicated study from Spain found that cover crops increased bacterial numbers and activity.\\nErosion: Two studies from France and the USA showed reduced erosion under cover crops. One controlled study showed that soil stability was highest under a grass cover, and one randomized replicated study found that cover crops reduced soil loss.\\nSoil organic matter: Two controlled trials from India and South Africa (one also randomized and replicated) found that soil organic matter increased under cover crops, and one trial from Germany found no effect on soil organic matter levels.\\nSOIL TYPES COVERED: gravelly-sandy loam, sandy loam, sandy, silty loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"903\"}",
+            "return_val": "{\n  \"action_id\": \"903\",\n  \"action_title\": \"Use alley cropping\",\n  \"key_messages\": \"Key Messages:\\nA controlled, randomized, replicated study from Canada found that intercropping with trees resulted in a higher diversity of arbuscular mycorrhizal fungi.\\nSOIL TYPES COVERED: sandy-loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the most beneficial actions for reducing soil erosion in Mediterranean orchards?\",\"summary\":\"Planting or maintaining ground cover in orchards or vineyards reduced soil erosion in six replicated, randomized, controlled studies, including studies from Italy and Spain, while one study from France found similar erosion with or without ground cover; an Italian study reported the least erosion under permanent cover crops and the most under temporary cover crops, and multiple studies from Chile and Spain found greater water-stable soil aggregates with seeded cover crops compared to tilled or bare soils (1367). Additional studies from France and the USA showed reduced erosion under cover crops, with one controlled study finding the highest soil stability under a grass cover and a randomized replicated study reporting reduced soil loss with cover crops (897).\",\"action_ids\":[\"1367\",\"897\"]}",
+            "return_val": "{\n  \"query\": \"What are the most beneficial actions for reducing soil erosion in Mediterranean orchards?\",\n  \"relevant_summary\": \"Planting or maintaining ground cover in orchards or vineyards reduced soil erosion in six replicated, randomized, controlled studies, including studies from Italy and Spain, while one study from France found similar erosion with or without ground cover; an Italian study reported the least erosion under permanent cover crops and the most under temporary cover crops, and multiple studies from Chile and Spain found greater water-stable soil aggregates with seeded cover crops compared to tilled or bare soils (1367). Additional studies from France and the USA showed reduced erosion under cover crops, with one controlled study finding the highest soil stability under a grass cover and a randomized replicated study reporting reduced soil loss with cover crops (897).\",\n  \"action_ids\": [\n    \"1367\",\n    \"897\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1367",
+      "1362",
+      "1363",
+      "1364"
+    ],
+    "regenerated_ids": [
+      "1367",
+      "1362",
+      "1363",
+      "1364"
+    ]
   }
 ]

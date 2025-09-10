@@ -221,5 +221,92 @@
       "918",
       "924"
     ]
+  },
+  {
+    "query": "Which interventions appear most effective for increasing the survival rates of farmed salmon exposed to disease?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence from action documents indicates: Vaccinations increased survival rates in multiple controlled studies after exposure to Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri (Iceland, Norway), marine flexibacteriosis and bacterial kidney disease (Australia, Canada), and infectious salmon anaemia (Norway) [733]. Aerobic training increased survival following exposure to infectious pancreatic necrosis in a randomised, replicated, controlled study in Norway, with interval training more effective than continuous training [740]. Breeding for resistance traits increased survival in salmon families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families in a replicated, controlled study in Norway [735].",
+    "summary_action_ids": [
+      "733",
+      "740",
+      "735"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"farmed salmon disease survival interventions increase survival rates\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"740\",\n    \"action_title\": \"Aerobic training\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"735\",\n    \"action_title\": \"Breed for resistance traits\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"farmed salmon disease survival interventions increase survival rates\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"753\",\n    \"action_title\": \"Combine trap and repellent crops in a push-pull system\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"92\",\n    \"action_title\": \"Plant brassica fodder crops (grazed in situ)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"93\",\n    \"action_title\": \"Use mixed stocking\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"farmed salmon disease survival interventions increase survival rates\",\"k\":3,\"offset\":6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"733\"}",
+            "return_val": "{\n  \"action_id\": \"733\",\n  \"action_title\": \"Use vaccinations\",\n  \"key_messages\": \"Key Messages:\\n \\n\\nTwo controlled studies from Iceland and Norway found higher survival rates in vaccinated salmon compared to unvaccinated control groups. This was post exposure to the disease-causing bacteria, Aeromonas salmonicida spp.achromogenes and Yersinia ruckeri, respectively.\\nTwo controlled studies in\\u00a0Australia and Canadia reported higher survival in salmon infected with marine flexibacteriosis and bacterial kidney disease, post vaccination.\\nTwo controlled studies in Norway reported similar results for salmon vaccinated against infectious salmon anaemia.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"740\"}",
+            "return_val": "{\n  \"action_id\": \"740\",\n  \"action_title\": \"Aerobic training\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nA randomised, replicated, controlled study in Norway found higher survival rates in salmon exposed to infectious pancreatic necrosis if they had undergone aerobic training. Interval training was more effective than continuous training.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"735\"}",
+            "return_val": "{\n  \"action_id\": \"735\",\n  \"action_title\": \"Breed for resistance traits\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nA replicated, controlled study in\\u00a0Norway\\u00a0found increased survival levels in salmon exposed to infectious pancreatic necrosis when the family was bred for high resistance to the disease compared to a family bred for low resistance to the disease.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"Which interventions appear most effective for increasing the survival rates of farmed salmon exposed to disease?\",\"summary\":\"Evidence from action documents indicates: Vaccinations increased survival rates in multiple controlled studies after exposure to Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri (Iceland, Norway), marine flexibacteriosis and bacterial kidney disease (Australia, Canada), and infectious salmon anaemia (Norway) [733]. Aerobic training increased survival following exposure to infectious pancreatic necrosis in a randomised, replicated, controlled study in Norway, with interval training more effective than continuous training [740]. Breeding for resistance traits increased survival in salmon families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families in a replicated, controlled study in Norway [735].\",\"action_ids\":[\"733\",\"740\",\"735\"]}",
+            "return_val": "{\n  \"query\": \"Which interventions appear most effective for increasing the survival rates of farmed salmon exposed to disease?\",\n  \"relevant_summary\": \"Evidence from action documents indicates: Vaccinations increased survival rates in multiple controlled studies after exposure to Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri (Iceland, Norway), marine flexibacteriosis and bacterial kidney disease (Australia, Canada), and infectious salmon anaemia (Norway) [733]. Aerobic training increased survival following exposure to infectious pancreatic necrosis in a randomised, replicated, controlled study in Norway, with interval training more effective than continuous training [740]. Breeding for resistance traits increased survival in salmon families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families in a replicated, controlled study in Norway [735].\",\n  \"action_ids\": [\n    \"733\",\n    \"740\",\n    \"735\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "732",
+      "733",
+      "735",
+      "740",
+      "924"
+    ],
+    "regenerated_ids": [
+      "732",
+      "733",
+      "735",
+      "740",
+      "924"
+    ]
   }
 ]

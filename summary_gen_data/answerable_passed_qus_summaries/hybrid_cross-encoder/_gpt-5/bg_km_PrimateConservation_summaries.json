@@ -220,5 +220,102 @@
       "1500",
       "1501"
     ]
+  },
+  {
+    "query": "What are the documented benefits and harms of running tourism projects focused on wild primates?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across multiple sites, tourism projects for wild primates were associated with both benefits and harms. Benefits documented include increases in mountain gorilla numbers after touristic projects were initiated in Rwanda, Uganda and the Republic of Congo, alongside other interventions (1512); in Rwanda, immature mountain gorillas increased by 22% and snares declined by 30% after a tourism project began, alongside other interventions (1512); and black howler monkeys in Belize increased by 138% over 13 years following a tourism project, alongside other interventions (1512). Documented harms include decreases in Tana River red colobus and crested mangabeys in Kenya despite a tourism project, alongside other interventions (1512); increased stress in Tibetan macaques during an intensive tourism project with food provisioning and range restrictions, with infant mortality reaching 100% in some years (1512); and declines in population size and/or body size and group size for two lemur species in Madagascar after a tourism project, while one lemur species increased (1512). Related evidence on visitor health protocols shows mountain gorilla numbers increased by 168% over 41 years while sick/unwell researchers and visitors were excluded, alongside other interventions (1546), whereas a reintroduced orangutan population decreased by 33% over 33 years despite staff and volunteer medical checks, alongside other interventions (1546).",
+    "summary_action_ids": [
+      "1512",
+      "1546"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"tourism projects wild primates benefits harms\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1502\",\n    \"action_title\": \"Implement a \\u2018no-feeding of wild primates\\u2019 policy\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2624\",\n    \"action_title\": \"Promote mammal-related ecotourism\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1512\",\n    \"action_title\": \"Run tourist projects and ensure permanent human presence at site\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1502\"}",
+            "return_val": "{\n  \"action_id\": \"1502\",\n  \"action_title\": \"Implement a \\u2018no-feeding of wild primates\\u2019 policy\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, before-and-after study in Japan\\u00a0found that several previously increasing Japanese macaque populations declined in size and productivity after limiting and then prohibiting food provisioning.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2624\"}",
+            "return_val": "{\n  \"action_id\": \"2624\",\n  \"action_title\": \"Promote mammal-related ecotourism\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on mammals of promoting mammal-related ecotourism.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1512\"}",
+            "return_val": "{\n  \"action_id\": \"1512\",\n  \"action_title\": \"Run tourist projects and ensure permanent human presence at site\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies, including two before-and-after studies\\u00a0and one controlled study\\u00a0in Rwanda, Uganda and the Republic of Congo found that numbers of mountain gorillas increased after touristic projects were initiated, alongside other interventions. One before-and-after and site comparison study in Rwanda found that the number of immature mountain gorillas increased by 22% and the number of snares declined by 30% after a tourism project was initiated, alongside other interventions.\\nOne before-and-after study in Kenya\\u00a0found that numbers of Tana River red colobus and crested mangabeys decreased despite implementing a tourism project, alongside other interventions.\\nOne before-and-after study in Belize\\u00a0found that numbers of black howler monkeys increased by 138% over 13 years after a tourism project was implemented, alongside other interventions.\\nOne before-and-after, replicated study in China\\u00a0found that implementing an intensive tourism project for Tibetan macaques that included food provisioning and range restrictions, increased their stress levels compared to previous periods, with infant mortality reaching 100% in some years.\\nOne before-and-after study in Madagascar found that after implementing a tourism project the population size and/or body size and group size declined for two lemur species but the number of individuals increased for one other lemur species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"tourist projects primates tourism primate\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1507\",\n    \"action_title\": \"Put up signs to warn people about not feeding primates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1502\",\n    \"action_title\": \"Implement a \\u2018no-feeding of wild primates\\u2019 policy\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"tourism project primates gorilla ecotourism primate\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1546\",\n    \"action_title\": \"Ensure that researchers/tourists are up-to-date with vaccinations and healthy\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1512\",\n    \"action_title\": \"Run tourist projects and ensure permanent human presence at site\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2624\",\n    \"action_title\": \"Promote mammal-related ecotourism\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1546\"}",
+            "return_val": "{\n  \"action_id\": \"1546\",\n  \"action_title\": \"Ensure that researchers/tourists are up-to-date with vaccinations and healthy\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in Malaysia\\u00a0found that a population of reintroduced orangutans decreased by 33% over 33 years despite staff and volunteers having received medical checks, alongside other interventions.\\nOne before-and-after study in Rwanda, Uganda and Congo\\u00a0found that mountain gorilla numbers increased by 168% over 41 years while sick/unwell researchers and visitors were not allowed to visit gorillas, alongside other interventions.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented benefits and harms of running tourism projects focused on wild primates?\",\"summary\":\"Across multiple sites, tourism projects for wild primates were associated with both benefits and harms. Benefits documented include increases in mountain gorilla numbers after touristic projects were initiated in Rwanda, Uganda and the Republic of Congo, alongside other interventions (1512); in Rwanda, immature mountain gorillas increased by 22% and snares declined by 30% after a tourism project began, alongside other interventions (1512); and black howler monkeys in Belize increased by 138% over 13 years following a tourism project, alongside other interventions (1512). Documented harms include decreases in Tana River red colobus and crested mangabeys in Kenya despite a tourism project, alongside other interventions (1512); increased stress in Tibetan macaques during an intensive tourism project with food provisioning and range restrictions, with infant mortality reaching 100% in some years (1512); and declines in population size and/or body size and group size for two lemur species in Madagascar after a tourism project, while one lemur species increased (1512). Related evidence on visitor health protocols shows mountain gorilla numbers increased by 168% over 41 years while sick/unwell researchers and visitors were excluded, alongside other interventions (1546), whereas a reintroduced orangutan population decreased by 33% over 33 years despite staff and volunteer medical checks, alongside other interventions (1546).\",\"action_ids\":[\"1512\",\"1546\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and harms of running tourism projects focused on wild primates?\",\n  \"relevant_summary\": \"Across multiple sites, tourism projects for wild primates were associated with both benefits and harms. Benefits documented include increases in mountain gorilla numbers after touristic projects were initiated in Rwanda, Uganda and the Republic of Congo, alongside other interventions (1512); in Rwanda, immature mountain gorillas increased by 22% and snares declined by 30% after a tourism project began, alongside other interventions (1512); and black howler monkeys in Belize increased by 138% over 13 years following a tourism project, alongside other interventions (1512). Documented harms include decreases in Tana River red colobus and crested mangabeys in Kenya despite a tourism project, alongside other interventions (1512); increased stress in Tibetan macaques during an intensive tourism project with food provisioning and range restrictions, with infant mortality reaching 100% in some years (1512); and declines in population size and/or body size and group size for two lemur species in Madagascar after a tourism project, while one lemur species increased (1512). Related evidence on visitor health protocols shows mountain gorilla numbers increased by 168% over 41 years while sick/unwell researchers and visitors were excluded, alongside other interventions (1546), whereas a reintroduced orangutan population decreased by 33% over 33 years despite staff and volunteer medical checks, alongside other interventions (1546).\",\n  \"action_ids\": [\n    \"1512\",\n    \"1546\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1502",
+      "1504",
+      "1507",
+      "1508",
+      "1512",
+      "1519",
+      "1537",
+      "1538",
+      "1539",
+      "1546"
+    ],
+    "regenerated_ids": [
+      "1512"
+    ]
   }
 ]

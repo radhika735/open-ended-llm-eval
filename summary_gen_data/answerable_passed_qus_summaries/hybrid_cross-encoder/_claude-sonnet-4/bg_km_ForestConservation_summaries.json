@@ -503,5 +503,128 @@
       "1236",
       "1237"
     ]
+  },
+  {
+    "query": "In restored forest areas, what are some alternatives to using herbicides for controlling competing vegetation after tree planting, and how effective are they?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the action documents, several alternatives to herbicides for controlling competing vegetation after tree planting in restored forest areas include: \n\n**Mechanical methods:** Vegetation removal together with mechanical disturbance to the soil increased the cover and diversity of understory plants and decreased understory shrub cover in studies from Portugal and France (Action 1274). This approach also increased the density of young trees in France (Action 1274). Cutting and mowing can be used to control problematic herbaceous plants, though effectiveness varies - studies in fens showed mixed effects on vegetation cover, with some increasing characteristic plant species but having variable impacts on overall plant community composition (Action 1770).\n\n**Physical barriers and ground covering:** Covering the ground with plastic mats after restoration planting decreased the cover of herbaceous plants and grasses in Canada (Action 1239). However, weed mats showed no effect on seedling height in Hong Kong (Action 1267). Covering the ground with mulch after planting increased total plant cover in the USA (Action 1240).\n\n**Manual weeding:** Weeding can be used to promote regeneration of indigenous tree communities, though no quantitative evidence was found for its effectiveness (Action 1588).\n\n**Mid-storey vegetation removal:** Removing mid-storey vegetation in forest increased both mammal species richness and abundance in the USA (Action 2480).\n\nThe evidence shows that mechanical disturbance combined with vegetation removal appears most effective for promoting tree establishment, while ground covering methods have variable results depending on the specific technique used.",
+    "summary_action_ids": [
+      "1274",
+      "1770",
+      "1239",
+      "1267",
+      "1240",
+      "1588",
+      "2480"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"forest restoration herbicide alternatives vegetation control tree planting\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1241\",\n    \"action_title\": \"Apply herbicides after restoration planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3048\",\n    \"action_title\": \"Cut large trees/shrubs to maintain or restore disturbance: freshwater swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3122\",\n    \"action_title\": \"Use herbicide to control problematic plants: freshwater swamps\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"346\",\n    \"action_title\": \"Apply herbicide to mid- and understorey vegetation\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3108\",\n    \"action_title\": \"Use cutting to control problematic large trees/shrubs: freshwater marshes\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"849\",\n    \"action_title\": \"Replant vegetation\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2631\",\n    \"action_title\": \"Plant trees following clearfelling\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3047\",\n    \"action_title\": \"Cut large trees/shrubs to maintain or restore disturbance: brackish/salt marshes\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3058\",\n    \"action_title\": \"Use herbicide to maintain or restore disturbance: freshwater marshes\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3097\",\n    \"action_title\": \"Physically damage problematic plants: freshwater swamps\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"mechanical weeding cutting brush forest restoration competing vegetation\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3713\",\n    \"action_title\": \"Manage vegetation by cutting or mowing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1770\",\n    \"action_title\": \"Use cutting/mowing to control problematic herbaceous plants\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1241\",\n    \"action_title\": \"Apply herbicides after restoration planting\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1588\",\n    \"action_title\": \"Use weeding to promote regeneration of indigenous tree communities\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2480\",\n    \"action_title\": \"Remove mid-storey vegetation in forest\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1568\",\n    \"action_title\": \"Parrot\\u2019s feather: Mechanical harvesting and cutting\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1267\",\n    \"action_title\": \"Use weed mats to protect planted trees\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1573\",\n    \"action_title\": \"Parrot\\u2019s feather: Suction dredging and diver-assisted suction removal\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"761\",\n    \"action_title\": \"Clear vegetation\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"mulching weed control plastic mats forest planted trees protection\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1239\",\n    \"action_title\": \"Cover the ground with plastic mats after restoration planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1267\",\n    \"action_title\": \"Use weed mats to protect planted trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1240\",\n    \"action_title\": \"Cover the ground using techniques other than plastic mats after restoration planting\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3318\",\n    \"action_title\": \"Add cover other than mulch before/after planting trees/shrubs: freshwater wetlands\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3331\",\n    \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3316\",\n    \"action_title\": \"Add cover other than mulch before/after planting non-woody plants: freshwater wetlands\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1829\",\n    \"action_title\": \"Cover peatland with something other than mulch (after planting)\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3251\",\n    \"action_title\": \"Add cover other than mulch\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3319\",\n    \"action_title\": \"Add cover other than mulch before/after planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1814\",\n    \"action_title\": \"Cover peatland with something other than mulch (without planting)\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1241\"}",
+            "return_val": "{\n  \"action_id\": \"1241\",\n  \"action_title\": \"Apply herbicides after restoration planting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found that controlling vegetation using herbicides after restoration planting decreased plant species richness and diversity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1274\"}",
+            "return_val": "{\n  \"action_id\": \"1274\",\n  \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, randomized, controlled study) in Portugal\\u00a0and France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the cover and diversity of understory plants. One of the studies found it also decreased understory shrub cover.\\nOne replicated, randomized, controlled study in France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the density of young trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1588\"}",
+            "return_val": "{\n  \"action_id\": \"1588\",\n  \"action_title\": \"Use weeding to promote regeneration of indigenous tree communities\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of using weeding to promote regeneration of indigenous tree communities on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1770\"}",
+            "return_val": "{\n  \"action_id\": \"1770\",\n  \"action_title\": \"Use cutting/mowing to control problematic herbaceous plants\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects on peatland vegetation of cutting/mowing problematic herbaceous plants. Three studies were in fens or fen meadows and one was in a bog.\\u00a0N.B. Cutting/mowing in historically disturbed peatlands is considered as a separate action.\\nPlant community composition (3 studies): Two replicated, randomized, paired, controlled, before-and-after studies in rich fens in Sweden\\u00a0found that mowing typically had no significant effect on the overall plant community composition. One controlled study in a fen meadow in the UK\\u00a0reported that mown plots developed different plant communities to unmown plots.\\nCharacteristic plants (1 study): One\\u00a0replicated, randomized, paired, controlled, before-and-after study in a fen in Sweden\\u00a0found that mown plots contained more fen-characteristic plant species than unmown plots, although their cover did not differ significantly between treatments.\\nVegetation cover (2 studies): Of two replicated, randomized, paired, controlled, before-and-after studies in rich fens in Sweden, one\\u00a0found that mowing had no effect on vascular plant or bryophyte cover over five years. The other\\u00a0reported that mowing typically increased Sphagnum moss cover and reduced purple moor grass cover, but had mixed effects on cover of other plant species.\\nGrowth (1 study): One replicated, controlled, before-and-after study in a bog in Estonia\\u00a0found that clipping competing vegetation did not affect Sphagnum moss growth.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1267\"}",
+            "return_val": "{\n  \"action_id\": \"1267\",\n  \"action_title\": \"Use weed mats to protect planted trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Hong Kong\\u00a0found no effect of using weed mats on thick-leaved oak seedling height.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1239\"}",
+            "return_val": "{\n  \"action_id\": \"1239\",\n  \"action_title\": \"Cover the ground with plastic mats after restoration planting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in Canada found that covering the ground with plastic mats after restoration planting decreased the cover of herbecous plants and grasses.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1240\"}",
+            "return_val": "{\n  \"action_id\": \"1240\",\n  \"action_title\": \"Cover the ground using techniques other than plastic mats after restoration planting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found that covering the ground with mulch after planting increased total plant cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2480\"}",
+            "return_val": "{\n  \"action_id\": \"2480\",\n  \"action_title\": \"Remove mid-storey vegetation in forest\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on mammals of removing mid-storey vegetation in forest. This study was in the USA.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): A randomized, replicated, controlled study in the USA found that after removing mid-storey vegetation, mammal species richness increased.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A randomized, replicated, controlled study in the USA found that after removing mid-storey vegetation, mammal abundance increased.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3713\"}",
+            "return_val": "{\n  \"action_id\": \"3713\",\n  \"action_title\": \"Manage vegetation by cutting or mowing\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies evaluated the effects of managing vegetation by cutting or mowing on reptile populations. Five studies were in the USA, one was in Australia, and one was in Spain.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): Three replicated, randomized, controlled studies (including one before-and-after study) in the USA\\u00a0found that areas where vegetation was managed by cutting had similar reptile species richness compared to areas with no cutting.\\n\\nPOPULATION RESPONSE (5 STUDIES)\\n\\nAbundance (4 studies): Three of four replicated, controlled studies (including three randomized studies) in the USA\\u00a0found that areas where vegetation was managed by cutting had similar reptile abundance compared to areas with no cutting. The other study\\u00a0found that densities of eastern Massassauga rattlesnakes were higher after cutting during the first three years, but similar after four years.\\nCondition (1 study): One replicated, randomized, controlled, before-and-after study in Spain\\u00a0found that an adapted brush cutter caused less damage to tortoise carcasses than a conventional brush cutter.\\n\\nBEHAVIOUR (1 STUDIES)\\n\\nUse (2 studies): One replicated, randomized, controlled study in Australia\\u00a0found that after cutting back canopy vegetation, reptiles used unshaded rocks more often than shaded rocks in winter but not spring. One randomized study in the USA\\u00a0found that mown areas were used for nesting by Blanding\\u2019s turtles less frequently than tilled areas.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"In restored forest areas, what are some alternatives to using herbicides for controlling competing vegetation after tree planting, and how effective are they?\", \"summary\": \"Based on the action documents, several alternatives to herbicides for controlling competing vegetation after tree planting in restored forest areas include: \\n\\n**Mechanical methods:** Vegetation removal together with mechanical disturbance to the soil increased the cover and diversity of understory plants and decreased understory shrub cover in studies from Portugal and France (Action 1274). This approach also increased the density of young trees in France (Action 1274). Cutting and mowing can be used to control problematic herbaceous plants, though effectiveness varies - studies in fens showed mixed effects on vegetation cover, with some increasing characteristic plant species but having variable impacts on overall plant community composition (Action 1770).\\n\\n**Physical barriers and ground covering:** Covering the ground with plastic mats after restoration planting decreased the cover of herbaceous plants and grasses in Canada (Action 1239). However, weed mats showed no effect on seedling height in Hong Kong (Action 1267). Covering the ground with mulch after planting increased total plant cover in the USA (Action 1240).\\n\\n**Manual weeding:** Weeding can be used to promote regeneration of indigenous tree communities, though no quantitative evidence was found for its effectiveness (Action 1588).\\n\\n**Mid-storey vegetation removal:** Removing mid-storey vegetation in forest increased both mammal species richness and abundance in the USA (Action 2480).\\n\\nThe evidence shows that mechanical disturbance combined with vegetation removal appears most effective for promoting tree establishment, while ground covering methods have variable results depending on the specific technique used.\", \"action_ids\": [\"1274\",\"1770\",\"1239\",\"1267\",\"1240\",\"1588\",\"2480\"]}",
+            "return_val": "{\n  \"query\": \"In restored forest areas, what are some alternatives to using herbicides for controlling competing vegetation after tree planting, and how effective are they?\",\n  \"relevant_summary\": \"Based on the action documents, several alternatives to herbicides for controlling competing vegetation after tree planting in restored forest areas include: \\n\\n**Mechanical methods:** Vegetation removal together with mechanical disturbance to the soil increased the cover and diversity of understory plants and decreased understory shrub cover in studies from Portugal and France (Action 1274). This approach also increased the density of young trees in France (Action 1274). Cutting and mowing can be used to control problematic herbaceous plants, though effectiveness varies - studies in fens showed mixed effects on vegetation cover, with some increasing characteristic plant species but having variable impacts on overall plant community composition (Action 1770).\\n\\n**Physical barriers and ground covering:** Covering the ground with plastic mats after restoration planting decreased the cover of herbaceous plants and grasses in Canada (Action 1239). However, weed mats showed no effect on seedling height in Hong Kong (Action 1267). Covering the ground with mulch after planting increased total plant cover in the USA (Action 1240).\\n\\n**Manual weeding:** Weeding can be used to promote regeneration of indigenous tree communities, though no quantitative evidence was found for its effectiveness (Action 1588).\\n\\n**Mid-storey vegetation removal:** Removing mid-storey vegetation in forest increased both mammal species richness and abundance in the USA (Action 2480).\\n\\nThe evidence shows that mechanical disturbance combined with vegetation removal appears most effective for promoting tree establishment, while ground covering methods have variable results depending on the specific technique used.\",\n  \"action_ids\": [\n    \"1274\",\n    \"1770\",\n    \"1239\",\n    \"1267\",\n    \"1240\",\n    \"1588\",\n    \"2480\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1241",
+      "1256",
+      "1239",
+      "1240",
+      "1262",
+      "1266",
+      "1267"
+    ],
+    "regenerated_ids": [
+      "1239",
+      "1240",
+      "1256",
+      "1266",
+      "1267"
+    ]
   }
 ]

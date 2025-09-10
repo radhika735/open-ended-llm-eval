@@ -457,5 +457,144 @@
       "1901",
       "1902"
     ]
+  },
+  {
+    "query": "What are the documented benefits and harms of altering the frequency or timing of feeds for captive primates?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the documented evidence for captive primates, altering feeding frequency and timing shows both benefits and harms. When chimpanzees were fed on unpredictable schedules, inactivity decreased (Action 1338). Increasing the number of feeds per day resulted in increased feeding time in chimpanzees, but also led to increased hair eating in baboons (Action 1337). When monkeys fed in social groups rather than alone, an enrichment task took less time to complete and monkeys ate more unfamiliar foods during first encounters (Action 1343). However, no evidence was found for the effects of providing food access at all times day and night (Action 1340), providing food at natural wild feeding times (Action 1339), or feeding individuals separately (Action 1342).",
+    "summary_action_ids": [
+      "1338",
+      "1337",
+      "1343",
+      "1340",
+      "1339",
+      "1342"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"captive primate feeding frequency timing benefits harms\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1338\",\n    \"action_title\": \"Primates: Change feeding times\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1340\",\n    \"action_title\": \"Primates: Provide access to food at all times (day and night)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1339\",\n    \"action_title\": \"Primates: Provide food at natural (wild) feeding times\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"primate feeding schedule welfare enrichment\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1343\",\n    \"action_title\": \"Primates: Feed individuals in social groups\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1904\",\n    \"action_title\": \"Carnivores: Provide food on a random temporal schedule\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1338\",\n    \"action_title\": \"Primates: Change feeding times\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"feeding frequency effects primate behavior welfare captive\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1904\",\n    \"action_title\": \"Carnivores: Provide food on a random temporal schedule\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1340\",\n    \"action_title\": \"Primates: Provide access to food at all times (day and night)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1342\",\n    \"action_title\": \"Primates: Feed individuals separately\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1338\"}",
+            "return_val": "{\n  \"action_id\": \"1338\",\n  \"action_title\": \"Primates: Change feeding times\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in the USA\\u00a0found that when chimpanzees were fed on unpredictable schedules inactivity decreased.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1340\"}",
+            "return_val": "{\n  \"action_id\": \"1340\",\n  \"action_title\": \"Primates: Provide access to food at all times (day and night)\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of providing primates access to food at all times (day and night).\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1339\"}",
+            "return_val": "{\n  \"action_id\": \"1339\",\n  \"action_title\": \"Primates: Provide food at natural (wild) feeding times\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of providing food to primates at natural (wild) feeding times.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1343\"}",
+            "return_val": "{\n  \"action_id\": \"1343\",\n  \"action_title\": \"Primates: Feed individuals in social groups\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in the USA\\u00a0reported that an enrichment task took less time to complete when monkeys were in social groups than when feeding alone.\\nOne before-and-after study in Italy\\u00a0found that in the presence of their groupmates monkeys ate more unfamiliar foods during the first encounter.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1342\"}",
+            "return_val": "{\n  \"action_id\": \"1342\",\n  \"action_title\": \"Primates: Feed individuals separately\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of feeding individual primates separately\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"unpredictable feeding schedule primate behavior activity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1338\",\n    \"action_title\": \"Primates: Change feeding times\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1904\",\n    \"action_title\": \"Carnivores: Provide food on a random temporal schedule\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1914\",\n    \"action_title\": \"Carnivores: Alter feeding schedule according to visitor activity\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"meal frequency feeding intervals primate captive zoo\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1324\",\n    \"action_title\": \"Primates: Present feeds at different crowd levels\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1914\",\n    \"action_title\": \"Carnivores: Alter feeding schedule according to visitor activity\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1332\",\n    \"action_title\": \"Primates: Provide cut branches (browse)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"feeding regimen primate stress behavior welfare\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1338\",\n    \"action_title\": \"Primates: Change feeding times\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1337\",\n    \"action_title\": \"Primates: Change the number of feeds per day\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1326\",\n    \"action_title\": \"Primates: Add gum solutions to drilled hollow feeders\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1337\"}",
+            "return_val": "{\n  \"action_id\": \"1337\",\n  \"action_title\": \"Primates: Change the number of feeds per day\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies in Japan and the USA\\u00a0found that when the number of feeds per day were increased the amount of time spent feeding increased in chimpanzees, but hair eating also increased in baboons.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the documented benefits and harms of altering the frequency or timing of feeds for captive primates?\", \"summary\": \"Based on the documented evidence for captive primates, altering feeding frequency and timing shows both benefits and harms. When chimpanzees were fed on unpredictable schedules, inactivity decreased (Action 1338). Increasing the number of feeds per day resulted in increased feeding time in chimpanzees, but also led to increased hair eating in baboons (Action 1337). When monkeys fed in social groups rather than alone, an enrichment task took less time to complete and monkeys ate more unfamiliar foods during first encounters (Action 1343). However, no evidence was found for the effects of providing food access at all times day and night (Action 1340), providing food at natural wild feeding times (Action 1339), or feeding individuals separately (Action 1342).\", \"action_ids\": [\"1338\",\"1337\",\"1343\",\"1340\",\"1339\",\"1342\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and harms of altering the frequency or timing of feeds for captive primates?\",\n  \"relevant_summary\": \"Based on the documented evidence for captive primates, altering feeding frequency and timing shows both benefits and harms. When chimpanzees were fed on unpredictable schedules, inactivity decreased (Action 1338). Increasing the number of feeds per day resulted in increased feeding time in chimpanzees, but also led to increased hair eating in baboons (Action 1337). When monkeys fed in social groups rather than alone, an enrichment task took less time to complete and monkeys ate more unfamiliar foods during first encounters (Action 1343). However, no evidence was found for the effects of providing food access at all times day and night (Action 1340), providing food at natural wild feeding times (Action 1339), or feeding individuals separately (Action 1342).\",\n  \"action_ids\": [\n    \"1338\",\n    \"1337\",\n    \"1343\",\n    \"1340\",\n    \"1339\",\n    \"1342\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1337",
+      "1338",
+      "1339",
+      "1340",
+      "1341"
+    ],
+    "regenerated_ids": [
+      "1337",
+      "1338",
+      "1339",
+      "1340"
+    ]
   }
 ]

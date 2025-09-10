@@ -322,5 +322,135 @@
       "156",
       "561"
     ]
+  },
+  {
+    "query": "What are some alternatives to direct predator control for improving the breeding success of ground-nesting birds on farmland?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence-based alternatives include physical exclusion and habitat measures: Non-electric predator exclusion fencing reduced nest predation or failures in some studies, though other studies found no difference and one found higher hatching with fences (183). Electric fencing increased numbers or nests at some colonies and often raised survival or productivity; it reduced mammalian predation inside exclosures but bird predation was higher (188). Individual nest exclosures or barriers increased fledging success for tree and ground nests and lowered predation in multiple studies (400). Predator-proof perimeter fencing around breeding sites is proposed but currently has no captured evidence of effects (109). Protecting nests from livestock using cages or fencing prevented trampling and was associated with population increase in a multi-intervention case; no protected nests were trampled in a replicated test (237). Creating uncropped, cultivated margins or lapwing plots provided benefits including increased northern lapwing hatching success, Eurasian skylark nesting success, and breeding use of plots by several farmland birds, though effects were mixed for some species and weeds were more common on margins (562). A systematic review found that excluding predators from nests significantly increased hatching success, though individual barriers could have adverse impacts (396). Using multiple barriers showed mixed results; adding an electric fence around already protected nests did not raise fledging success, while removing an outer fence earlier appeared to reduce predation (404).",
+    "summary_action_ids": [
+      "183",
+      "188",
+      "400",
+      "109",
+      "237",
+      "562",
+      "396",
+      "404"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"alternatives to direct predator control for improving breeding success of ground-nesting birds on farmland\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"108\",\n    \"action_title\": \"Protect individual nests of ground-nesting birds\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"699\",\n    \"action_title\": \"Control predatory mammals and birds (foxes, crows, stoats and weasels)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"562\",\n    \"action_title\": \"Leave cultivated, uncropped margins or plots (includes 'lapwing plots')\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"ground-nesting birds farmland breeding success alternative measures habitat management exclude predators fencing nest protection delayed mowing\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3598\",\n    \"action_title\": \"Avoid illuminating key habitats\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1098\",\n    \"action_title\": \"Skunk cabbage:  Biological control using co-evolved, host specific herbivores\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1818\",\n    \"action_title\": \"Directly plant peatland mosses\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"farmland birds ground-nesting increase breeding success measures nest protection fencing livestock management delayed hay cutting create bare ground plots wader scrapes predator exclusion fencing\", \"k\": 3, \"offset\": 6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"farmland birds lapwing nest success management measures fencing exclude livestock delay mowing create nesting habitat fallow plots predator exclusion fences electric fence wader breeding success\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"183\",\n    \"action_title\": \"Physically protect nests from predators using non-electric fencing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"562\",\n    \"action_title\": \"Leave cultivated, uncropped margins or plots (includes 'lapwing plots')\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"188\",\n    \"action_title\": \"Protect bird nests using electric fencing\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"400\",\n    \"action_title\": \"Physically protect nests with individual exclosures/barriers or provide shelters for chicks of songbirds\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2415\",\n    \"action_title\": \"Install non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"109\",\n    \"action_title\": \"Erect predator-proof fencing around important breeding sites for waders\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"237\",\n    \"action_title\": \"Protect nests from livestock to reduce trampling\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"396\",\n    \"action_title\": \"Reduce nest predation by excluding predators from nests or nesting areas\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"404\",\n    \"action_title\": \"Use multiple barriers to protect nests\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2417\",\n    \"action_title\": \"Install electric fencing to reduce predation of livestock by mammals to reduce human-wildlife conflict\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"183\"}",
+            "return_val": "{\n  \"action_id\": \"183\",\n  \"action_title\": \"Physically protect nests from predators using non-electric fencing\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies from the USA and UK found that fewer nests were predated or failed when predator exclusion fences were erected.\\nTwo studies from the USA found that nesting success or fledging success did not differ between areas with fences erected and those without fences; although one found that hatching rates were higher with fences.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"188\"}",
+            "return_val": "{\n  \"action_id\": \"188\",\n  \"action_title\": \"Protect bird nests using electric fencing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study from the UK found an increase in tern numbers after the erection of an electric fence, whilst a study from the USA found an increase in the number of nests.\\nFive studies from the USA found higher survival or productivity at wader or seabird colonies with electric fencing, compared to areas without fencing, although one study found that hatching rates were no different, whilst nesting success was only higher in one of two years.\\nOne study from the USA found lower predation by mammalian predators inside electric fence exclosures, whilst predation by birds was higher.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"400\"}",
+            "return_val": "{\n  \"action_id\": \"400\",\n  \"action_title\": \"Physically protect nests with individual exclosures/barriers or provide shelters for chicks of songbirds\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies from across the world found increased fledging success for nests in trees protected by individual barriers. A replicated controlled study from the USA also found higher success for ground-nests protected by individual barriers.\\nTwo studies from the UK and Japan found lower predation rates on nests protected by individual barriers.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"109\"}",
+            "return_val": "{\n  \"action_id\": \"109\",\n  \"action_title\": \"Erect predator-proof fencing around important breeding sites for waders\",\n  \"key_messages\": \"Key Messages:\\n\\nWe have captured no evidence for the effects of erecting predator-proof fencing around important breeding sites for waders on farmland wildlife.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"237\"}",
+            "return_val": "{\n  \"action_id\": \"237\",\n  \"action_title\": \"Protect nests from livestock to reduce trampling\",\n  \"key_messages\": \"Key Messages:\\n\\nA before-and-after study from the Chatham Islands, New Zealand found that the population of Chatham Island oystercatcher increased following several interventions including the erection of fencing around individual nests.\\nA replicated, controlled study in Sweden found that no southern dunlin nests were trampled when protected by cages; some unprotected nests were destroyed.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"562\"}",
+            "return_val": "{\n  \"action_id\": \"562\",\n  \"action_title\": \"Leave cultivated, uncropped margins or plots (includes 'lapwing plots')\",\n  \"key_messages\": \"Key Messages:\\n\\nNineteen individual studies looked at the effect of uncropped, cultivated margins or plots on wildlife. Seventeen studies from the UK and northwest Europe (six reviews and seven replicated studies of which two were site comparisons, one a before-and-after trial and one was controlled and randomized) found that leaving uncropped, cultivated margins or plots on farmland provides benefits to some or all target farmland bird species, plants, invertebrates, and mammals. These wildlife benefits included increased species richness of plants, bumblebees, species richness and abundance of spiders, abundance of ground-dwelling invertebrates and ground beetles, increased stone curlew breeding population size,\\u00a0northern lapwing hatching success, Eurasian skylark nesting success and the establishment, abundance or species richness of rare arable plant species. A replicated study found northern lapwing, Eurasian skylark, grey partridge and yellow wagtail bred in lapwing plots.\\nTwo studies (a replicated study and a review) from the UK found that leaving uncropped, cultivated margins or plots on farmland had no effect on 11 out of 12 farmland bird species or ground beetles. A replicated site comparison study in the UK found fewer seed-eating birds on fallow plots for ground-nesting birds in two out of three regions. One review from the UK found evidence that pernicious weeds were more commonly found on uncropped cultivated margins than conservation or conventional headlands. A replicated site comparison from the UK found the proportion of young grey partridges in the population was lower in areas with a high proportion of uncropped cultivated margins and plots.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"396\"}",
+            "return_val": "{\n  \"action_id\": \"396\",\n  \"action_title\": \"Reduce nest predation by excluding predators from nests or nesting areas\",\n  \"key_messages\": \"Key Messages:\\nA 2011 systematic review found that excluding predators from nests significantly increased hatching success, although individual barriers around nests sometimes had adverse impacts.\\nSee also:\\u00a0Physically protect nests from predators using non-electric fencing;\\u00a0Physically protect nests with individual exclosures/barriers or provide shelters for chicks;\\u00a0Protect bird nests using electric fencing;\\u00a0Use artificial nests that discourage predation;\\u00a0Guard nests to prevent predation;\\u00a0Plant nesting cover to reduce nest predation;\\u00a0Protect nests from ants;\\u00a0Use multiple barriers to protect nests;\\u00a0Use naphthalene to deter mammalian predators;\\u00a0Use snakeskin to deter mammalian nest predators;\\u00a0Play spoken-word radio programs to deter predators;\\u00a0Use 'cat curfews' to reduce predation;\\u00a0Use lion dung to deter domestic cats;\\u00a0Use mirrors to deter nest predators;\\u00a0Use ultrasonic devices to deter cats;\\u00a0Can nest protection increase nest abandonment?; and\\u00a0Can nest protection increase predation of adults and chicks?\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"404\"}",
+            "return_val": "{\n  \"action_id\": \"404\",\n  \"action_title\": \"Use multiple barriers to protect nests\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled study from the USA found no evidence that erecting an electric fence around nests protected by individual barriers increased fledging success in piping plovers Charadrius melodus.\\nA replicated study from the USA found that removing the outer of two nest protection fences after 15 days appeared to reduce predation compared to when both fences were left for 18 days.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are some alternatives to direct predator control for improving the breeding success of ground-nesting birds on farmland?\",\"summary\":\"Evidence-based alternatives include physical exclusion and habitat measures: Non-electric predator exclusion fencing reduced nest predation or failures in some studies, though other studies found no difference and one found higher hatching with fences (183). Electric fencing increased numbers or nests at some colonies and often raised survival or productivity; it reduced mammalian predation inside exclosures but bird predation was higher (188). Individual nest exclosures or barriers increased fledging success for tree and ground nests and lowered predation in multiple studies (400). Predator-proof perimeter fencing around breeding sites is proposed but currently has no captured evidence of effects (109). Protecting nests from livestock using cages or fencing prevented trampling and was associated with population increase in a multi-intervention case; no protected nests were trampled in a replicated test (237). Creating uncropped, cultivated margins or lapwing plots provided benefits including increased northern lapwing hatching success, Eurasian skylark nesting success, and breeding use of plots by several farmland birds, though effects were mixed for some species and weeds were more common on margins (562). A systematic review found that excluding predators from nests significantly increased hatching success, though individual barriers could have adverse impacts (396). Using multiple barriers showed mixed results; adding an electric fence around already protected nests did not raise fledging success, while removing an outer fence earlier appeared to reduce predation (404).\",\"action_ids\":[\"183\",\"188\",\"400\",\"109\",\"237\",\"562\",\"396\",\"404\"]}",
+            "return_val": "{\n  \"query\": \"What are some alternatives to direct predator control for improving the breeding success of ground-nesting birds on farmland?\",\n  \"relevant_summary\": \"Evidence-based alternatives include physical exclusion and habitat measures: Non-electric predator exclusion fencing reduced nest predation or failures in some studies, though other studies found no difference and one found higher hatching with fences (183). Electric fencing increased numbers or nests at some colonies and often raised survival or productivity; it reduced mammalian predation inside exclosures but bird predation was higher (188). Individual nest exclosures or barriers increased fledging success for tree and ground nests and lowered predation in multiple studies (400). Predator-proof perimeter fencing around breeding sites is proposed but currently has no captured evidence of effects (109). Protecting nests from livestock using cages or fencing prevented trampling and was associated with population increase in a multi-intervention case; no protected nests were trampled in a replicated test (237). Creating uncropped, cultivated margins or lapwing plots provided benefits including increased northern lapwing hatching success, Eurasian skylark nesting success, and breeding use of plots by several farmland birds, though effects were mixed for some species and weeds were more common on margins (562). A systematic review found that excluding predators from nests significantly increased hatching success, though individual barriers could have adverse impacts (396). Using multiple barriers showed mixed results; adding an electric fence around already protected nests did not raise fledging success, while removing an outer fence earlier appeared to reduce predation (404).\",\n  \"action_ids\": [\n    \"183\",\n    \"188\",\n    \"400\",\n    \"109\",\n    \"237\",\n    \"562\",\n    \"396\",\n    \"404\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "699",
+      "108",
+      "109",
+      "131",
+      "698",
+      "147",
+      "148"
+    ],
+    "regenerated_ids": [
+      "108",
+      "109",
+      "131",
+      "147",
+      "148",
+      "698"
+    ]
   }
 ]

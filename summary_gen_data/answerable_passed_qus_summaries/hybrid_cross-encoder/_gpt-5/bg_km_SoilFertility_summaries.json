@@ -197,5 +197,70 @@
       "897",
       "898"
     ]
+  },
+  {
+    "query": "What are the comparative effects of using green manures versus cover crops on soil organic carbon and crop yield?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Cover crops have been reported to increase soil organic carbon in a replicated study from Denmark and in a review based mainly in Japan, with one study noting further increases when legumes were included; one replicated USA trial also found higher tomato yield following a ryegrass cover crop [898]. Green manures have been associated with higher soil organic carbon or increased grain yields in two controlled, randomized, replicated studies from India and Pakistan [908].",
+    "summary_action_ids": [
+      "898",
+      "908"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"green manures vs cover crops soil organic carbon crop yield comparative effects\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"908\",\n    \"action_title\": \"Amend the soil with crops grown as green manures\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"911\",\n    \"action_title\": \"Amend the soil with manures and agricultural composts\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"cover crops soil organic carbon crop yield effects\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"898\",\n    \"action_title\": \"Grow cover crops when the field is empty\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"908\",\n    \"action_title\": \"Amend the soil with crops grown as green manures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"907\",\n    \"action_title\": \"Retain crop residues\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"898\"}",
+            "return_val": "{\n  \"action_id\": \"898\",\n  \"action_title\": \"Grow cover crops when the field is empty\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: One controlled, randomized, replicated experiment in Martinique found that growing cover crops resulted in more diverse nematode communities. One replicated trial from the USA found greater microbial biomass under ryegrass compared to a ryegrass/vetch cover crop mix.\\nSoil structure: Three randomized, replicated studies from Denmark, Turkey and the UK found that growing cover crops improved soil structure and nutrient retention. One trial found higher soil porosity, interconnectivity and lower resistance in soil under cover crops, and one found reduced nitrate leaching.\\nSoil organic carbon: One replicated study from Denmark and one review based mainly in Japan found increased soil carbon levels under cover crops. One study also found soil carbon levels increased further when legumes were included in cover crops.\\nSoil organic matter: One replicated study from Denmark and three controlled, randomized, replicated studies from Australia and the USA measured the effect of growing cover crops. Three found increased nitrogen levels under cover crops, three found increased carbon, and one found increased nitrates. One trial showed that they increased regardless of whether those crops were legumes or not. Two studies from Europe (including one controlled, replicated trial) found no marked effect on soil organic matter levels.\\nYield: One replicated trial from the USA found higher tomato yield from soils which had been under a ryegrass cover crop.\\n \\nSOIL TYPES COVERED: clay, loam, sandy clay, sandy-loam, silty-clay, silty-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"908\"}",
+            "return_val": "{\n  \"action_id\": \"908\",\n  \"action_title\": \"Amend the soil with crops grown as green manures\",\n  \"key_messages\": \"Key Messages:\\nTwo controlled, randomized, replicated studies from India and Pakistan found higher soil organic carbon, or increased grain yields when green manures were grown.\\nSOIL TYPES COVERED: Clay loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the comparative effects of using green manures versus cover crops on soil organic carbon and crop yield?\",\"summary\":\"Cover crops have been reported to increase soil organic carbon in a replicated study from Denmark and in a review based mainly in Japan, with one study noting further increases when legumes were included; one replicated USA trial also found higher tomato yield following a ryegrass cover crop [898]. Green manures have been associated with higher soil organic carbon or increased grain yields in two controlled, randomized, replicated studies from India and Pakistan [908].\",\"action_ids\":[\"898\",\"908\"]}",
+            "return_val": "{\n  \"query\": \"What are the comparative effects of using green manures versus cover crops on soil organic carbon and crop yield?\",\n  \"relevant_summary\": \"Cover crops have been reported to increase soil organic carbon in a replicated study from Denmark and in a review based mainly in Japan, with one study noting further increases when legumes were included; one replicated USA trial also found higher tomato yield following a ryegrass cover crop [898]. Green manures have been associated with higher soil organic carbon or increased grain yields in two controlled, randomized, replicated studies from India and Pakistan [908].\",\n  \"action_ids\": [\n    \"898\",\n    \"908\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "898",
+      "908"
+    ],
+    "regenerated_ids": [
+      "898",
+      "908"
+    ]
   }
 ]

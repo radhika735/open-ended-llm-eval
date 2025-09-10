@@ -370,5 +370,164 @@
       "3419",
       "3423"
     ]
+  },
+  {
+    "query": "What does the evidence show about the effectiveness of different site preparation methods for improving the survival of seeded or planted species?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "The evidence shows mixed results for the effectiveness of different site preparation methods on survival of seeded or planted species. Six of seven studies found that ground preparation treatments increased the survival and growth rate of planted trees in Canada and Sweden, with one study finding no effect of creating mounds on frost damage of Norway spruce seedlings (Action 1263). \n\nSoil scarification and ploughing showed variable effects, with two of three studies finding that ploughing increased the density of young trees, while one found it decreased density (Action 1251). For mechanical site preparation through vegetation removal, five studies found no effect of controlling understory vegetation on the emergence, survival, growth rate or frost damage in planted seedlings, though one found removing competing herbs increased seedling biomass and one found that removal of sheep laurel shrubs increased growth rate and height of planted black spruce seedlings (Action 1256).\n\nFor creating mounds or hollows, one study in Brazil reported that planting tree seedlings into mounds had mixed effects on survival over three years depending on the species, with tree seedlings planted into mounds typically growing at a similar rate to seedlings planted at ground level (Action 3289). \n\nOne study found that sowing seeds in large gaps within vegetation led to greater cover of sown target plant species than sowing in smaller gaps (Action 3409). Different planting or seeding methods showed no clear advantage, with four studies finding no effect of planting or seeding methods on the size and survival rate of seedlings (Action 1264).",
+    "summary_action_ids": [
+      "1263",
+      "1251",
+      "1256",
+      "3289",
+      "3409",
+      "1264"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"site preparation methods seeded planted species survival\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1264\",\n    \"action_title\": \"Use different planting or seeding methods\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1842\",\n    \"action_title\": \"Protect or prepare vegetation before planting (other interventions)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3409\",\n    \"action_title\": \"Sow seeds in prepared gaps within vegetation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"site preparation survival seedling establishment seeding\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1263\",\n    \"action_title\": \"Prepare the ground before tree planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1842\",\n    \"action_title\": \"Protect or prepare vegetation before planting (other interventions)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3409\",\n    \"action_title\": \"Sow seeds in prepared gaps within vegetation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"ground preparation soil preparation planting success\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1263\",\n    \"action_title\": \"Prepare the ground before tree planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1842\",\n    \"action_title\": \"Protect or prepare vegetation before planting (other interventions)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3409\",\n    \"action_title\": \"Sow seeds in prepared gaps within vegetation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"vegetation preparation methods effectiveness comparison\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1842\",\n    \"action_title\": \"Protect or prepare vegetation before planting (other interventions)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3409\",\n    \"action_title\": \"Sow seeds in prepared gaps within vegetation\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1263\",\n    \"action_title\": \"Prepare the ground before tree planting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1263\"}",
+            "return_val": "{\n  \"action_id\": \"1263\",\n  \"action_title\": \"Prepare the ground before tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nSix of seven studies (including five replicated, randomized, controlled studies) in Canada\\u00a0and Sweden\\u00a0found that ground preparation treatments increased the survival and growth rate of planted trees. One study\\u00a0found no effect of creating mounds on frost damage of planted Norway spruce seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1264\"}",
+            "return_val": "{\n  \"action_id\": \"1264\",\n  \"action_title\": \"Use different planting or seeding methods\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies (including one replicated, randomized study) in Australia, Brazil, Costa Rica\\u00a0and Mexico\\u00a0found no effect of planting or seeding methods on the size and survival rate of seedlings.\\nOne replicated, controlled study in Brazil\\u00a0found that planting early succession pioneer tree species decreased the height of other planted species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1842\"}",
+            "return_val": "{\n  \"action_id\": \"1842\",\n  \"action_title\": \"Protect or prepare vegetation before planting (other interventions)\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of protecting or preparing peatland vegetation before planting (other than by adding root-associated fungi).\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3409\"}",
+            "return_val": "{\n  \"action_id\": \"3409\",\n  \"action_title\": \"Sow seeds in prepared gaps within vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of sowing seeds in prepared gaps within vegetation on grasslands. The study was in Hungary.\\n\\nVEGETATION COMMUNITY (0 STUDIES)\\nVEGETATION ABUNDANCE (1 STUDY)\\n\\nSown/planted species abundance (1 study): One replicated study in Hungary\\u00a0found that sowing seeds in large gaps within vegetation led to a greater cover of sown target plant species than sowing in smaller gaps.\\n\\n\\u00a0VEGETATION STRUCTURE (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"soil cultivation mounding scarification seedling\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1251\",\n    \"action_title\": \"Use soil scarification or ploughing to enhance germination\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3289\",\n    \"action_title\": \"Create mounds or hollows before planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1263\",\n    \"action_title\": \"Prepare the ground before tree planting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1251\"}",
+            "return_val": "{\n  \"action_id\": \"1251\",\n  \"action_title\": \"Use soil scarification or ploughing to enhance germination\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, randomized, controlled study) in Portugal\\u00a0and the USA\\u00a0found that ploughing increased the cover and diversity of understory plants.\\nTwo of three studies (including two replicated, randomized, controlled) in Canada\\u00a0and Brazil\\u00a0found that ploughing increased,\\u00a0 and one found it decreased\\u00a0the density of young trees. Two replicated, controlled studies in Ethiopia\\u00a0and Sweden\\u00a0found mixed effects of tilling on different tree species.\\nOne replicated, before-and-after trial in Finland\\u00a0found that ploughing decreased the cover of plants living on wood surface.\\nOne replicated, controlled study in the USA\\u00a0found that ploughing did not decrease the spreading distance and density of invasive grass seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3289\"}",
+            "return_val": "{\n  \"action_id\": \"3289\",\n  \"action_title\": \"Create mounds or hollows before planting trees/shrubs: brackish/saline wetlands\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of creating mounds or hollows in brackish/saline wetlands before planting trees/shrubs. The study was in Brazil.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\u00a0\\nVEGETATION STRUCTURE\\n\\u00a0\\nOTHER\\n\\nSurvival (1 study): One replicated, controlled study in a degraded coastal swamp in Brazil\\u00a0reported that planting tree seedlings into mounds had mixed effects on survival over three years, depending on the species.\\nGrowth (1 study): The same study\\u00a0reported that tree seedlings planted into mounds typically grew at a similar rate, over three years, to seedlings planted at ground level. Growth was measured in terms of diameter, height and canopy area.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"mechanical site preparation vegetation removal survival rate\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1842\",\n    \"action_title\": \"Protect or prepare vegetation before planting (other interventions)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1263\",\n    \"action_title\": \"Prepare the ground before tree planting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1256\"}",
+            "return_val": "{\n  \"action_id\": \"1256\",\n  \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies (including three replicated, randomized, controlled studies) in Canada, the USA, France, Panama\\u00a0and Sweden\\u00a0found no effect of controlling understory vegetation on the emergence, survival,  growth rate or frost damage in planted seedlings. However, one found removing competing herbs increased seedling biomass.\\nOne replicated, controlled study in Canada\\u00a0found that removal of sheep laurel shrubs increased the growth rate and height of planted black spruce seedlings.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What does the evidence show about the effectiveness of different site preparation methods for improving the survival of seeded or planted species?\", \"summary\": \"The evidence shows mixed results for the effectiveness of different site preparation methods on survival of seeded or planted species. Six of seven studies found that ground preparation treatments increased the survival and growth rate of planted trees in Canada and Sweden, with one study finding no effect of creating mounds on frost damage of Norway spruce seedlings (Action 1263). \\n\\nSoil scarification and ploughing showed variable effects, with two of three studies finding that ploughing increased the density of young trees, while one found it decreased density (Action 1251). For mechanical site preparation through vegetation removal, five studies found no effect of controlling understory vegetation on the emergence, survival, growth rate or frost damage in planted seedlings, though one found removing competing herbs increased seedling biomass and one found that removal of sheep laurel shrubs increased growth rate and height of planted black spruce seedlings (Action 1256).\\n\\nFor creating mounds or hollows, one study in Brazil reported that planting tree seedlings into mounds had mixed effects on survival over three years depending on the species, with tree seedlings planted into mounds typically growing at a similar rate to seedlings planted at ground level (Action 3289). \\n\\nOne study found that sowing seeds in large gaps within vegetation led to greater cover of sown target plant species than sowing in smaller gaps (Action 3409). Different planting or seeding methods showed no clear advantage, with four studies finding no effect of planting or seeding methods on the size and survival rate of seedlings (Action 1264).\", \"action_ids\": [\"1263\",\"1251\",\"1256\",\"3289\",\"3409\",\"1264\"]}",
+            "return_val": "{\n  \"query\": \"What does the evidence show about the effectiveness of different site preparation methods for improving the survival of seeded or planted species?\",\n  \"relevant_summary\": \"The evidence shows mixed results for the effectiveness of different site preparation methods on survival of seeded or planted species. Six of seven studies found that ground preparation treatments increased the survival and growth rate of planted trees in Canada and Sweden, with one study finding no effect of creating mounds on frost damage of Norway spruce seedlings (Action 1263). \\n\\nSoil scarification and ploughing showed variable effects, with two of three studies finding that ploughing increased the density of young trees, while one found it decreased density (Action 1251). For mechanical site preparation through vegetation removal, five studies found no effect of controlling understory vegetation on the emergence, survival, growth rate or frost damage in planted seedlings, though one found removing competing herbs increased seedling biomass and one found that removal of sheep laurel shrubs increased growth rate and height of planted black spruce seedlings (Action 1256).\\n\\nFor creating mounds or hollows, one study in Brazil reported that planting tree seedlings into mounds had mixed effects on survival over three years depending on the species, with tree seedlings planted into mounds typically growing at a similar rate to seedlings planted at ground level (Action 3289). \\n\\nOne study found that sowing seeds in large gaps within vegetation led to greater cover of sown target plant species than sowing in smaller gaps (Action 3409). Different planting or seeding methods showed no clear advantage, with four studies finding no effect of planting or seeding methods on the size and survival rate of seedlings (Action 1264).\",\n  \"action_ids\": [\n    \"1263\",\n    \"1251\",\n    \"1256\",\n    \"3289\",\n    \"3409\",\n    \"1264\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3402",
+      "3403",
+      "3413",
+      "3414",
+      "3415",
+      "3416",
+      "3417",
+      "3418",
+      "3419",
+      "3421",
+      "3423",
+      "3427"
+    ],
+    "regenerated_ids": [
+      "3402",
+      "3413",
+      "3415",
+      "3419",
+      "3421",
+      "3423",
+      "3427"
+    ]
   }
 ]

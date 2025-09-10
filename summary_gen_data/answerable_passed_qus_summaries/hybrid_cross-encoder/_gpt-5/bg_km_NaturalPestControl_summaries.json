@@ -143,5 +143,65 @@
       "750",
       "726"
     ]
+  },
+  {
+    "query": "When planting non-crop vegetation to enhance natural pest control, what is the comparative evidence for planting new hedges versus plants that attract natural enemies with chemicals?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Plants that produce chemicals attractive to natural enemies: Across four studies from China, Germany, India and Kenya, three (including one replicated, randomised, controlled trial) found higher numbers of natural enemies where attractive plants were grown, and one study found the plant was attractive in lab tests; all four studies reported decreased pest populations or damage, and one replicated, randomised, controlled study reported increased crop yield (724). Planting new hedges: One randomised, replicated, controlled study from China found no effect on spiders in crops; one of two studies from France and China found more natural enemies in a hedge than in adjacent crops while the other found effects varied by crop type, hedge species and year; two randomised, replicated, controlled studies from France and Kenya found that natural enemy abundance in hedges depended on the shrub/tree species planted and varied between enemy groups; one randomised, replicated, controlled study from Kenya found that effects on nematodes in fallow plots varied between nematode groups (752).",
+    "summary_action_ids": [
+      "724",
+      "752"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"non-crop vegetation enhance natural pest control comparative evidence hedges vs plants that attract natural enemies with chemicals\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"724\",\n    \"action_title\": \"Grow non-crop plants that produce chemicals that attract natural enemies\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"754\",\n    \"action_title\": \"Use chemicals to attract natural enemies\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"752\",\n    \"action_title\": \"Plant new hedges\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"724\"}",
+            "return_val": "{\n  \"action_id\": \"724\",\n  \"action_title\": \"Grow non-crop plants that produce chemicals that attract natural enemies\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: Four studies from China, Germany, India and Kenya tested the effects of growing plants that produce chemicals that attract natural enemies. Three (including one replicated, randomised, controlled trail) found higher numbers of natural enemies in plots with plants that produce attractive chemicals, and one found that the attractive plant also attracted natural enemies in lab studies. One found no effect on parasitism but the plant used was found not to be attractive to natural enemies in lab studies. Pests: All four studies found a decrease in either pest population or pest damage in plots with plants that produce chemicals that attract natural enemies. Yield: One replicated, randomised, controlled study found an increase in crop yield in plots with plants that produce attractive chemicals.\\nCrops studied were lettuce, orange,\\u00a0safflower and\\u00a0sorghum.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"754\"}",
+            "return_val": "{\n  \"action_id\": \"754\",\n  \"action_title\": \"Use chemicals to attract natural enemies\",\n  \"key_messages\": \"Key Messages:\\nParasitism and predation (by natural enemies): One review and two of five studies from Asia, Europe and North America found that attractive chemicals increased parasitism. Two studies, including one randomised, replicated, controlled trial, found greater parasitism for some but not all chemicals, crops, sites or years and one study found no effect. One study showed that parasites found pests more rapidly. One study found lower egg predation by natural predators. Natural enemies: Five of 13 studies from Africa, Asia, Australasia, Europe and North America found more natural enemies while eight (including seven randomised, replicated, controlled trials) found positive effects varied between enemy groups, sites or study dates. Four of 13 studies (including a meta-analysis) found more natural enemies with some but not all test chemicals. Two of four studies (including a review) found higher chemical doses attracted more enemies, but one study found lower doses were more effective and one found no effect. Pests: Three of nine studies (seven randomised, replicated, controlled) from Asia, Australasia, Europe and North America found fewer pests, although the effect occurred only in the egg stage in one study. Two studies found more pests and four found no effect. Crop damage: One study found reduced damage with some chemicals but not others, and one study found no effect. Yield: One study found higher wheat yields.\\nCrops studied were apple, banana, bean, broccoli, Chinese cabbage, cotton, cowpea, cranberry, grape, grapefruit, hop, maize, oilseed, orange, tomato, turnip and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"752\"}",
+            "return_val": "{\n  \"action_id\": \"752\",\n  \"action_title\": \"Plant new hedges\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One randomised, replicated, controlled study from China compared plots with and without hedges and found no effect on spiders in crops. One of two studies from France and China found more natural enemies in a hedge than in adjacent crops while one study found this effect varied between crop types, hedge species and years. Two randomised, replicated, controlled studies from France and Kenya found natural enemy abundance in hedges was affected by the type of hedge shrub/tree planted and one also found this effect varied between natural enemy groups. Pests: One randomised, replicated, controlled study from Kenya compared fallow plots with and without hedges and found effects varied between nematode (roundworm) groups.\\nCrops studied were barley, beans, maize and wheat.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"When planting non-crop vegetation to enhance natural pest control, what is the comparative evidence for planting new hedges versus plants that attract natural enemies with chemicals?\",\"summary\":\"Plants that produce chemicals attractive to natural enemies: Across four studies from China, Germany, India and Kenya, three (including one replicated, randomised, controlled trial) found higher numbers of natural enemies where attractive plants were grown, and one study found the plant was attractive in lab tests; all four studies reported decreased pest populations or damage, and one replicated, randomised, controlled study reported increased crop yield (724). Planting new hedges: One randomised, replicated, controlled study from China found no effect on spiders in crops; one of two studies from France and China found more natural enemies in a hedge than in adjacent crops while the other found effects varied by crop type, hedge species and year; two randomised, replicated, controlled studies from France and Kenya found that natural enemy abundance in hedges depended on the shrub/tree species planted and varied between enemy groups; one randomised, replicated, controlled study from Kenya found that effects on nematodes in fallow plots varied between nematode groups (752).\",\"action_ids\":[\"724\",\"752\"]}",
+            "return_val": "{\n  \"query\": \"When planting non-crop vegetation to enhance natural pest control, what is the comparative evidence for planting new hedges versus plants that attract natural enemies with chemicals?\",\n  \"relevant_summary\": \"Plants that produce chemicals attractive to natural enemies: Across four studies from China, Germany, India and Kenya, three (including one replicated, randomised, controlled trial) found higher numbers of natural enemies where attractive plants were grown, and one study found the plant was attractive in lab tests; all four studies reported decreased pest populations or damage, and one replicated, randomised, controlled study reported increased crop yield (724). Planting new hedges: One randomised, replicated, controlled study from China found no effect on spiders in crops; one of two studies from France and China found more natural enemies in a hedge than in adjacent crops while the other found effects varied by crop type, hedge species and year; two randomised, replicated, controlled studies from France and Kenya found that natural enemy abundance in hedges depended on the shrub/tree species planted and varied between enemy groups; one randomised, replicated, controlled study from Kenya found that effects on nematodes in fallow plots varied between nematode groups (752).\",\n  \"action_ids\": [\n    \"724\",\n    \"752\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "724",
+      "752"
+    ],
+    "regenerated_ids": [
+      "752",
+      "724"
+    ]
   }
 ]

@@ -611,8 +611,8 @@ def main():
     filter_stage = "passed" # other option: "failed"
     qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/usage_annotated"
     summary_out_base_dir = f"summary_gen_data/{qu_type}_{filter_stage}_qus_summaries"
-    max_qu_files = 24
-    max_qus = 2
+    max_qu_files = 5
+    max_qus = 1
 
     try:
         run_summary_gen_for_qu_dir(

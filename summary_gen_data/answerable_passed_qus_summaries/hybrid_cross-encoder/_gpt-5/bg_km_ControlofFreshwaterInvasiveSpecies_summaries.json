@@ -416,5 +416,92 @@
       "1072",
       "1074"
     ]
+  },
+  {
+    "query": "What actions are available to control or contain invasive Procambarus crayfish populations?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Available actions include: creating barriers to contain spread, with a before-and-after study in Spain reporting that concrete dams designed to prevent red swamp crayfish from crawling over them effectively contained upstream spread (1037); relocating vulnerable crayfish as a management response, for which no studies were found that directly test its effects (1038); and removing or controlling non-native crayfish, for which no evidence was found regarding effects on amphibian populations (797).",
+    "summary_action_ids": [
+      "1037",
+      "1038",
+      "797"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Procambarus crayfish invasive control containment management\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1038\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1037\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Create barriers\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Procambarus crayfish invasive control containment management\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1040\",\n    \"action_title\": \"American bullfrog control: Biological control of co-occurring beneficial species\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1046\",\n    \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"103\",\n    \"action_title\": \"Re-wet moorland\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1038\"}",
+            "return_val": "{\n  \"action_id\": \"1038\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1037\"}",
+            "return_val": "{\n  \"action_id\": \"1037\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Create barriers\",\n  \"key_messages\": \"Key Messages:\\n\\nA before-and-after study conducted between 2007 and 2010 in Spain\\u00a0found that the use of concrete dams across a stream, specifically designed with features to prevent red swamp crayfish from crawling over them, were effective at containing spread of the population upstream.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"797\"}",
+            "return_val": "{\n  \"action_id\": \"797\",\n  \"action_title\": \"Remove or control non-native crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing or controlling non-native crayfish on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions are available to control or contain invasive Procambarus crayfish populations?\",\"summary\":\"Available actions include: creating barriers to contain spread, with a before-and-after study in Spain reporting that concrete dams designed to prevent red swamp crayfish from crawling over them effectively contained upstream spread (1037); relocating vulnerable crayfish as a management response, for which no studies were found that directly test its effects (1038); and removing or controlling non-native crayfish, for which no evidence was found regarding effects on amphibian populations (797).\",\"action_ids\":[\"1037\",\"1038\",\"797\"]}",
+            "return_val": "{\n  \"query\": \"What actions are available to control or contain invasive Procambarus crayfish populations?\",\n  \"relevant_summary\": \"Available actions include: creating barriers to contain spread, with a before-and-after study in Spain reporting that concrete dams designed to prevent red swamp crayfish from crawling over them effectively contained upstream spread (1037); relocating vulnerable crayfish as a management response, for which no studies were found that directly test its effects (1038); and removing or controlling non-native crayfish, for which no evidence was found regarding effects on amphibian populations (797).\",\n  \"action_ids\": [\n    \"1037\",\n    \"1038\",\n    \"797\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1029",
+      "1030",
+      "1031",
+      "1032",
+      "1033",
+      "1034",
+      "1035",
+      "1036",
+      "1037",
+      "1038"
+    ],
+    "regenerated_ids": [
+      "1029",
+      "1030",
+      "1031",
+      "1032",
+      "1033",
+      "1034",
+      "1035",
+      "1036",
+      "1037",
+      "1038"
+    ]
   }
 ]

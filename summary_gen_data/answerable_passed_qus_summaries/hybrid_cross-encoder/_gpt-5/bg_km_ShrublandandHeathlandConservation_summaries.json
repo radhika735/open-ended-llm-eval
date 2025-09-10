@@ -121,5 +121,80 @@
     "regenerated_ids": [
       "1545"
     ]
+  },
+  {
+    "query": "To reduce the impacts of nitrogen pollution in UK heathlands, is prescribed burning more effective than mowing?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "In UK heathlands affected by nitrogen deposition, one randomized, replicated, controlled study found that prescribed burning did not alter the shoot length of common heather or the number of purple moor grass seedlings compared to mowing, and a controlled study found burning did not alter heather cover or shoot length relative to mowed areas (1670). Correspondingly, one randomized, replicated, controlled study found that mowing did not alter heather shoot length or purple moor grass seedling numbers, and a controlled study found mowing did not alter heather cover or shoot length compared to areas where prescribed burning was used (1669).",
+    "summary_action_ids": [
+      "1670",
+      "1669"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed burning versus mowing nitrogen pollution heathlands UK effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1670\",\n    \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1669\",\n    \"action_title\": \"Mow shrubland to reduce impacts of pollutants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1625\",\n    \"action_title\": \"Reinstate the use of traditional burning practices\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1670\"}",
+            "return_val": "{\n  \"action_id\": \"1670\",\n  \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled study in the UK\\u00a0found that prescribed burning to reduce the impact of nitrogen deposition did not alter the shoot length of common heather or the number of purple moor grass seedlings compared to mowing.\\nA controlled study in the UK\\u00a0found that burning to reduce the concentration of pollutants in a heathland affected by nitrogen pollution did not alter the cover or shoot length of heather relative to areas that were mowed.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1669\"}",
+            "return_val": "{\n  \"action_id\": \"1669\",\n  \"action_title\": \"Mow shrubland to reduce impacts of pollutants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled study in the UK\\u00a0found that mowing to reduce the impact of nitrogen deposition did not alter shoot length of common heather or the number of purple moor grass seedlings.\\nOne controlled study in the UK\\u00a0found that mowing a heathland affected by nitrogen pollution did not alter the cover or shoot length of heather compared to areas where prescribed burning was used.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1625\"}",
+            "return_val": "{\n  \"action_id\": \"1625\",\n  \"action_title\": \"Reinstate the use of traditional burning practices\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before and after study in the UK\\u00a0found that prescribed burning initially decreased the cover of most plant species, but that their cover subsequently increased. A systematic review of five studies from the UK\\u00a0found that prescribed burning did not alter species diversity.\\nA replicated, controlled study in the UK\\u00a0found that regeneration of heather was similar in cut and burned areas. A systematic review of five studies, from Europe\\u00a0found that prescribed burning did not alter grass cover relative to heather cover.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"heathland nitrogen pollution burning mowing UK\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1660\",\n    \"action_title\": \"Use herbicide and remove leaf litter to control bracken\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1733\",\n    \"action_title\": \"Use barriers to keep livestock off ungrazed peatlands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1650\",\n    \"action_title\": \"Add mulch to control grass and sow seed\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"To reduce the impacts of nitrogen pollution in UK heathlands, is prescribed burning more effective than mowing?\",\"summary\":\"In UK heathlands affected by nitrogen deposition, one randomized, replicated, controlled study found that prescribed burning did not alter the shoot length of common heather or the number of purple moor grass seedlings compared to mowing, and a controlled study found burning did not alter heather cover or shoot length relative to mowed areas (1670). Correspondingly, one randomized, replicated, controlled study found that mowing did not alter heather shoot length or purple moor grass seedling numbers, and a controlled study found mowing did not alter heather cover or shoot length compared to areas where prescribed burning was used (1669).\",\"action_ids\":[\"1670\",\"1669\"]}",
+            "return_val": "{\n  \"query\": \"To reduce the impacts of nitrogen pollution in UK heathlands, is prescribed burning more effective than mowing?\",\n  \"relevant_summary\": \"In UK heathlands affected by nitrogen deposition, one randomized, replicated, controlled study found that prescribed burning did not alter the shoot length of common heather or the number of purple moor grass seedlings compared to mowing, and a controlled study found burning did not alter heather cover or shoot length relative to mowed areas (1670). Correspondingly, one randomized, replicated, controlled study found that mowing did not alter heather shoot length or purple moor grass seedling numbers, and a controlled study found mowing did not alter heather cover or shoot length compared to areas where prescribed burning was used (1669).\",\n  \"action_ids\": [\n    \"1670\",\n    \"1669\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1669",
+      "1670"
+    ],
+    "regenerated_ids": [
+      "1669",
+      "1670"
+    ]
   }
 ]
