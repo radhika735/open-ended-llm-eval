@@ -14,7 +14,7 @@ from utils.exceptions import RetrievalError
 load_dotenv()
 
 
-ACTION_RETRIEVAL_CONTEXT = ActionRetrievalContext(required_fields=["action_id", "action_title", "key_messages"])
+ACTION_RETRIEVAL_CONTEXT = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
 RETRIEVAL_TYPE = "hybrid" # other options: "dense", "hybrid".
 if RETRIEVAL_TYPE == "hybrid":
     FUSION_TYPE = "cross-encoder" # other option: "reciprocal rank fusion"
@@ -570,22 +570,27 @@ def run_summary_gen_for_qu_file(unused_qus_dir, queries_filename, used_qus_dir, 
     write_to_json_file(data_list=used_qu_dicts, filename=os.path.join(used_qus_dir, queries_filename))
 
 
-def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list, summary_out_base_dir, max_qus=1): 
+def run_summary_gen_for_qu_dir(unused_qus_dir, used_qus_dir, model_provider_list, summary_out_base_dir, max_qu_files=1, max_qus=1): 
+    qu_file_count = 0
     for qus_filename in os.listdir(unused_qus_dir):
         if qus_filename.endswith(".json"):
-            retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
-            filename_list = os.path.splitext(qus_filename)[0].split("_")
-            filename_list[-1] = "summaries"
-            summary_filename = "_".join(filename_list) + ".json"
-            run_summary_gen_for_qu_file(
-                unused_qus_dir=unused_qus_dir, 
-                queries_filename=qus_filename,
-                used_qus_dir=used_qus_dir,
-                max_qus=max_qus,
-                summary_out_base_dir=os.path.join(summary_out_base_dir, retrieval_subdir), 
-                summary_filename=summary_filename, 
-                model_provider_list=model_provider_list
-            )
+            if qu_file_count < max_qu_files:
+                retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
+                filename_list = os.path.splitext(qus_filename)[0].split("_")
+                filename_list[-1] = "summaries"
+                summary_filename = "_".join(filename_list) + ".json"
+                run_summary_gen_for_qu_file(
+                    unused_qus_dir=unused_qus_dir, 
+                    queries_filename=qus_filename,
+                    used_qus_dir=used_qus_dir,
+                    max_qus=max_qus,
+                    summary_out_base_dir=os.path.join(summary_out_base_dir, retrieval_subdir), 
+                    summary_filename=summary_filename, 
+                    model_provider_list=model_provider_list
+                )
+                qu_file_count += 1
+            else:
+                break
 
 
 def main():
@@ -609,10 +614,18 @@ def main():
     unused_qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/unused"
     used_qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/used"
     summary_out_base_dir = f"summary_gen_data/{qu_type}_{filter_stage}_qus_summaries"
+    max_qu_files = 1
     max_qus = 2
 
     try:
-        run_summary_gen_for_qu_dir(unused_qus_dir=unused_qus_dir, used_qus_dir=used_qus_dir, model_provider_list=model_provider_list, summary_out_base_dir=summary_out_base_dir, max_qus=max_qus)
+        run_summary_gen_for_qu_dir(
+            unused_qus_dir=unused_qus_dir, 
+            used_qus_dir=used_qus_dir, 
+            model_provider_list=model_provider_list, 
+            summary_out_base_dir=summary_out_base_dir, 
+            max_qu_files=max_qu_files,
+            max_qus=max_qus
+        )
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {e}")
     logging.info("ENDED summary generation process.")
