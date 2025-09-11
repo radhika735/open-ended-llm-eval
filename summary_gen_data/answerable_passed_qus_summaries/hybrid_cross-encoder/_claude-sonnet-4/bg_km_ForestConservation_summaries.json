@@ -913,5 +913,126 @@
       "1157",
       "1158"
     ]
+  },
+  {
+    "query": "To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available evidence, both wire and electric fencing have been shown to be effective for protecting forests from large native herbivores, but the research shows different patterns of evidence. For electric fencing, one controlled study in South Africa found that using electric fencing to exclude elephants and nyalas increased tree density (Action 1231). For wire fencing, the evidence is more extensive: five of ten studies in Australia, Bhutan, Canada, France, Portugal and the USA found that using wire fencing to exclude large herbivores increased the cover and size of understory plants, while six studies found no effect on cover, seed density, species richness or diversity of understory plants (Action 1230). Regarding effects on young trees specifically, wire fencing showed mixed results - one study found it increased biomass, one found it decreased the density of young trees, and one found mixed effects depending on the species (Action 1230). Two replicated, controlled studies in the USA found that using wire fencing to exclude large herbivores increased tree density (Action 1230). Additional research on non-electric fencing found that a high woven wire fence with small mesh, an overhang and an apron was the most effective design at deterring crossings by coyotes (Action 2415). The evidence base for electric fencing appears more limited compared to wire fencing, with only one study identified specifically evaluating electric fencing effectiveness against large native herbivores.",
+    "summary_action_ids": [
+      "1230",
+      "1231",
+      "2415"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"forest protection fencing herbivores wire electric\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1231\",\n    \"action_title\": \"Use electric fencing to exclude large native herbivores\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1230\",\n    \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2415\",\n    \"action_title\": \"Install non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1231\"}",
+            "return_val": "{\n  \"action_id\": \"1231\",\n  \"action_title\": \"Use electric fencing to exclude large native herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in South Africa found that using electric fencing to exclude elephants and nyalas increased tree density.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1230\"}",
+            "return_val": "{\n  \"action_id\": \"1230\",\n  \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nFive of ten studies (including two replicated, randomized, controlled\\u00a0 studies) in Australia, Bhutan, Canada, France, Portugal and the USA found that using wire fencing to exclude large herbivores increased the cover and\\u00a0 size of understory plants. Six studies found no effect of wire fencing on the cover, seed density, species richness\\u00a0or\\u00a0diversity of understory plants.\\nTwo of the above studies\\u00a0and one paired-sites study in Ireland\\u00a0examined the effect of using wire fencing to exclude large herbivores on young trees. One found it increased the biomass, one found it decreased the density of young trees and one found mixed effects\\u00a0depending on the species.\\nTwo replicated, controlled studies in the USA found that using wire fencing to exclude large herbivores increased tree density.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2415\"}",
+            "return_val": "{\n  \"action_id\": \"2415\",\n  \"action_title\": \"Install non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies evaluated the effects on mammals of installing non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict. Two studies were in the USA and one each was in Germany, the UK, Spain, China, Tanzania and Kenya.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (8 STUDIES)\\n\\nHuman-wildlife conflict (8 studies): Four replicated studies (including three before-and-after studies), in USA, China, Tanzania and Kenya, found that non-electric fencing reduced livestock predation by coyotes, Tibetan brown bears, and a range of mammalian predators. A replicated, controlled study in USA found that a high woven wire fence with small mesh, an overhang and an apron (to deter burrowing) was the most effective design at deterring crossings by coyotes. A replicated, controlled study in Germany found that fencing with phosphorescent tape was more effective than fencing with normal yellow tape for deterring red deer and roe deer, but had no effect on crossings by wild boar or brown hare. Two studies (one replicated, before-and-after, site comparison and one controlled study) in the UK and Spain found that fences reduced European rabbit numbers on or damage to crops.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fence effectiveness comparison electric wire herbivore exclusion\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2415\",\n    \"action_title\": \"Install non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1231\",\n    \"action_title\": \"Use electric fencing to exclude large native herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1230\",\n    \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"elephant fence exclusion forest regeneration\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1532\",\n    \"action_title\": \"Control habitat-altering mammals (e.g. elephants) through exclusion (e.g. fences) or translocation\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1205\",\n    \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1520\",\n    \"action_title\": \"Control inter-specific competition for food through exclusion (e.g. fences) or translocation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1532\"}",
+            "return_val": "{\n  \"action_id\": \"1532\",\n  \"action_title\": \"Control habitat-altering mammals (e.g. elephants) through exclusion (e.g. fences) or translocation\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of controlling habitat-altering mammals through exclusion or translocation on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1205\"}",
+            "return_val": "{\n  \"action_id\": \"1205\",\n  \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of eight studies (including two replicated, randomized, controlled studies) in Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA found that excluding livestock using wire fences increased  biomass , species richness, density and cover of understory plants. The other four studies\\u00a0found mixed effects or no effect of livestock exclusion on understory plants.\\nThree of four studies (including one replicated, randomized, controlled study) in Mexico, Kenya, Israel and Panama found that excluding livestock using wire fences increased the size and density of regenerating trees and the number of regenerating trees. One study\\u00a0found livestock exclusion decreased tree density but not tree size.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"deer browsing fence protection forest\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3891\",\n    \"action_title\": \"Remove, control or exclude vertebrate herbivores\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2630\",\n    \"action_title\": \"Use tree tubes/small fences/cages to protect individual trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2650\",\n    \"action_title\": \"Thin trees within forest\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3891\"}",
+            "return_val": "{\n  \"action_id\": \"3891\",\n  \"action_title\": \"Remove, control or exclude vertebrate herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies evaluated the effects on butterflies and moths of removing, controlling or excluding vertebrate herbivores. Three studies were in the USA, two were in the UK, one was in each of Mauritius, the Netherlands, Canada\\u00a0and Japan, and one was a global systematic review.\\n\\nCOMMUNITY RESPONSE (6 STUDIES)\\n\\nRichness/diversity (6 studies): Two of four replicated studies (including three controlled studies and one site comparison study) in the USA, Mauritius\\u00a0and Canada\\u00a0found that forest plots fenced to exclude, or reduce the density of, non-native pigs\\u00a0and deer\\u00a0(in one case along with weeding of invasive plants) had a greater species richness of butterflies\\u00a0and macro-moths\\u00a0than unfenced plots. The other two studies found that forest plots fenced to exclude elk had mixed effects on the species richness of butterflies\\u00a0and arthropods including moths\\u00a0depending on fire intensity and year. One of these studies also found that grassland plots fenced to exclude elk had a similar species richness of butterflies to unfenced plots in all years. One global systematic review\\u00a0found that reducing or removing grazing or browsing by wild or domestic herbivores in temperate and boreal forests did not affect the species richness of butterflies and moths.\\n\\nPOPULATION RESPONSE (10 STUDIES)\\n\\nAbundance (9 studies): Five of eight studies (including five controlled studies, one before-and-after study, and two site comparison studies) in the UK, the USA, Mauritius, Canada\\u00a0and Japan\\u00a0found that forest\\u00a0and grassland\\u00a0plots fenced to exclude, or reduce the density of, deer, sheep, pigs\\u00a0and large herbivores\\u00a0(in one case along with weeding of invasive plants) had a higher abundance of butterflies, moths, caterpillars, rare macro-moths\\u00a0and New Forest burnet moths\\u00a0than unfenced plots. One of these studies also found that the total abundance of macro-moths was similar in fenced and unfenced plots. Two studies found that forest plots fenced to exclude elk had mixed effects on the abundance of butterflies\\u00a0and arthropods including moths\\u00a0depending on fire intensity and year. One of these studies also found that grassland plots fenced to exclude elk had a similar abundance of butterflies to unfenced plots in all years. The eighth study found that a forest fenced to exclude sika deer had a similar abundance of all moths, but a lower abundance of tree-feeding moths, than unfenced forest. One global systematic review\\u00a0found that reducing or removing grazing or browsing by wild or domestic herbivores in temperate and boreal forests increased the abundance of butterflies and moths.\\nSurvival (1 study): One paired, controlled study in the Netherlands\\u00a0reported that all Glanville fritillary caterpillar nests survived in grassland fenced to exclude sheep, compared to 88% in a grazed area.\\nCondition (1 study): One paired, controlled study in the Netherlands\\u00a0found that fewer Glanville fritillary caterpillar nests were damaged in grassland fenced to exclude sheep than in a grazed area.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2630\"}",
+            "return_val": "{\n  \"action_id\": \"2630\",\n  \"action_title\": \"Use tree tubes/small fences/cages to protect individual trees\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using tree tubes, small fences or cages to protect individual trees from mammals.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?\", \"summary\": \"Based on the available evidence, both wire and electric fencing have been shown to be effective for protecting forests from large native herbivores, but the research shows different patterns of evidence. For electric fencing, one controlled study in South Africa found that using electric fencing to exclude elephants and nyalas increased tree density (Action 1231). For wire fencing, the evidence is more extensive: five of ten studies in Australia, Bhutan, Canada, France, Portugal and the USA found that using wire fencing to exclude large herbivores increased the cover and size of understory plants, while six studies found no effect on cover, seed density, species richness or diversity of understory plants (Action 1230). Regarding effects on young trees specifically, wire fencing showed mixed results - one study found it increased biomass, one found it decreased the density of young trees, and one found mixed effects depending on the species (Action 1230). Two replicated, controlled studies in the USA found that using wire fencing to exclude large herbivores increased tree density (Action 1230). Additional research on non-electric fencing found that a high woven wire fence with small mesh, an overhang and an apron was the most effective design at deterring crossings by coyotes (Action 2415). The evidence base for electric fencing appears more limited compared to wire fencing, with only one study identified specifically evaluating electric fencing effectiveness against large native herbivores.\", \"action_ids\": [\"1230\",\"1231\",\"2415\"]}",
+            "return_val": "{\n  \"query\": \"To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?\",\n  \"relevant_summary\": \"Based on the available evidence, both wire and electric fencing have been shown to be effective for protecting forests from large native herbivores, but the research shows different patterns of evidence. For electric fencing, one controlled study in South Africa found that using electric fencing to exclude elephants and nyalas increased tree density (Action 1231). For wire fencing, the evidence is more extensive: five of ten studies in Australia, Bhutan, Canada, France, Portugal and the USA found that using wire fencing to exclude large herbivores increased the cover and size of understory plants, while six studies found no effect on cover, seed density, species richness or diversity of understory plants (Action 1230). Regarding effects on young trees specifically, wire fencing showed mixed results - one study found it increased biomass, one found it decreased the density of young trees, and one found mixed effects depending on the species (Action 1230). Two replicated, controlled studies in the USA found that using wire fencing to exclude large herbivores increased tree density (Action 1230). Additional research on non-electric fencing found that a high woven wire fence with small mesh, an overhang and an apron was the most effective design at deterring crossings by coyotes (Action 2415). The evidence base for electric fencing appears more limited compared to wire fencing, with only one study identified specifically evaluating electric fencing effectiveness against large native herbivores.\",\n  \"action_ids\": [\n    \"1230\",\n    \"1231\",\n    \"2415\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1230",
+      "1231"
+    ],
+    "regenerated_ids": [
+      "1230",
+      "1231"
+    ]
   }
 ]

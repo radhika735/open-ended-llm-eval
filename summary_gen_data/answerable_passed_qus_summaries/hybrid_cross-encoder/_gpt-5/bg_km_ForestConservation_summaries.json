@@ -737,5 +737,75 @@
       "1157",
       "1158"
     ]
+  },
+  {
+    "query": "To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Wire fencing: Across 10 studies from Australia, Bhutan, Canada, France, Portugal and the USA, five studies (including two replicated, randomized, controlled) reported increased cover and size of understory plants when large herbivores were excluded, while six studies found no effect on understory cover, seed density, species richness or diversity; effects on young trees were mixed (one study increased biomass, one decreased density, one varied by species), and two replicated, controlled USA studies found increased tree density [1230]. Electric fencing: One controlled study in South Africa found that excluding elephants and nyalas with electric fencing increased tree density [1231].",
+    "summary_action_ids": [
+      "1230",
+      "1231"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"wire fences vs electric fences effectiveness protecting forests from large native herbivores\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1230\",\n    \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1231\",\n    \"action_title\": \"Use electric fencing to exclude large native herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2415\",\n    \"action_title\": \"Install non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"wire fences vs electric fences effectiveness protecting forests from large native herbivores\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2448\",\n    \"action_title\": \"Fit livestock with protective collars to reduce risk of predation by mammals to reduce human-wildlife conflict\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2427\",\n    \"action_title\": \"Use visual deterrents (e.g. scarecrows) to deter predation of livestock by mammals to reduce human-wildlife conflict\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1670\",\n    \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1230\"}",
+            "return_val": "{\n  \"action_id\": \"1230\",\n  \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nFive of ten studies (including two replicated, randomized, controlled\\u00a0 studies) in Australia, Bhutan, Canada, France, Portugal and the USA found that using wire fencing to exclude large herbivores increased the cover and\\u00a0 size of understory plants. Six studies found no effect of wire fencing on the cover, seed density, species richness\\u00a0or\\u00a0diversity of understory plants.\\nTwo of the above studies\\u00a0and one paired-sites study in Ireland\\u00a0examined the effect of using wire fencing to exclude large herbivores on young trees. One found it increased the biomass, one found it decreased the density of young trees and one found mixed effects\\u00a0depending on the species.\\nTwo replicated, controlled studies in the USA found that using wire fencing to exclude large herbivores increased tree density.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1231\"}",
+            "return_val": "{\n  \"action_id\": \"1231\",\n  \"action_title\": \"Use electric fencing to exclude large native herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in South Africa found that using electric fencing to exclude elephants and nyalas increased tree density.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2415\"}",
+            "return_val": "{\n  \"action_id\": \"2415\",\n  \"action_title\": \"Install non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies evaluated the effects on mammals of installing non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict. Two studies were in the USA and one each was in Germany, the UK, Spain, China, Tanzania and Kenya.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (8 STUDIES)\\n\\nHuman-wildlife conflict (8 studies): Four replicated studies (including three before-and-after studies), in USA, China, Tanzania and Kenya, found that non-electric fencing reduced livestock predation by coyotes, Tibetan brown bears, and a range of mammalian predators. A replicated, controlled study in USA found that a high woven wire fence with small mesh, an overhang and an apron (to deter burrowing) was the most effective design at deterring crossings by coyotes. A replicated, controlled study in Germany found that fencing with phosphorescent tape was more effective than fencing with normal yellow tape for deterring red deer and roe deer, but had no effect on crossings by wild boar or brown hare. Two studies (one replicated, before-and-after, site comparison and one controlled study) in the UK and Spain found that fences reduced European rabbit numbers on or damage to crops.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?\",\"summary\":\"Wire fencing: Across 10 studies from Australia, Bhutan, Canada, France, Portugal and the USA, five studies (including two replicated, randomized, controlled) reported increased cover and size of understory plants when large herbivores were excluded, while six studies found no effect on understory cover, seed density, species richness or diversity; effects on young trees were mixed (one study increased biomass, one decreased density, one varied by species), and two replicated, controlled USA studies found increased tree density [1230]. Electric fencing: One controlled study in South Africa found that excluding elephants and nyalas with electric fencing increased tree density [1231].\",\"action_ids\":[\"1230\",\"1231\"]}",
+            "return_val": "{\n  \"query\": \"To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?\",\n  \"relevant_summary\": \"Wire fencing: Across 10 studies from Australia, Bhutan, Canada, France, Portugal and the USA, five studies (including two replicated, randomized, controlled) reported increased cover and size of understory plants when large herbivores were excluded, while six studies found no effect on understory cover, seed density, species richness or diversity; effects on young trees were mixed (one study increased biomass, one decreased density, one varied by species), and two replicated, controlled USA studies found increased tree density [1230]. Electric fencing: One controlled study in South Africa found that excluding elephants and nyalas with electric fencing increased tree density [1231].\",\n  \"action_ids\": [\n    \"1230\",\n    \"1231\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1230",
+      "1231"
+    ],
+    "regenerated_ids": [
+      "1230",
+      "1231"
+    ]
   }
 ]

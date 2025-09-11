@@ -3765,5 +3765,117 @@
       "756",
       "840"
     ]
+  },
+  {
+    "query": "What are the documented impacts of using prescribed fire on amphibian populations in US forest and grassland habitats?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on documented studies, prescribed fire has varied impacts on amphibian populations in US forest and grassland habitats. In forest habitats, eight of 14 studies found no effect of prescribed forest fires on amphibian abundance or numbers of species, while four found mixed effects depending on species, species and year, or season of burn (Action 877). Three studies found that fires increased amphibian abundance or numbers of species, and one found that abundance decreased with fires (Action 877). Two studies found that numbers of amphibian species and abundance increased or abundance decreased with time since prescribed forest fires (Action 877). One before-and-after study found that spotted salamander hatching success increased following a prescribed forest fire (Action 877). In grassland habitats, two studies found that annual prescribed fires decreased numbers of amphibian species and abundance, or along with changes in grazing regime, increased rates of species loss (Action 862). One replicated, before-and-after study found that spring burns, but not autumn or winter burns, decreased salamander abundance (Action 862). Studies examining combined reptile and amphibian responses showed that one study found burned areas had higher combined reptile and amphibian species richness than unburned areas, while another found similar species richness and diversity between burned and unburned areas (Action 3646). In wetland contexts, one study found that burned areas had similar abundance of reptiles and amphibians compared to unburned areas (Action 3652).",
+    "summary_action_ids": [
+      "862",
+      "877",
+      "3646",
+      "3652"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed fire amphibian populations forest grassland habitats\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"862\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in grassland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3882\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in grasslands or other open habitats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3652\",\n    \"action_title\": \"Use prescribed burning: Wetland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3646\",\n    \"action_title\": \"Use prescribed burning: Forest, open woodland & savanna\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"877\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3651\",\n    \"action_title\": \"Use prescribed burning: Grassland & shrubland\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"3877\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3878\",\n    \"action_title\": \"Change season/timing of prescribed burning\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3657\",\n    \"action_title\": \"Use prescribed burning in combination with grazing\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3879\",\n    \"action_title\": \"Leave some areas unburned during prescribed burning\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"amphibian prescribed burning fire effects impacts\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"877\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"862\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in grassland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3652\",\n    \"action_title\": \"Use prescribed burning: Wetland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3646\",\n    \"action_title\": \"Use prescribed burning: Forest, open woodland & savanna\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3119\",\n    \"action_title\": \"Use prescribed fire to control problematic plants: brackish/saline swamps\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3118\",\n    \"action_title\": \"Use prescribed fire to control problematic plants: freshwater swamps\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1623\",\n    \"action_title\": \"Use prescribed burning to reduce potential for large wild fires\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3657\",\n    \"action_title\": \"Use prescribed burning in combination with grazing\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3116\",\n    \"action_title\": \"Use prescribed fire to control problematic plants: freshwater marshes\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3651\",\n    \"action_title\": \"Use prescribed burning: Grassland & shrubland\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"862\"}",
+            "return_val": "{\n  \"action_id\": \"862\",\n  \"action_title\": \"Use prescribed fire or modifications to burning regime in grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one before-and-after, site comparison study) in the USA and Argentina found that annual prescribed fires in grassland decreased numbers of amphibian species and abundance\\u00a0or, along with changes in grazing regime, increased rates of species loss.\\nOne replicated, before-and-after study in the USA found that spring, but not autumn or winter burns, decreased salamander abundance.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"877\"}",
+            "return_val": "{\n  \"action_id\": \"877\",\n  \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nEight of 14 studies (including three randomized, replicated, controlled studies) in Australia, North America and the USA found no effect of prescribed forest fires on amphibian abundance or numbers of species. Four found that forest fires had mixed effects on amphibian abundance depending on species, species and year or season of burn. Three found that fires increased amphibian abundance or numbers of species. One found that abundance decreased with fires.\\nTwo studies (including one randomized, replicated, controlled study) in the USA found that numbers of amphibian species and abundance increased or abundance decreased with time since prescribed forest fires.\\nOne before-and-after study in the USA found that spotted salamander hatching success increased following a prescribed forest fire.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3646\"}",
+            "return_val": "{\n  \"action_id\": \"3646\",\n  \"action_title\": \"Use prescribed burning: Forest, open woodland & savanna\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-eight studies evaluated the effects of using prescribed burning in forest, open woodland and savanna on reptile populations. Twenty-four studies were in the USA, three were in Australia and one was in Brazil.\\n\\nCOMMUNITY RESPONSE (12 STUDIES)\\n\\nCommunity composition (1 study): One replicated, randomized, controlled, before-and-after study in the USA found that in areas with prescribed burning, reptile assemblages became similar to more pristine areas that had historically experienced frequent fires.\\nRichness/diversity (11 studies): Seven studies (including two replicated, randomized, controlled, before-and-after studies) in the USA and Australia found that burned areas had similar reptile species richness compared to unburned areas. One of the studies also found that burned areas had higher reptile diversity than unburned areas. Two replicated studies (including one randomized, controlled study) in Australia and the USA found that reptile species richness remained similar with time since burning. One of two studies (including one replicated, randomized, controlled, before-and-after study) in the USA found that burned areas had higher combined reptile and amphibian species richness than unburned areas. The other study found that burned areas had similar combined reptile and amphibian species richness and diversity compared to unburned areas.\\n\\nPOPULATION RESPONSE (26 STUDIES)\\n\\nAbundance (23 studies): Nine of 21 studies (including four replicated, randomized, controlled, before-and-after studies) in the USA and Australia found that burning had mixed effects on the abundance of reptiles, six-lined racerunners and western yellow-bellied racer snakes. Six studies found that burned areas had a higher abundance of reptiles, lizards, black racer snakes and more active gopher tortoise burrows compared to unburned areas. The other six studies found that burned areas had a similar abundance of reptiles, lizards and gopher tortoise burrows compared to unburned areas. One replicated, site comparison study in Australia found that reptile abundance increased with time since burning. One replicated, randomized, controlled study in the USA found that burning in different seasons had mixed effects on the abundance of reptiles.\\nSurvival (2 study): One of two studies (one site comparison and one controlled study) in the USA and Brazil found that Texas horned lizard survival was similar in burned and unburned areas. The other study found that burning had mixed effects on survival of an endemic lizard species.\\nCondition (1 study): One site comparison study in the USA found that eastern fence lizards in recently burned areas ran faster than those from areas that were burned less recently or were unburned.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nBehaviour change (2 studies): One replicated, controlled, before and-after study in the USA found that burning affected overwintering habitat use by gopher tortoises. One replicated, controlled study in the USA found that in burned areas, black racer snakes had higher surface activity than in unburned areas.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3651\"}",
+            "return_val": "{\n  \"action_id\": \"3651\",\n  \"action_title\": \"Use prescribed burning: Grassland & shrubland\",\n  \"key_messages\": \"Key Messages:\\n\\nFourteen studies evaluated the effects of using prescribed burning in grassland and shrubland on reptile populations. Seven studies were in the USA, four were in Australia and one was in each of South Africa, Argentina and France.\\n\\nCOMMUNITY RESPONSE (6 STUDIES)\\n\\nCommunity composition (1 study): One replicated, before-and-after study in Australia found that reptile species composition was different before and immediately after burning in three grass types and remained different after vegetation grew back in one of three grass types.\\nRichness/diversity (5 studies): Two of three studies (including one replicated, controlled, before-and-after study) in South Africa, Argentina and the USA found that areas with annual burning had similar reptile species richness and diversity compared to unburned areas or that richness was similar across areas with a range of burn frequencies. The other study found that burned areas had higher reptile species richness than unburned areas. One replicated, site comparison study in Australia found that areas burned 1\\u20134 years earlier had lower reptile species richness than areas burned 11\\u201315 years earlier. One replicated, site comparison study in the USA found that areas with different burn frequencies had similar reptile species richness and diversity.\\n\\nPOPULATION RESPONSE (11 STUDIES)\\n\\nAbundance (11 studies): Three of six studies (including three replicated, randomized, controlled studies) in the USA and Argentina found that burned areas had a similar abundance of lizards, snakes and lizards and combined reptiles and amphibians compared to unburned areas. Two studies found that burning had mixed effects on the abundance of different reptile species and western yellow-bellied racer snakes.The other study found that burned areas had more eastern massasauga rattlesnakes than unburned areas. One replicated, site comparison study in Australia found that areas burned 1\\u20134 years earlier had a lower abundance of reptiles than areas burned 11\\u201315 years earlier. One controlled before-and-after study in the USA found that a burned area had a similar number of four snake species compared to when the area was managed by mowing. One site comparison study in France found that one reptile species was less abundant in areas managed by burning than areas grazed by sheep, whereas the abundance of five other species was similar in all areas. One replicated, before-and-after study in Australia found that immediately after burning, the abundance of reptiles was lower than before burning, but was similar after vegetation grew back. One replicated, randomized, site comparison study in Australia found that small-scale patch burning was associated with increased abundance of sand goanna burrows.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated, randomized, controlled study in Australia found that some rocky outcrops that were burned were recolonized by pink-tailed worm-lizards.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3652\"}",
+            "return_val": "{\n  \"action_id\": \"3652\",\n  \"action_title\": \"Use prescribed burning: Wetland\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of using prescribed burning in wetlands on reptile populations. One study was in each of the USA and Australia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): One of two controlled studies (including one replicated, randomized study) in the USA and Australia found mixed effects of using prescribed burning in wetlands on the abundance of western yellow-bellied racer snakes. The other study found that found that burned areas had a similar abundance of reptiles and amphibians compared to unburned areas, but that delicate skinks were less abundant in burned areas.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"salamander fire prescribed burning forest effects\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"877\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"862\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in grassland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3652\",\n    \"action_title\": \"Use prescribed burning: Wetland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3877\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3657\",\n    \"action_title\": \"Use prescribed burning in combination with grazing\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3877\"}",
+            "return_val": "{\n  \"action_id\": \"3877\",\n  \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects on butterflies and moths of using prescribed fire to maintain or restore disturbance in forests. Four studies were in the USA\\u00a0and one was in Australia.\\n\\nCOMMUNITY RESPONSE (4 STUDIES)\\n\\nRichness/diversity (4 studies): Three of four studies (including one replicated study, one paired study, two controlled studies, two before-and-after studies, and one site comparison study) in the USA\\u00a0found that coniferous forest restored 1\\u20132 years ago by burning (in combination with thinning)\\u00a0or burned once within the last 20 years, had a higher species richness of butterflies than unburned forest. The fourth study\\u00a0found that mixed forest and shrubland sites which had been burned the year before had similar butterfly species richness to unburned sites.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): Two studies (including one controlled, before-and-after study and one site comparison study) in the USA\\u00a0found that pine forest restored 1\\u20132 years ago by burning (in combination with thinning) had a higher abundance of butterflies than unburned forest. One replicated, before-and-after study in Australia\\u00a0reported that in the spring after selective burning of eucalyptus forest there were fewer Eltham copper caterpillars than before.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"amphibian abundance species fire burning\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"877\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"862\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in grassland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3652\",\n    \"action_title\": \"Use prescribed burning: Wetland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3657\",\n    \"action_title\": \"Use prescribed burning in combination with grazing\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3118\",\n    \"action_title\": \"Use prescribed fire to control problematic plants: freshwater swamps\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the documented impacts of using prescribed fire on amphibian populations in US forest and grassland habitats?\", \"summary\": \"Based on documented studies, prescribed fire has varied impacts on amphibian populations in US forest and grassland habitats. In forest habitats, eight of 14 studies found no effect of prescribed forest fires on amphibian abundance or numbers of species, while four found mixed effects depending on species, species and year, or season of burn (Action 877). Three studies found that fires increased amphibian abundance or numbers of species, and one found that abundance decreased with fires (Action 877). Two studies found that numbers of amphibian species and abundance increased or abundance decreased with time since prescribed forest fires (Action 877). One before-and-after study found that spotted salamander hatching success increased following a prescribed forest fire (Action 877). In grassland habitats, two studies found that annual prescribed fires decreased numbers of amphibian species and abundance, or along with changes in grazing regime, increased rates of species loss (Action 862). One replicated, before-and-after study found that spring burns, but not autumn or winter burns, decreased salamander abundance (Action 862). Studies examining combined reptile and amphibian responses showed that one study found burned areas had higher combined reptile and amphibian species richness than unburned areas, while another found similar species richness and diversity between burned and unburned areas (Action 3646). In wetland contexts, one study found that burned areas had similar abundance of reptiles and amphibians compared to unburned areas (Action 3652).\", \"action_ids\": [\"862\",\"877\",\"3646\",\"3652\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented impacts of using prescribed fire on amphibian populations in US forest and grassland habitats?\",\n  \"relevant_summary\": \"Based on documented studies, prescribed fire has varied impacts on amphibian populations in US forest and grassland habitats. In forest habitats, eight of 14 studies found no effect of prescribed forest fires on amphibian abundance or numbers of species, while four found mixed effects depending on species, species and year, or season of burn (Action 877). Three studies found that fires increased amphibian abundance or numbers of species, and one found that abundance decreased with fires (Action 877). Two studies found that numbers of amphibian species and abundance increased or abundance decreased with time since prescribed forest fires (Action 877). One before-and-after study found that spotted salamander hatching success increased following a prescribed forest fire (Action 877). In grassland habitats, two studies found that annual prescribed fires decreased numbers of amphibian species and abundance, or along with changes in grazing regime, increased rates of species loss (Action 862). One replicated, before-and-after study found that spring burns, but not autumn or winter burns, decreased salamander abundance (Action 862). Studies examining combined reptile and amphibian responses showed that one study found burned areas had higher combined reptile and amphibian species richness than unburned areas, while another found similar species richness and diversity between burned and unburned areas (Action 3646). In wetland contexts, one study found that burned areas had similar abundance of reptiles and amphibians compared to unburned areas (Action 3652).\",\n  \"action_ids\": [\n    \"862\",\n    \"877\",\n    \"3646\",\n    \"3652\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "862",
+      "877"
+    ],
+    "regenerated_ids": [
+      "862",
+      "877"
+    ]
   }
 ]

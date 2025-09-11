@@ -917,5 +917,132 @@
       "1101",
       "1138"
     ]
+  },
+  {
+    "query": "What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available evidence, the most effective actions for controlling invasive Ponto-Caspian gammarids include dewatering habitats, which killed three species of invasive freshwater shrimp, although one species required water content levels of 4% and below before it was killed (Action ID: 1094). Some chemical treatments showed effectiveness: iodine solution, acetic acid, Virkon S and sodium hypochlorite added to freshwater killed invasive killer shrimp, but were considered impractical for field application (Action ID: 1095). Exposure to parasites showed promise, as an introduced parasitic mould reduced populations of an invasive shrimp (Action ID: 1089). Changing salinity showed mixed results: one study found increasing salinity killed the majority of invasive shrimp within five hours, while another found it did not kill invasive killer shrimp (Action ID: 1091). Carbonating water stunned invasive killer shrimp (Action ID: 1088). The least effective actions include changing water pH, which did not kill invasive killer shrimp (Action ID: 1093), and several chemicals - methanol, citric acid, urea, hydrogen peroxide and sucrose did not kill invasive killer shrimp (Action ID: 1095). Several actions had no evidence captured for their effectiveness including biological control using predatory fish (Action ID: 1087), exchanging ballast water (Action ID: 1097), exposure to disease-causing organisms (Action ID: 1090), and cleaning equipment (Action ID: 1096).",
+    "summary_action_ids": [
+      "1088",
+      "1089",
+      "1087",
+      "1095",
+      "1097",
+      "1091",
+      "1094",
+      "1090",
+      "1093",
+      "1096"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Ponto-Caspian gammarids invasive control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1088\",\n    \"action_title\": \"Ponto-Caspian gammarids: Control movement of gammarids\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1087\",\n    \"action_title\": \"Ponto-Caspian gammarids: Biological control using predatory fish\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1095\",\n    \"action_title\": \"Ponto-Caspian gammarids: Add chemicals to the water\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Ponto-Caspian gammarids invasive control\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1088\",\n    \"action_title\": \"Ponto-Caspian gammarids: Control movement of gammarids\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1089\",\n    \"action_title\": \"Ponto-Caspian gammarids: Exposure to parasites\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1087\",\n    \"action_title\": \"Ponto-Caspian gammarids: Biological control using predatory fish\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1095\",\n    \"action_title\": \"Ponto-Caspian gammarids: Add chemicals to the water\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1097\",\n    \"action_title\": \"Ponto-Caspian gammarids: Exchanging ballast water\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1091\",\n    \"action_title\": \"Ponto-Caspian gammarids: Change salinity of the water\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1094\",\n    \"action_title\": \"Ponto-Caspian gammarids: Dewater (dry out) the habitat\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1090\",\n    \"action_title\": \"Ponto-Caspian gammarids: Exposure to disease-causing organisms\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1093\",\n    \"action_title\": \"Ponto-Caspian gammarids: Change water pH\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1096\",\n    \"action_title\": \"Ponto-Caspian gammarids: Cleaning equipment\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1088\"}",
+            "return_val": "{\n  \"action_id\": \"1088\",\n  \"action_title\": \"Ponto-Caspian gammarids: Control movement of gammarids\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled laboratory study in the USA\\u00a0found that movements of invasive freshwater shrimp slowed down or stopped when they were placed in water that had been exposed to different species of predatory fish, compared to those not exposed to fish. \\nA replicated laboratory study in the UK\\u00a0found carbonating the water stunned invasive killer shrimp.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1089\"}",
+            "return_val": "{\n  \"action_id\": \"1089\",\n  \"action_title\": \"Ponto-Caspian gammarids: Exposure to parasites\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, laboratory study in Canada\\u00a0found that an introduced parasitic mould reduced populations of an invasive shrimp.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1087\"}",
+            "return_val": "{\n  \"action_id\": \"1087\",\n  \"action_title\": \"Ponto-Caspian gammarids: Biological control using predatory fish\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the use of predatory fish to control Ponto-Caspian gammarids.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1095\"}",
+            "return_val": "{\n  \"action_id\": \"1095\",\n  \"action_title\": \"Ponto-Caspian gammarids: Add chemicals to the water\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled laboratory study in the UK\\u00a0found that iodine solution, acetic acid, Virkon S and sodium hypochlorite added to freshwater killed invasive killer shrimp, but were considered impractical for field application. Methanol, citric acid, urea, hydrogen peroxide and sucrose did not kill invasive killer shrimp when added to freshwater.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1097\"}",
+            "return_val": "{\n  \"action_id\": \"1097\",\n  \"action_title\": \"Ponto-Caspian gammarids: Exchanging ballast water\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for exchanging ballast water to control Ponto-Caspian gammarids.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1091\"}",
+            "return_val": "{\n  \"action_id\": \"1091\",\n  \"action_title\": \"Ponto-Caspian gammarids: Change salinity of the water\",\n  \"key_messages\": \"Key Messages:\\nOne of two replicated laboratory studies (one controlled) in Canada and the UK found that increasing the salinity level of water killed the majority of invasive shrimp within five hours. One found that increased salinity did not kill invasive killer shrimp.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1094\"}",
+            "return_val": "{\n  \"action_id\": \"1094\",\n  \"action_title\": \"Ponto-Caspian gammarids: Dewater (dry out) the habitat\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled laboratory study from Poland\\u00a0found that lowering water levels in sand killed three species of invasive freshwater shrimp, although one species required water content levels of 4% and below before it was killed.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1090\"}",
+            "return_val": "{\n  \"action_id\": \"1090\",\n  \"action_title\": \"Ponto-Caspian gammarids: Exposure to disease-causing organisms\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the use of disease-causing organisms to control Ponto-Caspian gammarids.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1093\"}",
+            "return_val": "{\n  \"action_id\": \"1093\",\n  \"action_title\": \"Ponto-Caspian gammarids: Change water pH\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled laboratory study from the UK\\u00a0found that lowering the pH of water did not kill invasive killer shrimp.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1096\"}",
+            "return_val": "{\n  \"action_id\": \"1096\",\n  \"action_title\": \"Ponto-Caspian gammarids: Cleaning equipment\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the cleaning of equipment to control Ponto-Caspian gammarids.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?\", \"summary\": \"Based on the available evidence, the most effective actions for controlling invasive Ponto-Caspian gammarids include dewatering habitats, which killed three species of invasive freshwater shrimp, although one species required water content levels of 4% and below before it was killed (Action ID: 1094). Some chemical treatments showed effectiveness: iodine solution, acetic acid, Virkon S and sodium hypochlorite added to freshwater killed invasive killer shrimp, but were considered impractical for field application (Action ID: 1095). Exposure to parasites showed promise, as an introduced parasitic mould reduced populations of an invasive shrimp (Action ID: 1089). Changing salinity showed mixed results: one study found increasing salinity killed the majority of invasive shrimp within five hours, while another found it did not kill invasive killer shrimp (Action ID: 1091). Carbonating water stunned invasive killer shrimp (Action ID: 1088). The least effective actions include changing water pH, which did not kill invasive killer shrimp (Action ID: 1093), and several chemicals - methanol, citric acid, urea, hydrogen peroxide and sucrose did not kill invasive killer shrimp (Action ID: 1095). Several actions had no evidence captured for their effectiveness including biological control using predatory fish (Action ID: 1087), exchanging ballast water (Action ID: 1097), exposure to disease-causing organisms (Action ID: 1090), and cleaning equipment (Action ID: 1096).\", \"action_ids\": [\"1088\",\"1089\",\"1087\",\"1095\",\"1097\",\"1091\",\"1094\",\"1090\",\"1093\",\"1096\"]}",
+            "return_val": "{\n  \"query\": \"What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?\",\n  \"relevant_summary\": \"Based on the available evidence, the most effective actions for controlling invasive Ponto-Caspian gammarids include dewatering habitats, which killed three species of invasive freshwater shrimp, although one species required water content levels of 4% and below before it was killed (Action ID: 1094). Some chemical treatments showed effectiveness: iodine solution, acetic acid, Virkon S and sodium hypochlorite added to freshwater killed invasive killer shrimp, but were considered impractical for field application (Action ID: 1095). Exposure to parasites showed promise, as an introduced parasitic mould reduced populations of an invasive shrimp (Action ID: 1089). Changing salinity showed mixed results: one study found increasing salinity killed the majority of invasive shrimp within five hours, while another found it did not kill invasive killer shrimp (Action ID: 1091). Carbonating water stunned invasive killer shrimp (Action ID: 1088). The least effective actions include changing water pH, which did not kill invasive killer shrimp (Action ID: 1093), and several chemicals - methanol, citric acid, urea, hydrogen peroxide and sucrose did not kill invasive killer shrimp (Action ID: 1095). Several actions had no evidence captured for their effectiveness including biological control using predatory fish (Action ID: 1087), exchanging ballast water (Action ID: 1097), exposure to disease-causing organisms (Action ID: 1090), and cleaning equipment (Action ID: 1096).\",\n  \"action_ids\": [\n    \"1088\",\n    \"1089\",\n    \"1087\",\n    \"1095\",\n    \"1097\",\n    \"1091\",\n    \"1094\",\n    \"1090\",\n    \"1093\",\n    \"1096\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1087",
+      "1088",
+      "1089",
+      "1090",
+      "1091",
+      "1092",
+      "1093",
+      "1094",
+      "1095",
+      "1096",
+      "1097"
+    ],
+    "regenerated_ids": [
+      "1088",
+      "1089",
+      "1091",
+      "1092",
+      "1093",
+      "1094",
+      "1095"
+    ]
   }
 ]

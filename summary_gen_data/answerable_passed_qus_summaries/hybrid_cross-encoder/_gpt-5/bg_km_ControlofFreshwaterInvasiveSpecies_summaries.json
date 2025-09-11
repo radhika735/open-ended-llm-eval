@@ -656,5 +656,90 @@
       "1101",
       "1138"
     ]
+  },
+  {
+    "query": "What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence identified: A controlled laboratory study reported that adding certain chemicals (iodine solution, acetic acid, Virkon S, sodium hypochlorite) to freshwater killed invasive killer shrimp, though these were considered impractical for field application; other chemicals (methanol, citric acid, urea, hydrogen peroxide, sucrose) did not kill invasive killer shrimp [1095]. No evidence was captured assessing biological control using predatory fish [1087]. No evidence was captured assessing exchanging ballast water [1097].",
+    "summary_action_ids": [
+      "1095",
+      "1087",
+      "1097"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Ponto-Caspian gammarids invasive control effectiveness actions most least effective\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1087\",\n    \"action_title\": \"Ponto-Caspian gammarids: Biological control using predatory fish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1097\",\n    \"action_title\": \"Ponto-Caspian gammarids: Exchanging ballast water\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1095\",\n    \"action_title\": \"Ponto-Caspian gammarids: Add chemicals to the water\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Ponto-Caspian gammarids invasive control actions effectiveness\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1099\",\n    \"action_title\": \"Skunk cabbage:  Biological control using native herbivores\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"109\",\n    \"action_title\": \"Erect predator-proof fencing around important breeding sites for waders\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1101\",\n    \"action_title\": \"Skunk cabbage:  Physical removal\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1087\"}",
+            "return_val": "{\n  \"action_id\": \"1087\",\n  \"action_title\": \"Ponto-Caspian gammarids: Biological control using predatory fish\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the use of predatory fish to control Ponto-Caspian gammarids.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1097\"}",
+            "return_val": "{\n  \"action_id\": \"1097\",\n  \"action_title\": \"Ponto-Caspian gammarids: Exchanging ballast water\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for exchanging ballast water to control Ponto-Caspian gammarids.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1095\"}",
+            "return_val": "{\n  \"action_id\": \"1095\",\n  \"action_title\": \"Ponto-Caspian gammarids: Add chemicals to the water\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled laboratory study in the UK\\u00a0found that iodine solution, acetic acid, Virkon S and sodium hypochlorite added to freshwater killed invasive killer shrimp, but were considered impractical for field application. Methanol, citric acid, urea, hydrogen peroxide and sucrose did not kill invasive killer shrimp when added to freshwater.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?\",\"summary\":\"Evidence identified: A controlled laboratory study reported that adding certain chemicals (iodine solution, acetic acid, Virkon S, sodium hypochlorite) to freshwater killed invasive killer shrimp, though these were considered impractical for field application; other chemicals (methanol, citric acid, urea, hydrogen peroxide, sucrose) did not kill invasive killer shrimp [1095]. No evidence was captured assessing biological control using predatory fish [1087]. No evidence was captured assessing exchanging ballast water [1097].\",\"action_ids\":[\"1095\",\"1087\",\"1097\"]}",
+            "return_val": "{\n  \"query\": \"What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?\",\n  \"relevant_summary\": \"Evidence identified: A controlled laboratory study reported that adding certain chemicals (iodine solution, acetic acid, Virkon S, sodium hypochlorite) to freshwater killed invasive killer shrimp, though these were considered impractical for field application; other chemicals (methanol, citric acid, urea, hydrogen peroxide, sucrose) did not kill invasive killer shrimp [1095]. No evidence was captured assessing biological control using predatory fish [1087]. No evidence was captured assessing exchanging ballast water [1097].\",\n  \"action_ids\": [\n    \"1095\",\n    \"1087\",\n    \"1097\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1087",
+      "1088",
+      "1089",
+      "1090",
+      "1091",
+      "1092",
+      "1093",
+      "1094",
+      "1095",
+      "1096",
+      "1097"
+    ],
+    "regenerated_ids": [
+      "1088",
+      "1089",
+      "1091",
+      "1092",
+      "1093",
+      "1094",
+      "1095"
+    ]
   }
 ]
