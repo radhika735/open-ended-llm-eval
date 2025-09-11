@@ -264,7 +264,7 @@ def main():
 
     for model, provider in model_provider_list:
         usage = get_summary_gen_qus_usage(model, provider)
-        print(f"Model: {model}, Provider: {provider}, Usage: {usage}")
+        print(f"\n\nModel: {model}, Provider: {provider}, Usage: {usage}")
 
     for mp in cleaned_mp_list:
         viable_summaries_split = get_viable_summaries_split_for_model(model_provider=mp)
