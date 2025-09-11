@@ -160,11 +160,11 @@ def write_distribution_file(id_dist, filepath):
             file.write(synopsis + "," + ids + "\n")
 
 
-def get_summary_gen_qus_usage_separate(model, provider, qu_types=["answerable", "unanswerable"], filter_stage=["passed", "failed"]):
+def get_summary_gen_qus_usage_separate(model, provider, qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"]):
     usage = []
 
     for qu_type in qu_types:
-        for stage in filter_stage:
+        for stage in filter_stages:
             dir = f"live_questions/bg_km_qus/{qu_type}/{stage}/usage_annotated"
             num_qus_used = 0
             num_qus_unused = 0
@@ -191,7 +191,7 @@ def get_summary_gen_qus_usage_combined(model, provider, qu_types=["answerable", 
     total_used = 0
     total_unused = 0
 
-    usage = get_summary_gen_qus_usage_separate(model=model, provider=provider, qu_types=qu_types, filter_stage=filter_stage)
+    usage = get_summary_gen_qus_usage_separate(model=model, provider=provider, qu_types=qu_types, filter_stages=filter_stage)
     for u in usage:
         total_used += u["used"]
         total_unused += u["unused"]

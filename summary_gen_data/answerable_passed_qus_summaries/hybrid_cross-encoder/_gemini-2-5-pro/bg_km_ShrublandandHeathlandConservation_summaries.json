@@ -1385,5 +1385,148 @@
       "1721",
       "1722"
     ]
+  },
+  {
+    "query": "What techniques involving the addition of materials to soil have been studied for restoring degraded shrublands, and what were their outcomes?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A study in the USA found that adding topsoil alongside sowing seeds increased the biomass of grasses but reduced the biomass of forbs when compared to adding topsoil alone (1857). Two randomized, controlled studies in the UK discovered that planting turf from intact heathland sites increased the abundance or cover of heathland species (1703). One of these studies also found that planting turf increased the seedling abundance for a majority of heathland plant species (1703). Additionally, another UK study showed that planting turf increased forb cover and reduced grass cover (1703). In Iceland, a study found that planting large turves from intact heathland sites increased the number of plant species, while smaller turves did not have the same effect (1703).",
+    "summary_action_ids": [
+      "1857",
+      "1703"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"soil amendment techniques for restoring degraded shrublands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1857\",\n    \"action_title\": \"Add topsoil (alongside planting/seeding)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1703\",\n    \"action_title\": \"Plant turf\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3231\",\n    \"action_title\": \"Add sediment: brackish/salt marshes\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1857\"}",
+            "return_val": "{\n  \"action_id\": \"1857\",\n  \"action_title\": \"Add topsoil (alongside planting/seeding)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, paired, controlled study in the USA\\u00a0found that addition of topsoil alongside sowing of seed increased the biomass of grasses but reduced the biomass of forbs in comparison to addition of topsoil alone.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1703\"}",
+            "return_val": "{\n  \"action_id\": \"1703\",\n  \"action_title\": \"Plant turf\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo randomized, controlled studies in the UK\\u00a0found that planting turf from intact heathland sites increased the abundance or cover of heathland species. One of these studies\\u00a0also found that planting turf increased the seedling abundance for a majority of heathland plant species.\\nOne randomized, controlled study in the UK\\u00a0found that planting turf increased forb cover, and reduced grass cover.\\nOne randomized, replicated, controlled study in Iceland\\u00a0found that planting large turves from intact heathland sites increased the number of plant species, but smaller turves did not.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1857\",\"1703\"],\"query\":\"What techniques involving the addition of materials to soil have been studied for restoring degraded shrublands, and what were their outcomes?\",\"summary\":\"A study in the USA found that adding topsoil alongside sowing seeds increased the biomass of grasses but reduced the biomass of forbs when compared to adding topsoil alone (1857). Two randomized, controlled studies in the UK discovered that planting turf from intact heathland sites increased the abundance or cover of heathland species (1703). One of these studies also found that planting turf increased the seedling abundance for a majority of heathland plant species (1703). Additionally, another UK study showed that planting turf increased forb cover and reduced grass cover (1703). In Iceland, a study found that planting large turves from intact heathland sites increased the number of plant species, while smaller turves did not have the same effect (1703).\"}",
+            "return_val": "{\n  \"query\": \"What techniques involving the addition of materials to soil have been studied for restoring degraded shrublands, and what were their outcomes?\",\n  \"relevant_summary\": \"A study in the USA found that adding topsoil alongside sowing seeds increased the biomass of grasses but reduced the biomass of forbs when compared to adding topsoil alone (1857). Two randomized, controlled studies in the UK discovered that planting turf from intact heathland sites increased the abundance or cover of heathland species (1703). One of these studies also found that planting turf increased the seedling abundance for a majority of heathland plant species (1703). Additionally, another UK study showed that planting turf increased forb cover and reduced grass cover (1703). In Iceland, a study found that planting large turves from intact heathland sites increased the number of plant species, while smaller turves did not have the same effect (1703).\",\n  \"action_ids\": [\n    \"1857\",\n    \"1703\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1686",
+      "1687",
+      "1691",
+      "1694",
+      "1695",
+      "1704",
+      "1705",
+      "1706",
+      "1707",
+      "1708",
+      "1710",
+      "1857"
+    ],
+    "regenerated_ids": [
+      "1686",
+      "1687",
+      "1691",
+      "1694",
+      "1695",
+      "1704",
+      "1705",
+      "1706",
+      "1707",
+      "1708",
+      "1710",
+      "1857"
+    ]
+  },
+  {
+    "query": "Which interventions aimed at restoring degraded shrublands by manipulating soil and reintroducing plants have shown the most beneficial outcomes?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "The addition of topsoil has been found to increase the cover or abundance of heathland plant species [1686]. One study also found that the addition of topsoil increased the number of seedlings for a majority of heathland plants [1686]. In one study, adding topsoil increased forb cover, but reduced grass cover [1686]. Another study showed an increase in the abundance of woody plants after the addition of topsoil [1686]. In one study, the addition of topsoil increased plant cover and the number of plant species, but these were lower than at a nearby undisturbed site [1686]. In a study where topsoil was added alongside sowing of seed, grass biomass increased but forb biomass was reduced, in comparison to the addition of topsoil alone [1857]. Two studies found that planting turf from intact heathland sites increased the abundance or cover of heathland species [1703]. It was also found that planting turf increased the seedling abundance for a majority of heathland plant species [1703]. Another beneficial outcome of planting turf was an increase in forb cover and a reduction of grass cover [1703]. One study found that planting large turves from intact heathland sites increased the number of plant species, but smaller turves did not [1703].",
+    "summary_action_ids": [
+      "1857",
+      "1703",
+      "1686"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"restoring degraded shrublands with soil manipulation and plant reintroduction\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1857\",\n    \"action_title\": \"Add topsoil (alongside planting/seeding)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1703\",\n    \"action_title\": \"Plant turf\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1686\",\n    \"action_title\": \"Add topsoil\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1857\"}",
+            "return_val": "{\n  \"action_id\": \"1857\",\n  \"action_title\": \"Add topsoil (alongside planting/seeding)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, paired, controlled study in the USA\\u00a0found that addition of topsoil alongside sowing of seed increased the biomass of grasses but reduced the biomass of forbs in comparison to addition of topsoil alone.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1703\"}",
+            "return_val": "{\n  \"action_id\": \"1703\",\n  \"action_title\": \"Plant turf\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo randomized, controlled studies in the UK\\u00a0found that planting turf from intact heathland sites increased the abundance or cover of heathland species. One of these studies\\u00a0also found that planting turf increased the seedling abundance for a majority of heathland plant species.\\nOne randomized, controlled study in the UK\\u00a0found that planting turf increased forb cover, and reduced grass cover.\\nOne randomized, replicated, controlled study in Iceland\\u00a0found that planting large turves from intact heathland sites increased the number of plant species, but smaller turves did not.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1686\"}",
+            "return_val": "{\n  \"action_id\": \"1686\",\n  \"action_title\": \"Add topsoil\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo randomized, controlled studies in the UK\\u00a0found that the addition of topsoil increased the cover or abundance of heathland plant species. One replicated, site comparison in Spain\\u00a0found an increase in the abundance of woody plants. One randomized, controlled study in the UK\\u00a0found an increase in the number of seedlings for a majority of heathland plants.\\nOne controlled study in Namibia\\u00a0found that addition of topsoil increased plant cover and the number of plant species, but that these were lower than at a nearby undisturbed site.\\nOne randomized, controlled study in the UK\\u00a0found an increase in the cover of forbs but a reduction in the cover of grasses.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"Which interventions aimed at restoring degraded shrublands by manipulating soil and reintroducing plants have shown the most beneficial outcomes?\",\"action_ids\":[\"1857\",\"1703\",\"1686\"],\"summary\":\"The addition of topsoil has been found to increase the cover or abundance of heathland plant species [1686]. One study also found that the addition of topsoil increased the number of seedlings for a majority of heathland plants [1686]. In one study, adding topsoil increased forb cover, but reduced grass cover [1686]. Another study showed an increase in the abundance of woody plants after the addition of topsoil [1686]. In one study, the addition of topsoil increased plant cover and the number of plant species, but these were lower than at a nearby undisturbed site [1686]. In a study where topsoil was added alongside sowing of seed, grass biomass increased but forb biomass was reduced, in comparison to the addition of topsoil alone [1857]. Two studies found that planting turf from intact heathland sites increased the abundance or cover of heathland species [1703]. It was also found that planting turf increased the seedling abundance for a majority of heathland plant species [1703]. Another beneficial outcome of planting turf was an increase in forb cover and a reduction of grass cover [1703]. One study found that planting large turves from intact heathland sites increased the number of plant species, but smaller turves did not [1703].\"}",
+            "return_val": "{\n  \"query\": \"Which interventions aimed at restoring degraded shrublands by manipulating soil and reintroducing plants have shown the most beneficial outcomes?\",\n  \"relevant_summary\": \"The addition of topsoil has been found to increase the cover or abundance of heathland plant species [1686]. One study also found that the addition of topsoil increased the number of seedlings for a majority of heathland plants [1686]. In one study, adding topsoil increased forb cover, but reduced grass cover [1686]. Another study showed an increase in the abundance of woody plants after the addition of topsoil [1686]. In one study, the addition of topsoil increased plant cover and the number of plant species, but these were lower than at a nearby undisturbed site [1686]. In a study where topsoil was added alongside sowing of seed, grass biomass increased but forb biomass was reduced, in comparison to the addition of topsoil alone [1857]. Two studies found that planting turf from intact heathland sites increased the abundance or cover of heathland species [1703]. It was also found that planting turf increased the seedling abundance for a majority of heathland plant species [1703]. Another beneficial outcome of planting turf was an increase in forb cover and a reduction of grass cover [1703]. One study found that planting large turves from intact heathland sites increased the number of plant species, but smaller turves did not [1703].\",\n  \"action_ids\": [\n    \"1857\",\n    \"1703\",\n    \"1686\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1685",
+      "1686",
+      "1697",
+      "1698",
+      "1700",
+      "1701",
+      "1703",
+      "1711",
+      "1857"
+    ],
+    "regenerated_ids": [
+      "1686",
+      "1698"
+    ]
   }
 ]
