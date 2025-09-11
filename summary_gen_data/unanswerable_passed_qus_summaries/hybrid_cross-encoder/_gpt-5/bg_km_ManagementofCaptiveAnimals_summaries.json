@@ -1,0 +1,119 @@
+[
+  {
+    "query": "What is the most cost-effective way to provide dietary enrichment for captive primates?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence relevant to dietary enrichment for captive primates includes: Feeding individuals in social groups was associated with an enrichment task taking less time to complete compared to feeding alone, and monkeys ate more unfamiliar foods during the first encounter when groupmates were present [1343]. Providing cut branches (browse) such as stinging nettles led captive gorillas to use processing skills similar to those of wild gorillas when foraging [1332]. Presenting food in puzzle feeders decreased food sharing, increased foraging behaviour and tool use, increased time spent feeding, reduced inactivity, and also increased aggression in some cases [1318]. No evidence was captured on the effects of providing nectar (including artificial nectar) to primates [1331]. No evidence was captured on the effects of using automated feeders for primates [1341].",
+    "summary_action_ids": [
+      "1343",
+      "1332",
+      "1318",
+      "1331",
+      "1341"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"cost-effective dietary enrichment captive primates\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1343\",\n    \"action_title\": \"Primates: Feed individuals in social groups\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1332\",\n    \"action_title\": \"Primates: Provide cut branches (browse)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1331\",\n    \"action_title\": \"Primates: Provide nectar (including artificial nectar)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"cost-effective dietary enrichment captive primates\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1318\",\n    \"action_title\": \"Primates: Present food in puzzle feeders\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1429\",\n    \"action_title\": \"Pay farmers to cover the costs of non-harmful strategies to deter primates\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1439\",\n    \"action_title\": \"Change of crop (i.e. to a crop less palatable to primates)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"cost-effective dietary enrichment captive primates\",\"k\":3,\"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"1429\",\n    \"action_title\": \"Pay farmers to cover the costs of non-harmful strategies to deter primates\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1439\",\n    \"action_title\": \"Change of crop (i.e. to a crop less palatable to primates)\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1341\",\n    \"action_title\": \"Primates: Use of automated feeders\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1343\"}",
+            "return_val": "{\n  \"action_id\": \"1343\",\n  \"action_title\": \"Primates: Feed individuals in social groups\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in the USA\\u00a0reported that an enrichment task took less time to complete when monkeys were in social groups than when feeding alone.\\nOne before-and-after study in Italy\\u00a0found that in the presence of their groupmates monkeys ate more unfamiliar foods during the first encounter.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1332\"}",
+            "return_val": "{\n  \"action_id\": \"1332\",\n  \"action_title\": \"Primates: Provide cut branches (browse)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the Netherlands and Germany\\u00a0found that when presented with stinging nettles captive gorillas used the same processing skills as wild gorillas to forage.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1331\"}",
+            "return_val": "{\n  \"action_id\": \"1331\",\n  \"action_title\": \"Primates: Provide nectar (including artificial nectar)\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of providing nectar (including artificial nectar) to primates.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1318\"}",
+            "return_val": "{\n  \"action_id\": \"1318\",\n  \"action_title\": \"Primates: Present food in puzzle feeders\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies in the USA\\u00a0and the UK\\u00a0found that the use of puzzle feeders decreased food sharing, increased foraging behaviour, and the use of tools but also aggression. \\nOne replicated, before-and-after study in the USA\\u00a0found that the use of puzzle feeders increased time spent feeding and less time inactive.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1341\"}",
+            "return_val": "{\n  \"action_id\": \"1341\",\n  \"action_title\": \"Primates: Use of automated feeders\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of using an automated feeder for primates.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the most cost-effective way to provide dietary enrichment for captive primates?\",\"summary\":\"Evidence relevant to dietary enrichment for captive primates includes: Feeding individuals in social groups was associated with an enrichment task taking less time to complete compared to feeding alone, and monkeys ate more unfamiliar foods during the first encounter when groupmates were present [1343]. Providing cut branches (browse) such as stinging nettles led captive gorillas to use processing skills similar to those of wild gorillas when foraging [1332]. Presenting food in puzzle feeders decreased food sharing, increased foraging behaviour and tool use, increased time spent feeding, reduced inactivity, and also increased aggression in some cases [1318]. No evidence was captured on the effects of providing nectar (including artificial nectar) to primates [1331]. No evidence was captured on the effects of using automated feeders for primates [1341].\",\"action_ids\":[\"1343\",\"1332\",\"1318\",\"1331\",\"1341\"]}",
+            "return_val": "{\n  \"query\": \"What is the most cost-effective way to provide dietary enrichment for captive primates?\",\n  \"relevant_summary\": \"Evidence relevant to dietary enrichment for captive primates includes: Feeding individuals in social groups was associated with an enrichment task taking less time to complete compared to feeding alone, and monkeys ate more unfamiliar foods during the first encounter when groupmates were present [1343]. Providing cut branches (browse) such as stinging nettles led captive gorillas to use processing skills similar to those of wild gorillas when foraging [1332]. Presenting food in puzzle feeders decreased food sharing, increased foraging behaviour and tool use, increased time spent feeding, reduced inactivity, and also increased aggression in some cases [1318]. No evidence was captured on the effects of providing nectar (including artificial nectar) to primates [1331]. No evidence was captured on the effects of using automated feeders for primates [1341].\",\n  \"action_ids\": [\n    \"1343\",\n    \"1332\",\n    \"1318\",\n    \"1331\",\n    \"1341\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1315",
+      "1316",
+      "1318",
+      "1319",
+      "1320",
+      "1321",
+      "1322",
+      "1323",
+      "1324",
+      "1325",
+      "1326",
+      "1327",
+      "1328",
+      "1329",
+      "1330",
+      "1331",
+      "1332",
+      "1333",
+      "1334",
+      "1335",
+      "1336",
+      "1337",
+      "1338",
+      "1339",
+      "1340",
+      "1341",
+      "1342",
+      "1343",
+      "1344"
+    ],
+    "regenerated_ids": []
+  }
+]
