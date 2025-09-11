@@ -779,5 +779,324 @@
       "1512",
       "1517"
     ]
+  },
+  {
+    "query": "What is the evidence for the success of captive breeding and reintroduction programs based on the primates' rearing environment?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Based on the rearing environment of primates, the success of captive breeding and reintroduction programs varies. For primates born and reared in cages, one study in Brazil found that most reintroduced golden lion tamarins did not survive over seven years or had higher mortality than wild-born tamarins (1594). In French Guiana, a controlled study showed that more squirrel monkeys born and reared in cages died or were returned to captivity compared to wild-born monkeys (1594). Additionally, a study in Madagascar indicated that the diet of reintroduced black-and-white ruffed lemurs from cages did not overlap with that of wild lemurs (1594). In contrast, for primates with limited free-ranging experience, one study in Madagascar found their diet did overlap with wild lemurs (1595). However, another study in Madagascar showed that most reintroduced black-and-white ruffed lemurs with limited free-ranging experience died over five years (1595). Conversely, studies in the Republic of Congo and Gabon found that most reintroduced western lowland gorillas with limited free-ranging experience survived for periods ranging from nine months to four years (1595). For primates born and raised in a free-ranging environment, a study in Brazil reported that only two out of three reintroduced black lion tamarins survived over four months (1596). A controlled study in Madagascar found that the diet of reintroduced black-and-white ruffed lemurs from a free-ranging environment overlapped with that of wild lemurs (1596).",
+    "summary_action_ids": [
+      "1594",
+      "1595",
+      "1596"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"success of captive breeding and reintroduction programs for primates rearing environment\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1596\",\n    \"action_title\": \"Captive breeding and reintroduction of primates into the wild: born and raised in a free-ranging environment\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1594\",\n    \"action_title\": \"Captive breeding and reintroduction of primates into the wild: born and reared in cages\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1595\",\n    \"action_title\": \"Captive breeding and reintroduction of primates into the wild: limited free-ranging experience\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1596\"}",
+            "return_val": "{\n  \"action_id\": \"1596\",\n  \"action_title\": \"Captive breeding and reintroduction of primates into the wild: born and raised in a free-ranging environment\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Brazil\\u00a0found that only two out of three reintroduced black lion tamarins survived over four months, despite being raised in a free-ranging environment, alongside other interventions.\\nOne controlled study in Madagascar\\u00a0found that the diet of reintroduced black-and-white ruffed lemurs that were born and raised in a free-ranging environment alongside other interventions, overlapped with that of wild lemurs.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1594\"}",
+            "return_val": "{\n  \"action_id\": \"1594\",\n  \"action_title\": \"Captive breeding and reintroduction of primates into the wild: born and reared in cages\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Brazil\\u00a0found that most reintroduced golden lion tamarins that were born and reared in cages, alongside other interventions, did not survive over seven years\\u00a0or had a higher mortality than wild-born tamarins.\\nOne controlled study in French Guiana\\u00a0found that more squirrel monkeys which were born and reared in cages, alongside other interventions, died or were returned to captivity post-reintroduction compared to wild-born monkeys.\\nOne controlled study in Madagascar\\u00a0found that the diet of reintroduced black-and-white ruffed lemurs which were born and reared in cages, alongside other interventions, did not overlap with that of wild lemurs.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1595\"}",
+            "return_val": "{\n  \"action_id\": \"1595\",\n  \"action_title\": \"Captive breeding and reintroduction of primates into the wild: limited free-ranging experience\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in Madagascar\\u00a0found that the diet of reintroduced black-and-white ruffed lemurs with limited free-ranging experience, alongside other interventions, overlapped with that of wild lemurs. One before-and-after study in Madagascar\\u00a0found that most reintroduced black-and-white ruffed lemurs with limited free-ranging experience, alongside other interventions, died over five years.\\nOne before-and-after and site comparison\\u00a0and one before-and-after\\u00a0study in the Republic of Congo and Gabon found that most reintroduced western lowland gorillas with limited free-ranging experience, alongside other interventions, survived over a period of between\\u00a0nine months and four years.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1594\",\"1595\",\"1596\"],\"query\":\"What is the evidence for the success of captive breeding and reintroduction programs based on the primates' rearing environment?\",\"summary\":\"Based on the rearing environment of primates, the success of captive breeding and reintroduction programs varies. For primates born and reared in cages, one study in Brazil found that most reintroduced golden lion tamarins did not survive over seven years or had higher mortality than wild-born tamarins (1594). In French Guiana, a controlled study showed that more squirrel monkeys born and reared in cages died or were returned to captivity compared to wild-born monkeys (1594). Additionally, a study in Madagascar indicated that the diet of reintroduced black-and-white ruffed lemurs from cages did not overlap with that of wild lemurs (1594). In contrast, for primates with limited free-ranging experience, one study in Madagascar found their diet did overlap with wild lemurs (1595). However, another study in Madagascar showed that most reintroduced black-and-white ruffed lemurs with limited free-ranging experience died over five years (1595). Conversely, studies in the Republic of Congo and Gabon found that most reintroduced western lowland gorillas with limited free-ranging experience survived for periods ranging from nine months to four years (1595). For primates born and raised in a free-ranging environment, a study in Brazil reported that only two out of three reintroduced black lion tamarins survived over four months (1596). A controlled study in Madagascar found that the diet of reintroduced black-and-white ruffed lemurs from a free-ranging environment overlapped with that of wild lemurs (1596).\"}",
+            "return_val": "{\n  \"query\": \"What is the evidence for the success of captive breeding and reintroduction programs based on the primates' rearing environment?\",\n  \"relevant_summary\": \"Based on the rearing environment of primates, the success of captive breeding and reintroduction programs varies. For primates born and reared in cages, one study in Brazil found that most reintroduced golden lion tamarins did not survive over seven years or had higher mortality than wild-born tamarins (1594). In French Guiana, a controlled study showed that more squirrel monkeys born and reared in cages died or were returned to captivity compared to wild-born monkeys (1594). Additionally, a study in Madagascar indicated that the diet of reintroduced black-and-white ruffed lemurs from cages did not overlap with that of wild lemurs (1594). In contrast, for primates with limited free-ranging experience, one study in Madagascar found their diet did overlap with wild lemurs (1595). However, another study in Madagascar showed that most reintroduced black-and-white ruffed lemurs with limited free-ranging experience died over five years (1595). Conversely, studies in the Republic of Congo and Gabon found that most reintroduced western lowland gorillas with limited free-ranging experience survived for periods ranging from nine months to four years (1595). For primates born and raised in a free-ranging environment, a study in Brazil reported that only two out of three reintroduced black lion tamarins survived over four months (1596). A controlled study in Madagascar found that the diet of reintroduced black-and-white ruffed lemurs from a free-ranging environment overlapped with that of wild lemurs (1596).\",\n  \"action_ids\": [\n    \"1594\",\n    \"1595\",\n    \"1596\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1594",
+      "1595",
+      "1596",
+      "1597"
+    ],
+    "regenerated_ids": [
+      "1594",
+      "1595",
+      "1596"
+    ]
+  },
+  {
+    "query": "What are the documented outcomes of providing artificial non-food resources like nesting sites and water sources for primates?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One before-and-after study in Gabon found that a majority of juvenile western lowland gorillas survived for at least seven years after nesting platforms were provided, alongside other interventions (1530). One before-and-after study in Brazil found that a translocated lion tamarin population declined after artificial nest boxes were provided, alongside other interventions (1530). One before-and-after study in Brazil found that a majority of reintroduced golden lion tamarins died seven years after artificial nest boxes were provided, alongside other interventions (1530). We found no evidence for the effects of retaining nesting trees/shelter for primates within agricultural fields on primate populations (1430). We found no evidence for the effects of planting nesting trees/shelter for primates within agricultural fields on primate populations (1431).",
+    "summary_action_ids": [
+      "1530",
+      "1430",
+      "1431"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"documented outcomes of providing artificial non-food resources for primates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1502\",\n    \"action_title\": \"Implement a \\u2018no-feeding of wild primates\\u2019 policy\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1507\",\n    \"action_title\": \"Put up signs to warn people about not feeding primates\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"providing nesting sites and water sources for primates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1530\",\n    \"action_title\": \"Provide additional sleeping platforms/nesting sites for primates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1430\",\n    \"action_title\": \"Retain nesting trees/shelter for primates within agricultural fields\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1431\",\n    \"action_title\": \"Plant nesting trees/shelter for primates within agricultural fields\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1530\"}",
+            "return_val": "{\n  \"action_id\": \"1530\",\n  \"action_title\": \"Provide additional sleeping platforms/nesting sites for primates\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Brazil\\u00a0found that a translocated lion tamarin population declined after artificial nest boxes were provided, alongside other interventions.\\nOne before-and-after study in Brazil\\u00a0found that a majority of reintroduced golden lion tamarins died seven years after artificial nest boxes were provided, alongside other interventions.\\nOne before-and-after study in Gabon\\u00a0found that a majority of juvenile western lowland gorillas survived for at least seven years after nesting platforms were provided, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1430\"}",
+            "return_val": "{\n  \"action_id\": \"1430\",\n  \"action_title\": \"Retain nesting trees/shelter for primates within agricultural fields\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of retaining nesting trees/shelter for primates within agricultural fields on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1431\"}",
+            "return_val": "{\n  \"action_id\": \"1431\",\n  \"action_title\": \"Plant nesting trees/shelter for primates within agricultural fields\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of planting nesting trees/shelter for primates within agricultural fields on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented outcomes of providing artificial non-food resources like nesting sites and water sources for primates?\",\"action_ids\":[\"1530\",\"1430\",\"1431\"],\"summary\":\"One before-and-after study in Gabon found that a majority of juvenile western lowland gorillas survived for at least seven years after nesting platforms were provided, alongside other interventions (1530). One before-and-after study in Brazil found that a translocated lion tamarin population declined after artificial nest boxes were provided, alongside other interventions (1530). One before-and-after study in Brazil found that a majority of reintroduced golden lion tamarins died seven years after artificial nest boxes were provided, alongside other interventions (1530). We found no evidence for the effects of retaining nesting trees/shelter for primates within agricultural fields on primate populations (1430). We found no evidence for the effects of planting nesting trees/shelter for primates within agricultural fields on primate populations (1431).\"}",
+            "return_val": "{\n  \"query\": \"What are the documented outcomes of providing artificial non-food resources like nesting sites and water sources for primates?\",\n  \"relevant_summary\": \"One before-and-after study in Gabon found that a majority of juvenile western lowland gorillas survived for at least seven years after nesting platforms were provided, alongside other interventions (1530). One before-and-after study in Brazil found that a translocated lion tamarin population declined after artificial nest boxes were provided, alongside other interventions (1530). One before-and-after study in Brazil found that a majority of reintroduced golden lion tamarins died seven years after artificial nest boxes were provided, alongside other interventions (1530). We found no evidence for the effects of retaining nesting trees/shelter for primates within agricultural fields on primate populations (1430). We found no evidence for the effects of planting nesting trees/shelter for primates within agricultural fields on primate populations (1431).\",\n  \"action_ids\": [\n    \"1530\",\n    \"1430\",\n    \"1431\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1530",
+      "1531"
+    ],
+    "regenerated_ids": [
+      "1530",
+      "1531"
+    ]
+  },
+  {
+    "query": "To manage human-wildlife conflict in residential areas, what are the benefits and potential drawbacks of relocating primates?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "There is no evidence to suggest the effects of relocating primates to non-residential areas [1423] or the effects of translocation to prevent gene contamination [1536]. However, when reintroducing primates in groups, two studies in Brazil and Thailand found that primate populations declined, and seven studies in Brazil, French Guiana, Madagascar, and South Africa found that a minority of primates survived for at least 15 weeks to seven years [1567]. In contrast, one study in Belize found that primate populations increased, and another in The Gambia found that a population of introduced chimpanzees increased 25 years after reintroduction [1567]. Additionally, two studies in Madagascar and India found that primate populations persisted for 4-55 years after reintroduction [1567]. Several studies have documented the survival of a majority of primates after reintroduction, with survival periods ranging from two months to five years [1567]. One controlled study in Indonesia reported that all Sumatran orangutans survived for at least three months after reintroduction [1567]. Furthermore, one study in Madagascar found that introduced black-and-white ruffed lemurs had similar diets to wild populations after reintroduction [1567].",
+    "summary_action_ids": [
+      "1423",
+      "1536",
+      "1567"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"primate relocation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1423\",\n    \"action_title\": \"Relocate primates to non-residential areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1536\",\n    \"action_title\": \"Prevent gene contamination by alien primate species introduced by humans, through exclusion (e.g. fences) or translocation\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1567\",\n    \"action_title\": \"Reintroduce primates in groups\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1423\"}",
+            "return_val": "{\n  \"action_id\": \"1423\",\n  \"action_title\": \"Relocate primates to non-residential areas\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of relocating primates to non-residential areas on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1536\"}",
+            "return_val": "{\n  \"action_id\": \"1536\",\n  \"action_title\": \"Prevent gene contamination by alien primate species introduced by humans, through exclusion (e.g. fences) or translocation\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of preventing gene contamination by alien primate species introduced by humans, through exclusion or translocation on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1567\"}",
+            "return_val": "{\n  \"action_id\": \"1567\",\n  \"action_title\": \"Reintroduce primates in groups\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies in Brazil\\u00a0and Thailand\\u00a0found that populations of introduced primates declined after reintroduction in groups, alongside other interventions, while one study in Belize\\u00a0recorded an increase in populations. Two studies in Madagascar and India found that primate populations persisted 4-55 years after reintroduction in groups, alongside other interventions.\\nSeven studies in Brazil, French Guiana, Madagascar, and South Africa\\u00a0found that a minority of primates survived for at least 15 weeks to seven years after reintroduction in groups, alongside other interventions. Seven studies in Belize, Brazil, French Guiana, Madagascar, and South Africa\\u00a0found that a majority of primates survived after between two and thirty months.\\nOne study in Madagascar\\u00a0found that introduced black-and-white ruffed lemurs Varecia variegata had similar diets to individuals in a wild population after reintroduction in groups, alongside other interventions.\\nOne study in The Gambia\\u00a0found that a population of introduced chimpanzees increased 25 years after reintroduction in groups, alongside other interventions. Four studies in Guinea, Liberia and the Republic of Congo\\u00a0found that the majority of chimpanzees survived for at least two to five years, after reintroduction in groups, alongside other interventions.\\nTwo before-and-after studies in Gabon\\u00a0and the Republic of Congo\\u00a0found that the majority of western gorillas survived for at least nine months to four years, after reintroduction in groups, alongside other interventions.\\nOne controlled study in Indonesia\\u00a0found that all Sumatran orangutans survived for at least three months after reintroduction in groups, alongside other interventions.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"There is no evidence to suggest the effects of relocating primates to non-residential areas [1423] or the effects of translocation to prevent gene contamination [1536]. However, when reintroducing primates in groups, two studies in Brazil and Thailand found that primate populations declined, and seven studies in Brazil, French Guiana, Madagascar, and South Africa found that a minority of primates survived for at least 15 weeks to seven years [1567]. In contrast, one study in Belize found that primate populations increased, and another in The Gambia found that a population of introduced chimpanzees increased 25 years after reintroduction [1567]. Additionally, two studies in Madagascar and India found that primate populations persisted for 4-55 years after reintroduction [1567]. Several studies have documented the survival of a majority of primates after reintroduction, with survival periods ranging from two months to five years [1567]. One controlled study in Indonesia reported that all Sumatran orangutans survived for at least three months after reintroduction [1567]. Furthermore, one study in Madagascar found that introduced black-and-white ruffed lemurs had similar diets to wild populations after reintroduction [1567].\",\"action_ids\":[\"1423\",\"1536\",\"1567\"],\"query\":\"To manage human-wildlife conflict in residential areas, what are the benefits and potential drawbacks of relocating primates?\"}",
+            "return_val": "{\n  \"query\": \"To manage human-wildlife conflict in residential areas, what are the benefits and potential drawbacks of relocating primates?\",\n  \"relevant_summary\": \"There is no evidence to suggest the effects of relocating primates to non-residential areas [1423] or the effects of translocation to prevent gene contamination [1536]. However, when reintroducing primates in groups, two studies in Brazil and Thailand found that primate populations declined, and seven studies in Brazil, French Guiana, Madagascar, and South Africa found that a minority of primates survived for at least 15 weeks to seven years [1567]. In contrast, one study in Belize found that primate populations increased, and another in The Gambia found that a population of introduced chimpanzees increased 25 years after reintroduction [1567]. Additionally, two studies in Madagascar and India found that primate populations persisted for 4-55 years after reintroduction [1567]. Several studies have documented the survival of a majority of primates after reintroduction, with survival periods ranging from two months to five years [1567]. One controlled study in Indonesia reported that all Sumatran orangutans survived for at least three months after reintroduction [1567]. Furthermore, one study in Madagascar found that introduced black-and-white ruffed lemurs had similar diets to wild populations after reintroduction [1567].\",\n  \"action_ids\": [\n    \"1423\",\n    \"1536\",\n    \"1567\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1422",
+      "1423",
+      "1558",
+      "1559"
+    ],
+    "regenerated_ids": [
+      "1422",
+      "1423"
+    ]
+  },
+  {
+    "query": "What is the evidence for relocating 'problem' primates versus relocating primates from residential areas for conservation?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"primate relocation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1423\",\n    \"action_title\": \"Relocate primates to non-residential areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1536\",\n    \"action_title\": \"Prevent gene contamination by alien primate species introduced by humans, through exclusion (e.g. fences) or translocation\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1567\",\n    \"action_title\": \"Reintroduce primates in groups\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1423\"}",
+            "return_val": "{\n  \"action_id\": \"1423\",\n  \"action_title\": \"Relocate primates to non-residential areas\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of relocating primates to non-residential areas on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1536\"}",
+            "return_val": "{\n  \"action_id\": \"1536\",\n  \"action_title\": \"Prevent gene contamination by alien primate species introduced by humans, through exclusion (e.g. fences) or translocation\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of preventing gene contamination by alien primate species introduced by humans, through exclusion or translocation on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"There is no evidence for the effects of relocating primates to non-residential areas on primate populations [1423]. \\nThere is also no evidence for the effects of preventing gene contamination by alien primate species introduced by humans, through exclusion or translocation on primate populations [1536].\",\"query\":\"What is the evidence for relocating \u2018problem\u2019 primates versus relocating primates from residential areas for conservation?\",\"action_ids\":[\"1423\",\"1536\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence for relocating \\u2018problem\\u2019 primates versus relocating primates from residential areas for conservation?\",\n  \"relevant_summary\": \"There is no evidence for the effects of relocating primates to non-residential areas on primate populations [1423]. \\nThere is also no evidence for the effects of preventing gene contamination by alien primate species introduced by humans, through exclusion or translocation on primate populations [1536].\",\n  \"action_ids\": [\n    \"1423\",\n    \"1536\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1422",
+      "1423",
+      "1558",
+      "1559"
+    ],
+    "regenerated_ids": [
+      "1422",
+      "1423"
+    ]
+  },
+  {
+    "query": "To reduce primate reliance on human food in tourist areas, what management actions are available and what is their known effectiveness?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One review in Japan found that aggressive interactions between Japanese macaques and humans declined after prohibiting tourists from feeding monkeys (1507). There is no evidence for the effectiveness of not allowing people to consume food in areas where primates can see them (1508) or for removing human food waste that could be a food source for primates (1561).",
+    "summary_action_ids": [
+      "1507",
+      "1508",
+      "1561"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"management actions to reduce primate reliance on human food in tourist areas\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1507\",\n    \"action_title\": \"Put up signs to warn people about not feeding primates\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1561\",\n    \"action_title\": \"Remove human food waste that may potentially serve as food sources for primates to avoid disease transmission and conflict with humans\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1508\"}",
+            "return_val": "{\n  \"action_id\": \"1508\",\n  \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of not allowing people to consume food within natural areas where primates can view them on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1507\"}",
+            "return_val": "{\n  \"action_id\": \"1507\",\n  \"action_title\": \"Put up signs to warn people about not feeding primates\",\n  \"key_messages\": \"Key Messages:\\n\\nOne review in Japan\\u00a0found that aggressive interactions between Japanese macaques and humans declined after prohibiting tourists from feeding of monkeys.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1561\"}",
+            "return_val": "{\n  \"action_id\": \"1561\",\n  \"action_title\": \"Remove human food waste that may potentially serve as food sources for primates to avoid disease transmission and conflict with humans\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing human wastes that may potentially serve as food sources for primates to avoid disease transmission and conflict with humans, on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One review in Japan found that aggressive interactions between Japanese macaques and humans declined after prohibiting tourists from feeding monkeys (1507). There is no evidence for the effectiveness of not allowing people to consume food in areas where primates can see them (1508) or for removing human food waste that could be a food source for primates (1561).\",\"action_ids\":[\"1507\",\"1508\",\"1561\"],\"query\":\"To reduce primate reliance on human food in tourist areas, what management actions are available and what is their known effectiveness?\"}",
+            "return_val": "{\n  \"query\": \"To reduce primate reliance on human food in tourist areas, what management actions are available and what is their known effectiveness?\",\n  \"relevant_summary\": \"One review in Japan found that aggressive interactions between Japanese macaques and humans declined after prohibiting tourists from feeding monkeys (1507). There is no evidence for the effectiveness of not allowing people to consume food in areas where primates can see them (1508) or for removing human food waste that could be a food source for primates (1561).\",\n  \"action_ids\": [\n    \"1507\",\n    \"1508\",\n    \"1561\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1502",
+      "1505",
+      "1507",
+      "1508",
+      "1561"
+    ],
+    "regenerated_ids": [
+      "1502",
+      "1505",
+      "1507",
+      "1508",
+      "1561"
+    ]
   }
 ]

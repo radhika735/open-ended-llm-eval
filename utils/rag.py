@@ -168,10 +168,9 @@ def cross_encoder_scores(query, docs):
 
 
 def hybrid_retrieve_docs(query_string, context : ActionParsingContext, fusion_type = "cross-encoder",  k=3, offset=0):
-    all_parsed_actions = get_all_parsed_actions(context=context, load_from_all_cache=True, save_to_all_cache=True, saved_to_separated_cache=True)
     # sparse_retrieve_docs and dense_retrieve_docs return lists of actions metadata (parsed into a dictionary), with each action dict also having a "rank" field
-    sparse_docs = sparse_retrieve_docs(query_string=query_string, context=context, k=k, offset=offset)
-    dense_docs = dense_retrieve_docs(query_string=query_string, context=context, k=k, offset=offset)
+    sparse_docs = sparse_retrieve_docs(query_string=query_string, context=context, k=k+offset, offset=0)
+    dense_docs = dense_retrieve_docs(query_string=query_string, context=context, k=k+offset, offset=0)
 
     if fusion_type == "reciprocal rank fusion":# Using reciprocal rank fusion to rerank the documents.
         combined_results = reciprocal_rank_fusion([sparse_docs, dense_docs], num_docs=k)
@@ -208,6 +207,13 @@ def main():
     context = ActionParsingContext(
         required_fields=["action_id", "action_title", "key_messages"]
     )
+    docs = hybrid_retrieve_docs(
+        query_string="timeframe prohibiting all fishing in a marine protected area leads to increased fish abundance",
+        context=context,
+        k=3,
+        offset=3
+    )
+    print(docs)
 
 
 if __name__ == "__main__":
