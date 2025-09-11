@@ -568,7 +568,6 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dir,
 
 
 def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_dir, offset_to_first_qu_file=0, max_qu_files=1, max_qus=1): 
-    qu_file_count = 0
     if not os.path.exists(qus_dir):
         logging.error(f"Questions directory {qus_dir} does not exist.")
         return
@@ -581,25 +580,22 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
 
         for qus_filename in qus_filenames[offset_to_first_qu_file : offset_to_first_qu_file + max_qu_files]:
             if qus_filename.endswith(".json"):
-                if qu_file_count < max_qu_files:
-                    retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
-                    filename_list = os.path.splitext(qus_filename)[0].split("_")
-                    filename_list[-1] = "summaries"
-                    summary_filename = "_".join(filename_list) + ".json"
-                    run_summary_gen_for_qu_file(
-                        queries_filepath=os.path.join(qus_dir, qus_filename),
-                        max_qus=max_qus,
-                        summary_out_base_dir=os.path.join(summary_out_base_dir, retrieval_subdir), 
-                        summary_filename=summary_filename, 
-                        model_provider_list=model_provider_list
-                    )
-                    qu_file_count += 1
-                else:
-                    break
+                retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
+                filename_list = os.path.splitext(qus_filename)[0].split("_")
+                filename_list[-1] = "summaries"
+                summary_filename = "_".join(filename_list) + ".json"
+                run_summary_gen_for_qu_file(
+                    queries_filepath=os.path.join(qus_dir, qus_filename),
+                    max_qus=max_qus,
+                    summary_out_base_dir=os.path.join(summary_out_base_dir, retrieval_subdir), 
+                    summary_filename=summary_filename, 
+                    model_provider_list=model_provider_list
+                )
+            
 
 
 def main():
-    logging.basicConfig(filename = "logfiles/summary_gen_parallel.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
     # disable bm25s logging
