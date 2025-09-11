@@ -541,6 +541,9 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dir,
 
     while qu_count < max_qus:
         current_qu_idx += 1
+        if current_qu_idx >= len(qu_dicts):
+            logging.info(f"Reached end of questions in file {queries_filepath}. Stopping summary generation for this file.")
+            break
         qu_dict = qu_dicts[current_qu_idx]
         query = qu_dict["question"]
 
@@ -596,7 +599,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
 
 
 def main():
-    logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename = "logfiles/summary_gen_parallel.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
     # disable bm25s logging
@@ -613,7 +616,7 @@ def main():
     logging.info("STARTING summary generation process.")
     start_time = time.monotonic()
     qu_type = "answerable" # other option: "unanswerable"
-    filter_stage = "passed" # other option: "failed"
+    filter_stage = "failed" # other option: "failed"
     qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/usage_annotated"
     summary_out_base_dir = f"summary_gen_data/{qu_type}_{filter_stage}_qus_summaries"
     offset = 0
