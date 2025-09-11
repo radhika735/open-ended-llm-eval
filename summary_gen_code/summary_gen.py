@@ -438,7 +438,7 @@ def assemble_summary_details(qu_details : dict, llm_response : dict, tool_use_tr
         if qu_details["question"] != llm_response["query"]:
             logging.warning(f"During summary details assembly, found that the question in the LLM response does not match the original question. Original question:{qu_details['question']}. Question in LLM response: {llm_response['query']}.")
             llm_response_details = {
-                "relevant_summary": llm_response.get("relevant_summary", None),
+                "relevant_summary": {"erroneous_summary":llm_response.get("relevant_summary", None)},
                 "summary_action_ids": llm_response.get("action_ids", None)
             }
         else:
