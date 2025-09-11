@@ -816,5 +816,88 @@
       "1964",
       "1965"
     ]
+  },
+  {
+    "query": "What are the most effective legislative actions for protecting bats and their habitats?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Legally protecting bat habitats has been studied in five studies (four in Europe, one in India) with mixed but generally positive effects: protected sites had higher overall bat activity in France and India, higher activity for Daubenton\u2019s bats over rivers on farms in UK protected areas, higher activity for common noctule bats in protected forests in Europe though overall activity did not differ, and bat species counts were greater at protected sites in one France study, while two studies (Europe and India) found no difference in species richness between protected and unprotected forests; distributions of 10 of 11 species in Spain overlapped with designated protected areas more than by chance (2045). No studies were found evaluating the effects of introducing and enforcing legislation to control hunting of bats on bat populations (984). No studies were found evaluating the effects of enforcing existing legislation for habitat protection on mammal populations (2916).",
+    "summary_action_ids": [
+      "2916",
+      "984",
+      "2045"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"bat protection legislation habitats effective legislative actions\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2916\",\n    \"action_title\": \"Enforce existing legislation for habitat protection\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"984\",\n    \"action_title\": \"Introduce and enforce legislation to control hunting of bats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2045\",\n    \"action_title\": \"Legally protect bat habitats\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"bat protection legislation habitats effective legislative actions\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2036\",\n    \"action_title\": \"Restore or create wetlands\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1943\",\n    \"action_title\": \"Manage hedges to benefit bats\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"995\",\n    \"action_title\": \"Retain residual tree patches in logged areas\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2916\"}",
+            "return_val": "{\n  \"action_id\": \"2916\",\n  \"action_title\": \"Enforce existing legislation for habitat protection\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of enforcing existing legislation for habitat protection on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"984\"}",
+            "return_val": "{\n  \"action_id\": \"984\",\n  \"action_title\": \"Introduce and enforce legislation to control hunting of bats\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of introducing and enforcing legislation to control the hunting of bats on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2045\"}",
+            "return_val": "{\n  \"action_id\": \"2045\",\n  \"action_title\": \"Legally protect bat habitats\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects of legally protecting bat habitats on bat populations. Four studies were in Europe\\u00a0and one was in India.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nCommunity composition (1 study): One replicated, site comparison study in India\\u00a0found that the composition of bat species was similar in protected forest and unprotected forest fragments.\\nRichness/diversity (2 studies): Two replicated, site comparison or paired sites studies in Europe\\u00a0and India\\u00a0found that the number of bat species did not differ between protected and unprotected forests\\u00a0or forest fragments. One replicated, site comparison study in France\\u00a0found that protected sites had a greater number of bat species than unprotected sites.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): One replicated, site comparison study in the UK\\u00a0found that the activity (relative abundance) of Daubenton\\u2019s bats was higher over rivers on farms in protected areas than in unprotected areas. One replicated, paired sites study in Europe\\u00a0found that the activity of common noctule bats was higher in protected forests than unprotected forests, but bat activity overall did not differ. Two replicated, site comparison studies in France\\u00a0and India\\u00a0found higher overall bat activity, higher activity of three of six bat species/species groups\\u00a0and a greater number of bats\\u00a0in protected sites\\u00a0and forests\\u00a0than unprotected sites\\u00a0and forests.\\n\\nBEHAVIOUR (1 STUDY)\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0 \\n\\nUse (1 study): One study in Spain\\u00a0found that the distributions of 10 of 11 bat species overlapped with areas designated to protect them significantly more than by chance.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the most effective legislative actions for protecting bats and their habitats?\",\"summary\":\"Legally protecting bat habitats has been studied in five studies (four in Europe, one in India) with mixed but generally positive effects: protected sites had higher overall bat activity in France and India, higher activity for Daubenton\u2019s bats over rivers on farms in UK protected areas, higher activity for common noctule bats in protected forests in Europe though overall activity did not differ, and bat species counts were greater at protected sites in one France study, while two studies (Europe and India) found no difference in species richness between protected and unprotected forests; distributions of 10 of 11 species in Spain overlapped with designated protected areas more than by chance (2045). No studies were found evaluating the effects of introducing and enforcing legislation to control hunting of bats on bat populations (984). No studies were found evaluating the effects of enforcing existing legislation for habitat protection on mammal populations (2916).\",\"action_ids\":[\"2916\",\"984\",\"2045\"]}",
+            "return_val": "{\n  \"query\": \"What are the most effective legislative actions for protecting bats and their habitats?\",\n  \"relevant_summary\": \"Legally protecting bat habitats has been studied in five studies (four in Europe, one in India) with mixed but generally positive effects: protected sites had higher overall bat activity in France and India, higher activity for Daubenton\\u2019s bats over rivers on farms in UK protected areas, higher activity for common noctule bats in protected forests in Europe though overall activity did not differ, and bat species counts were greater at protected sites in one France study, while two studies (Europe and India) found no difference in species richness between protected and unprotected forests; distributions of 10 of 11 species in Spain overlapped with designated protected areas more than by chance (2045). No studies were found evaluating the effects of introducing and enforcing legislation to control hunting of bats on bat populations (984). No studies were found evaluating the effects of enforcing existing legislation for habitat protection on mammal populations (2916).\",\n  \"action_ids\": [\n    \"2916\",\n    \"984\",\n    \"2045\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1015",
+      "1935",
+      "2012",
+      "2037",
+      "2045",
+      "984",
+      "987",
+      "1971"
+    ],
+    "regenerated_ids": [
+      "984",
+      "987",
+      "1015",
+      "1935",
+      "1971",
+      "2012",
+      "2037",
+      "2045"
+    ]
   }
 ]

@@ -798,5 +798,124 @@
       "1119",
       "1120"
     ]
+  },
+  {
+    "query": "What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "The success of physical removal for invasive plants that can regenerate from fragments is influenced by several key factors. Population size is a critical factor - for water primrose, hand-pulling from pond margins successfully eradicated smaller populations, while hand pulling and raking failed to reduce abundance in larger populations (action 1138). Plant maturity affects removal effectiveness, with manual removal of mature skunk cabbage plants being effective for small outbreaks of small-growing plants (action 1101). The timing and frequency of removal operations significantly impacts success - annual physical removal of recently established skunk cabbage plants over five years removed the entire stock, while twice yearly full removal programmes for mature skunk cabbage populations required continued removal of large numbers of plants even after four years (action 1101). The regeneration rate relative to removal rate is crucial, as demonstrated with floating pennywort where the growth rate exceeded the removal rate following a two-week physical removal program (action 1126). Method and thoroughness of removal matter, with mechanical digger removal combined with monthly hand picking greatly reducing floating pennywort cover but not achieving complete eradication (action 1126). Combination approaches can improve effectiveness, with herbicide application followed by mechanical removal achieving a 75% kill rate for water primrose, and combinations of herbicide, physical removal, native plant promotion and mulching reducing Peruvian primrose-willow coverage by 85-90% (action 1140).",
+    "summary_action_ids": [
+      "1138",
+      "1101",
+      "1126",
+      "1140"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"physical removal invasive plants skunk cabbage water primrose fragments regeneration\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1138\",\n    \"action_title\": \"Water primrose: Physical removal\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1101\",\n    \"action_title\": \"Skunk cabbage:  Physical removal\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1140\",\n    \"action_title\": \"Water primrose: Combination treatment using herbicides and physical removal\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1103\",\n    \"action_title\": \"Skunk cabbage: Combination treatment using herbicides and physical removal\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1146\",\n    \"action_title\": \"Water primrose: Excavation of banks\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1143\",\n    \"action_title\": \"Water primrose: Flame treatment\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1100\",\n    \"action_title\": \"Skunk cabbage:  Biological control using fungal-based herbicides\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1098\",\n    \"action_title\": \"Skunk cabbage:  Biological control using co-evolved, host specific herbivores\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1099\",\n    \"action_title\": \"Skunk cabbage:  Biological control using native herbivores\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1102\",\n    \"action_title\": \"Skunk cabbage:  Chemical control using herbicides\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1138\"}",
+            "return_val": "{\n  \"action_id\": \"1138\",\n  \"action_title\": \"Water primrose: Physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in the USA\\u00a0found that hand pulling and raking water primrose failed to reduce its abundance, whereas hand-pulling from the margins of a pond eradicated a smaller population of water primrose.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1101\"}",
+            "return_val": "{\n  \"action_id\": \"1101\",\n  \"action_title\": \"Skunk cabbage:  Physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in Switzerland\\u00a0found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock. \\nA study in the Netherlands\\u00a0found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant.\\nA study in Germany\\u00a0reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1140\"}",
+            "return_val": "{\n  \"action_id\": \"1140\",\n  \"action_title\": \"Water primrose: Combination treatment using herbicides and physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in California, USA1, found that application of glyphosate and a surface active agent called Cygnet-Plus followed by removal by mechanical means achieved a 75% kill rate of water primrose. \\nA study in Australia2, found that a combination of herbicide application, physical removal, and other actions such as promotion of native plants and mulching, reduced the coverage of Peruvian primrose-willow by 85-90%.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1103\"}",
+            "return_val": "{\n  \"action_id\": \"1103\",\n  \"action_title\": \"Skunk cabbage: Combination treatment using herbicides and physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was found for use of combination treatment using herbicides and physical removal to control skunk cabbage.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1146\"}",
+            "return_val": "{\n  \"action_id\": \"1146\",\n  \"action_title\": \"Water primrose: Excavation of banks\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of excavation of banks using a sod-cutter or \\u2018turf-cutter\\u2019 to remove water primrose.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invasive plant physical removal fragment regeneration hand pulling\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1138\",\n    \"action_title\": \"Water primrose: Physical removal\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1126\",\n    \"action_title\": \"Floating pennywort: Physical removal\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3094\",\n    \"action_title\": \"Physically remove problematic plants: brackish/saline swamps\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3093\",\n    \"action_title\": \"Physically remove problematic plants: freshwater swamps\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3091\",\n    \"action_title\": \"Physically remove problematic plants: freshwater marshes\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3092\",\n    \"action_title\": \"Physically remove problematic plants: brackish/salt marshes\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1573\",\n    \"action_title\": \"Parrot\\u2019s feather: Suction dredging and diver-assisted suction removal\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1575\",\n    \"action_title\": \"Parrot\\u2019s feather: Manual harvesting (hand-weeding)\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1278\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Physical control using manual/mechanical control or dredging\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3714\",\n    \"action_title\": \"Manage vegetation by hand (selective weeding)\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1126\"}",
+            "return_val": "{\n  \"action_id\": \"1126\",\n  \"action_title\": \"Floating pennywort: Physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in Western Australia\\u00a0found that following a two-week program of physical removal of floating pennywort, the rate of growth exceeded the rate of removal.\\nA study in the UK, found that removal using a mechanical digger and monthly picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1575\"}",
+            "return_val": "{\n  \"action_id\": \"1575\",\n  \"action_title\": \"Parrot\\u2019s feather: Manual harvesting (hand-weeding)\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence on the effects of manual to control parrot\\u2019s feather.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1278\"}",
+            "return_val": "{\n  \"action_id\": \"1278\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Physical control using manual/mechanical control or dredging\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of physical control, using manual or mechanical control or dredging, on Crassula helmsii.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invasive plant removal timing annual mature plants population size\", \"k\": 8}",
+            "return_val": "[\n  {\n    \"action_id\": \"1101\",\n    \"action_title\": \"Skunk cabbage:  Physical removal\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"104\",\n    \"action_title\": \"Control invasive non-native plants on farmland (such as Himalayan Balsam, Japanese knotweed)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1771\",\n    \"action_title\": \"Change season/timing of cutting/mowing\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1772\",\n    \"action_title\": \"Use cutting to control problematic large trees/shrubs\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"823\",\n    \"action_title\": \"Control invasive plants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3949\",\n    \"action_title\": \"Restore or create wetlands and floodplains\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2736\",\n    \"action_title\": \"Set a maximum landing size for commercially fished species\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3259\",\n    \"action_title\": \"Directly plant trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 8\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?\", \"summary\": \"The success of physical removal for invasive plants that can regenerate from fragments is influenced by several key factors. Population size is a critical factor - for water primrose, hand-pulling from pond margins successfully eradicated smaller populations, while hand pulling and raking failed to reduce abundance in larger populations (action 1138). Plant maturity affects removal effectiveness, with manual removal of mature skunk cabbage plants being effective for small outbreaks of small-growing plants (action 1101). The timing and frequency of removal operations significantly impacts success - annual physical removal of recently established skunk cabbage plants over five years removed the entire stock, while twice yearly full removal programmes for mature skunk cabbage populations required continued removal of large numbers of plants even after four years (action 1101). The regeneration rate relative to removal rate is crucial, as demonstrated with floating pennywort where the growth rate exceeded the removal rate following a two-week physical removal program (action 1126). Method and thoroughness of removal matter, with mechanical digger removal combined with monthly hand picking greatly reducing floating pennywort cover but not achieving complete eradication (action 1126). Combination approaches can improve effectiveness, with herbicide application followed by mechanical removal achieving a 75% kill rate for water primrose, and combinations of herbicide, physical removal, native plant promotion and mulching reducing Peruvian primrose-willow coverage by 85-90% (action 1140).\", \"action_ids\": [\"1138\",\"1101\",\"1126\",\"1140\"]}",
+            "return_val": "{\n  \"query\": \"What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?\",\n  \"relevant_summary\": \"The success of physical removal for invasive plants that can regenerate from fragments is influenced by several key factors. Population size is a critical factor - for water primrose, hand-pulling from pond margins successfully eradicated smaller populations, while hand pulling and raking failed to reduce abundance in larger populations (action 1138). Plant maturity affects removal effectiveness, with manual removal of mature skunk cabbage plants being effective for small outbreaks of small-growing plants (action 1101). The timing and frequency of removal operations significantly impacts success - annual physical removal of recently established skunk cabbage plants over five years removed the entire stock, while twice yearly full removal programmes for mature skunk cabbage populations required continued removal of large numbers of plants even after four years (action 1101). The regeneration rate relative to removal rate is crucial, as demonstrated with floating pennywort where the growth rate exceeded the removal rate following a two-week physical removal program (action 1126). Method and thoroughness of removal matter, with mechanical digger removal combined with monthly hand picking greatly reducing floating pennywort cover but not achieving complete eradication (action 1126). Combination approaches can improve effectiveness, with herbicide application followed by mechanical removal achieving a 75% kill rate for water primrose, and combinations of herbicide, physical removal, native plant promotion and mulching reducing Peruvian primrose-willow coverage by 85-90% (action 1140).\",\n  \"action_ids\": [\n    \"1138\",\n    \"1101\",\n    \"1126\",\n    \"1140\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1101",
+      "1126",
+      "1138",
+      "1278",
+      "1568",
+      "1570",
+      "1572",
+      "1573",
+      "1575"
+    ],
+    "regenerated_ids": [
+      "1101",
+      "1138"
+    ]
   }
 ]

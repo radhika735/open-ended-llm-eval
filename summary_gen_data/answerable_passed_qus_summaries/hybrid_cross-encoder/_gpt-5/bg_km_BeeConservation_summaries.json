@@ -785,5 +785,97 @@
       "15",
       "31"
     ]
+  },
+  {
+    "query": "What is the extent of evidence on the success of translocating bees or augmenting small populations to improve genetic diversity?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "One trial in Brazil reported that regularly introducing inseminated queens to small isolated populations of stingless bees (Melipona scutellaris) maintained genetic diversity (56). One replicated trial in India found that translocating solitary bees (Xylocopa fenestrata) in immature stages established a population at a new site, whereas a very small proportion of translocated adults remained at the new site (55).",
+    "summary_action_ids": [
+      "56",
+      "55"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"translocating bees augmenting small populations improve genetic diversity success evidence extent bee conservation genetic rescue translocation\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"56\",\n    \"action_title\": \"Introduce mated females to small populations to improve genetic diversity\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3912\",\n    \"action_title\": \"Introduce mated females to increase genetic diversity\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"55\",\n    \"action_title\": \"Translocate solitary bees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"56\"}",
+            "return_val": "{\n  \"action_id\": \"56\",\n  \"action_title\": \"Introduce mated females to small populations to improve genetic diversity\",\n  \"key_messages\": \"Key Messages:\\nOne trial in Brazil showed that genetic diversity can be maintained in small isolated populations of stingless bees Melipona scutellaris by regularly introducing inseminated queens.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3912\"}",
+            "return_val": "{\n  \"action_id\": \"3912\",\n  \"action_title\": \"Introduce mated females to increase genetic diversity\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on butterflies and moths of introducing mated females to increase genetic diversity.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"55\"}",
+            "return_val": "{\n  \"action_id\": \"55\",\n  \"action_title\": \"Translocate solitary bees\",\n  \"key_messages\": \"Key Messages:\\nOne replicated trial in India showed that translocating carpenter bees Xylocopa fenestrata in immature stages can establish a population at a new site, but if adult bees are translocated a very small proportion remain at the new site.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"augment small populations bees genetic diversity introduce queens translocation bee conservation genetic rescue\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"548\",\n    \"action_title\": \"Provide supplementary food for gulls, terns and skuas to increase adult survival\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2208\",\n    \"action_title\": \"Limit, cease or prohibit industrial and urban lighting at night\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"558\",\n    \"action_title\": \"Provide supplementary water to increase survival or reproductive success\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"bees translocation evidence success relocate bees population establishment genetic diversity augmentation introduce queens stingless bees bumblebee translocation\", \"k\": 5, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"56\",\n    \"action_title\": \"Introduce mated females to small populations to improve genetic diversity\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"55\",\n    \"action_title\": \"Translocate solitary bees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"24\",\n    \"action_title\": \"Introduce agri-environment schemes to benefit wild bees\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"583\",\n    \"action_title\": \"Ensure genetic variation to increase translocation success\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"81\",\n    \"action_title\": \"Introduce nest boxes stocked with solitary bees\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"583\"}",
+            "return_val": "{\n  \"action_id\": \"583\",\n  \"action_title\": \"Ensure genetic variation to increase translocation success\",\n  \"key_messages\": \"Key Messages:\\n\\nWe did not find any studies on the effects of ensuring genetic variation in translocated birds.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the extent of evidence on the success of translocating bees or augmenting small populations to improve genetic diversity?\",\"summary\":\"One trial in Brazil reported that regularly introducing inseminated queens to small isolated populations of stingless bees (Melipona scutellaris) maintained genetic diversity (56). One replicated trial in India found that translocating solitary bees (Xylocopa fenestrata) in immature stages established a population at a new site, whereas a very small proportion of translocated adults remained at the new site (55).\",\"action_ids\":[\"56\",\"55\"]}",
+            "return_val": "{\n  \"query\": \"What is the extent of evidence on the success of translocating bees or augmenting small populations to improve genetic diversity?\",\n  \"relevant_summary\": \"One trial in Brazil reported that regularly introducing inseminated queens to small isolated populations of stingless bees (Melipona scutellaris) maintained genetic diversity (56). One replicated trial in India found that translocating solitary bees (Xylocopa fenestrata) in immature stages established a population at a new site, whereas a very small proportion of translocated adults remained at the new site (55).\",\n  \"action_ids\": [\n    \"56\",\n    \"55\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "53",
+      "55",
+      "56"
+    ],
+    "regenerated_ids": [
+      "53",
+      "55",
+      "56"
+    ]
   }
 ]

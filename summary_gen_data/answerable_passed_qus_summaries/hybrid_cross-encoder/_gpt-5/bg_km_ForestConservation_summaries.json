@@ -646,5 +646,96 @@
       "1229",
       "1314"
     ]
+  },
+  {
+    "query": "What is the evidence for the effectiveness of public engagement strategies, such as awareness campaigns or education programmes, for forest conservation?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across conservation contexts, evidence on public engagement (awareness/education) shows mixed but sometimes positive effects on conservation-related outcomes. A review from the USA and Canada argues education alone was not sufficient to change behaviour, though it was necessary as a catalytic factor alongside economic incentives and law enforcement (162). Seven studies on reptiles reported: increases in Philippine crocodile population after a communication, education and public awareness campaign; reduced leatherback turtle nest poaching during a community-based education programme; decreases in human killing of Philippine crocodiles and fewer road deaths of lesser Antillean iguanas when education/awareness was used (the latter alongside road signs); and reports of 276 non-venomous snakes saved over six years following education/awareness combined with a local expert network; however, stated behaviour changes were mixed in Colombia and Saint Kitts, and an information leaflet did not reduce hotel light use in the USA (3682). For amphibians, two studies (including a replicated, before-and-after study) found raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in 1,023 ponds created; tourist awareness of axolotls increased following targeted efforts; press conferences had no effect on a green tree frog project; and campaigns reached over 50,000 people annually or trained 1,016 people over four years (831).",
+    "summary_action_ids": [
+      "162",
+      "3682",
+      "831"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"public engagement awareness campaigns education programmes forest conservation effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3682\",\n    \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"162\"}",
+            "return_val": "{\n  \"action_id\": \"162\",\n  \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n  \"key_messages\": \"Key Messages:\\nA review of programmes in the USA and Canada argues that education was not sufficient to change behaviour, although it was necessary as a catalytic factor for economic incentives and law enforcement.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3682\"}",
+            "return_val": "{\n  \"action_id\": \"3682\",\n  \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies evaluated the effects of using education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats. One study was in each of Costa Rica, India, the Philippines, Dominica, the USA, Saint Kitts\\u00a0and Colombia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (1 studies): One before-and-after study in the Philippines\\u00a0found that following a communication, education, and public awareness campaign, the population of Philippine crocodiles increased.\\nReproductive success (1 study): One study in Costa Rica\\u00a0found that during a community-based education programme the percentage of leatherback turtle nests lost to poaching decreased.\\nSurvival (3 studies): Two before-and-after studies in the Philippines\\u00a0and Dominica\\u00a0found that following education and awareness campaigns, one in combination with use of road signs, human killing of Philippine crocodiles\\u00a0decreased and there were fewer road-deaths of lesser Antillean iguanas\\u00a0compared to before the campaigns began. One study in India\\u00a0reported that following education and awareness campaigns in combination with creating a network of local snake experts, local snake experts reported that they intervened to save 276 non-venomous snakes from being killed over six years.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (5 STUDIES)\\n\\nHuman behaviour change (3 studies): One replicated study in Colombia\\u00a0found that in areas with conservation initiatives relating to turtles, more people reported changing consumption habitats and fewer people reported using turtles for food compared to in areas with no initiatives, however, stated rates of hunting, buying and selling of turtles remained similar. One study in Saint Kitts\\u00a0found that attending an educational summer camp on turtle conservation had mixed effects on reported behaviours in relation to sea turtles of attendees and their parents/guardians, and mixed effects on whether they took part in conservation activities after the camp. One study in the USA\\u00a0found that providing an information leaflet did not decrease the number of hotel rooms that left lights on at night compared to when no leaflet was provided.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"831\"}",
+            "return_val": "{\n  \"action_id\": \"831\",\n  \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, before-and-after study) in Estonia and the UK found that raising public awareness, along with other interventions, increased numbers of natterjack toads and created 1,023 ponds for amphibians.\\nOne before-and-after study in Mexico\\u00a0found that raising awareness in tourists, increased their knowledge of axolotls. One study in Taiwan\\u00a0found that holding press conferences to publicize frog conservation had no effect on a green tree frog project. \\nTwo studies in Panama and the UK found that awareness campaigns reached over 50,000 members of the public each year or trained 1,016 people at 57 events over four years.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"forest conservation public engagement awareness education programmes effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"314\",\n    \"action_title\": \"Start educational programmes for personal watercraft owners\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"deforestation awareness campaign education programme effectiveness forest conservation\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3682\",\n    \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"public engagement awareness campaigns education programmes conservation effectiveness forest\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1859\",\n    \"action_title\": \"Irrigate peatland (without planting)\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1166\",\n    \"action_title\": \"Remove nitrogen and phosphorus using harvested products\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3402\",\n    \"action_title\": \"Sow or plant nurse plants (alongside seeding/planting of grassland species)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the evidence for the effectiveness of public engagement strategies, such as awareness campaigns or education programmes, for forest conservation?\",\"summary\":\"Across conservation contexts, evidence on public engagement (awareness/education) shows mixed but sometimes positive effects on conservation-related outcomes. A review from the USA and Canada argues education alone was not sufficient to change behaviour, though it was necessary as a catalytic factor alongside economic incentives and law enforcement (162). Seven studies on reptiles reported: increases in Philippine crocodile population after a communication, education and public awareness campaign; reduced leatherback turtle nest poaching during a community-based education programme; decreases in human killing of Philippine crocodiles and fewer road deaths of lesser Antillean iguanas when education/awareness was used (the latter alongside road signs); and reports of 276 non-venomous snakes saved over six years following education/awareness combined with a local expert network; however, stated behaviour changes were mixed in Colombia and Saint Kitts, and an information leaflet did not reduce hotel light use in the USA (3682). For amphibians, two studies (including a replicated, before-and-after study) found raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in 1,023 ponds created; tourist awareness of axolotls increased following targeted efforts; press conferences had no effect on a green tree frog project; and campaigns reached over 50,000 people annually or trained 1,016 people over four years (831).\",\"action_ids\":[\"162\",\"3682\",\"831\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence for the effectiveness of public engagement strategies, such as awareness campaigns or education programmes, for forest conservation?\",\n  \"relevant_summary\": \"Across conservation contexts, evidence on public engagement (awareness/education) shows mixed but sometimes positive effects on conservation-related outcomes. A review from the USA and Canada argues education alone was not sufficient to change behaviour, though it was necessary as a catalytic factor alongside economic incentives and law enforcement (162). Seven studies on reptiles reported: increases in Philippine crocodile population after a communication, education and public awareness campaign; reduced leatherback turtle nest poaching during a community-based education programme; decreases in human killing of Philippine crocodiles and fewer road deaths of lesser Antillean iguanas when education/awareness was used (the latter alongside road signs); and reports of 276 non-venomous snakes saved over six years following education/awareness combined with a local expert network; however, stated behaviour changes were mixed in Colombia and Saint Kitts, and an information leaflet did not reduce hotel light use in the USA (3682). For amphibians, two studies (including a replicated, before-and-after study) found raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in 1,023 ponds created; tourist awareness of axolotls increased following targeted efforts; press conferences had no effect on a green tree frog project; and campaigns reached over 50,000 people annually or trained 1,016 people over four years (831).\",\n  \"action_ids\": [\n    \"162\",\n    \"3682\",\n    \"831\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1157",
+      "1158"
+    ],
+    "regenerated_ids": [
+      "1157",
+      "1158"
+    ]
   }
 ]

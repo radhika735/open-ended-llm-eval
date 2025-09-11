@@ -578,5 +578,83 @@
       "1119",
       "1120"
     ]
+  },
+  {
+    "query": "What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence indicates outcomes of physical removal vary by population size, plant stage, habitat location, method, and effort: For skunk cabbage, annual physical removal of recently established plants over five years removed the entire stock (1101); manual removal of mature plants was effective for a small outbreak of a small\u2011growing plant (1101); however, after the first four years of a twice\u2011yearly full removal programme, a large number of plants still needed to be removed each year (1101). For water primrose, hand\u2011pulling and raking failed to reduce abundance in one case (1138), whereas hand\u2011pulling from pond margins eradicated a smaller population (1138). No evidence was found on excavation of banks using a sod\u2011/turf\u2011cutter for water primrose (1146).",
+    "summary_action_ids": [
+      "1101",
+      "1138",
+      "1146"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"physical removal invasive plants fragments regenerate skunk cabbage water primrose factors success\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1138\",\n    \"action_title\": \"Water primrose: Physical removal\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1101\",\n    \"action_title\": \"Skunk cabbage:  Physical removal\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1146\",\n    \"action_title\": \"Water primrose: Excavation of banks\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1138\"}",
+            "return_val": "{\n  \"action_id\": \"1138\",\n  \"action_title\": \"Water primrose: Physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in the USA\\u00a0found that hand pulling and raking water primrose failed to reduce its abundance, whereas hand-pulling from the margins of a pond eradicated a smaller population of water primrose.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1101\"}",
+            "return_val": "{\n  \"action_id\": \"1101\",\n  \"action_title\": \"Skunk cabbage:  Physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in Switzerland\\u00a0found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock. \\nA study in the Netherlands\\u00a0found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant.\\nA study in Germany\\u00a0reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1146\"}",
+            "return_val": "{\n  \"action_id\": \"1146\",\n  \"action_title\": \"Water primrose: Excavation of banks\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of excavation of banks using a sod-cutter or \\u2018turf-cutter\\u2019 to remove water primrose.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"physical removal invasive aquatic plant fragments regenerate factors success hand pulling raking fragments water primrose skunk cabbage\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1102\",\n    \"action_title\": \"Skunk cabbage:  Chemical control using herbicides\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1134\",\n    \"action_title\": \"Floating pennywort: Public education\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1149\",\n    \"action_title\": \"Apply insecticide to protect seedlings from invertebrates\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?\",\"summary\":\"Evidence indicates outcomes of physical removal vary by population size, plant stage, habitat location, method, and effort: For skunk cabbage, annual physical removal of recently established plants over five years removed the entire stock (1101); manual removal of mature plants was effective for a small outbreak of a small\u2011growing plant (1101); however, after the first four years of a twice\u2011yearly full removal programme, a large number of plants still needed to be removed each year (1101). For water primrose, hand\u2011pulling and raking failed to reduce abundance in one case (1138), whereas hand\u2011pulling from pond margins eradicated a smaller population (1138). No evidence was found on excavation of banks using a sod\u2011/turf\u2011cutter for water primrose (1146).\",\"action_ids\":[\"1101\",\"1138\",\"1146\"]}",
+            "return_val": "{\n  \"query\": \"What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?\",\n  \"relevant_summary\": \"Evidence indicates outcomes of physical removal vary by population size, plant stage, habitat location, method, and effort: For skunk cabbage, annual physical removal of recently established plants over five years removed the entire stock (1101); manual removal of mature plants was effective for a small outbreak of a small\\u2011growing plant (1101); however, after the first four years of a twice\\u2011yearly full removal programme, a large number of plants still needed to be removed each year (1101). For water primrose, hand\\u2011pulling and raking failed to reduce abundance in one case (1138), whereas hand\\u2011pulling from pond margins eradicated a smaller population (1138). No evidence was found on excavation of banks using a sod\\u2011/turf\\u2011cutter for water primrose (1146).\",\n  \"action_ids\": [\n    \"1101\",\n    \"1138\",\n    \"1146\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1101",
+      "1126",
+      "1138",
+      "1278",
+      "1568",
+      "1570",
+      "1572",
+      "1573",
+      "1575"
+    ],
+    "regenerated_ids": [
+      "1101",
+      "1138"
+    ]
   }
 ]
