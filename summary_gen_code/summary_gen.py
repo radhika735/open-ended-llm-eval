@@ -634,9 +634,9 @@ def main():
 
     QU_TYPE = "answerable" # options: "answerable", "unanswerable"
     FILTER_STAGE = "passed" # options: "passed", "failed"
-    OFFSET = 0
+    OFFSET = 15
     MAX_QU_FILES = 10
-    MAX_QUS_PER_FILE = 3
+    MAX_QUS_PER_FILE = 5
 
 
     ## SUMMARY GENERATION PROCESS
