@@ -447,5 +447,136 @@
       "2720",
       "2725"
     ]
+  },
+  {
+    "query": "How do mesh escape panels, size-sorting grids, and large supported openings compare in their effectiveness at improving size-selectivity in trawl nets?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the evidence from multiple studies, all three methods show effectiveness at improving size-selectivity and reducing unwanted catch in trawl nets, with some variations in their performance:\n\nMesh escape panels/windows: Studies (action 2716) found that square mesh escape panels improved size selectivity for Atlantic cod and haddock compared to nets without panels, though effects varied with panel position and design. One study (action 2727) in the English Channel found that size-selectivity of whiting was increased in trawl nets fitted with square mesh escape panels. However, effectiveness varied - some studies found panels reduced unwanted catches of all monitored fish species, while others found no reduction for certain species like Atlantic cod and three commercial bottom fish species.\n\nSize-sorting grids: Studies (action 2725) showed that escape grids with square mesh codends caught fewer unwanted whiting, plaice, cod, and haddock compared to diamond mesh codends with no grid. Studies (action 2727) found that trawl nets with size-sorting grids reduced unwanted catch of fish, sharks, stingrays, and total discarded catch compared to standard nets.\n\nLarge supported openings: Studies (action 2723) demonstrated that large supported escape openings (Fisheyes, Bigeyes, radial escape sections) reduced overall catches of unwanted fish, immature red snapper, and total unwanted catch in six of seven studies compared to standard nets. One study found fewer unwanted Chinook salmon with escape openings, though effectiveness varied by design.\n\nComparative effectiveness: One study (action 2716) directly compared methods and found no difference in size selectivity of cod and haddock between trawl nets fitted with square mesh escape windows, rigid size-sorting escape grids, or large diamond mesh codends. Studies (action 2727) indicated that fish escape through either panels/windows, grids, or both varied between fish species and sizes. Combined approaches using multiple methods together (actions 2726, 2727) showed effectiveness in reducing unwanted catch, with one study finding that escape of non-target fish from combined panel and grid use depended on panel position in the net.",
+    "summary_action_ids": [
+      "2716",
+      "2723",
+      "2725",
+      "2726",
+      "2727"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"mesh escape panels size-sorting grids trawl nets selectivity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2727\",\n    \"action_title\": \"Fit mesh escape panels/windows and a size-sorting grid (rigid or flexible) to a trawl net\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2725\",\n    \"action_title\": \"Fit a size-sorting escape grid (rigid or flexible) to trawl nets and use a square mesh instead of a diamond mesh codend\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2703\",\n    \"action_title\": \"Fit escape devices (panels/grids) to encircling nets\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"large supported openings trawl selectivity fishing gear\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2723\",\n    \"action_title\": \"Fit large, supported escape openings (such as Fisheyes, Bigeyes and radial escape sections) to trawl nets\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2726\",\n    \"action_title\": \"Fit a size-sorting escape grid (rigid or flexible) and large, supported escape openings to trawl nets\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2715\",\n    \"action_title\": \"Rotate the orientation of diamond mesh in a trawl net\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2727\"}",
+            "return_val": "{\n  \"action_id\": \"2727\",\n  \"action_title\": \"Fit mesh escape panels/windows and a size-sorting grid (rigid or flexible) to a trawl net\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies examined the effects of fitting trawl nets with mesh escape panels or windows and a size-sorting grid on marine fish populations. Two studies were in the Atlantic Ocean\\u00a0(Portugal, Suriname), two were in the Indian Ocean\\u00a0(Australia, Mozambique), one study was in the Gulf of Carpentaria\\u00a0(Australia) and one was in the English Channel\\u00a0(UK).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (6 STUDIES)\\n\\nReduce unwanted catch (5 studies): Four of five replicated studies (four paired, controlled) in the Gulf of Carpentaria, Indian Ocean\\u00a0and Atlantic Ocean, found that bottom trawl nets fitted with square mesh escape panels and size-sorting grids of various types reduced the unwanted catch (non-target or undersized) of fish, sharks and stingrays, rays\\u00a0and total discarded catch (fish and invertebrates), compared to standard unmodified trawl nets, and that fish escape through either the panel/window, grid, or both varied between fish\\u00a0species\\u00a0or\\u00a0sizes. The other study\\u00a0found that the escape of non-target fish from the combined use of a square mesh panel and grid depended on the position of the panel in the net.\\nImproved size-selectivity of fishing gear (1 study): One replicated, paired, controlled study in the English Channel\\u00a0found that size-selectivity of whiting was increased in bottom trawl nets fitted with square mesh escape panels or cylinders in combination with one or two size-sorting grids of different types, compared to standard nets.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2725\"}",
+            "return_val": "{\n  \"action_id\": \"2725\",\n  \"action_title\": \"Fit a size-sorting escape grid (rigid or flexible) to trawl nets and use a square mesh instead of a diamond mesh codend\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies examined the effects of fitting a size-sorting escape grid (rigid or flexible) to trawl nets and using a square mesh instead of a diamond mesh codend on marine fish populations. The studies were in the North Sea\\u00a0(UK), the Kattegat and Skagerrak\\u00a0(Sweden/Denmark) and the Coral Sea\\u00a0(Australia).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR RESPONSE (0 STUDIES)\\nOTHER (3 STUDIES)\\n\\nReduction of unwanted catch (3 studies): Three replicated, paired, controlled studies (one randomized) in the North Sea, Kattegat and Skagerrak\\u00a0and Coral Sea\\u00a0found that trawl nets with an escape grid and a square mesh codend caught fewer unwanted whiting, plaice, cod, haddock\\u00a0and unwanted catch of the most frequently caught fish species, but not hake\\u00a0or less frequently caught species\\u00a0compared to a diamond mesh codend with no grid. One also found that\\u00a0catch rates of most fish species were similar compared to a square mesh codend alone.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2723\"}",
+            "return_val": "{\n  \"action_id\": \"2723\",\n  \"action_title\": \"Fit large, supported escape openings (such as Fisheyes, Bigeyes and radial escape sections) to trawl nets\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies examined the effects of fitting large, supported escape openings (such as Fisheyes, Bigeyes and radial escape sections) to trawl nets on marine fish populations. Three studies were in the northwest Atlantic Ocean\\u00a0(USA) and three were in the Gulf of Carpentaria\\u00a0(Australia). One study was in the north Pacific Ocean\\u00a0(USA) and one was in the Coral Sea\\u00a0(Australia).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (8 STUDIES)\\n\\nReduction of unwanted catch (8 studies): Six of seven replicated studies (five paired and controlled, and one randomized, paired and controlled) in the Atlantic Ocean, Gulf of Carpentaria, Pacific Ocean\\u00a0and the Coral Sea\\u00a0found that fitting large, supported escape openings (various designs including Fisheyes, Bigeyes and radial escape sections) to trawl nets reduced the overall catches of unwanted fish, immature red snapper\\u00a0and total unwanted catch (fish and invertebrates combined)\\u00a0compared to standard nets. The other study\\u00a0found that there were fewer unwanted Chinook salmon in catches with two of two designs of escape openings, but only one of the designs caught fewer widow rockfish. One replicated, paired and controlled study in the Gulf of Carpentaria\\u00a0found that trawl nets fitted with either large escape openings or a square mesh escape panel reduced unwanted shark catch but not unwanted ray or sawfish catches, compared to standard nets.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2726\"}",
+            "return_val": "{\n  \"action_id\": \"2726\",\n  \"action_title\": \"Fit a size-sorting escape grid (rigid or flexible) and large, supported escape openings to trawl nets\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies examined the effect of fitting trawl nets with a size-sorting escape grid and large, supported escape openings for fish escape on marine fish populations. Two studies were in the Gulf of Carpentaria\\u00a0(Australia), one study was in the Atlantic Ocean\\u00a0(USA) and one study was in the Persian Gulf\\u00a0(Iran).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (4 STUDIES)\\n\\nReduction of unwanted catch (4 studies): Three of four replicated studies (three paired and controlled) in the Gulf of Carpentaria, the Atlantic Ocean\\u00a0and the Persian Gulf, found that trawl nets fitted with a both a size-sorting escape grid and a large supported escape opening reduced the catches of unwanted fish\\u00a0and sharks and rays, but not sawfish, compared to standard trawl nets. The other study\\u00a0found that trawl nets with an escape grid/opening caught similar amounts of unwanted sharks to trawl nets without.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"compare effectiveness selectivity trawl escape devices panels grids openings\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2727\",\n    \"action_title\": \"Fit mesh escape panels/windows and a size-sorting grid (rigid or flexible) to a trawl net\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2703\",\n    \"action_title\": \"Fit escape devices (panels/grids) to encircling nets\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2134\",\n    \"action_title\": \"Fit one or more mesh escape panels/windows and one or more soft, rigid or semi-rigid grids or frames to trawl nets\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2134\"}",
+            "return_val": "{\n  \"action_id\": \"2134\",\n  \"action_title\": \"Fit one or more mesh escape panels/windows and one or more soft, rigid or semi-rigid grids or frames to trawl nets\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects on subtidal benthic invertebrate populations of fitting one or more mesh escape panels/windows and one or more soft, rigid or semi-rigid grids or frames to trawl nets . The study was in the Gulf of Carpentaria (Australia).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nUnwanted catch abundance (1 study): One replicated, paired, controlled study in Gulf of Carpentaria\\u00a0found that trawl nets fitted with an escape window and a grid reduced the total weight of small unwanted catch and caught fewer unwanted large sponges, compared to unmodified nets.\\n\\nOTHER (1 STUDY)\\n\\nCommercial catch abundance (1 study): One replicated, paired, controlled study in Carpentaria\\u00a0found that trawl nets fitted with an escape window and a grid reduced the catch of commercially targeted prawns, compared to unmodified nets.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"square mesh escape panel trawl selectivity fishing\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2727\",\n    \"action_title\": \"Fit mesh escape panels/windows and a size-sorting grid (rigid or flexible) to a trawl net\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2724\",\n    \"action_title\": \"Fit mesh escape panels/windows to a trawl net and use square mesh instead of diamond mesh codend\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2716\",\n    \"action_title\": \"Fit mesh escape panels/windows to a trawl net\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2724\"}",
+            "return_val": "{\n  \"action_id\": \"2724\",\n  \"action_title\": \"Fit mesh escape panels/windows to a trawl net and use square mesh instead of diamond mesh codend\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of fitting mesh escape panels to a trawl net and using a square mesh instead of a diamond mesh codend on marine fish populations. The study was in the English Channel\\u00a0(UK).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (1 STUDY)\\n\\nReduction of unwanted catch (1 study): One replicated, paired, controlled study in the English Channel\\u00a0found that using a trawl net with square mesh escape panels and a square mesh codend reduced the numbers of discarded finfish compared to a diamond mesh codend with no panels.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2716\"}",
+            "return_val": "{\n  \"action_id\": \"2716\",\n  \"action_title\": \"Fit mesh escape panels/windows to a trawl net\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-eight studies examined the effects of fitting one or more mesh escape panels/windows to trawl nets on marine fish populations. Ten studies were in the North Sea\\u00a0(UK, Netherlands, Norway), four studies were in each of the Baltic Sea\\u00a0(Denmark, Sweden, Northern Europe), Kattegat and/or Skagerrak\\u00a0(Norway/Sweden/Denmark) and the Northeast Atlantic Ocean\\u00a0(Iceland, UK, Northern Europe). Two studies were in the Gulf of Carpentaria\\u00a0(Australia) and two were in the Bay of Biscay\\u00a0(France). One study was in each of the Irish Sea\\u00a0(UK), the Tasman Sea\\u00a0(Australia), the Bering Sea\\u00a0(USA), the Indian Ocean\\u00a0(Mozambique), the Norwegian Sea\\u00a0(Norway), the Pacific Ocean\\u00a0(Chile), the Mid-Atlantic Bight (USA), the Gulf of Maine\\u00a0(USA) and the Tyrrhenian Sea\\u00a0(Italy). Two studies were reviews\\u00a0(Northern Europe), and one study was in a laboratory\\u00a0(Japan).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nSurvival (1 study): One replicated, controlled study in the Baltic Sea\\u00a0found that there was no difference in survival between cod escaping from diamond mesh codends with or without square mesh escape windows.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated study in a laboratory\\u00a0found that small immature masu salmon were able to actively swim (escape) through the meshes of square mesh panels under simulated trawl conditions.\\n\\nOTHER (36 studies)\\n\\nReduce unwanted catch (30 studies): One before-and-after study in the Baltic Sea\\u00a0and fourteen of 19 replicated studies (including one paired, four controlled, 10 paired and controlled, and one randomized, paired and controlled) in the North Sea, Kattegat and Skagerrak, Irish Sea, Tasman Sea, Bering Sea, Gulf of Carpentaria, Mid-Atlantic Bight, Indian Ocean, Baltic Sea, Northeast Atlantic Ocean, Bay of Biscay, Tyrrhenian Sea\\u00a0and the Pacific Ocean, found that square mesh escape panels/windows of varying designs and number fitted to diamond mesh trawl nets (bottom and pelagic), reduced the unwanted catches (non-target or non-marketable species/sizes) of all fish species monitored, all but one\\u00a0and one of four\\u00a0fish species, the main unwanted fish species but only two of nine other finfish, and the total unwanted/discarded catch (fish and invertebrates combined), compared to standard diamond mesh trawl nets, and the effect varied with panel/window design, position in the net\\u00a0and/or fish body type, as well as catch size. The other five studies and a review study of mesh escape panel/window use in the Kattegat and Skagerrak, found that square mesh panels/windows did not reduce the unwanted catches of fish, Atlantic cod\\u00a0and three of three commercial bottom fish species, compared to diamond mesh nets without panels/windows. Four of five replicated, controlled studies (including three paired) in the North Sea, Northeast Atlantic Ocean\\u00a0and Gulf of Maine, found that large diamond mesh escape panels in diamond mesh trawl nets (beam and bottom) reduced unwanted catches of cod, whiting and haddock, and discarded catch (fish and invertebrates), but not of whiting in one study, compared to nets without large diamond mesh panels, and the effect varied with panel design\\u00a0and vessel size. The other study\\u00a0found that the unwanted catches of only one of seven species/groups of non-target fish was reduced by a large diamond mesh panel. Two replicated, paired, controlled studies in the North Sea\\u00a0and Baltic Sea\\u00a0found that new or different configurations of square mesh panels/windows in diamond mesh trawl nets reduced unwanted fish\\u00a0and cod catches, compared to existing/standard panels or windows. One replicated, paired, controlled study in the Gulf of Carpentaria\\u00a0found that diamond mesh trawl nets with either a top square mesh escape panel or a large supported opening ('Bigeye') reduced unwanted shark, but not ray and sawfish catches compared to standard trawl nets. One before-and-after study in the Bay of Biscay\\u00a0found that supplementing a top square mesh escape window in a prawn trawl net with either a bottom window, a flexible escape grid or an increased mesh size diamond codend, did not reduce the unwanted hake catch\\nImproved size selectivity of fishing gear (9 studies): One review study of mesh escape panel/window use in the Kattegat and Skagerrak\\u00a0and four of six replicated, controlled studies (including four paired) in the Baltic Sea, North Sea, northeast Atlantic Ocean, found that square mesh escape panels/windows in diamond mesh trawl nets improved the size selectivity of trawl nets for Atlantic cod\\u00a0and haddock, compared to trawl nets without panels/windows, and there was no difference compared to standard trawl nets with reduced mesh circumferences, and the effect varied with panel position\\u00a0and design. The other two studies found no effect on the size selectivity of undersized fish, haddock, saithe or Atlantic cod, compared to standard trawl nets. One review study of gear size selectivity in the northeast Atlantic Ocean\\u00a0found that the effect of fitting square mesh panels to trawl nets on haddock selectivity varied with panel mesh size, position, and time of year. One replicated, controlled study in the Norwegian Sea\\u00a0found no difference in the size selectivity of cod and haddock between diamond mesh trawl nets fitted with either square mesh escape windows, rigid size-sorting escape grids or a large diamond mesh codend.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"How do mesh escape panels, size-sorting grids, and large supported openings compare in their effectiveness at improving size-selectivity in trawl nets?\", \"summary\": \"Based on the evidence from multiple studies, all three methods show effectiveness at improving size-selectivity and reducing unwanted catch in trawl nets, with some variations in their performance:\\n\\nMesh escape panels/windows: Studies (action 2716) found that square mesh escape panels improved size selectivity for Atlantic cod and haddock compared to nets without panels, though effects varied with panel position and design. One study (action 2727) in the English Channel found that size-selectivity of whiting was increased in trawl nets fitted with square mesh escape panels. However, effectiveness varied - some studies found panels reduced unwanted catches of all monitored fish species, while others found no reduction for certain species like Atlantic cod and three commercial bottom fish species.\\n\\nSize-sorting grids: Studies (action 2725) showed that escape grids with square mesh codends caught fewer unwanted whiting, plaice, cod, and haddock compared to diamond mesh codends with no grid. Studies (action 2727) found that trawl nets with size-sorting grids reduced unwanted catch of fish, sharks, stingrays, and total discarded catch compared to standard nets.\\n\\nLarge supported openings: Studies (action 2723) demonstrated that large supported escape openings (Fisheyes, Bigeyes, radial escape sections) reduced overall catches of unwanted fish, immature red snapper, and total unwanted catch in six of seven studies compared to standard nets. One study found fewer unwanted Chinook salmon with escape openings, though effectiveness varied by design.\\n\\nComparative effectiveness: One study (action 2716) directly compared methods and found no difference in size selectivity of cod and haddock between trawl nets fitted with square mesh escape windows, rigid size-sorting escape grids, or large diamond mesh codends. Studies (action 2727) indicated that fish escape through either panels/windows, grids, or both varied between fish species and sizes. Combined approaches using multiple methods together (actions 2726, 2727) showed effectiveness in reducing unwanted catch, with one study finding that escape of non-target fish from combined panel and grid use depended on panel position in the net.\", \"action_ids\": [\"2716\",\"2723\",\"2725\",\"2726\",\"2727\"]}",
+            "return_val": "{\n  \"query\": \"How do mesh escape panels, size-sorting grids, and large supported openings compare in their effectiveness at improving size-selectivity in trawl nets?\",\n  \"relevant_summary\": \"Based on the evidence from multiple studies, all three methods show effectiveness at improving size-selectivity and reducing unwanted catch in trawl nets, with some variations in their performance:\\n\\nMesh escape panels/windows: Studies (action 2716) found that square mesh escape panels improved size selectivity for Atlantic cod and haddock compared to nets without panels, though effects varied with panel position and design. One study (action 2727) in the English Channel found that size-selectivity of whiting was increased in trawl nets fitted with square mesh escape panels. However, effectiveness varied - some studies found panels reduced unwanted catches of all monitored fish species, while others found no reduction for certain species like Atlantic cod and three commercial bottom fish species.\\n\\nSize-sorting grids: Studies (action 2725) showed that escape grids with square mesh codends caught fewer unwanted whiting, plaice, cod, and haddock compared to diamond mesh codends with no grid. Studies (action 2727) found that trawl nets with size-sorting grids reduced unwanted catch of fish, sharks, stingrays, and total discarded catch compared to standard nets.\\n\\nLarge supported openings: Studies (action 2723) demonstrated that large supported escape openings (Fisheyes, Bigeyes, radial escape sections) reduced overall catches of unwanted fish, immature red snapper, and total unwanted catch in six of seven studies compared to standard nets. One study found fewer unwanted Chinook salmon with escape openings, though effectiveness varied by design.\\n\\nComparative effectiveness: One study (action 2716) directly compared methods and found no difference in size selectivity of cod and haddock between trawl nets fitted with square mesh escape windows, rigid size-sorting escape grids, or large diamond mesh codends. Studies (action 2727) indicated that fish escape through either panels/windows, grids, or both varied between fish species and sizes. Combined approaches using multiple methods together (actions 2726, 2727) showed effectiveness in reducing unwanted catch, with one study finding that escape of non-target fish from combined panel and grid use depended on panel position in the net.\",\n  \"action_ids\": [\n    \"2716\",\n    \"2723\",\n    \"2725\",\n    \"2726\",\n    \"2727\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2716",
+      "2720",
+      "2723",
+      "2717",
+      "2728",
+      "2727",
+      "2725"
+    ],
+    "regenerated_ids": [
+      "2716",
+      "2717",
+      "2720",
+      "2727",
+      "2728"
+    ]
   }
 ]
