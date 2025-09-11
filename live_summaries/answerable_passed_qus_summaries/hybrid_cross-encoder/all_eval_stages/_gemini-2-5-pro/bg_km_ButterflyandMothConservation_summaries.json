@@ -1168,5 +1168,199 @@
       "3960",
       "3965"
     ]
+  },
+  {
+    "query": "How does managing semi-natural open habitats with rough grazing compare to using prescribed fire for butterfly and moth populations?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Employing areas of semi-natural habitat for rough grazing has shown varied effects on butterfly and moth populations. Two of four studies indicated that grazing led to a higher abundance of large copper butterfly eggs and four out of 13 other butterfly species, but another study found that grazed meadow steppe had a lower abundance of butterflies and moths than ungrazed steppe (3944). One study also found that upland rough grassland managed by livestock grazing had a greater species richness and abundance of butterflies than improved grassland (3944). In contrast, for wetland and pond management, one study found that fens managed by mowing had a greater species richness of butterflies than those managed by cattle grazing (3950).\n\nIn studies on prescribed fire, three of four studies in the USA discovered that coniferous forests restored by burning had a higher species richness of butterflies than unburned forests (3877). Two of these studies also found that burned pine forests had a higher abundance of butterflies (3877). However, a study in Australia reported that after selective burning of eucalyptus forest, there were fewer Eltham copper caterpillars than before the fire (3877).",
+    "summary_action_ids": [
+      "3944",
+      "3950",
+      "3877"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"managing semi-natural open habitats with rough grazing versus prescribed fire for butterfly and moth populations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3950\",\n    \"action_title\": \"Manage wetlands or ponds by grazing or cutting to prevent succession\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3944\",\n    \"action_title\": \"Employ areas of semi-natural habitat for rough grazing (includes salt marsh, lowland heath, bog, fen)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3946\",\n    \"action_title\": \"Restore or create heathland/shrubland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3944\"}",
+            "return_val": "{\n  \"action_id\": \"3944\",\n  \"action_title\": \"Employ areas of semi-natural habitat for rough grazing (includes salt marsh, lowland heath, bog, fen)\",\n  \"key_messages\": \"Key Messages:\\n\\nNine studies evaluated the effects on butterflies and moths of employing areas of semi-natural habitat for rough grazing. Three studies were in Germany, two were in each of the UK\\u00a0and the Netherlands, and one was in each of China\\u00a0and Canada.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nCommunity composition (1 study): One controlled study in Germany\\u00a0found that after 16\\u201318 years of sheep grazing, lightly grazed and ungrazed saltmarshes had a different community of micro-moths to heavily grazed saltmarsh.\\nRichness/diversity (4 studies): Two replicated, site comparison studies (including one paired study) in the Netherlands\\u00a0and Canada\\u00a0found that calcareous coastal dunes\\u00a0and shrubsteppe\\u00a0managed by cattle\\u00a0or pony\\u00a0grazing for 4\\u201313\\u00a0or 6\\u201340\\u00a0years had a similar species richness of butterflies (in one case combined with all pollinators) to unmanaged land\\u00a0or dunes managed by cutting. One controlled study in Germany\\u00a0found that saltmarsh managed by light sheep grazing for 15\\u201318 years had a greater species richness of micro-moths than moderately or heavily grazed marsh, but a similar species richness to ungrazed marsh. One replicated, site comparison study in the UK\\u00a0found that upland rough grassland managed by livestock grazing had a greater species richness of butterflies than permanently or partially grazed improved grassland.\\n\\nPOPULATION RESPONSE (7 STUDIES)\\n\\nAbundance (7 studies): Two of four studies (including two controlled studies, one before-and-after study and two site comparison studies) in the UK, the Netherlands, China\\u00a0and Canada\\u00a0found that fenland\\u00a0and calcareous coastal dunes\\u00a0managed by cattle\\u00a0or pony\\u00a0grazing for two\\u00a0or 4\\u201313 years had a higher abundance of large copper eggs\\u00a0and four of 13 species of butterfly\\u00a0than unmanaged land\\u00a0or dunes managed by cutting. One study found that meadow steppe grazed by cattle, goats or sheep for 1\\u20135 years had a lower abundance of butterflies and moths than ungrazed steppe. The fourth study found that shrubsteppe grazed by cattle for 6\\u201340 years had a similar abundance of pollinators (including butterflies) to ungrazed shrubsteppe. Two controlled studies (including one replicated, paired study) in Germany\\u00a0found that saltmarsh managed by light sheep grazing for 15\\u201318\\u00a0or 19\\u201322\\u00a0years had a higher total abundance of micro-moths, and of two out of seven caterpillars, than moderately\\u00a0or heavily\\u00a0grazed, or ungrazed marsh.\\u00a0However, one of these studies also reported that the abundance of four other caterpillars was lower in lightly or heavily grazed marsh than in ungrazed marsh. One replicated, site comparison study in the UK\\u00a0found that upland rough grassland managed by livestock grazing had a higher abundance of butterflies than permanently or partially grazed improved grassland.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (2 studies): Two replicated, site comparison studies in the Netherlands\\u00a0found that calcareous coastal dunes\\u00a0and heathland\\u00a0managed by cattle or pony,\\u00a0or year-round horse and sheep,\\u00a0grazing for five\\u00a0or 4\\u201313\\u00a0years were more likely to be occupied by brown argus\\u00a0and Alcon large blue\\u00a0than unmanaged land or habitat managed by cutting, grazing and sod cutting, or summer-only cattle and sheep grazing.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed fire for butterfly and moth populations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3877\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3879\",\n    \"action_title\": \"Leave some areas unburned during prescribed burning\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3878\",\n    \"action_title\": \"Change season/timing of prescribed burning\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3950\"}",
+            "return_val": "{\n  \"action_id\": \"3950\",\n  \"action_title\": \"Manage wetlands or ponds by grazing or cutting to prevent succession\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of managing wetlands or ponds by grazing or cutting. Two studies were in the Netherlands\\u00a0and one was in Switzerland.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Switzerland\\u00a0found that fens managed by mowing had a greater species richness of butterflies than fens managed by cattle grazing.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One replicated, site comparison study in the Netherlands\\u00a0found that recently cut fens had fewer large copper eggs than uncut fens.\\nSurvival (2 studies): Two replicated, site comparison studies in the Netherlands\\u00a0found that large copper caterpillar survival was lower in recently cut fens, and fens cut in autumn or winter, than in uncut fens.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3877\"}",
+            "return_val": "{\n  \"action_id\": \"3877\",\n  \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects on butterflies and moths of using prescribed fire to maintain or restore disturbance in forests. Four studies were in the USA\\u00a0and one was in Australia.\\n\\nCOMMUNITY RESPONSE (4 STUDIES)\\n\\nRichness/diversity (4 studies): Three of four studies (including one replicated study, one paired study, two controlled studies, two before-and-after studies, and one site comparison study) in the USA\\u00a0found that coniferous forest restored 1\\u20132 years ago by burning (in combination with thinning)\\u00a0or burned once within the last 20 years, had a higher species richness of butterflies than unburned forest. The fourth study\\u00a0found that mixed forest and shrubland sites which had been burned the year before had similar butterfly species richness to unburned sites.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): Two studies (including one controlled, before-and-after study and one site comparison study) in the USA\\u00a0found that pine forest restored 1\\u20132 years ago by burning (in combination with thinning) had a higher abundance of butterflies than unburned forest. One replicated, before-and-after study in Australia\\u00a0reported that in the spring after selective burning of eucalyptus forest there were fewer Eltham copper caterpillars than before.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"3944\",\"3950\",\"3877\"],\"summary\":\"Employing areas of semi-natural habitat for rough grazing has shown varied effects on butterfly and moth populations. Two of four studies indicated that grazing led to a higher abundance of large copper butterfly eggs and four out of 13 other butterfly species, but another study found that grazed meadow steppe had a lower abundance of butterflies and moths than ungrazed steppe (3944). One study also found that upland rough grassland managed by livestock grazing had a greater species richness and abundance of butterflies than improved grassland (3944). In contrast, for wetland and pond management, one study found that fens managed by mowing had a greater species richness of butterflies than those managed by cattle grazing (3950).\\n\\nIn studies on prescribed fire, three of four studies in the USA discovered that coniferous forests restored by burning had a higher species richness of butterflies than unburned forests (3877). Two of these studies also found that burned pine forests had a higher abundance of butterflies (3877). However, a study in Australia reported that after selective burning of eucalyptus forest, there were fewer Eltham copper caterpillars than before the fire (3877).\",\"query\":\"How does managing semi-natural open habitats with rough grazing compare to using prescribed fire for butterfly and moth populations?\"}",
+            "return_val": "{\n  \"query\": \"How does managing semi-natural open habitats with rough grazing compare to using prescribed fire for butterfly and moth populations?\",\n  \"relevant_summary\": \"Employing areas of semi-natural habitat for rough grazing has shown varied effects on butterfly and moth populations. Two of four studies indicated that grazing led to a higher abundance of large copper butterfly eggs and four out of 13 other butterfly species, but another study found that grazed meadow steppe had a lower abundance of butterflies and moths than ungrazed steppe (3944). One study also found that upland rough grassland managed by livestock grazing had a greater species richness and abundance of butterflies than improved grassland (3944). In contrast, for wetland and pond management, one study found that fens managed by mowing had a greater species richness of butterflies than those managed by cattle grazing (3950).\\n\\nIn studies on prescribed fire, three of four studies in the USA discovered that coniferous forests restored by burning had a higher species richness of butterflies than unburned forests (3877). Two of these studies also found that burned pine forests had a higher abundance of butterflies (3877). However, a study in Australia reported that after selective burning of eucalyptus forest, there were fewer Eltham copper caterpillars than before the fire (3877).\",\n  \"action_ids\": [\n    \"3944\",\n    \"3950\",\n    \"3877\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3944",
+      "3882"
+    ],
+    "regenerated_ids": [
+      "3882",
+      "3944"
+    ]
+  },
+  {
+    "query": "What are the effects of managing traditional perennial crops like orchards, vineyards, and coffee plantations to benefit butterflies and moths?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Managing vineyards to benefit butterflies and moths has been the subject of two studies, one in the USA and one in Spain (3919). One study found that creating grass strips between vine rows and using fewer chemicals can increase the species richness of butterflies (3919). Another study in the USA indicated that vineyards managed to encourage native plants with infrequent insecticide use had a greater abundance of butterflies, although the species richness was similar to conventionally managed vineyards (3919). In Costa Rica, a study on coffee plantations, which are a type of perennial crop, found that growing a mix of native and non-native tree species within the plantation can lead to a higher diversity of butterflies compared to plantations with only a single non-native tree species (3920). However, this same study found that the species richness and abundance of butterflies were similar across all the coffee farms they studied (3920).",
+    "summary_action_ids": [
+      "3919",
+      "3920"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"managing traditional perennial crops for butterflies and moths\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3918\",\n    \"action_title\": \"Manage perennial bioenergy crops to benefit butterflies and moths\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3919\",\n    \"action_title\": \"Manage vineyards to benefit butterflies and moths\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3920\",\n    \"action_title\": \"Grow native trees within perennial crop plantations\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3918\"}",
+            "return_val": "{\n  \"action_id\": \"3918\",\n  \"action_title\": \"Manage perennial bioenergy crops to benefit butterflies and moths\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on butterflies and moths of managing perennial bioenergy crops to benefit butterflies and moths. This study was in the USA.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, controlled study in the USA\\u00a0found that plots planted with a diverse mix of bioenergy crops had a greater species richness of butterflies than plots planted with fewer species.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, controlled study in the USA\\u00a0found that plots planted with a diverse mix of bioenergy crops had a higher abundance of butterflies than plots planted with fewer species.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3919\"}",
+            "return_val": "{\n  \"action_id\": \"3919\",\n  \"action_title\": \"Manage vineyards to benefit butterflies and moths\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on butterflies and moths of managing vineyards to benefit butterflies and moths. One study was in each of the USA\\u00a0and Spain.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nRichness/diversity (2 studies): One of two replicated, site comparison studies (including one paired study) in the USA\\u00a0and Spain\\u00a0found that grass strips between vine rows had a greater species richness of butterflies than the vine rows themselves, and vineyards managed with fewer chemicals had a greater species richness of butterflies than conventionally managed vineyards. The other study found that vineyards managed to encourage native plants, and where insecticide was rarely used, had a similar species richness of butterflies to conventionally managed vineyards.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, paired, site comparison study in the USA\\u00a0found that vineyards managed to encourage native plants, and where insecticide was rarely used, had a greater abundance of butterflies than conventionally managed vineyards.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3920\"}",
+            "return_val": "{\n  \"action_id\": \"3920\",\n  \"action_title\": \"Grow native trees within perennial crop plantations\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on butterflies and moths of growing native trees within perennial crop plantations. This study was in Costa Rica.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Costa Rica\\u00a0found that coffee farms with a native and a non-native tree species growing within them had a higher diversity of butterflies than coffee farms with a single non-native tree species, but a similar diversity to coffee farms with two non-native tree species. The same study found a similar species richness of butterflies on all farms.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, site comparison study in Costa Rica\\u00a0found that coffee farms with a native and a non-native tree species growing within them had a similar abundance of butterflies to coffee farms with one or two non-native tree species.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"3919\",\"3920\"],\"query\":\"What are the effects of managing traditional perennial crops like orchards, vineyards, and coffee plantations to benefit butterflies and moths?\",\"summary\":\"Managing vineyards to benefit butterflies and moths has been the subject of two studies, one in the USA and one in Spain (3919). One study found that creating grass strips between vine rows and using fewer chemicals can increase the species richness of butterflies (3919). Another study in the USA indicated that vineyards managed to encourage native plants with infrequent insecticide use had a greater abundance of butterflies, although the species richness was similar to conventionally managed vineyards (3919). In Costa Rica, a study on coffee plantations, which are a type of perennial crop, found that growing a mix of native and non-native tree species within the plantation can lead to a higher diversity of butterflies compared to plantations with only a single non-native tree species (3920). However, this same study found that the species richness and abundance of butterflies were similar across all the coffee farms they studied (3920).\"}",
+            "return_val": "{\n  \"query\": \"What are the effects of managing traditional perennial crops like orchards, vineyards, and coffee plantations to benefit butterflies and moths?\",\n  \"relevant_summary\": \"Managing vineyards to benefit butterflies and moths has been the subject of two studies, one in the USA and one in Spain (3919). One study found that creating grass strips between vine rows and using fewer chemicals can increase the species richness of butterflies (3919). Another study in the USA indicated that vineyards managed to encourage native plants with infrequent insecticide use had a greater abundance of butterflies, although the species richness was similar to conventionally managed vineyards (3919). In Costa Rica, a study on coffee plantations, which are a type of perennial crop, found that growing a mix of native and non-native tree species within the plantation can lead to a higher diversity of butterflies compared to plantations with only a single non-native tree species (3920). However, this same study found that the species richness and abundance of butterflies were similar across all the coffee farms they studied (3920).\",\n  \"action_ids\": [\n    \"3919\",\n    \"3920\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3917",
+      "3919",
+      "3920",
+      "3931"
+    ],
+    "regenerated_ids": [
+      "3917",
+      "3919",
+      "3920",
+      "3931"
+    ]
+  },
+  {
+    "query": "What are the benefits for butterflies of maintaining species-rich, semi-natural grasslands compared to using set-aside in European agricultural landscapes?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Twelve of fifteen studies in Switzerland, the United Kingdom and Sweden found that the species richness or diversity of butterflies and moths on grassland, field margins, wildflower strips or whole farms managed under agri-environment schemes was higher than on conventional fields or farms [3915]. Seventeen of nineteen studies in the UK, Sweden, Switzerland and Germany found that the abundance of butterflies and moths overall, and of specific species of butterflies or moths, in woodland, grassland, field margins, wildflower strips or whole farms managed under agri-environment schemes was higher than in unmanaged woodland or conventional fields or farms [3915]. However, one replicated, site comparison study in Finland found that the species richness of butterflies and day-flying moths on grassland managed under an agri-environment scheme was lower than on abandoned, unmanaged grassland [3915]. Additionally, three studies in Finland and the Czech Republic found that grassland grazed or restored under agri-environment scheme prescriptions had a lower abundance of all but three butterfly and day-flying moth species compared to unmanaged grassland [3915].",
+    "summary_action_ids": [
+      "3915"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"butterfly conservation in European agricultural landscapes\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3915\",\n    \"action_title\": \"Pay farmers to cover the costs of conservation measures (as in agri-environment schemes or conservation incentives)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3907\",\n    \"action_title\": \"Convert to organic farming\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"145\",\n    \"action_title\": \"Increase the proportion of semi-natural habitat in the farmed landscape\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3915\"}",
+            "return_val": "{\n  \"action_id\": \"3915\",\n  \"action_title\": \"Pay farmers to cover the costs of conservation measures (as in agri-environment schemes or conservation incentives)\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-two studies evaluated the effects of paying farmers to cover the costs of conservation measures on butterflies and moths. Eighteen studies were in the UK, eight were in Switzerland\\u00a0two were in Finland, and one was in each of Sweden, the Czech Republic, the USA\\u00a0and Germany.\\n\\nCOMMUNITY RESPONSE (18 STUDIES)\\n\\nCommunity composition (1 study): One replicated, controlled study in Switzerland\\u00a0found that the community composition of butterflies on grasslands that farmers were paid to manage for wildlife was similar to intensively managed grasslands.\\nRichness/diversity (19 studies):\\u00a0Twelve of 15 studies (including eight controlled, one before-and-after and five site comparison studies) in Switzerland, the United Kingdom\\u00a0and Sweden\\u00a0found that the species richness or diversity of butterflies\\u00a0and moths\\u00a0on grassland, field margins, wildflower strips\\u00a0or whole farms\\u00a0managed under agri-environment schemes was higher than on conventional fields or farms. The other three studies found that the species richness of butterflies\\u00a0and micro-moths\\u00a0on grassland, field margins, wildflower strips\\u00a0or whole farms\\u00a0managed under agri-environment schemes was similar to conventional fields or farms. One of two replicated, site comparison studies in Switzerland\\u00a0found that the species richness of butterflies was higher in landscapes with a greater proportion of land managed under agri-environment schemes than in landscapes with a smaller proportion of agri-environment schemes, but the other study found that species richness of butterflies was similar on individual farms with more land managed under agri-environment schemes than on farms with smaller areas of agri-environment schemes. One replicated, site comparison study in the USA\\u00a0found that the species richness of butterflies on grassland sown under a conservation incentive program was similar to that on native prairie. One replicated, site comparison study in Finland\\u00a0found that the species richness of butterflies and day-flying moths on grassland managed under an agri-environment scheme was lower than on abandoned, unmanaged grassland.\\n\\nPOPULATION RESPONSE (27 STUDIES)\\n\\nAbundance (27 studies): Seventeen of 19 studies (including seven controlled studies, one replicated, site comparison study, two before-and-after studies, and eight site comparison studies) in the UK, Sweden, Switzerland\\u00a0and Germany\\u00a0found that the abundance of butterflies\\u00a0and moths\\u00a0overall, and of specific species of butterflies\\u00a0or moths, in woodland, grassland, field margins, wildflower strips\\u00a0or whole farms\\u00a0managed under agri-environment schemes was higher than in unmanaged woodland or conventional fields or farms. The other two studies found that the abundance of butterflies\\u00a0and macro-moths\\u00a0on field margins managed under agri-environment schemes was similar to conventional margins. Three of four replicated studies (including one controlled and three site comparison studies) in the UK\\u00a0and Switzerland\\u00a0found that the abundance of butterflies was higher on farms\\u00a0or in landscapes\\u00a0with a higher proportion of land managed under agri-environment schemes\\u00a0than in areas with less land in agri-environment schemes. The other study found that the abundance of some species was higher, but others were lower, on farms with enhanced agri-environment management compared to simple management. Three studies (including one before-and-after and two replicated, site comparison studies) in Finland\\u00a0and the Czech Republic\\u00a0found that grassland grazed or restored under agri-environment scheme prescriptions had a lower abundance of all but three butterfly and day-flying moth species compared to unmanaged grassland, and that Danube clouded yellow abundance declined after agri-environment scheme mowing was initiated on abandoned grasslands. One replicated, site comparison study in the USA\\u00a0found that the abundance of butterflies on grassland sown under a conservation incentive program was lower than on native prairie.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3907\"}",
+            "return_val": "{\n  \"action_id\": \"3907\",\n  \"action_title\": \"Convert to organic farming\",\n  \"key_messages\": \"Key Messages:\\n\\nThirteen studies evaluated the effects on butterflies and moths of converting to organic farming. Six studies were in Sweden, three were in the UK\\u00a0and one was in each of Canada, Switzerland, Germany\\u00a0and Taiwan.\\n\\nCOMMUNITY RESPONSE (13 STUDIES)\\n\\nRichness/diversity (13 studies): Seven of 11 replicated, site comparison studies (including five paired studies) in Sweden, the UK, Canada, Switzerland, Germany\\u00a0and Taiwan\\u00a0found that organic arable farms had a greater species richness of butterflies, burnet moths\\u00a0and all moths\\u00a0than conventionally managed farms. However, three of these studies only found this in intensively managed not in more diverse landscapes,only in the first of three study years, and in farms managed organically for &lt;6 years but not 15\\u201323 years. Four of the studies found that organic arable\\u00a0and mixed\\u00a0farms had a similar species richness of macro-moths\\u00a0and butterflies\\u00a0to conventionally managed farms. Two of these studies also found that on organic and conventionally managed farms within a landscape with a high proportion of organic farms there was higher species richness of butterflies\\u00a0and burnet moths\\u00a0than either type of farm in a landscape with a high proportion of conventional farms. One before-and-after study in the UK\\u00a0found that within 4 years after a mixed farm converted to organic management (along with increasing the proportion of grassland and reducing grazing intensity) the species richness of large moths increased. One replicated, site comparison study in Sweden\\u00a0found that organic mixed farms had a more consistent species richness of butterflies across the farm, but a similar consistency through the summer and between years, compared to conventional farms.\\n\\nPOPULATION RESPONSE (12 STUDIES)\\n\\nAbundance (12 studies): Seven of 11 replicated, site comparison studies (including five paired studies) in Sweden, the UK, Canada, Switzerland, Germany\\u00a0and Taiwan\\u00a0found that organic arable farms had a greater abundance of butterflies, burnet moths, and all moths, than conventionally managed farms, and that butterfly abundance increased with time since farms had been converted to organic management. However, three of these studies only found this in intensively managed not in more diverse landscapes, and in farms managed organically for &lt;6 years but not 15\\u201323 years. One of these studies also found that on organic and conventionally managed farms within a landscape with a high proportion of organic farms there was higher abundance of butterflies than either type of farm in a landscape with a high proportion of conventional farms. The other four found that organic arable\\u00a0and mixed\\u00a0farms had a similar abundance of macro-moths\\u00a0and butterflies\\u00a0to conventionally managed farms. One before-and-after study in the UK\\u00a0found that within 4 years after a mixed farm converted to organic management (along with increasing the proportion of grassland and reducing grazing intensity) the total abundance of large moths, and the abundance of lunar underwing moths and 5 out of 23 butterfly species, increased, but the abundance of two butterfly species decreased.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"145\"}",
+            "return_val": "{\n  \"action_id\": \"145\",\n  \"action_title\": \"Increase the proportion of semi-natural habitat in the farmed landscape\",\n  \"key_messages\": \"Key Messages:\\nFive studies monitored the effects of the Swiss Ecological Compensation Areas scheme at a landscape scale, including three replicated site comparisons. Of these, one found an increase in numbers of birds of some species. Two found no effect on the number of bird species\\u00a0or population densities of farmland birds.\\u00a0Three studies found mixed effects, with some species or groups of species increasing and others decreasing.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Twelve of fifteen studies in Switzerland, the United Kingdom and Sweden found that the species richness or diversity of butterflies and moths on grassland, field margins, wildflower strips or whole farms managed under agri-environment schemes was higher than on conventional fields or farms [3915]. Seventeen of nineteen studies in the UK, Sweden, Switzerland and Germany found that the abundance of butterflies and moths overall, and of specific species of butterflies or moths, in woodland, grassland, field margins, wildflower strips or whole farms managed under agri-environment schemes was higher than in unmanaged woodland or conventional fields or farms [3915]. However, one replicated, site comparison study in Finland found that the species richness of butterflies and day-flying moths on grassland managed under an agri-environment scheme was lower than on abandoned, unmanaged grassland [3915]. Additionally, three studies in Finland and the Czech Republic found that grassland grazed or restored under agri-environment scheme prescriptions had a lower abundance of all but three butterfly and day-flying moth species compared to unmanaged grassland [3915].\",\"query\":\"What are the benefits for butterflies of maintaining species-rich, semi-natural grasslands compared to using set-aside in European agricultural landscapes?\",\"action_ids\":[\"3915\"]}",
+            "return_val": "{\n  \"query\": \"What are the benefits for butterflies of maintaining species-rich, semi-natural grasslands compared to using set-aside in European agricultural landscapes?\",\n  \"relevant_summary\": \"Twelve of fifteen studies in Switzerland, the United Kingdom and Sweden found that the species richness or diversity of butterflies and moths on grassland, field margins, wildflower strips or whole farms managed under agri-environment schemes was higher than on conventional fields or farms [3915]. Seventeen of nineteen studies in the UK, Sweden, Switzerland and Germany found that the abundance of butterflies and moths overall, and of specific species of butterflies or moths, in woodland, grassland, field margins, wildflower strips or whole farms managed under agri-environment schemes was higher than in unmanaged woodland or conventional fields or farms [3915]. However, one replicated, site comparison study in Finland found that the species richness of butterflies and day-flying moths on grassland managed under an agri-environment scheme was lower than on abandoned, unmanaged grassland [3915]. Additionally, three studies in Finland and the Czech Republic found that grassland grazed or restored under agri-environment scheme prescriptions had a lower abundance of all but three butterfly and day-flying moth species compared to unmanaged grassland [3915].\",\n  \"action_ids\": [\n    \"3915\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3908",
+      "3980"
+    ],
+    "regenerated_ids": [
+      "3908",
+      "3980"
+    ]
   }
 ]

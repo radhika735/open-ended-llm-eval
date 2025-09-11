@@ -1547,5 +1547,271 @@
       "3960",
       "3965"
     ]
+  },
+  {
+    "query": "How does managing semi-natural open habitats with rough grazing compare to using prescribed fire for butterfly and moth populations?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Rough grazing in semi-natural habitats: Across nine studies, species richness was often similar to unmanaged or cut areas in calcareous dunes and shrubsteppe, while light sheep grazing on saltmarsh increased micro-moth species richness compared to moderate/heavy grazing and was similar to ungrazed marsh; upland rough grassland under livestock grazing had higher butterfly richness than improved grassland (3944). Abundance responses were mixed: higher abundance for large copper eggs and some butterfly species under cattle/pony grazing in fens and dunes, similar abundance to ungrazed in shrubsteppe, lower abundance in meadow steppe under livestock, and on saltmarsh light grazing increased total micro-moth abundance and some caterpillars compared to moderate/heavy grazing or ungrazed, though other caterpillars were lower under grazing than ungrazed; upland rough grassland had higher butterfly abundance than improved grassland (3944). Occupancy/use: brown argus and Alcon large blue were more likely to occupy grazed calcareous dunes and heathland than unmanaged or differently managed sites (3944). Prescribed fire in open habitats: Species richness of butterflies was often similar between burned and unburned shrubland plots and field margins; patch-burning in pastures yielded lower richness than rotational grazing, similar to some grazed/mown pastures, and higher than continuous grazing (3882). Abundance responses were mixed: increased abundance for heath fritillary adults, marsh fritillary caterpillar webs, and Fender\u2019s blue caterpillars/eggs one or more years after burning compared to before or to unburned/grazed land, but decreased abundance for Brenton blue eggs/adults, rosy marsh moth caterpillars, and regal fritillary on burned sites versus unburned; some species (e.g., regal fritillary, arogos skipper) were less abundant on burned prairies than hayed/grazed, while generalists and some species (e.g., purplish copper) were more abundant on burned than hayed/grazed; one review reported occasional grassland burning benefitted 10/67 species of conservation concern (3882). Survival/occupancy: Fender\u2019s blue caterpillar survival was lower one year post-burn than in unburned plots, while marsh fritillary occupancy of fen meadows was similar among burned, grazed, and unmanaged sites (3882). Overall, both approaches showed mixed, species- and context-dependent effects on richness, abundance, survival, and occupancy across studies (3944, 3882).",
+    "summary_action_ids": [
+      "3944",
+      "3882"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"semi-natural open habitats rough grazing butterfly moth prescribed fire\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3944\",\n    \"action_title\": \"Employ areas of semi-natural habitat for rough grazing (includes salt marsh, lowland heath, bog, fen)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3950\",\n    \"action_title\": \"Manage wetlands or ponds by grazing or cutting to prevent succession\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3946\",\n    \"action_title\": \"Restore or create heathland/shrubland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed fire butterflies moths prescribed burning\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3882\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in grasslands or other open habitats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3879\",\n    \"action_title\": \"Leave some areas unburned during prescribed burning\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3878\",\n    \"action_title\": \"Change season/timing of prescribed burning\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3944\"}",
+            "return_val": "{\n  \"action_id\": \"3944\",\n  \"action_title\": \"Employ areas of semi-natural habitat for rough grazing (includes salt marsh, lowland heath, bog, fen)\",\n  \"key_messages\": \"Key Messages:\\n\\nNine studies evaluated the effects on butterflies and moths of employing areas of semi-natural habitat for rough grazing. Three studies were in Germany, two were in each of the UK\\u00a0and the Netherlands, and one was in each of China\\u00a0and Canada.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nCommunity composition (1 study): One controlled study in Germany\\u00a0found that after 16\\u201318 years of sheep grazing, lightly grazed and ungrazed saltmarshes had a different community of micro-moths to heavily grazed saltmarsh.\\nRichness/diversity (4 studies): Two replicated, site comparison studies (including one paired study) in the Netherlands\\u00a0and Canada\\u00a0found that calcareous coastal dunes\\u00a0and shrubsteppe\\u00a0managed by cattle\\u00a0or pony\\u00a0grazing for 4\\u201313\\u00a0or 6\\u201340\\u00a0years had a similar species richness of butterflies (in one case combined with all pollinators) to unmanaged land\\u00a0or dunes managed by cutting. One controlled study in Germany\\u00a0found that saltmarsh managed by light sheep grazing for 15\\u201318 years had a greater species richness of micro-moths than moderately or heavily grazed marsh, but a similar species richness to ungrazed marsh. One replicated, site comparison study in the UK\\u00a0found that upland rough grassland managed by livestock grazing had a greater species richness of butterflies than permanently or partially grazed improved grassland.\\n\\nPOPULATION RESPONSE (7 STUDIES)\\n\\nAbundance (7 studies): Two of four studies (including two controlled studies, one before-and-after study and two site comparison studies) in the UK, the Netherlands, China\\u00a0and Canada\\u00a0found that fenland\\u00a0and calcareous coastal dunes\\u00a0managed by cattle\\u00a0or pony\\u00a0grazing for two\\u00a0or 4\\u201313 years had a higher abundance of large copper eggs\\u00a0and four of 13 species of butterfly\\u00a0than unmanaged land\\u00a0or dunes managed by cutting. One study found that meadow steppe grazed by cattle, goats or sheep for 1\\u20135 years had a lower abundance of butterflies and moths than ungrazed steppe. The fourth study found that shrubsteppe grazed by cattle for 6\\u201340 years had a similar abundance of pollinators (including butterflies) to ungrazed shrubsteppe. Two controlled studies (including one replicated, paired study) in Germany\\u00a0found that saltmarsh managed by light sheep grazing for 15\\u201318\\u00a0or 19\\u201322\\u00a0years had a higher total abundance of micro-moths, and of two out of seven caterpillars, than moderately\\u00a0or heavily\\u00a0grazed, or ungrazed marsh.\\u00a0However, one of these studies also reported that the abundance of four other caterpillars was lower in lightly or heavily grazed marsh than in ungrazed marsh. One replicated, site comparison study in the UK\\u00a0found that upland rough grassland managed by livestock grazing had a higher abundance of butterflies than permanently or partially grazed improved grassland.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (2 studies): Two replicated, site comparison studies in the Netherlands\\u00a0found that calcareous coastal dunes\\u00a0and heathland\\u00a0managed by cattle or pony,\\u00a0or year-round horse and sheep,\\u00a0grazing for five\\u00a0or 4\\u201313\\u00a0years were more likely to be occupied by brown argus\\u00a0and Alcon large blue\\u00a0than unmanaged land or habitat managed by cutting, grazing and sod cutting, or summer-only cattle and sheep grazing.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3882\"}",
+            "return_val": "{\n  \"action_id\": \"3882\",\n  \"action_title\": \"Use prescribed fire to maintain or restore disturbance in grasslands or other open habitats\",\n  \"key_messages\": \"Key Messages:\\n\\n\\n\\nThirteen studies evaluated the effects on butterflies and moths of using prescribed fire to maintain or restore disturbance in grasslands or other open habitats. Eight studies were in the USA, three were in the UK, one was in South Africa\\u00a0and one was a review across Europe.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nCommunity composition (1 study): One replicated, site comparison study in the USA\\u00a0found that pastures managed by patch-burning had a similar butterfly community to rotationally or continuously grazed pastures.\\nRichness/diversity (3 studies): Two replicated, before-and-after studies (including one randomized, controlled study and one paired sites, site comparison study) in the USA\\u00a0found that shrubland plots\\u00a0and grass field margins\\u00a0managed by burning had a similar species richness of butterflies to those which were unburned. One replicated, site comparison study in the USA\\u00a0reported that pastures managed by patch-burning had a lower species richness of butterflies than rotationally grazed pastures, a similar richness to rotationally grazed and mown pastures, and a higher species richness than continuously grazed pastures.\\n\\nPOPULATION RESPONSE (12 STUDIES)\\n\\nAbundance (12 studies): Four of nine studies (including six replicated studies, two randomized studies, two paired sites studies, three controlled studies, two before-and-after studies, and five site comparison studies) in the UK, South Africa\\u00a0and the USA\\u00a0found that the abundance of heath fritillary adults, marsh fritillary caterpillar webs\\u00a0and Fender\\u2019s blue caterpillars and eggs\\u00a0was higher (sometimes after initial reductions in abundance) on heathland, fen meadows\\u00a0and prairies\\u00a0one or more years after management by burning than before burning, or compared to unburned\\u00a0or grazed\\u00a0land, although the total population of Fender\\u2019s blue declined in adjacent burned and unburned areas. Three studies found that the abundance of Brenton blue butterfly eggs and adults, rosy marsh moth caterpillars\\u00a0and regal fritillary adults\\u00a0was lower on a bog\\u00a0and prairies\\u00a0managed by burning than on unburned land, at least one\\u00a0and five\\u00a0years after burning. One study found that grass field margins managed by burning had a similar abundance of butterflies to unburned field margins. The seventh study found that abundance of Powershiek skipperling to burning, along with haying and idling, depended on the site\\u2019s vegetation characteristics. Two replicated, site comparison studies in the USA\\u00a0found that two prairie specialists (regal fritillary and arogos skipper)\\u00a0and three out of nine butterfly species\\u00a0were less abundant in prairies\\u00a0or pastures\\u00a0managed by burning than in prairies managed by haying\\u00a0or grazed pastures. These studies also found that the abundance of generalist and migrant species, and of purplish copper, was higher in burned prairies\\u00a0or pastures\\u00a0than hayed prairies\\u00a0or grazed pastures. One review across Europe\\u00a0reported that occasional burning on grassland benefitted 10 out of 67 butterfly species of conservation concern.\\nSurvival (1 study): One replicated, paired sites, controlled study in the USA\\u00a0found that in prairie plots burned one year before, Fender\\u2019s blue butterfly caterpillars had lower survival than in unburned plots.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated, site comparison study in the UK\\u00a0found that a similar proportion of fen meadows were occupied by marsh fritillary caterpillars whether they were managed by burning, grazing or were unmanaged.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How does managing semi-natural open habitats with rough grazing compare to using prescribed fire for butterfly and moth populations?\",\"summary\":\"Rough grazing in semi-natural habitats: Across nine studies, species richness was often similar to unmanaged or cut areas in calcareous dunes and shrubsteppe, while light sheep grazing on saltmarsh increased micro-moth species richness compared to moderate/heavy grazing and was similar to ungrazed marsh; upland rough grassland under livestock grazing had higher butterfly richness than improved grassland (3944). Abundance responses were mixed: higher abundance for large copper eggs and some butterfly species under cattle/pony grazing in fens and dunes, similar abundance to ungrazed in shrubsteppe, lower abundance in meadow steppe under livestock, and on saltmarsh light grazing increased total micro-moth abundance and some caterpillars compared to moderate/heavy grazing or ungrazed, though other caterpillars were lower under grazing than ungrazed; upland rough grassland had higher butterfly abundance than improved grassland (3944). Occupancy/use: brown argus and Alcon large blue were more likely to occupy grazed calcareous dunes and heathland than unmanaged or differently managed sites (3944). Prescribed fire in open habitats: Species richness of butterflies was often similar between burned and unburned shrubland plots and field margins; patch-burning in pastures yielded lower richness than rotational grazing, similar to some grazed/mown pastures, and higher than continuous grazing (3882). Abundance responses were mixed: increased abundance for heath fritillary adults, marsh fritillary caterpillar webs, and Fender\u2019s blue caterpillars/eggs one or more years after burning compared to before or to unburned/grazed land, but decreased abundance for Brenton blue eggs/adults, rosy marsh moth caterpillars, and regal fritillary on burned sites versus unburned; some species (e.g., regal fritillary, arogos skipper) were less abundant on burned prairies than hayed/grazed, while generalists and some species (e.g., purplish copper) were more abundant on burned than hayed/grazed; one review reported occasional grassland burning benefitted 10/67 species of conservation concern (3882). Survival/occupancy: Fender\u2019s blue caterpillar survival was lower one year post-burn than in unburned plots, while marsh fritillary occupancy of fen meadows was similar among burned, grazed, and unmanaged sites (3882). Overall, both approaches showed mixed, species- and context-dependent effects on richness, abundance, survival, and occupancy across studies (3944, 3882).\",\"action_ids\":[\"3944\",\"3882\"]}",
+            "return_val": "{\n  \"query\": \"How does managing semi-natural open habitats with rough grazing compare to using prescribed fire for butterfly and moth populations?\",\n  \"relevant_summary\": \"Rough grazing in semi-natural habitats: Across nine studies, species richness was often similar to unmanaged or cut areas in calcareous dunes and shrubsteppe, while light sheep grazing on saltmarsh increased micro-moth species richness compared to moderate/heavy grazing and was similar to ungrazed marsh; upland rough grassland under livestock grazing had higher butterfly richness than improved grassland (3944). Abundance responses were mixed: higher abundance for large copper eggs and some butterfly species under cattle/pony grazing in fens and dunes, similar abundance to ungrazed in shrubsteppe, lower abundance in meadow steppe under livestock, and on saltmarsh light grazing increased total micro-moth abundance and some caterpillars compared to moderate/heavy grazing or ungrazed, though other caterpillars were lower under grazing than ungrazed; upland rough grassland had higher butterfly abundance than improved grassland (3944). Occupancy/use: brown argus and Alcon large blue were more likely to occupy grazed calcareous dunes and heathland than unmanaged or differently managed sites (3944). Prescribed fire in open habitats: Species richness of butterflies was often similar between burned and unburned shrubland plots and field margins; patch-burning in pastures yielded lower richness than rotational grazing, similar to some grazed/mown pastures, and higher than continuous grazing (3882). Abundance responses were mixed: increased abundance for heath fritillary adults, marsh fritillary caterpillar webs, and Fender\\u2019s blue caterpillars/eggs one or more years after burning compared to before or to unburned/grazed land, but decreased abundance for Brenton blue eggs/adults, rosy marsh moth caterpillars, and regal fritillary on burned sites versus unburned; some species (e.g., regal fritillary, arogos skipper) were less abundant on burned prairies than hayed/grazed, while generalists and some species (e.g., purplish copper) were more abundant on burned than hayed/grazed; one review reported occasional grassland burning benefitted 10/67 species of conservation concern (3882). Survival/occupancy: Fender\\u2019s blue caterpillar survival was lower one year post-burn than in unburned plots, while marsh fritillary occupancy of fen meadows was similar among burned, grazed, and unmanaged sites (3882). Overall, both approaches showed mixed, species- and context-dependent effects on richness, abundance, survival, and occupancy across studies (3944, 3882).\",\n  \"action_ids\": [\n    \"3944\",\n    \"3882\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3944",
+      "3882"
+    ],
+    "regenerated_ids": [
+      "3882",
+      "3944"
+    ]
+  },
+  {
+    "query": "What are the effects of managing traditional perennial crops like orchards, vineyards, and coffee plantations to benefit butterflies and moths?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"traditional perennial crops orchards vineyards coffee plantations butterflies moths management effects\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3919\",\n    \"action_title\": \"Manage vineyards to benefit butterflies and moths\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3920\",\n    \"action_title\": \"Grow native trees within perennial crop plantations\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3897\",\n    \"action_title\": \"Reduce fertilizer, pesticide or herbicide use generally\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3919\"}",
+            "return_val": "{\n  \"action_id\": \"3919\",\n  \"action_title\": \"Manage vineyards to benefit butterflies and moths\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on butterflies and moths of managing vineyards to benefit butterflies and moths. One study was in each of the USA\\u00a0and Spain.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nRichness/diversity (2 studies): One of two replicated, site comparison studies (including one paired study) in the USA\\u00a0and Spain\\u00a0found that grass strips between vine rows had a greater species richness of butterflies than the vine rows themselves, and vineyards managed with fewer chemicals had a greater species richness of butterflies than conventionally managed vineyards. The other study found that vineyards managed to encourage native plants, and where insecticide was rarely used, had a similar species richness of butterflies to conventionally managed vineyards.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, paired, site comparison study in the USA\\u00a0found that vineyards managed to encourage native plants, and where insecticide was rarely used, had a greater abundance of butterflies than conventionally managed vineyards.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3920\"}",
+            "return_val": "{\n  \"action_id\": \"3920\",\n  \"action_title\": \"Grow native trees within perennial crop plantations\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on butterflies and moths of growing native trees within perennial crop plantations. This study was in Costa Rica.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Costa Rica\\u00a0found that coffee farms with a native and a non-native tree species growing within them had a higher diversity of butterflies than coffee farms with a single non-native tree species, but a similar diversity to coffee farms with two non-native tree species. The same study found a similar species richness of butterflies on all farms.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, site comparison study in Costa Rica\\u00a0found that coffee farms with a native and a non-native tree species growing within them had a similar abundance of butterflies to coffee farms with one or two non-native tree species.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3897\"}",
+            "return_val": "{\n  \"action_id\": \"3897\",\n  \"action_title\": \"Reduce fertilizer, pesticide or herbicide use generally\",\n  \"key_messages\": \"Key Messages:\\n\\nEleven studies evaluated the effects on butterflies and moths of reducing fertilizer, pesticide or herbicide use generally. Three studies were in the UK, two were in each of the USA\\u00a0and Germany, one was in each of Spain, Mexico\\u00a0and Switzerland, and one was a systematic review across Europe.\\n\\nCOMMUNITY RESPONSE (10 STUDIES)\\n\\nRichness/diversity (10 studies): Eight studies (including one replicated study, two controlled studies, one randomized study, five site comparison studies, and one systematic review) in the USA, Europe, the UK, Spain, Mexico\\u00a0and Switzerland\\u00a0found that orchards, crop edges, farms, vineyards, replanted Douglas fir stands, coffee plantations\\u00a0and agricultural landscapes\\u00a0managed with less frequent, reduced\\u00a0or no\\u00a0pesticide, herbicide, fertilizer\\u00a0or unspecified chemical\\u00a0input (sometimes along with other agri-environment scheme options\\u00a0or less intensive management) had a greater species richness of adult butterflies\\u00a0and moths, or caterpillars\\u00a0(in one case along with other leaf-eating arthropods), than areas with more frequent\\u00a0or conventional chemical applications. However, one of these studies found that species richness was not affected by the number of pesticide applications in the year of study, only in the previous three years, and another of the studies also found that vineyards managed with reduced insecticide and herbicide application had a similar species richness of moths to conventionally managed vineyards. Two replicated studies (including one randomized, controlled study and one site comparison study) in the UK\\u00a0and Germany\\u00a0found that unfertilized grassland had a similar species richness of butterflies\\u00a0and moths, but greater species richness of specialist moths, to fertilized grassland.\\n\\nPOPULATION RESPONSE (9 STUDIES)\\n\\nAbundance (9 studies): Six studies (including one replicated study, one controlled study, one randomized study, four site comparison studies, and one systematic review) in Europe, the UK, Germany, Mexico\\u00a0and Switzerland\\u00a0found that crop edges, farms, a hay meadow, coffee plantations\\u00a0and agricultural landscapes\\u00a0managed with less frequent, reduced\\u00a0or no\\u00a0pesticide, insecticide, fungicide, herbicide, fertilizer\\u00a0or unspecified chemical\\u00a0input (sometimes along with other agri-environment scheme options\\u00a0or less intensive management) had a higher abundance of adult butterflies\\u00a0and moths,\\u00a0or caterpillars, than areas with more frequent\\u00a0or conventional chemical applications. However, one of these studies found that abundance was not affected by the number of pesticide applications in the year of study, only in the previous three years, and another of these studies also found that a hay meadow with no herbicide applications had a similar abundance of caterpillars to a meadow where herbicide was used, and a meadow with no fertilizer applications had a lower abundance of caterpillars than a meadow where fertilizer was applied in one of two sampling sessions.\\u00a0Three replicated studies (including two randomized, controlled studies and one site comparison study) in the UK, Germany\\u00a0and the USA\\u00a0found that unfertilized grassland\\u00a0and replanted Douglas fir stands with limited or no herbicide applications\\u00a0had a similar abundance of adult butterflies and caterpillars, and adult moths, to fertilized grassland\\u00a0and stands with more herbicide applications.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated, site comparison study in Germany\\u00a0found that unfertilized or lightly fertilized grasslands were preferred to heavily fertilized grasslands by 7 out of 58 species of moth, but 12 of 58 species preferred more heavily fertilized grasslands.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"orchards manage to benefit butterflies moths orchard management butterflies moths\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3917\",\n    \"action_title\": \"Maintain traditional orchards to benefit butterflies and moths\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3977\",\n    \"action_title\": \"Manage ditches to benefit butterflies and moths\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3928\",\n    \"action_title\": \"Manage rice field banks to benefit butterflies and moths\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3917\"}",
+            "return_val": "{\n  \"action_id\": \"3917\",\n  \"action_title\": \"Maintain traditional orchards to benefit butterflies and moths\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of maintaining traditional orchards on butterflies and moths. One study was in each of the USA\\u00a0and Germany.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nCommunity composition (1 study): One replicated, site comparison study in Germany\\u00a0found that managed orchards had a similar community composition of butterflies and burnet moths to abandoned orchards.\\nRichness/diversity (2 studies): One replicated, site comparison study in Germany\\u00a0found that managed orchards had a similar species richness of butterflies and burnet moths to abandoned orchards. One controlled study in the USA\\u00a0found that an unmanaged and a partially managed orchard had a greater species richness and diversity of leaf-eating arthropods (including caterpillars) than a commercially managed orchard.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, site comparison study in Germany\\u00a0found that managed orchards had a lower abundance of butterflies and burnet moths than abandoned orchards.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"coffee plantations butterflies moths management benefit shade coffee butterflies moths\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3931\",\n    \"action_title\": \"Produce coffee in shaded plantations\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3920\",\n    \"action_title\": \"Grow native trees within perennial crop plantations\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3897\",\n    \"action_title\": \"Reduce fertilizer, pesticide or herbicide use generally\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3931\"}",
+            "return_val": "{\n  \"action_id\": \"3931\",\n  \"action_title\": \"Produce coffee in shaded plantations\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of producing coffee in shaded plantations. Two studies were in Mexico\\u00a0and one was in Puerto Rico.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nRichness/diversity (2 studies): One paired sites, site comparison study in Mexico\\u00a0found that a plantation with its original canopy but understory replaced with coffee had higher species richness of fruit-eating butterflies than one with its original canopy and understory replaced with coffee and other vegetation or those with canopies replaced with other shading trees and understories replaced with coffee with or without other vegetation. One site comparison study in Mexico\\u00a0found that shaded coffee plantations had a higher species richness of caterpillars than a sun-grown monoculture.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): Two site comparison studies (including one replicated study) in Puerto Rico\\u00a0and Mexico\\u00a0found that shade-grown coffee plantations had a greater abundance of caterpillars than sun-grown coffee plantations. One of these studies also found that the abundance of coffee leaf miner was similar in shade-grown and sun-grown plantations.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"traditional perennial crops orchards vineyards coffee plantations butterflies moths management effects\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3918\",\n    \"action_title\": \"Manage perennial bioenergy crops to benefit butterflies and moths\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3897\",\n    \"action_title\": \"Reduce fertilizer, pesticide or herbicide use generally\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3931\",\n    \"action_title\": \"Produce coffee in shaded plantations\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"traditional perennial crops orchards vineyards coffee plantations butterflies moths management effects\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"3972\",\n    \"action_title\": \"Maintain or restore native wood pasture and parkland\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3928\",\n    \"action_title\": \"Manage rice field banks to benefit butterflies and moths\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3930\",\n    \"action_title\": \"Plant wild bird seed or cover mixture\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"orchards manage to benefit butterflies moths orchard management butterflies moths\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3928\",\n    \"action_title\": \"Manage rice field banks to benefit butterflies and moths\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3897\",\n    \"action_title\": \"Reduce fertilizer, pesticide or herbicide use generally\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3972\",\n    \"action_title\": \"Maintain or restore native wood pasture and parkland\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"coffee plantations butterflies moths management benefit shade coffee butterflies moths\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3928\",\n    \"action_title\": \"Manage rice field banks to benefit butterflies and moths\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3936\",\n    \"action_title\": \"Restore or create forest or woodland\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"963\",\n    \"action_title\": \"Retain or plant native trees and shrubs amongst crops (agroforestry)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3917",
+      "3919",
+      "3920",
+      "3931"
+    ],
+    "regenerated_ids": [
+      "3917",
+      "3919",
+      "3920",
+      "3931"
+    ]
+  },
+  {
+    "query": "What are the benefits for butterflies of maintaining species-rich, semi-natural grasslands compared to using set-aside in European agricultural landscapes?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Two replicated, site comparison studies in Germany and Hungary found that old meadows mown in July and lightly grazed or annually mown meadows had a higher species richness of adult butterflies and caterpillars than recently established set-aside or cereal crops [3908]. Across European studies (Germany, Ireland, Hungary, Finland), sown or naturally regenerating set-aside sometimes had greater butterfly and day-flying moth species richness than cereal fields or pasture, and in some cases higher butterfly abundance than cereal fields, particularly when sown with less competitive grasses; however, multiple studies also found fallow or stubble set-aside often had similar butterfly abundance to arable fields and pasture, and similar abundance to uncultivated field boundaries or extensively farmed land (UK, Switzerland) [3980].",
+    "summary_action_ids": [
+      "3908",
+      "3980"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"butterflies benefits maintaining species-rich semi-natural grasslands compared to set-aside European agricultural landscapes\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3980\",\n    \"action_title\": \"Provide or retain set\\u2010aside areas in farmland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3963\",\n    \"action_title\": \"Change type of livestock grazing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"210\",\n    \"action_title\": \"Revert arable land to permanent grassland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"maintain species-rich semi-natural grassland butterflies Europe benefits semi-natural grassland maintain management\",\"k\":3,\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"702\",\n    \"action_title\": \"Maintain species-rich, semi-natural grassland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3908\",\n    \"action_title\": \"Maintain species-rich, semi-natural grassland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3955\",\n    \"action_title\": \"Restore or create species-rich, semi-natural grassland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"702\"}",
+            "return_val": "{\n  \"action_id\": \"702\",\n  \"action_title\": \"Maintain species-rich, semi-natural grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nOf 22 studies (including eleven replicated trials, three reviews and a systematic review) from the Czech Republic, Finland, Germany, Russia, Slovenia, Switzerland and the UK, 13 identified management regimes that maintained species-rich grassland. Four of these studies were replicated, controlled trials (including two randomized).\\nNine studies (including two randomized, replicated before-and-after trials) from Switzerland and the UK examined the effectiveness of existing or historical agri-environment schemes: seven testing the effectiveness of the Environmentally Sensitive Areas scheme in England and two testing the effectiveness of the Ecological Compensation Areas scheme in Switzerland. All except one reported mixed results, with the schemes broadly maintaining plant species richness, but being less effective, for example, in enhancing species richness, preserving the highest quality sites, or overcoming the effects of past intensive management. One study found six Environmentally Sensitive Areas were of \\u2018outstanding\\u2019 significance for their lowland grassland, containing &gt;40% of the English resource of a grassland type. A replicated site comparison study found that on average 86% of Swiss Ecological Compensation Area litter meadows were of \\u2018good ecological quality\\u2019 compared with only 20% of hay meadow Ecological Compensation Areas.\\nTwelve studies (including a systematic review, six replicated trials of which two also controlled and randomized, and three reviews) from the Czech Republic, Finland, Germany, Slovenia, Switzerland and the UK tested the effects of management treatments on species richness or vegetation quality\\u00a0usually involving combinations of mowing, grazing or no fertilizer but some also tested the effectiveness of mulching or burning. All of these studies identified management treatments which benefited or maintained species richness or vegetation quality.\\n\\n\\nOne site comparison from Finland and northwest Russia found that butterfly species richness, diversity and total abundance did not differ significantly between mown meadows and grazed pastures and that grassland age and origin had a greater impact on butterfly communities than present management.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3908\"}",
+            "return_val": "{\n  \"action_id\": \"3908\",\n  \"action_title\": \"Maintain species-rich, semi-natural grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nNineteen studies evaluated the effects on butterflies and moths of maintaining species-rich, semi-natural grassland. Five studies were in Germany, four were in the USA, two were in each of Switzerland\\u00a0and the Czech Republic, and one was in each of Finland and Russia, China, Italy, Spain, Hungary\\u00a0and Austria.\\n\\nCOMMUNITY RESPONSE (12 STUDIES)\\n\\nCommunity composition (6 studies): Four replicated, site comparison studies in the USA, the Czech Republic, Austria\\u00a0and Germany\\u00a0found that the community composition of butterflies, day-flying moths\\u00a0and nocturnal moths\\u00a0was different between summer cattle-grazed, early-mown and late-mown grassland, between mown and grazed grassland, and between prairies managed by cattle grazing and/or rotational burning. However, one of these studies found that the community composition of butterflies was similar in mown and grazed grassland. Two replicated, site comparison studies in the Czech Republic\\u00a0and Germany\\u00a0found that species-rich grassland managed by grazing or mowing had a similar community composition of butterflies\\u00a0and burnet moths\\u00a0to abandoned grassland. One replicated, site comparison study in Switzerland\\u00a0found that meadows managed by mowing at least twice/year after mid-June had a different community composition of butterflies to sown wildflower strips.\\nRichness/diversity (11 studies): Three of six site comparison studies (including five replicated studies) in Germany, the USA, Russia and Finland, Italy\\u00a0and the Czech Republic\\u00a0found that the species richness of butterflies was similar on semi-natural grassland managed by light grazing or by annual mowing in July or August, and on prairies managed by cattle grazing and/or rotational burning. One study found that the species richness of butterflies was higher in grassland managed by sheep and cattle grazing than in grassland mown annually for hay in June. One study found that the species richness of moths was higher in grassland managed by annual mowing than grassland managed by grazing, and the species richness of butterflies was highest in grasslands where mowing was staggered throughout the year, with some areas left uncut. The sixth study found that in some areas, the species richness of specialist and grassland butterflies was higher in prairies managed by two-year rotational haying, and in other areas it was higher in prairies managed by grazing, but in all cases richness was higher at sites longer after they were last managed. Two replicated, site comparison studies in Germany\\u00a0found that species-rich grasslands managed by summer-grazing, grazing\\u00a0or mowing\\u00a0had a similar species richness of butterflies and burnet moths\\u00a0and nocturnal moths\\u00a0to unmanaged grassland. However, one of these studies also found that grasslands managed by mowing had a lower species richness of nocturnal moths than unmown grassland. Two replicated, site comparison studies in Germany\\u00a0and Hungary\\u00a0found that old meadows mown in July\\u00a0and lightly grazed or annually mown meadows\\u00a0had a higher species richness of adult butterflies\\u00a0and caterpillars\\u00a0than recently established set-aside\\u00a0or cereal crops. One replicated, site comparison study in Switzerland\\u00a0found that meadows mown at least twice/year after mid-June had a similar species richness of butterflies to sown wildflower strips.\\n\\nPOPULATION RESPONSE (16 STUDIES)\\n\\nAbundance (16 studies): Five of ten site comparison studies (including nine replicated studies) in Germany, the USA, Russia and Finland, Italy, Spain\\u00a0and the Czech Republic\\u00a0found that semi-natural grasslands had a similar abundance of butterflies generally, and individual species of butterflies\\u00a0and moth caterpillars, when managed by extensive sheep, sheep and goat, cattle\\u00a0or livestock\\u00a0grazing compared to annual\\u00a0or occasional\\u00a0mowing, or rotational mowing or burning. Four of these studies found that grasslands managed by cattle, sheep\\u00a0or livestock\\u00a0grazing had a higher abundance of butterflies generally, and individual species of butterflies\\u00a0and moth caterpillars, than grasslands managed by annual mowing, rotational burning\\u00a0or unmanaged grasslands. Three of these studies found that grasslands managed by haying had a higher abundance of individual butterfly species\\u00a0than grasslands managed by grazing\\u00a0or burning\\u00a0or unmanaged grasslands. Four of these studies found that specific butterfly species\\u00a0and all butterflies\\u00a0were less abundant in mown, grazed\\u00a0or rotationally burned\\u00a0grassland than in unmanaged, rotationally burned\\u00a0or grazed and burned grassland.\\u00a0The ninth study found that in some areas, the abundance of specialist and grassland butterflies was higher in prairies managed by two-year rotational haying or by grazing, but in all cases abundance was higher at sites longer after they were last managed. One of three replicated, site comparison studies in Germany\\u00a0and Switzerland\\u00a0found that traditional hay meadows mown once/year in June or July had a higher abundance of heath fritillary adults and caterpillars than old, abandoned meadows. One study found that summer-grazed or mown grasslands had a higher abundance of farmland butterflies and burnet moths, but a lower abundance of woodland butterflies and burnet moths, than abandoned grasslands. The third study found that mown grasslands had a lower abundance of moths than unmown grasslands, but grazed grasslands had a similar abundance of moths to ungrazed grasslands. Two replicated, site comparison studies in China\\u00a0and Switzerland\\u00a0found that semi-natural grasslands managed by grazing\\u00a0or cutting twice/year after mid-June\\u00a0had a lower abundance of marsh fritillary eggs and caterpillars\\u00a0and adult butterflies\\u00a0than ungrazed margins and intercrops\\u00a0or sown wildflower strips. One replicated, site comparison study in Hungary\\u00a0found that semi-natural grasslands managed by either light grazing or mowing once/year in May or June had a higher abundance of butterflies than conventional wheat fields.\\nSurvival (1 study): One replicated, site comparison study in China\\u00a0found that marsh fritillary eggs had a similar survival rate in uncultivated, grazed meadows and cultivated, ungrazed field margins and intercrops, but the survival of caterpillars was higher in the grazed meadows.\\n\\nBEHAVIOUR (5 STUDIES)\\nUse (5 studies): Two replicated, site comparison studies in Austria\\u00a0and Germany\\u00a0found that 14 species of moth\\u00a0preferred grazed pastures while 24 others avoided them, and three species of butterfly\\u00a0and ten nocturnal moths\\u00a0preferred mown meadows, while 19 nocturnal moth species avoided them. One replicated, site comparison study in Spain\\u00a0found that meadows managed by summer-grazing or hay-mowing were more likely to be occupied by grizzled skipper and painted lady than unmanaged meadows, but small pearl-bordered fritillary occurred less frequently in grazed meadows than in hay meadows or abandoned meadows. One replicated, site comparison study in Finland and Russia\\u00a0found that three of 37 butterfly species preferred meadows which were mown annually in July or August to cattle-grazed pasture, but the other 34 species showed no preference. One replicated, site comparison study in China\\u00a0found that uncultivated, grazed meadows were less likely to be occupied by marsh fritillary eggs and caterpillars than cultivated field margins and intercrops.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3980\"}",
+            "return_val": "{\n  \"action_id\": \"3980\",\n  \"action_title\": \"Provide or retain set\\u2010aside areas in farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nNine studies evaluated the effects of providing or retaining set-aside areas in farmland on butterflies and moths. Three studies were in the UK, and one was in each of Germany, Ireland, Switzerland, Hungary, Finland and the USA.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nCommunity composition (1 study): One replicated, site comparison study in Germany found that butterfly communities in older set-aside fields included species which were less migratory, spent longer as caterpillars, and had fewer generations/year than species found in newer set-aside fields.\\nRichness/diversity (5 studies): Three of four replicated studies (including one randomized, controlled study and three site comparison studies) in Germany, Ireland, Hungary and Finland found that sown or naturally regenerating set-aside had a greater species richness of butterflies and day-flying moths than cereal fields or pasture, especially when the set-aside was sown with less competitive grasses. One of these studies found a higher species richness of butterflies and day-flying moths in second-year set-aside than in first-year set-aside, but another found no difference in butterfly species richness between 1\\u20133-year-old set-aside. The other study found that set-aside fields had a similar species richness of butterflies and moths to arable and pasture fields. One replicated, site comparison study in the USA found that set-aside fields had a similar species richness of butterflies to native prairies.\\n\\nPOPULATION RESPONSE (8 STUDIES)\\n\\nAbundance (8 studies): Two of five replicated studies (including one randomized, controlled study and four site comparison studies) in the UK, Ireland, Hungary and Finland found that the abundance of butterflies and day-flying moths in sown set-aside was higher than in cereal fields, especially when the set-aside was sown with less competitive grasses. One of these studies found a higher abundance of butterflies and day-flying moths in second-year set-aside than in first-year set-aside, but another found no difference in butterfly abundance between 1\\u20133-year-old set-aside. The other three studies found that fallow and stubble set-aside had a similar abundance of adult butterflies and butterfly and moth caterpillars to arable fields and pasture. Two site comparison studies (including one replicated study) in the UK and Switzerland found that set-aside fields had a similar abundance of butterfly and moth adults and caterpillars to uncultivated field boundaries and extensively farmed land. One replicated, site comparison study in the USA found that set-aside fields had a similar abundance of butterflies to native prairies in their first year, but a lower abundance of butterflies thereafter.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the benefits for butterflies of maintaining species-rich, semi-natural grasslands compared to using set-aside in European agricultural landscapes?\",\"summary\":\"Two replicated, site comparison studies in Germany and Hungary found that old meadows mown in July and lightly grazed or annually mown meadows had a higher species richness of adult butterflies and caterpillars than recently established set-aside or cereal crops [3908]. Across European studies (Germany, Ireland, Hungary, Finland), sown or naturally regenerating set-aside sometimes had greater butterfly and day-flying moth species richness than cereal fields or pasture, and in some cases higher butterfly abundance than cereal fields, particularly when sown with less competitive grasses; however, multiple studies also found fallow or stubble set-aside often had similar butterfly abundance to arable fields and pasture, and similar abundance to uncultivated field boundaries or extensively farmed land (UK, Switzerland) [3980].\",\"action_ids\":[\"3908\",\"3980\"]}",
+            "return_val": "{\n  \"query\": \"What are the benefits for butterflies of maintaining species-rich, semi-natural grasslands compared to using set-aside in European agricultural landscapes?\",\n  \"relevant_summary\": \"Two replicated, site comparison studies in Germany and Hungary found that old meadows mown in July and lightly grazed or annually mown meadows had a higher species richness of adult butterflies and caterpillars than recently established set-aside or cereal crops [3908]. Across European studies (Germany, Ireland, Hungary, Finland), sown or naturally regenerating set-aside sometimes had greater butterfly and day-flying moth species richness than cereal fields or pasture, and in some cases higher butterfly abundance than cereal fields, particularly when sown with less competitive grasses; however, multiple studies also found fallow or stubble set-aside often had similar butterfly abundance to arable fields and pasture, and similar abundance to uncultivated field boundaries or extensively farmed land (UK, Switzerland) [3980].\",\n  \"action_ids\": [\n    \"3908\",\n    \"3980\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3908",
+      "3980"
+    ],
+    "regenerated_ids": [
+      "3908",
+      "3980"
+    ]
   }
 ]
