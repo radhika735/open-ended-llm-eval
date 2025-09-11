@@ -581,5 +581,70 @@
       "1230",
       "1231"
     ]
+  },
+  {
+    "query": "What management interventions can be implemented to aid forest recovery after a wildfire?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Five replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain found that thinning increased plant species richness and one study in Canada found that it increased the cover of aspen saplings (1234). However, one study in the USA found thinning decreased plant biomass and one in Israel found it decreased mortality of pine seedlings (1234). One paired-site study in Canada found that logging after wildfire decreased species richness and diversity of mosses (1234).\n\nTwo studies in the USA evaluated the effects on mammals of removing trees and shrubs to recreate open areas of land. One controlled study found that where Ashe juniper trees were removed, there were higher abundances of three rodent species (2483). A before-and-after, site comparison study found that removing trees increased use of areas by Rocky Mountain bighorn sheep (2483).\n\nThere is no evidence for the effects of planting trees after wildfire on forests (1235).",
+    "summary_action_ids": [
+      "1234",
+      "2483",
+      "1235"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"management interventions for forest recovery after wildfire\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2483\",\n    \"action_title\": \"Remove trees and shrubs to recreate open areas of land\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1235\",\n    \"action_title\": \"Plant trees after wildfire\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1234\"}",
+            "return_val": "{\n  \"action_id\": \"1234\",\n  \"action_title\": \"Thin trees after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nFive replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain\\u00a0found that thinning increased plant species richness. One in Canada\\u00a0found that it increased the cover of aspen saplings. One study in the USA\\u00a0found thinning decreased plant biomass and one in Israel\\u00a0found it decreased mortality of pine seedlings.\\nOne paired-site study in Canada\\u00a0found that logging after wildfire decreased species richness and diversity of mosses.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2483\"}",
+            "return_val": "{\n  \"action_id\": \"2483\",\n  \"action_title\": \"Remove trees and shrubs to recreate open areas of land\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on mammals of removing trees and shrubs to recreate open areas of land. Both studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A controlled study in the USA\\u00a0found that where Ashe juniper trees were removed, there were higher abundances of three rodent species.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): A before-and-after, site comparison study in the USA found that removing trees increased use of areas by Rocky Mountain bighorn sheep.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1235\"}",
+            "return_val": "{\n  \"action_id\": \"1235\",\n  \"action_title\": \"Plant trees after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of planting trees after wildfire on forests.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Five replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain found that thinning increased plant species richness and one study in Canada found that it increased the cover of aspen saplings (1234). However, one study in the USA found thinning decreased plant biomass and one in Israel found it decreased mortality of pine seedlings (1234). One paired-site study in Canada found that logging after wildfire decreased species richness and diversity of mosses (1234).\\n\\nTwo studies in the USA evaluated the effects on mammals of removing trees and shrubs to recreate open areas of land. One controlled study found that where Ashe juniper trees were removed, there were higher abundances of three rodent species (2483). A before-and-after, site comparison study found that removing trees increased use of areas by Rocky Mountain bighorn sheep (2483).\\n\\nThere is no evidence for the effects of planting trees after wildfire on forests (1235).\",\"query\":\"What management interventions can be implemented to aid forest recovery after a wildfire?\",\"action_ids\":[\"1234\",\"2483\",\"1235\"]}",
+            "return_val": "{\n  \"query\": \"What management interventions can be implemented to aid forest recovery after a wildfire?\",\n  \"relevant_summary\": \"Five replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain found that thinning increased plant species richness and one study in Canada found that it increased the cover of aspen saplings (1234). However, one study in the USA found thinning decreased plant biomass and one in Israel found it decreased mortality of pine seedlings (1234). One paired-site study in Canada found that logging after wildfire decreased species richness and diversity of mosses (1234).\\n\\nTwo studies in the USA evaluated the effects on mammals of removing trees and shrubs to recreate open areas of land. One controlled study found that where Ashe juniper trees were removed, there were higher abundances of three rodent species (2483). A before-and-after, site comparison study found that removing trees increased use of areas by Rocky Mountain bighorn sheep (2483).\\n\\nThere is no evidence for the effects of planting trees after wildfire on forests (1235).\",\n  \"action_ids\": [\n    \"1234\",\n    \"2483\",\n    \"1235\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1234",
+      "1235",
+      "1236",
+      "1237"
+    ],
+    "regenerated_ids": [
+      "1234",
+      "1235",
+      "1236",
+      "1237"
+    ]
   }
 ]

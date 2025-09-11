@@ -807,5 +807,83 @@
       "1230",
       "1231"
     ]
+  },
+  {
+    "query": "What management interventions can be implemented to aid forest recovery after a wildfire?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Thinning trees after wildfire was associated with increased plant species richness in two replicated, controlled studies in Spain, increased cover of aspen saplings in one study in Canada, decreased plant biomass in one study in the USA, and decreased mortality of pine seedlings in one study in Israel [1234]. One paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234].",
+    "summary_action_ids": [
+      "1234"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"management interventions to aid forest recovery after a wildfire\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2483\",\n    \"action_title\": \"Remove trees and shrubs to recreate open areas of land\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1629\",\n    \"action_title\": \"Apply herbicide to trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"management interventions to aid forest recovery after a wildfire\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2486\",\n    \"action_title\": \"Use negative stimuli to deter consumption of livestock feed by mammals to reduce human-wildlife conflict\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3808\",\n    \"action_title\": \"Limit the number or length of static fishing nets in an area\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1264\",\n    \"action_title\": \"Use different planting or seeding methods\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1234\"}",
+            "return_val": "{\n  \"action_id\": \"1234\",\n  \"action_title\": \"Thin trees after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nFive replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain\\u00a0found that thinning increased plant species richness. One in Canada\\u00a0found that it increased the cover of aspen saplings. One study in the USA\\u00a0found thinning decreased plant biomass and one in Israel\\u00a0found it decreased mortality of pine seedlings.\\nOne paired-site study in Canada\\u00a0found that logging after wildfire decreased species richness and diversity of mosses.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2483\"}",
+            "return_val": "{\n  \"action_id\": \"2483\",\n  \"action_title\": \"Remove trees and shrubs to recreate open areas of land\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on mammals of removing trees and shrubs to recreate open areas of land. Both studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A controlled study in the USA\\u00a0found that where Ashe juniper trees were removed, there were higher abundances of three rodent species.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): A before-and-after, site comparison study in the USA found that removing trees increased use of areas by Rocky Mountain bighorn sheep.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1629\"}",
+            "return_val": "{\n  \"action_id\": \"1629\",\n  \"action_title\": \"Apply herbicide to trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled, before-and-after study in South Africa\\u00a0found that using herbicide to control trees increased plant diversity but did not increase shrub cover.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that herbicide treatment of trees increased the abundance of common heather seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1264\"}",
+            "return_val": "{\n  \"action_id\": \"1264\",\n  \"action_title\": \"Use different planting or seeding methods\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies (including one replicated, randomized study) in Australia, Brazil, Costa Rica\\u00a0and Mexico\\u00a0found no effect of planting or seeding methods on the size and survival rate of seedlings.\\nOne replicated, controlled study in Brazil\\u00a0found that planting early succession pioneer tree species decreased the height of other planted species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What management interventions can be implemented to aid forest recovery after a wildfire?\",\"summary\":\"Thinning trees after wildfire was associated with increased plant species richness in two replicated, controlled studies in Spain, increased cover of aspen saplings in one study in Canada, decreased plant biomass in one study in the USA, and decreased mortality of pine seedlings in one study in Israel [1234]. One paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234].\",\"action_ids\":[\"1234\"]}",
+            "return_val": "{\n  \"query\": \"What management interventions can be implemented to aid forest recovery after a wildfire?\",\n  \"relevant_summary\": \"Thinning trees after wildfire was associated with increased plant species richness in two replicated, controlled studies in Spain, increased cover of aspen saplings in one study in Canada, decreased plant biomass in one study in the USA, and decreased mortality of pine seedlings in one study in Israel [1234]. One paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234].\",\n  \"action_ids\": [\n    \"1234\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1234",
+      "1235",
+      "1236",
+      "1237"
+    ],
+    "regenerated_ids": [
+      "1234",
+      "1235",
+      "1236",
+      "1237"
+    ]
   }
 ]

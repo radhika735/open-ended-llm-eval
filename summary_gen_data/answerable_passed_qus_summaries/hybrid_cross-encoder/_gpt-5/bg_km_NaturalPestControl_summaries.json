@@ -799,5 +799,119 @@
       "729",
       "752"
     ]
+  },
+  {
+    "query": "What actions are available to a farmer growing perennial crops to enhance natural enemy populations on the ground versus in the tree canopy?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "On the ground: (1) Allow natural regeneration of ground cover beneath perennial crops\u2014studies comparing natural vs. bare ground found higher numbers of some natural enemy groups on the ground in natural cover, though effects varied by group and were sometimes short\u2011term; effects on enemies in crop canopies were mixed or absent [720]. (2) Plant or maintain ground cover in orchards or vineyards\u2014multiple studies reported more natural enemies in plots with ground cover in some or all comparisons, with some inconsistencies across enemy groups; mowing ground cover was associated with short\u2011term increases in natural enemies after mowing in one study [1395]. In the tree canopy: (1) Isolate colonies of beneficial ants\u2014predatory ants occupied more cashew trees when colonies were kept isolated [773]. (2) Exclude ants that protect pests\u2014ant exclusion increased parasitism of pests in some studies, effects on natural enemy groups varied, and glue or pesticide barriers reduced ant numbers in tree or vine canopies [886].",
+    "summary_action_ids": [
+      "720",
+      "1395",
+      "886",
+      "773"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"farmer perennial crops enhance natural enemy populations ground versus tree canopy\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"720\",\n    \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"773\",\n    \"action_title\": \"Isolate colonies of beneficial ants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"886\",\n    \"action_title\": \"Exclude ants that protect pests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"farmer perennial crops enhance natural enemy populations ground versus tree canopy\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1401\",\n    \"action_title\": \"Pest regulation: Plant hedgerows\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1258\",\n    \"action_title\": \"Add organic matter after tree planting\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"569\",\n    \"action_title\": \"Translocate pelicans\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"perennial crops orchards vineyards natural enemies canopy ground cover predators parasitoids actions\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"886\",\n    \"action_title\": \"Exclude ants that protect pests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"720\",\n    \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1395\",\n    \"action_title\": \"Pest regulation: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"perennial crops orchards vineyards natural enemies canopy ground cover predators parasitoids actions\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"761\",\n    \"action_title\": \"Clear vegetation\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2320\",\n    \"action_title\": \"(CFT) Carnivora: Exclude grazers (29c)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2321\",\n    \"action_title\": \"(CFT) Reptiles: Exclude grazers (29c)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"tree canopy natural enemies orchards vineyards ants canopy exclusion banding\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"773\",\n    \"action_title\": \"Isolate colonies of beneficial ants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"886\",\n    \"action_title\": \"Exclude ants that protect pests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"720\",\n    \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"720\"}",
+            "return_val": "{\n  \"action_id\": \"720\",\n  \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies on crop trees and vines: Five studies (including one replicated, randomised, controlled test) from Australia, China, Italy and Portugal compared natural and bare ground covers by measuring numbers of natural enemies in fruit tree or vine canopies. Three found effects varied between groups of natural enemies, two found no difference. Two studies from Australia and France compared natural to sown ground cover and found no effect on enemies in crop canopies. Natural enemies on the ground: Five studies (including three replicated, randomised, controlled trials) from Australia, Canada, China, France, and Spain compared natural and bare ground covers by measuring natural enemies on the ground. Two studies found more natural enemies in natural ground cover, but in one the effects were only short-term for most natural enemy groups. Three studies found mixed effects, with higher numbers of some natural enemy groups but not others. Two studies compared natural and sown ground covers, one study found more natural enemies and one found no effect. Pests and crop damage: Four studies (three controlled, one also replicated and randomised) from Italy, Australia and China measured pests and crop damage in regenerated and bare ground covers. Two studies found fewer pests, whilst two studies found effects on pests and crop damage varied for different pest or disease groups. One study found more pests in natural than in sown ground covers.\\nCrops studied were apple, grape, lemon, olive and pear.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"773\"}",
+            "return_val": "{\n  \"action_id\": \"773\",\n  \"action_title\": \"Isolate colonies of beneficial ants\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One replicated, controlled study from Australia found predatory ants occupied more cashew trees when colonies were kept isolated. Pest damage and yield: The same study found lower pest damage to cashews and higher yields.\\nThe crop studied was cashew.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"886\"}",
+            "return_val": "{\n  \"action_id\": \"886\",\n  \"action_title\": \"Exclude ants that protect pests\",\n  \"key_messages\": \"Key Messages:\\nParasitism: One of two replicated, controlled studies (one also randomised) from Japan and the USA found greater parasitism of pests by natural enemies when ants were excluded from trees. The other study found greater parasitism at one site but no effect at another. Natural enemies: Five studies (including four randomised, replicated, controlled trials) from Japan, Switzerland and the USA found effects varied between natural enemy species and groups, sampling dates, sites, crop varieties and ground cover types beneath trees. Pests: Three of seven studies (including four randomised, replicated, controlled trials) found fewer pests and another found fewer pests at times of peak abundance only. One study found mixed effects depending on date and other actions taken simultaneously (predator attractant and ground cover treatments). One study found no effect. Damage and tree growth: One study found no effect on damage to tree foliage but one study found greater tree growth. Ants: Six studies found that glue or pesticide barriers reduced ant numbers in tree or vine canopies. One study found that citrus oil barriers had no effect.\\nCrops studied were cherimoyas, cherry, grape, grapefruit,\\u00a0orange, pecan and satsuma mandarin.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1395\"}",
+            "return_val": "{\n  \"action_id\": \"1395\",\n  \"action_title\": \"Pest regulation: Plant or maintain ground cover in orchards or vineyards\",\n  \"key_messages\": \"Key Messages:\\nPest regulation (3 studies): One replicated, randomized, controlled study from the USA\\u00a0found that more leafhopper eggs were parasitized in plots with cover crops, compared to bare fallows, in one of six comparisons. Two replicated, randomized, controlled studies from the USA\\u00a0found inconsistent differences or no differences\\u00a0in the parasitism of leafhopper eggs between plots with or without ground cover.\\nCrop damage (1 study): One replicated, randomized, controlled study from the USA\\u00a0found that more grapes were damaged by pests in plots with cover crops, compared to bare fallows, in some comparisons.\\nRatio of natural enemies to pests (0 studies)\\nPest numbers (12 studies)\\n\\nWeeds (2 studies): One replicated, randomized, controlled study in an olive orchard in Spain found fewer weeds in plots with cover crops, compared to bare soil, in one of two comparisons. One replicated, controlled study from a vineyard in the USA\\u00a0found more weeds in plots with cover crops, compared to bare soil, in one of nine comparisons. \\n\\nImplementation options (4 studies): Three studies from vineyards in the USA\\u00a0found different numbers of weeds\\u00a0or weed species\\u00a0in plots with different types of ground cover, in some or all comparisons. One study from the USA\\u00a0found similar numbers of weeds in vine rows with or without cover crops. One replicated, randomized, controlled study from the USA\\u00a0found that plant diversity decreased over time in plots without tillage, but increased in plots with tillage. This study\\u00a0found that tillage had no effects on the number of plant species and had inconsistent effects on plant biomass.\\n\\n\\nInsects (5 studies): Two replicated, controlled studies (one randomized) from the USA\\u00a0found fewer leafhoppers in plots with cover crops, in some comparisons. One replicated, randomized, controlled study from the USA\\u00a0found more leafhoppers, in some comparisons. One replicated, randomized, controlled study from the USA\\u00a0found similar numbers of leafhoppers. One replicated, randomized, controlled study from the USA\\u00a0found more navel orangeworm moths in plots with resident vegetation, compared to tilled soil, in one of two comparisons. \\n\\nImplementation options (2 studies): Two studies from the USA\\u00a0found fewer pests in plots with mown ground cover, compared to unmown ground cover\\u00a0or ground cover before mowing.\\n\\n\\nMammals (1 study)                \\n\\nImplementation options (1 study): One study from the USA\\u00a0found more gophers in plots with clover, compared to other cover crops.\\n\\n\\n\\nNatural enemy numbers (6 studies): Four replicated, controlled studies (three randomized) from Spain\\u00a0and the USA\\u00a0found more natural enemies in plots with ground cover, compared to plots without ground cover, in some or all comparisons. One replicated, controlled study from the USA\\u00a0found fewer parasitoids in plots with ground cover, in some comparisons. One replicated, randomized, controlled study from the USA\\u00a0found inconsistent differences in the numbers of spiders between plots with or without ground cover. One of these studies\\u00a0found no difference in the number of spider species between plots with or without ground cover, and another one found no difference in the composition of spider communities.\\n\\nImplementation options (1 study): One study from the USA\\u00a0found more natural enemies in plots with mown cover crops, one week after mowing, compared to before mowing.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1401\"}",
+            "return_val": "{\n  \"action_id\": \"1401\",\n  \"action_title\": \"Pest regulation: Plant hedgerows\",\n  \"key_messages\": \"Key Messages:\\nPest regulation (1 study): One replicated, paired, site comparison from the USA\\u00a0found that a higher proportion of pest eggs were parasitized in tomato fields with hedgerows, compared to fields with weedy edges, but only up to 100 m into the crop.\\nCrop damage (1 study): One replicated, paired, site comparison from the USA\\u00a0found that pest damage to tomatoes was no different in fields with hedgerows than it was in fields with weedy edges.\\nRatio of natural enemies to pests (2 studies): Of two replicated site comparisons from the USA, one paired study\\u00a0found a greater ratio of natural enemies to pests in hedgerows, compared to weedy edges, but one unpaired study\\u00a0did not. The unpaired study\\u00a0also found no difference in the ratio of natural enemies to pests between fields with hedgerows and fields with weedy edges.\\nPest numbers (1 study): One replicated, paired, site comparison from the USA\\u00a0found fewer pests in fields or field edges with hedgerows, compared to fields or field edges without hedgerows.\\nNatural enemy numbers (1 study): One replicated, paired, site comparison from the USA\\u00a0found more natural enemies in fields with hedgerows, compared to fields with weedy edges, and in hedgerows themselves, compared to weedy edges, in some comparisons.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions are available to a farmer growing perennial crops to enhance natural enemy populations on the ground versus in the tree canopy?\",\"summary\":\"On the ground: (1) Allow natural regeneration of ground cover beneath perennial crops\u2014studies comparing natural vs. bare ground found higher numbers of some natural enemy groups on the ground in natural cover, though effects varied by group and were sometimes short\u2011term; effects on enemies in crop canopies were mixed or absent [720]. (2) Plant or maintain ground cover in orchards or vineyards\u2014multiple studies reported more natural enemies in plots with ground cover in some or all comparisons, with some inconsistencies across enemy groups; mowing ground cover was associated with short\u2011term increases in natural enemies after mowing in one study [1395]. In the tree canopy: (1) Isolate colonies of beneficial ants\u2014predatory ants occupied more cashew trees when colonies were kept isolated [773]. (2) Exclude ants that protect pests\u2014ant exclusion increased parasitism of pests in some studies, effects on natural enemy groups varied, and glue or pesticide barriers reduced ant numbers in tree or vine canopies [886].\",\"action_ids\":[\"720\",\"1395\",\"886\",\"773\"]}",
+            "return_val": "{\n  \"query\": \"What actions are available to a farmer growing perennial crops to enhance natural enemy populations on the ground versus in the tree canopy?\",\n  \"relevant_summary\": \"On the ground: (1) Allow natural regeneration of ground cover beneath perennial crops\\u2014studies comparing natural vs. bare ground found higher numbers of some natural enemy groups on the ground in natural cover, though effects varied by group and were sometimes short\\u2011term; effects on enemies in crop canopies were mixed or absent [720]. (2) Plant or maintain ground cover in orchards or vineyards\\u2014multiple studies reported more natural enemies in plots with ground cover in some or all comparisons, with some inconsistencies across enemy groups; mowing ground cover was associated with short\\u2011term increases in natural enemies after mowing in one study [1395]. In the tree canopy: (1) Isolate colonies of beneficial ants\\u2014predatory ants occupied more cashew trees when colonies were kept isolated [773]. (2) Exclude ants that protect pests\\u2014ant exclusion increased parasitism of pests in some studies, effects on natural enemy groups varied, and glue or pesticide barriers reduced ant numbers in tree or vine canopies [886].\",\n  \"action_ids\": [\n    \"720\",\n    \"1395\",\n    \"886\",\n    \"773\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "720",
+      "773",
+      "886"
+    ],
+    "regenerated_ids": [
+      "720",
+      "773",
+      "886"
+    ]
   }
 ]

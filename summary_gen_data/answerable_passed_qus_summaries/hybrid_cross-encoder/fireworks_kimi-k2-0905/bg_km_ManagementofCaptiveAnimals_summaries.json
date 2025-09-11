@@ -1517,5 +1517,94 @@
       "1905",
       "1908"
     ]
+  },
+  {
+    "query": "What are the observed behavioural outcomes of providing live prey to captive primates and carnivores?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "Studies have documented several behavioral outcomes when providing live prey to captive primates and carnivores. For carnivores, providing live vertebrate prey to a fishing cat increased hunting behavior and decreased sleeping (Action ID: 1925), while provision of live invertebrate prey increased explorative behaviors in fennec foxes compared to other enrichment types (Action ID: 1926). However, one study found no change in stereotypical behaviors in tigers when provided with live fish (Action ID: 1925). For primates, a UK study found that providing live insect prey reduced inactivity and increased foraging in captive loris to levels comparable to wild loris (Action ID: 1333). For captive mammals being prepared for release, providing live natural prey helped foster hunting behavior, with rehabilitated Iberian lynx and captive-reared cheetahs and leopards surviving 3-19 months after release (Action ID: 2518). Additionally, captive-bred black-footed ferrets fed live prairie dogs showed greater subsequent movements after release, though they took longer to disperse initially (Action ID: 2518).",
+    "summary_action_ids": [
+      "1925",
+      "1333",
+      "2518",
+      "1926"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"live prey captive primates carnivores behavioral outcomes\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1925\",\n    \"action_title\": \"Carnivores: Provide live vertebrate prey\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1333\",\n    \"action_title\": \"Primates: Provide live invertebrates\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2518\",\n    \"action_title\": \"Provide live natural prey to captive mammals to foster hunting behaviour before release\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1922\",\n    \"action_title\": \"Carnivores: Present food in/on water\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1926\",\n    \"action_title\": \"Carnivores: Provide live invertebrate prey, including in feeding devices\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1906\",\n    \"action_title\": \"Carnivores: Allocate fast days\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1927\",\n    \"action_title\": \"Carnivores: Provide devices to simulate live prey, including sounds, lures, pulleys and bungees\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1916\",\n    \"action_title\": \"Carnivores: Provide food during visitor experiences\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1332\",\n    \"action_title\": \"Primates: Provide cut branches (browse)\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1327\",\n    \"action_title\": \"Primates: Provide live vegetation in planters for foraging\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1925\"}",
+            "return_val": "{\n  \"action_id\": \"1925\",\n  \"action_title\": \"Carnivores: Provide live vertebrate prey\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the USA\\u00a0found that hunting behaviour increased and sleeping decreased when a fishing cat was provided with live fish.\\nOne replicated, before-and-after study in the USA\\u00a0found that there was no change in the occurrence of stereotypical behaviours in tigers when provided with live fish.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1333\"}",
+            "return_val": "{\n  \"action_id\": \"1333\",\n  \"action_title\": \"Primates: Provide live invertebrates\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the UK\\u00a0found that when provided with live insect prey inactivity reduced and foraging increased in captive loris to levels seen in wild loris.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2518\"}",
+            "return_val": "{\n  \"action_id\": \"2518\",\n  \"action_title\": \"Provide live natural prey to captive mammals to foster hunting behaviour before release\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects of providing live natural prey to captive mammals to foster hunting behaviour before release. One study was in Spain, one was in the USA\\u00a0and one was in Botswana.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): Two studies in Spain\\u00a0and Botswana\\u00a0found that a rehabilitated Iberian lynx\\u00a0and wild-born but captive-reared orphaned cheetahs and leopards\\u00a0that were provided with live natural prey in captivity survived for between at least three months and 19 months after release.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nBehaviour change (1 study): A controlled study in the USA\\u00a0found that captive-bred black-footed ferrets fed on live prairie dogs took longer to disperse after release but showed greater subsequent movements than did ferrets not fed with live prairie dogs.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1926\"}",
+            "return_val": "{\n  \"action_id\": \"1926\",\n  \"action_title\": \"Carnivores: Provide live invertebrate prey, including in feeding devices\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in the USA found that provision of live prey increased explorative behaviours in fennec foxes compared to other types of enrichment.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 5, \"query_string\": \"primates live prey behavior feeding\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1333\",\n    \"action_title\": \"Primates: Provide live invertebrates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1926\",\n    \"action_title\": \"Carnivores: Provide live invertebrate prey, including in feeding devices\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1342\",\n    \"action_title\": \"Primates: Feed individuals separately\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1332\",\n    \"action_title\": \"Primates: Provide cut branches (browse)\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1324\",\n    \"action_title\": \"Primates: Present feeds at different crowd levels\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 5, \"query_string\": \"carnivores live prey hunting behavior\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1925\",\n    \"action_title\": \"Carnivores: Provide live vertebrate prey\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1926\",\n    \"action_title\": \"Carnivores: Provide live invertebrate prey, including in feeding devices\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1922\",\n    \"action_title\": \"Carnivores: Present food in/on water\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2518\",\n    \"action_title\": \"Provide live natural prey to captive mammals to foster hunting behaviour before release\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1333\",\n    \"action_title\": \"Primates: Provide live invertebrates\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the observed behavioural outcomes of providing live prey to captive primates and carnivores?\", \"summary\": \"Studies have documented several behavioral outcomes when providing live prey to captive primates and carnivores. For carnivores, providing live vertebrate prey to a fishing cat increased hunting behavior and decreased sleeping (Action ID: 1925), while provision of live invertebrate prey increased explorative behaviors in fennec foxes compared to other enrichment types (Action ID: 1926). However, one study found no change in stereotypical behaviors in tigers when provided with live fish (Action ID: 1925). For primates, a UK study found that providing live insect prey reduced inactivity and increased foraging in captive loris to levels comparable to wild loris (Action ID: 1333). For captive mammals being prepared for release, providing live natural prey helped foster hunting behavior, with rehabilitated Iberian lynx and captive-reared cheetahs and leopards surviving 3-19 months after release (Action ID: 2518). Additionally, captive-bred black-footed ferrets fed live prairie dogs showed greater subsequent movements after release, though they took longer to disperse initially (Action ID: 2518).\", \"action_ids\": [\"1925\", \"1333\", \"2518\", \"1926\"]}",
+            "return_val": "{\n  \"query\": \"What are the observed behavioural outcomes of providing live prey to captive primates and carnivores?\",\n  \"relevant_summary\": \"Studies have documented several behavioral outcomes when providing live prey to captive primates and carnivores. For carnivores, providing live vertebrate prey to a fishing cat increased hunting behavior and decreased sleeping (Action ID: 1925), while provision of live invertebrate prey increased explorative behaviors in fennec foxes compared to other enrichment types (Action ID: 1926). However, one study found no change in stereotypical behaviors in tigers when provided with live fish (Action ID: 1925). For primates, a UK study found that providing live insect prey reduced inactivity and increased foraging in captive loris to levels comparable to wild loris (Action ID: 1333). For captive mammals being prepared for release, providing live natural prey helped foster hunting behavior, with rehabilitated Iberian lynx and captive-reared cheetahs and leopards surviving 3-19 months after release (Action ID: 2518). Additionally, captive-bred black-footed ferrets fed live prairie dogs showed greater subsequent movements after release, though they took longer to disperse initially (Action ID: 2518).\",\n  \"action_ids\": [\n    \"1925\",\n    \"1333\",\n    \"2518\",\n    \"1926\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1333",
+      "1925",
+      "1926"
+    ],
+    "regenerated_ids": [
+      "1333",
+      "1925",
+      "1926"
+    ]
   }
 ]

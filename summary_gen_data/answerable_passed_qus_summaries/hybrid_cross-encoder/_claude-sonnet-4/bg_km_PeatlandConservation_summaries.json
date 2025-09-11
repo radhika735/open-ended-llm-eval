@@ -1134,5 +1134,125 @@
       "1736",
       "1737"
     ]
+  },
+  {
+    "query": "What is the state of the evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "The evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation is extremely limited. Only one study has been found that evaluated any mitigation action for service corridor impacts on peatland vegetation (action 1741). This single before-and-after study in a fen in the USA found that following restoration of water inflow across a road (along with general rewetting), cover of wet peatland sedges increased whilst cover of grasses preferring drier conditions decreased (action 1741). For all other potential mitigation actions, no studies have been found that evaluated their effects on peatland vegetation, including: retaining/creating habitat corridors across service corridors (action 1742), backfilling trenches dug for pipelines (action 1740), restricting vehicle use on peatlands (action 1749), and designing transportation or service corridors to maintain water flow (action 2995). The lack of studies means there is no evidence to assess whether these actions are effective or have any harmful impacts on peatland vegetation.",
+    "summary_action_ids": [
+      "1741",
+      "1742",
+      "1740",
+      "1749",
+      "2995"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"service corridors roads pipelines peatland vegetation mitigation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1741\",\n    \"action_title\": \"Maintain/restore water flow across service corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1742\",\n    \"action_title\": \"Retain/create habitat corridors across service corridors\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1739\",\n    \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"peatland roads pipelines infrastructure impact\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1740\",\n    \"action_title\": \"Backfill trenches dug for pipelines\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2060\",\n    \"action_title\": \"Remove pipelines and infrastructure following decommissioning\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1749\",\n    \"action_title\": \"Restrict vehicle use on peatlands\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"peatland water flow restoration service corridor\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1741\",\n    \"action_title\": \"Maintain/restore water flow across service corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1742\",\n    \"action_title\": \"Retain/create habitat corridors across service corridors\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2995\",\n    \"action_title\": \"Design transportation or service corridors to maintain water flow\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1741\"}",
+            "return_val": "{\n  \"action_id\": \"1741\",\n  \"action_title\": \"Maintain/restore water flow across service corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study\\u00a0evaluated the effects on peatland vegetation of restoring water flow across service corridors. The study was in a fen.\\nCharacteristic plants (1 study): One before-and-after study in a fen in the USA\\u00a0found that following restoration of water inflow across a road (along with general rewetting), cover of wet peatland sedges increased whilst cover of grasses preferring drier conditions decreased.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1742\"}",
+            "return_val": "{\n  \"action_id\": \"1742\",\n  \"action_title\": \"Retain/create habitat corridors across service corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining/creating habitat corridors across service corridors.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1740\"}",
+            "return_val": "{\n  \"action_id\": \"1740\",\n  \"action_title\": \"Backfill trenches dug for pipelines\",\n  \"key_messages\": \"Key Messages:\\n\\nWe\\u00a0found no studies that evaluated the effects,\\u00a0on peatland vegetation, of backfilling pipeline trenches.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2060\"}",
+            "return_val": "{\n  \"action_id\": \"2060\",\n  \"action_title\": \"Remove pipelines and infrastructure following decommissioning\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of removing pipelines and infrastructure in place following decommissioning on subtidal benthic invertebrate populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1749\"}",
+            "return_val": "{\n  \"action_id\": \"1749\",\n  \"action_title\": \"Restrict vehicle use on peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of restricting vehicle use on peatlands.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2995\"}",
+            "return_val": "{\n  \"action_id\": \"2995\",\n  \"action_title\": \"Design transportation or service corridors to maintain water flow\",\n  \"key_messages\": \"Key Messages:\\nWe found no studies that evaluated the effects, on vegetation, of designing infrastructure to maintain water flow into/out of marshes or swamps.\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"peatland vegetation restoration infrastructure\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1803\",\n    \"action_title\": \"Restore/create peatland vegetation (multiple interventions)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1804\",\n    \"action_title\": \"Restore/create peatland vegetation using the moss layer transfer technique\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1815\",\n    \"action_title\": \"Stabilize peatland surface to help plants colonize\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"road impact peatland evidence\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1741\",\n    \"action_title\": \"Maintain/restore water flow across service corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1745\",\n    \"action_title\": \"Use low impact harvesting techniques (for wild biological resources)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1793\",\n    \"action_title\": \"Plant shelter belts to protect peatlands from wind\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the state of the evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation?\", \"summary\": \"The evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation is extremely limited. Only one study has been found that evaluated any mitigation action for service corridor impacts on peatland vegetation (action 1741). This single before-and-after study in a fen in the USA found that following restoration of water inflow across a road (along with general rewetting), cover of wet peatland sedges increased whilst cover of grasses preferring drier conditions decreased (action 1741). For all other potential mitigation actions, no studies have been found that evaluated their effects on peatland vegetation, including: retaining/creating habitat corridors across service corridors (action 1742), backfilling trenches dug for pipelines (action 1740), restricting vehicle use on peatlands (action 1749), and designing transportation or service corridors to maintain water flow (action 2995). The lack of studies means there is no evidence to assess whether these actions are effective or have any harmful impacts on peatland vegetation.\", \"action_ids\": [\"1741\",\"1742\",\"1740\",\"1749\",\"2995\"]}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation?\",\n  \"relevant_summary\": \"The evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation is extremely limited. Only one study has been found that evaluated any mitigation action for service corridor impacts on peatland vegetation (action 1741). This single before-and-after study in a fen in the USA found that following restoration of water inflow across a road (along with general rewetting), cover of wet peatland sedges increased whilst cover of grasses preferring drier conditions decreased (action 1741). For all other potential mitigation actions, no studies have been found that evaluated their effects on peatland vegetation, including: retaining/creating habitat corridors across service corridors (action 1742), backfilling trenches dug for pipelines (action 1740), restricting vehicle use on peatlands (action 1749), and designing transportation or service corridors to maintain water flow (action 2995). The lack of studies means there is no evidence to assess whether these actions are effective or have any harmful impacts on peatland vegetation.\",\n  \"action_ids\": [\n    \"1741\",\n    \"1742\",\n    \"1740\",\n    \"1749\",\n    \"2995\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1740",
+      "1741",
+      "1742"
+    ],
+    "regenerated_ids": [
+      "1740",
+      "1741",
+      "1742"
+    ]
   }
 ]

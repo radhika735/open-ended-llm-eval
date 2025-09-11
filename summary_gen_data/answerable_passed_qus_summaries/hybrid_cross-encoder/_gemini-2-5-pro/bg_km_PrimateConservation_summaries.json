@@ -698,5 +698,86 @@
       "1558",
       "1559"
     ]
+  },
+  {
+    "query": "How does a permanent human presence at a site influence the success of primate conservation efforts?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A before-and-after study in Brazil found that an introduced population of golden lion tamarins declined after one year, following habituation to human presence, alongside other interventions (1519). A before-and-after study in Madagascar found that the majority of introduced black-and-white ruffed lemurs and diademed sifakas survived over 30 months, following habituation to human presence, alongside other interventions (1519). A controlled, before-and-after study in Rwanda, Uganda, and Democratic Republic of Congo found that a mountain gorilla population increased over 41 years, following habituation to human presence, alongside other interventions (1519). One before-and-after study in Cameroon found that numbers of drills increased after the implementation of an education programme, alongside one other intervention (1563). There is no evidence for the effects of employing hunters in the conservation sector to reduce their impact on primate populations, or for providing adequate signage of the presence of primates on or near roads (1484, 1466).",
+    "summary_action_ids": [
+      "1519",
+      "1563",
+      "1484",
+      "1466"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"primate conservation human presence\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1519\",\n    \"action_title\": \"Habituate primates to human presence to reduce stress from tourists/researchers etc.\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1466\",\n    \"action_title\": \"Provide adequate signage of presence of primates on or near roads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1566\",\n    \"action_title\": \"Install billboards to raise primate conservation awareness\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1519\"}",
+            "return_val": "{\n  \"action_id\": \"1519\",\n  \"action_title\": \"Habituate primates to human presence to reduce stress from tourists/researchers etc.\",\n  \"key_messages\": \"Key Messages:\\n\\nA before-and-after study in Brazil\\u00a0found that an introduced population of golden lion tamarins declined after one year, following habituation to human presence, alongside other interventions.\\nA before-and-after study in Madagascar\\u00a0found that the majority of introduced black-and-white ruffed lemurs and diademed sifakas survived over 30 months, following habituation to human presence, alongside other interventions.\\nA controlled, before-and-after study in Rwanda, Uganda, and Democratic Republic of Congo\\u00a0found that a mountain gorilla population increased over 41 years, following habituation to human presence, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"primate conservation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1563\",\n    \"action_title\": \"Educate local communities about primates and sustainable use\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1566\",\n    \"action_title\": \"Install billboards to raise primate conservation awareness\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1484\",\n    \"action_title\": \"Employ hunters in the conservation sector to reduce their impact\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1484\"}",
+            "return_val": "{\n  \"action_id\": \"1484\",\n  \"action_title\": \"Employ hunters in the conservation sector to reduce their impact\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of employing hunters in the conservation sector to reduce their impact on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1563\"}",
+            "return_val": "{\n  \"action_id\": \"1563\",\n  \"action_title\": \"Educate local communities about primates and sustainable use\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Cameroon\\u00a0found that numbers of drills increased after the implementation of an education programme, alongside one other intervention.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1466\"}",
+            "return_val": "{\n  \"action_id\": \"1466\",\n  \"action_title\": \"Provide adequate signage of presence of primates on or near roads\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of providing adequate signage of presence of primates on or near roads on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"A before-and-after study in Brazil found that an introduced population of golden lion tamarins declined after one year, following habituation to human presence, alongside other interventions (1519). A before-and-after study in Madagascar found that the majority of introduced black-and-white ruffed lemurs and diademed sifakas survived over 30 months, following habituation to human presence, alongside other interventions (1519). A controlled, before-and-after study in Rwanda, Uganda, and Democratic Republic of Congo found that a mountain gorilla population increased over 41 years, following habituation to human presence, alongside other interventions (1519). One before-and-after study in Cameroon found that numbers of drills increased after the implementation of an education programme, alongside one other intervention (1563). There is no evidence for the effects of employing hunters in the conservation sector to reduce their impact on primate populations, or for providing adequate signage of the presence of primates on or near roads (1484, 1466).\",\"action_ids\":[\"1519\",\"1563\",\"1484\",\"1466\"],\"query\":\"How does a permanent human presence at a site influence the success of primate conservation efforts?\"}",
+            "return_val": "{\n  \"query\": \"How does a permanent human presence at a site influence the success of primate conservation efforts?\",\n  \"relevant_summary\": \"A before-and-after study in Brazil found that an introduced population of golden lion tamarins declined after one year, following habituation to human presence, alongside other interventions (1519). A before-and-after study in Madagascar found that the majority of introduced black-and-white ruffed lemurs and diademed sifakas survived over 30 months, following habituation to human presence, alongside other interventions (1519). A controlled, before-and-after study in Rwanda, Uganda, and Democratic Republic of Congo found that a mountain gorilla population increased over 41 years, following habituation to human presence, alongside other interventions (1519). One before-and-after study in Cameroon found that numbers of drills increased after the implementation of an education programme, alongside one other intervention (1563). There is no evidence for the effects of employing hunters in the conservation sector to reduce their impact on primate populations, or for providing adequate signage of the presence of primates on or near roads (1484, 1466).\",\n  \"action_ids\": [\n    \"1519\",\n    \"1563\",\n    \"1484\",\n    \"1466\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1511",
+      "1512",
+      "1517",
+      "1519",
+      "1523"
+    ],
+    "regenerated_ids": [
+      "1511",
+      "1512",
+      "1517"
+    ]
   }
 ]

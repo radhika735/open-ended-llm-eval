@@ -984,5 +984,68 @@
       "1905",
       "1908"
     ]
+  },
+  {
+    "query": "What are the observed behavioural outcomes of providing live prey to captive primates and carnivores?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A before-and-after study in the UK found that providing captive loris with live insect prey reduced inactivity and increased foraging to levels observed in their wild counterparts (1333). In the USA, a study found that providing a fishing cat with live fish increased hunting behaviour and decreased sleeping (1925). Additionally, a replicated study in the USA revealed that providing fennec foxes with live prey led to an increase in explorative behaviours when compared to other forms of enrichment (1926). However, another replicated, before-and-after study in the USA observed no change in the occurrence of stereotypical behaviours in tigers when they were provided with live fish (1925).",
+    "summary_action_ids": [
+      "1333",
+      "1925",
+      "1926"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Live prey feeding for captive primates and carnivores\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1333\",\n    \"action_title\": \"Primates: Provide live invertebrates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1925\",\n    \"action_title\": \"Carnivores: Provide live vertebrate prey\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1926\",\n    \"action_title\": \"Carnivores: Provide live invertebrate prey, including in feeding devices\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1333\"}",
+            "return_val": "{\n  \"action_id\": \"1333\",\n  \"action_title\": \"Primates: Provide live invertebrates\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the UK\\u00a0found that when provided with live insect prey inactivity reduced and foraging increased in captive loris to levels seen in wild loris.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1925\"}",
+            "return_val": "{\n  \"action_id\": \"1925\",\n  \"action_title\": \"Carnivores: Provide live vertebrate prey\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the USA\\u00a0found that hunting behaviour increased and sleeping decreased when a fishing cat was provided with live fish.\\nOne replicated, before-and-after study in the USA\\u00a0found that there was no change in the occurrence of stereotypical behaviours in tigers when provided with live fish.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1926\"}",
+            "return_val": "{\n  \"action_id\": \"1926\",\n  \"action_title\": \"Carnivores: Provide live invertebrate prey, including in feeding devices\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in the USA found that provision of live prey increased explorative behaviours in fennec foxes compared to other types of enrichment.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the observed behavioural outcomes of providing live prey to captive primates and carnivores?\",\"summary\":\"A before-and-after study in the UK found that providing captive loris with live insect prey reduced inactivity and increased foraging to levels observed in their wild counterparts (1333). In the USA, a study found that providing a fishing cat with live fish increased hunting behaviour and decreased sleeping (1925). Additionally, a replicated study in the USA revealed that providing fennec foxes with live prey led to an increase in explorative behaviours when compared to other forms of enrichment (1926). However, another replicated, before-and-after study in the USA observed no change in the occurrence of stereotypical behaviours in tigers when they were provided with live fish (1925).\",\"action_ids\":[\"1333\",\"1925\",\"1926\"]}",
+            "return_val": "{\n  \"query\": \"What are the observed behavioural outcomes of providing live prey to captive primates and carnivores?\",\n  \"relevant_summary\": \"A before-and-after study in the UK found that providing captive loris with live insect prey reduced inactivity and increased foraging to levels observed in their wild counterparts (1333). In the USA, a study found that providing a fishing cat with live fish increased hunting behaviour and decreased sleeping (1925). Additionally, a replicated study in the USA revealed that providing fennec foxes with live prey led to an increase in explorative behaviours when compared to other forms of enrichment (1926). However, another replicated, before-and-after study in the USA observed no change in the occurrence of stereotypical behaviours in tigers when they were provided with live fish (1925).\",\n  \"action_ids\": [\n    \"1333\",\n    \"1925\",\n    \"1926\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1333",
+      "1925",
+      "1926"
+    ],
+    "regenerated_ids": [
+      "1333",
+      "1925",
+      "1926"
+    ]
   }
 ]

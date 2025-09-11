@@ -1003,5 +1003,106 @@
       "2882",
       "2883"
     ]
+  },
+  {
+    "query": "What are the available strategies to reduce the negative impacts of aquaculture systems on marine mammals?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Two studies have evaluated the effects of removing derelict fishing gear from entangled mammals (2892). One review in the North Pacific Ocean found that after removing derelict fishing gear from Hawaiian monk seals, along with at least seven other interventions, more than a quarter of the seals survived and reproduced (2892). Another review in the North Atlantic Ocean found that three common bottlenose dolphins survived for at least 1\u20134 years after they were disentangled from derelict fishing gear and released (2892). No studies were found that evaluated the effects of modifying aquaculture gear, introducing and enforcing water quality regulations, minimizing food waste at aquaculture systems, or introducing alternative food sources to replace marine and freshwater mammal meat (2742, 2876, 2744, 2784).",
+    "summary_action_ids": [
+      "2892",
+      "2742",
+      "2876",
+      "2744",
+      "2784"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"aquaculture impacts on marine mammals\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2742\",\n    \"action_title\": \"Modify aquaculture gear\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2876\",\n    \"action_title\": \"Introduce and enforce water quality regulations for aquaculture systems\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2744\",\n    \"action_title\": \"Minimize food waste at aquaculture systems\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"aquaculture impacts on marine mammals\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2784\",\n    \"action_title\": \"Introduce alternative food sources to replace marine and freshwater mammal meat\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2892\",\n    \"action_title\": \"Remove derelict fishing gear from mammals found entangled\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"949\",\n    \"action_title\": \"Create alternative bat roosts within developments\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2742\"}",
+            "return_val": "{\n  \"action_id\": \"2742\",\n  \"action_title\": \"Modify aquaculture gear\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of modifying aquaculture gear on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2876\"}",
+            "return_val": "{\n  \"action_id\": \"2876\",\n  \"action_title\": \"Introduce and enforce water quality regulations for aquaculture systems\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of introducing and enforcing water quality regulations for aquaculture systems on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2744\"}",
+            "return_val": "{\n  \"action_id\": \"2744\",\n  \"action_title\": \"Minimize food waste at aquaculture systems\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of minimizing food waste at aquaculture systems on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2784\"}",
+            "return_val": "{\n  \"action_id\": \"2784\",\n  \"action_title\": \"Introduce alternative food sources to replace marine and freshwater mammal meat\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of introducing alternative food sources to replace marine and freshwater mammal meat.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2892\"}",
+            "return_val": "{\n  \"action_id\": \"2892\",\n  \"action_title\": \"Remove derelict fishing gear from mammals found entangled\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of removing derelict fishing gear from mammals found entangled. One study was in the North Pacific Ocean\\u00a0(USA) and one in the North Atlantic Ocean\\u00a0(USA).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nReproductive success (1 study): One review in the North Pacific Ocean\\u00a0found that after removing derelict fishing gear from Hawaiian monk seals, along with at least seven other interventions to enhance survival, more than a quarter of the seals reproduced.\\nSurvival (2 studies): One review in the North Pacific Ocean\\u00a0found that removing derelict fishing gear from Hawaiian monk seals, along with at least seven other interventions to enhance survival, resulted in more than a quarter of the seals surviving. One review in the North Atlantic Ocean\\u00a0found that three common bottlenose dolphins survived for at least 1\\u20134 years after they were disentangled from derelict fishing gear and released.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the available strategies to reduce the negative impacts of aquaculture systems on marine mammals?\",\"action_ids\":[\"2892\",\"2742\",\"2876\",\"2744\",\"2784\"],\"summary\":\"Two studies have evaluated the effects of removing derelict fishing gear from entangled mammals (2892). One review in the North Pacific Ocean found that after removing derelict fishing gear from Hawaiian monk seals, along with at least seven other interventions, more than a quarter of the seals survived and reproduced (2892). Another review in the North Atlantic Ocean found that three common bottlenose dolphins survived for at least 1\u20134 years after they were disentangled from derelict fishing gear and released (2892). No studies were found that evaluated the effects of modifying aquaculture gear, introducing and enforcing water quality regulations, minimizing food waste at aquaculture systems, or introducing alternative food sources to replace marine and freshwater mammal meat (2742, 2876, 2744, 2784).\"}",
+            "return_val": "{\n  \"query\": \"What are the available strategies to reduce the negative impacts of aquaculture systems on marine mammals?\",\n  \"relevant_summary\": \"Two studies have evaluated the effects of removing derelict fishing gear from entangled mammals (2892). One review in the North Pacific Ocean found that after removing derelict fishing gear from Hawaiian monk seals, along with at least seven other interventions, more than a quarter of the seals survived and reproduced (2892). Another review in the North Atlantic Ocean found that three common bottlenose dolphins survived for at least 1\\u20134 years after they were disentangled from derelict fishing gear and released (2892). No studies were found that evaluated the effects of modifying aquaculture gear, introducing and enforcing water quality regulations, minimizing food waste at aquaculture systems, or introducing alternative food sources to replace marine and freshwater mammal meat (2742, 2876, 2744, 2784).\",\n  \"action_ids\": [\n    \"2892\",\n    \"2742\",\n    \"2876\",\n    \"2744\",\n    \"2784\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2742",
+      "2743",
+      "2744",
+      "2745",
+      "2746",
+      "2774",
+      "2775",
+      "2776",
+      "2876",
+      "2877",
+      "2878"
+    ],
+    "regenerated_ids": [
+      "2742",
+      "2743",
+      "2744",
+      "2745",
+      "2746",
+      "2774",
+      "2775",
+      "2776",
+      "2876",
+      "2877",
+      "2878"
+    ]
   }
 ]

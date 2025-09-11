@@ -1254,5 +1254,110 @@
       "3415",
       "3418"
     ]
+  },
+  {
+    "query": "What evidence exists for the effectiveness of altering seed mix characteristics, such as density or species diversity, for grassland restoration in the USA?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "In the USA, increasing the number of species in a seed mix increased the species richness of sown plants in two replicated, controlled studies (one randomized), while effects on the cover of sown species were mixed (one study reported increased cover; one reported no change); a replicated, site comparison study found no change in overall plant species richness (3406). Sowing seeds at a higher density increased forb species richness, grass cover, and forb cover in replicated, randomized, paired, controlled studies; however, another replicated, controlled USA study found no change in the cover of sown species, and a USA site comparison reported reduced cover of native grassland shrubs; a replicated, randomized, paired, controlled USA study also found higher numbers of purple needlegrass seedlings at higher seeding densities (3405).",
+    "summary_action_ids": [
+      "3406",
+      "3405"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of altering seed mix characteristics density species diversity grassland restoration USA\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3406\",\n    \"action_title\": \"Increase number of species in seed mix\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3400\",\n    \"action_title\": \"Sow grassland seeds from a local source\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3432\",\n    \"action_title\": \"Sow native grass and forbs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of altering seed mix characteristics density species diversity grassland restoration USA\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1250\",\n    \"action_title\": \"Add organic matter\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"718\",\n    \"action_title\": \"Use alley cropping\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"165\",\n    \"action_title\": \"Provide training to conservationists and land managers on bird ecology and conservation\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"seeding density rate grassland restoration USA effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3405\",\n    \"action_title\": \"Sow seeds at a higher density\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3418\",\n    \"action_title\": \"Apply herbicide before seeding/planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2566\",\n    \"action_title\": \"Restore or create grassland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"seed mix diversity species richness grassland restoration USA study\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3406\",\n    \"action_title\": \"Increase number of species in seed mix\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3399\",\n    \"action_title\": \"Plant grassland plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3400\",\n    \"action_title\": \"Sow grassland seeds from a local source\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"sow seeds lower density grassland restoration USA\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3405\",\n    \"action_title\": \"Sow seeds at a higher density\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3400\",\n    \"action_title\": \"Sow grassland seeds from a local source\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3418\",\n    \"action_title\": \"Apply herbicide before seeding/planting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3406\"}",
+            "return_val": "{\n  \"action_id\": \"3406\",\n  \"action_title\": \"Increase number of species in seed mix\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies examined the effects of increasing the number of species in a seed mix on grassland vegetation. Four studies were in the USA\\u00a0and one was in Germany.\\n\\nVEGETATION COMMUNITY (4 STUDIES)\\n\\nOverall richness/diversity (1 study): One replicated, site comparison study in the USA\\u00a0found that increasing the number of species in a seed mix did not change plant species richness.\\nCharacteristic plant richness/diversity (1 study): One replicated, controlled study in Germany\\u00a0found that increasing the number of species in a seed mix, along with sowing seeds from a local source, increased the species richness of target plants.\\nSown/planted species richness/diversity (2 studies): Two replicated, controlled studies in the USA\\u00a0(one of which was randomized) found that increasing the number species in a seed mix increased the species richness of sown plants.\\n\\nVEGETATION ABUNDANCE (3 STUDIES)\\n\\nCharacteristic plant abundance (1 study): One replicated, controlled study in Germany\\u00a0found that increasing the number of species in a seed mix, along with sowing seeds from a local source, increased the cover of target plant species.\\nSown/planted species abundance (2 studies): One of two replicated, controlled studies (one of which was randomized) in the USA\\u00a0found that increasing the number of species in a seed mix increased the cover of sown plant species. The other study\\u00a0found that there was no change in the cover of sown species.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3405\"}",
+            "return_val": "{\n  \"action_id\": \"3405\",\n  \"action_title\": \"Sow seeds at a higher density\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies examined the effects of sowing seeds at a higher density on grassland vegetation. Four studies were in the USA,\\u00a0and one study was in each of the UK and\\u00a0Canada.\\n\\nVEGETATION COMMUNITY (2 STUDIES)\\n\\nCommunity composition (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that sowing grass seeds at a higher density did not increase the similarity of the vegetation community to that of the target community.\\nForb richness/diversity (1 study): One replicated, randomized, paired, controlled study in the USA\\u00a0found that sowing seeds at a higher density increased forb species richness.\\n\\nVEGETATION ABUNDANCE (4 STUDIES)\\n\\nSown/planted species abundance (1 study): One replicated, controlled study in the USA\\u00a0found that sowing seeds at a higher density did not alter the cover of sown plant species.\\nGrass abundance (3 studies): One replicated, randomized, paired, controlled study in the USA\\u00a0found that sowing seeds at a higher density increased grass cover.\\nForb abundance (1 study): One replicated, randomized, paired, controlled study in the USA\\u00a0found that sowing seeds at a higher density increased forb cover.\\nTree/shrub abundance (1 study): One site comparison study in the USA\\u00a0found that sowing grass seeds at a higher density reduced the cover of native grassland shrubs.\\nIndividual plant species abundance (1 study): One replicated, controlled study in Canada\\u00a0found that sowing seeds at a higher density increased the cover of thickspike wheatgrass.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\\nOTHER (1 STUDY)\\n\\nGermination/Emergence (1 study): One replicated, randomized, paired, controlled study in the USA\\u00a0found that sowing seeds at a higher density increased the number of purple needlegrass seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3400\"}",
+            "return_val": "{\n  \"action_id\": \"3400\",\n  \"action_title\": \"Sow grassland seeds from a local source\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies examined the effects of sowing grassland seeds from a local source on grassland vegetation. Two studies were in Germany, two were in the USA\\u00a0and one was in Italy.\\n\\nVEGETATION COMMUNITY (2 STUDIES)\\n\\nOverall richness/diversity (1 study): One replicated, controlled study in Italy\\u00a0found that sowing grassland seeds from a local source increased plant species richness compared to sowing a commercial seed mix.\\nCharacteristic plant richness/diversity (1 study): One replicated, controlled study in Germany\\u00a0found that sowing grassland seeds from a local source, along with increasing the number of species in a seed mix, led to an increase in the species richness of target plants.\\n\\nVEGETATION ABUNDANCE (3 STUDIES)\\n\\nOverall abundance (2 studies): One of two replicated studies (including one site comparison and one controlled study) in the USA\\u00a0and Germany\\u00a0found that after sowing grassland seeds from a local source vegetation cover increased over time compared to areas sown with non-native seeds, but the density of individual plants declined. The other study\\u00a0found that vegetation cover did not differ to that in areas sown with commercial grass seed.\\nCharacteristic plant abundance (2 studies): One replicated, controlled study in Germany\\u00a0found that sowing grassland seeds from a local source, along with increasing the number of species in a seed mix, led to an increase in the cover of target plant species. One replicated, randomized, paired, controlled study in Germany\\u00a0found that sowing grassland seeds from a local source increased the abundance of one of four characteristic plant species that were sown.\\n\\nVEGETATION STRUCTURE (2 STUDIES)\\n\\nHeight (2 studies): Two replicated studies (including one controlled and one site comparison study) in the USA\\u00a0and Italy\\u00a0found that sowing grassland seeds from a local source did not alter vegetation height compared to sowing non-native grass seeds\\u00a0or a commercial seed mix.\\n\\nOTHER (1 STUDY)\\n\\nSurvival (1 study): One replicated, randomized, controlled experiment in the USA\\u00a0found that sowing Sandberg bluegrass seeds from a local source did not change the survival of sown plants compared to sowing non-local varieties.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3432\"}",
+            "return_val": "{\n  \"action_id\": \"3432\",\n  \"action_title\": \"Sow native grass and forbs\",\n  \"key_messages\": \"Key Messages:\\n\\nFifty studies examined the effects of sowing native grass and forb seeds on grassland vegetation. Thirty-six studies were in Europe, twelve studies were in North America\\u00a0and one study was in New Zealand. One review\\u00a0included studies from Europe, North America and Africa.\\n\\nVEGETATION COMMUNITY (42 STUDIES)\\n\\nCommunity composition (11 studies): Five of 11 studies (10 of which were replicated and/or controlled, and three of which were site comparisons) in the UK, the Czech Republic, Norway\\u00a0and Germany\\u00a0found that sowing native grass and forb seeds increased the similarity of plant community composition to that of target communities. Three studies found no increase in community similarity to target communities. Two studies\\u00a0found that over time communities became more similar to those of intact grasslands. One study\\u00a0found that over time areas sown with native grass and forb seeds became more similar to areas that were not sown with seeds.\\nOverall richness/diversity (28 studies): Sixteen of 28 studies (24 of which were controlled and four of which were site comparisons) in Europe, North America\\u00a0and New Zealand\\u00a0found that sowing native grass and forb seeds increased overall plant species richness. Seven studies found that there was no change in plant species richness\\u00a0or mixed effects on plant species richness\\u00a0and plant diversity. Three studies\\u00a0found that sowing native grass and forb seeds increased plant species richness during the first year, but after 3\\u201313 years, species richness did not differ between sown and unsown areas or was lower in sown areas. One study\\u00a0found that after one year, sowing did not alter plant species richness but after eight years, species richness was higher than in unsown areas. Three\\u00a0studies found that species richness was lower in sown areas than in nearby intact grasslands.\\nCharacteristic plant richness/diversity (9 studies): Six of nine studies (eight of which were replicated and/or controlled, and two of which were site comparisons) in Europe\\u00a0found that sowing native grass and forb seeds increased the species richness of characteristic grassland plants. Two studies\\u00a0found no change in the species richness of characteristic grassland plants. One study\\u00a0found that sowing native grass and forb seeds increased the species richness of target forbs but not target grasses.\\nSown/planted species richness/diversity (3 studies): Three replicated, paired, controlled studies in the UK\\u00a0and the Czech Republic\\u00a0found that sowing native grass and forb seeds increased sown species richness.\\nGrass richness/diversity (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that sowing native grass and forb seeds increased grass species richness in 54% of cases.\\nForb richness/diversity (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that sowing native grass and forb seeds increased forb species richness in 71% of cases.\\nNative/non-target richness/diversity (1 study): One replicated, controlled study in the USA\\u00a0found that sowing native grass and forb seeds increased the species richness of native plants.\\n\\nVEGETATION ABUNDANCE (24 STUDIES)\\n\\nOverall abundance (8 studies): Three\\u00a0of eight replicated, controlled studies (four of which were randomized and paired) in Europe\\u00a0and North America\\u00a0found that sowing native grass and forb seeds increased overall vegetation cover, biomass\\u00a0or density. One study\\u00a0found that sowing native grass and forb seeds increased plant species richness during the first 2\\u20137 years, but after eight years, species richness did not differ between sown and unsown areas.\\u00a0Four studies found that there was no change in overall vegetation abundance in all\\u00a0or most cases.\\nCharacteristic plant abundance (5 studies): Three of five replicated studies (four of which were controlled, and one of which was a site comparison) in Europe\\u00a0found that sowing native grass and forb seeds did not alter the cover of characteristic grassland species. The other two studies\\u00a0found an increase in the cover of characteristic or target grassland species.\\nSown/planted species abundance (6 studies): Five\\u00a0of six studies (four of which were replicated and controlled, and two of which were reviews) in Europe, North America, Africa\\u00a0and New Zealand\\u00a0found that sowing native grass and forb seeds increased the abundance of sown species in all\\u00a0or most cases. The other study\\u00a0found mixed effects on sown species abundance.\\nGrass abundance (3 studies): Two of three replicated, randomized, controlled studies (two of which were paired) in the Czech Republic\\u00a0and the USA\\u00a0found that sowing native grass and forb seeds increased the cover of grass species. The other study\\u00a0found no change in the cover of grass species.\\nForb abundance (4 studies): Three of four replicated, randomized, controlled studies (three of which were paired) in the Czech Republic\\u00a0and the USA\\u00a0found that sowing native grass and forb seeds increased the cover\\u00a0or density\\u00a0of forb species. The other study\\u00a0found that one year after sowing, the cover of forb species increased, but after 10 years it did not differ between sown and unsown areas.\\nNative/non-target species abundance (1 study): One replicated, controlled study in the USA\\u00a0found that sowing native grass and forb seeds increased the cover of native plant species.\\nIndividual plant species abundance (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that sowing native grass and forb seeds did not alter yellow rattle abundance.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nGermination/Emergence (2 studies): One of two replicated, controlled studies (one of which was paired) in the USA\\u00a0and Germany\\u00a0found that sowing native grass and forb seeds increased the number of seedlings that emerged. The other study\\u00a0found no change in seedling number.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What evidence exists for the effectiveness of altering seed mix characteristics, such as density or species diversity, for grassland restoration in the USA?\",\"summary\":\"In the USA, increasing the number of species in a seed mix increased the species richness of sown plants in two replicated, controlled studies (one randomized), while effects on the cover of sown species were mixed (one study reported increased cover; one reported no change); a replicated, site comparison study found no change in overall plant species richness (3406). Sowing seeds at a higher density increased forb species richness, grass cover, and forb cover in replicated, randomized, paired, controlled studies; however, another replicated, controlled USA study found no change in the cover of sown species, and a USA site comparison reported reduced cover of native grassland shrubs; a replicated, randomized, paired, controlled USA study also found higher numbers of purple needlegrass seedlings at higher seeding densities (3405).\",\"action_ids\":[\"3406\",\"3405\"]}",
+            "return_val": "{\n  \"query\": \"What evidence exists for the effectiveness of altering seed mix characteristics, such as density or species diversity, for grassland restoration in the USA?\",\n  \"relevant_summary\": \"In the USA, increasing the number of species in a seed mix increased the species richness of sown plants in two replicated, controlled studies (one randomized), while effects on the cover of sown species were mixed (one study reported increased cover; one reported no change); a replicated, site comparison study found no change in overall plant species richness (3406). Sowing seeds at a higher density increased forb species richness, grass cover, and forb cover in replicated, randomized, paired, controlled studies; however, another replicated, controlled USA study found no change in the cover of sown species, and a USA site comparison reported reduced cover of native grassland shrubs; a replicated, randomized, paired, controlled USA study also found higher numbers of purple needlegrass seedlings at higher seeding densities (3405).\",\n  \"action_ids\": [\n    \"3406\",\n    \"3405\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3405",
+      "3406"
+    ],
+    "regenerated_ids": [
+      "3405",
+      "3406"
+    ]
   }
 ]

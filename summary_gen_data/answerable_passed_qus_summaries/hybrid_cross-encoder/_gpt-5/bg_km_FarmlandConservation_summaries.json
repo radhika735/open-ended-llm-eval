@@ -735,5 +735,83 @@
       "119",
       "133"
     ]
+  },
+  {
+    "query": "What are the overall effects of broad-scale agri-environment schemes on farmland biodiversity in Europe?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across Europe, agri-environment schemes (AES) frequently report positive or mixed effects depending on taxon and context: for birds, multiple European studies and reviews show increases in densities, population levels or more favourable trends on AES land for at least some species, alongside other studies finding no differences or negative trends; targeted schemes reported increases for cirl bunting, corncrake and Eurasian thick-knee, while survival (e.g., grey partridge) and productivity were sometimes higher on AES farms; placement of AES options sometimes limited effectiveness [700, 172]. For plants, evidence shows AES often maintain or have little/no effect on plant diversity or richness, with some studies reporting increases and others decreases; some English Environmentally Sensitive Areas helped halt semi-natural grassland loss but were less effective at enhancing/restoring grassland biodiversity [700]. For invertebrates, including bees, results are mixed: some studies show increased abundance or richness or local-scale benefits under certain AES options, while several studies find little/no effect and landscape-scale enhancements for bumblebees were not detected [700, 24]. For mammals, studies report positive or mixed effects depending on species and region [700]. Overall, a review found two of three European AES benefited wildlife, but baseline comparisons sometimes showed no initial differences between AES and non-AES areas [700].",
+    "summary_action_ids": [
+      "700",
+      "172",
+      "24"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"broad-scale agri-environment schemes effects on farmland biodiversity in Europe\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"700\",\n    \"action_title\": \"Pay farmers to cover the cost of conservation measures (as in agri-environment schemes)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"172\",\n    \"action_title\": \"Pay farmers to cover the costs of bird conservation measures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"24\",\n    \"action_title\": \"Introduce agri-environment schemes to benefit wild bees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"broad-scale agri-environment schemes effects on farmland biodiversity in Europe\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3930\",\n    \"action_title\": \"Plant wild bird seed or cover mixture\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1768\",\n    \"action_title\": \"Physically remove problematic plants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2308\",\n    \"action_title\": \"(CFT) Soil fauna: Grass buffer strips (21e, 21g, 21h)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"700\"}",
+            "return_val": "{\n  \"action_id\": \"700\",\n  \"action_title\": \"Pay farmers to cover the cost of conservation measures (as in agri-environment schemes)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-six studies from four European countries (including one UK systematic review and three European reviews) looked at the effects of agri-environment schemes on birds. Twenty-four studies (including one systematic review, six site comparisons and nine reviews) found increases in population size, density or more favourable population trends of some or all birds studied on sites with agri-environment schemes compared to non-scheme sites (some of these differences were seasonal). Eleven studies (including one systematic review and four reviews) found negative or no effects. One UK study found higher numbers of some birds where higher tier management was in place, another UK study found no difference between Entry Level or Higher Level Stewardship Scheme fields. One study from the Netherlands found that not all agri-environment scheme agreements were sited in ideal locations for black-tailed godwit.\\nEleven studies from five European countries (including three replicated paired site comparisons and two reviews) looked at the effects of agri-environment schemes on plants. Seven studies (including three replicated paired site comparisons and one European review) found agri-environment schemes maintained or had little or no effect on plants, plant diversity or species richness. Three studies found increases in plant species richness in areas with agri-environment schemes, two found decreases. A replicated site comparison study from Estonia found higher flower abundance on farms with agri-environment schemes in two out of four areas. A review found Environmentally Sensitive Areas in England had contributed to halting the loss of semi-natural grassland habitats but were less effective at enhancing or restoring grassland biodiversity.\\nTen studies from three European countries (including two replicated paired site comparisons and a review) looked at the effects of agri-environment schemes on invertebrates. Six studies (including two replicated site comparisons) showed agri-environment schemes maintained or had little or no effect on some invertebrates in terms of diversity, abundance, species richness or bee colony growth. Five studies found increases in abundance or species richness of some invertebrates. A UK study found agri-environment scheme prescriptions had a local but not a landscape-scale effect on bee numbers.\\nFour studies (including two replicated site comparisons and a review) from the UK looked at the effects of agri-environment schemes on mammals. One study found positive effects, three studies found mixed effects in different regions or for different species.\\nThree of the studies above found higher numbers of wildlife on land before agri-environment schemes were introduced. However two studies collecting baseline data found no difference in the overall number of birds or earthworms and soil microorganisms between areas with and without agri-environment schemes.\\nA review found two out of three agri-environment schemes in Europe benefited wildlife.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"172\"}",
+            "return_val": "{\n  \"action_id\": \"172\",\n  \"action_title\": \"Pay farmers to cover the costs of bird conservation measures\",\n  \"key_messages\": \"Key Messages:\\n\\nThree reviews from the UK of three studies captured reported population increases of three species after the introduction of specially-designed agri-environment schemes. These species were cirl buntings, corncrakes and Eurasian thick-knees. One of these found that many other species continued to decline.\\nTwenty-two of 25 studies all from Europe, including a systematic review,\\u00a0 examining local population levels or densities found that at least some birds studied were at higher densities, had higher population levels or more positive population trends on sites with agri-environment schemes, compared to non-agri-environment scheme sites. Some studies found that differences were present in all seasons, others in either summer or winter. Fifteen studies from Europe, including a systematic review, found that some or all species were not found at higher densities, had similar or lower population levels, showed similar population trends on sites with agri-environment schemes, compared with non-agri-environment scheme sites, or showed negative population trends. A study from the Netherlands found that many agri-environment scheme farms were sited in areas where they were unlikely to be effective.\\nOne small study from the UK found no differences between winter densities of seed-eating birds on UK Higher Levels Stewardship sites, compared with those under Entry Level Stewardship. \\nA replicated study from the UK found that grey partridge survival was higher on agri-environment scheme sites than non-scheme sites. This difference was not significant every year.\\nTwo of three studies investigating reproductive productivity, including one replicated study, found that productivity was higher on farms under agri-environment schemes. One replicated study from the UK found no effect of agri-environment schemes on productivity.\\nA review (Vickery et al. 2010) found that the amount of land entering an agri-environment scheme was on target, but that some options were not being used at high enough rates to help many species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"24\"}",
+            "return_val": "{\n  \"action_id\": \"24\",\n  \"action_title\": \"Introduce agri-environment schemes to benefit wild bees\",\n  \"key_messages\": \"Key Messages:\\nFour replicated trials in Europe have shown enhanced diversity and/or abundance of foraging wild bees on land managed under various European agri-environment schemes, relative to conventionally-managed fields or field margins. These schemes were the Swiss Ecological Compensation Areas (one replicated trial), the German organic arable farming option (one replicated trial), the Dutch botanical and meadow bird agreements (one replicated trial, very low numbers of bee species) and the Scottish Rural Stewardship Scheme (one replicated trial, also included nest-searching queen bumblebees).\\nFour replicated trials in Europe found that the number of bees and/or bee species is not enhanced on land managed under agri-environment schemes, including meadow bird agreements in wet grassland in the Netherlands, measures to protect steppe-living birds and compensation measures around a National Park in Spain, and 6 m wide grass field margin strips in England (one replicated trial for each).\\nOn a wider landscape scale, two replicated trials in the UK have found bumblebee populations were not enhanced on farmland managed under agri-environment schemes. One trial compared the reproductive success of colonies of the buff-tailed bumblebee Bombus terrestris, the other compared queen bumblebee numbers in spring in conventionally managed field margins, on farms with and without agri-environment schemes.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the overall effects of broad-scale agri-environment schemes on farmland biodiversity in Europe?\",\"summary\":\"Across Europe, agri-environment schemes (AES) frequently report positive or mixed effects depending on taxon and context: for birds, multiple European studies and reviews show increases in densities, population levels or more favourable trends on AES land for at least some species, alongside other studies finding no differences or negative trends; targeted schemes reported increases for cirl bunting, corncrake and Eurasian thick-knee, while survival (e.g., grey partridge) and productivity were sometimes higher on AES farms; placement of AES options sometimes limited effectiveness [700, 172]. For plants, evidence shows AES often maintain or have little/no effect on plant diversity or richness, with some studies reporting increases and others decreases; some English Environmentally Sensitive Areas helped halt semi-natural grassland loss but were less effective at enhancing/restoring grassland biodiversity [700]. For invertebrates, including bees, results are mixed: some studies show increased abundance or richness or local-scale benefits under certain AES options, while several studies find little/no effect and landscape-scale enhancements for bumblebees were not detected [700, 24]. For mammals, studies report positive or mixed effects depending on species and region [700]. Overall, a review found two of three European AES benefited wildlife, but baseline comparisons sometimes showed no initial differences between AES and non-AES areas [700].\",\"action_ids\":[\"700\",\"172\",\"24\"]}",
+            "return_val": "{\n  \"query\": \"What are the overall effects of broad-scale agri-environment schemes on farmland biodiversity in Europe?\",\n  \"relevant_summary\": \"Across Europe, agri-environment schemes (AES) frequently report positive or mixed effects depending on taxon and context: for birds, multiple European studies and reviews show increases in densities, population levels or more favourable trends on AES land for at least some species, alongside other studies finding no differences or negative trends; targeted schemes reported increases for cirl bunting, corncrake and Eurasian thick-knee, while survival (e.g., grey partridge) and productivity were sometimes higher on AES farms; placement of AES options sometimes limited effectiveness [700, 172]. For plants, evidence shows AES often maintain or have little/no effect on plant diversity or richness, with some studies reporting increases and others decreases; some English Environmentally Sensitive Areas helped halt semi-natural grassland loss but were less effective at enhancing/restoring grassland biodiversity [700]. For invertebrates, including bees, results are mixed: some studies show increased abundance or richness or local-scale benefits under certain AES options, while several studies find little/no effect and landscape-scale enhancements for bumblebees were not detected [700, 24]. For mammals, studies report positive or mixed effects depending on species and region [700]. Overall, a review found two of three European AES benefited wildlife, but baseline comparisons sometimes showed no initial differences between AES and non-AES areas [700].\",\n  \"action_ids\": [\n    \"700\",\n    \"172\",\n    \"24\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "70",
+      "113",
+      "114",
+      "130",
+      "145",
+      "146",
+      "362",
+      "700"
+    ],
+    "regenerated_ids": [
+      "130",
+      "145",
+      "700"
+    ]
   }
 ]

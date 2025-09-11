@@ -2399,5 +2399,260 @@
       "876",
       "883"
     ]
+  },
+  {
+    "query": "As an alternative to creating new ponds, what species augmentation techniques can be used to establish or increase amphibian populations at a site?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One review found that 41% of release programs for captive-bred or head-started amphibians showed evidence of breeding in the wild for multiple generations, with an additional 29% showing some evidence of breeding [871]. For translocation, three global reviews and one study found that 35 of 54 (65%) assessed amphibian translocations led to established breeding populations or significant recruitment. The same review noted that translocations involving over 1,000 animals were more successful [854]. The success of breeding frogs in captivity has been investigated in 33 studies, with 23 finding that amphibians produced eggs in captivity. Seventeen of these studies reported that captive-bred frogs were successfully raised to various life stages, with survival to adulthood in captivity between 50-90% [835]. For the technique of using artificial cloning from frozen or fresh tissue, no evidence was found regarding its effects [1898].",
+    "summary_action_ids": [
+      "854",
+      "871",
+      "1898",
+      "835"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian species augmentation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"803\",\n    \"action_title\": \"Augment ponds with ground water to reduce acidification\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1870\",\n    \"action_title\": \"Amphibians: Vary water flow/speed of artificial streams in enclosures for torrent breeding species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"628\",\n    \"action_title\": \"Release captive-bred individuals into the wild to restore or augment wild populations of pigeons\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian translocation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"854\",\n    \"action_title\": \"Translocate amphibians\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"839\",\n    \"action_title\": \"Remove or control mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"869\",\n    \"action_title\": \"Create ponds for amphibians\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian reintroduction\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"871\",\n    \"action_title\": \"Release captive-bred amphibians\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"780\",\n    \"action_title\": \"Manage grazing regime\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1898\",\n    \"action_title\": \"Amphibians: Use artificial cloning from frozen or fresh tissue\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"captive breeding amphibians\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"871\",\n    \"action_title\": \"Release captive-bred amphibians\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"835\",\n    \"action_title\": \"Captive breeding frogs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1876\",\n    \"action_title\": \"Amphibians: Provide particular enclosure furniture for calling sites, breeding areas or egg laying sites\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"854\"}",
+            "return_val": "{\n  \"action_id\": \"854\",\n  \"action_title\": \"Translocate amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nOverall, three global reviews and one replicated, before-and-after study in the USA found that 35 of 54 (65%) amphibian translocations that could be assessed resulted in established breeding populations or substantial recruitment to the adult population. A further two translocations resulted in breeding and one in survival following release.\\nOne review found that translocations of over 1,000 animals were more successful, but that success was not related to the source of animals (wild or captive), life-stage, continent or reason for translocation.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"871\"}",
+            "return_val": "{\n  \"action_id\": \"871\",\n  \"action_title\": \"Release captive-bred amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nOne review found that 41% of release programmes of captive-bred or head-started amphibians showed evidence of breeding in the wild for multiple generations, 29% showed some evidence of breeding and 12% evidence of survival following release.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1898\"}",
+            "return_val": "{\n  \"action_id\": \"1898\",\n  \"action_title\": \"Amphibians: Use artificial cloning from frozen or fresh tissue\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of using artificial cloning from frozen or fresh tissue.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"835\"}",
+            "return_val": "{\n  \"action_id\": \"835\",\n  \"action_title\": \"Captive breeding frogs\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-three studies investigated the success of breeding frogs in captivity.\\nTwenty-three of 33 studies, three of which were reviews and 30 replicated studies, across the world\\u00a0found that amphibians produced egg in captivity, in four cases by captive-bred females. Seven found mixed results, with some species of frogs or 17\\u201350% of captive populations \\u00a0reproducing successfully in captivity, but with other species difficult to maintain or raise to adults. One found that frogs did not breed successfully in captivity and another that all breeding frogs died. Seventeen of the studies found that captive-bred frogs were raised successfully to hatching, tadpoles, froglets or adults in captivity. One found that froglet survival was low and another that three species were not successfully raised to adulthood.\\nFour replicated studies (including one small study) in,Canada, Fiji, Hong Kong and Italy found that 30\\u201388% of eggs hatched or survival to metamorphosis was 75%, as froglets was 17\\u201351% or to adults was 50\\u201390% in captivity.\\nOne review and four replicated studies (including two small studies) in Germany, Italy and the USA found that reproductive success of frogs in captivity depended on temperature or a simulated wet and dry season, but not on whether frogs were housed in high or low maintenance facilities. Three replicated studies (including one small study) in Germany, Australia and Canada found that egg or tadpole development in captivity was affected by parental care, density or temperature.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One review found that 41% of release programs for captive-bred or head-started amphibians showed evidence of breeding in the wild for multiple generations, with an additional 29% showing some evidence of breeding [871]. For translocation, three global reviews and one study found that 35 of 54 (65%) assessed amphibian translocations led to established breeding populations or significant recruitment. The same review noted that translocations involving over 1,000 animals were more successful [854]. The success of breeding frogs in captivity has been investigated in 33 studies, with 23 finding that amphibians produced eggs in captivity. Seventeen of these studies reported that captive-bred frogs were successfully raised to various life stages, with survival to adulthood in captivity between 50-90% [835]. For the technique of using artificial cloning from frozen or fresh tissue, no evidence was found regarding its effects [1898].\",\"action_ids\":[\"854\",\"871\",\"1898\",\"835\"],\"query\":\"As an alternative to creating new ponds, what species augmentation techniques can be used to establish or increase amphibian populations at a site?\"}",
+            "return_val": "{\n  \"query\": \"As an alternative to creating new ponds, what species augmentation techniques can be used to establish or increase amphibian populations at a site?\",\n  \"relevant_summary\": \"One review found that 41% of release programs for captive-bred or head-started amphibians showed evidence of breeding in the wild for multiple generations, with an additional 29% showing some evidence of breeding [871]. For translocation, three global reviews and one study found that 35 of 54 (65%) assessed amphibian translocations led to established breeding populations or significant recruitment. The same review noted that translocations involving over 1,000 animals were more successful [854]. The success of breeding frogs in captivity has been investigated in 33 studies, with 23 finding that amphibians produced eggs in captivity. Seventeen of these studies reported that captive-bred frogs were successfully raised to various life stages, with survival to adulthood in captivity between 50-90% [835]. For the technique of using artificial cloning from frozen or fresh tissue, no evidence was found regarding its effects [1898].\",\n  \"action_ids\": [\n    \"854\",\n    \"871\",\n    \"1898\",\n    \"835\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "854",
+      "855",
+      "856",
+      "858",
+      "859",
+      "860",
+      "861",
+      "869",
+      "871",
+      "870",
+      "872",
+      "873",
+      "874",
+      "875",
+      "881"
+    ],
+    "regenerated_ids": [
+      "854",
+      "855",
+      "856",
+      "858",
+      "859",
+      "860",
+      "861",
+      "870",
+      "871",
+      "872",
+      "873",
+      "874",
+      "875",
+      "881"
+    ]
+  },
+  {
+    "query": "To protect migrating amphibians, how do physical interventions like tunnels and barrier fences compare to closing roads during migration seasons?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Two studies in Germany found that closing roads during seasonal amphibian migration protected large numbers of amphibians from death [842]. Seven of eight studies found that barrier fencing with culverts decreased amphibian road deaths, although some amphibians were found to climb over the barriers [756]. Six of seven studies found that installing culverts or tunnels significantly decreased amphibian road deaths, but one study found this was only the case when barrier fencing was also installed, and another found no effect [884]. Fifteen of 24 studies found that culverts or tunnels were used by amphibians, but five found they were not, and their use was affected by factors such as diameter, length, lighting, and substrate [884].",
+    "summary_action_ids": [
+      "842",
+      "756",
+      "884"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian protection\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"842\",\n    \"action_title\": \"Close roads during seasonal amphibian migration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"810\",\n    \"action_title\": \"Protect habitat along elevational gradients\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"820\",\n    \"action_title\": \"Protect habitats for amphibians\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Tunnels and barrier fences for amphibians\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"756\",\n    \"action_title\": \"Install barrier fencing along roads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"884\",\n    \"action_title\": \"Install culverts or tunnels as road crossings\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2519\",\n    \"action_title\": \"Install tunnels/culverts/underpass under railways\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"842\"}",
+            "return_val": "{\n  \"action_id\": \"842\",\n  \"action_title\": \"Close roads during seasonal amphibian migration\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated study) in Germany found that large numbers of amphibians were protected from death during breeding migrations at road closure sites and at road closure sites with assisted crossings and barrier fences.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"756\"}",
+            "return_val": "{\n  \"action_id\": \"756\",\n  \"action_title\": \"Install barrier fencing along roads\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven of eight studies (including one replicated and two controlled studies) in Germany, Canada and the USA found that barrier fencing with culverts decreased amphibian road deaths, or decreased deaths provided that the fence length and material were effective. One found that low numbers of amphibians were diverted by barriers during breeding migrations.\\nOne replicated study in the USA found that barriers at least 0.6 m high were required to prevent green frogs and leopard frogs climbing over. Two studies in the Netherlands and USA found that treefrogs and 10% of common toads climbed over barrier fencing during breeding migrations.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"884\"}",
+            "return_val": "{\n  \"action_id\": \"884\",\n  \"action_title\": \"Install culverts or tunnels as road crossings\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-two studies investigated the effectiveness of installing culverts or tunnels as road crossings for amphibians.\\nSix of seven studies (including three replicated studies) in Canada, Germany, Italy, Hungary and the USA\\u00a0found that installing culverts or tunnels significantly decreased amphibian road deaths; in one study this was the case only when barrier fencing was also installed. One found no effect on road deaths.\\nFifteen of 24 studies (including one review and 17 replicated studies) in Australia, Canada, Europe and the USA found that culverts/tunnels were used by amphibians, by 15\\u201385% of amphibians or 3\\u201315 species, or that 23\\u2013100% of culverts or tunnels were used by amphibians or used in 12 of 14 studies reviewed. The majority of culverts/tunnels had barrier fencing to guide amphibians to entrances. Four found mixed effects depending on species, or for toads depending on the site or culvert type. Five found that culverts were used by less than 10% of amphibians or were not used. The use of culverts/tunnels was affected by diameter in three of six studies, with wider culverts used more, length in one of two studies, with long culverts avoided, lighting in all three studies, with mixed effects, substrate in three of six studies, with natural substrates used more, presence of water in two of three studies, with mixed effects, entrance location in one and tunnel climate in one study.\\nSix studies (including one replicated, controlled study) in Canada, Spain, the Netherlands and USA investigated the use of culverts with flowing water and found that they were used by amphibians, or rarely used by salamanders or not used, and were used more or the same amount as dry culverts.\\nCertain culvert designs were not suitable for amphibians; one-way tunnels with vertical entry chutes resulted in high mortality of common toads and condensation deposits from steel culverts had very high metal concentrations. One study found that thousands of amphibians were still killed on the road.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Two studies in Germany found that closing roads during seasonal amphibian migration protected large numbers of amphibians from death [842]. Seven of eight studies found that barrier fencing with culverts decreased amphibian road deaths, although some amphibians were found to climb over the barriers [756]. Six of seven studies found that installing culverts or tunnels significantly decreased amphibian road deaths, but one study found this was only the case when barrier fencing was also installed, and another found no effect [884]. Fifteen of 24 studies found that culverts or tunnels were used by amphibians, but five found they were not, and their use was affected by factors such as diameter, length, lighting, and substrate [884].\",\"query\":\"To protect migrating amphibians, how do physical interventions like tunnels and barrier fences compare to closing roads during migration seasons?\",\"action_ids\":[\"842\",\"756\",\"884\"]}",
+            "return_val": "{\n  \"query\": \"To protect migrating amphibians, how do physical interventions like tunnels and barrier fences compare to closing roads during migration seasons?\",\n  \"relevant_summary\": \"Two studies in Germany found that closing roads during seasonal amphibian migration protected large numbers of amphibians from death [842]. Seven of eight studies found that barrier fencing with culverts decreased amphibian road deaths, although some amphibians were found to climb over the barriers [756]. Six of seven studies found that installing culverts or tunnels significantly decreased amphibian road deaths, but one study found this was only the case when barrier fencing was also installed, and another found no effect [884]. Fifteen of 24 studies found that culverts or tunnels were used by amphibians, but five found they were not, and their use was affected by factors such as diameter, length, lighting, and substrate [884].\",\n  \"action_ids\": [\n    \"842\",\n    \"756\",\n    \"884\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "756",
+      "782",
+      "784",
+      "840",
+      "841",
+      "842",
+      "884"
+    ],
+    "regenerated_ids": [
+      "756",
+      "884",
+      "842"
+    ]
+  },
+  {
+    "query": "What are the typical outcomes when creating new ponds to support toad populations in Europe?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Five before-and-after studies in the UK and Denmark found that pond creation, along with other interventions, significantly increased natterjack toad populations, or maintained or increased populations at 75% of sites (866). A UK study found that created ponds had lower natterjack toad tadpole mortality from desiccation, but higher mortality from invertebrate predation compared to natural ponds (866). Two before-and-after studies in Denmark showed that pond creation with other interventions significantly increased green toad populations (864). In Sweden, one study revealed that green toads used 59% and reproduced in 41% of created ponds (864). Twenty-eight studies found that amphibians generally used some or all created ponds (869). Nine site comparison studies in Europe, North America, and Australia found mixed results when comparing amphibian numbers in created and natural ponds; five found similar or higher species numbers in created ponds, while four found different species compositions (869). Several studies in Europe and the USA found that 64-100% of created ponds were used by amphibians, with reproduction occurring in 64-68% of them (869). The success of created ponds can be affected by their age, permanence, vegetation, surrounding landscape, distance to other ponds, and the presence of fish (869).",
+    "summary_action_ids": [
+      "866",
+      "864",
+      "869"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"pond creation for toad conservation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"866\",\n    \"action_title\": \"Create ponds for natterjack toads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"864\",\n    \"action_title\": \"Create ponds for green toads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"869\",\n    \"action_title\": \"Create ponds for amphibians\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"866\"}",
+            "return_val": "{\n  \"action_id\": \"866\",\n  \"action_title\": \"Create ponds for natterjack toads\",\n  \"key_messages\": \"Key Messages:\\n\\nFive before-and-after studies (including three replicated and one controlled study) in the UK and Denmark found that pond creation, along with other interventions, significantly increased natterjack toad populations, or in two cases maintained or increased populations at 75% of sites.\\nOne replicated, site comparison study in the UK found that compared to natural ponds, created ponds had lower natterjack toad tadpole mortality from desiccation, but higher mortality from predation by invertebrates.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"864\"}",
+            "return_val": "{\n  \"action_id\": \"864\",\n  \"action_title\": \"Create ponds for green toads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies (including one controlled study) in Denmark found that pond creation, along with other interventions, significantly increased green toad populations.\\nOne replicated, before-and-after study in Sweden found that green toads used 59% and reproduced in 41% of created ponds.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"869\"}",
+            "return_val": "{\n  \"action_id\": \"869\",\n  \"action_title\": \"Create ponds for amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-eight studies investigated the colonization of created ponds by amphibians in general (rather than by targeted species, which are discussed below). All of the studies found that amphibians used some or all created ponds.\\nNine site comparison studies (including seven replicated studies) in Australia, Canada, Spain, the UK and USA compared amphibian numbers in created and natural ponds. Five found that numbers of species or breeding species were similar or higher in created ponds, and numbers of ponds colonized were similar. Four found that species composition differed, and comparisons between abundance of individual species, juvenile productivity and size at metamorphosis differed depending on species. One found that numbers of species were similar or lower depending on the permanence of created water bodies. One found that populations in created ponds were less stable.\\nOne review and two replicated, before-and-after studies in Denmark and the USA found that amphibians established stable populations in 50\\u2013100% of created ponds. Six replicated studies (including one randomized study) in France, the Netherlands, UK and USA found that amphibians used 64\\u2013100%\\u00a0and reproduced in 64\\u201368% of created ponds, or used 8\\u2013100% and reproduced in 2\\u201362% depending on species. One review and 15 studies (including 12 replicated studies, one of which was randomized) in Europe and the USA found that created ponds were used or colonized by up to 15 naturally colonizing species, up to 10 species that reproduced, as well as by captive-bred amphibians. Five replicated studies (including three site comparison studies) in Denmark, Estonia, France, Italy and the USA found that pond creation, and restoration in three cases, maintained and increased amphibian populations or increased numbers of species.\\nSeven studies (including one review) in Austria, Denmark, Poland, the Netherlands and USA found that use or colonization of or reproductive success in created ponds was affected by pond age, permanence, vegetation cover, surrounding landscape, distance to existing ponds and presence of fish.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"866\",\"864\",\"869\"],\"query\":\"What are the typical outcomes when creating new ponds to support toad populations in Europe?\",\"summary\":\"Five before-and-after studies in the UK and Denmark found that pond creation, along with other interventions, significantly increased natterjack toad populations, or maintained or increased populations at 75% of sites (866). A UK study found that created ponds had lower natterjack toad tadpole mortality from desiccation, but higher mortality from invertebrate predation compared to natural ponds (866). Two before-and-after studies in Denmark showed that pond creation with other interventions significantly increased green toad populations (864). In Sweden, one study revealed that green toads used 59% and reproduced in 41% of created ponds (864). Twenty-eight studies found that amphibians generally used some or all created ponds (869). Nine site comparison studies in Europe, North America, and Australia found mixed results when comparing amphibian numbers in created and natural ponds; five found similar or higher species numbers in created ponds, while four found different species compositions (869). Several studies in Europe and the USA found that 64-100% of created ponds were used by amphibians, with reproduction occurring in 64-68% of them (869). The success of created ponds can be affected by their age, permanence, vegetation, surrounding landscape, distance to other ponds, and the presence of fish (869).\"}",
+            "return_val": "{\n  \"query\": \"What are the typical outcomes when creating new ponds to support toad populations in Europe?\",\n  \"relevant_summary\": \"Five before-and-after studies in the UK and Denmark found that pond creation, along with other interventions, significantly increased natterjack toad populations, or maintained or increased populations at 75% of sites (866). A UK study found that created ponds had lower natterjack toad tadpole mortality from desiccation, but higher mortality from invertebrate predation compared to natural ponds (866). Two before-and-after studies in Denmark showed that pond creation with other interventions significantly increased green toad populations (864). In Sweden, one study revealed that green toads used 59% and reproduced in 41% of created ponds (864). Twenty-eight studies found that amphibians generally used some or all created ponds (869). Nine site comparison studies in Europe, North America, and Australia found mixed results when comparing amphibian numbers in created and natural ponds; five found similar or higher species numbers in created ponds, while four found different species compositions (869). Several studies in Europe and the USA found that 64-100% of created ponds were used by amphibians, with reproduction occurring in 64-68% of them (869). The success of created ponds can be affected by their age, permanence, vegetation, surrounding landscape, distance to other ponds, and the presence of fish (869).\",\n  \"action_ids\": [\n    \"866\",\n    \"864\",\n    \"869\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "817",
+      "864",
+      "866",
+      "868",
+      "869",
+      "878"
+    ],
+    "regenerated_ids": [
+      "864",
+      "866",
+      "868"
+    ]
   }
 ]

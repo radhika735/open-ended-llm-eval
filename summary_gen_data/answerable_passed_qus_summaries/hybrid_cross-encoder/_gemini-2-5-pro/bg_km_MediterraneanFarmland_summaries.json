@@ -692,5 +692,83 @@
       "1398",
       "1399"
     ]
+  },
+  {
+    "query": "Which actions are most effective for increasing beneficial soil organisms like earthworms and microbial biomass on Mediterranean farmland?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Applying a high rate of compost was found to increase microbial biomass in a trial in Italy on silty-clay soil [889]. In addition, growing cover crops has been shown to be effective at increasing beneficial soil organisms. For example, some studies in the USA have found that growing cover crops can lead to an increase in microbial biomass [1345, 898] and earthworms [1345]. Furthermore, a study in Spain found an increase in bacteria and fungi in soils with winter cover crops [1345] and a study in Martinique found that cover crops resulted in more diverse nematode communities [898]. However, one study in Italy reported inconsistent differences in microbial biomass between soils with or without winter cover crops [1345].",
+    "summary_action_ids": [
+      "1345",
+      "889",
+      "898"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"increasing beneficial soil organisms on Mediterranean farmland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1345\",\n    \"action_title\": \"Soil: Grow cover crops in arable fields\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"889\",\n    \"action_title\": \"Amend the soil with composts not otherwise specified\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"898\",\n    \"action_title\": \"Grow cover crops when the field is empty\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1345\"}",
+            "return_val": "{\n  \"action_id\": \"1345\",\n  \"action_title\": \"Soil: Grow cover crops in arable fields\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (12 studies): One meta-analysis of studies from Mediterranean-type climates\\u00a0and ten replicated, controlled studies (nine randomized, two before-and-after) from Italy, Spain, and the USA found more organic matter (mostly measured as carbon) in soils with winter cover crops, compared to soils without them, in some or all comparisons. One replicated, randomized, controlled, before-and-after study from Italy\\u00a0found inconsistent differences in organic matter in soils with or without winter cover crops (sometimes more, sometimes less).\\nNutrients (22 studies)\\n\\nNitrogen (21 studies): Ten replicated, randomized, controlled studies (two before-and-after) from Italy, Spain, and the USA\\u00a0found more nitrogen in soils with winter cover crops, compared to soils without them, in some comparisons. One replicated, randomized, controlled study from the USA found less nitrogen in soils with winter cover crops, compared to soils without them. Ten replicated, controlled studies (nine randomized, two before-and-after) from Italy, Spain, and the USA\\u00a0found inconsistent differences in nitrogen (sometimes more, sometimes less) between soils with or without winter cover crops (but see the paragraphs, below, for distinctions between different forms of nitrogen).\\nPhosphorus (1 study): One replicated, randomized, controlled study from the USA\\u00a0found similar amounts of phosphorus in soils with or without winter cover crops.\\nPotassium (1 study): One replicated, randomized, controlled, before-and-after study from the USA\\u00a0found an increase in potassium in soils with winter cover crops, and no increase in soils without them.\\n\\nSoil organisms (12 studies)\\n\\nMicrobial biomass (6 studies): Five replicated, randomized, controlled studies from the USA\\u00a0found more microbial biomass in soils with cover crops, compared to soils without them, in some or all comparisons. One replicated, randomized, controlled, before-and-after study from Italy\\u00a0found inconsistent differences in microbial biomass (sometimes more, sometimes less) between soils with or without winter cover crops.\\nNematodes (2 studies): Two replicated, randomized, controlled studies from the USA\\u00a0found more nematodes in soils with cover crops, compared to soils without them, in some comparisons. One of these studies\\u00a0also found a higher ratio of bacteria-feeding nematodes to fungus-feeding nematodes in soils with cover crops, compared to soils without them.\\nEarthworms (2 studies): One replicated, controlled study from the USA\\u00a0found more earthworms in soils with winter cover crops, compared to soils without them. One replicated site comparison from the USA\\u00a0found similar numbers of earthworms in soils with or without winter cover crops.\\nBacteria and fungi (2 studies): One replicated, randomized, controlled study from Spain\\u00a0found more bacteria and fungi in soils with winter cover crops, compared to soils without them, in some comparisons. One replicated, controlled study from Italy\\u00a0found more spores and species of beneficial fungi (mycorrhizae) in soils with winter cover crops, compared to soils without them, in some comparisons.\\n\\nSoil erosion and aggregation (4 studies)\\n\\nSoil erosion (2 studies): Two controlled studies (one replicated and randomized) from Israel\\u00a0and the USA\\u00a0found less erosion of soils with cover crops, compared to soils with fallows or bare soils.\\nSoil aggregation (2 studies): Two replicated, randomized, controlled studies from Spain\\u00a0and the USA\\u00a0found more water-stable soil aggregates in plots with winter cover crops, compared to plots without them, in some or all comparisons.\\n\\nGreenhouse gases (5 studies)\\n\\nCarbon dioxide (5 studies): Three controlled studies (two replicated and randomized) from Italy and the USA\\u00a0found similar amounts of carbon dioxide in soils with or without cover crops. Two replicated, randomized, controlled studies from the USA\\u00a0found more carbon dioxide in soils with cover crops, compared to soils without them, in some comparisons.\\nCarbon storage (1 study): One replicated, randomized, controlled study from Italy\\u00a0found more carbon accumulation in soils with cover crops, compared to soils without them, in some comparisons.\\nNitrous oxide (2 studies): One replicated, randomized, controlled study from the USA\\u00a0found more nitrous oxide in soils with cover crops, compared to soils without them, in some comparisons. One controlled study from the USA\\u00a0found similar amounts of nitrous oxide in soils with cover crops or fallows.\\n\\nImplementation options (9 studies): Five studies from Italy, Spain, and the USA\\u00a0found more nitrogen in soils that were cover cropped with legumes, compared to non-legumes. One study from the USA found inconsistent differences in nitrogen (sometimes more, sometimes less) between soils with different cover crops. One study from the USA\\u00a0found no differences in phosphorus or microbial biomass between soils with different cover crops. One study from Italy\\u00a0found differences in beneficial fungi (mycorrhizae) between plots with different cover crops. One study from Spain\\u00a0found higher soil quality in plots with long-term cover crops, compared to short-term.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"889\"}",
+            "return_val": "{\n  \"action_id\": \"889\",\n  \"action_title\": \"Amend the soil with composts not otherwise specified\",\n  \"key_messages\": \"Key Messages:\\nOne controlled, randomized, replicated trial in Italy found that applying a high rate of compost increased soil organic matter levels, microbial biomass and fruit yield.\\n \\nSOIL TYPES COVERED: Silty-clay.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"898\"}",
+            "return_val": "{\n  \"action_id\": \"898\",\n  \"action_title\": \"Grow cover crops when the field is empty\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: One controlled, randomized, replicated experiment in Martinique found that growing cover crops resulted in more diverse nematode communities. One replicated trial from the USA found greater microbial biomass under ryegrass compared to a ryegrass/vetch cover crop mix.\\nSoil structure: Three randomized, replicated studies from Denmark, Turkey and the UK found that growing cover crops improved soil structure and nutrient retention. One trial found higher soil porosity, interconnectivity and lower resistance in soil under cover crops, and one found reduced nitrate leaching.\\nSoil organic carbon: One replicated study from Denmark and one review based mainly in Japan found increased soil carbon levels under cover crops. One study also found soil carbon levels increased further when legumes were included in cover crops.\\nSoil organic matter: One replicated study from Denmark and three controlled, randomized, replicated studies from Australia and the USA measured the effect of growing cover crops. Three found increased nitrogen levels under cover crops, three found increased carbon, and one found increased nitrates. One trial showed that they increased regardless of whether those crops were legumes or not. Two studies from Europe (including one controlled, replicated trial) found no marked effect on soil organic matter levels.\\nYield: One replicated trial from the USA found higher tomato yield from soils which had been under a ryegrass cover crop.\\n \\nSOIL TYPES COVERED: clay, loam, sandy clay, sandy-loam, silty-clay, silty-loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Applying a high rate of compost was found to increase microbial biomass in a trial in Italy on silty-clay soil [889]. In addition, growing cover crops has been shown to be effective at increasing beneficial soil organisms. For example, some studies in the USA have found that growing cover crops can lead to an increase in microbial biomass [1345, 898] and earthworms [1345]. Furthermore, a study in Spain found an increase in bacteria and fungi in soils with winter cover crops [1345] and a study in Martinique found that cover crops resulted in more diverse nematode communities [898]. However, one study in Italy reported inconsistent differences in microbial biomass between soils with or without winter cover crops [1345].\",\"action_ids\":[\"1345\",\"889\",\"898\"],\"query\":\"Which actions are most effective for increasing beneficial soil organisms like earthworms and microbial biomass on Mediterranean farmland?\"}",
+            "return_val": "{\n  \"query\": \"Which actions are most effective for increasing beneficial soil organisms like earthworms and microbial biomass on Mediterranean farmland?\",\n  \"relevant_summary\": \"Applying a high rate of compost was found to increase microbial biomass in a trial in Italy on silty-clay soil [889]. In addition, growing cover crops has been shown to be effective at increasing beneficial soil organisms. For example, some studies in the USA have found that growing cover crops can lead to an increase in microbial biomass [1345, 898] and earthworms [1345]. Furthermore, a study in Spain found an increase in bacteria and fungi in soils with winter cover crops [1345] and a study in Martinique found that cover crops resulted in more diverse nematode communities [898]. However, one study in Italy reported inconsistent differences in microbial biomass between soils with or without winter cover crops [1345].\",\n  \"action_ids\": [\n    \"1345\",\n    \"889\",\n    \"898\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1345",
+      "1362",
+      "1363",
+      "1364",
+      "1365",
+      "1366",
+      "1367",
+      "1368",
+      "1369",
+      "1370",
+      "1371",
+      "1372",
+      "1375"
+    ],
+    "regenerated_ids": [
+      "1345",
+      "1362",
+      "1363",
+      "1366",
+      "1367",
+      "1369",
+      "1371",
+      "1372"
+    ]
   }
 ]

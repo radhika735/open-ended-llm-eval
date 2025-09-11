@@ -822,5 +822,119 @@
       "1026",
       "739"
     ]
+  },
+  {
+    "query": "Which dietary alternatives or supplements to traditional fish meal have been shown to have no negative impact on Atlantic salmon growth or weight?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Replicated and controlled studies report no negative impact on Atlantic salmon growth or weight for several options: dietary supplementation with phytase and phosphate resulted in no difference in weight gain compared to no supplementation, with one study finding greater final weights with phytase, and taurine supplementation showed no difference in weight gain [930]. Two replicated studies found similar final weight gain when fish meal was replaced with a krill meal substitute, with de-shelled krill producing growth rates closer to fish meal than whole krill [916]. For plant-based proteins, multiple replicated/controlled studies reported similar growth rates and similar final body weights to fish meal diets, although other studies reported reductions [924]. For bacterial protein, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced, while another study reported higher growth at 18% and 36% bacterial protein; however, a 50% replacement reduced growth [918].",
+    "summary_action_ids": [
+      "930",
+      "916",
+      "924",
+      "918"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Atlantic salmon fish meal alternatives no negative impact on growth or weight supplement diet study\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"930\",\n    \"action_title\": \"Use supplements\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"930\"}",
+            "return_val": "{\n  \"action_id\": \"930\",\n  \"action_title\": \"Use supplements\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled, replicated\\u00a0study in Australia found no difference in weight gain of Atlantic salmon with and without dietary supplementation of phytase and phosphate. \\nOne controlled, replicated study in\\u00a0Australia\\u00a0fish fed diets supplemented with phytase had greater final weights than those given no supplement. \\nA controlled, replicated\\u00a0study in Norway found no difference in weight gain of salmon that were fed diets with or without taurine supplementation.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"916\"}",
+            "return_val": "{\n  \"action_id\": \"916\",\n  \"action_title\": \"Use an alternative protein source: krill\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in Norway found similar final weight gain between salmon that were fed diets containing fish meal only or a krill meal substitute. When the krill were de-shelled, growth rates were closer to salmon fed fish meal, compared to leaving the krill whole.\\nFeed conversion ratios were found to be similar in both the fish meal and krill meal diets.\\nThe number of aerobic bacteria in the hindgut of salmon fed fish meal and krill meal were higher and composition of the bacterial flora was different.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"924\"}",
+            "return_val": "{\n  \"action_id\": \"924\",\n  \"action_title\": \"Use an alternative protein source: plant-based\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies (four replicated, controlled) in\\u00a0Norway, Scotland and the USA found that inclusion of plant-based proteins within feed led to decreased growth rates in salmon. Three replicated and/or controlled studies from Norway, Canada and Scotland found similar growth rates in salmon fed either plant-based or fish meal diets.\\nFour replicated, controlled\\u00a0studies (three randomised) from Norway and Scotland found reduced final body weights in salmon fed plant-based protein diets compared to fish meal-based diets. Two controlled studies (one replicated) from Norway found similar final body weights in salmon fed either plant-based or fish meal diets.\\nTwo replicated, controlled studies (one randomised)\\u00a0from Norway found lowered levels of feeding efficiency, whereas a replicated study in Norway found increased levels of feeding efficiency in salmon fed plant-based protein diets compared to fish meal diets. Two replicated studies (one controlled) in\\u00a0Canada and Scotland\\u00a0study found similar levels of feeding efficiency across both diet types.\\nDigestibility of feed components by salmon was found to be lower in two replicated, controlled studies when the diets contained plant proteins compared to fish meal. Similar levels of digestibility across both diet types were identified by two randomised, replicated, controlled studies in Scotland\\u00a0and Norway. \\nTwo of the studies found that survival rates and appetite were not affected by plant- or fish meal-based protein diets. However morphology of the distal intestine was altered in two randomised, replicated, controlled studies where salmon were fed diets containing plant-based proteins. Condition of the salmon was increased in plant-based protein diets in one randomised, replicated, controlled study but reduced in two other replicated studies.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Atlantic salmon fish meal alternative insect meal growth no difference weight\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"930\",\n    \"action_title\": \"Use supplements\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Atlantic salmon alternative protein source algae yeast single cell bacterial meal growth weight similar to fish meal\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"918\"}",
+            "return_val": "{\n  \"action_id\": \"918\",\n  \"action_title\": \"Use an alternative protein source: bacteria\",\n  \"key_messages\": \"Key Messages:\\n\\nEvidence for the effects of replacing fish meal with bacterial protein is mixed.\\nTwo replicated, controlled studies in Norway found similar growth rates in salmon fed either a 100% fish meal (control) diet or experimental diets containing up to 25% bacterial protein to replace fish meal. In the diet containing 50% bacterial protein, growth rates were lower compared to the control. \\nAnother replicated, controlled study in Norway reported higher growth rates in salmon that were fed diets containing 18% and 36% bacterial protein compared to the control or a diet containing 4.5% bacterial protein.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Atlantic salmon alternative protein source insect meal growth study\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"937\",\n    \"action_title\": \"Eco friendly biofouling prevention\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"945\",\n    \"action_title\": \"Use exclusion nets\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"93\",\n    \"action_title\": \"Use mixed stocking\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"Which dietary alternatives or supplements to traditional fish meal have been shown to have no negative impact on Atlantic salmon growth or weight?\",\"summary\":\"Replicated and controlled studies report no negative impact on Atlantic salmon growth or weight for several options: dietary supplementation with phytase and phosphate resulted in no difference in weight gain compared to no supplementation, with one study finding greater final weights with phytase, and taurine supplementation showed no difference in weight gain [930]. Two replicated studies found similar final weight gain when fish meal was replaced with a krill meal substitute, with de-shelled krill producing growth rates closer to fish meal than whole krill [916]. For plant-based proteins, multiple replicated/controlled studies reported similar growth rates and similar final body weights to fish meal diets, although other studies reported reductions [924]. For bacterial protein, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced, while another study reported higher growth at 18% and 36% bacterial protein; however, a 50% replacement reduced growth [918].\",\"action_ids\":[\"930\",\"916\",\"924\",\"918\"]}",
+            "return_val": "{\n  \"query\": \"Which dietary alternatives or supplements to traditional fish meal have been shown to have no negative impact on Atlantic salmon growth or weight?\",\n  \"relevant_summary\": \"Replicated and controlled studies report no negative impact on Atlantic salmon growth or weight for several options: dietary supplementation with phytase and phosphate resulted in no difference in weight gain compared to no supplementation, with one study finding greater final weights with phytase, and taurine supplementation showed no difference in weight gain [930]. Two replicated studies found similar final weight gain when fish meal was replaced with a krill meal substitute, with de-shelled krill producing growth rates closer to fish meal than whole krill [916]. For plant-based proteins, multiple replicated/controlled studies reported similar growth rates and similar final body weights to fish meal diets, although other studies reported reductions [924]. For bacterial protein, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced, while another study reported higher growth at 18% and 36% bacterial protein; however, a 50% replacement reduced growth [918].\",\n  \"action_ids\": [\n    \"930\",\n    \"916\",\n    \"924\",\n    \"918\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "915",
+      "916",
+      "918",
+      "920",
+      "922",
+      "924",
+      "926",
+      "928",
+      "930"
+    ],
+    "regenerated_ids": [
+      "915",
+      "916",
+      "918",
+      "920",
+      "924",
+      "928",
+      "930"
+    ]
   }
 ]

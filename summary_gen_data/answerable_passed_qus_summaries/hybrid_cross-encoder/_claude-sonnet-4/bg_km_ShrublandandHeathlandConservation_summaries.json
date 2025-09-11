@@ -1120,5 +1120,166 @@
       "1686",
       "1698"
     ]
+  },
+  {
+    "query": "What are the effects of various soil amendments, such as adding mulch, fertilizer, or manure, when restoring shrublands?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Studies on soil amendments for shrubland restoration show mixed results. Mulch and fertilizer amendments had limited effects on shrub establishment, with one study finding no increase in seedling abundance of seven shrub species and no change in grass cover (Action 1694). However, when mulch and fertilizer were combined with seeding, there was increased seedling abundance for a minority of shrub species but no significant effect on grass cover (Action 1707). \n\nManure amendments showed more positive results, with one study finding increased plant cover and number of plant species when manure was added to soil (Action 1695). Mixed organic and inorganic amendments demonstrated benefits including higher microbial biomass and activity, increased organic carbon in soils, more soil nutrients, and increased crop yields, though effects varied by soil type (Action 902). \n\nAgricultural manures and composts increased microbial biomass and respiration, reduced soil loss and water runoff, increased soil carbon levels, improved soil organic matter and physical properties, and resulted in higher crop yields (Action 911). Fresh plant material and crop remains also increased microbial biomass, improved soil structure, reduced soil loss, increased soil nitrogen and carbon levels, and improved crop yields (Action 910). \n\nFertilizer alone when combined with seeding increased cover of shrubs and trees in most cases and increased vegetation cover in some cases (Action 1704). Adding organic matter such as leaf litter or wood-chips before restoration planting increased seedling biomass but decreased seedling emergence and survival (Action 1258).",
+    "summary_action_ids": [
+      "1694",
+      "1707",
+      "1695",
+      "902",
+      "911",
+      "910",
+      "1704",
+      "1258"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrubland restoration soil amendments mulch fertilizer manure\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1694\",\n    \"action_title\": \"Add mulch and fertilizer to soil\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1695\",\n    \"action_title\": \"Add manure to soil\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3311\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1707\",\n    \"action_title\": \"Add mulch and fertilizer to soil (alongside planting/seeding)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"911\",\n    \"action_title\": \"Amend the soil with manures and agricultural composts\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"728\",\n    \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"908\",\n    \"action_title\": \"Amend the soil with crops grown as green manures\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"910\",\n    \"action_title\": \"Amend the soil with fresh plant material or crop remains\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3270\",\n    \"action_title\": \"Transplant or replace wetland soil: freshwater marshes\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrubland restoration soil quality\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"3751\",\n    \"action_title\": \"Create or restore shrubland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2569\",\n    \"action_title\": \"Restore or create shrubland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"364\",\n    \"action_title\": \"Restore or create shrubland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3946\",\n    \"action_title\": \"Restore or create heathland/shrubland\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1672\",\n    \"action_title\": \"Restore habitat in area predicted to have suitable climate for shrubland species in the future\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1687\",\n    \"action_title\": \"Add peat to soil\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1704\",\n    \"action_title\": \"Add fertilizer to soil (alongside planting/seeding)\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1683\",\n    \"action_title\": \"Remove trees/crops to restore shrubland structure\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1695\",\n    \"action_title\": \"Add manure to soil\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1857\",\n    \"action_title\": \"Add topsoil (alongside planting/seeding)\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1694\"}",
+            "return_val": "{\n  \"action_id\": \"1694\",\n  \"action_title\": \"Add mulch and fertilizer to soil\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled study in the USA\\u00a0found that adding mulch and fertilizer did not increase the seedling abundance of seven shrub species. The same study also reported no change in grass cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"902\"}",
+            "return_val": "{\n  \"action_id\": \"902\",\n  \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Five controlled trials from China and India (four also randomized and replicated), and one study from Japan found higher microbial biomass and activity in soils with a mix of manure and inorganic fertilizers. Manure alone also increased microbial biomass. One trial found increased microbial diversity.\\nErosion: One controlled, replicated trial from India found that mixed amendments were more effective at reducing the size of cracks in dry soil than inorganic fertilizers alone or no fertilizer.\\nSOC loss: Four controlled, randomized, replicated trials and one controlled trial from China and India found more organic carbon in soils with mixed fertilizers. Manure alone also increased organic carbon. One trial also found more carbon in soil amended with inorganic fertilizers and lime.\\nSOM loss: Two controlled, randomized, replicated trials from China and India found more nutrients in soils with manure and inorganic fertilizers. One controlled, randomized, replicated trial from China found inconsistent effects of using mixed manure and inorganic fertilizers.\\nYield: Two controlled, randomized, replicated trials from China found increased maize Zea mays yield in soils with mixed manure and inorganic fertilizer amendments.\\nSOIL TYPES COVERED: clay, clay loam, sandy-loam, silt clay loam, silty-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1695\"}",
+            "return_val": "{\n  \"action_id\": \"1695\",\n  \"action_title\": \"Add manure to soil\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in South Africa\\u00a0found that adding manure to the soil increased plant cover and the number of plant species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1707\"}",
+            "return_val": "{\n  \"action_id\": \"1707\",\n  \"action_title\": \"Add mulch and fertilizer to soil (alongside planting/seeding)\",\n  \"key_messages\": \"Key Messages:\\n\\nA randomized, controlled study in the USA\\u00a0found that adding mulch and fertilizer, followed by sowing of seeds increased the abundance of seedlings for a minority of shrub species. The same study found that adding mulch and fertilizer, followed by sowing seeds had no significant effect on grass cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"911\"}",
+            "return_val": "{\n  \"action_id\": \"911\",\n  \"action_title\": \"Amend the soil with manures and agricultural composts\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity loss: Three controlled, replicated studies from the UK and USA found higher microbial biomass when manure or compost was applied, and higher microbial respiration when poultry manure was applied.\\nErosion: One controlled, randomized, replicated study from India found lower soil loss and water runoff with manure application in combination with other treatments.\\nNutrient management: Four studies from Canada, Spain, the UK and the USA measured the effect of a variety of manure types on soil nutrient levels. Of these, three randomized, replicated studies (two also controlled) found reduced nutrient loss and higher nitrogen levels when farmyard or poultry manure was applied. One also found lower nutrient loss when farmyard manure (rather than poultry manure or slurry) was applied in winter rather than autumn. One controlled replicated study found higher nitrate leaching.\\nSoil organic carbon: Four studies (including three controlled, replicated studies (one also randomized) and a review) from India, Japan and the UK found higher carbon levels when manures were applied.\\nSoil organic matter: One controlled, randomized, replicated study from Turkey found higher organic matter, larger soil aggregations and a positive effect on soil physical properties when manure and compost were applied. Two studies from Denmark and Germany found no effect of manure on organic matter levels.\\nYield: Four controlled, replicated studies (including three also randomized) from India, Spain and Turkey found higher crop yields when manures or compost were applied. One study found higher yields when manure were applied in combination with cover crops.\\nSoil types covered: Clay loam, fine sandy-silty loam, loam, loamy, sandy loam, sandy clay loam, silty loam, and sandy silt loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3751\"}",
+            "return_val": "{\n  \"action_id\": \"3751\",\n  \"action_title\": \"Create or restore shrubland\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of creating or restoring shrubland on reptile populations. This study was in Mexico.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, controlled study in Mexico\\u00a0found that areas of restored shrubland had similar reptile and amphibian species richness compared to areas that were not restored.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, controlled study in Mexico\\u00a0found that areas of restored shrubland had a higher abundance of lizards than areas that were not restored.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2569\"}",
+            "return_val": "{\n  \"action_id\": \"2569\",\n  \"action_title\": \"Restore or create shrubland\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of restoring or creating shrubland. Two studies were in the USA\\u00a0and one was in Mexico.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nRichness/diversity (2 studies): Two site comparison studies, in the USA\\u00a0and Mexico, found that following desert scrub\\u00a0or shrubland\\u00a0restoration, mammal species richness was similar to that in undisturbed areas.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A site comparison study in the USA\\u00a0found that restored desert scrub hosted similar small mammal abundance compared to undisturbed desert scrub.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): A replicated, site comparison study in the USA\\u00a0found that restoring shrubland following tree clearance did not increase usage of areas by mule deer compared to tree clearance alone.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"364\"}",
+            "return_val": "{\n  \"action_id\": \"364\",\n  \"action_title\": \"Restore or create shrubland\",\n  \"key_messages\": \"Key Messages:\\n\\nOnly one of the four studies captured investigated the effects of shrubland restoration in isolation. This small before-and-after study from the UK found that one or two pairs of northern lapwing bred on an area of restored moorland, whereas none had previously bred in the area.\\nA study from the USA and one from the Azores found that populations of target species (gamebirds and seabirds) increased following shrubland restoration, amongst other interventions.\\nA replicated study from the UK which did not distinguish between several interventions performed found a negative relationship between the combined intervention and the ratio of young-to-old grey partridges.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"organic amendments soil restoration plant establishment\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1258\",\n    \"action_title\": \"Add organic matter after tree planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3244\",\n    \"action_title\": \"Add below-ground organic matter: brackish/salt marshes\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3308\",\n    \"action_title\": \"Add below-ground organic matter before/after planting non-woody plants: freshwater wetlands\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3310\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: freshwater wetlands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"892\",\n    \"action_title\": \"Amend the soil with non-chemical minerals and mineral wastes\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"910\",\n    \"action_title\": \"Amend the soil with fresh plant material or crop remains\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3270\",\n    \"action_title\": \"Transplant or replace wetland soil: freshwater marshes\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"888\",\n    \"action_title\": \"Amend the soil with bacteria or fungi\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1835\",\n    \"action_title\": \"Remove upper layer of peat/soil (before planting)\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1258\"}",
+            "return_val": "{\n  \"action_id\": \"1258\",\n  \"action_title\": \"Add organic matter after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, randomized, controlled studies in the USA found that adding leaf litter or wood-chips before restoration planting increased seedling biomass, but decreased seedling emergence and survival.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"910\"}",
+            "return_val": "{\n  \"action_id\": \"910\",\n  \"action_title\": \"Amend the soil with fresh plant material or crop remains\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: One randomized, replicated experiment from Belgium found increased microbial biomass when crop remains and straw were added.\\nCompaction: One study from India found improved soil structure when straw was incorporated. One before-and-after trial from the UK found that incorporating straw residues by discing (reduced tillage) did not improve anaerobic soils (low oxygen levels) in compacted soils.\\nErosion: Two randomized, replicated studies from Canada and India measured the effect of incorporating straw on erosion. One found straw addition reduced soil loss, and one found mixed effects depending on soil type.\\nNutrient loss: Four replicated studies from Belgium, the UK and the USA (one also controlled, one also randomized, and two also controlled and randomized) reported higher soil nitrogen levels when compost or straw was applied, but mixed results when processed wastes were added. One also found reduced nitrate leaching when straw was incorporated. One replicated study from China and the Philippines found mixed results depending on site.\\nSoil organic carbon: Six studies from China, Denmark and India measured the effect of incorporating plant material into the soil. All (including one replicated, two randomized, replicated studies, one controlled, randomized, replicated studies and one controlled before-and-after site comparison) found higher carbon levels when plant material was added. One found higher carbon levels when straw was applied along with NPK fertilizers. One also found larger soil aggregates. One replicated study from China and the Philippines found mixed results depending on site.\\nYield: One replicated trial from Denmark found higher barley yield when straw was incorporated. One trial from the Philippines found higher grain yields when crop remains were incorporated earlier in the season.\\n \\nSoil types covered: clay, clay loam, fine loam, loam/sandy loam,\\u00a0loamy sand, sandy, sandy clay loam, sandy loam, sandy-silt, silt loam, silty, silty-clay.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"908\"}",
+            "return_val": "{\n  \"action_id\": \"908\",\n  \"action_title\": \"Amend the soil with crops grown as green manures\",\n  \"key_messages\": \"Key Messages:\\nTwo controlled, randomized, replicated studies from India and Pakistan found higher soil organic carbon, or increased grain yields when green manures were grown.\\nSOIL TYPES COVERED: Clay loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1704\"}",
+            "return_val": "{\n  \"action_id\": \"1704\",\n  \"action_title\": \"Add fertilizer to soil (alongside planting/seeding)\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled study in Iceland\\u00a0found that adding fertilizer and sowing seeds increased cover of shrubs and trees in a majority of cases. The same study showed an increase in vegetation cover in two of three cases.\\nOne controlled study in the USA\\u00a0found that adding fertilizer increased the biomass of four-wing saltbush in a majority of cases.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1687\"}",
+            "return_val": "{\n  \"action_id\": \"1687\",\n  \"action_title\": \"Add peat to soil\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of adding peat to soils to encourage recolonization on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the effects of various soil amendments, such as adding mulch, fertilizer, or manure, when restoring shrublands?\", \"summary\": \"Studies on soil amendments for shrubland restoration show mixed results. Mulch and fertilizer amendments had limited effects on shrub establishment, with one study finding no increase in seedling abundance of seven shrub species and no change in grass cover (Action 1694). However, when mulch and fertilizer were combined with seeding, there was increased seedling abundance for a minority of shrub species but no significant effect on grass cover (Action 1707). \\n\\nManure amendments showed more positive results, with one study finding increased plant cover and number of plant species when manure was added to soil (Action 1695). Mixed organic and inorganic amendments demonstrated benefits including higher microbial biomass and activity, increased organic carbon in soils, more soil nutrients, and increased crop yields, though effects varied by soil type (Action 902). \\n\\nAgricultural manures and composts increased microbial biomass and respiration, reduced soil loss and water runoff, increased soil carbon levels, improved soil organic matter and physical properties, and resulted in higher crop yields (Action 911). Fresh plant material and crop remains also increased microbial biomass, improved soil structure, reduced soil loss, increased soil nitrogen and carbon levels, and improved crop yields (Action 910). \\n\\nFertilizer alone when combined with seeding increased cover of shrubs and trees in most cases and increased vegetation cover in some cases (Action 1704). Adding organic matter such as leaf litter or wood-chips before restoration planting increased seedling biomass but decreased seedling emergence and survival (Action 1258).\", \"action_ids\": [\"1694\",\"1707\",\"1695\",\"902\",\"911\",\"910\",\"1704\",\"1258\"]}",
+            "return_val": "{\n  \"query\": \"What are the effects of various soil amendments, such as adding mulch, fertilizer, or manure, when restoring shrublands?\",\n  \"relevant_summary\": \"Studies on soil amendments for shrubland restoration show mixed results. Mulch and fertilizer amendments had limited effects on shrub establishment, with one study finding no increase in seedling abundance of seven shrub species and no change in grass cover (Action 1694). However, when mulch and fertilizer were combined with seeding, there was increased seedling abundance for a minority of shrub species but no significant effect on grass cover (Action 1707). \\n\\nManure amendments showed more positive results, with one study finding increased plant cover and number of plant species when manure was added to soil (Action 1695). Mixed organic and inorganic amendments demonstrated benefits including higher microbial biomass and activity, increased organic carbon in soils, more soil nutrients, and increased crop yields, though effects varied by soil type (Action 902). \\n\\nAgricultural manures and composts increased microbial biomass and respiration, reduced soil loss and water runoff, increased soil carbon levels, improved soil organic matter and physical properties, and resulted in higher crop yields (Action 911). Fresh plant material and crop remains also increased microbial biomass, improved soil structure, reduced soil loss, increased soil nitrogen and carbon levels, and improved crop yields (Action 910). \\n\\nFertilizer alone when combined with seeding increased cover of shrubs and trees in most cases and increased vegetation cover in some cases (Action 1704). Adding organic matter such as leaf litter or wood-chips before restoration planting increased seedling biomass but decreased seedling emergence and survival (Action 1258).\",\n  \"action_ids\": [\n    \"1694\",\n    \"1707\",\n    \"1695\",\n    \"902\",\n    \"911\",\n    \"910\",\n    \"1704\",\n    \"1258\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1686",
+      "1687",
+      "1691",
+      "1694",
+      "1695",
+      "1704",
+      "1705",
+      "1706",
+      "1707",
+      "1708",
+      "1710",
+      "1857"
+    ],
+    "regenerated_ids": [
+      "1686",
+      "1687",
+      "1691",
+      "1694",
+      "1695",
+      "1704",
+      "1705",
+      "1706",
+      "1707",
+      "1708",
+      "1710",
+      "1857"
+    ]
   }
 ]

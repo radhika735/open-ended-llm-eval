@@ -629,5 +629,62 @@
       "1736",
       "1737"
     ]
+  },
+  {
+    "query": "What is the state of the evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in a fen in the USA found that restoring water inflow across a road, along with general rewetting, led to an increase in the cover of wet peatland sedges and a decrease in the cover of grasses that prefer drier conditions [1741]. No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors across service corridors [1742].",
+    "summary_action_ids": [
+      "1741",
+      "1742"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Service corridors and peatland vegetation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1741\",\n    \"action_title\": \"Maintain/restore water flow across service corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1742\",\n    \"action_title\": \"Retain/create habitat corridors across service corridors\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1739\",\n    \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1741\"}",
+            "return_val": "{\n  \"action_id\": \"1741\",\n  \"action_title\": \"Maintain/restore water flow across service corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study\\u00a0evaluated the effects on peatland vegetation of restoring water flow across service corridors. The study was in a fen.\\nCharacteristic plants (1 study): One before-and-after study in a fen in the USA\\u00a0found that following restoration of water inflow across a road (along with general rewetting), cover of wet peatland sedges increased whilst cover of grasses preferring drier conditions decreased.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1742\"}",
+            "return_val": "{\n  \"action_id\": \"1742\",\n  \"action_title\": \"Retain/create habitat corridors across service corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining/creating habitat corridors across service corridors.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the state of the evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation?\",\"summary\":\"One study in a fen in the USA found that restoring water inflow across a road, along with general rewetting, led to an increase in the cover of wet peatland sedges and a decrease in the cover of grasses that prefer drier conditions [1741]. No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors across service corridors [1742].\",\"action_ids\":[\"1741\",\"1742\"]}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence for actions to mitigate the impacts of service corridors like roads and pipelines on peatland vegetation?\",\n  \"relevant_summary\": \"One study in a fen in the USA found that restoring water inflow across a road, along with general rewetting, led to an increase in the cover of wet peatland sedges and a decrease in the cover of grasses that prefer drier conditions [1741]. No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors across service corridors [1742].\",\n  \"action_ids\": [\n    \"1741\",\n    \"1742\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1740",
+      "1741",
+      "1742"
+    ],
+    "regenerated_ids": [
+      "1740",
+      "1741",
+      "1742"
+    ]
   }
 ]

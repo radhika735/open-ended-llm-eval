@@ -1254,5 +1254,130 @@
       "1558",
       "1559"
     ]
+  },
+  {
+    "query": "How does a permanent human presence at a site influence the success of primate conservation efforts?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Studies show that permanent human presence at conservation sites can positively influence primate conservation success through multiple mechanisms. Two before-and-after studies in Rwanda, Uganda and Congo found that numbers of mountain gorillas increased over 5-41 years while gorillas were continuously monitored by researchers, alongside other interventions (Action 1511). One review on mountain gorillas in Uganda found that no gorilla was killed over one year while gorillas were continuously monitored by researchers, alongside other interventions (Action 1511). A before-and-after study in Belize found that numbers of black howler monkeys increased by 138% over 13 years after being permanently monitored by researchers, alongside other interventions (Action 1511). One controlled, before-and-after study in Rwanda, Uganda and the Democratic Republic of Congo found that the population size of mountain gorillas that were continuously monitored by vets, alongside other interventions, increased by 168% over 41 years (Action 1554). Additional forms of human presence show mixed results: a before-and-after study in Brazil found that most reintroduced golden lion tamarins did not survive over seven years post-release despite being permanently monitored by researchers, alongside other interventions (Action 1511). However, one before-and-after study in the Republic of Congo found that most reintroduced chimpanzees permanently monitored by researchers, alongside other interventions, survived over 3.5 years (Action 1511). A before-and-after study in Kenya found 'problem' olive baboon troops still survived over 17 years post-translocation while being permanently monitored by researchers, alongside other interventions (Action 1511). A controlled, before-and-after study in Rwanda, Uganda, and Democratic Republic of Congo found that a mountain gorilla population increased over 41 years, following habituation to human presence, alongside other interventions (Action 1519).",
+    "summary_action_ids": [
+      "1511",
+      "1554",
+      "1519"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"primate conservation permanent human presence site monitoring\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1554\",\n    \"action_title\": \"Implement continuous health monitoring with permanent vet on site\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1511\",\n    \"action_title\": \"Run research project and ensure permanent human presence at site\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1481\",\n    \"action_title\": \"Implement monitoring surveillance strategies (e.g. SMART) or use monitoring data to improve effectiveness of wildlife law enforcement patrols\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"primate conservation human monitoring surveillance\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1481\",\n    \"action_title\": \"Implement monitoring surveillance strategies (e.g. SMART) or use monitoring data to improve effectiveness of wildlife law enforcement patrols\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1471\",\n    \"action_title\": \"Conduct regular anti-poaching patrols\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1475\",\n    \"action_title\": \"Regularly de-activate/remove ground snares\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"permanent presence primate research station guards\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1511\",\n    \"action_title\": \"Run research project and ensure permanent human presence at site\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1519\",\n    \"action_title\": \"Habituate primates to human presence to reduce stress from tourists/researchers etc.\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1548\",\n    \"action_title\": \"Wear gloves when handling primate food, tool items, etc.\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1511\"}",
+            "return_val": "{\n  \"action_id\": \"1511\",\n  \"action_title\": \"Run research project and ensure permanent human presence at site\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies in Rwanda, Uganda and Congo\\u00a0found that numbers of mountain gorillas increased over 5-41 years while gorillas were continuously monitored by researchers, alongside other interventions. One review on mountain gorillas in Uganda\\u00a0found that no gorilla was killed over one year while gorillas were continuously monitored by researchers, alongside other interventions.\\nOne before-and-after study in Brazil\\u00a0found that most reintroduced golden lion tamarins did not survive over seven years post-release despite being permanently monitored by researchers, alongside other interventions, yet tamarins reproduced succesfully.\\nOne before-and-after study in Belize\\u00a0found that numbers of black howler monkeys increased by 138% over 13 years after being permanently monitored by researchers, alongside other interventions.\\nOne before-and-after study in the Republic of Congo\\u00a0found that most reintroduced chimpanzees permanently monitored by researchers, alongside other interventions, survived over 3.5 years.\\nOne before-and-after study in Kenya\\u00a0found \\u2018problem\\u2019 olive baboon troops still survived over 17 years post-translocation while being permanently monitored by researchers, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1554\"}",
+            "return_val": "{\n  \"action_id\": \"1554\",\n  \"action_title\": \"Implement continuous health monitoring with permanent vet on site\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, before-and-after study in Rwanda, Uganda and the Democratic Republic of Congo\\u00a0found that the population size of mountain gorillas that were continuously monitored by vets, alongside other interventions, increased by 168% over 41 years.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1481\"}",
+            "return_val": "{\n  \"action_id\": \"1481\",\n  \"action_title\": \"Implement monitoring surveillance strategies (e.g. SMART) or use monitoring data to improve effectiveness of wildlife law enforcement patrols\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Nigeria\\u00a0found that more gorillas and chimpanzees were observed after the implementation of law enforcement and a monitoring system.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"continuous monitoring protection enforcement presence\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1582\",\n    \"action_title\": \"Demarcate and enforce boundaries of protected areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1511\",\n    \"action_title\": \"Run research project and ensure permanent human presence at site\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3540\",\n    \"action_title\": \"Enforce regulations to prevent trafficking and trade of reptiles\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"research station field guards rangers primate\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1477\",\n    \"action_title\": \"Provide training to anti-poaching ranger patrols\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1471\",\n    \"action_title\": \"Conduct regular anti-poaching patrols\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1476\",\n    \"action_title\": \"Provide better equipment (e.g. guns) to anti-poaching ranger patrols\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1471\"}",
+            "return_val": "{\n  \"action_id\": \"1471\",\n  \"action_title\": \"Conduct regular anti-poaching patrols\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies in Rwanda\\u00a0found that gorilla populations increased after implementing regular anti-poaching patrols, alongside other interventions. One study in the Democratic Republic of Congo, Rwanda, and Uganda\\u00a0found that gorilla populations declined after conducting regular anti-poaching patrols.\\nA review on gorillas in Uganda found that no gorillas were killed over a 21 month period when the number of guards carrying out anti-poaching patrols increased, alongside other interventions.\\nOne study in Ghana\\u00a0found a reduction in illegal primate hunting activities following conducting regular anti-poaching patrols, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1477\"}",
+            "return_val": "{\n  \"action_id\": \"1477\",\n  \"action_title\": \"Provide training to anti-poaching ranger patrols\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study in Uganda\\u00a0found that no gorillas were killed over 21 months after game guards received training, alongside other interventions.\\nOne before-and-after study in Rwanda\\u00a0found that the number of immature gorillas increased in areas where game guards received training, alongside other interventions.\\nOne before-and-after study in India\\u00a0found that a population of hoolock gibbons increased after sanctuary staff received training, alongside other interventions.\\nOne before-and-after study in Cameroon\\u00a0found that no incidents of primate poaching occurred over a three year period after anti-poaching rangers were trained, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1519\"}",
+            "return_val": "{\n  \"action_id\": \"1519\",\n  \"action_title\": \"Habituate primates to human presence to reduce stress from tourists/researchers etc.\",\n  \"key_messages\": \"Key Messages:\\n\\nA before-and-after study in Brazil\\u00a0found that an introduced population of golden lion tamarins declined after one year, following habituation to human presence, alongside other interventions.\\nA before-and-after study in Madagascar\\u00a0found that the majority of introduced black-and-white ruffed lemurs and diademed sifakas survived over 30 months, following habituation to human presence, alongside other interventions.\\nA controlled, before-and-after study in Rwanda, Uganda, and Democratic Republic of Congo\\u00a0found that a mountain gorilla population increased over 41 years, following habituation to human presence, alongside other interventions.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"How does a permanent human presence at a site influence the success of primate conservation efforts?\", \"summary\": \"Studies show that permanent human presence at conservation sites can positively influence primate conservation success through multiple mechanisms. Two before-and-after studies in Rwanda, Uganda and Congo found that numbers of mountain gorillas increased over 5-41 years while gorillas were continuously monitored by researchers, alongside other interventions (Action 1511). One review on mountain gorillas in Uganda found that no gorilla was killed over one year while gorillas were continuously monitored by researchers, alongside other interventions (Action 1511). A before-and-after study in Belize found that numbers of black howler monkeys increased by 138% over 13 years after being permanently monitored by researchers, alongside other interventions (Action 1511). One controlled, before-and-after study in Rwanda, Uganda and the Democratic Republic of Congo found that the population size of mountain gorillas that were continuously monitored by vets, alongside other interventions, increased by 168% over 41 years (Action 1554). Additional forms of human presence show mixed results: a before-and-after study in Brazil found that most reintroduced golden lion tamarins did not survive over seven years post-release despite being permanently monitored by researchers, alongside other interventions (Action 1511). However, one before-and-after study in the Republic of Congo found that most reintroduced chimpanzees permanently monitored by researchers, alongside other interventions, survived over 3.5 years (Action 1511). A before-and-after study in Kenya found 'problem' olive baboon troops still survived over 17 years post-translocation while being permanently monitored by researchers, alongside other interventions (Action 1511). A controlled, before-and-after study in Rwanda, Uganda, and Democratic Republic of Congo found that a mountain gorilla population increased over 41 years, following habituation to human presence, alongside other interventions (Action 1519).\", \"action_ids\": [\"1511\",\"1554\",\"1519\"]}",
+            "return_val": "{\n  \"query\": \"How does a permanent human presence at a site influence the success of primate conservation efforts?\",\n  \"relevant_summary\": \"Studies show that permanent human presence at conservation sites can positively influence primate conservation success through multiple mechanisms. Two before-and-after studies in Rwanda, Uganda and Congo found that numbers of mountain gorillas increased over 5-41 years while gorillas were continuously monitored by researchers, alongside other interventions (Action 1511). One review on mountain gorillas in Uganda found that no gorilla was killed over one year while gorillas were continuously monitored by researchers, alongside other interventions (Action 1511). A before-and-after study in Belize found that numbers of black howler monkeys increased by 138% over 13 years after being permanently monitored by researchers, alongside other interventions (Action 1511). One controlled, before-and-after study in Rwanda, Uganda and the Democratic Republic of Congo found that the population size of mountain gorillas that were continuously monitored by vets, alongside other interventions, increased by 168% over 41 years (Action 1554). Additional forms of human presence show mixed results: a before-and-after study in Brazil found that most reintroduced golden lion tamarins did not survive over seven years post-release despite being permanently monitored by researchers, alongside other interventions (Action 1511). However, one before-and-after study in the Republic of Congo found that most reintroduced chimpanzees permanently monitored by researchers, alongside other interventions, survived over 3.5 years (Action 1511). A before-and-after study in Kenya found 'problem' olive baboon troops still survived over 17 years post-translocation while being permanently monitored by researchers, alongside other interventions (Action 1511). A controlled, before-and-after study in Rwanda, Uganda, and Democratic Republic of Congo found that a mountain gorilla population increased over 41 years, following habituation to human presence, alongside other interventions (Action 1519).\",\n  \"action_ids\": [\n    \"1511\",\n    \"1554\",\n    \"1519\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1511",
+      "1512",
+      "1517",
+      "1519",
+      "1523"
+    ],
+    "regenerated_ids": [
+      "1511",
+      "1512",
+      "1517"
+    ]
   }
 ]

@@ -1233,5 +1233,81 @@
       "1030",
       "1039"
     ]
+  },
+  {
+    "query": "How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Action 1606 found that 2,4-D led to a greater reduction in growth of parrot's feather than the herbicides diquat, glyphosate or imazapyr in one replicated, controlled laboratory study in Brazil. Additionally, action 1606 reported that three laboratory studies found 2,4-D reduced the growth of parrot's feather, one field study found that 2,4-D amine reduced the biomass of parrot's feather, and another field study found that the combined application of 2,4-D and MCPA completely eliminated parrot's feather. In comparison, action 1680 found that diquat reduced the growth of parrot's feather in two laboratory studies but that growth was not reduced after the application of diquat in one field study. Action 1699 reported that glyphosate reduced parrot's feather biomass in one field study in Portugal and one laboratory study in the USA.",
+    "summary_action_ids": [
+      "1606",
+      "1680",
+      "1699"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"herbicide 2,4-D diquat glyphosate parrot's feather control\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1606\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1680\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - diquat\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1681\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - endohall\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1676\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - carfentrazone-ethyl\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1699\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1689\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - triclopyr\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1598\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using fungal-based herbicides\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1279\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Chemical control using herbicides\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1605\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of salt\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"herbicide glyphosate parrot's feather\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"1606\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1681\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - endohall\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1689\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - triclopyr\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1699\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1606\"}",
+            "return_val": "{\n  \"action_id\": \"1606\",\n  \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n  \"key_messages\": \"Key Messages:\\n\\nThree laboratory studies (including two replicated, controlled studies and one randomized, controlled study) in the USA\\u00a0and Brazil\\u00a0found that the herbicide 2,4-D reduced the growth of parrot\\u2019s feather.\\nOne replicated, controlled laboratory study in Brazil\\u00a0found that 2,4-D led to a greater reduction in growth of parrot\\u2019s feather than the herbicides diquat, glyphosate or imazapyr.\\nOne replicated, randomized, controlled field study in Portugal\\u00a0found that 2,4-D amine reduced the biomass of parrot\\u2019s feather.\\nOne randomized, controlled field study in Portugal found that the combined application of 2,4-D and MCPA completely eliminated parrot\\u2019s feather.\\nOne randomized, controlled laboratory study in the USA\\u00a0found that the combined application of 2,4-D and carfentrazone-ethyl led to a higher reduction in the cover of parrot\\u2019s feather than the application of the herbicide dichlobenil eight days after treatment but not 45 days after treatment.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1680\"}",
+            "return_val": "{\n  \"action_id\": \"1680\",\n  \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - diquat\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo laboratory studies (including a replicated, randomized, controlled study) in the USA\\u00a0found that diquat reduced the growth of parrot\\u2019s feather.\\nOne replicated, randomized, controlled field study in Portugal\\u00a0found that growth was not reduced after the application of diquat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1699\"}",
+            "return_val": "{\n  \"action_id\": \"1699\",\n  \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled laboratory study in New Zealand\\u00a0found that the application of dichlobenil reduced the growth of parrot\\u2019s feather.\\nTwo replicated, randomized, controlled field studies in Portugal and New Zealand found that the application of dichlobenil reduced cover less than the combined application of the herbicides 2,4-D and MCPA eight days after treatment but not 45 days after treatment\\u00a0and that plants treated with dichlobenil presented lower vegetation cover soon after herbicide application but cover later increased to levels close to pre-treatment.\\nThree laboratory studies (including two replicated, controlled studies and one randomized, controlled study) in the USA found that the herbicides imazamox\\u00a0and imazapyr\\u00a0reduced the growth of parrot\\u2019s feather.\\nOne replicated, randomized, controlled field study in Portugal\\u00a0and one replicated, controlled, laboratory study in the USA\\u00a0reported reduced parrot\\u2019s feather biomass after treatment with glyphosate.\\u00a0One replicated, randomized, controlled field study in Portugal\\u00a0found that the application of gluphosinate-ammonium reduced the biomass of parrot\\u2019s feather.\\nThree replicated, controlled laboratory studies in New Zealand and the USA found that treatment with fluridone, clopyralid\\u00a0and copper chelate\\u00a0did not reduce growth of parrot\\u2019s feather.\\nOne replicated, controlled laboratory study in the USA\\u00a0found that the application of flumioxazin reduced the growth of parrot\\u2019s feather.\\nOne replicated, randomized, controlled laboratory study in the USA\\u00a0found that the application of florpyrauxifen-benzyl reduced the growth of parrot\\u2019s feather.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?\", \"summary\": \"Action 1606 found that 2,4-D led to a greater reduction in growth of parrot's feather than the herbicides diquat, glyphosate or imazapyr in one replicated, controlled laboratory study in Brazil. Additionally, action 1606 reported that three laboratory studies found 2,4-D reduced the growth of parrot's feather, one field study found that 2,4-D amine reduced the biomass of parrot's feather, and another field study found that the combined application of 2,4-D and MCPA completely eliminated parrot's feather. In comparison, action 1680 found that diquat reduced the growth of parrot's feather in two laboratory studies but that growth was not reduced after the application of diquat in one field study. Action 1699 reported that glyphosate reduced parrot's feather biomass in one field study in Portugal and one laboratory study in the USA.\", \"action_ids\": [\"1606\",\"1680\",\"1699\"]}",
+            "return_val": "{\n  \"query\": \"How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?\",\n  \"relevant_summary\": \"Action 1606 found that 2,4-D led to a greater reduction in growth of parrot's feather than the herbicides diquat, glyphosate or imazapyr in one replicated, controlled laboratory study in Brazil. Additionally, action 1606 reported that three laboratory studies found 2,4-D reduced the growth of parrot's feather, one field study found that 2,4-D amine reduced the biomass of parrot's feather, and another field study found that the combined application of 2,4-D and MCPA completely eliminated parrot's feather. In comparison, action 1680 found that diquat reduced the growth of parrot's feather in two laboratory studies but that growth was not reduced after the application of diquat in one field study. Action 1699 reported that glyphosate reduced parrot's feather biomass in one field study in Portugal and one laboratory study in the USA.\",\n  \"action_ids\": [\n    \"1606\",\n    \"1680\",\n    \"1699\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1606",
+      "1676",
+      "1680",
+      "1681",
+      "1689",
+      "1699"
+    ],
+    "regenerated_ids": [
+      "1606",
+      "1680",
+      "1699"
+    ]
   }
 ]
