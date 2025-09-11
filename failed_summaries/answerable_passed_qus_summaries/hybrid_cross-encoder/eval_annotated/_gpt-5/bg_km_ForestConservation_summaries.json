@@ -1,0 +1,889 @@
+[
+  {
+    "query": "Considering different timber harvesting methods, which are most effective for increasing understory plant diversity?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Group-selection harvesting increased understory plant cover and diversity in four of eight studies across Australia, Canada, Costa Rica and the USA, while two studies found decreases in understory species richness and biomass and two found no effect on understory species richness and diversity [1224]. Removing woody debris after timber harvest showed mixed or no effects on understory vegetation species richness and diversity in four studies, with one of six studies finding increased understory vegetation cover and three studies finding no effect or mixed effects on cover [1213].",
+    "summary_action_ids": [
+      "1224",
+      "1213"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"timber harvesting methods understory plant diversity\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1224\",\n    \"action_title\": \"Use group-selection harvesting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1213\",\n    \"action_title\": \"Remove woody debris after timber harvest\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3871\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1224\"}",
+            "return_val": "{\n  \"action_id\": \"1224\",\n  \"action_title\": \"Use group-selection harvesting\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of eight studies (including one replicated, controlled study) in Australia, Canada, Costa Rica\\u00a0and the USA\\u00a0found that group-selection harvesting increased cover and diversity of understory plants and the density of young trees. Two studies found it decreased understory species richness2 and biomass.Two studies found no effect on understory species richness and diversity and two found no effect of group-selection harvest on tree density and growth-rate.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1213\"}",
+            "return_val": "{\n  \"action_id\": \"1213\",\n  \"action_title\": \"Remove woody debris after timber harvest\",\n  \"key_messages\": \"Key Messages:\\n\\nOne of six studies (including two replicated, randomized, controlled studies) in the USA and France found that woody debris removal increased understory vegetation cover. Three studies found no effect or mixed effects on cover. Four of the studies\\u00a0found no effect or mixed effects on understory vegetation species richness and diversity and two found no effect of woody debris removal on coverand species diversity of trees.\\nSix studies (including two replicated, randomized, controlled studies) in Canada, Ethiopia, Spain\\u00a0and the USA\\u00a0examined the effect of woody debris removal on young trees. One study found that debris removal increased young tree density, another study found that it decreased young tree density, and three studies found mixed effects or no effect on young tree density. One found no effect of woody-debris removal on young tree survival.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3871\"}",
+            "return_val": "{\n  \"action_id\": \"3871\",\n  \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of using shelterwood harvesting instead of clearcutting. All three studies were in the USA.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): One controlled, before-and-after study in the USA found that the species richness of macro-moths was higher after a forest was managed by shelterwood harvesting, than after harvest by patch-cutting or clearcutting, and the richness in the shelterwood harvested forest was similar to a thinned forest and an unharvested forest. One replicated, controlled, before-and-after study in the USA\\u00a0found that forests managed by shelterwood harvesting had a similar species richness of moths to forests managed by single tree harvesting, group selection harvesting or clearcutting, but a lower species richness than unharvested forest. One replicated, controlled, before-and-after study in the USA\\u00a0found that moth species richness recovered faster after shelterwood harvesting than after group selection harvesting or clearcutting.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"understory plant diversity harvest method selection thinning clearcut shelterwood plants\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1246\",\n    \"action_title\": \"Remove or disturb leaf litter to enhance germination\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3350\",\n    \"action_title\": \"Add root-associated fungi to plants before planting\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"387\",\n    \"action_title\": \"Control predators not on islands for gamebirds\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"Considering different timber harvesting methods, which are most effective for increasing understory plant diversity?\",\"summary\":\"Group-selection harvesting increased understory plant cover and diversity in four of eight studies across Australia, Canada, Costa Rica and the USA, while two studies found decreases in understory species richness and biomass and two found no effect on understory species richness and diversity [1224]. Removing woody debris after timber harvest showed mixed or no effects on understory vegetation species richness and diversity in four studies, with one of six studies finding increased understory vegetation cover and three studies finding no effect or mixed effects on cover [1213].\",\"action_ids\":[\"1224\",\"1213\"]}",
+            "return_val": "{\n  \"query\": \"Considering different timber harvesting methods, which are most effective for increasing understory plant diversity?\",\n  \"relevant_summary\": \"Group-selection harvesting increased understory plant cover and diversity in four of eight studies across Australia, Canada, Costa Rica and the USA, while two studies found decreases in understory species richness and biomass and two found no effect on understory species richness and diversity [1224]. Removing woody debris after timber harvest showed mixed or no effects on understory vegetation species richness and diversity in four studies, with one of six studies finding increased understory vegetation cover and three studies finding no effect or mixed effects on cover [1213].\",\n  \"action_ids\": [\n    \"1224\",\n    \"1213\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1214",
+      "1223",
+      "1222",
+      "1215",
+      "1224",
+      "1209",
+      "1210",
+      "1211",
+      "1271",
+      "1273"
+    ],
+    "regenerated_ids": [
+      "1214",
+      "1215",
+      "1222",
+      "1223",
+      "1224",
+      "1211",
+      "1273"
+    ]
+  },
+  {
+    "query": "What are the main benefits and negative impacts of using prescribed fire as a management tool in North American forests?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across studies in North America and the USA, prescribed forest fires showed varied outcomes for wildlife: eight of 14 studies reported no effect on amphibian abundance or species numbers, four reported mixed effects by species or timing, three reported increases, and one reported decreases; in the USA specifically, some studies found amphibian species numbers and abundance increased or decreased with time since burning, and spotted salamander hatching success increased following a prescribed fire (877). In mammal responses relevant to fire-based management, thinning followed by prescribed burning did not increase elk use of forest areas in most season, stand age and sex comparisons (2477). For small mammals, mechanically removing understorey vegetation did not increase abundances compared to prescribed burning for white-footed mice, shrews and four rodent species, indicating similar or higher abundances under prescribed burning in these comparisons (2482).",
+    "summary_action_ids": [
+      "877",
+      "2477",
+      "2482"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed fire benefits negative impacts North American forests\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"877\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2477\",\n    \"action_title\": \"Thin trees to reduce wildfire risk\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2482\",\n    \"action_title\": \"Remove understorey vegetation in forest\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"877\"}",
+            "return_val": "{\n  \"action_id\": \"877\",\n  \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nEight of 14 studies (including three randomized, replicated, controlled studies) in Australia, North America and the USA found no effect of prescribed forest fires on amphibian abundance or numbers of species. Four found that forest fires had mixed effects on amphibian abundance depending on species, species and year or season of burn. Three found that fires increased amphibian abundance or numbers of species. One found that abundance decreased with fires.\\nTwo studies (including one randomized, replicated, controlled study) in the USA found that numbers of amphibian species and abundance increased or abundance decreased with time since prescribed forest fires.\\nOne before-and-after study in the USA found that spotted salamander hatching success increased following a prescribed forest fire.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2477\"}",
+            "return_val": "{\n  \"action_id\": \"2477\",\n  \"action_title\": \"Thin trees to reduce wildfire risk\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of thinning trees to reduce wildfire risk. All three studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): A replicated, controlled, before-and-after study in the USA found that reducing tree density increased abundances of two of four small mammal species. A systematic review in the USA\\u00a0found that, in thinned forests, two mammal species were recorded in higher densities compared to in unmanaged forests, while three species showed no effect.\\n\\nBEHAVIOUR (1 STUDY)\\n\\n(1 study): A replicated, controlled study in the USA\\u00a0found that thinning followed by prescribed burning did not increase use of forest areas by North American elk in most season, stand age and sex comparisons.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2482\"}",
+            "return_val": "{\n  \"action_id\": \"2482\",\n  \"action_title\": \"Remove understorey vegetation in forest\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of removing understorey vegetation in forest. All three studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): Three replicated, randomized, controlled studies (two also before-and-after), in the USA, found that compared to prescribed burning, mechanically removing understorey vegetation growth in forests did not increase abundances of white-footed mice, shrews\\u00a0or four rodent species.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed burn forest North America effects birds plants mammals benefits negative impacts\",\"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2482\",\n    \"action_title\": \"Remove understorey vegetation in forest\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"877\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"328\",\n    \"action_title\": \"Thin trees within forests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed fire forest North America wildlife impacts benefits\",\"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2506\",\n    \"action_title\": \"Use target species scent to deter crop damage by mammals to reduce human-wildlife conflict\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1229\",\n    \"action_title\": \"Use herbicides to control invasive plant species\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"871\",\n    \"action_title\": \"Release captive-bred amphibians\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the main benefits and negative impacts of using prescribed fire as a management tool in North American forests?\",\"summary\":\"Across studies in North America and the USA, prescribed forest fires showed varied outcomes for wildlife: eight of 14 studies reported no effect on amphibian abundance or species numbers, four reported mixed effects by species or timing, three reported increases, and one reported decreases; in the USA specifically, some studies found amphibian species numbers and abundance increased or decreased with time since burning, and spotted salamander hatching success increased following a prescribed fire (877). In mammal responses relevant to fire-based management, thinning followed by prescribed burning did not increase elk use of forest areas in most season, stand age and sex comparisons (2477). For small mammals, mechanically removing understorey vegetation did not increase abundances compared to prescribed burning for white-footed mice, shrews and four rodent species, indicating similar or higher abundances under prescribed burning in these comparisons (2482).\",\"action_ids\":[\"877\",\"2477\",\"2482\"]}",
+            "return_val": "{\n  \"query\": \"What are the main benefits and negative impacts of using prescribed fire as a management tool in North American forests?\",\n  \"relevant_summary\": \"Across studies in North America and the USA, prescribed forest fires showed varied outcomes for wildlife: eight of 14 studies reported no effect on amphibian abundance or species numbers, four reported mixed effects by species or timing, three reported increases, and one reported decreases; in the USA specifically, some studies found amphibian species numbers and abundance increased or decreased with time since burning, and spotted salamander hatching success increased following a prescribed fire (877). In mammal responses relevant to fire-based management, thinning followed by prescribed burning did not increase elk use of forest areas in most season, stand age and sex comparisons (2477). For small mammals, mechanically removing understorey vegetation did not increase abundances compared to prescribed burning for white-footed mice, shrews and four rodent species, indicating similar or higher abundances under prescribed burning in these comparisons (2482).\",\n  \"action_ids\": [\n    \"877\",\n    \"2477\",\n    \"2482\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1196",
+      "1217",
+      "1220",
+      "1221",
+      "1227",
+      "1234",
+      "1255"
+    ],
+    "regenerated_ids": [
+      "1217",
+      "1220",
+      "1221",
+      "1227",
+      "1255",
+      "1196"
+    ]
+  },
+  {
+    "query": "How does the evidence for using shelterwood harvesting compare with clearcutting for promoting plant diversity and tree regeneration?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across three replicated, controlled studies in Sweden and the USA, shelterwood harvesting resulted in higher plant diversity, lower grass cover, and higher density of tree species compared with clearcutting [1214].",
+    "summary_action_ids": [
+      "1214"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shelterwood harvesting plant diversity tree regeneration evidence compare clearcutting\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1214\",\n    \"action_title\": \"Use shelterwood harvest instead of clearcutting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"851\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3871\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"shelterwood harvesting plant diversity tree regeneration evidence compare clearcutting\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2637\",\n    \"action_title\": \"Use selective harvesting instead of clearcutting\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1230\",\n    \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"387\",\n    \"action_title\": \"Control predators not on islands for gamebirds\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1214\"}",
+            "return_val": "{\n  \"action_id\": \"1214\",\n  \"action_title\": \"Use shelterwood harvest instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree replicated, controlled studies in Sweden\\u00a0and the USA found that shelterwood harvesting resulted in higher plant diversity,  lower grass cover and higher  density of tree species compared with clearcutting.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"851\"}",
+            "return_val": "{\n  \"action_id\": \"851\",\n  \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including two randomized, replicated, controlled, before-and-after studies) in the USA found that compared to clearcutting, shelterwood harvesting resulted in higher, similar or initially higher and then similar salamander abundance. A meta-analysis of 24 studies in North  America\\u00a0found that partial harvest, which included shelterwood harvesting with three other types, resulted in smaller reductions in salamander populations than clearcutting\\nTwo of three studies (including two randomized, replicated, controlled, before-and-after studies) in the USA found that compared to no harvesting, shelterwood harvesting decreased salamander abundance and changed species composition. One found that shelterwood harvesting did not affect salamander abundance.\\nOne randomized, replicated, controlled, before-and-after study in the USA found that compared to unharvested plots, the proportion of female salamanders carrying eggs, eggs per female or proportion of juveniles were similar or lower in harvested plots that included shelterwood harvested plots, depending on species and time since harvest.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3871\"}",
+            "return_val": "{\n  \"action_id\": \"3871\",\n  \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of using shelterwood harvesting instead of clearcutting. All three studies were in the USA.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): One controlled, before-and-after study in the USA found that the species richness of macro-moths was higher after a forest was managed by shelterwood harvesting, than after harvest by patch-cutting or clearcutting, and the richness in the shelterwood harvested forest was similar to a thinned forest and an unharvested forest. One replicated, controlled, before-and-after study in the USA\\u00a0found that forests managed by shelterwood harvesting had a similar species richness of moths to forests managed by single tree harvesting, group selection harvesting or clearcutting, but a lower species richness than unharvested forest. One replicated, controlled, before-and-after study in the USA\\u00a0found that moth species richness recovered faster after shelterwood harvesting than after group selection harvesting or clearcutting.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"shelterwood harvest plant diversity understory vegetation regeneration seedlings saplings compared to clearcut\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1214\",\n    \"action_title\": \"Use shelterwood harvest instead of clearcutting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"851\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3871\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How does the evidence for using shelterwood harvesting compare with clearcutting for promoting plant diversity and tree regeneration?\",\"summary\":\"Across three replicated, controlled studies in Sweden and the USA, shelterwood harvesting resulted in higher plant diversity, lower grass cover, and higher density of tree species compared with clearcutting [1214].\",\"action_ids\":[\"1214\"]}",
+            "return_val": "{\n  \"query\": \"How does the evidence for using shelterwood harvesting compare with clearcutting for promoting plant diversity and tree regeneration?\",\n  \"relevant_summary\": \"Across three replicated, controlled studies in Sweden and the USA, shelterwood harvesting resulted in higher plant diversity, lower grass cover, and higher density of tree species compared with clearcutting [1214].\",\n  \"action_ids\": [\n    \"1214\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1214",
+      "1215",
+      "1222",
+      "1223"
+    ],
+    "regenerated_ids": [
+      "1214",
+      "1223",
+      "1222",
+      "1215"
+    ]
+  },
+  {
+    "query": "After a wildfire, what are the documented benefits and harms of interventions like thinning and sowing seeds?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "In burnt forests, thinning after wildfire was associated with higher plant species richness in two studies in Spain, increased cover of aspen saplings in Canada, and reduced mortality of pine seedlings in Israel, but also decreased overall plant biomass in one USA study; additionally, a paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234]. After wildfire, sowing herbaceous plant seeds showed harms including reduced number and cover of native species in one USA study and reduced density of tree seedlings in another; across three USA studies, seeding had no effect on total plant cover or overall species richness [1236].",
+    "summary_action_ids": [
+      "1234",
+      "1236"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"wildfire interventions thinning sowing seeds benefits harms\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1236\",\n    \"action_title\": \"Sow tree seeds after wildfire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2477\",\n    \"action_title\": \"Thin trees to reduce wildfire risk\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1234\"}",
+            "return_val": "{\n  \"action_id\": \"1234\",\n  \"action_title\": \"Thin trees after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nFive replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain\\u00a0found that thinning increased plant species richness. One in Canada\\u00a0found that it increased the cover of aspen saplings. One study in the USA\\u00a0found thinning decreased plant biomass and one in Israel\\u00a0found it decreased mortality of pine seedlings.\\nOne paired-site study in Canada\\u00a0found that logging after wildfire decreased species richness and diversity of mosses.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1236\"}",
+            "return_val": "{\n  \"action_id\": \"1236\",\n  \"action_title\": \"Sow tree seeds after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated, randomized, controlled study) in the USA\\u00a0examined the effect of sowing herbaceous plant seeds in burnt forest areas. One found it decreased the number and cover of native species and one found it decreased the density of tree seedlings. All three found no effect of seeding on total plant cover or species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2477\"}",
+            "return_val": "{\n  \"action_id\": \"2477\",\n  \"action_title\": \"Thin trees to reduce wildfire risk\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of thinning trees to reduce wildfire risk. All three studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): A replicated, controlled, before-and-after study in the USA found that reducing tree density increased abundances of two of four small mammal species. A systematic review in the USA\\u00a0found that, in thinned forests, two mammal species were recorded in higher densities compared to in unmanaged forests, while three species showed no effect.\\n\\nBEHAVIOUR (1 STUDY)\\n\\n(1 study): A replicated, controlled study in the USA\\u00a0found that thinning followed by prescribed burning did not increase use of forest areas by North American elk in most season, stand age and sex comparisons.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"after wildfire seeding effects post-fire sowing seeds herbaceous burned forest\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1236\",\n    \"action_title\": \"Sow tree seeds after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"317\",\n    \"action_title\": \"Use prescribed burning on deciduous forests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1244\",\n    \"action_title\": \"Sow tree seeds\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"wildfire interventions thinning sowing seeds benefits harms\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2485\",\n    \"action_title\": \"Translocate crop raiders away from crops (e.g. elephants) to reduce human-wildlife conflict\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1264\",\n    \"action_title\": \"Use different planting or seeding methods\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"122\",\n    \"action_title\": \"Remove flood defence banks to allow inundation\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"burnt forest seeding effects post-fire seeding grass seeding after fire effects\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1236\",\n    \"action_title\": \"Sow tree seeds after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1516\",\n    \"action_title\": \"Use prescribed burning within the context of home range size and use\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"After a wildfire, what are the documented benefits and harms of interventions like thinning and sowing seeds?\",\"summary\":\"In burnt forests, thinning after wildfire was associated with higher plant species richness in two studies in Spain, increased cover of aspen saplings in Canada, and reduced mortality of pine seedlings in Israel, but also decreased overall plant biomass in one USA study; additionally, a paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234]. After wildfire, sowing herbaceous plant seeds showed harms including reduced number and cover of native species in one USA study and reduced density of tree seedlings in another; across three USA studies, seeding had no effect on total plant cover or overall species richness [1236].\",\"action_ids\":[\"1234\",\"1236\"]}",
+            "return_val": "{\n  \"query\": \"After a wildfire, what are the documented benefits and harms of interventions like thinning and sowing seeds?\",\n  \"relevant_summary\": \"In burnt forests, thinning after wildfire was associated with higher plant species richness in two studies in Spain, increased cover of aspen saplings in Canada, and reduced mortality of pine seedlings in Israel, but also decreased overall plant biomass in one USA study; additionally, a paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234]. After wildfire, sowing herbaceous plant seeds showed harms including reduced number and cover of native species in one USA study and reduced density of tree seedlings in another; across three USA studies, seeding had no effect on total plant cover or overall species richness [1236].\",\n  \"action_ids\": [\n    \"1234\",\n    \"1236\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1234",
+      "1235",
+      "1236",
+      "1237"
+    ],
+    "regenerated_ids": [
+      "1234",
+      "1236",
+      "1237"
+    ]
+  },
+  {
+    "query": "In restored forest areas, what are some alternatives to using herbicides for controlling competing vegetation after tree planting, and how effective are they?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence from action documents identifies several non-herbicide options used after tree planting and their reported effectiveness: Covering the ground with non-plastic mulch increased total plant cover in one replicated, randomized, controlled study in the USA (1240). Covering the ground with plastic mats decreased the cover of herbaceous plants and grasses in one replicated study in Canada (1239). Using weed mats showed no effect on thick-leaved oak seedling height in one replicated, controlled study in Hong Kong (1267). Mechanically removing understory vegetation showed mixed results across five studies in Canada, the USA, France, Panama and Sweden: most found no effect on emergence, survival, growth rate or frost damage of planted seedlings, though one study reported increased seedling biomass after removing competing herbs, and another found that removing sheep laurel shrubs increased growth rate and height of planted black spruce (1256). Applying mulch specifically to control grass did not reduce grass cover and resulted in a similar number of shrub seedlings compared to no mulch in one randomized, controlled study in the USA (1649).",
+    "summary_action_ids": [
+      "1240",
+      "1239",
+      "1267",
+      "1256",
+      "1649"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"herbicide alternatives controlling competing vegetation after tree planting restored forest areas effectiveness mulching manual weeding mechanical control cover crops livestock grazing tree shelters\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1241\",\n    \"action_title\": \"Apply herbicides after restoration planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3331\",\n    \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"722\",\n    \"action_title\": \"Grow plants that compete with damaging weeds\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"control competing vegetation without herbicide after tree planting restored forest mulch manual weeding mowing weed mats tree shelters shade fabric ground cover mechanical ring weeding effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1240\",\n    \"action_title\": \"Cover the ground using techniques other than plastic mats after restoration planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1239\",\n    \"action_title\": \"Cover the ground with plastic mats after restoration planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1267\",\n    \"action_title\": \"Use weed mats to protect planted trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"manual weeding hand weeding cutting clearing around seedlings after planting restoration forest effectiveness alternative to herbicide\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3714\",\n    \"action_title\": \"Manage vegetation by hand (selective weeding)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1575\",\n    \"action_title\": \"Parrot\\u2019s feather: Manual harvesting (hand-weeding)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mowing or cutting competing vegetation after tree planting restoration forest effectiveness mowing brushcutting slashing around seedlings\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3419\",\n    \"action_title\": \"Mow before or after seeding/planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3106\",\n    \"action_title\": \"Use cutting/mowing to control problematic herbaceous plants: freshwater swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3048\",\n    \"action_title\": \"Cut large trees/shrubs to maintain or restore disturbance: freshwater swamps\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"livestock grazing or browsing to control competing vegetation around tree seedlings restoration forest effectiveness goats sheep browsing weed control\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"644\",\n    \"action_title\": \"Restore or create wood pasture\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3891\",\n    \"action_title\": \"Remove, control or exclude vertebrate herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"320\",\n    \"action_title\": \"Use prescribed burning on savannas\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mulching after tree planting restoration forest wood chips straw mulch weed control effectiveness survival growth seedlings\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1828\",\n    \"action_title\": \"Cover peatland with organic mulch (after planting)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1813\",\n    \"action_title\": \"Cover peatland with organic mulch (without planting)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1649\",\n    \"action_title\": \"Add mulch to control grass\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"use tree shelters or tubes to reduce competing vegetation around seedlings restoration forest effectiveness weed competition\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1267\",\n    \"action_title\": \"Use weed mats to protect planted trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1239\",\n    \"action_title\": \"Cover the ground with plastic mats after restoration planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1240\"}",
+            "return_val": "{\n  \"action_id\": \"1240\",\n  \"action_title\": \"Cover the ground using techniques other than plastic mats after restoration planting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found that covering the ground with mulch after planting increased total plant cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1239\"}",
+            "return_val": "{\n  \"action_id\": \"1239\",\n  \"action_title\": \"Cover the ground with plastic mats after restoration planting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in Canada found that covering the ground with plastic mats after restoration planting decreased the cover of herbecous plants and grasses.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1267\"}",
+            "return_val": "{\n  \"action_id\": \"1267\",\n  \"action_title\": \"Use weed mats to protect planted trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Hong Kong\\u00a0found no effect of using weed mats on thick-leaved oak seedling height.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1256\"}",
+            "return_val": "{\n  \"action_id\": \"1256\",\n  \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies (including three replicated, randomized, controlled studies) in Canada, the USA, France, Panama\\u00a0and Sweden\\u00a0found no effect of controlling understory vegetation on the emergence, survival,  growth rate or frost damage in planted seedlings. However, one found removing competing herbs increased seedling biomass.\\nOne replicated, controlled study in Canada\\u00a0found that removal of sheep laurel shrubs increased the growth rate and height of planted black spruce seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1649\"}",
+            "return_val": "{\n  \"action_id\": \"1649\",\n  \"action_title\": \"Add mulch to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled study in the USA\\u00a0found that areas where mulch was used to control grass cover had a similar number of shrub seedlings to areas where mulch was not applied. The same study found that mulch application did not reduce grass cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3419\"}",
+            "return_val": "{\n  \"action_id\": \"3419\",\n  \"action_title\": \"Mow before or after seeding/planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies examined the effects of mowing before or after seeding/planting on grassland vegetation. Nine studies were in Europe\\u00a0and one was in China.\\n\\nVEGETATION COMMUNITY (5 STUDIES)\\n\\nCommunity composition (1 study): One replicated, site comparison study in Hungary\\u00a0found that annual mowing after sowing seeds increased plant community similarity to that of natural grassland.\\nOverall richness/diversity (1 study): One replicated, controlled study in the UK\\u00a0found that cutting vegetation yearly after sowing seeds increased plant species richness compared to grazing with livestock.\\nCharacteristic plant richness/diversity (1 study): One replicated, controlled study in Germany\\u00a0found that cutting vegetation three times/year after sowing seeds increased the richness of characteristic grassland species compared to cutting once/year.\\nSown/planted species richness/diversity (2 studies): One replicated, randomized, paired, controlled study in the UK\\u00a0found that mowing after sowing seeds increased the richness of sown species. One replicated study in the UK\\u00a0found that cutting sown plots each year and removing cut vegetation increased sown grass and forb species richness compared to cutting and not removing cut vegetation.\\n\\nVEGETATION ABUNDANCE (4 STUDIES)\\n\\nSown/planted species abundance (3 studies): One replicated, randomized, paired, controlled study in the UK\\u00a0found that mowing after sowing seeds increased the abundance of sown forb species.\\u00a0One replicated, randomized, paired, controlled study in Germany\\u00a0found that mowing more frequently after sowing seeds increased the abundance of five of seven sown forb species.\\u00a0One replicated study in the UK\\u00a0found that cutting sown plots each year and removing cut vegetation reduced the cover of sown grass and forb species compared to cutting and not removing cut vegetation.\\nIndividual plant species abundance (1 study): One replicated, controlled study in Germany\\u00a0found that mowing after planting increased the biomass of transplanted ragged robin and birdsfoot trefoil plants at 2\\u20133 of seven sites.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\\nOTHER (4 STUDIES) \\n\\nGermination/Emergence (3 studies): One of three replicated, controlled studies (including two randomized and one paired study) in the UK, Germany\\u00a0and China\\u00a0found that mowing after sowing seeds increased the germination of four grassland plant species. One study\\u00a0found that mowing after sowing seeds increased the number of ragged robin and birdsfoot trefoil seedlings at 1\\u20132 of seven sites. One study\\u00a0found that cutting grass after sowing seeds did not alter the emergence rate or density of seedlings.\\nSurvival (2 studies): One of two replicated, randomized, paired, controlled studies in Germany and China\\u00a0found that cutting grass after sowing seeds did not alter seedling survival.\\u00a0The other study\\u00a0found that cutting grass after sowing seeds did not alter seedling survival.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3714\"}",
+            "return_val": "{\n  \"action_id\": \"3714\",\n  \"action_title\": \"Manage vegetation by hand (selective weeding)\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of managing vegetation by hand on reptile populations. Two studies were in the USA, one was in South Africa\\u00a0and one was in the US Virgin Islands.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One replicated, paired sites, controlled, before-and-after study in the USA\\u00a0found that removing invasive, non-native Sahara mustard by hand had mixed effects on the abundance of two lizard species.\\nReproductive success (1 study): One replicated, randomized, controlled study in the US Virgin Islands\\u00a0found that in areas where native beach morning glory was removed by hand, leatherback turtle nests had similar hatching and emergence success compared to areas where no removal took place.\\nSurvival (1 study): One replicated, randomized, controlled study in the US Virgin Islands\\u00a0found that in areas where native beach morning glory was removed by hand, fewer leatherback turtle hatchlings became entangled in vegetation compared to areas where no removal took place.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (2 studies): One replicated, controlled, before-and-after study in South Africa\\u00a0found that removing an invasive plant by hand resulted in more sites being used for nesting by Nile crocodiles compared to areas with no removal. One randomized study in the USA\\u00a0found that weeded or mown areas were used less frequently for nesting by Blanding\\u2019s turtles than tilled areas.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"722\"}",
+            "return_val": "{\n  \"action_id\": \"722\",\n  \"action_title\": \"Grow plants that compete with damaging weeds\",\n  \"key_messages\": \"Key Messages:\\nWeed weight and cover: Nine studies from Australia, Slovakia, the UK and the USA tested the effects of planting species to compete with weeds. All (including four replicated, randomised, controlled trials) found reduced weed plant weight or ground cover, although two found this only in some years or conditions. Weed reproduction and survival: Five studies (including three replicated, randomised, controlled trials) also found that competition reduced weed reproduction, survival or both. One of these found an effect only in one year only.\\nCrops studied were clovers, fescues, ryegrass, other grasses and turnip.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"123\"}",
+            "return_val": "{\n  \"action_id\": \"123\",\n  \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies looked at the effects of controlling weeds on the surrounding vegetation. One study from the UK found that new populations of rare arable plants established following the control of perennial weeds in a nature conservation area. A replicated, controlled and randomized study in the UK found that using grass-specific herbicide reduced grass diversity and resulted in increases in broadleaved plants. \\nEleven studies investigated different methods of controlling plants. A review found that specific management regimes can reduce the abundance of pernicious weeds in nature conservation areas. Four replicated controlled studies (one also randomized) from Denmark and Germany found cutting and infection with fungal pathogens were effective methods for controlling creeping thistle and one replicated, randomized, controlled trial from the UK found long-term control was achieved by lenient grazing. A replicated, controlled and randomized study in Germany found weevils could be used to infect creeping thistle with systemic rust. One study found a non-native beetle was unsuitable for controlling creeping thistle because it had poor survival in the UK climate. A replicated controlled study found that spraying a high concentration of herbicide killed less than half of broad-leaved dock plants. A replicated, controlled, randomized study found black grass was eliminated with a December treatment of grass-specific herbicide. A small replicated study found that Hebridean sheep grazed more purple moor grass than Swaledale sheep.\\nTwo\\u00a0replicated controlled laboratory and grassland studies found negative impacts of the herbicide asulam on green dock beetles.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"In restored forest areas, what are some alternatives to using herbicides for controlling competing vegetation after tree planting, and how effective are they?\",\"summary\":\"Evidence from action documents identifies several non-herbicide options used after tree planting and their reported effectiveness: Covering the ground with non-plastic mulch increased total plant cover in one replicated, randomized, controlled study in the USA (1240). Covering the ground with plastic mats decreased the cover of herbaceous plants and grasses in one replicated study in Canada (1239). Using weed mats showed no effect on thick-leaved oak seedling height in one replicated, controlled study in Hong Kong (1267). Mechanically removing understory vegetation showed mixed results across five studies in Canada, the USA, France, Panama and Sweden: most found no effect on emergence, survival, growth rate or frost damage of planted seedlings, though one study reported increased seedling biomass after removing competing herbs, and another found that removing sheep laurel shrubs increased growth rate and height of planted black spruce (1256). Applying mulch specifically to control grass did not reduce grass cover and resulted in a similar number of shrub seedlings compared to no mulch in one randomized, controlled study in the USA (1649).\",\"action_ids\":[\"1240\",\"1239\",\"1267\",\"1256\",\"1649\"]}",
+            "return_val": "{\n  \"query\": \"In restored forest areas, what are some alternatives to using herbicides for controlling competing vegetation after tree planting, and how effective are they?\",\n  \"relevant_summary\": \"Evidence from action documents identifies several non-herbicide options used after tree planting and their reported effectiveness: Covering the ground with non-plastic mulch increased total plant cover in one replicated, randomized, controlled study in the USA (1240). Covering the ground with plastic mats decreased the cover of herbaceous plants and grasses in one replicated study in Canada (1239). Using weed mats showed no effect on thick-leaved oak seedling height in one replicated, controlled study in Hong Kong (1267). Mechanically removing understory vegetation showed mixed results across five studies in Canada, the USA, France, Panama and Sweden: most found no effect on emergence, survival, growth rate or frost damage of planted seedlings, though one study reported increased seedling biomass after removing competing herbs, and another found that removing sheep laurel shrubs increased growth rate and height of planted black spruce (1256). Applying mulch specifically to control grass did not reduce grass cover and resulted in a similar number of shrub seedlings compared to no mulch in one randomized, controlled study in the USA (1649).\",\n  \"action_ids\": [\n    \"1240\",\n    \"1239\",\n    \"1267\",\n    \"1256\",\n    \"1649\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1241",
+      "1256",
+      "1239",
+      "1240",
+      "1262",
+      "1266",
+      "1267"
+    ],
+    "regenerated_ids": [
+      "1239",
+      "1240",
+      "1256",
+      "1266",
+      "1267"
+    ]
+  },
+  {
+    "query": "What is the state of the evidence regarding the effectiveness of different methods to control invasive plant species in forests?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of methods to control invasive plant species in forests\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1229\",\n    \"action_title\": \"Use herbicides to control invasive plant species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1314\",\n    \"action_title\": \"Use herbicides to remove invasive plant species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1275\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of methods to control invasive plant species in forests\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1212\",\n    \"action_title\": \"Thin trees within forests: effects on non-vascular plants\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1237\",\n    \"action_title\": \"Remove burned trees\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1323\",\n    \"action_title\": \"Primates: Present food items whole instead of processed\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of methods to control invasive plant species in forests\", \"k\": 3, \"offset\": 6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1229\"}",
+            "return_val": "{\n  \"action_id\": \"1229\",\n  \"action_title\": \"Use herbicides to control invasive plant species\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found no effect of invasive plant control using herbicide on the total native plant species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1314\"}",
+            "return_val": "{\n  \"action_id\": \"1314\",\n  \"action_title\": \"Use herbicides to remove invasive plant species\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found no effect of invasive plant control using herbicide on the total native plant species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1275\"}",
+            "return_val": "{\n  \"action_id\": \"1275\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence on the use of hot water to control Crassula helmsii.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mechanical removal invasive plants forests effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1228\",\n    \"action_title\": \"Mechanically/manually remove invasive plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1572\",\n    \"action_title\": \"Parrot\\u2019s feather: Removal using water jets\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"761\",\n    \"action_title\": \"Clear vegetation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1228\"}",
+            "return_val": "{\n  \"action_id\": \"1228\",\n  \"action_title\": \"Mechanically/manually remove invasive plants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Hawaii\\u00a0found that removal of invasive grass species increased understory plant biomass. One replicated, controlled study in the USA\\u00a0found no effect of invasive shrub removal on understory plant diversity.\\nOne replicated, controlled study in Ghana found that removal of invasive weed species increased tree seedling height.\\nOne replicated, controlled study in Hawaii found no effect of invasive plant removal on growth rate of native species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"761\"}",
+            "return_val": "{\n  \"action_id\": \"761\",\n  \"action_title\": \"Clear vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies (including four replicated studies) in Australia, Estonia and the UK found that vegetation clearance, along with other habitat management and in some cases release of animals, increased numbers of frog species, or increased, stabilized or maintained populations of natterjack toads. One before-and-after study in the UK found that vegetation clearance, along with other habitat management, maintained a population of great crested newts for the first six years, but not in the longer term.\\nOne before-and-after study in England\\u00a0found that vegetation clearance, resulted in increased occupancy by natterjack toads.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"biological control invasive plants forests effectiveness study\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1229\",\n    \"action_title\": \"Use herbicides to control invasive plant species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1314\",\n    \"action_title\": \"Use herbicides to remove invasive plant species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1275\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed burning control invasive plants forests effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3116\",\n    \"action_title\": \"Use prescribed fire to control problematic plants: freshwater marshes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1227\",\n    \"action_title\": \"Use thinning followed by prescribed fire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"318\",\n    \"action_title\": \"Use prescribed burning on pine forests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1227\"}",
+            "return_val": "{\n  \"action_id\": \"1227\",\n  \"action_title\": \"Use thinning followed by prescribed fire\",\n  \"key_messages\": \"Key Messages:\\n\\nThree of six studies (including one replicated, randomized, controlled study) in the USA found that thinning followed by prescribed burning increased cover and abundance1 of understory plants as well as the density of deciduous trees. One study found that thinning then burning decreased trees density and species richness.\\u00a0 Three studies found no effect or mixed effects of thinning followed by burning on tree growth rate and density of young trees.\\nOne replicated, controlled study Australia\\u00a0found no effect of thinning followed by burning on the genetic diversity of black ash.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"biocontrol invasive plant forest effectiveness study\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3129\",\n    \"action_title\": \"Introduce organisms to control problematic plants: brackish/salt marshes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1599\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1195",
+      "1196",
+      "1228",
+      "1229",
+      "1314"
+    ],
+    "regenerated_ids": [
+      "1195",
+      "1196",
+      "1228",
+      "1229",
+      "1314"
+    ]
+  },
+  {
+    "query": "What is the evidence for the effectiveness of public engagement strategies, such as awareness campaigns or education programmes, for forest conservation?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across conservation contexts, evidence on public engagement (awareness/education) shows mixed but sometimes positive effects on conservation-related outcomes. A review from the USA and Canada argues education alone was not sufficient to change behaviour, though it was necessary as a catalytic factor alongside economic incentives and law enforcement (162). Seven studies on reptiles reported: increases in Philippine crocodile population after a communication, education and public awareness campaign; reduced leatherback turtle nest poaching during a community-based education programme; decreases in human killing of Philippine crocodiles and fewer road deaths of lesser Antillean iguanas when education/awareness was used (the latter alongside road signs); and reports of 276 non-venomous snakes saved over six years following education/awareness combined with a local expert network; however, stated behaviour changes were mixed in Colombia and Saint Kitts, and an information leaflet did not reduce hotel light use in the USA (3682). For amphibians, two studies (including a replicated, before-and-after study) found raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in 1,023 ponds created; tourist awareness of axolotls increased following targeted efforts; press conferences had no effect on a green tree frog project; and campaigns reached over 50,000 people annually or trained 1,016 people over four years (831).",
+    "summary_action_ids": [
+      "162",
+      "3682",
+      "831"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"public engagement awareness campaigns education programmes forest conservation effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3682\",\n    \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"162\"}",
+            "return_val": "{\n  \"action_id\": \"162\",\n  \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n  \"key_messages\": \"Key Messages:\\nA review of programmes in the USA and Canada argues that education was not sufficient to change behaviour, although it was necessary as a catalytic factor for economic incentives and law enforcement.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3682\"}",
+            "return_val": "{\n  \"action_id\": \"3682\",\n  \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies evaluated the effects of using education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats. One study was in each of Costa Rica, India, the Philippines, Dominica, the USA, Saint Kitts\\u00a0and Colombia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (1 studies): One before-and-after study in the Philippines\\u00a0found that following a communication, education, and public awareness campaign, the population of Philippine crocodiles increased.\\nReproductive success (1 study): One study in Costa Rica\\u00a0found that during a community-based education programme the percentage of leatherback turtle nests lost to poaching decreased.\\nSurvival (3 studies): Two before-and-after studies in the Philippines\\u00a0and Dominica\\u00a0found that following education and awareness campaigns, one in combination with use of road signs, human killing of Philippine crocodiles\\u00a0decreased and there were fewer road-deaths of lesser Antillean iguanas\\u00a0compared to before the campaigns began. One study in India\\u00a0reported that following education and awareness campaigns in combination with creating a network of local snake experts, local snake experts reported that they intervened to save 276 non-venomous snakes from being killed over six years.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (5 STUDIES)\\n\\nHuman behaviour change (3 studies): One replicated study in Colombia\\u00a0found that in areas with conservation initiatives relating to turtles, more people reported changing consumption habitats and fewer people reported using turtles for food compared to in areas with no initiatives, however, stated rates of hunting, buying and selling of turtles remained similar. One study in Saint Kitts\\u00a0found that attending an educational summer camp on turtle conservation had mixed effects on reported behaviours in relation to sea turtles of attendees and their parents/guardians, and mixed effects on whether they took part in conservation activities after the camp. One study in the USA\\u00a0found that providing an information leaflet did not decrease the number of hotel rooms that left lights on at night compared to when no leaflet was provided.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"831\"}",
+            "return_val": "{\n  \"action_id\": \"831\",\n  \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, before-and-after study) in Estonia and the UK found that raising public awareness, along with other interventions, increased numbers of natterjack toads and created 1,023 ponds for amphibians.\\nOne before-and-after study in Mexico\\u00a0found that raising awareness in tourists, increased their knowledge of axolotls. One study in Taiwan\\u00a0found that holding press conferences to publicize frog conservation had no effect on a green tree frog project. \\nTwo studies in Panama and the UK found that awareness campaigns reached over 50,000 members of the public each year or trained 1,016 people at 57 events over four years.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"forest conservation public engagement awareness education programmes effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"314\",\n    \"action_title\": \"Start educational programmes for personal watercraft owners\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"deforestation awareness campaign education programme effectiveness forest conservation\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3682\",\n    \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"public engagement awareness campaigns education programmes conservation effectiveness forest\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1859\",\n    \"action_title\": \"Irrigate peatland (without planting)\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1166\",\n    \"action_title\": \"Remove nitrogen and phosphorus using harvested products\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3402\",\n    \"action_title\": \"Sow or plant nurse plants (alongside seeding/planting of grassland species)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the evidence for the effectiveness of public engagement strategies, such as awareness campaigns or education programmes, for forest conservation?\",\"summary\":\"Across conservation contexts, evidence on public engagement (awareness/education) shows mixed but sometimes positive effects on conservation-related outcomes. A review from the USA and Canada argues education alone was not sufficient to change behaviour, though it was necessary as a catalytic factor alongside economic incentives and law enforcement (162). Seven studies on reptiles reported: increases in Philippine crocodile population after a communication, education and public awareness campaign; reduced leatherback turtle nest poaching during a community-based education programme; decreases in human killing of Philippine crocodiles and fewer road deaths of lesser Antillean iguanas when education/awareness was used (the latter alongside road signs); and reports of 276 non-venomous snakes saved over six years following education/awareness combined with a local expert network; however, stated behaviour changes were mixed in Colombia and Saint Kitts, and an information leaflet did not reduce hotel light use in the USA (3682). For amphibians, two studies (including a replicated, before-and-after study) found raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in 1,023 ponds created; tourist awareness of axolotls increased following targeted efforts; press conferences had no effect on a green tree frog project; and campaigns reached over 50,000 people annually or trained 1,016 people over four years (831).\",\"action_ids\":[\"162\",\"3682\",\"831\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence for the effectiveness of public engagement strategies, such as awareness campaigns or education programmes, for forest conservation?\",\n  \"relevant_summary\": \"Across conservation contexts, evidence on public engagement (awareness/education) shows mixed but sometimes positive effects on conservation-related outcomes. A review from the USA and Canada argues education alone was not sufficient to change behaviour, though it was necessary as a catalytic factor alongside economic incentives and law enforcement (162). Seven studies on reptiles reported: increases in Philippine crocodile population after a communication, education and public awareness campaign; reduced leatherback turtle nest poaching during a community-based education programme; decreases in human killing of Philippine crocodiles and fewer road deaths of lesser Antillean iguanas when education/awareness was used (the latter alongside road signs); and reports of 276 non-venomous snakes saved over six years following education/awareness combined with a local expert network; however, stated behaviour changes were mixed in Colombia and Saint Kitts, and an information leaflet did not reduce hotel light use in the USA (3682). For amphibians, two studies (including a replicated, before-and-after study) found raising public awareness, alongside other interventions, increased natterjack toad numbers and resulted in 1,023 ponds created; tourist awareness of axolotls increased following targeted efforts; press conferences had no effect on a green tree frog project; and campaigns reached over 50,000 people annually or trained 1,016 people over four years (831).\",\n  \"action_ids\": [\n    \"162\",\n    \"3682\",\n    \"831\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1157",
+      "1158"
+    ],
+    "regenerated_ids": [
+      "1157",
+      "1158"
+    ]
+  },
+  {
+    "query": "To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Wire fencing: Across 10 studies from Australia, Bhutan, Canada, France, Portugal and the USA, five studies (including two replicated, randomized, controlled) reported increased cover and size of understory plants when large herbivores were excluded, while six studies found no effect on understory cover, seed density, species richness or diversity; effects on young trees were mixed (one study increased biomass, one decreased density, one varied by species), and two replicated, controlled USA studies found increased tree density [1230]. Electric fencing: One controlled study in South Africa found that excluding elephants and nyalas with electric fencing increased tree density [1231].",
+    "summary_action_ids": [
+      "1230",
+      "1231"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"wire fences vs electric fences effectiveness protecting forests from large native herbivores\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1230\",\n    \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1231\",\n    \"action_title\": \"Use electric fencing to exclude large native herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2415\",\n    \"action_title\": \"Install non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"wire fences vs electric fences effectiveness protecting forests from large native herbivores\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2448\",\n    \"action_title\": \"Fit livestock with protective collars to reduce risk of predation by mammals to reduce human-wildlife conflict\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2427\",\n    \"action_title\": \"Use visual deterrents (e.g. scarecrows) to deter predation of livestock by mammals to reduce human-wildlife conflict\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1670\",\n    \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1230\"}",
+            "return_val": "{\n  \"action_id\": \"1230\",\n  \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nFive of ten studies (including two replicated, randomized, controlled\\u00a0 studies) in Australia, Bhutan, Canada, France, Portugal and the USA found that using wire fencing to exclude large herbivores increased the cover and\\u00a0 size of understory plants. Six studies found no effect of wire fencing on the cover, seed density, species richness\\u00a0or\\u00a0diversity of understory plants.\\nTwo of the above studies\\u00a0and one paired-sites study in Ireland\\u00a0examined the effect of using wire fencing to exclude large herbivores on young trees. One found it increased the biomass, one found it decreased the density of young trees and one found mixed effects\\u00a0depending on the species.\\nTwo replicated, controlled studies in the USA found that using wire fencing to exclude large herbivores increased tree density.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1231\"}",
+            "return_val": "{\n  \"action_id\": \"1231\",\n  \"action_title\": \"Use electric fencing to exclude large native herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in South Africa found that using electric fencing to exclude elephants and nyalas increased tree density.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2415\"}",
+            "return_val": "{\n  \"action_id\": \"2415\",\n  \"action_title\": \"Install non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies evaluated the effects on mammals of installing non-electric fencing to exclude predators or herbivores and reduce human-wildlife conflict. Two studies were in the USA and one each was in Germany, the UK, Spain, China, Tanzania and Kenya.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (8 STUDIES)\\n\\nHuman-wildlife conflict (8 studies): Four replicated studies (including three before-and-after studies), in USA, China, Tanzania and Kenya, found that non-electric fencing reduced livestock predation by coyotes, Tibetan brown bears, and a range of mammalian predators. A replicated, controlled study in USA found that a high woven wire fence with small mesh, an overhang and an apron (to deter burrowing) was the most effective design at deterring crossings by coyotes. A replicated, controlled study in Germany found that fencing with phosphorescent tape was more effective than fencing with normal yellow tape for deterring red deer and roe deer, but had no effect on crossings by wild boar or brown hare. Two studies (one replicated, before-and-after, site comparison and one controlled study) in the UK and Spain found that fences reduced European rabbit numbers on or damage to crops.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?\",\"summary\":\"Wire fencing: Across 10 studies from Australia, Bhutan, Canada, France, Portugal and the USA, five studies (including two replicated, randomized, controlled) reported increased cover and size of understory plants when large herbivores were excluded, while six studies found no effect on understory cover, seed density, species richness or diversity; effects on young trees were mixed (one study increased biomass, one decreased density, one varied by species), and two replicated, controlled USA studies found increased tree density [1230]. Electric fencing: One controlled study in South Africa found that excluding elephants and nyalas with electric fencing increased tree density [1231].\",\"action_ids\":[\"1230\",\"1231\"]}",
+            "return_val": "{\n  \"query\": \"To protect forests from large native herbivores, how do wire fences and electric fences compare in effectiveness?\",\n  \"relevant_summary\": \"Wire fencing: Across 10 studies from Australia, Bhutan, Canada, France, Portugal and the USA, five studies (including two replicated, randomized, controlled) reported increased cover and size of understory plants when large herbivores were excluded, while six studies found no effect on understory cover, seed density, species richness or diversity; effects on young trees were mixed (one study increased biomass, one decreased density, one varied by species), and two replicated, controlled USA studies found increased tree density [1230]. Electric fencing: One controlled study in South Africa found that excluding elephants and nyalas with electric fencing increased tree density [1231].\",\n  \"action_ids\": [\n    \"1230\",\n    \"1231\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1230",
+      "1231"
+    ],
+    "regenerated_ids": [
+      "1230",
+      "1231"
+    ]
+  },
+  {
+    "query": "What management interventions can be implemented to aid forest recovery after a wildfire?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Thinning trees after wildfire was associated with increased plant species richness in two replicated, controlled studies in Spain, increased cover of aspen saplings in one study in Canada, decreased plant biomass in one study in the USA, and decreased mortality of pine seedlings in one study in Israel [1234]. One paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234].",
+    "summary_action_ids": [
+      "1234"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"management interventions to aid forest recovery after a wildfire\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2483\",\n    \"action_title\": \"Remove trees and shrubs to recreate open areas of land\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1629\",\n    \"action_title\": \"Apply herbicide to trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"management interventions to aid forest recovery after a wildfire\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2486\",\n    \"action_title\": \"Use negative stimuli to deter consumption of livestock feed by mammals to reduce human-wildlife conflict\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3808\",\n    \"action_title\": \"Limit the number or length of static fishing nets in an area\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1264\",\n    \"action_title\": \"Use different planting or seeding methods\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1234\"}",
+            "return_val": "{\n  \"action_id\": \"1234\",\n  \"action_title\": \"Thin trees after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nFive replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain\\u00a0found that thinning increased plant species richness. One in Canada\\u00a0found that it increased the cover of aspen saplings. One study in the USA\\u00a0found thinning decreased plant biomass and one in Israel\\u00a0found it decreased mortality of pine seedlings.\\nOne paired-site study in Canada\\u00a0found that logging after wildfire decreased species richness and diversity of mosses.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2483\"}",
+            "return_val": "{\n  \"action_id\": \"2483\",\n  \"action_title\": \"Remove trees and shrubs to recreate open areas of land\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on mammals of removing trees and shrubs to recreate open areas of land. Both studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A controlled study in the USA\\u00a0found that where Ashe juniper trees were removed, there were higher abundances of three rodent species.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): A before-and-after, site comparison study in the USA found that removing trees increased use of areas by Rocky Mountain bighorn sheep.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1629\"}",
+            "return_val": "{\n  \"action_id\": \"1629\",\n  \"action_title\": \"Apply herbicide to trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled, before-and-after study in South Africa\\u00a0found that using herbicide to control trees increased plant diversity but did not increase shrub cover.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that herbicide treatment of trees increased the abundance of common heather seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1264\"}",
+            "return_val": "{\n  \"action_id\": \"1264\",\n  \"action_title\": \"Use different planting or seeding methods\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies (including one replicated, randomized study) in Australia, Brazil, Costa Rica\\u00a0and Mexico\\u00a0found no effect of planting or seeding methods on the size and survival rate of seedlings.\\nOne replicated, controlled study in Brazil\\u00a0found that planting early succession pioneer tree species decreased the height of other planted species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What management interventions can be implemented to aid forest recovery after a wildfire?\",\"summary\":\"Thinning trees after wildfire was associated with increased plant species richness in two replicated, controlled studies in Spain, increased cover of aspen saplings in one study in Canada, decreased plant biomass in one study in the USA, and decreased mortality of pine seedlings in one study in Israel [1234]. One paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234].\",\"action_ids\":[\"1234\"]}",
+            "return_val": "{\n  \"query\": \"What management interventions can be implemented to aid forest recovery after a wildfire?\",\n  \"relevant_summary\": \"Thinning trees after wildfire was associated with increased plant species richness in two replicated, controlled studies in Spain, increased cover of aspen saplings in one study in Canada, decreased plant biomass in one study in the USA, and decreased mortality of pine seedlings in one study in Israel [1234]. One paired-site study in Canada reported that logging after wildfire decreased species richness and diversity of mosses [1234].\",\n  \"action_ids\": [\n    \"1234\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1234",
+      "1235",
+      "1236",
+      "1237"
+    ],
+    "regenerated_ids": [
+      "1234",
+      "1235",
+      "1236",
+      "1237"
+    ]
+  }
+]

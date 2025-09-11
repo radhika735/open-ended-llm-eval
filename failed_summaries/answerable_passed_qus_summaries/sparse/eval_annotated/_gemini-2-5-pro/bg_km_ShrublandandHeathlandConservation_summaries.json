@@ -1,0 +1,150 @@
+[
+  {
+    "query": "When trying to control bracken in UK heathlands, how does using herbicide alone compare to cutting, or a combination of both?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "When using herbicide to control bracken, one UK trial found an increase in heather seedlings, while two other UK studies found no increase in heather cover, and one UK study found an increase in heather biomass (1652). In terms of plant species, one UK study showed an increase in the number of plant species, but another found no effect on species richness or diversity (1652). Herbicide application was found to increase the cover of wavy hair-grass, sheep\u2019s fescue, and gorse in some UK studies (1652). While three UK studies found that herbicide reduced bracken biomass or cover, one study found no change in bracken abundance (1652).\n\nCutting bracken was found to increase heather cover or biomass in one Norwegian and one UK study, but two other UK studies found no increase in heather cover or seedling abundance (1653). One UK study found that cutting increased heathland plant species richness, while another found it increased species diversity but not richness (1653). Cutting was also found to increase the cover of wavy hair-grass and sheep\u2019s fescue in one UK study (1653). The effect of cutting on bracken itself was varied, with some studies in the UK and Norway showing a reduction in cover or biomass, while others in the UK found mixed effects or no decrease in abundance (1653).\n\nCombining cutting and herbicide application was found to reduce bracken biomass or cover in three studies in the UK and Norway (1654). However, the effect on heather was inconsistent, with one UK study finding no change in biomass and a Norwegian study finding increased cover (1654). One UK study found that cutting followed by herbicide application increased plant species richness more than applying herbicide before cutting (1654).",
+    "summary_action_ids": [
+      "1652",
+      "1653",
+      "1654"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"bracken control in UK heathlands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1653\",\n    \"action_title\": \"Cut to control bracken\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1652\",\n    \"action_title\": \"Use herbicide to control bracken\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1726\",\n    \"action_title\": \"Use \\u2018bracken bruiser\\u2019 to control bracken\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1653\"}",
+            "return_val": "{\n  \"action_id\": \"1653\",\n  \"action_title\": \"Cut to control bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled, before-and-after trial in Norway\\u00a0and one randomized, controlled study in the UK\\u00a0found that cutting bracken increased the cover\\u00a0or biomass\\u00a0of heather. However, two randomized, replicated, controlled studies in the UK\\u00a0found that cutting bracken did not increase heather cover\\u00a0or abundance of heather seedlings.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that cutting to control bracken increased the species richness of heathland plant species. However, another randomized, replicated, controlled study in the UK\\u00a0found that cutting to control bracken did not alter species richness but did increase species diversity.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that cutting bracken increased cover of wavy hair-grass and sheep\\u2019s fescue. One controlled study in the UK\\u00a0found that cutting bracken did not increase the abundance of gorse or common cow-wheat.\\nOne randomized, controlled, before-and-after trial in Norway\\u00a0and two randomized, controlled studies in the UK\\u00a0found that cutting bracken reduced bracken cover\\u00a0or biomass. One randomized, replicated, controlled, paired study the UK\\u00a0found that cutting had mixed effects on bracken cover. However, one controlled study in the UK\\u00a0found that cutting bracken did not decrease the abundance of bracken.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1652\"}",
+            "return_val": "{\n  \"action_id\": \"1652\",\n  \"action_title\": \"Use herbicide to control bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, before-and-after trial in the UK\\u00a0found that applying herbicide to control bracken increased the number of heather seedlings. However, two randomized, controlled studies in the UK\\u00a0found that spraying with herbicide did not increase heather cover. One randomized, controlled study in the UK\\u00a0found that applying herbicide to control bracken increased heather biomass.\\nOne replicated, randomized, controlled study in the UK\\u00a0found that the application of herbicide increased the number of plant species in a heathland site. However, one replicated, randomized, controlled study in the UK\\u00a0found that spraying bracken with herbicide had no effect on species richness or diversity.\\nOne randomized, controlled study in the UK\\u00a0found that applying herbicide to control bracken increased the cover of wavy hair-grass and sheep\\u2019s fescue. One controlled study in the UK\\u00a0found that applying herbicide to control bracken increased the cover of gorse and the abundance of common cow-wheat.\\nOne controlled, before-and-after trial in the UK\\u00a0found that the application of herbicide reduced the abundance of bracken but increased the number of silver birch seedlings. Three randomized, controlled studies in the UK\\u00a0found that the application of herbicide reduced the biomass\\u00a0or cover\\u00a0of bracken. However, one controlled study in the UK\\u00a0found that applying herbicide did not change the abundance of bracken.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1726\"}",
+            "return_val": "{\n  \"action_id\": \"1726\",\n  \"action_title\": \"Use \\u2018bracken bruiser\\u2019 to control bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, before-and-after, paired study in the UK\\u00a0found that bracken bruising increased bracken cover, though bracken cover also increased in areas where bracken bruising was not done.There was no effect on the number of plant species or plant diversity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"bracken control in UK heathlands\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1654\",\n    \"action_title\": \"Cut and apply herbicide to control bracken\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1656\",\n    \"action_title\": \"Cut bracken and rotovate\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"105\",\n    \"action_title\": \"Control bracken\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1654\"}",
+            "return_val": "{\n  \"action_id\": \"1654\",\n  \"action_title\": \"Cut and apply herbicide to control bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled study in the UK\\u00a0found that cutting and applying herbicide to control bracken did not alter heather biomass. One randomized, controlled, before-and-after trial in Norway\\u00a0found that cutting and applying herbicide increased heather cover. One\\u00a0randomized, replicated, controlled, paired study in the UK found that cutting and using herbicide had no significant effect on the cover of seven plant species.\\nOne replicated, randomized, controlled study in the UK\\u00a0found that cutting bracken followed by applying herbicide increased plant species richness when compared with applying herbicide followed by cutting.\\nThree randomized, controlled studies (one also a before-and-after trial, and one of which was a paired study) in the UK\\u00a0and Norway\\u00a0found that cutting and applying herbicide reduced bracken biomass\\u00a0or cover.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"When using herbicide to control bracken, one UK trial found an increase in heather seedlings, while two other UK studies found no increase in heather cover, and one UK study found an increase in heather biomass (1652). In terms of plant species, one UK study showed an increase in the number of plant species, but another found no effect on species richness or diversity (1652). Herbicide application was found to increase the cover of wavy hair-grass, sheep\u2019s fescue, and gorse in some UK studies (1652). While three UK studies found that herbicide reduced bracken biomass or cover, one study found no change in bracken abundance (1652).\\n\\nCutting bracken was found to increase heather cover or biomass in one Norwegian and one UK study, but two other UK studies found no increase in heather cover or seedling abundance (1653). One UK study found that cutting increased heathland plant species richness, while another found it increased species diversity but not richness (1653). Cutting was also found to increase the cover of wavy hair-grass and sheep\u2019s fescue in one UK study (1653). The effect of cutting on bracken itself was varied, with some studies in the UK and Norway showing a reduction in cover or biomass, while others in the UK found mixed effects or no decrease in abundance (1653).\\n\\nCombining cutting and herbicide application was found to reduce bracken biomass or cover in three studies in the UK and Norway (1654). However, the effect on heather was inconsistent, with one UK study finding no change in biomass and a Norwegian study finding increased cover (1654). One UK study found that cutting followed by herbicide application increased plant species richness more than applying herbicide before cutting (1654).\",\"action_ids\":[\"1652\",\"1653\",\"1654\"],\"query\":\"When trying to control bracken in UK heathlands, how does using herbicide alone compare to cutting, or a combination of both?\"}",
+            "return_val": "{\n  \"query\": \"When trying to control bracken in UK heathlands, how does using herbicide alone compare to cutting, or a combination of both?\",\n  \"relevant_summary\": \"When using herbicide to control bracken, one UK trial found an increase in heather seedlings, while two other UK studies found no increase in heather cover, and one UK study found an increase in heather biomass (1652). In terms of plant species, one UK study showed an increase in the number of plant species, but another found no effect on species richness or diversity (1652). Herbicide application was found to increase the cover of wavy hair-grass, sheep\\u2019s fescue, and gorse in some UK studies (1652). While three UK studies found that herbicide reduced bracken biomass or cover, one study found no change in bracken abundance (1652).\\n\\nCutting bracken was found to increase heather cover or biomass in one Norwegian and one UK study, but two other UK studies found no increase in heather cover or seedling abundance (1653). One UK study found that cutting increased heathland plant species richness, while another found it increased species diversity but not richness (1653). Cutting was also found to increase the cover of wavy hair-grass and sheep\\u2019s fescue in one UK study (1653). The effect of cutting on bracken itself was varied, with some studies in the UK and Norway showing a reduction in cover or biomass, while others in the UK found mixed effects or no decrease in abundance (1653).\\n\\nCombining cutting and herbicide application was found to reduce bracken biomass or cover in three studies in the UK and Norway (1654). However, the effect on heather was inconsistent, with one UK study finding no change in biomass and a Norwegian study finding increased cover (1654). One UK study found that cutting followed by herbicide application increased plant species richness more than applying herbicide before cutting (1654).\",\n  \"action_ids\": [\n    \"1652\",\n    \"1653\",\n    \"1654\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1652",
+      "1653",
+      "1654",
+      "1655",
+      "1656",
+      "1658",
+      "1659",
+      "1660",
+      "1661",
+      "1726"
+    ],
+    "regenerated_ids": [
+      "1652",
+      "1653",
+      "1654"
+    ]
+  },
+  {
+    "query": "Does the effectiveness of using fences to exclude livestock from shrublands vary between different countries?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "The effectiveness of using fences to exclude livestock from shrublands varies between studies in different countries. In the UK, multiple studies found that fencing increased shrub cover, abundance, or biomass (1545). Similarly, a study in Germany noted an increase in shrub biomass and heather height (1545), and a Danish study found higher heather cover in fenced areas (1545). Conversely, a study in the USA discovered that fencing decreased woody plant cover (1545). There are also conflicting results within the same countries. For example, some studies in the USA and UK found that fencing had a mixed or no effect on shrub cover (1545). A study in Finland showed that fencing did not alter the cover of grass species or the abundance of herbs (1545). Effects on other vegetation were also inconsistent. In the UK, one study found a decrease in species richness within fenced areas, while another observed an increase in vegetation height and biomass but no change in the number of plant species (1545). With regard to grass cover, studies in the USA and the UK have reported declines, increases, and no change (1545). \n\nIn forest environments, studies in Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA have found that excluding livestock can increase the biomass, species richness, density and cover of understory plants, while other studies in the same countries have found mixed or no effect (1205). In Mexico, Kenya, Israel and Panama, excluding livestock has been found to increase the size and density of regenerating trees (1205).",
+    "summary_action_ids": [
+      "1545",
+      "1205"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"fences to exclude livestock from shrublands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1545\",\n    \"action_title\": \"Use fences to exclude livestock from shrublands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1205\",\n    \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2969\",\n    \"action_title\": \"Exclude or remove livestock from historically grazed brackish/saline swamps\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1545\"}",
+            "return_val": "{\n  \"action_id\": \"1545\",\n  \"action_title\": \"Use fences to exclude livestock from shrublands\",\n  \"key_messages\": \"Key Messages:\\n\\u00a0\\n\\nTwo replicated, controlled, randomized studies (one of which was also a before-and-after trial) and one controlled before-and-after trial in the UK\\u00a0found that using fences to exclude livestock increased shrub cover or abundance. Two replicated, controlled, randomized studies in Germany\\u00a0and the UK\\u00a0found that using fences increased shrub biomass\\u00a0or the biomass and height of individual heather plants. Two controlled studies (one of which was a before-and-after study) in Denmark\\u00a0and the UK\\u00a0found that heather presence or cover was higher in fenced areas that in areas that were not fenced.\\u00a0However, one site comparison study in the USA\\u00a0found that using fences led to decreased cover of woody plants. Three replicated, controlled studies (one of which was a before and after study) in the USA\\u00a0and the UK\\u00a0found that fencing either had a mixed effect on shrub cover or did not alter shrub cover.\\nOne randomized, replicated, controlled, paired study in the UK\\u00a0found that using fences to exclude livestock did not alter the number of plant species, but did increase vegetation height and biomass. One controlled, before-and-after study in the UK\\u00a0found that fenced areas had lower species richness than unfenced areas.\\nOne randomized, replicated, controlled, before-and-after trial in the UK\\u00a0and one site comparison study in the USA\\u00a0found that using fences to exclude livestock led to a decline in grass cover. However, four controlled studies (one of which a before-and-after trial) in the USA, the UK, and Finland\\u00a0found that using fences did not alter cover of grass species. One site comparison study in the USA\\u00a0and one replicated, controlled study in the UK\\u00a0recorded an increase in grass cover.\\nOne controlled study in Finland\\u00a0found that using fences to exclude livestock did not alter the abundance of herb species and one site comparison in the USA\\u00a0found no difference in forb cover between fenced and unfenced areas. One replicated, controlled study in the USA\\u00a0found fencing had a mixed effect on herb cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1205\"}",
+            "return_val": "{\n  \"action_id\": \"1205\",\n  \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of eight studies (including two replicated, randomized, controlled studies) in Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA found that excluding livestock using wire fences increased  biomass , species richness, density and cover of understory plants. The other four studies\\u00a0found mixed effects or no effect of livestock exclusion on understory plants.\\nThree of four studies (including one replicated, randomized, controlled study) in Mexico, Kenya, Israel and Panama found that excluding livestock using wire fences increased the size and density of regenerating trees and the number of regenerating trees. One study\\u00a0found livestock exclusion decreased tree density but not tree size.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2969\"}",
+            "return_val": "{\n  \"action_id\": \"2969\",\n  \"action_title\": \"Exclude or remove livestock from historically grazed brackish/saline swamps\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of excluding or removing livestock from historically grazed brackish/saline swamps. The study was in South Africa and the focal livestock were cattle.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\nIndividual species abundance (1 study): One replicated, paired, controlled study in South Africa\\u00a0reported that more grey mangrove Avicennia marina seedlings appeared in plots fenced to exclude cattle for two years, than in plots left open to cattle.\\n\\nVEGETATION STRUCTURE\\n\\nHeight (1 study): One replicated, paired, controlled study in South Africa\\u00a0reported that mangrove trees fenced off from cattle were taller, after two years, than trees accessible to cattle.\\n\\nOTHER\\n\\nGrowth (1 study): One replicated, paired, controlled study in South Africa\\u00a0found that mangrove trees fenced off from cattle grew more over two years \\u2013 in height, diameter and crown volume \\u2013than trees accessible to cattle.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1545\",\"1205\"],\"summary\":\"The effectiveness of using fences to exclude livestock from shrublands varies between studies in different countries. In the UK, multiple studies found that fencing increased shrub cover, abundance, or biomass (1545). Similarly, a study in Germany noted an increase in shrub biomass and heather height (1545), and a Danish study found higher heather cover in fenced areas (1545). Conversely, a study in the USA discovered that fencing decreased woody plant cover (1545). There are also conflicting results within the same countries. For example, some studies in the USA and UK found that fencing had a mixed or no effect on shrub cover (1545). A study in Finland showed that fencing did not alter the cover of grass species or the abundance of herbs (1545). Effects on other vegetation were also inconsistent. In the UK, one study found a decrease in species richness within fenced areas, while another observed an increase in vegetation height and biomass but no change in the number of plant species (1545). With regard to grass cover, studies in the USA and the UK have reported declines, increases, and no change (1545). \\n\\nIn forest environments, studies in Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA have found that excluding livestock can increase the biomass, species richness, density and cover of understory plants, while other studies in the same countries have found mixed or no effect (1205). In Mexico, Kenya, Israel and Panama, excluding livestock has been found to increase the size and density of regenerating trees (1205).\",\"query\":\"Does the effectiveness of using fences to exclude livestock from shrublands vary between different countries?\"}",
+            "return_val": "{\n  \"query\": \"Does the effectiveness of using fences to exclude livestock from shrublands vary between different countries?\",\n  \"relevant_summary\": \"The effectiveness of using fences to exclude livestock from shrublands varies between studies in different countries. In the UK, multiple studies found that fencing increased shrub cover, abundance, or biomass (1545). Similarly, a study in Germany noted an increase in shrub biomass and heather height (1545), and a Danish study found higher heather cover in fenced areas (1545). Conversely, a study in the USA discovered that fencing decreased woody plant cover (1545). There are also conflicting results within the same countries. For example, some studies in the USA and UK found that fencing had a mixed or no effect on shrub cover (1545). A study in Finland showed that fencing did not alter the cover of grass species or the abundance of herbs (1545). Effects on other vegetation were also inconsistent. In the UK, one study found a decrease in species richness within fenced areas, while another observed an increase in vegetation height and biomass but no change in the number of plant species (1545). With regard to grass cover, studies in the USA and the UK have reported declines, increases, and no change (1545). \\n\\nIn forest environments, studies in Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA have found that excluding livestock can increase the biomass, species richness, density and cover of understory plants, while other studies in the same countries have found mixed or no effect (1205). In Mexico, Kenya, Israel and Panama, excluding livestock has been found to increase the size and density of regenerating trees (1205).\",\n  \"action_ids\": [\n    \"1545\",\n    \"1205\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1545"
+    ],
+    "regenerated_ids": [
+      "1545"
+    ]
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "query": "For large captive carnivores like felids and bears, what are the most effective food-based enrichment strategies to reduce stereotypic behaviours?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Presenting food frozen in ice has been shown to decrease abnormal or stereotypic behaviours in bears and felids (1923). Similarly, presenting food inside objects has been found to reduce stereotypic behaviours in sloth bears and spectacled bears (1924). Hiding food around the enclosure has also been shown to reduce stereotypical pacing in leopard cats and black bears (1915). In addition to reducing stereotypic behaviors, hiding food has been found to increase exploring and foraging behaviors in black bears, leopard cats, bush dogs, maned wolves, and Malayan sun bears (1915). Presenting food inside objects also increased exploratory and foraging behaviours in sloth bears and spectacled bears (1924). Presenting food frozen in ice has been shown to increase activity levels in bears and felids (1923).",
+    "summary_action_ids": [
+      "1923",
+      "1924",
+      "1915"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"food-based enrichment for large captive carnivores to reduce stereotypic behaviours\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1923\",\n    \"action_title\": \"Carnivores: Present food frozen in ice\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1924\",\n    \"action_title\": \"Carnivores: Present food inside objects (e.g. Boomer balls)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1915\",\n    \"action_title\": \"Carnivores: Hide food around enclosure\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1923\"}",
+            "return_val": "{\n  \"action_id\": \"1923\",\n  \"action_title\": \"Carnivores: Present food frozen in ice\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, before-and-after studies in the USA\\u00a0found that when presented with food frozen in ice, abnormal\\u00a0or stereotypic\\u00a0behaviours decreased and activity levels increased\\u00a0in bears\\u00a0and felids.\\nOne replicated, before-and-after study in the USA\\u00a0found that manipulation behaviours increased in lions, whereas a replicated study in the USA found that manipulation behaviours decreased in grizzly bears.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1924\"}",
+            "return_val": "{\n  \"action_id\": \"1924\",\n  \"action_title\": \"Carnivores: Present food inside objects (e.g. Boomer balls)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies in Germany\\u00a0and India\\u00a0found that exploratory\\u00a0and foraging\\u00a0behaviours increased and stereotypic\\u00a0behaviours decreased in sloth bears\\u00a0and spectacled bears\\u00a0when presented with food inside objects.\\nOne before-and-after study in the USA\\u00a0found that exploring/foraging behaviours decreased in a sloth bear when presented with food inside objects.\\nOne replicated study in the USA\\u00a0found that grizzly bears spent a similar time manipulating food in a box and freely available food.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1915\"}",
+            "return_val": "{\n  \"action_id\": \"1915\",\n  \"action_title\": \"Carnivores: Hide food around enclosure\",\n  \"key_messages\": \"Key Messages:\\n\\nFour replicated, before-and-after studies in the USA, UK\\u00a0and Germany\\u00a0and one before-and-after study\\u00a0of a black bear, leopard cats, bush dogs, maned wolves\\u00a0and Malayan sun bears\\u00a0found that hiding food increased exploring\\u00a0and foraging behaviours.\\nOne replicated, before-and-after study and one before-and-after study in the USA\\u00a0found a decrease in stereotypical pacing in leopard cats\\u00a0and black bear.\\nOne before-and-after study\\u00a0in the USA found that hiding food reduced the time Canadian lynx spent sleeping during the day.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"For large captive carnivores like felids and bears, what are the most effective food-based enrichment strategies to reduce stereotypic behaviours?\",\"action_ids\":[\"1923\",\"1924\",\"1915\"],\"summary\":\"Presenting food frozen in ice has been shown to decrease abnormal or stereotypic behaviours in bears and felids (1923). Similarly, presenting food inside objects has been found to reduce stereotypic behaviours in sloth bears and spectacled bears (1924). Hiding food around the enclosure has also been shown to reduce stereotypical pacing in leopard cats and black bears (1915). In addition to reducing stereotypic behaviors, hiding food has been found to increase exploring and foraging behaviors in black bears, leopard cats, bush dogs, maned wolves, and Malayan sun bears (1915). Presenting food inside objects also increased exploratory and foraging behaviours in sloth bears and spectacled bears (1924). Presenting food frozen in ice has been shown to increase activity levels in bears and felids (1923).\"}",
+            "return_val": "{\n  \"query\": \"For large captive carnivores like felids and bears, what are the most effective food-based enrichment strategies to reduce stereotypic behaviours?\",\n  \"relevant_summary\": \"Presenting food frozen in ice has been shown to decrease abnormal or stereotypic behaviours in bears and felids (1923). Similarly, presenting food inside objects has been found to reduce stereotypic behaviours in sloth bears and spectacled bears (1924). Hiding food around the enclosure has also been shown to reduce stereotypical pacing in leopard cats and black bears (1915). In addition to reducing stereotypic behaviors, hiding food has been found to increase exploring and foraging behaviors in black bears, leopard cats, bush dogs, maned wolves, and Malayan sun bears (1915). Presenting food inside objects also increased exploratory and foraging behaviours in sloth bears and spectacled bears (1924). Presenting food frozen in ice has been shown to increase activity levels in bears and felids (1923).\",\n  \"action_ids\": [\n    \"1923\",\n    \"1924\",\n    \"1915\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1901",
+      "1902",
+      "1904",
+      "1906",
+      "1915",
+      "1918",
+      "1923",
+      "1924",
+      "1925",
+      "1927"
+    ],
+    "regenerated_ids": [
+      "1901",
+      "1902",
+      "1904",
+      "1906",
+      "1915",
+      "1918",
+      "1923",
+      "1924",
+      "1925",
+      "1927"
+    ]
+  },
+  {
+    "query": "How do the effects of scattering food throughout a primate's enclosure compare with hiding it in containers?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Scattering food throughout a primate's enclosure increased feeding and exploratory behaviours in rhesus macaques, and reduced abnormal behaviours in chimpanzees and aggression in lemurs (1315). This method also led to more foraging and increased activity levels in gorillas (1315). Hiding food in containers, such as boxes, baskets, or tubes, increased activity levels and foraging behaviours in lemurs and gibbons (1316).",
+    "summary_action_ids": [
+      "1315",
+      "1316"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"primate enrichment food scattering versus hiding\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1315\",\n    \"action_title\": \"Primates: Scatter food throughout enclosure\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1316\",\n    \"action_title\": \"Primates: Hide food in containers (including boxes and bags)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1915\",\n    \"action_title\": \"Carnivores: Hide food around enclosure\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1315\"}",
+            "return_val": "{\n  \"action_id\": \"1315\",\n  \"action_title\": \"Primates: Scatter food throughout enclosure\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, before-and-after and one before-and-after study in the USA found that scattering food throughout the enclosure increased feeding and exploratory behaviours in rhesus macaques and reduced abnormal behaviours in chimpanzees and aggression in lemurs.\\nOne before-and-after study in the USA\\u00a0found that when food was scattered throughout the enclosure more foraging was seen and activity levels increased in gorillas.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1316\"}",
+            "return_val": "{\n  \"action_id\": \"1316\",\n  \"action_title\": \"Primates: Hide food in containers (including boxes and bags)\",\n  \"key_messages\": \"Key Messages:\\n\\n\\nTwo before-and-after studies in the USA and Ireland found that the addition of browse to food in boxes, baskets or tubes increased activity levels and foraging behaviours in lemurs and gibbons.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1315\",\"1316\"],\"query\":\"How do the effects of scattering food throughout a primate's enclosure compare with hiding it in containers?\",\"summary\":\"Scattering food throughout a primate's enclosure increased feeding and exploratory behaviours in rhesus macaques, and reduced abnormal behaviours in chimpanzees and aggression in lemurs (1315). This method also led to more foraging and increased activity levels in gorillas (1315). Hiding food in containers, such as boxes, baskets, or tubes, increased activity levels and foraging behaviours in lemurs and gibbons (1316).\"}",
+            "return_val": "{\n  \"query\": \"How do the effects of scattering food throughout a primate's enclosure compare with hiding it in containers?\",\n  \"relevant_summary\": \"Scattering food throughout a primate's enclosure increased feeding and exploratory behaviours in rhesus macaques, and reduced abnormal behaviours in chimpanzees and aggression in lemurs (1315). This method also led to more foraging and increased activity levels in gorillas (1315). Hiding food in containers, such as boxes, baskets, or tubes, increased activity levels and foraging behaviours in lemurs and gibbons (1316).\",\n  \"action_ids\": [\n    \"1315\",\n    \"1316\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1315",
+      "1316"
+    ],
+    "regenerated_ids": [
+      "1315",
+      "1316"
+    ]
+  }
+]

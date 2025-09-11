@@ -330,16 +330,6 @@ Consider the given context and following statements, then determine whether they
     response = raw_response.choices[0].message.content
     response = json.loads(response)
 
-    ## Extracting output when using JSON schema wrapping individual judgements:
-    # response_statements = []
-    # response_citations = []
-    # verdicts = []
-    # reasonings = []
-    # for obj in response:
-    #     response_statements.append(obj["statement"])
-    #     response_citations.append(obj["citations"])
-    #     verdicts.append(True if "yes" in obj["verdict"].lower() else False)
-    #     reasonings.append(obj["reasoning"])
     judgements = []
     for obj in response:
         judgements.append({
@@ -350,7 +340,6 @@ Consider the given context and following statements, then determine whether they
         })
     verdicts = [obj["verdict"] for obj in judgements]
     
-
     num_supported_statements = sum(1 for v in verdicts if v)
     total_statements = len(verdicts)
     score = (num_supported_statements / total_statements) if total_statements > 0 else 0
@@ -398,14 +387,6 @@ Given a question and a list of statements, determine whether each statement is r
     response = raw_response.choices[0].message.content
     response = json.loads(response)
 
-    ## Extracting output when using JSON Schema wrapping individual judgements:
-    # response_statements = []
-    # verdicts = []
-    # reasonings = []
-    # for obj in response:
-    #     response_statements.append(obj["statement"])
-    #     verdicts.append(True if "yes" in obj["verdict"].lower() else False)
-    #     reasonings.append(obj["reasoning"])
     judgements = []
     for obj in response:
         judgements.append({

@@ -22,6 +22,7 @@ def store_failed_qus(qu_type, filter_stage):
         with open(os.path.join(failed_dir, filename), 'w', encoding='utf-8') as f:
             json.dump(failed_qus, f, indent=2)
 
+
 def main():
     qu_types = ["answerable", "unanswerable"]
     filter_stages = ["passed", "failed"]

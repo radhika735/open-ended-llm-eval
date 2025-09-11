@@ -1,0 +1,246 @@
+[
+  {
+    "query": "To mitigate primate crop-raiding, what is the relative effectiveness of chasing primates with loud noises versus using bright lights?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "Based on the evidence found, only the effectiveness of loud noises for chasing primates has been studied. One controlled, replicated, before-and-after study in Indonesia found that in areas where noise deterrents were used along with tree nets, crop raiding by orangutans was reduced. Another study in the Democratic Republic of Congo found that chasing gorillas and using random noise resulted in the return of gorillas from plantations to areas close to protected forest. In contrast, there is no evidence found for the effects of humans chasing primates using bright light to deter crop-raiding, as no studies have been identified that directly and quantitatively tested this method. Therefore, loud noises have demonstrated effectiveness in reducing primate crop-raiding, while the effectiveness of bright lights remains untested according to available research.",
+    "summary_action_ids": [
+      "1449",
+      "1450"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"primate crop-raiding loud noises bright lights chasing\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1449\",\n    \"action_title\": \"Humans chase primates using random loud noise\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1450\",\n    \"action_title\": \"Humans chase primates using bright light\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1444\",\n    \"action_title\": \"Chase crop raiding primates using dogs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1449\"}",
+            "return_val": "{\n  \"action_id\": \"1449\",\n  \"action_title\": \"Humans chase primates using random loud noise\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, replicated, before-and-after study in Indonesia\\u00a0found that in areas where noise deterrents were used, along with tree nets, crop raiding by orangutans was reduced.\\nOne study in the Democratic Republic Congo\\u00a0found that chasing gorillas and using random noise resulted in the return of gorillas from plantations to areas close to protected forest.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1450\"}",
+            "return_val": "{\n  \"action_id\": \"1450\",\n  \"action_title\": \"Humans chase primates using bright light\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of humans chasing primates using bright light to deter crop-raiding on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1444\"}",
+            "return_val": "{\n  \"action_id\": \"1444\",\n  \"action_title\": \"Chase crop raiding primates using dogs\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of using dogs to chase crop raiding primates away on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"primate crop raiding deterrent effectiveness\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"1449\",\n    \"action_title\": \"Humans chase primates using random loud noise\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1443\",\n    \"action_title\": \"Use GPS and/or VHF tracking devices on individuals of problem troops to provide farmers with early warning of crop raiding\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1444\",\n    \"action_title\": \"Chase crop raiding primates using dogs\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1442\",\n    \"action_title\": \"Use nets to keep primates out of fruit trees\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2492\",\n    \"action_title\": \"Use chili to deter crop damage by mammals to reduce human-wildlife conflict\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1443\"}",
+            "return_val": "{\n  \"action_id\": \"1443\",\n  \"action_title\": \"Use GPS and/or VHF tracking devices on individuals of problem troops to provide farmers with early warning of crop raiding\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of tracking devices on crop-raiding primates to provide farmers with early warning of crop raiding on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1442\"}",
+            "return_val": "{\n  \"action_id\": \"1442\",\n  \"action_title\": \"Use nets to keep primates out of fruit trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, replicated, before-and-after study in Indonesia\\u00a0found that areas where nets were used to protect crop trees, crop-raiding by orangutans was reduced.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"To mitigate primate crop-raiding, what is the relative effectiveness of chasing primates with loud noises versus using bright lights?\", \"summary\": \"Based on the evidence found, only the effectiveness of loud noises for chasing primates has been studied. One controlled, replicated, before-and-after study in Indonesia found that in areas where noise deterrents were used along with tree nets, crop raiding by orangutans was reduced. Another study in the Democratic Republic of Congo found that chasing gorillas and using random noise resulted in the return of gorillas from plantations to areas close to protected forest. In contrast, there is no evidence found for the effects of humans chasing primates using bright light to deter crop-raiding, as no studies have been identified that directly and quantitatively tested this method. Therefore, loud noises have demonstrated effectiveness in reducing primate crop-raiding, while the effectiveness of bright lights remains untested according to available research.\", \"action_ids\": [\"1449\", \"1450\"]}",
+            "return_val": "{\n  \"query\": \"To mitigate primate crop-raiding, what is the relative effectiveness of chasing primates with loud noises versus using bright lights?\",\n  \"relevant_summary\": \"Based on the evidence found, only the effectiveness of loud noises for chasing primates has been studied. One controlled, replicated, before-and-after study in Indonesia found that in areas where noise deterrents were used along with tree nets, crop raiding by orangutans was reduced. Another study in the Democratic Republic of Congo found that chasing gorillas and using random noise resulted in the return of gorillas from plantations to areas close to protected forest. In contrast, there is no evidence found for the effects of humans chasing primates using bright light to deter crop-raiding, as no studies have been identified that directly and quantitatively tested this method. Therefore, loud noises have demonstrated effectiveness in reducing primate crop-raiding, while the effectiveness of bright lights remains untested according to available research.\",\n  \"action_ids\": [\n    \"1449\",\n    \"1450\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1449",
+      "1450"
+    ],
+    "regenerated_ids": [
+      "1449",
+      "1450"
+    ]
+  },
+  {
+    "query": "What is the evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "The evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations shows mixed results and several gaps in research. For selective logging practices, one site comparison in Sierra Leone found that primate densities were higher in forest logged at low intensity compared to high intensity (Action ID: 1485). Another before-and-after study in Madagascar found that lemur numbers increased following selective logging (Action ID: 1485), while a site comparison study in Uganda found similar primate densities between low and high intensity logged forests (Action ID: 1485). For avoiding logging of important food tree species, one before-and-after study in Belize found that a black howler monkey population increased over 13 years after trees important for food were preserved alongside other interventions (Action ID: 1494).\n\nHowever, several proposed conservation actions lack scientific evidence for their effectiveness. No evidence was found for the effects of using 'set-asides' for primate protection within logging areas (Action ID: 1497), incorporating forested corridors or buffers into logged areas (Action ID: 1495), leaving hollow trees in selective logging areas for sleeping sites (Action ID: 1489), installing billboards for conservation awareness (Action ID: 1566), providing domestic meat to logging workers to reduce hunting (Action ID: 1501), implementing small and dispersed logging compartments (Action ID: 1487), or closing non-essential roads after logging operations (Action ID: 1496).\n\nResearch on selective or reduced impact logging has been conducted on other taxa but not specifically for primates. Studies on bats found that reduced impact logging had smaller effects on bat abundance than conventional logging (Action ID: 989), while butterfly and moth studies showed mixed responses to selective logging practices (Action ID: 3867).",
+    "summary_action_ids": [
+      "1485",
+      "1497",
+      "1495",
+      "1494",
+      "1489",
+      "1566",
+      "1501",
+      "1487",
+      "1496",
+      "989",
+      "3867"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"commercial logging primate conservation mitigation\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1485\",\n    \"action_title\": \"Use selective logging instead of clear-cutting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3386\",\n    \"action_title\": \"Require mitigation of impacts to marshes or swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1497\",\n    \"action_title\": \"Use 'set-asides' for primate protection within logging area\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1566\",\n    \"action_title\": \"Install billboards to raise primate conservation awareness\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3733\",\n    \"action_title\": \"Translocate reptiles away from threats: Crocodilians\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3734\",\n    \"action_title\": \"Translocate reptiles away from threats: Tuatara\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"34\",\n    \"action_title\": \"Legally protect large native trees\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1487\",\n    \"action_title\": \"Implement small and dispersed logging compartments\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1495\",\n    \"action_title\": \"Incorporate forested corridors or buffers into logged areas\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1501\",\n    \"action_title\": \"Provide domestic meat to workers of the logging company to reduce hunting\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 10, \"offset\": 10, \"query_string\": \"commercial logging primate conservation mitigation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1496\",\n    \"action_title\": \"Close non-essential roads as soon as logging operations are complete\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"1494\",\n    \"action_title\": \"Avoid/minimize logging of important food tree species for primates\",\n    \"rank\": 12\n  },\n  {\n    \"action_id\": \"1484\",\n    \"action_title\": \"Employ hunters in the conservation sector to reduce their impact\",\n    \"rank\": 13\n  },\n  {\n    \"action_id\": \"989\",\n    \"action_title\": \"Use selective or reduced impact logging instead of conventional logging\",\n    \"rank\": 14\n  },\n  {\n    \"action_id\": \"1569\",\n    \"action_title\": \"Regularly play TV & radio announcements to raise primate conservation awareness\",\n    \"rank\": 15\n  },\n  {\n    \"action_id\": \"1489\",\n    \"action_title\": \"Leave hollow trees in areas of selective logging for sleeping sites\",\n    \"rank\": 16\n  },\n  {\n    \"action_id\": \"1271\",\n    \"action_title\": \"Log/remove trees within forests: effects on mature trees\",\n    \"rank\": 17\n  },\n  {\n    \"action_id\": \"3637\",\n    \"action_title\": \"Use selective logging\",\n    \"rank\": 18\n  },\n  {\n    \"action_id\": \"3867\",\n    \"action_title\": \"Use selective or reduced impact logging instead of conventional logging\",\n    \"rank\": 19\n  },\n  {\n    \"action_id\": \"3484\",\n    \"action_title\": \"Provide training for construction workers on the potential risks to reptiles and how to mitigate disturbance during works\",\n    \"rank\": 20\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1485\"}",
+            "return_val": "{\n  \"action_id\": \"1485\",\n  \"action_title\": \"Use selective logging instead of clear-cutting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne site comparison in Sierra Leone\\u00a0found that primate densities were higher in forest that had been logged at low intensity than in a forest logged at high intensity.\\nOne before-and-after study in Madagascar\\u00a0found that the number of lemurs increased following selective logging.\\nOne site comparison study in Uganda found that primate densities were similar in forest that had been logged at low intensity and forest logged at high intensity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1497\"}",
+            "return_val": "{\n  \"action_id\": \"1497\",\n  \"action_title\": \"Use 'set-asides' for primate protection within logging area\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of using 'set-asides' for primate protection within logging area on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1495\"}",
+            "return_val": "{\n  \"action_id\": \"1495\",\n  \"action_title\": \"Incorporate forested corridors or buffers into logged areas\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of incorporating forested corridors or buffers into logged areas on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1494\"}",
+            "return_val": "{\n  \"action_id\": \"1494\",\n  \"action_title\": \"Avoid/minimize logging of important food tree species for primates\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Belize\\u00a0found that a black howler monkey population increased over 13 years after trees important for food for the species were preserved, alongside other interventions.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1489\"}",
+            "return_val": "{\n  \"action_id\": \"1489\",\n  \"action_title\": \"Leave hollow trees in areas of selective logging for sleeping sites\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of leaving hollow trees in areas on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1566\"}",
+            "return_val": "{\n  \"action_id\": \"1566\",\n  \"action_title\": \"Install billboards to raise primate conservation awareness\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of installing billboards to raise primate conservation awareness on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1501\"}",
+            "return_val": "{\n  \"action_id\": \"1501\",\n  \"action_title\": \"Provide domestic meat to workers of the logging company to reduce hunting\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of providing domestic meat to workers of the logging company to reduce hunting on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1487\"}",
+            "return_val": "{\n  \"action_id\": \"1487\",\n  \"action_title\": \"Implement small and dispersed logging compartments\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of implementing small and dispersed logging compartments on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1496\"}",
+            "return_val": "{\n  \"action_id\": \"1496\",\n  \"action_title\": \"Close non-essential roads as soon as logging operations are complete\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of closing non-essential roads as soon as logging operations are complete on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"989\"}",
+            "return_val": "{\n  \"action_id\": \"989\",\n  \"action_title\": \"Use selective or reduced impact logging instead of conventional logging\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of using selective or reduced impact logging instead of conventional logging on bat populations. Two studies were in the Neotropics,\\u00a0one study was in Italy\\u00a0and one in Germany.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nCommunity composition (1 study): One replicated, controlled, site comparison study in Trinidad\\u00a0found that the composition of bat species differed between selectively logged and conventionally logged forest.\\nRichness/diversity (1 study): One replicated, site comparison study in Germany\\u00a0found similar bat diversity in selectively logged and conventionally logged forest.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): One replicated, site comparison study in Germany\\u00a0found similar overall bat activity (relative abundance) in selectively logged and conventionally logged forest. One review of 41 studies in the Neotropics\\u00a0found that reduced impact logging had a smaller effect on bat abundance than conventional logging. One replicated, site comparison study in Italy\\u00a0found greater bat activity at two of three sites that used selective logging techniques to open up the forest canopy rather than leaving the canopy intact.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3867\"}",
+            "return_val": "{\n  \"action_id\": \"3867\",\n  \"action_title\": \"Use selective or reduced impact logging instead of conventional logging\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects on butterflies and moths of using selective or reduced impact logging instead of conventional logging. Two studies were in Brazil\\u00a0and one was in each of Sweden\\u00a0and the USA.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nCommunity composition (1 study): One replicated, site comparison study in Brazil\\u00a0found that forests managed by reduced impact logging at different intensities had a different community composition of fruit-feeding butterflies to pristine forest.\\nRichness/diversity (3 studies): One replicated, controlled, before-and-after study in the USA\\u00a0found that forests harvested by single tree selection had a similar species richness of moths to forests managed by group selection harvesting or clearcutting, but a lower species richness than unharvested forest. One site comparison study in Brazil\\u00a0found that a forest managed by reduced impact logging had a similar species richness and diversity of butterflies to primary forest. One replicated, site comparison study in Brazil\\u00a0found that forests managed by reduced impact logging at different intensities had a similar species richness of fruit-feeding butterflies.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): One replicated, randomized, paired, controlled study in Sweden\\u00a0found that selectively logged forests had a higher abundance of exposed moth caterpillars, but a similar abundance of concealed moth caterpillars, to clearcut forests, and a similar abundance of all moth caterpillars to undisturbed forests. One site comparison study in Brazil\\u00a0found that a forest managed by reduced impact logging had a higher abundance of butterflies than primary forest. One replicated, site comparison study in Brazil\\u00a0found that forests managed by reduced impact logging at intermediate intensity had a higher abundance of fruit-feeding butterflies than forests managed by high or low intensity reduced impact logging.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations?\", \"summary\": \"The evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations shows mixed results and several gaps in research. For selective logging practices, one site comparison in Sierra Leone found that primate densities were higher in forest logged at low intensity compared to high intensity (Action ID: 1485). Another before-and-after study in Madagascar found that lemur numbers increased following selective logging (Action ID: 1485), while a site comparison study in Uganda found similar primate densities between low and high intensity logged forests (Action ID: 1485). For avoiding logging of important food tree species, one before-and-after study in Belize found that a black howler monkey population increased over 13 years after trees important for food were preserved alongside other interventions (Action ID: 1494).\\n\\nHowever, several proposed conservation actions lack scientific evidence for their effectiveness. No evidence was found for the effects of using 'set-asides' for primate protection within logging areas (Action ID: 1497), incorporating forested corridors or buffers into logged areas (Action ID: 1495), leaving hollow trees in selective logging areas for sleeping sites (Action ID: 1489), installing billboards for conservation awareness (Action ID: 1566), providing domestic meat to logging workers to reduce hunting (Action ID: 1501), implementing small and dispersed logging compartments (Action ID: 1487), or closing non-essential roads after logging operations (Action ID: 1496).\\n\\nResearch on selective or reduced impact logging has been conducted on other taxa but not specifically for primates. Studies on bats found that reduced impact logging had smaller effects on bat abundance than conventional logging (Action ID: 989), while butterfly and moth studies showed mixed responses to selective logging practices (Action ID: 3867).\", \"action_ids\": [\"1485\", \"1497\", \"1495\", \"1494\", \"1489\", \"1566\", \"1501\", \"1487\", \"1496\", \"989\", \"3867\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations?\",\n  \"relevant_summary\": \"The evidence base for conservation actions designed to mitigate the impacts of commercial logging on primate populations shows mixed results and several gaps in research. For selective logging practices, one site comparison in Sierra Leone found that primate densities were higher in forest logged at low intensity compared to high intensity (Action ID: 1485). Another before-and-after study in Madagascar found that lemur numbers increased following selective logging (Action ID: 1485), while a site comparison study in Uganda found similar primate densities between low and high intensity logged forests (Action ID: 1485). For avoiding logging of important food tree species, one before-and-after study in Belize found that a black howler monkey population increased over 13 years after trees important for food were preserved alongside other interventions (Action ID: 1494).\\n\\nHowever, several proposed conservation actions lack scientific evidence for their effectiveness. No evidence was found for the effects of using 'set-asides' for primate protection within logging areas (Action ID: 1497), incorporating forested corridors or buffers into logged areas (Action ID: 1495), leaving hollow trees in selective logging areas for sleeping sites (Action ID: 1489), installing billboards for conservation awareness (Action ID: 1566), providing domestic meat to logging workers to reduce hunting (Action ID: 1501), implementing small and dispersed logging compartments (Action ID: 1487), or closing non-essential roads after logging operations (Action ID: 1496).\\n\\nResearch on selective or reduced impact logging has been conducted on other taxa but not specifically for primates. Studies on bats found that reduced impact logging had smaller effects on bat abundance than conventional logging (Action ID: 989), while butterfly and moth studies showed mixed responses to selective logging practices (Action ID: 3867).\",\n  \"action_ids\": [\n    \"1485\",\n    \"1497\",\n    \"1495\",\n    \"1494\",\n    \"1489\",\n    \"1566\",\n    \"1501\",\n    \"1487\",\n    \"1496\",\n    \"989\",\n    \"3867\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1485",
+      "1486",
+      "1487",
+      "1488",
+      "1489",
+      "1490",
+      "1491",
+      "1492",
+      "1493",
+      "1494",
+      "1495",
+      "1496",
+      "1497",
+      "1498",
+      "1499",
+      "1500",
+      "1501"
+    ],
+    "regenerated_ids": [
+      "1485",
+      "1486",
+      "1487",
+      "1488",
+      "1489",
+      "1490",
+      "1491",
+      "1492",
+      "1493",
+      "1494",
+      "1495",
+      "1496",
+      "1497",
+      "1498",
+      "1499",
+      "1500",
+      "1501"
+    ]
+  }
+]
