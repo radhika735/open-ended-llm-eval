@@ -686,5 +686,368 @@
       "1741",
       "1742"
     ]
+  },
+  {
+    "query": "To encourage natural revegetation on bare peat, what are the most effective physical and hydrological interventions?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Several studies have investigated physical interventions to encourage peatland revegetation. Two studies in fens indicated that disturbing the peat surface influenced the development of the plant community over two to three years, leading to the colonization of weedy and fen-characteristic species (1811). However, one of these studies observed that peat-forming species did not colonize the disturbed fen (1811). In a broader context of restoration with multiple interventions, studies have demonstrated an increase in overall vegetation cover, including mosses, bryophytes, and herbaceous plants like cottongrass (1803). While some studies noted an increase in Sphagnum moss cover, one reported no change (1803). The plant community in restored bogs was found to be more similar to that of natural bogs compared to unrestored ones (1803). Furthermore, the moss layer transfer technique has been shown to result in greater moss, bryophyte (including Sphagnum), and herb cover than in unrestored areas (1804). This method also fostered the development of a plant community characteristic of bogs and increased the overall number of plant species, though it resulted in less shrub cover (1804).",
+    "summary_action_ids": [
+      "1811",
+      "1803",
+      "1804"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"physical and hydrological interventions for peat revegetation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1820\",\n    \"action_title\": \"Directly plant peatland trees/shrubs\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1811\",\n    \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1738\",\n    \"action_title\": \"Replace blocks of vegetation after mining or peat extraction\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"peatland restoration\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1795\",\n    \"action_title\": \"Restore/create peatlands in areas that will be climatically suitable in the future\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1803\",\n    \"action_title\": \"Restore/create peatland vegetation (multiple interventions)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1804\",\n    \"action_title\": \"Restore/create peatland vegetation using the moss layer transfer technique\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1811\"}",
+            "return_val": "{\n  \"action_id\": \"1811\",\n  \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of disturbing the peat surface (without planting) on peatland vegetation. Both studies were in fens.\\nPlant community composition (2 studies): Two replicated, paired, controlled, before-and-after studies (one also randomized) in fens in Germany\\u00a0and Sweden\\u00a0reported that soil disturbance affected development of the plant community over 2\\u20133 years.\\u00a0In Germany, disturbed plots developed greater cover of weedy species from the seed bank than undisturbed plots. In Sweden, the community in disturbed and undisturbed plots became less similar over time.\\u00a0\\nCharacteristic plants (2 studies): The same two\\u00a0studies reported that wetland- or fen-characteristic plant species colonized plots that had been disrturbed (along with other interventions). The study in Germany noted that peat-forming species did not colonize the fen.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1803\"}",
+            "return_val": "{\n  \"action_id\": \"1803\",\n  \"action_title\": \"Restore/create peatland vegetation (multiple interventions)\",\n  \"key_messages\": \"Key Messages:\\n\\nNine studies evaluated the effects of multiple restoration interventions (other than the moss layer transfer technique) on peatland vegetation. Six studies were in bogs\\u00a0(one being restored as a fen). One study was in a fen. Two studies were in unspecified or mixed peatlands.\\nPlant community composition (3 studies): One replicated, controlled, before-and-after study in the UK\\u00a0reported that the overall plant community composition differed between restored and unrestored bogs. One replicated, controlled, site comparison study in Estonia\\u00a0found that restored and natural bogs contained more similar plant communities than unrestored and natural bogs. However, one site comparison study in Canada\\u00a0reported that after five years, bogs being restored as fens contained a different plant community to natural fens.\\nCharacteristic plants (1 study): One controlled study in a fen in France\\u00a0reported that restoration interventions increased cover of fen-characteristic plants.\\nMoss cover (7 studies): Five studies (including one replicated, paired, controlled, before-and-after) in bogs or other peatlands in the UK, Estonia and\\u00a0Canada\\u00a0found that restoration interventions increased total moss (or bryophyte) cover. Two studies (one replicated and controlled) in bogs in the Czech Republic\\u00a0and Estonia\\u00a0reported that restoration interventions increased Sphagnum moss cover, but one\\u00a0replicated before-and-after study in bogs in the UK\\u00a0reported no change in Sphagnum cover following intervention. Two site comparison studies in Canada\\u00a0reported that after 1\\u201315 years, restored areas had lower moss cover than natural fens.\\nHerb cover (5 studies): Five studies (one replicated, paired, controlled, before-and-after) in bogs or other peatlands in the Czech Republic, the UK,\\u00a0Estonia\\u00a0and Canada\\u00a0reported that restoration interventions increased cover of herbaceous plants, including cottongrass\\u00a0and other grass-like plants.\\nOverall vegetation cover (3 studies): Three studies (one replicated, controlled, before-and-after) in bogs in the UK\\u00a0and France\\u00a0reported that restoration interventions increased overall vegetation cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1804\"}",
+            "return_val": "{\n  \"action_id\": \"1804\",\n  \"action_title\": \"Restore/create peatland vegetation using the moss layer transfer technique\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects, on peatland vegetation, of restoration using the moss layer transfer technique (as defined in the Background section). All four studies were based on bogs in Canada. Three studies\\u00a0were based on one experimental set-up that was included in the other, larger study.\\nPlant community composition (2 studies): One replicated study in bogs in Canada\\u00a0reported that the majority of restored areas developed a community of bog-characteristic plant species within 11 years. One controlled, before-and-after study in a bog in Canada\\u00a0reported that a restored area (included in the previous study) developed a more peatland-characteristic plant community over time, and relative to an unrestored area.\\nVegetation cover (2 studies): Two controlled studies in one bog in Canada\\u00a0reported that a restored area had greater moss or bryophyte cover (including Sphagnum) than an unrestored area after 4\\u20138 years. The restored area also had greater herb cover (including cottongrass), but less shrub cover, than the unrestored area. One of the studies\\u00a0reported that vegetation in the restored area became more similar to local natural bogs.\\nOverall plant richness/diversity (1 study): One controlled, before-and-after study in a bog in Canada\\u00a0reported that a restored area contained more plant species than an unrestored area.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1820\"}",
+            "return_val": "{\n  \"action_id\": \"1820\",\n  \"action_title\": \"Directly plant peatland trees/shrubs\",\n  \"key_messages\": \"Key Messages:\\n\\nEleven studies evaluated the effects, on peatland vegetation, of planting trees/shrubs to restore or create forested/shrubby peatland. Seven studies were in tropical peat swamps, three in bogs\\u00a0and one in a fen.\\nSurvival (10 studies): Eight studies (seven replicated) in peat swamp forests in Thailand, Malaysia\\u00a0and Indonesia\\u00a0and bogs in Canada\\u00a0reported that the majority of planted trees/shrubs survived over periods between 10 weeks and 13 years. Species with &lt;50% survival included Dacryodes, poplar\\u00a0and katok. One replicated study in a fen in the USA\\u00a0reported that most planted willow cuttings died within two years. One study in a peat swamp forest in Indonesia\\u00a0reported &lt;5% survival of planted trees after five months, following unusually deep flooding.\\nGrowth (5 studies): Four studies (including two replicated, before-and-after) in peat swamp forests in Thailand, Indonesia\\u00a0and Malaysia\\u00a0reported that planted trees grew. One replicated before-and-after study in bogs in Canada\\u00a0reported that planted shrubs grew.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1811\",\"1803\",\"1804\"],\"summary\":\"Several studies have investigated physical interventions to encourage peatland revegetation. Two studies in fens indicated that disturbing the peat surface influenced the development of the plant community over two to three years, leading to the colonization of weedy and fen-characteristic species (1811). However, one of these studies observed that peat-forming species did not colonize the disturbed fen (1811). In a broader context of restoration with multiple interventions, studies have demonstrated an increase in overall vegetation cover, including mosses, bryophytes, and herbaceous plants like cottongrass (1803). While some studies noted an increase in Sphagnum moss cover, one reported no change (1803). The plant community in restored bogs was found to be more similar to that of natural bogs compared to unrestored ones (1803). Furthermore, the moss layer transfer technique has been shown to result in greater moss, bryophyte (including Sphagnum), and herb cover than in unrestored areas (1804). This method also fostered the development of a plant community characteristic of bogs and increased the overall number of plant species, though it resulted in less shrub cover (1804).\",\"query\":\"To encourage natural revegetation on bare peat, what are the most effective physical and hydrological interventions?\"}",
+            "return_val": "{\n  \"query\": \"To encourage natural revegetation on bare peat, what are the most effective physical and hydrological interventions?\",\n  \"relevant_summary\": \"Several studies have investigated physical interventions to encourage peatland revegetation. Two studies in fens indicated that disturbing the peat surface influenced the development of the plant community over two to three years, leading to the colonization of weedy and fen-characteristic species (1811). However, one of these studies observed that peat-forming species did not colonize the disturbed fen (1811). In a broader context of restoration with multiple interventions, studies have demonstrated an increase in overall vegetation cover, including mosses, bryophytes, and herbaceous plants like cottongrass (1803). While some studies noted an increase in Sphagnum moss cover, one reported no change (1803). The plant community in restored bogs was found to be more similar to that of natural bogs compared to unrestored ones (1803). Furthermore, the moss layer transfer technique has been shown to result in greater moss, bryophyte (including Sphagnum), and herb cover than in unrestored areas (1804). This method also fostered the development of a plant community characteristic of bogs and increased the overall number of plant species, though it resulted in less shrub cover (1804).\",\n  \"action_ids\": [\n    \"1811\",\n    \"1803\",\n    \"1804\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1756",
+      "1805",
+      "1806",
+      "1807",
+      "1808",
+      "1809",
+      "1810",
+      "1811",
+      "1813",
+      "1814",
+      "1815",
+      "1859"
+    ],
+    "regenerated_ids": [
+      "1756",
+      "1805",
+      "1806",
+      "1807",
+      "1808",
+      "1809",
+      "1810",
+      "1811",
+      "1815",
+      "1859"
+    ]
+  },
+  {
+    "query": "What are the documented benefits and harms of using soil amendments or covers to support newly planted peatland vegetation?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in a bog in New Zealand investigated the effects of adding fresh peat before planting. It was found that plots that had been amended with fine peat supported a higher cover of two sown plant species than the original bog surface (1837). However, for one of the species this effect was cancelled out by fertilization (1837). There were no studies found that evaluated the effects of burying the upper layer of peat or soil before planting on peatland vegetation (1836).",
+    "summary_action_ids": [
+      "1837",
+      "1836"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"benefits and harms of using soil amendments or covers to support newly planted peatland vegetation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1837\",\n    \"action_title\": \"Add fresh peat to peatland (before planting)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1836\",\n    \"action_title\": \"Bury upper layer of peat/soil (before planting)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1823\",\n    \"action_title\": \"Introduce seeds of peatland herbs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1837\"}",
+            "return_val": "{\n  \"action_id\": \"1837\",\n  \"action_title\": \"Add fresh peat to peatland (before planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on peatland vegetation, of adding fresh peat before planting peatland plants. The study was in a bog.\\nCover (1 study): One replicated, controlled, before-and-after study in a bog New Zealand\\u00a0reported that plots amended with fine peat supported higher cover of two sown plant species than the original (tilled) bog surface. However, for one species fertilization cancelled out this effect.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1836\"}",
+            "return_val": "{\n  \"action_id\": \"1836\",\n  \"action_title\": \"Bury upper layer of peat/soil (before planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects, on peatland vegetation, of burying the upper layer of peat or soil before planting peatland plants.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1823\"}",
+            "return_val": "{\n  \"action_id\": \"1823\",\n  \"action_title\": \"Introduce seeds of peatland herbs\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies evaluated the effects, on peatland vegetation, of introducing seeds of herbaceous peatland plants. Seven studies were in fens or fen meadows, two in bogs\\u00a0and one in unspecified peatland.\\nGermination (2 studies): Two replicated studies reported that some planted herb seeds germinated. In a bog in Germany\\u00a0three of four species germinated, but in a fen in the USA only one of seven species germinated.\\nCharacteristic plants (3 studies): Three studies (two controlled) in fen meadows in Germany\\u00a0and a peatland in China\\u00a0reported that wetland-characteristic\\u00a0or peatland-characteristic\\u00a0plants colonized plots where herb seeds were sown (sometimes along with other interventions).\\nHerb cover (4 studies): Three before-and-after studies (one also replicated, randomized, paired, controlled) in a bog in New Zealand, fen meadows in Switzerland\\u00a0and a peatland in China\\u00a0reported that plots sown with herb seeds developed cover of the sown herbs (and in New Zealand, greater cover than unsown plots). In China, the effect of sowing was not separated from the effects of other interventions.\\u00a0One replicated, randomized, paired, controlled study in a fen in the USA\\u00a0found that plots sown with herb (and shrub) seeds developed similar herb cover to plots that were not sown.\\nOverall vegetation cover (3 studies): Of three replicated, controlled studies, one in a fen in the USA\\u00a0found that sowing herb (and shrub) seeds increased total vegetation cover. One study in a bog in New Zealand\\u00a0found that sowing herb seeds had no effect on total vegetation cover. One study in a fen meadow in Poland\\u00a0found that the effect of adding seed-rich hay depended on other treatments applied to plots.\\nOverall plant richness/diversity (4 studies): Two replicated, controlled studies in fens in the USA\\u00a0and Poland\\u00a0found that sowing herb seeds had no effect on plant species richness (total\\u00a0or vascular). Two replicated, controlled, before-and-after studies in a bog in New Zealand\\u00a0and a fen meadow in Poland\\u00a0each reported inconsistent effects of herb sowing on total plant species richness.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One study in a bog in New Zealand investigated the effects of adding fresh peat before planting. It was found that plots that had been amended with fine peat supported a higher cover of two sown plant species than the original bog surface (1837). However, for one of the species this effect was cancelled out by fertilization (1837). There were no studies found that evaluated the effects of burying the upper layer of peat or soil before planting on peatland vegetation (1836).\",\"query\":\"What are the documented benefits and harms of using soil amendments or covers to support newly planted peatland vegetation?\",\"action_ids\":[\"1837\",\"1836\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and harms of using soil amendments or covers to support newly planted peatland vegetation?\",\n  \"relevant_summary\": \"One study in a bog in New Zealand investigated the effects of adding fresh peat before planting. It was found that plots that had been amended with fine peat supported a higher cover of two sown plant species than the original bog surface (1837). However, for one of the species this effect was cancelled out by fertilization (1837). There were no studies found that evaluated the effects of burying the upper layer of peat or soil before planting on peatland vegetation (1836).\",\n  \"action_ids\": [\n    \"1837\",\n    \"1836\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1825",
+      "1826",
+      "1827",
+      "1828",
+      "1829",
+      "1830",
+      "1831",
+      "1832",
+      "1833",
+      "1834",
+      "1835",
+      "1836",
+      "1837",
+      "1839",
+      "1840",
+      "1841"
+    ],
+    "regenerated_ids": [
+      "1825",
+      "1826",
+      "1827",
+      "1828",
+      "1829",
+      "1837",
+      "1841"
+    ]
+  },
+  {
+    "query": "For re-establishing mosses on degraded bogs, how does direct planting of moss sods compare to spreading moss fragments on the surface?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "For re-establishing mosses on degraded bogs, one study in Lithuania reported that 47 of 50 Sphagnum-dominated sods planted in a rewetted bog survived for one year (1818). Additionally, five before-and-after studies in bogs and fens reported that after planting mosses, the area covered by moss increased in at least some cases, with one controlled study in Australia reporting that planted plots developed greater Sphagnum moss cover than unplanted plots (1818).\n\nFour studies in Canadian bogs evaluated the moss layer transfer technique (1804). The majority of restored areas developed a community of bog-characteristic plant species within 11 years, and two controlled studies reported greater moss or bryophyte cover (including Sphagnum) in a restored area compared to an unrestored area after 4\u20138 years (1804).",
+    "summary_action_ids": [
+      "1818",
+      "1804"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Comparison of moss re-establishment methods on degraded bogs\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1838\",\n    \"action_title\": \"Encapsulate planted moss fragments in beads/gel\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1804\",\n    \"action_title\": \"Restore/create peatland vegetation using the moss layer transfer technique\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1818\",\n    \"action_title\": \"Directly plant peatland mosses\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1838\"}",
+            "return_val": "{\n  \"action_id\": \"1838\",\n  \"action_title\": \"Encapsulate planted moss fragments in beads/gel\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of encapsulating moss fragments on their performance, relative to loose moss fragments, when introduced to peatlands.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1804\"}",
+            "return_val": "{\n  \"action_id\": \"1804\",\n  \"action_title\": \"Restore/create peatland vegetation using the moss layer transfer technique\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects, on peatland vegetation, of restoration using the moss layer transfer technique (as defined in the Background section). All four studies were based on bogs in Canada. Three studies\\u00a0were based on one experimental set-up that was included in the other, larger study.\\nPlant community composition (2 studies): One replicated study in bogs in Canada\\u00a0reported that the majority of restored areas developed a community of bog-characteristic plant species within 11 years. One controlled, before-and-after study in a bog in Canada\\u00a0reported that a restored area (included in the previous study) developed a more peatland-characteristic plant community over time, and relative to an unrestored area.\\nVegetation cover (2 studies): Two controlled studies in one bog in Canada\\u00a0reported that a restored area had greater moss or bryophyte cover (including Sphagnum) than an unrestored area after 4\\u20138 years. The restored area also had greater herb cover (including cottongrass), but less shrub cover, than the unrestored area. One of the studies\\u00a0reported that vegetation in the restored area became more similar to local natural bogs.\\nOverall plant richness/diversity (1 study): One controlled, before-and-after study in a bog in Canada\\u00a0reported that a restored area contained more plant species than an unrestored area.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1818\"}",
+            "return_val": "{\n  \"action_id\": \"1818\",\n  \"action_title\": \"Directly plant peatland mosses\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies evaluated the effects on peatland vegetation of planting mosses. Six studies were in bogs\\u00a0and one was in a fen.\\nSurvival (1 study): One\\u00a0study in Lithuania reported that of 50\\u00a0Sphagnum-dominated sods planted into a rewetted bog, 47 survived for one year.\\nGrowth (2 studies): Two before-and-after studies in a fen in the Netherlands\\u00a0and bog pools in the UK\\u00a0reported that mosses grew after planting.\\nMoss cover (5 studies): Five before-and-after studies in a fen in the Netherlands\\u00a0and bogs in Germany, Ireland, Estonia\\u00a0and Australia\\u00a0reported that after planting mosses, the area covered by moss increased in at least some cases. The study in the Netherlands\\u00a0reported spread of planted moss beyond the introduction site. The study in Australia\\u00a0was also controlled and reported that planted plots developed greater Sphagnum moss cover than unplanted plots.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"For re-establishing mosses on degraded bogs, how does direct planting of moss sods compare to spreading moss fragments on the surface?\",\"action_ids\":[\"1818\",\"1804\"],\"summary\":\"For re-establishing mosses on degraded bogs, one study in Lithuania reported that 47 of 50 Sphagnum-dominated sods planted in a rewetted bog survived for one year (1818). Additionally, five before-and-after studies in bogs and fens reported that after planting mosses, the area covered by moss increased in at least some cases, with one controlled study in Australia reporting that planted plots developed greater Sphagnum moss cover than unplanted plots (1818).\\n\\nFour studies in Canadian bogs evaluated the moss layer transfer technique (1804). The majority of restored areas developed a community of bog-characteristic plant species within 11 years, and two controlled studies reported greater moss or bryophyte cover (including Sphagnum) in a restored area compared to an unrestored area after 4\u20138 years (1804).\"}",
+            "return_val": "{\n  \"query\": \"For re-establishing mosses on degraded bogs, how does direct planting of moss sods compare to spreading moss fragments on the surface?\",\n  \"relevant_summary\": \"For re-establishing mosses on degraded bogs, one study in Lithuania reported that 47 of 50 Sphagnum-dominated sods planted in a rewetted bog survived for one year (1818). Additionally, five before-and-after studies in bogs and fens reported that after planting mosses, the area covered by moss increased in at least some cases, with one controlled study in Australia reporting that planted plots developed greater Sphagnum moss cover than unplanted plots (1818).\\n\\nFour studies in Canadian bogs evaluated the moss layer transfer technique (1804). The majority of restored areas developed a community of bog-characteristic plant species within 11 years, and two controlled studies reported greater moss or bryophyte cover (including Sphagnum) in a restored area compared to an unrestored area after 4\\u20138 years (1804).\",\n  \"action_ids\": [\n    \"1818\",\n    \"1804\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1818",
+      "1821",
+      "1822"
+    ],
+    "regenerated_ids": [
+      "1818",
+      "1821"
+    ]
+  },
+  {
+    "query": "What is the evidence base for the effectiveness of actions designed to mitigate the impacts of service corridors like roads or pipelines on peatland vegetation?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study was found that evaluated the effects on peatland vegetation of restoring water flow across service corridors (1741). The before-and-after study in a fen in the USA found that after restoring water inflow across a road, in addition to general rewetting, there was an increase in the cover of wet peatland sedges, while the cover of grasses that prefer drier conditions decreased (1741). No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors across service corridors (1742), or in areas of energy production or mining (1739).",
+    "summary_action_ids": [
+      "1741",
+      "1742",
+      "1739"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\":3,\"offset\":0,\"query_string\":\"mitigate impacts of service corridors on peatland vegetation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1741\",\n    \"action_title\": \"Maintain/restore water flow across service corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1742\",\n    \"action_title\": \"Retain/create habitat corridors across service corridors\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1739\",\n    \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1741\"}",
+            "return_val": "{\n  \"action_id\": \"1741\",\n  \"action_title\": \"Maintain/restore water flow across service corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study\\u00a0evaluated the effects on peatland vegetation of restoring water flow across service corridors. The study was in a fen.\\nCharacteristic plants (1 study): One before-and-after study in a fen in the USA\\u00a0found that following restoration of water inflow across a road (along with general rewetting), cover of wet peatland sedges increased whilst cover of grasses preferring drier conditions decreased.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1742\"}",
+            "return_val": "{\n  \"action_id\": \"1742\",\n  \"action_title\": \"Retain/create habitat corridors across service corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining/creating habitat corridors across service corridors.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1739\"}",
+            "return_val": "{\n  \"action_id\": \"1739\",\n  \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining/creating habitat corridors in areas of energy production or mining.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One study was found that evaluated the effects on peatland vegetation of restoring water flow across service corridors (1741). The before-and-after study in a fen in the USA found that after restoring water inflow across a road, in addition to general rewetting, there was an increase in the cover of wet peatland sedges, while the cover of grasses that prefer drier conditions decreased (1741). No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors across service corridors (1742), or in areas of energy production or mining (1739).\",\"action_ids\":[\"1741\",\"1742\",\"1739\"],\"query\":\"What is the evidence base for the effectiveness of actions designed to mitigate the impacts of service corridors like roads or pipelines on peatland vegetation?\"}",
+            "return_val": "{\n  \"query\": \"What is the evidence base for the effectiveness of actions designed to mitigate the impacts of service corridors like roads or pipelines on peatland vegetation?\",\n  \"relevant_summary\": \"One study was found that evaluated the effects on peatland vegetation of restoring water flow across service corridors (1741). The before-and-after study in a fen in the USA found that after restoring water inflow across a road, in addition to general rewetting, there was an increase in the cover of wet peatland sedges, while the cover of grasses that prefer drier conditions decreased (1741). No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors across service corridors (1742), or in areas of energy production or mining (1739).\",\n  \"action_ids\": [\n    \"1741\",\n    \"1742\",\n    \"1739\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1720",
+      "1730",
+      "1739",
+      "1740",
+      "1741",
+      "1742"
+    ],
+    "regenerated_ids": [
+      "1740",
+      "1741",
+      "1742"
+    ]
+  },
+  {
+    "query": "What interventions are available to restore peatland vegetation on sites previously used for commercial forest plantations?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Interventions to restore peatland vegetation on sites of former commercial forest plantations include cutting, removing, or thinning the forest, as well as the combination of tree removal and rewetting the peat [1731, 1732].\n\nCutting or removing forest plantations has been found to increase the cover of some herb species like cottongrasses and sedges in bogs and fens [1731]. This action also led to an increase in total plant species richness in rich fens in two studies [1731]. However, the effect on mosses varied, with one study noting a reduction in forest-characteristic mosses, and other studies showing conflicting results for Sphagnum moss cover [1731].\n\nThe combined approach of cutting trees and rewetting the peat has been reported to increase the abundance of wetland-characteristic plants and the cover of herbs such as cottongrasses and sedges [1732]. This combined intervention also showed an increase in Sphagnum moss cover in two studies, while other studies found mixed effects or no effect [1732]. Non-Sphagnum or forest-characteristic moss cover was reduced in three studies [1732]. The overall plant community composition was observed to change, becoming less like drained and forested sites [1732]. Effects on overall plant species richness were inconsistent, with two studies reporting an increase and two reporting no effect [1732].\n\nAfter planting on peatlands, adding covers other than mulch is another intervention [1829]. Shading with plastic mesh was found to increase the survival and cover of planted mosses in some studies, but another study reported reduced growth of planted fen mosses [1829]. Using fleece and fibre mats had mixed effects on the germination of sown seeds [1829].",
+    "summary_action_ids": [
+      "1731",
+      "1732",
+      "1829"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"peatland vegetation restoration commercial forest plantations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1731\",\n    \"action_title\": \"Cut/remove/thin forest plantations\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1732\",\n    \"action_title\": \"Cut/remove/thin forest plantations and rewet peat\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1829\",\n    \"action_title\": \"Cover peatland with something other than mulch (after planting)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1731\"}",
+            "return_val": "{\n  \"action_id\": \"1731\",\n  \"action_title\": \"Cut/remove/thin forest plantations\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effect on peatland vegetation of cutting/removing forest plantations: one in bogs\\u00a0and three in fens. The studies in the fens\\u00a0were all based, at least in part, on the same experimental set-up.\\nHerb cover (3 studies): Three replicated studies (two also paired and controlled) in bogs in the UK\\u00a0and fens in Sweden\\u00a0reported that tree removal increased cover of some herb species including cottongrasses\\u00a0and sedges. One of the studies\\u00a0reported no effect of tree removal on other herb species.\\nMoss cover (3 studies): One replicated, paired, controlled study in bogs in the UK\\u00a0reported that tree removal reduced cover of forest-characteristic mosses. One replicated before-and-after study in a drained rich fen in Sweden\\u00a0reported that Sphagnum moss cover decreased over three years following tree removal. However, one replicated, paired, controlled study in partly rewetted rich fens reported that Sphagnum cover increased over eight years following tree removal.\\nOverall plant richness/diversity (2 studies): Two replicated, paired, controlled studies in rich fens in Sweden\\u00a0reported that tree removal increased total plant species richness. However,\\u00a0one of these studies reported a much smaller effect of tree removal in rewetted plots than in drained plots.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1732\"}",
+            "return_val": "{\n  \"action_id\": \"1732\",\n  \"action_title\": \"Cut/remove/thin forest plantations and rewet peat\",\n  \"key_messages\": \"Key Messages:\\n\\nEleven studies evaluated the effects of cutting/removing trees and rewetting peat (in combination): six in fens, two in bogs, and three in both fens and bogs. In four of the studies,\\u00a0the peatlands naturally contained some trees. Three studies\\u00a0were based on one experimental set-up, and two studies\\u00a0were based on another.\\nPlant community composition (5 studies): Of three replicated studies in fens, two in Finland\\u00a0found that removing trees/rewetting had no effect on the overall plant community composition whilst one in Sweden\\u00a0reported only a small effect.\\u00a0Two site comparison studies in bogs and fens in Finland\\u00a0found that removing trees/rewetting changed the overall plant community composition. It became less like sites that remained drained and forested.\\nCharacteristic plants (2 studies): Two before-and-after studies (one site comparison, one controlled) in bogs and fens in Finland\\u00a0and Sweden\\u00a0reported that removing trees/rewetting increased the abundance of wetland-characteristic plants.\\nMoss cover (6 studies): Of five studies that examined the effect of removing trees/rewetting on Sphagnum moss, two replicated, paired studies in bogs and fens in Sweden\\u00a0and Finland\\u00a0found that the intervention increased Sphagnum cover.\\u00a0One replicated, before-and-after, site comparison study in forested fens in Finland\\u00a0found no effect. Two before-and-after studies in a bog in Finland\\u00a0and a fen in Sweden\\u00a0found mixed effects depending on site\\u00a0or species. Additionally, three studies (two replicated and paired) in peatlands in the UK\\u00a0and Finland\\u00a0found that removing trees/rewetting reduced cover of non-Sphagnum or forest-characteristic mosses. However, one replicated, before-and-after, site comparison study in forested fens in Finland\\u00a0found no effect of thinning trees/rewetting on forest mosses.\\nHerb cover (7 studies): Seven studies (including two replicated, paired, controlled) in bogs and fens in the UK, Finland\\u00a0and Sweden\\u00a0reported that removing trees/rewetting increased cover of at least one group of herbs, including cottongrasses\\u00a0and sedges. However, one of these studies\\u00a0reported loss of cottongrass from a fen where it was rare before intervention, along with reduced purple moor grass cover.\\nVegetation structure (4 studies): One replicated site comparison study in a bog in the UK\\u00a0found that removing trees/rewetting increased ground vegetation height. One replicated, paired, controlled study in a fen in Sweden\\u00a0reported that removing trees/rewetting had no effect on canopy height after eight years. Two replicated, paired, site comparison studies in bogs and fens in Finland\\u00a0found that thinning trees/rewetting reduced the number of tall trees present for 1\\u20133 years (although not to the level of natural peatlands).\\nOverall plant richness/diversity (4 studies): Two replicated, paired, controlled studies in rich fens in Sweden\\u00a0reported that removing trees/rewetting increased plant species richness. However, two replicated studies in fens in Finland\\u00a0found that removing trees/rewetting had no effect on total plant species richness or diversity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1829\"}",
+            "return_val": "{\n  \"action_id\": \"1829\",\n  \"action_title\": \"Cover peatland with something other than mulch (after planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies evaluated the effects, on peatland vegetation, of adding covers (other than mulch) after planting peatland plants. Five studies involved bog plants, two involved fen plants\\u00a0and one involved peat swamp plants.\\u00a0Two of the studies were in greenhouses or nurseries.\\nGermination (1 study): One replicated, controlled, before-and-after study in a bog in Germany\\u00a0reported mixed effects of fleece and fibre mats on germination of sown herb and shrub seeds (positive or no effect, depending on species).\\nSurvival (2 studies): Two replicated, randomized, controlled studies examined the effect, on plant survival, of covering planted areas. One study in a fen in Sweden\\u00a0reported that shading with plastic mesh increased survival of planted mosses. One study in a nursery in Indonesia\\u00a0reported that shading with plastic mesh typically had no effect on survival of peat swamp tree species, but increased survival of some.\\nGrowth (3 studies): Three\\u00a0replicated, randomized, controlled, before-and-after studies examined the effect, on plant growth, of covering planted areas.\\u00a0One study in a greenhouse in Switzerland\\u00a0found that covering planted Sphagnum mosses with transparent plastic sheets or shading mesh increased their growth. One study in a fen in Sweden\\u00a0found that shading with plastic mesh reduced growth of planted fen mosses. One study in a nursery in Indonesia\\u00a0reported that seedlings shaded with plastic mesh grew taller and thinner than unshaded seedlings.\\nCover (4 studies): Two replicated, paired studies in a fen in Sweden\\u00a0and a bog in Australia\\u00a0reported that shading plots with plastic mesh increased cover of planted mosses. One study in a bog in Canada\\u00a0found that covering sown plots with plastic mesh, not transparent plastic sheets, increased the number of Sphagnum moss shoots. Another study in a bog in Canada\\u00a0reported that shading sown plots with plastic mesh had no effect on\\u00a0cover of vegetation overall, vascular plants, Sphagnum or other moss.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Interventions to restore peatland vegetation on sites of former commercial forest plantations include cutting, removing, or thinning the forest, as well as the combination of tree removal and rewetting the peat [1731, 1732].\\n\\nCutting or removing forest plantations has been found to increase the cover of some herb species like cottongrasses and sedges in bogs and fens [1731]. This action also led to an increase in total plant species richness in rich fens in two studies [1731]. However, the effect on mosses varied, with one study noting a reduction in forest-characteristic mosses, and other studies showing conflicting results for Sphagnum moss cover [1731].\\n\\nThe combined approach of cutting trees and rewetting the peat has been reported to increase the abundance of wetland-characteristic plants and the cover of herbs such as cottongrasses and sedges [1732]. This combined intervention also showed an increase in Sphagnum moss cover in two studies, while other studies found mixed effects or no effect [1732]. Non-Sphagnum or forest-characteristic moss cover was reduced in three studies [1732]. The overall plant community composition was observed to change, becoming less like drained and forested sites [1732]. Effects on overall plant species richness were inconsistent, with two studies reporting an increase and two reporting no effect [1732].\\n\\nAfter planting on peatlands, adding covers other than mulch is another intervention [1829]. Shading with plastic mesh was found to increase the survival and cover of planted mosses in some studies, but another study reported reduced growth of planted fen mosses [1829]. Using fleece and fibre mats had mixed effects on the germination of sown seeds [1829].\",\"action_ids\":[\"1731\",\"1732\",\"1829\"],\"query\":\"What interventions are available to restore peatland vegetation on sites previously used for commercial forest plantations?\"}",
+            "return_val": "{\n  \"query\": \"What interventions are available to restore peatland vegetation on sites previously used for commercial forest plantations?\",\n  \"relevant_summary\": \"Interventions to restore peatland vegetation on sites of former commercial forest plantations include cutting, removing, or thinning the forest, as well as the combination of tree removal and rewetting the peat [1731, 1732].\\n\\nCutting or removing forest plantations has been found to increase the cover of some herb species like cottongrasses and sedges in bogs and fens [1731]. This action also led to an increase in total plant species richness in rich fens in two studies [1731]. However, the effect on mosses varied, with one study noting a reduction in forest-characteristic mosses, and other studies showing conflicting results for Sphagnum moss cover [1731].\\n\\nThe combined approach of cutting trees and rewetting the peat has been reported to increase the abundance of wetland-characteristic plants and the cover of herbs such as cottongrasses and sedges [1732]. This combined intervention also showed an increase in Sphagnum moss cover in two studies, while other studies found mixed effects or no effect [1732]. Non-Sphagnum or forest-characteristic moss cover was reduced in three studies [1732]. The overall plant community composition was observed to change, becoming less like drained and forested sites [1732]. Effects on overall plant species richness were inconsistent, with two studies reporting an increase and two reporting no effect [1732].\\n\\nAfter planting on peatlands, adding covers other than mulch is another intervention [1829]. Shading with plastic mesh was found to increase the survival and cover of planted mosses in some studies, but another study reported reduced growth of planted fen mosses [1829]. Using fleece and fibre mats had mixed effects on the germination of sown seeds [1829].\",\n  \"action_ids\": [\n    \"1731\",\n    \"1732\",\n    \"1829\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1731",
+      "1732",
+      "1756",
+      "1803"
+    ],
+    "regenerated_ids": [
+      "1731",
+      "1732"
+    ]
   }
 ]

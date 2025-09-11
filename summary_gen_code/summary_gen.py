@@ -60,8 +60,8 @@ def search_actions(query_string, k=3, offset=0):
             fusion_type = FUSION_TYPE
         return hybrid_retrieve_docs(query_string=query_string, context=RAG_ACTION_CONTEXT, fusion_type=fusion_type, k=k, offset=offset)
     else:
-        logging.warning("Invalid RETRIEVAL_TYPE set for retrieving action documents by similarity to query string. Must be either 'sparse', 'dense' or 'hybrid'. Defaulting to sparse retrieval.")
-        return sparse_retrieve_docs(query_string=query_string, context=RAG_ACTION_CONTEXT, k=k, offset=offset)
+        logging.warning("Invalid RETRIEVAL_TYPE set for retrieving action documents by similarity to query string. Must be either 'sparse', 'dense' or 'hybrid'. Defaulting to hybrid retrieval with cross-encoder.")
+        return hybrid_retrieve_docs(query_string=query_string, context=RAG_ACTION_CONTEXT, fusion_type="cross-encoder", k=k, offset=offset)
 
 
 
