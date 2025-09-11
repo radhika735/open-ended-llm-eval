@@ -522,5 +522,275 @@
       "1889",
       "1890"
     ]
+  },
+  {
+    "query": "In a zoo setting, what are the observed behavioural effects on bears of providing food frozen in ice versus inside other objects?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Presenting food frozen in ice to bears has been shown to decrease abnormal or stereotypic behaviors and increase activity levels (1923). However, one study found that manipulation behaviors decreased in grizzly bears when given food frozen in ice (1923).\n\nWhen food is presented inside objects, studies have found that exploratory and foraging behaviors increased, and stereotypic behaviors decreased in sloth bears and spectacled bears (1924). In contrast, another study observed that exploring and foraging behaviors decreased in a sloth bear when food was provided inside objects (1924). Additionally, one study noted that grizzly bears spent a similar amount of time manipulating food in a box as they did with freely available food (1924).",
+    "summary_action_ids": [
+      "1923",
+      "1924"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"bear behavior food enrichment zoo\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1923\",\n    \"action_title\": \"Carnivores: Present food frozen in ice\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1910\",\n    \"action_title\": \"Carnivores: Alter food abundance or type seasonally\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1926\",\n    \"action_title\": \"Carnivores: Provide live invertebrate prey, including in feeding devices\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1923\"}",
+            "return_val": "{\n  \"action_id\": \"1923\",\n  \"action_title\": \"Carnivores: Present food frozen in ice\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, before-and-after studies in the USA\\u00a0found that when presented with food frozen in ice, abnormal\\u00a0or stereotypic\\u00a0behaviours decreased and activity levels increased\\u00a0in bears\\u00a0and felids.\\nOne replicated, before-and-after study in the USA\\u00a0found that manipulation behaviours increased in lions, whereas a replicated study in the USA found that manipulation behaviours decreased in grizzly bears.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1910\"}",
+            "return_val": "{\n  \"action_id\": \"1910\",\n  \"action_title\": \"Carnivores: Alter food abundance or type seasonally\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of altering food abundance or type seasonally on captive carnivores.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1926\"}",
+            "return_val": "{\n  \"action_id\": \"1926\",\n  \"action_title\": \"Carnivores: Provide live invertebrate prey, including in feeding devices\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in the USA found that provision of live prey increased explorative behaviours in fennec foxes compared to other types of enrichment.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"bear behavior food puzzle zoo\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1924\",\n    \"action_title\": \"Carnivores: Present food inside objects (e.g. Boomer balls)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1923\",\n    \"action_title\": \"Carnivores: Present food frozen in ice\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1318\",\n    \"action_title\": \"Primates: Present food in puzzle feeders\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1924\"}",
+            "return_val": "{\n  \"action_id\": \"1924\",\n  \"action_title\": \"Carnivores: Present food inside objects (e.g. Boomer balls)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies in Germany\\u00a0and India\\u00a0found that exploratory\\u00a0and foraging\\u00a0behaviours increased and stereotypic\\u00a0behaviours decreased in sloth bears\\u00a0and spectacled bears\\u00a0when presented with food inside objects.\\nOne before-and-after study in the USA\\u00a0found that exploring/foraging behaviours decreased in a sloth bear when presented with food inside objects.\\nOne replicated study in the USA\\u00a0found that grizzly bears spent a similar time manipulating food in a box and freely available food.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1923\",\"1924\"],\"summary\":\"Presenting food frozen in ice to bears has been shown to decrease abnormal or stereotypic behaviors and increase activity levels (1923). However, one study found that manipulation behaviors decreased in grizzly bears when given food frozen in ice (1923).\\n\\nWhen food is presented inside objects, studies have found that exploratory and foraging behaviors increased, and stereotypic behaviors decreased in sloth bears and spectacled bears (1924). In contrast, another study observed that exploring and foraging behaviors decreased in a sloth bear when food was provided inside objects (1924). Additionally, one study noted that grizzly bears spent a similar amount of time manipulating food in a box as they did with freely available food (1924).\",\"query\":\"In a zoo setting, what are the observed behavioural effects on bears of providing food frozen in ice versus inside other objects?\"}",
+            "return_val": "{\n  \"query\": \"In a zoo setting, what are the observed behavioural effects on bears of providing food frozen in ice versus inside other objects?\",\n  \"relevant_summary\": \"Presenting food frozen in ice to bears has been shown to decrease abnormal or stereotypic behaviors and increase activity levels (1923). However, one study found that manipulation behaviors decreased in grizzly bears when given food frozen in ice (1923).\\n\\nWhen food is presented inside objects, studies have found that exploratory and foraging behaviors increased, and stereotypic behaviors decreased in sloth bears and spectacled bears (1924). In contrast, another study observed that exploring and foraging behaviors decreased in a sloth bear when food was provided inside objects (1924). Additionally, one study noted that grizzly bears spent a similar amount of time manipulating food in a box as they did with freely available food (1924).\",\n  \"action_ids\": [\n    \"1923\",\n    \"1924\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1923",
+      "1924"
+    ],
+    "regenerated_ids": [
+      "1923",
+      "1924"
+    ]
+  },
+  {
+    "query": "How do the effects of providing carnivores with whole carcasses compare to the effects of providing live vertebrate prey?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A before-and-after study in the USA found that providing a fishing cat with live fish increased hunting behaviour and decreased sleeping (1925). In contrast, a replicated, before-and-after study in the USA found no change in the occurrence of stereotypical behaviours in tigers when they were provided with live fish (1925). Two replicated, before-and-after studies in the USA found that feeding whole carcasses reduced pacing in lions, leopards, snow leopards, and cougars, but increased pacing in tigers (1901). One replicated, randomized, controlled study in Denmark found that cheetahs fed whole rabbits had lower blood protein urea, zinc, and vitamin A levels compared to supplemented beef (1901). Another replicated before-and-after study in Denmark found that feeding whole rabbits to cheetahs resulted in lower levels of inflammatory bowel indicators (1901). Finally, a replicated, randomized study and a controlled study in the USA found that when fed whole 1- to 3-day-old chickens, ocelots had lower digestible energy and fat compared to a commercial diet, and African wildcats had lower organic matter digestibility compared to a ground-chicken diet (1901).",
+    "summary_action_ids": [
+      "1925",
+      "1901"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of providing carnivores with whole carcasses versus live vertebrate prey\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1925\",\n    \"action_title\": \"Carnivores: Provide live vertebrate prey\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1901\",\n    \"action_title\": \"Carnivores: Feed whole carcasses (with or without organs/gastrointestinal tract)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1927\",\n    \"action_title\": \"Carnivores: Provide devices to simulate live prey, including sounds, lures, pulleys and bungees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1925\"}",
+            "return_val": "{\n  \"action_id\": \"1925\",\n  \"action_title\": \"Carnivores: Provide live vertebrate prey\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the USA\\u00a0found that hunting behaviour increased and sleeping decreased when a fishing cat was provided with live fish.\\nOne replicated, before-and-after study in the USA\\u00a0found that there was no change in the occurrence of stereotypical behaviours in tigers when provided with live fish.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1901\"}",
+            "return_val": "{\n  \"action_id\": \"1901\",\n  \"action_title\": \"Carnivores: Feed whole carcasses (with or without organs/gastrointestinal tract)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, before-and-after studies in the USA\\u00a0found that feeding whole carcasses reduced pacing levels in lions, leopards, snow leopards\\u00a0and cougars. However, it increased pacing in tigers.\\nOne replicated, randomized, controlled study in Denmark\\u00a0found that when fed whole rabbit, cheetahs had lower blood protein urea, zinc and vitamin A levels compared to supplemented beef. One replicated before-and-after study in Denmark\\u00a0found that feeding whole rabbit showed lower levels of inflammatory bowel indicators in cheetahs.\\nOne replicated, randomized\\u00a0study and one controlled study\\u00a0in the USA found that when fed whole 1 to 3 day old chickens, ocelots\\u00a0had lower digestible energy and fat compared to a commercial diet and African wildcats\\u00a0had had lower organic matter digestibility compared to a ground-chicken diet.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1927\"}",
+            "return_val": "{\n  \"action_id\": \"1927\",\n  \"action_title\": \"Carnivores: Provide devices to simulate live prey, including sounds, lures, pulleys and bungees\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies in the USA\\u00a0and the UK\\u00a0found that activity levels\\u00a0and behavioural diversity\\u00a0increased in felids when presented with a lure\\u00a0or pulley system.\\nOne replicated, before-and-after study in the USA\\u00a0found that pacing behaviour decreased and walking increased in cougars, but pacing initially increased in tigers, when provided with a carcass on a bungee.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"A before-and-after study in the USA found that providing a fishing cat with live fish increased hunting behaviour and decreased sleeping (1925). In contrast, a replicated, before-and-after study in the USA found no change in the occurrence of stereotypical behaviours in tigers when they were provided with live fish (1925). Two replicated, before-and-after studies in the USA found that feeding whole carcasses reduced pacing in lions, leopards, snow leopards, and cougars, but increased pacing in tigers (1901). One replicated, randomized, controlled study in Denmark found that cheetahs fed whole rabbits had lower blood protein urea, zinc, and vitamin A levels compared to supplemented beef (1901). Another replicated before-and-after study in Denmark found that feeding whole rabbits to cheetahs resulted in lower levels of inflammatory bowel indicators (1901). Finally, a replicated, randomized study and a controlled study in the USA found that when fed whole 1- to 3-day-old chickens, ocelots had lower digestible energy and fat compared to a commercial diet, and African wildcats had lower organic matter digestibility compared to a ground-chicken diet (1901).\",\"action_ids\":[\"1925\",\"1901\"],\"query\":\"How do the effects of providing carnivores with whole carcasses compare to the effects of providing live vertebrate prey?\"}",
+            "return_val": "{\n  \"query\": \"How do the effects of providing carnivores with whole carcasses compare to the effects of providing live vertebrate prey?\",\n  \"relevant_summary\": \"A before-and-after study in the USA found that providing a fishing cat with live fish increased hunting behaviour and decreased sleeping (1925). In contrast, a replicated, before-and-after study in the USA found no change in the occurrence of stereotypical behaviours in tigers when they were provided with live fish (1925). Two replicated, before-and-after studies in the USA found that feeding whole carcasses reduced pacing in lions, leopards, snow leopards, and cougars, but increased pacing in tigers (1901). One replicated, randomized, controlled study in Denmark found that cheetahs fed whole rabbits had lower blood protein urea, zinc, and vitamin A levels compared to supplemented beef (1901). Another replicated before-and-after study in Denmark found that feeding whole rabbits to cheetahs resulted in lower levels of inflammatory bowel indicators (1901). Finally, a replicated, randomized study and a controlled study in the USA found that when fed whole 1- to 3-day-old chickens, ocelots had lower digestible energy and fat compared to a commercial diet, and African wildcats had lower organic matter digestibility compared to a ground-chicken diet (1901).\",\n  \"action_ids\": [\n    \"1925\",\n    \"1901\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1901",
+      "1925",
+      "1926"
+    ],
+    "regenerated_ids": [
+      "1901",
+      "1925"
+    ]
+  },
+  {
+    "query": "To reduce anticipatory pacing in captive cheetahs, what are the alternatives to a standard, fixed feeding routine?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A replicated, before-and-after study in Ireland found that altering the location of food decreased pacing behaviours in cheetahs (1918). Two replicated, before-and-after studies in the USA found that feeding whole carcasses reduced pacing levels in lions, leopards, snow leopards and cougars, however, it increased pacing in tigers (1901). One replicated, randomized, controlled study in Denmark found that when fed whole rabbit, cheetahs had lower blood protein urea, zinc and vitamin A levels compared to supplemented beef (1901). One replicated before-and-after study in Denmark found that feeding whole rabbit showed lower levels of inflammatory bowel indicators in cheetahs (1901). One replicated, controlled study in South Africa found that cheetahs fed a commercial diet had a similar likelihood of developing gastritis as those fed horse meat, lower levels of blood protein urea but higher levels of creatine (1900).",
+    "summary_action_ids": [
+      "1918",
+      "1901",
+      "1900"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"cheetah feeding routine\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1918\",\n    \"action_title\": \"Carnivores: Change location of food around enclosure\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1901\",\n    \"action_title\": \"Carnivores: Feed whole carcasses (with or without organs/gastrointestinal tract)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1900\",\n    \"action_title\": \"Carnivores: Feed commercially prepared diets\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1918\"}",
+            "return_val": "{\n  \"action_id\": \"1918\",\n  \"action_title\": \"Carnivores: Change location of food around enclosure\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in Ireland\\u00a0found that altering the location of food decreased pacing behaviours in cheetahs.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1901\"}",
+            "return_val": "{\n  \"action_id\": \"1901\",\n  \"action_title\": \"Carnivores: Feed whole carcasses (with or without organs/gastrointestinal tract)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, before-and-after studies in the USA\\u00a0found that feeding whole carcasses reduced pacing levels in lions, leopards, snow leopards\\u00a0and cougars. However, it increased pacing in tigers.\\nOne replicated, randomized, controlled study in Denmark\\u00a0found that when fed whole rabbit, cheetahs had lower blood protein urea, zinc and vitamin A levels compared to supplemented beef. One replicated before-and-after study in Denmark\\u00a0found that feeding whole rabbit showed lower levels of inflammatory bowel indicators in cheetahs.\\nOne replicated, randomized\\u00a0study and one controlled study\\u00a0in the USA found that when fed whole 1 to 3 day old chickens, ocelots\\u00a0had lower digestible energy and fat compared to a commercial diet and African wildcats\\u00a0had had lower organic matter digestibility compared to a ground-chicken diet.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1900\"}",
+            "return_val": "{\n  \"action_id\": \"1900\",\n  \"action_title\": \"Carnivores: Feed commercially prepared diets\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the USA\\u00a0found that providing a commercial diet to maned wolves led to similar dry matter intake and digestibility despite having a lower protein content.\\nOne replicated, randomized study of African wildcats in the USA\\u00a0found that feeding a commercial diet decreased crude protein digestibility and increased food intake and faecal output compared to raw meat. One controlled study of African wildcats in the USA\\u00a0found lower organic matter digestibility compared to a ground-chicken diet.\\nOne replicated, controlled study in South Africa\\u00a0found that cheetahs fed a commercial diet had a similar likelihood of developing gastritis as those fed horse meat, lower levels of blood protein urea but higher levels of creatine. One study in USA\\u00a0found that cheetahs fed a commercial meat diet or whole chicken carcasses had plasma a-tocopherol, retinol and taurine concentrations within the ranges recommended for domestic cats.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"To reduce anticipatory pacing in captive cheetahs, what are the alternatives to a standard, fixed feeding routine?\",\"action_ids\":[\"1918\",\"1901\",\"1900\"],\"summary\":\"A replicated, before-and-after study in Ireland found that altering the location of food decreased pacing behaviours in cheetahs (1918). Two replicated, before-and-after studies in the USA found that feeding whole carcasses reduced pacing levels in lions, leopards, snow leopards and cougars, however, it increased pacing in tigers (1901). One replicated, randomized, controlled study in Denmark found that when fed whole rabbit, cheetahs had lower blood protein urea, zinc and vitamin A levels compared to supplemented beef (1901). One replicated before-and-after study in Denmark found that feeding whole rabbit showed lower levels of inflammatory bowel indicators in cheetahs (1901). One replicated, controlled study in South Africa found that cheetahs fed a commercial diet had a similar likelihood of developing gastritis as those fed horse meat, lower levels of blood protein urea but higher levels of creatine (1900).\"}",
+            "return_val": "{\n  \"query\": \"To reduce anticipatory pacing in captive cheetahs, what are the alternatives to a standard, fixed feeding routine?\",\n  \"relevant_summary\": \"A replicated, before-and-after study in Ireland found that altering the location of food decreased pacing behaviours in cheetahs (1918). Two replicated, before-and-after studies in the USA found that feeding whole carcasses reduced pacing levels in lions, leopards, snow leopards and cougars, however, it increased pacing in tigers (1901). One replicated, randomized, controlled study in Denmark found that when fed whole rabbit, cheetahs had lower blood protein urea, zinc and vitamin A levels compared to supplemented beef (1901). One replicated before-and-after study in Denmark found that feeding whole rabbit showed lower levels of inflammatory bowel indicators in cheetahs (1901). One replicated, controlled study in South Africa found that cheetahs fed a commercial diet had a similar likelihood of developing gastritis as those fed horse meat, lower levels of blood protein urea but higher levels of creatine (1900).\",\n  \"action_ids\": [\n    \"1918\",\n    \"1901\",\n    \"1900\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1904",
+      "1918",
+      "1915",
+      "1921",
+      "1924"
+    ],
+    "regenerated_ids": [
+      "1904",
+      "1918"
+    ]
+  },
+  {
+    "query": "What is the state of the evidence regarding the provision of gum or nectar to captive primates?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "No evidence was captured for the effects of providing gum (including artificial gum) to primates [1330]. No evidence was captured for the effects of adding gum solutions to drilled hollow feeders for primates [1326]. No evidence was captured for the effects of painting gum solutions on rough bark for primates [1325].",
+    "summary_action_ids": [
+      "1330",
+      "1326",
+      "1325"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"gum or nectar to captive primates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1330\",\n    \"action_title\": \"Primates: Provide gum (including artificial gum)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1326\",\n    \"action_title\": \"Primates: Add gum solutions to drilled hollow feeders\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1325\",\n    \"action_title\": \"Primates: Paint gum solutions on rough bark\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1330\"}",
+            "return_val": "{\n  \"action_id\": \"1330\",\n  \"action_title\": \"Primates: Provide gum (including artificial gum)\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of providing gum (including artificial gum) to primates.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1326\"}",
+            "return_val": "{\n  \"action_id\": \"1326\",\n  \"action_title\": \"Primates: Add gum solutions to drilled hollow feeders\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of adding gum solutions to drilled hollow feeders for primates.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1325\"}",
+            "return_val": "{\n  \"action_id\": \"1325\",\n  \"action_title\": \"Primates: Paint gum solutions on rough bark\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effects of painting gum solutions on rough bark for primates. \\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1330\",\"1326\",\"1325\"],\"query\":\"What is the state of the evidence regarding the provision of gum or nectar to captive primates?\",\"summary\":\"No evidence was captured for the effects of providing gum (including artificial gum) to primates [1330]. No evidence was captured for the effects of adding gum solutions to drilled hollow feeders for primates [1326]. No evidence was captured for the effects of painting gum solutions on rough bark for primates [1325].\"}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence regarding the provision of gum or nectar to captive primates?\",\n  \"relevant_summary\": \"No evidence was captured for the effects of providing gum (including artificial gum) to primates [1330]. No evidence was captured for the effects of adding gum solutions to drilled hollow feeders for primates [1326]. No evidence was captured for the effects of painting gum solutions on rough bark for primates [1325].\",\n  \"action_ids\": [\n    \"1330\",\n    \"1326\",\n    \"1325\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1325",
+      "1326",
+      "1330",
+      "1331"
+    ],
+    "regenerated_ids": [
+      "1325",
+      "1326",
+      "1330",
+      "1331"
+    ]
   }
 ]

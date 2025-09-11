@@ -545,5 +545,113 @@
       "2654",
       "2673"
     ]
+  },
+  {
+    "query": "How do separator trawls and topless trawls compare in their effectiveness at reducing unwanted fish catch?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Based on the available information, two studies found that separator trawls can be effective in reducing unwanted catch. One study in the North Sea demonstrated that a separator trawl with a larger mesh size allowed more small, unwanted cod to escape (2711). Another study in the Atlantic Ocean showed that a separator trawl with a square-mesh escape panel reduced the catch of one of two unwanted fish species in a crustacean fishery (2711).\n\nSimilarly, two of four studies on topless trawls found that they reduced unwanted catches of Atlantic cod and other commercial fish species when compared to conventional trawls (2712). Another study noted that topless trawls reduced unwanted catches of larger haddock and, in one of two cases, larger Atlantic cod, but not smaller haddock (2712). The fourth study found that topless trawls reduced the discarded catch of one of four commercial fish species (2712).",
+    "summary_action_ids": [
+      "2711",
+      "2712"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"separator trawls and topless trawls bycatch reduction\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2712\",\n    \"action_title\": \"Use a topless (coverless) trawl\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2711\",\n    \"action_title\": \"Use a separator trawl\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2722\",\n    \"action_title\": \"Fit a size-sorting mesh funnel (a sieve net) to a prawn/shrimp trawl net\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2712\"}",
+            "return_val": "{\n  \"action_id\": \"2712\",\n  \"action_title\": \"Use a topless (coverless) trawl\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies examined the effect of using a topless or coverless trawl on marine fish populations. Two studies were in the North Sea\\u00a0(UK, Norway, Sweden), one study was in the Gulf of Maine\\u00a0(USA) and one study was in the North Sea, Skagerrak and the Baltic Sea\\u00a0(Northern Europe).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (4 STUDIES)\\n\\nReduction of unwanted catch (4 studies): Two of four replicated, controlled studies (three paired) in the North Sea, Gulf of Maine, and North Sea, Skagerrak and Baltic Sea\\u00a0found that using a topless trawl, in one case in combination with another non-conventional trawl type, reduced the catch of unwanted Atlantic cod\\u00a0and discards of commercial fish species\\u00a0compared to conventional trawl types. One study\\u00a0found that topless trawls reduced unwanted catches of larger but not smaller haddock and larger Atlantic cod only in one of two cases, compared to standard trawl types. The other study\\u00a0found that discarded catches of one of four commercial fish species were reduced in topless trawls.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2711\"}",
+            "return_val": "{\n  \"action_id\": \"2711\",\n  \"action_title\": \"Use a separator trawl\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effect of using a separator trawl on marine fish populations. One study was in the North Sea\\u00a0(UK) and the other in the Atlantic Ocean\\u00a0(Portugal).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nReduction of unwanted catch (2 studies): One replicated, randomized study in the North Sea\\u00a0found that a separator trawl separated unwanted cod from target fish species into the lower codend, where a larger mesh size allowed more unwanted smaller cod to escape capture. One replicated study in the Atlantic Ocean\\u00a0found that a separator trawl fitted with a square-mesh escape panel caught less of one of two unwanted fish species in a crustacean fishery.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"2711\",\"2712\"],\"summary\":\"Based on the available information, two studies found that separator trawls can be effective in reducing unwanted catch. One study in the North Sea demonstrated that a separator trawl with a larger mesh size allowed more small, unwanted cod to escape (2711). Another study in the Atlantic Ocean showed that a separator trawl with a square-mesh escape panel reduced the catch of one of two unwanted fish species in a crustacean fishery (2711).\\n\\nSimilarly, two of four studies on topless trawls found that they reduced unwanted catches of Atlantic cod and other commercial fish species when compared to conventional trawls (2712). Another study noted that topless trawls reduced unwanted catches of larger haddock and, in one of two cases, larger Atlantic cod, but not smaller haddock (2712). The fourth study found that topless trawls reduced the discarded catch of one of four commercial fish species (2712).\",\"query\":\"How do separator trawls and topless trawls compare in their effectiveness at reducing unwanted fish catch?\"}",
+            "return_val": "{\n  \"query\": \"How do separator trawls and topless trawls compare in their effectiveness at reducing unwanted fish catch?\",\n  \"relevant_summary\": \"Based on the available information, two studies found that separator trawls can be effective in reducing unwanted catch. One study in the North Sea demonstrated that a separator trawl with a larger mesh size allowed more small, unwanted cod to escape (2711). Another study in the Atlantic Ocean showed that a separator trawl with a square-mesh escape panel reduced the catch of one of two unwanted fish species in a crustacean fishery (2711).\\n\\nSimilarly, two of four studies on topless trawls found that they reduced unwanted catches of Atlantic cod and other commercial fish species when compared to conventional trawls (2712). Another study noted that topless trawls reduced unwanted catches of larger haddock and, in one of two cases, larger Atlantic cod, but not smaller haddock (2712). The fourth study found that topless trawls reduced the discarded catch of one of four commercial fish species (2712).\",\n  \"action_ids\": [\n    \"2711\",\n    \"2712\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2711",
+      "2712",
+      "2713"
+    ],
+    "regenerated_ids": [
+      "2711",
+      "2712"
+    ]
+  },
+  {
+    "query": "What are the documented effects of modifying fishing trap or pot configurations on marine fish?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Sixteen of 20 replicated studies found that modifications to trap configuration, such as using a different trap type, increased mesh size, or fitting an escape device, reduced the unwanted catches of fish, including undersized, discarded, or non-commercial target species [2702]. The species for which unwanted catches were reduced included brown trout, black sea bass, herring, bluethroat wrasse, leatherjacket, cod, protected rockfishes, whitefish, American eel, winter flounder, sharks, and rays, and in one of two cases, salmon and rainbow trout [2702]. In contrast, three other studies found that trap modification or type had no effect on unwanted catches of white croaker, non-commercial fish, or undersized Atlantic cod, and non-target haddock catches were increased [2702].\n\nThree of four replicated studies found that traps or pots modified with a square mesh escape window or larger mesh sizes improved the size-selectivity of Atlantic cod, black sea bass, and most fish species compared to smaller mesh and/or standard gear [2702]. However, one study found that increasing the mesh size of a trap escape panel had no effect on the size-selectivity of panga [2702].\n\nOne replicated, controlled study in the Bothnian Sea found that the survival of small herring that escaped from a pontoon fish trap through a size-sorting grid was similar to that of trap-caught herring that did not pass through a grid [2702].",
+    "summary_action_ids": [
+      "2702"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"modifying fishing trap or pot configurations on marine fish\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2702\",\n    \"action_title\": \"Modify fishing trap/pot configuration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2822\",\n    \"action_title\": \"Modify fishing pots and traps to exclude mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3807\",\n    \"action_title\": \"Limit the number of traps or pots per vessel\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2702\"}",
+            "return_val": "{\n  \"action_id\": \"2702\",\n  \"action_title\": \"Modify fishing trap/pot configuration\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-three studies examined the effects of modifying fishing trap or pot configuration on marine fish populations. Five studies were in the Atlantic Ocean\\u00a0(USA, Brazil, Canary Islands, Canada). Three studies were in each of the Bothnian Sea\\u00a0(Sweden), the Baltic Sea\\u00a0(Poland, Sweden), the Tasman Sea\\u00a0(Australia) and the Indian Ocean\\u00a0(Kenya, South Africa). One study was in each of the Kattegat\\u00a0(Denmark), the Mediterranean Sea\\u00a0(Spain), the Adriatic Sea\\u00a0(Italy), the Southern Ocean\\u00a0(Australia), the Pacific Ocean\\u00a0(Canada) and the Barents Sea\\u00a0(Norway).\\n\\n\\u00a0COMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nSurvival (1 study): One replicated, controlled study in the Bothnian Sea\\u00a0found that survival of small herring escaped from a pontoon fish trap through a size-sorting grid was similar to trap-caught herring that did not pass through a grid.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (22 STUDIES)\\n\\nReduction of unwanted catch (20 studies): Sixteen of 20 replicated studies (11 controlled, one randomized, paired and controlled, one randomized and controlled, two paired and controlled and one randomized) and one before-and-after study in the Atlantic Ocean, Baltic Sea, Mediterranean Sea, Southern Ocean, Tasman Sea,\\u00a0Adriatic Sea, Bothnian Sea, Indian Ocean, Pacific Ocean, the Kattegat\\u00a0and the Barents Sea, found that modifications to trap configuration (various, including using a different trap type, increased mesh size and fitting an escape device) reduced the unwanted (undersized, discarded or non-commercial target) catches of fish (overall, or all of multiple study species), brown trout, black sea bass, herring, bluethroat wrasse and leatherjacket, cod, protected rockfishes, whitefish, black sea bass, American eel and winter flounder, sharks/rays\\u00a0and of salmon and rainbow trout in one of two cases, compared to unmodified conventional traps or traps of other designs. One of these\\u00a0also found that the number of unwanted species (fish and invertebrates) was lower in modified traps. Three other studies, found that trap modification or type had no effect on unwanted catches of white croaker, non-commercial fish\\u00a0or undersized Atlantic cod, and non-target haddock catches were increased. However, one of these\\u00a0also reported that traps (creels) did not catch high proportions of immature fish, unlike bottom trawls.\\nImproved size-selectivity of fishing gear (4 studies): Three of four replicated studies (two controlled and one randomized, paired and controlled) in the Baltic Sea, Tasman Sea, Indian Ocean\\u00a0and Atlantic Ocean\\u00a0found that traps or pots modified with a square mesh escape window or larger mesh sizes improved the size-selectivity of Atlantic cod, black sea bass\\u00a0and most fish species\\u00a0compared to smaller mesh and/or standard gear. The other\\u00a0found that increasing mesh size of a trap escape panel had no effect on size-selectivity of panga.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2822\"}",
+            "return_val": "{\n  \"action_id\": \"2822\",\n  \"action_title\": \"Modify fishing pots and traps to exclude mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on marine mammals of modifying fishing pots and traps to exclude mammals. Two studies were in the North Sea\\u00a0(UK, Sweden) and one study was in each of the Indian River Lagoon\\u00a0(USA), the Gulf of Finland\\u00a0(Finland), the Bothnian Sea\\u00a0(Finland), the Indian Ocean\\u00a0(Australia) and the Baltic Sea\\u00a0(Sweden).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (6 STUDIES)\\n\\nReduction in entanglements/unwanted catch (2 studies): Two controlled studies (including one replicated study) in the Indian Ocean, and the Baltic Sea and North Sea\\u00a0found that installing steel rods on lobster pots\\u00a0or metal frames on fishing pots\\u00a0reduced the number of Australian sea lion pups\\u00a0or grey seals and harbour seals\\u00a0that entered\\u00a0or became trapped\\u00a0in pots.\\nHuman wildlife conflict (4 studies): Two controlled studies (including one replicated study) in the Bothnian Sea\\u00a0and the North Sea\\u00a0found that installing wire grids\\u00a0or steel bars\\u00a0on fishing trap-nets\\u00a0or bag-nets, along with strengthened netting\\u00a0or other modifications to prevent seal access, reduced damage to salmon catches by seals. One controlled study in the Indian River Lagoon\\u00a0found that one of two methods of securing crab pot doors with a bungee cord reduced the number of common bottlenose dolphin interactions. One controlled study in the Gulf of Finland\\u00a0found that installing wire grids on trap-nets, along with strengthened netting, resulted in higher catches of undamaged salmon but not whitefish, likely due to reduced seal predation.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented effects of modifying fishing trap or pot configurations on marine fish?\",\"action_ids\":[\"2702\"],\"summary\":\"Sixteen of 20 replicated studies found that modifications to trap configuration, such as using a different trap type, increased mesh size, or fitting an escape device, reduced the unwanted catches of fish, including undersized, discarded, or non-commercial target species [2702]. The species for which unwanted catches were reduced included brown trout, black sea bass, herring, bluethroat wrasse, leatherjacket, cod, protected rockfishes, whitefish, American eel, winter flounder, sharks, and rays, and in one of two cases, salmon and rainbow trout [2702]. In contrast, three other studies found that trap modification or type had no effect on unwanted catches of white croaker, non-commercial fish, or undersized Atlantic cod, and non-target haddock catches were increased [2702].\\n\\nThree of four replicated studies found that traps or pots modified with a square mesh escape window or larger mesh sizes improved the size-selectivity of Atlantic cod, black sea bass, and most fish species compared to smaller mesh and/or standard gear [2702]. However, one study found that increasing the mesh size of a trap escape panel had no effect on the size-selectivity of panga [2702].\\n\\nOne replicated, controlled study in the Bothnian Sea found that the survival of small herring that escaped from a pontoon fish trap through a size-sorting grid was similar to that of trap-caught herring that did not pass through a grid [2702].\"}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of modifying fishing trap or pot configurations on marine fish?\",\n  \"relevant_summary\": \"Sixteen of 20 replicated studies found that modifications to trap configuration, such as using a different trap type, increased mesh size, or fitting an escape device, reduced the unwanted catches of fish, including undersized, discarded, or non-commercial target species [2702]. The species for which unwanted catches were reduced included brown trout, black sea bass, herring, bluethroat wrasse, leatherjacket, cod, protected rockfishes, whitefish, American eel, winter flounder, sharks, and rays, and in one of two cases, salmon and rainbow trout [2702]. In contrast, three other studies found that trap modification or type had no effect on unwanted catches of white croaker, non-commercial fish, or undersized Atlantic cod, and non-target haddock catches were increased [2702].\\n\\nThree of four replicated studies found that traps or pots modified with a square mesh escape window or larger mesh sizes improved the size-selectivity of Atlantic cod, black sea bass, and most fish species compared to smaller mesh and/or standard gear [2702]. However, one study found that increasing the mesh size of a trap escape panel had no effect on the size-selectivity of panga [2702].\\n\\nOne replicated, controlled study in the Bothnian Sea found that the survival of small herring that escaped from a pontoon fish trap through a size-sorting grid was similar to that of trap-caught herring that did not pass through a grid [2702].\",\n  \"action_ids\": [\n    \"2702\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2702"
+    ],
+    "regenerated_ids": [
+      "2702"
+    ]
   }
 ]

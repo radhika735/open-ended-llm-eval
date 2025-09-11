@@ -438,5 +438,204 @@
       "920",
       "922"
     ]
+  },
+  {
+    "query": "What is the evidence from studies in Norway for using alternative feed components in Atlantic salmon diets?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Three replicated, controlled studies in Norway found no difference in the growth rate or histology of Atlantic salmon fed diets containing genetically modified (GM) soybeans compared to non-GM soybeans [928]. One controlled experiment in Norway found no differences in weight between Atlantic salmon fed diets with the yeast Yarrowia lipolytica and those on a fishmeal control diet [920].\n\nFor plant-based proteins, the evidence is more varied. Some studies in Norway indicated that including plant-based proteins in feed led to decreased growth rates, while others found similar growth rates compared to fishmeal diets [924]. Similarly, some Norwegian studies found reduced final body weights in salmon fed plant-based diets, while others reported similar final body weights to those on fishmeal diets [924]. Two replicated, controlled studies in Norway showed lower feeding efficiency with plant-based proteins, but another replicated study found increased feeding efficiency [924]. Digestibility was also variable, with one Norwegian study showing lower digestibility for plant-based diets and another showing similar levels to fishmeal diets [924]. Two studies also noted that while survival and appetite were unaffected, the morphology of the distal intestine was altered in salmon fed plant-based diets [924].",
+    "summary_action_ids": [
+      "928",
+      "920",
+      "924"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"alternative feed components in Atlantic salmon diets in Norway\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"928\",\n    \"action_title\": \"Use genetically modified alternatives\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"920\",\n    \"action_title\": \"Use an alternative protein source: yeast\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"928\"}",
+            "return_val": "{\n  \"action_id\": \"928\",\n  \"action_title\": \"Use genetically modified alternatives\",\n  \"key_messages\": \"Key Messages:\\n\\nThree controlled, replicated (two randomised)\\u00a0studies in Norway found      no difference in growth rate of Atlantic salmon that were fed diets      containing either GM or non-GM soybeans. One randomised, replicated, controlled study in Norway found      no differences in fish fed diets containing either GM or non- GM soybeans      on the histology of the fish.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"920\"}",
+            "return_val": "{\n  \"action_id\": \"920\",\n  \"action_title\": \"Use an alternative protein source: yeast\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled      experiment in Norway found no differences in weight between      Atlantic salmon that were fed diets containing the yeast Yarrowia lipolytica compared to a      control diet containing fishmeal.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"924\"}",
+            "return_val": "{\n  \"action_id\": \"924\",\n  \"action_title\": \"Use an alternative protein source: plant-based\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies (four replicated, controlled) in\\u00a0Norway, Scotland and the USA found that inclusion of plant-based proteins within feed led to decreased growth rates in salmon. Three replicated and/or controlled studies from Norway, Canada and Scotland found similar growth rates in salmon fed either plant-based or fish meal diets.\\nFour replicated, controlled\\u00a0studies (three randomised) from Norway and Scotland found reduced final body weights in salmon fed plant-based protein diets compared to fish meal-based diets. Two controlled studies (one replicated) from Norway found similar final body weights in salmon fed either plant-based or fish meal diets.\\nTwo replicated, controlled studies (one randomised)\\u00a0from Norway found lowered levels of feeding efficiency, whereas a replicated study in Norway found increased levels of feeding efficiency in salmon fed plant-based protein diets compared to fish meal diets. Two replicated studies (one controlled) in\\u00a0Canada and Scotland\\u00a0study found similar levels of feeding efficiency across both diet types.\\nDigestibility of feed components by salmon was found to be lower in two replicated, controlled studies when the diets contained plant proteins compared to fish meal. Similar levels of digestibility across both diet types were identified by two randomised, replicated, controlled studies in Scotland\\u00a0and Norway. \\nTwo of the studies found that survival rates and appetite were not affected by plant- or fish meal-based protein diets. However morphology of the distal intestine was altered in two randomised, replicated, controlled studies where salmon were fed diets containing plant-based proteins. Condition of the salmon was increased in plant-based protein diets in one randomised, replicated, controlled study but reduced in two other replicated studies.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the evidence from studies in Norway for using alternative feed components in Atlantic salmon diets?\",\"summary\":\"Three replicated, controlled studies in Norway found no difference in the growth rate or histology of Atlantic salmon fed diets containing genetically modified (GM) soybeans compared to non-GM soybeans [928]. One controlled experiment in Norway found no differences in weight between Atlantic salmon fed diets with the yeast Yarrowia lipolytica and those on a fishmeal control diet [920].\\n\\nFor plant-based proteins, the evidence is more varied. Some studies in Norway indicated that including plant-based proteins in feed led to decreased growth rates, while others found similar growth rates compared to fishmeal diets [924]. Similarly, some Norwegian studies found reduced final body weights in salmon fed plant-based diets, while others reported similar final body weights to those on fishmeal diets [924]. Two replicated, controlled studies in Norway showed lower feeding efficiency with plant-based proteins, but another replicated study found increased feeding efficiency [924]. Digestibility was also variable, with one Norwegian study showing lower digestibility for plant-based diets and another showing similar levels to fishmeal diets [924]. Two studies also noted that while survival and appetite were unaffected, the morphology of the distal intestine was altered in salmon fed plant-based diets [924].\",\"action_ids\":[\"928\",\"920\",\"924\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence from studies in Norway for using alternative feed components in Atlantic salmon diets?\",\n  \"relevant_summary\": \"Three replicated, controlled studies in Norway found no difference in the growth rate or histology of Atlantic salmon fed diets containing genetically modified (GM) soybeans compared to non-GM soybeans [928]. One controlled experiment in Norway found no differences in weight between Atlantic salmon fed diets with the yeast Yarrowia lipolytica and those on a fishmeal control diet [920].\\n\\nFor plant-based proteins, the evidence is more varied. Some studies in Norway indicated that including plant-based proteins in feed led to decreased growth rates, while others found similar growth rates compared to fishmeal diets [924]. Similarly, some Norwegian studies found reduced final body weights in salmon fed plant-based diets, while others reported similar final body weights to those on fishmeal diets [924]. Two replicated, controlled studies in Norway showed lower feeding efficiency with plant-based proteins, but another replicated study found increased feeding efficiency [924]. Digestibility was also variable, with one Norwegian study showing lower digestibility for plant-based diets and another showing similar levels to fishmeal diets [924]. Two studies also noted that while survival and appetite were unaffected, the morphology of the distal intestine was altered in salmon fed plant-based diets [924].\",\n  \"action_ids\": [\n    \"928\",\n    \"920\",\n    \"924\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "915",
+      "916",
+      "918",
+      "920",
+      "924",
+      "926",
+      "928",
+      "930",
+      "732"
+    ],
+    "regenerated_ids": [
+      "732",
+      "915",
+      "916",
+      "918",
+      "920",
+      "924",
+      "926",
+      "928",
+      "930"
+    ]
+  },
+  {
+    "query": "What are the effects of altering the physical environment of salmon cages, such as their size or lighting, on salmon health in aquaculture?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A replicated study in Australia showed that salmon housed in larger cages exhibited lower levels of amoebic gill disease when compared to salmon in smaller cages (742).",
+    "summary_action_ids": [
+      "742"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of altering the physical environment of salmon cages on salmon health in aquaculture\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"742\",\n    \"action_title\": \"Alter cage size\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2774\",\n    \"action_title\": \"Replace or repair damaged anti-predator nets around aquaculture systems\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"742\"}",
+            "return_val": "{\n  \"action_id\": \"742\",\n  \"action_title\": \"Alter cage size\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nA replicated study in Australia recorded lower levels of amoebic gill disease in salmon kept within larger compared to smaller cages.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":3,\"query_string\":\"salmon cage environment\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2699\",\n    \"action_title\": \"Modify longline configuration\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2782\",\n    \"action_title\": \"Restrict capture of marine and freshwater mammals for research or aquariums and zoos\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"949\",\n    \"action_title\": \"Create alternative bat roosts within developments\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the effects of altering the physical environment of salmon cages, such as their size or lighting, on salmon health in aquaculture?\",\"action_ids\":[\"742\"],\"summary\":\"A replicated study in Australia showed that salmon housed in larger cages exhibited lower levels of amoebic gill disease when compared to salmon in smaller cages (742).\"}",
+            "return_val": "{\n  \"query\": \"What are the effects of altering the physical environment of salmon cages, such as their size or lighting, on salmon health in aquaculture?\",\n  \"relevant_summary\": \"A replicated study in Australia showed that salmon housed in larger cages exhibited lower levels of amoebic gill disease when compared to salmon in smaller cages (742).\",\n  \"action_ids\": [\n    \"742\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "742",
+      "741"
+    ],
+    "regenerated_ids": [
+      "741",
+      "742"
+    ]
+  },
+  {
+    "query": "How do different non-chemical water-based treatments, such as fallowing and freshwater bathing, compare in their reported effectiveness for specific diseases in salmon?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A study in Scotland reported lower lice numbers on Atlantic salmon in cages that used a fallowing system (1026). A separate study in Australia, however, found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system was used (1026). Two studies in Australia provide mixed evidence for the effectiveness of freshwater bathing in reducing amoebic gill disease (739). One study found a reduction in the number of amoebae on salmon gills that persisted for up to 10 days after bathing, while a replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon (739).",
+    "summary_action_ids": [
+      "1026",
+      "739"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"non-chemical water-based treatments for salmon diseases\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"766\",\n    \"action_title\": \"Remove the chytrid fungus from ponds\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1026\"}",
+            "return_val": "{\n  \"action_id\": \"1026\",\n  \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n  \"key_messages\": \"Key Messages:\\nA study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system. Another study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1027\"}",
+            "return_val": "{\n  \"action_id\": \"1027\",\n  \"action_title\": \"Establish fallowing to reduce pollution\",\n  \"key_messages\": \"Key Messages:\\nA trial in Tasmania found sediment community structure under Atlantic salmon cages became more similar to non- impacted sites over two fallowing cycles.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"freshwater bathing for salmon diseases\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"739\",\n    \"action_title\": \"Bathe in freshwater\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"739\"}",
+            "return_val": "{\n  \"action_id\": \"739\",\n  \"action_title\": \"Bathe in freshwater\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nTwo studies in Australia\\u00a0provide mixed evidence of the effect of freshwater bathing to reducing amoebic gill disease.\\u00a0One study found a reduction in numbers of amoebae on salmon gills persisting for up to 10 days after bathing. One replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"A study in Scotland reported lower lice numbers on Atlantic salmon in cages that used a fallowing system (1026). A separate study in Australia, however, found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system was used (1026). Two studies in Australia provide mixed evidence for the effectiveness of freshwater bathing in reducing amoebic gill disease (739). One study found a reduction in the number of amoebae on salmon gills that persisted for up to 10 days after bathing, while a replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon (739).\",\"query\":\"How do different non-chemical water-based treatments, such as fallowing and freshwater bathing, compare in their reported effectiveness for specific diseases in salmon?\",\"action_ids\":[\"1026\",\"739\"]}",
+            "return_val": "{\n  \"query\": \"How do different non-chemical water-based treatments, such as fallowing and freshwater bathing, compare in their reported effectiveness for specific diseases in salmon?\",\n  \"relevant_summary\": \"A study in Scotland reported lower lice numbers on Atlantic salmon in cages that used a fallowing system (1026). A separate study in Australia, however, found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system was used (1026). Two studies in Australia provide mixed evidence for the effectiveness of freshwater bathing in reducing amoebic gill disease (739). One study found a reduction in the number of amoebae on salmon gills that persisted for up to 10 days after bathing, while a replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon (739).\",\n  \"action_ids\": [\n    \"1026\",\n    \"739\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1026",
+      "739"
+    ],
+    "regenerated_ids": [
+      "1026",
+      "739"
+    ]
   }
 ]

@@ -486,5 +486,343 @@
       "2727",
       "2728"
     ]
+  },
+  {
+    "query": "What are the comparative effects on fish abundance of prohibiting all static fishing gear versus prohibiting only line fishing?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "In the Coral Sea, areas closed to all non-towed (static) fishing gears had overall shark abundance higher when sampled with longlines, but not with gillnets, compared to areas where commercial gillnets were permitted [2670]. In the Indian Ocean (South Africa), a marine protected area zone prohibiting offshore line fishing and all other boat-based fishing had higher abundances of four of four fish species over\u2011exploited by line fishing than zones where boat\u2011based line and spear fishing were permitted [2671].",
+    "summary_action_ids": [
+      "2670",
+      "2671"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"comparative effects on fish abundance prohibiting all static fishing gear versus prohibiting only line fishing\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2670\",\n    \"action_title\": \"Cease or prohibit all non-towed (static) fishing gear\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2654\",\n    \"action_title\": \"Cease or prohibit all (mobile and static) fishing gears that catch bottom (demersal) species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2671\",\n    \"action_title\": \"Cease or prohibit line fishing\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"comparative effects on fish abundance prohibiting all static fishing gear versus prohibiting only line fishing\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2110\",\n    \"action_title\": \"Limit the number of traps per fishing vessels\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2677\",\n    \"action_title\": \"Establish territorial fishing use rights\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"267\",\n    \"action_title\": \"Add perches to electricity pylons to reduce electrocution\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2670\"}",
+            "return_val": "{\n  \"action_id\": \"2670\",\n  \"action_title\": \"Cease or prohibit all non-towed (static) fishing gear\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of ceasing or prohibiting all non-towed (static) fishing gears on marine fish populations. The study was in the Coral Sea\\u00a0(Australia).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, site comparison study in the Coral Sea\\u00a0found that in areas closed to non-towed fishing gears overall shark abundance was higher when sampled with longlines but not gillnets compared to areas where commercial gillnets were permitted.\\nCondition (1 study): One replicated, site comparison study in the Coral Sea\\u00a0found that in areas closed to non-towed fishing gears shark length was greater for two of five species/groups, similar for two and dependent on sampling gear for one species, compared to areas where commercial gillnets were permitted.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2671\"}",
+            "return_val": "{\n  \"action_id\": \"2671\",\n  \"action_title\": \"Cease or prohibit line fishing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of ceasing or prohibiting line fishing in an area on marine fish populations. The study was in the Indian Ocean (South Africa).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\u00a0\\n\\nAbundance (1 study): One site comparison study in the Indian Ocean found that prohibiting offshore line fishing and all other boat-based fishing in a zone of a marine protected area resulted in higher abundances of four of four fish species over-exploited by line fishing, compared to two zones where boat-based line and spear fishing was permitted.\\nCondition (1 study): One site comparison study in the Indian Ocean found that in a zone of a marine protected area closed to offshore line fishing and all other boat-based fishing for two to seven years, four of four fish species over-exploited by line fishing were larger, compared to two zones where boat-based line and spear fishing was permitted.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the comparative effects on fish abundance of prohibiting all static fishing gear versus prohibiting only line fishing?\",\"summary\":\"In the Coral Sea, areas closed to all non-towed (static) fishing gears had overall shark abundance higher when sampled with longlines, but not with gillnets, compared to areas where commercial gillnets were permitted [2670]. In the Indian Ocean (South Africa), a marine protected area zone prohibiting offshore line fishing and all other boat-based fishing had higher abundances of four of four fish species over\u2011exploited by line fishing than zones where boat\u2011based line and spear fishing were permitted [2671].\",\"action_ids\":[\"2670\",\"2671\"]}",
+            "return_val": "{\n  \"query\": \"What are the comparative effects on fish abundance of prohibiting all static fishing gear versus prohibiting only line fishing?\",\n  \"relevant_summary\": \"In the Coral Sea, areas closed to all non-towed (static) fishing gears had overall shark abundance higher when sampled with longlines, but not with gillnets, compared to areas where commercial gillnets were permitted [2670]. In the Indian Ocean (South Africa), a marine protected area zone prohibiting offshore line fishing and all other boat-based fishing had higher abundances of four of four fish species over\\u2011exploited by line fishing than zones where boat\\u2011based line and spear fishing were permitted [2671].\",\n  \"action_ids\": [\n    \"2670\",\n    \"2671\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2670",
+      "2671"
+    ],
+    "regenerated_ids": [
+      "2670",
+      "2671"
+    ]
+  },
+  {
+    "query": "What are the outcomes for fish populations when marine protected areas are managed with zonation systems that permit some fishing?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across eight studies of marine protected areas with zonation, fish responses varied by restriction level: species richness was higher in a no-fishing/no-access zone than in partially fished zones and unprotected areas 10\u201315 years after implementation [2674]. Average fish lengths were larger in no-take zones than in partially fished zones, and larger than in unprotected fished areas in multiple regions and species three years after implementation; sizes of several coral reef fishes and some feeding groups were greater in zones where nearly all fishing was prohibited than in adjacent zones with fewer restrictions, though effects varied among fish groups and sizes [2674]. Abundance and biomass were generally higher inside zoned MPAs than outside after 3\u201315 years, and within MPAs were higher in non\u2011fished (no-entry/no-take) zones than in fished zones, with variation by feeding group, zone protection level and reef region; in one case, four reef fish species were more abundant in a zone where nearly all fishing was prohibited than in an adjacent, less-restricted zone [2674]. In one study, a zone closed to fishing but open to other recreation had a different age and sex structure of steentjies than a fished multipurpose zone and a distant, unprotected site with low exploitation [2674]. Tag\u2013recapture studies showed most individuals were recaptured near release sites and mainly in zones prohibiting all or nearly all fishing, indicating use of better-protected zones within the zonation [2674].",
+    "summary_action_ids": [
+      "2674"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"marine protected areas zonation systems permit some fishing outcomes for fish populations\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2674\",\n    \"action_title\": \"Control human activity in a marine protected area with a zonation system of restrictions\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2230\",\n    \"action_title\": \"Designate a Marine Protected Area with a zonation system of activity restrictions\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2681\",\n    \"action_title\": \"Cease or prohibit all fishing activity in a marine protected area with limited exceptions\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2674\"}",
+            "return_val": "{\n  \"action_id\": \"2674\",\n  \"action_title\": \"Control human activity in a marine protected area with a zonation system of restrictions\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies examined the effects of controlling human activity in a marine protected area with a zonation system of restrictions on marine fish populations. Three studies were in the Indian Ocean\\u00a0(South Africa), two were in the Coral Sea\\u00a0(Australia), and one was in each of the Southern Atlantic Ocean\\u00a0(South Africa), the Ligurian Sea\\u00a0(Italy) and the Philippine Sea\\u00a0(Philippines).\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\u00a0\\n\\nRichness/diversity (1 study): One\\u00a0site comparison study in the Philippine Sea\\u00a0found a higher number of fish species in the no-fishing/no access zone of a multi-zoned marine protected area compared to two partially fished zones and unprotected fished areas 10 to 15 years after implementation.\\u00a0\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nCondition (4 studies): Two of four site comparison studies in the southern Atlantic Ocean, Ligurian Sea, Indian Ocean\\u00a0and the Coral Sea\\u00a0found that controlling human activity in marine protected areas with a zonation system of restrictions resulted in larger average lengths of steentjies\\u00a0and three seabream species three years after implementation\\u00a0compared to unprotected fished areas, and lengths were largest within a no-take zone than a partially fished zone. Two other studies\\u00a0found larger sizes of four of four coral reef fish in a zone where nearly all fishing is prohibited compared to an adjacent zone with fewer fishing restrictions two to seven years after protection, and of two of six fish feeding groups in no-entry zones compared to both no-take and fished zones protected between 10 and 20 years.\\nAbundance (6 studies): Two of four site comparison studies (one replicated) in the Ligurian Sea, Philippine Sea\\u00a0and the Coral Sea\\u00a0found that controlling human activity in protected areas with a zonation system of restrictions resulted in a greater biomass and/or abundance of fish species after 3\\u201315 years compared to unprotected areas outside, and between the zones fish abundance varied with the level of restriction\\u00a0and between individual fish groups and sizes. The other two studies\\u00a0found higher density, biomass, and abundance\\u00a0of fish in non-fished zones (no-entry and no-take) compared to fished zones inside areas protected for 10 to 27 years depending on region, but the effect varied between fish feeding groups, zone protection level\\u00a0and reef region. One site comparison study in the Indian Ocean\\u00a0found higher abundances of four of four reef fish species in a zone where nearly all fishing is prohibited, compared to an adjacent zone with fewer fishing restrictions. One site comparison study in the Southern Atlantic Ocean\\u00a0found that steentjies in a protected zone closed to fishing but open to other recreational activities had a different age and sex structure to a fished multipurpose zone, and both were different to a distant unprotected fished site with low steentjie exploitation.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (2 studies): Two site comparison studies in the Indian Ocean\\u00a0found that in marine protected areas with zonation systems of activity controls, most of the individuals of the reef fish species tagged and released inside the protected areas were recaptured again at almost the same locations over the following nine\\u00a0or four years, and mainly in the zones where all\\u00a0or nearly all\\u00a0fishing was prohibited for up to 20 years, indicating increased protection from fishing.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2230\"}",
+            "return_val": "{\n  \"action_id\": \"2230\",\n  \"action_title\": \"Designate a Marine Protected Area with a zonation system of activity restrictions\",\n  \"key_messages\": \"Key Messages:\\n\\nThirteen studies examined the effects of designating a marine protected area with a zonation system of activity restrictions on subtidal benthic invertebrate populations. Four studies were in the Caribbean Sea\\u00a0(Belize, Mexico), three in the Mediterranean Sea\\u00a0(Italy), one in the Central Pacific Ocean\\u00a0(Ecuador), three in the Bristol Channel and the Irish Sea\\u00a0(UK), one in the Indian Ocean (Australia), and one in the North Atlantic Ocean (Portugal).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nOverall community composition (1 study): One site comparison study in the Mediterranean Sea\\u00a0found that inside a marine protected area with a zonation system, the combined invertebrate and algae species community composition was different at a site prohibiting all fishing compared to sites where some fishing occurs, after six years.\\nOverall species richness/diversity (1 study): One site comparison study in the North Atlantic Ocean\\u00a0found that inside a marine protected area with a zonation system, sites prohibiting nearly all fishing had similar invertebrate species richness to sites where fishing was mostly allowed, after two years.\\n\\nPOPULATION RESPONSE (13 STUDIES)\\n\\nOverall abundance (1 study): One site comparison study in the North Atlantic Ocean\\u00a0found that inside a marine protected area with a zonation system, abundances of specific invertebrate groups varied between sites prohibiting nearly all fishing and sites where fishing was mostly allowed, after two years.\\nCrustacean abundance (7 studies): Three of seven site comparison studies (two replicated) in the Caribbean Sea, the Central Pacific Ocean, and in the Bristol Channel and the Irish Sea\\u00a0found that inside a marine protected area with a zonation system, abundance and/or biomass of spiny lobsters increased in a zone closed to all/commercial fishing and were greater than in a zone where fewer fishing restrictions occurred, after four to 20 years depending on the study. One found that sites closed to all fishing had higher abundances of spiny lobsters and slipper lobsters after eight to ten years compared to fished sites. Two found that sites closed to all fishing for six to seven years had more European lobsters than sites where potting was allowed. And one found that abundances of European lobsters, velvet crabs, brown crabs and spider crabs, after one to four years, varied with the levels of protection.\\nCrustacean condition (4 studies): Three of five site comparison studies (one replicated) in the Bristol Channel and the Irish Sea, and in the Caribbean Sea\\u00a0found that, inside a marine protected area with a zonation system, sites prohibiting all fishing for seven years\\u00a0or commercial fishing (duration unspecified)\\u00a0had bigger lobsters compared to fished areas. One found that the sizes of lobsters, velvet crabs, brown crabs and spider crabs varied with the levels of protection, and one study found that the size of spiny lobsters decreased similarly in an area prohibiting all fishing and in an area with fewer restrictions 14 to 20 years after designation of the protected area. Two studies undertaken in the same area found conflicting effects of prohibiting all fishing for six to seven years on disease and injury of lobsters.\\nEchinoderm abundance (2 studies): One of two site comparison studies in the Mediterranean Sea\\u00a0found that inside a marine protected area with a zonation system, at a site prohibiting all fishing for 17 to 18 years, abundances of two species of sea urchins were higher than at sites allowing the recreational fishing of purple sea urchins. The other one found similar abundance of purple sea urchins inside fully protected sites, sites where some restricted urchin harvest occurs, and unprotected fished sites outside the protected area after five years.\\nEchinoderm condition (2 studies): Two site comparison studies in the Mediterranean Sea\\u00a0found that inside a marine protected area with a zonation system, sites prohibiting all fishing had bigger sea urchins compared to sites where some restricted urchin harvest occurs\\u00a0and compared to unprotected fished sites outside the protected area, after either four years\\u00a0or 17 to 18 years.\\nMollusc abundance (3 studies): One replicated, randomized, controlled study in the Indian Ocean\\u00a0found that inside a marine protected area with a zonation system, abundance of blacklip abalone was higher in sites that had been prohibiting all fishing for five years compared to those prohibiting commercial fishing only. Two site comparison studies in the Caribbean Sea found that inside marine protected areas with a zonation system, abundances of adult queen conch increased over time in a zone closed to all fishing and were greater than in zones with fewer restrictions, but abundances of juvenile conch did not differ or vary differently between zones, after either five to eight years\\u00a0or 14 to 20 years.\\nMollusc condition (1 study): One site comparison study in the Caribbean Sea\\u00a0found that inside a marine protected area with a zonation system, the size of queen conch decreased similarly in the area prohibiting all fishing and in the area with fewer restrictions, after 14 to 20 years.\\nSponge abundance (1 study): One site comparison study in the Mediterranean Sea\\u00a0found that inside a marine protected area with a zonation system, the cover of sponges Cliona was higher at a site prohibiting all fishing for six years compared to sites where some fishing occurred.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nCrustacean behaviour (1 study): One site comparison study in the Caribbean Sea\\u00a0found that, inside a marine protected area with a zonation system (year of designation unspecified), 80% of the lobster population occurring in the unfished area remained in the protected unfished area, and thus remained protected.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"fish populations outcomes zonation system permit some fishing marine protected area fish abundance size biomass zoned\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2690\",\n    \"action_title\": \"Reduce the duration of exposure to air of captured fish before release\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2689\",\n    \"action_title\": \"Use a different method to sort or bring catch onboard\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"268\",\n    \"action_title\": \"Insulate power pylons to prevent electrocution\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the outcomes for fish populations when marine protected areas are managed with zonation systems that permit some fishing?\",\"summary\":\"Across eight studies of marine protected areas with zonation, fish responses varied by restriction level: species richness was higher in a no-fishing/no-access zone than in partially fished zones and unprotected areas 10\u201315 years after implementation [2674]. Average fish lengths were larger in no-take zones than in partially fished zones, and larger than in unprotected fished areas in multiple regions and species three years after implementation; sizes of several coral reef fishes and some feeding groups were greater in zones where nearly all fishing was prohibited than in adjacent zones with fewer restrictions, though effects varied among fish groups and sizes [2674]. Abundance and biomass were generally higher inside zoned MPAs than outside after 3\u201315 years, and within MPAs were higher in non\u2011fished (no-entry/no-take) zones than in fished zones, with variation by feeding group, zone protection level and reef region; in one case, four reef fish species were more abundant in a zone where nearly all fishing was prohibited than in an adjacent, less-restricted zone [2674]. In one study, a zone closed to fishing but open to other recreation had a different age and sex structure of steentjies than a fished multipurpose zone and a distant, unprotected site with low exploitation [2674]. Tag\u2013recapture studies showed most individuals were recaptured near release sites and mainly in zones prohibiting all or nearly all fishing, indicating use of better-protected zones within the zonation [2674].\",\"action_ids\":[\"2674\"]}",
+            "return_val": "{\n  \"query\": \"What are the outcomes for fish populations when marine protected areas are managed with zonation systems that permit some fishing?\",\n  \"relevant_summary\": \"Across eight studies of marine protected areas with zonation, fish responses varied by restriction level: species richness was higher in a no-fishing/no-access zone than in partially fished zones and unprotected areas 10\\u201315 years after implementation [2674]. Average fish lengths were larger in no-take zones than in partially fished zones, and larger than in unprotected fished areas in multiple regions and species three years after implementation; sizes of several coral reef fishes and some feeding groups were greater in zones where nearly all fishing was prohibited than in adjacent zones with fewer restrictions, though effects varied among fish groups and sizes [2674]. Abundance and biomass were generally higher inside zoned MPAs than outside after 3\\u201315 years, and within MPAs were higher in non\\u2011fished (no-entry/no-take) zones than in fished zones, with variation by feeding group, zone protection level and reef region; in one case, four reef fish species were more abundant in a zone where nearly all fishing was prohibited than in an adjacent, less-restricted zone [2674]. In one study, a zone closed to fishing but open to other recreation had a different age and sex structure of steentjies than a fished multipurpose zone and a distant, unprotected site with low exploitation [2674]. Tag\\u2013recapture studies showed most individuals were recaptured near release sites and mainly in zones prohibiting all or nearly all fishing, indicating use of better-protected zones within the zonation [2674].\",\n  \"action_ids\": [\n    \"2674\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2674",
+      "2678",
+      "2681",
+      "2682"
+    ],
+    "regenerated_ids": [
+      "2674",
+      "2681",
+      "2682"
+    ]
+  },
+  {
+    "query": "How does the effectiveness of prohibiting mobile bottom fishing gear vary between the North Atlantic and other regions like the Mediterranean or Indian Ocean?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "North Atlantic: Studies reported mixed population responses. After closing areas to bottom-towed gears, one study found no increase in recruitment or survival of young haddock seven years post-closure compared to a trawled area (action_id: 2673). In contrast, prohibiting mobile and static bottom gears for 15 years was associated with higher numbers of larger and older cod and better growth than in openly fished areas (action_id: 2654). Mediterranean: Responses included positive changes for some fish and benthic invertebrates but also null results. After 14 years of closure to bottom-towed gears, biomass and size of adult red mullet increased and recruitment of young red mullet increased (action_id: 2673). For benthic invertebrates, areas closed to trawling for 15\u201320 years had different community composition than trawled areas, with higher diversity in some cases but no differences in other cases and no consistent differences in total invertebrate biomass (action_id: 2099). Some studies also reported no effect on combined fish and invertebrate abundance and biomass compared to areas open to towed gears (action_id: 2673). Indian Ocean: Reported effects varied by assemblage and conditions. Species richness and diversity differed between areas with different exposures to bottom trawling and were dependent on depth and habitat (action_id: 2673). Fish size responses to closures or low bottom-fishing activity varied between fish groups and with habitat type (action_id: 2673). In areas where beach and other seine nets were prohibited for 3\u20136 years, overall fish catch rates were higher, though responses differed among fish groups (action_id: 2673).",
+    "summary_action_ids": [
+      "2673",
+      "2654",
+      "2099"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"effectiveness of prohibiting mobile bottom fishing gear North Atlantic Mediterranean Indian Ocean\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2673\",\n    \"action_title\": \"Cease or prohibit mobile fishing gears that catch bottom (demersal) species and are dragged across the seafloor\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2654\",\n    \"action_title\": \"Cease or prohibit all (mobile and static) fishing gears that catch bottom (demersal) species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2099\",\n    \"action_title\": \"Cease or prohibit bottom trawling\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2673\"}",
+            "return_val": "{\n  \"action_id\": \"2673\",\n  \"action_title\": \"Cease or prohibit mobile fishing gears that catch bottom (demersal) species and are dragged across the seafloor\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies examined the effects of ceasing or prohibiting mobile fishing gears that catch bottom (demersal) species and are dragged across the seafloor on marine fish populations. Two studies were in each of the North Atlantic Ocean\\u00a0(Canada, Portugal), the Indian Ocean\\u00a0(Tasmania, Kenya) and the Mediterranean Sea. One study was in each of the North Sea\\u00a0(Denmark), the Arafura Sea\\u00a0(Australia), the Coral Sea\\u00a0(Australia) and the Gulf of Mexico\\u00a0(USA).\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\u00a0\\n\\nRichness/diversity (3 studies): Two of three site comparison studies (one replicated and randomized, and one before-and-after) in the North Sea, Indian Ocean\\u00a0and Gulf of Mexico\\u00a0found that the number of fish species, the fish assemblage and overall species richness and diversity (fish and invertebrates combined)\\u00a0varied between areas with different exposures to bottom trawling, and was also dependent on bottom depth\\u00a0and habitat type. The other study\\u00a0reported no effect of closing an area to all towed bottom fishing gears on the species richness of bottom-dwelling fish after 10 years and compared to areas open to trawling.\\n\\n\\u00a0POPULATION RESPONSE (8 STUDIES)\\n\\nAbundance (5 studies): Two of three replicated studies (one controlled and before-and-after, and two site comparison) and one of two before-and-after studies (one site comparison) in the North Sea, Arafura Sea, North Atlantic Ocean\\u00a0and the Mediterranean Sea\\u00a0found that ceasing or prohibiting fishing with towed bottom gears resulted in higher total fish biomass after 15 years, higher biomass of adult red mullet after 14 years\\u00a0and increased abundances of long-snouted, but not short-snouted, seahorses after one year, compared to openly fished areas. The other two studies\\u00a0found that a ban on towed bottom fishing gears for five\\u00a0and 10 years\\u00a0had no effect on the abundance of bottom-dwelling fish species after closure compared to before, or the abundance and biomass of fish and invertebrate species (combined) compared to areas open to towed gears/trawling.\\nReproductive success (2 studies): One of two before-and-after studies (one site comparison) in the North Atlantic Ocean\\u00a0and Mediterranean Sea\\u00a0found that after the closure of an area to all bottom-towed fishing gears for 14 years, recruitment of young red mullet had increased. The other study\\u00a0found that an area closed to bottom trawling did not have higher recruitment of young haddock seven years after closure and compared to a trawled area.\\nSurvival (1 study): One before-and-after, site comparison study in the North Atlantic Ocean\\u00a0found that closing an area to bottom trawling did not increase the survival of young haddock seven years after closure, and compared to a trawled area.\\nCondition (5 studies): One of four replicated studies (two site comparison and one randomized, site comparison) and one before-and-after study in the Arafura Sea, Mediterranean Sea, Gulf of Mexico\\u00a0and the Indian Ocean\\u00a0found that areas prohibiting bottom towed fishing gears had larger sizes of adult red mullet 14 years after closure than before. Two studies\\u00a0found that the effect on fish size of closing areas to towed bottom gears for 3\\u20136 years\\u00a0or areas with no bottom fishing activity\\u00a0varied between individual fish groups\\u00a0and with habitat type, compared to fished areas. The other two\\u00a0found that areas closed to bottom trawling for five years\\u00a0and 15 years\\u00a0had no effect on the overall size of fish and invertebrate species combined\\u00a0or average fish weight, compared to trawled areas.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nReduce unwanted catch (1 study): One randomized, replicated, site comparison study in the Coral Sea\\u00a0found no reduction in the biomass of non-commercial unwanted catch (fish and invertebrate discard) or in the number of \\u2018common\\u2019 and \\u2018rare\\u2019 discard species in areas closed to trawling for seven years compared to trawled areas.\\n\\n\\nCatch abundance (1 study): One replicated, before-and-after study in the Indian Ocean\\u00a0found that areas prohibiting beach and all other seine nets for 3\\u20136 years found overall fish catch rates were higher, and catch rates of individual fish groups were variable, compared to unrestricted areas.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2654\"}",
+            "return_val": "{\n  \"action_id\": \"2654\",\n  \"action_title\": \"Cease or prohibit all (mobile and static) fishing gears that catch bottom (demersal) species\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies examined the effects of ceasing or prohibiting mobile and static fishing gears that catch bottom (demersal) species in an area on marine fish populations. One study was in each of the Greenland Sea\\u00a0(Iceland), the North Pacific Ocean\\u00a0(Canada) and the North Atlantic Ocean\\u00a0(USA/Canada).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): One of three replicated, controlled studies (one paired) in the Greenland Sea, North Pacific Ocean\\u00a0and the North Atlantic Ocean\\u00a0found that an area where fishing gears targeting bottom-dwelling species had been prohibited for 15 years had higher numbers of larger and older cod than openly fished areas. One study\\u00a0found that fish densities in areas closed to mobile and static bottom fish gears (trawls and longlines) for at least 11 years varied between fish species/groups, and also with depth and temperature. The other study\\u00a0found that prohibiting mobile and static bottom fish gears (trawls and hook and line) in protected areas for 2\\u20137 years had no effect on fish densities compared to non-protected areas.\\nCondition (2 studies): One of two replicated, controlled studies (one paired) in the Greenland Sea\\u00a0and the North Atlantic Ocean\\u00a0found that cod had better growth in areas closed for 5-15 years to mobile and static gears that targeted bottom-dwelling fish, compared to openly fished areas. The other study\\u00a0found that fish size varied between areas closed and open to bottom fish gears (trawls and longlines) and was also affected by depth and temperature.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2099\"}",
+            "return_val": "{\n  \"action_id\": \"2099\",\n  \"action_title\": \"Cease or prohibit bottom trawling\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies examined the effects of ceasing or prohibiting bottom trawling on subtidal benthic invertebrate populations. Two studies were in the Bering Sea (USA), one in the North Sea, and one in the Mediterranean Sea (Italy).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nOverall community composition (2 studies): Two site comparison studies (one before-and-after, one replicated) in the North Sea\\u00a0and the Mediterranean Sea\\u00a0found that in areas prohibiting trawling for either 15 or 20 years, overall invertebrate community composition was different to that of trawled areas.\\nOverall species richness/diversity (3 studies): Two of three site comparison studies (one paired, one before-and-after, one replicated) in the Bering Sea, the North Sea, and the Mediterranean Sea\\u00a0found that invertebrate diversity was higher in sites closed to trawling compared to trawled sites after either 37 or 15 years, but the other\\u00a0found no differences after 20 years.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nOverall abundance (2 studies): One of two site comparison studies (one paired, one replicated) in the Bering Sea\\u00a0and the Mediterranean Sea\\u00a0found that total invertebrate abundance was higher in sites closed to trawling compared to trawled sites after 37 years, but the other\\u00a0found no differences after 20 years. Both found no differences in total invertebrate biomass.\\nUnwanted catch overall abundance (1 study): One replicated, before-and-after, site comparison study in the Bering Sea\\u00a0found that during the three years after closing areas to all bottom trawling, unwanted catch of crabs appeared to have decreased, while no changes appeared to have occurred in nearby trawled areas.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mobile bottom fishing gears prohibition effectiveness North Atlantic Mediterranean Indian Ocean fish populations\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2691\",\n    \"action_title\": \"Release protected or species of concern alive after capture\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2110\",\n    \"action_title\": \"Limit the number of traps per fishing vessels\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3819\",\n    \"action_title\": \"Purchase fishing vessels from fishers to limit vessel numbers\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How does the effectiveness of prohibiting mobile bottom fishing gear vary between the North Atlantic and other regions like the Mediterranean or Indian Ocean?\",\"summary\":\"North Atlantic: Studies reported mixed population responses. After closing areas to bottom-towed gears, one study found no increase in recruitment or survival of young haddock seven years post-closure compared to a trawled area (action_id: 2673). In contrast, prohibiting mobile and static bottom gears for 15 years was associated with higher numbers of larger and older cod and better growth than in openly fished areas (action_id: 2654). Mediterranean: Responses included positive changes for some fish and benthic invertebrates but also null results. After 14 years of closure to bottom-towed gears, biomass and size of adult red mullet increased and recruitment of young red mullet increased (action_id: 2673). For benthic invertebrates, areas closed to trawling for 15\u201320 years had different community composition than trawled areas, with higher diversity in some cases but no differences in other cases and no consistent differences in total invertebrate biomass (action_id: 2099). Some studies also reported no effect on combined fish and invertebrate abundance and biomass compared to areas open to towed gears (action_id: 2673). Indian Ocean: Reported effects varied by assemblage and conditions. Species richness and diversity differed between areas with different exposures to bottom trawling and were dependent on depth and habitat (action_id: 2673). Fish size responses to closures or low bottom-fishing activity varied between fish groups and with habitat type (action_id: 2673). In areas where beach and other seine nets were prohibited for 3\u20136 years, overall fish catch rates were higher, though responses differed among fish groups (action_id: 2673).\",\"action_ids\":[\"2673\",\"2654\",\"2099\"]}",
+            "return_val": "{\n  \"query\": \"How does the effectiveness of prohibiting mobile bottom fishing gear vary between the North Atlantic and other regions like the Mediterranean or Indian Ocean?\",\n  \"relevant_summary\": \"North Atlantic: Studies reported mixed population responses. After closing areas to bottom-towed gears, one study found no increase in recruitment or survival of young haddock seven years post-closure compared to a trawled area (action_id: 2673). In contrast, prohibiting mobile and static bottom gears for 15 years was associated with higher numbers of larger and older cod and better growth than in openly fished areas (action_id: 2654). Mediterranean: Responses included positive changes for some fish and benthic invertebrates but also null results. After 14 years of closure to bottom-towed gears, biomass and size of adult red mullet increased and recruitment of young red mullet increased (action_id: 2673). For benthic invertebrates, areas closed to trawling for 15\\u201320 years had different community composition than trawled areas, with higher diversity in some cases but no differences in other cases and no consistent differences in total invertebrate biomass (action_id: 2099). Some studies also reported no effect on combined fish and invertebrate abundance and biomass compared to areas open to towed gears (action_id: 2673). Indian Ocean: Reported effects varied by assemblage and conditions. Species richness and diversity differed between areas with different exposures to bottom trawling and were dependent on depth and habitat (action_id: 2673). Fish size responses to closures or low bottom-fishing activity varied between fish groups and with habitat type (action_id: 2673). In areas where beach and other seine nets were prohibited for 3\\u20136 years, overall fish catch rates were higher, though responses differed among fish groups (action_id: 2673).\",\n  \"action_ids\": [\n    \"2673\",\n    \"2654\",\n    \"2099\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2673",
+      "2654",
+      "2668"
+    ],
+    "regenerated_ids": [
+      "2654",
+      "2673"
+    ]
+  },
+  {
+    "query": "How do separator trawls and topless trawls compare in their effectiveness at reducing unwanted fish catch?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Separator trawls: Across two studies, a separator trawl routed unwanted cod into a lower codend where a larger mesh permitted more smaller cod to escape, and in a crustacean fishery a separator trawl with a square\u2011mesh escape panel reduced catches of one of two unwanted fish species [2711]. Topless (coverless) trawls: Across four studies, two studies reported reduced catches of unwanted Atlantic cod and reduced discards of commercial fish relative to conventional trawls, one study found reductions for larger but not smaller haddock and for larger Atlantic cod in one of two cases, and another study found reduced discards for one of four commercial fish species [2712].",
+    "summary_action_ids": [
+      "2711",
+      "2712"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"separator trawls topless trawls effectiveness reducing unwanted fish catch bycatch\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2711\",\n    \"action_title\": \"Use a separator trawl\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2712\",\n    \"action_title\": \"Use a topless (coverless) trawl\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2720\",\n    \"action_title\": \"Fit a size-sorting escape grid (rigid or flexible) to a fish trawl net\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"separator trawls topless trawls effectiveness reducing unwanted fish catch bycatch\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2730\",\n    \"action_title\": \"Use an alternative commercial fishing method\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2734\",\n    \"action_title\": \"Release males of species known to guard nests during breeding \\tseason\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"213\",\n    \"action_title\": \"Leave uncropped, cultivated margins or plots, including lapwing and stone curlew plots\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2711\"}",
+            "return_val": "{\n  \"action_id\": \"2711\",\n  \"action_title\": \"Use a separator trawl\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effect of using a separator trawl on marine fish populations. One study was in the North Sea\\u00a0(UK) and the other in the Atlantic Ocean\\u00a0(Portugal).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nReduction of unwanted catch (2 studies): One replicated, randomized study in the North Sea\\u00a0found that a separator trawl separated unwanted cod from target fish species into the lower codend, where a larger mesh size allowed more unwanted smaller cod to escape capture. One replicated study in the Atlantic Ocean\\u00a0found that a separator trawl fitted with a square-mesh escape panel caught less of one of two unwanted fish species in a crustacean fishery.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2712\"}",
+            "return_val": "{\n  \"action_id\": \"2712\",\n  \"action_title\": \"Use a topless (coverless) trawl\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies examined the effect of using a topless or coverless trawl on marine fish populations. Two studies were in the North Sea\\u00a0(UK, Norway, Sweden), one study was in the Gulf of Maine\\u00a0(USA) and one study was in the North Sea, Skagerrak and the Baltic Sea\\u00a0(Northern Europe).\\u00a0\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (4 STUDIES)\\n\\nReduction of unwanted catch (4 studies): Two of four replicated, controlled studies (three paired) in the North Sea, Gulf of Maine, and North Sea, Skagerrak and Baltic Sea\\u00a0found that using a topless trawl, in one case in combination with another non-conventional trawl type, reduced the catch of unwanted Atlantic cod\\u00a0and discards of commercial fish species\\u00a0compared to conventional trawl types. One study\\u00a0found that topless trawls reduced unwanted catches of larger but not smaller haddock and larger Atlantic cod only in one of two cases, compared to standard trawl types. The other study\\u00a0found that discarded catches of one of four commercial fish species were reduced in topless trawls.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How do separator trawls and topless trawls compare in their effectiveness at reducing unwanted fish catch?\",\"summary\":\"Separator trawls: Across two studies, a separator trawl routed unwanted cod into a lower codend where a larger mesh permitted more smaller cod to escape, and in a crustacean fishery a separator trawl with a square\u2011mesh escape panel reduced catches of one of two unwanted fish species [2711]. Topless (coverless) trawls: Across four studies, two studies reported reduced catches of unwanted Atlantic cod and reduced discards of commercial fish relative to conventional trawls, one study found reductions for larger but not smaller haddock and for larger Atlantic cod in one of two cases, and another study found reduced discards for one of four commercial fish species [2712].\",\"action_ids\":[\"2711\",\"2712\"]}",
+            "return_val": "{\n  \"query\": \"How do separator trawls and topless trawls compare in their effectiveness at reducing unwanted fish catch?\",\n  \"relevant_summary\": \"Separator trawls: Across two studies, a separator trawl routed unwanted cod into a lower codend where a larger mesh permitted more smaller cod to escape, and in a crustacean fishery a separator trawl with a square\\u2011mesh escape panel reduced catches of one of two unwanted fish species [2711]. Topless (coverless) trawls: Across four studies, two studies reported reduced catches of unwanted Atlantic cod and reduced discards of commercial fish relative to conventional trawls, one study found reductions for larger but not smaller haddock and for larger Atlantic cod in one of two cases, and another study found reduced discards for one of four commercial fish species [2712].\",\n  \"action_ids\": [\n    \"2711\",\n    \"2712\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2711",
+      "2712",
+      "2713"
+    ],
+    "regenerated_ids": [
+      "2711",
+      "2712"
+    ]
+  },
+  {
+    "query": "What are the documented effects of modifying fishing trap or pot configurations on marine fish?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across 23 studies, modifying fishing trap or pot configurations led to the following documented effects on marine fish: Survival of small herring that escaped through a size-sorting grid was similar to trap-caught herring that did not pass through a grid (Bothnian Sea; 1 replicated, controlled study) [2702]. Sixteen of 20 replicated studies (various designs) and one before-and-after study reported reduced unwanted catches (undersized, discarded or non\u2011commercial fish) overall or for specific species, including brown trout, black sea bass, herring, bluethroat wrasse and leatherjacket, cod, protected rockfishes, whitefish, American eel, winter flounder, sharks/rays, and salmon and rainbow trout in one of two cases, compared to unmodified or conventional traps; one study also found fewer unwanted species in modified traps [2702]. Three studies found no effect on unwanted catches of white croaker, non\u2011commercial fish, or undersized Atlantic cod, and one study found increased non\u2011target haddock catches; one study also reported creel traps did not catch high proportions of immature fish unlike bottom trawls [2702]. Three of four replicated studies found that square\u2011mesh escape windows or larger mesh sizes improved size\u2011selectivity for Atlantic cod, black sea bass, and most fish species compared to smaller mesh or standard gear; one study found no effect on size\u2011selectivity of panga when increasing escape\u2011panel mesh size [2702]. In traps modified to exclude mammals, damage to salmon catches by seals was reduced, and catches of undamaged salmon increased while whitefish did not increase, attributed to reduced seal predation (controlled studies) [2822].",
+    "summary_action_ids": [
+      "2702",
+      "2822"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"modifying fishing trap or pot configurations effects on marine fish\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2702\",\n    \"action_title\": \"Modify fishing trap/pot configuration\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2822\",\n    \"action_title\": \"Modify fishing pots and traps to exclude mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3807\",\n    \"action_title\": \"Limit the number of traps or pots per vessel\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2702\"}",
+            "return_val": "{\n  \"action_id\": \"2702\",\n  \"action_title\": \"Modify fishing trap/pot configuration\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-three studies examined the effects of modifying fishing trap or pot configuration on marine fish populations. Five studies were in the Atlantic Ocean\\u00a0(USA, Brazil, Canary Islands, Canada). Three studies were in each of the Bothnian Sea\\u00a0(Sweden), the Baltic Sea\\u00a0(Poland, Sweden), the Tasman Sea\\u00a0(Australia) and the Indian Ocean\\u00a0(Kenya, South Africa). One study was in each of the Kattegat\\u00a0(Denmark), the Mediterranean Sea\\u00a0(Spain), the Adriatic Sea\\u00a0(Italy), the Southern Ocean\\u00a0(Australia), the Pacific Ocean\\u00a0(Canada) and the Barents Sea\\u00a0(Norway).\\n\\n\\u00a0COMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nSurvival (1 study): One replicated, controlled study in the Bothnian Sea\\u00a0found that survival of small herring escaped from a pontoon fish trap through a size-sorting grid was similar to trap-caught herring that did not pass through a grid.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (22 STUDIES)\\n\\nReduction of unwanted catch (20 studies): Sixteen of 20 replicated studies (11 controlled, one randomized, paired and controlled, one randomized and controlled, two paired and controlled and one randomized) and one before-and-after study in the Atlantic Ocean, Baltic Sea, Mediterranean Sea, Southern Ocean, Tasman Sea,\\u00a0Adriatic Sea, Bothnian Sea, Indian Ocean, Pacific Ocean, the Kattegat\\u00a0and the Barents Sea, found that modifications to trap configuration (various, including using a different trap type, increased mesh size and fitting an escape device) reduced the unwanted (undersized, discarded or non-commercial target) catches of fish (overall, or all of multiple study species), brown trout, black sea bass, herring, bluethroat wrasse and leatherjacket, cod, protected rockfishes, whitefish, black sea bass, American eel and winter flounder, sharks/rays\\u00a0and of salmon and rainbow trout in one of two cases, compared to unmodified conventional traps or traps of other designs. One of these\\u00a0also found that the number of unwanted species (fish and invertebrates) was lower in modified traps. Three other studies, found that trap modification or type had no effect on unwanted catches of white croaker, non-commercial fish\\u00a0or undersized Atlantic cod, and non-target haddock catches were increased. However, one of these\\u00a0also reported that traps (creels) did not catch high proportions of immature fish, unlike bottom trawls.\\nImproved size-selectivity of fishing gear (4 studies): Three of four replicated studies (two controlled and one randomized, paired and controlled) in the Baltic Sea, Tasman Sea, Indian Ocean\\u00a0and Atlantic Ocean\\u00a0found that traps or pots modified with a square mesh escape window or larger mesh sizes improved the size-selectivity of Atlantic cod, black sea bass\\u00a0and most fish species\\u00a0compared to smaller mesh and/or standard gear. The other\\u00a0found that increasing mesh size of a trap escape panel had no effect on size-selectivity of panga.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2822\"}",
+            "return_val": "{\n  \"action_id\": \"2822\",\n  \"action_title\": \"Modify fishing pots and traps to exclude mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on marine mammals of modifying fishing pots and traps to exclude mammals. Two studies were in the North Sea\\u00a0(UK, Sweden) and one study was in each of the Indian River Lagoon\\u00a0(USA), the Gulf of Finland\\u00a0(Finland), the Bothnian Sea\\u00a0(Finland), the Indian Ocean\\u00a0(Australia) and the Baltic Sea\\u00a0(Sweden).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (6 STUDIES)\\n\\nReduction in entanglements/unwanted catch (2 studies): Two controlled studies (including one replicated study) in the Indian Ocean, and the Baltic Sea and North Sea\\u00a0found that installing steel rods on lobster pots\\u00a0or metal frames on fishing pots\\u00a0reduced the number of Australian sea lion pups\\u00a0or grey seals and harbour seals\\u00a0that entered\\u00a0or became trapped\\u00a0in pots.\\nHuman wildlife conflict (4 studies): Two controlled studies (including one replicated study) in the Bothnian Sea\\u00a0and the North Sea\\u00a0found that installing wire grids\\u00a0or steel bars\\u00a0on fishing trap-nets\\u00a0or bag-nets, along with strengthened netting\\u00a0or other modifications to prevent seal access, reduced damage to salmon catches by seals. One controlled study in the Indian River Lagoon\\u00a0found that one of two methods of securing crab pot doors with a bungee cord reduced the number of common bottlenose dolphin interactions. One controlled study in the Gulf of Finland\\u00a0found that installing wire grids on trap-nets, along with strengthened netting, resulted in higher catches of undamaged salmon but not whitefish, likely due to reduced seal predation.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3807\"}",
+            "return_val": "{\n  \"action_id\": \"3807\",\n  \"action_title\": \"Limit the number of traps or pots per vessel\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of limiting the number of traps or pots per vessel on marine fish populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"modify trap pot configuration fish effects size selectivity escape panels grids pots traps fish\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2710\",\n    \"action_title\": \"Use a different twine type in a trawl net\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2735\",\n    \"action_title\": \"Set a minimum landing size for commercially fished species\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2156\",\n    \"action_title\": \"Implement quarantine to avoid accidental introduction of disease, non-native or problem species\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented effects of modifying fishing trap or pot configurations on marine fish?\",\"summary\":\"Across 23 studies, modifying fishing trap or pot configurations led to the following documented effects on marine fish: Survival of small herring that escaped through a size-sorting grid was similar to trap-caught herring that did not pass through a grid (Bothnian Sea; 1 replicated, controlled study) [2702]. Sixteen of 20 replicated studies (various designs) and one before-and-after study reported reduced unwanted catches (undersized, discarded or non\u2011commercial fish) overall or for specific species, including brown trout, black sea bass, herring, bluethroat wrasse and leatherjacket, cod, protected rockfishes, whitefish, American eel, winter flounder, sharks/rays, and salmon and rainbow trout in one of two cases, compared to unmodified or conventional traps; one study also found fewer unwanted species in modified traps [2702]. Three studies found no effect on unwanted catches of white croaker, non\u2011commercial fish, or undersized Atlantic cod, and one study found increased non\u2011target haddock catches; one study also reported creel traps did not catch high proportions of immature fish unlike bottom trawls [2702]. Three of four replicated studies found that square\u2011mesh escape windows or larger mesh sizes improved size\u2011selectivity for Atlantic cod, black sea bass, and most fish species compared to smaller mesh or standard gear; one study found no effect on size\u2011selectivity of panga when increasing escape\u2011panel mesh size [2702]. In traps modified to exclude mammals, damage to salmon catches by seals was reduced, and catches of undamaged salmon increased while whitefish did not increase, attributed to reduced seal predation (controlled studies) [2822].\",\"action_ids\":[\"2702\",\"2822\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of modifying fishing trap or pot configurations on marine fish?\",\n  \"relevant_summary\": \"Across 23 studies, modifying fishing trap or pot configurations led to the following documented effects on marine fish: Survival of small herring that escaped through a size-sorting grid was similar to trap-caught herring that did not pass through a grid (Bothnian Sea; 1 replicated, controlled study) [2702]. Sixteen of 20 replicated studies (various designs) and one before-and-after study reported reduced unwanted catches (undersized, discarded or non\\u2011commercial fish) overall or for specific species, including brown trout, black sea bass, herring, bluethroat wrasse and leatherjacket, cod, protected rockfishes, whitefish, American eel, winter flounder, sharks/rays, and salmon and rainbow trout in one of two cases, compared to unmodified or conventional traps; one study also found fewer unwanted species in modified traps [2702]. Three studies found no effect on unwanted catches of white croaker, non\\u2011commercial fish, or undersized Atlantic cod, and one study found increased non\\u2011target haddock catches; one study also reported creel traps did not catch high proportions of immature fish unlike bottom trawls [2702]. Three of four replicated studies found that square\\u2011mesh escape windows or larger mesh sizes improved size\\u2011selectivity for Atlantic cod, black sea bass, and most fish species compared to smaller mesh or standard gear; one study found no effect on size\\u2011selectivity of panga when increasing escape\\u2011panel mesh size [2702]. In traps modified to exclude mammals, damage to salmon catches by seals was reduced, and catches of undamaged salmon increased while whitefish did not increase, attributed to reduced seal predation (controlled studies) [2822].\",\n  \"action_ids\": [\n    \"2702\",\n    \"2822\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2702"
+    ],
+    "regenerated_ids": [
+      "2702"
+    ]
   }
 ]
