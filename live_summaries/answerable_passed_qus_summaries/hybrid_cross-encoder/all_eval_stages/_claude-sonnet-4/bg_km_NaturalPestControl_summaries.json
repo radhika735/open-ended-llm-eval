@@ -2209,5 +2209,135 @@
       "750",
       "753"
     ]
+  },
+  {
+    "query": "What actions are available to control weeds specifically in pasture or grassland systems?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Several actions are available to control weeds in pasture and grassland systems. Mixed pasture systems can reduce weeds, as two studies from the USA found reduced weeds in mixed compared to monoculture pasture (Action 721). Livestock grazing can be used to manage vegetation, with studies showing that introduction of livestock grazing increased the abundance of certain species and that sheep-grazed pasture was used more by feeding animals than ungrazed pasture (Action 2545). For specific weed control without damaging other plants, various methods are effective including cutting, infection with fungal pathogens, and lenient grazing for long-term control of creeping thistle, while grass-specific herbicide treatments can eliminate black grass and reduce grass diversity while increasing broadleaved plants (Action 123). Modifying grazing regimes in grassland and shrubland can affect vegetation management, with different grazing intensities showing various effects on plant and animal communities (Action 3490). Additionally, removing problematic vegetation can be effective for invasive species control in grassland areas (Action 432). Some studies also found that grazing herbivores on pasture instead of providing artificial foods can be beneficial for wildlife populations (Action 2398), and grassland restoration or creation can support various species while involving management practices like mowing and weeding or herbicide application (Action 3943).",
+    "summary_action_ids": [
+      "123",
+      "721",
+      "2545",
+      "2398",
+      "3943",
+      "432",
+      "3490"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"weed control pasture grassland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"721\",\n    \"action_title\": \"Use mixed pasture\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"pasture weed management grazing\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2545\",\n    \"action_title\": \"Manage vegetation using livestock grazing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"721\",\n    \"action_title\": \"Use mixed pasture\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2398\",\n    \"action_title\": \"Graze herbivores on pasture, instead of sustaining with artificial foods\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"grassland weed control herbicide mowing\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3899\",\n    \"action_title\": \"Stop using herbicides on pavements and road verges\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"weed management farming pasture\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"721\",\n    \"action_title\": \"Use mixed pasture\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"128\",\n    \"action_title\": \"Take field corners out of management\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"120\",\n    \"action_title\": \"Provide buffer strips alongside water courses (rivers and streams)\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3527\",\n    \"action_title\": \"Plant trees on farmland\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3974\",\n    \"action_title\": \"Reduce field size (or maintain small fields)\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"123\"}",
+            "return_val": "{\n  \"action_id\": \"123\",\n  \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies looked at the effects of controlling weeds on the surrounding vegetation. One study from the UK found that new populations of rare arable plants established following the control of perennial weeds in a nature conservation area. A replicated, controlled and randomized study in the UK found that using grass-specific herbicide reduced grass diversity and resulted in increases in broadleaved plants. \\nEleven studies investigated different methods of controlling plants. A review found that specific management regimes can reduce the abundance of pernicious weeds in nature conservation areas. Four replicated controlled studies (one also randomized) from Denmark and Germany found cutting and infection with fungal pathogens were effective methods for controlling creeping thistle and one replicated, randomized, controlled trial from the UK found long-term control was achieved by lenient grazing. A replicated, controlled and randomized study in Germany found weevils could be used to infect creeping thistle with systemic rust. One study found a non-native beetle was unsuitable for controlling creeping thistle because it had poor survival in the UK climate. A replicated controlled study found that spraying a high concentration of herbicide killed less than half of broad-leaved dock plants. A replicated, controlled, randomized study found black grass was eliminated with a December treatment of grass-specific herbicide. A small replicated study found that Hebridean sheep grazed more purple moor grass than Swaledale sheep.\\nTwo\\u00a0replicated controlled laboratory and grassland studies found negative impacts of the herbicide asulam on green dock beetles.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"721\"}",
+            "return_val": "{\n  \"action_id\": \"721\",\n  \"action_title\": \"Use mixed pasture\",\n  \"key_messages\": \"Key Messages:\\nWeeds: Two of two studies (both randomised, replicated trials, one also controlled) from the USA found reduced weeds in mixed compared to monoculture pasture. Pests: Five studies from North America measured pests including four randomised, replicated, controlled tests. One study found fewer pests and two studies found reductions in some pest groups or in some pasture mixes. One study found no effect and another found more pests, although the effect was potentially inseparable from grazing treatments. Crop mortality: One randomised, replicated study from the USA found no effect on forage crop mortality caused by nematodes.Yield: Two of five studies (including two randomised, replicated, controlled tests) from North America found increased forage crop yields and two studies found mixed effects depending on the crop type and year. One study found no effect.\\nCrops studied were alfalfa, bird\\u2019s-foot trefoil, chicory, cicer milkvetch, clovers, fescues, oats, ryegrass, other grasses,\\u00a0other legumes, rapeseed and turnip.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2545\"}",
+            "return_val": "{\n  \"action_id\": \"2545\",\n  \"action_title\": \"Manage vegetation using livestock grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on mammals of managing vegetation using livestock grazing. Four studies were in the USA, one was in Norway\\u00a0and one was in Mexico.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A replicated, controlled, before-and-after study in the USA\\u00a0found that introduction of livestock grazing increased the abundance of Stephens\\u2019 kangaroo rat after two years.\\n\\nBEHAVIOUR (5 STUDIES)\\n\\nUse (4 studies): One of four studies (three replicated controlled studies and a before-and-after study), in the USA\\u00a0and Norway, found that sheep-grazed pasture was used by feeding reindeer more than was ungrazed pasture. One found mixed effects on Rocky Mountain elk use of grazed plots\\u00a0and another found no response of Rocky Mountain elk to spring cattle grazing. The forth study found cattle grazing to increase the proportion of rough fescue biomass utilized by elk in the first, but not second winter after grazing.\\nBehaviour change (1 study): A replicated, paired sites study in Mexico\\u00a0found that in pastures grazed by cattle, Tehuantepec jackrabbits spent more time feeding than they did in pastures not grazed by cattle.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2398\"}",
+            "return_val": "{\n  \"action_id\": \"2398\",\n  \"action_title\": \"Graze herbivores on pasture, instead of sustaining with artificial foods\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of grazing mammalian herbivores on pasture, instead of sustaining with artificial foods. This study was in South Africa.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nReproductive success (1 study): A site comparison study in South Africa\\u00a0found that a population of roan antelope grazed on pasture had a higher population growth rate than populations provided solely with imported feed.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3943\"}",
+            "return_val": "{\n  \"action_id\": \"3943\",\n  \"action_title\": \"Restore or create grassland/savannas\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on butterflies and moths of restoring or creating grassland or savanna. Three studies were in the USA, two were in the UK, and one was in Italy.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, paired, site comparison study in Italy\\u00a0found that created semi-natural grasslands had a greater diversity of butterflies than adjacent conifer forests, but a lower diversity than species-rich pastures.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): Two site comparison studies (including one replicated, paired study) in Italy\\u00a0and the USA\\u00a0found that created semi-natural grasslands\\u00a0and restored grasslands and oak barrens\\u00a0had a higher abundance of butterflies\\u00a0and regal fritillaries\\u00a0than adjacent conifer forests, species-rich pastures\\u00a0or unmanaged or remnant prairies. One site comparison study in the USA\\u00a0found that prairies restored 5\\u201310 years ago by seeding with native species, mowing, and weeding or applying herbicide, had a greater abundance of Fender\\u2019s blue eggs than a prairie restored 1\\u20132 years ago, and a similar abundance to remnant prairies. One study in the USA\\u00a0reported that restored prairie supported a translocated population of regal fritillaries for at least three years after restoration.\\n\\nBEHAVIOUR (3 STUDIES)\\n\\nUse (2 studies): One of two replicated, before-and-after studies in the UK\\u00a0reported that following grassland restoration the area occupied by small pearl-bordered fritilliaries increased. The other study reported that following grassland restoration the number of marsh fritillary populations at each site remained the same or increased.\\nBehaviour change (1 study): One site comparison study in the USA\\u00a0found that Fender\\u2019s blue butterflies spent a similar proportion of time laying eggs in prairies restored 5\\u201310 years ago by seeding with nectar species, mowing, and weeding or applying herbicide, and in remnant prairies.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invasive species control grassland\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"432\",\n    \"action_title\": \"Remove problematic vegetation\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3891\",\n    \"action_title\": \"Remove, control or exclude vertebrate herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3490\",\n    \"action_title\": \"Modify grazing regime: Grassland & shrubland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3512\",\n    \"action_title\": \"Cease livestock grazing: Wetland\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3433\",\n    \"action_title\": \"Add carbon to soil before or after seeding/planting\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"432\"}",
+            "return_val": "{\n  \"action_id\": \"432\",\n  \"action_title\": \"Remove problematic vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nA before-and-after study from Japan found higher numbers of long-billed plovers Charadrius placidus after the removal of invasive black locust Robinia pseudoacacia.\\nA study from Australia found lower mortality of Gould\\u2019s petrels Pterodroma leucoptera leucoptera following the removal of most of an island\\u2019s (native) bird-lime tree Pisonia umbellifera population, whilst a study from New Zealand found that Chatham Island oystercatchers Haematopus chathamensis could nest in preferable areas following invasive marram grass Ammophila arenaria control.\\nA site comparison from the USA found lower densities of several birds in areas with (native) velvet mesquite Prosopis juliflora control.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3490\"}",
+            "return_val": "{\n  \"action_id\": \"3490\",\n  \"action_title\": \"Modify grazing regime: Grassland & shrubland\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of modifying grazing regimes in grassland and shrubland on reptile populations. Three studies were in the USA\\u00a0and one was in Australia.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): One replicated site comparison study in the USA\\u00a0found that sites with different grazing intensities had similar reptile diversity. One replicated, site-comparison, paired sites study in Australia\\u00a0found no clear effects of modifying grazing intensities on reptile species richness. One replicated, controlled, before-and-after study in the USA\\u00a0found that areas that were lightly grazed or unmanaged had lower reptile species richness than areas that were heavily grazed in combination with burning.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (2 studies): One of two replicated studies (including one site comparison, paired sites study) in the USA\\u00a0and Australia\\u00a0found that plots with lighter grazing had higher lizard abundance than those with heavier grazing in four of five vegetation types. The other study\\u00a0found that the abundance of individual reptile species or species groups remained similar at different grazing intensities.\\nSurvival (1 study): One site comparison study in the USA\\u00a0found that survival of Texas horned lizards was higher in moderately grazed than heavily grazed sites.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated, controlled, before-and-after study in the USA\\u00a0found that light grazing or heavy grazing and burning had mixed effects on the reptile species that used those areas.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What actions are available to control weeds specifically in pasture or grassland systems?\", \"summary\": \"Several actions are available to control weeds in pasture and grassland systems. Mixed pasture systems can reduce weeds, as two studies from the USA found reduced weeds in mixed compared to monoculture pasture (Action 721). Livestock grazing can be used to manage vegetation, with studies showing that introduction of livestock grazing increased the abundance of certain species and that sheep-grazed pasture was used more by feeding animals than ungrazed pasture (Action 2545). For specific weed control without damaging other plants, various methods are effective including cutting, infection with fungal pathogens, and lenient grazing for long-term control of creeping thistle, while grass-specific herbicide treatments can eliminate black grass and reduce grass diversity while increasing broadleaved plants (Action 123). Modifying grazing regimes in grassland and shrubland can affect vegetation management, with different grazing intensities showing various effects on plant and animal communities (Action 3490). Additionally, removing problematic vegetation can be effective for invasive species control in grassland areas (Action 432). Some studies also found that grazing herbivores on pasture instead of providing artificial foods can be beneficial for wildlife populations (Action 2398), and grassland restoration or creation can support various species while involving management practices like mowing and weeding or herbicide application (Action 3943).\", \"action_ids\": [\"123\",\"721\",\"2545\",\"2398\",\"3943\",\"432\",\"3490\"]}",
+            "return_val": "{\n  \"query\": \"What actions are available to control weeds specifically in pasture or grassland systems?\",\n  \"relevant_summary\": \"Several actions are available to control weeds in pasture and grassland systems. Mixed pasture systems can reduce weeds, as two studies from the USA found reduced weeds in mixed compared to monoculture pasture (Action 721). Livestock grazing can be used to manage vegetation, with studies showing that introduction of livestock grazing increased the abundance of certain species and that sheep-grazed pasture was used more by feeding animals than ungrazed pasture (Action 2545). For specific weed control without damaging other plants, various methods are effective including cutting, infection with fungal pathogens, and lenient grazing for long-term control of creeping thistle, while grass-specific herbicide treatments can eliminate black grass and reduce grass diversity while increasing broadleaved plants (Action 123). Modifying grazing regimes in grassland and shrubland can affect vegetation management, with different grazing intensities showing various effects on plant and animal communities (Action 3490). Additionally, removing problematic vegetation can be effective for invasive species control in grassland areas (Action 432). Some studies also found that grazing herbivores on pasture instead of providing artificial foods can be beneficial for wildlife populations (Action 2398), and grassland restoration or creation can support various species while involving management practices like mowing and weeding or herbicide application (Action 3943).\",\n  \"action_ids\": [\n    \"123\",\n    \"721\",\n    \"2545\",\n    \"2398\",\n    \"3943\",\n    \"432\",\n    \"3490\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "721",
+      "722"
+    ],
+    "regenerated_ids": [
+      "721",
+      "722"
+    ]
   }
 ]

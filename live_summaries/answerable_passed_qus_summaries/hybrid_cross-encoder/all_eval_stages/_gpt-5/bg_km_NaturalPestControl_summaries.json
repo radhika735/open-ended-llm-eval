@@ -1654,5 +1654,149 @@
       "750",
       "753"
     ]
+  },
+  {
+    "query": "What actions are available to control weeds specifically in pasture or grassland systems?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Available actions for weed control in pasture/grassland systems include: using mixed pastures rather than monocultures, which reduced weeds in two randomized, replicated trials in the USA (721); mowing or cutting semi-natural grasslands/pastures (339); implementing lenient grazing for long-term control of creeping thistle, alongside cutting and biological control via fungal pathogens or weevils to infect creeping thistle with systemic rust (123); applying herbicides, noting mixed results: a grass\u2011specific herbicide eliminated black grass with a December treatment and reduced grass diversity while increasing broadleaved plants in one study, high\u2011concentration herbicide killed less than half of broad\u2011leaved dock plants, and herbicides reduced cover of certain grasses including purple moor grass in some studies (123, 1643); selecting sheep breeds that preferentially graze target species, as Hebridean sheep grazed more purple moor grass than Swaledale sheep (123); and using mowing, weeding, or herbicide as part of grassland restoration or creation efforts (3943). Annual mowing also maintained the highest number of plant species in wood pasture, supporting mowing as a maintenance action (649).",
+    "summary_action_ids": [
+      "721",
+      "339",
+      "123",
+      "1643",
+      "649",
+      "3943"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control pasture grassland\", \"k\":3, \"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"721\",\n    \"action_title\": \"Use mixed pasture\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control pasture grassland\", \"k\":3, \"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"649\",\n    \"action_title\": \"Maintain wood pasture and parkland\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3965\",\n    \"action_title\": \"Use rotational grazing\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control pasture grassland\", \"k\":3, \"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"3965\",\n    \"action_title\": \"Use rotational grazing\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"348\",\n    \"action_title\": \"Employ grazing in natural grasslands\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control pasture grassland\", \"k\":3, \"offset\":9}",
+            "return_val": "[\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"348\",\n    \"action_title\": \"Employ grazing in natural grasslands\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"1643\",\n    \"action_title\": \"Use herbicide to control grass\",\n    \"rank\": 12\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control pasture grassland\", \"k\":3, \"offset\":12}",
+            "return_val": "[\n  {\n    \"action_id\": \"348\",\n    \"action_title\": \"Employ grazing in natural grasslands\",\n    \"rank\": 13\n  },\n  {\n    \"action_id\": \"1643\",\n    \"action_title\": \"Use herbicide to control grass\",\n    \"rank\": 14\n  },\n  {\n    \"action_id\": \"339\",\n    \"action_title\": \"Mow or cut semi-natural grasslands/pastures\",\n    \"rank\": 15\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control pasture grassland\", \"k\":3, \"offset\":15}",
+            "return_val": "[\n  {\n    \"action_id\": \"349\",\n    \"action_title\": \"Employ grazing in artificial grasslands/pastures\",\n    \"rank\": 16\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 17\n  },\n  {\n    \"action_id\": \"348\",\n    \"action_title\": \"Employ grazing in natural grasslands\",\n    \"rank\": 18\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"721\"}",
+            "return_val": "{\n  \"action_id\": \"721\",\n  \"action_title\": \"Use mixed pasture\",\n  \"key_messages\": \"Key Messages:\\nWeeds: Two of two studies (both randomised, replicated trials, one also controlled) from the USA found reduced weeds in mixed compared to monoculture pasture. Pests: Five studies from North America measured pests including four randomised, replicated, controlled tests. One study found fewer pests and two studies found reductions in some pest groups or in some pasture mixes. One study found no effect and another found more pests, although the effect was potentially inseparable from grazing treatments. Crop mortality: One randomised, replicated study from the USA found no effect on forage crop mortality caused by nematodes.Yield: Two of five studies (including two randomised, replicated, controlled tests) from North America found increased forage crop yields and two studies found mixed effects depending on the crop type and year. One study found no effect.\\nCrops studied were alfalfa, bird\\u2019s-foot trefoil, chicory, cicer milkvetch, clovers, fescues, oats, ryegrass, other grasses,\\u00a0other legumes, rapeseed and turnip.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3965\"}",
+            "return_val": "{\n  \"action_id\": \"3965\",\n  \"action_title\": \"Use rotational grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on butterflies and moths of using rotational grazing. Three studies were in France, two were in the USA\\u00a0and one was in the UK.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nCommunity composition (1 study): One replicated, site comparison study in the USA\\u00a0found that rotational, cattle-grazed grasslands had a similar butterfly community to continuously grazed or patch-burned grasslands.\\nRichness/diversity (5 studies): Two of four replicated studies (including one randomized, controlled study, two controlled studies and one site comparison study) in France\\u00a0and the USA\\u00a0found that rotational cattle-\\u00a0and sheep-grazed\\u00a0grasslands had a greater species richness of butterflies\\u00a0and burnet moths\\u00a0than continuously grazed\\u00a0or patch-burned\\u00a0grassland. Another of these studies found that rotationally sheep-grazed grassland had a similar species richness of butterflies and burnet moths to continuously grazed grassland. The other study found that rotational cattle-grazed pastures had a greater species richness of butterflies than constantly grazed pastures but only at a high, not low, stocking density. One replicated, site comparison study in the USA\\u00a0found that rotationally managed grasslands, including some rotationally grazed grasslands, which were last managed longer ago had a higher species richness of butterflies than more recently managed grasslands.\\n\\nPOPULATION RESPONSE (6 STUDIES)\\n\\nAbundance (6 studies): Two of four replicated, controlled studies (including two randomized studies and one paired study) in France\\u00a0and the UK\\u00a0found that rotational cattle-\\u00a0and sheep-grazed\\u00a0grassland had a higher abundance of butterflies and burnet moths\\u00a0and caterpillars (along with other invertebrates)\\u00a0than continuously grazed grasslands. However, one of these studies only found this in the first of three years of management. Another of these studies found that rotationally sheep-grazed grassland had a similar abundance of butterflies and burnet moths to continuously grazed grassland. The other study found that rotational cattle-grazed pastures had a higher abundance of butterflies than constantly grazed pastures but only at a high, not low stocking density. One replicated, site comparison study in the USA\\u00a0found that the abundance of two species was higher, two species were lower and the other five species did not differ in rotationally cattle-grazed grasslands compared to continuously grazed or patch-burned grasslands. One replicated, site comparison study in the USA\\u00a0found that rotationally managed grasslands, including some rotationally grazed grasslands, which were last managed longer ago had a higher abundance of butterflies than more recently managed grasslands.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"348\"}",
+            "return_val": "{\n  \"action_id\": \"348\",\n  \"action_title\": \"Employ grazing in natural grasslands\",\n  \"key_messages\": \"Key Messages:\\n\\nFive of 12 studies from the USA and Canada, four replicated, found that some species studied were found at higher densities on grazed than ungrazed sites. Eight studies from the USA, Canada and France, six replicated, found that some or all species studied were found at lower densities on grazed sites compared to ungrazed sites or those under other management, or that there were no differences.\\nTwo controlled studies from the USA and Canada, one replicated, found that duck nesting success was higher on grazed than ungrazed sites. Two studies from the USA found that songbird nesting success was lower on grazed than ungrazed sites. Three replicated and controlled (one randomised) studies from the USA and Canada found that grazing had little or no effect on nesting success in a variety of species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"349\"}",
+            "return_val": "{\n  \"action_id\": \"349\",\n  \"action_title\": \"Employ grazing in artificial grasslands/pastures\",\n  \"key_messages\": \"Key Messages:\\n\\nOf ten studies captured, one replicated, controlled study from the USA found lower species richness in grazed areas than ungrazed. Another replicated, controlled study from the USA found no consistent differences in community composition between grazed and ungrazed areas.\\nA small study from Canada found an increase in duck populations following the start of grazing amongst other interventions.\\nFive studies from the UK and USA, four replicated, found higher use of, or higher nesting densities in, grazed areas compared to ungrazed. Seven studies from the UK, Canada and the USA, five replicated, found no differences in use or nesting densities, or lower abundances of birds on grazed, compared with ungrazed areas. One found that several species appeared to be excluded by grazing. \\nThree studies from the UK, USA and Canada, two replicated, found that nesting success or productivity was similar, or lower, on grazed sites compared with ungrazed.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"339\"}",
+            "return_val": "{\n  \"action_id\": \"339\",\n  \"action_title\": \"Mow or cut semi-natural grasslands/pastures\",\n  \"key_messages\": \"Key Messages:\\n\\nOf four studies captured, one, a before-and-after study from the UK, found that local wader populations increased following the annual cutting semi-natural grasslands. \\nA replicated, controlled study from the UK found that ducks grazed at higher densities on cut areas, a second replicated study from the UK found that goose grazing densities were unaffected by cutting frequency.\\nA replicated study from the USA found that Henslow's sparrows were more likely to be recaptured on unmown, compared with mown grasslands.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"123\"}",
+            "return_val": "{\n  \"action_id\": \"123\",\n  \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies looked at the effects of controlling weeds on the surrounding vegetation. One study from the UK found that new populations of rare arable plants established following the control of perennial weeds in a nature conservation area. A replicated, controlled and randomized study in the UK found that using grass-specific herbicide reduced grass diversity and resulted in increases in broadleaved plants. \\nEleven studies investigated different methods of controlling plants. A review found that specific management regimes can reduce the abundance of pernicious weeds in nature conservation areas. Four replicated controlled studies (one also randomized) from Denmark and Germany found cutting and infection with fungal pathogens were effective methods for controlling creeping thistle and one replicated, randomized, controlled trial from the UK found long-term control was achieved by lenient grazing. A replicated, controlled and randomized study in Germany found weevils could be used to infect creeping thistle with systemic rust. One study found a non-native beetle was unsuitable for controlling creeping thistle because it had poor survival in the UK climate. A replicated controlled study found that spraying a high concentration of herbicide killed less than half of broad-leaved dock plants. A replicated, controlled, randomized study found black grass was eliminated with a December treatment of grass-specific herbicide. A small replicated study found that Hebridean sheep grazed more purple moor grass than Swaledale sheep.\\nTwo\\u00a0replicated controlled laboratory and grassland studies found negative impacts of the herbicide asulam on green dock beetles.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"649\"}",
+            "return_val": "{\n  \"action_id\": \"649\",\n  \"action_title\": \"Maintain wood pasture and parkland\",\n  \"key_messages\": \"Key Messages:\\n\\nA randomized, replicated, controlled trial in Sweden found that annual mowing maintained the highest number of plant species on wood pasture.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3943\"}",
+            "return_val": "{\n  \"action_id\": \"3943\",\n  \"action_title\": \"Restore or create grassland/savannas\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on butterflies and moths of restoring or creating grassland or savanna. Three studies were in the USA, two were in the UK, and one was in Italy.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, paired, site comparison study in Italy\\u00a0found that created semi-natural grasslands had a greater diversity of butterflies than adjacent conifer forests, but a lower diversity than species-rich pastures.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): Two site comparison studies (including one replicated, paired study) in Italy\\u00a0and the USA\\u00a0found that created semi-natural grasslands\\u00a0and restored grasslands and oak barrens\\u00a0had a higher abundance of butterflies\\u00a0and regal fritillaries\\u00a0than adjacent conifer forests, species-rich pastures\\u00a0or unmanaged or remnant prairies. One site comparison study in the USA\\u00a0found that prairies restored 5\\u201310 years ago by seeding with native species, mowing, and weeding or applying herbicide, had a greater abundance of Fender\\u2019s blue eggs than a prairie restored 1\\u20132 years ago, and a similar abundance to remnant prairies. One study in the USA\\u00a0reported that restored prairie supported a translocated population of regal fritillaries for at least three years after restoration.\\n\\nBEHAVIOUR (3 STUDIES)\\n\\nUse (2 studies): One of two replicated, before-and-after studies in the UK\\u00a0reported that following grassland restoration the area occupied by small pearl-bordered fritilliaries increased. The other study reported that following grassland restoration the number of marsh fritillary populations at each site remained the same or increased.\\nBehaviour change (1 study): One site comparison study in the USA\\u00a0found that Fender\\u2019s blue butterflies spent a similar proportion of time laying eggs in prairies restored 5\\u201310 years ago by seeding with nectar species, mowing, and weeding or applying herbicide, and in remnant prairies.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1643\"}",
+            "return_val": "{\n  \"action_id\": \"1643\",\n  \"action_title\": \"Use herbicide to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo randomized, controlled studies in the UK\\u00a0and the USA\\u00a0found that spraying with herbicide did not affect the number of shrub or heathland plant seedlings. One of these studies\\u00a0found that applying herbicide increased the abundance of one of four heathland plants, but reduced the abundance of one heathland species. However, one randomized, controlled study in the UK\\u00a0found that applying herbicide increased cover of heathland species. One randomized, replicated, controlled study in the UK reported no effect on the cover of common heather. One randomized, replicated study in the UK\\u00a0reported mixed effects of herbicide application on shrub cover.\\nTwo randomized, controlled studies in the USA\\u00a0and the UK\\u00a0found that herbicide application did not change the cover of forb species. However, one randomized, controlled, study in the USA\\u00a0found that herbicide application increased native forb cover.\\nFour of five controlled studies (two of which were replicated) in the USA\\u00a0found that grass cover\\u00a0or non-native grass cover\\u00a0were lower in areas where herbicides were used to control grass than areas were herbicide was not used. Two randomized, replicated, controlled studies in the UK\\u00a0found that herbicide reduced cover of purple moor grass, but not cover of three grass/reed species. Two randomized, controlled studies in the UK\\u00a0found that herbicide application did not reduce grass cover.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions are available to control weeds specifically in pasture or grassland systems?\",\"summary\":\"Available actions for weed control in pasture/grassland systems include: using mixed pastures rather than monocultures, which reduced weeds in two randomized, replicated trials in the USA (721); mowing or cutting semi-natural grasslands/pastures (339); implementing lenient grazing for long-term control of creeping thistle, alongside cutting and biological control via fungal pathogens or weevils to infect creeping thistle with systemic rust (123); applying herbicides, noting mixed results: a grass\u2011specific herbicide eliminated black grass with a December treatment and reduced grass diversity while increasing broadleaved plants in one study, high\u2011concentration herbicide killed less than half of broad\u2011leaved dock plants, and herbicides reduced cover of certain grasses including purple moor grass in some studies (123, 1643); selecting sheep breeds that preferentially graze target species, as Hebridean sheep grazed more purple moor grass than Swaledale sheep (123); and using mowing, weeding, or herbicide as part of grassland restoration or creation efforts (3943). Annual mowing also maintained the highest number of plant species in wood pasture, supporting mowing as a maintenance action (649).\",\"action_ids\":[\"721\",\"339\",\"123\",\"1643\",\"649\",\"3943\"]}",
+            "return_val": "{\n  \"query\": \"What actions are available to control weeds specifically in pasture or grassland systems?\",\n  \"relevant_summary\": \"Available actions for weed control in pasture/grassland systems include: using mixed pastures rather than monocultures, which reduced weeds in two randomized, replicated trials in the USA (721); mowing or cutting semi-natural grasslands/pastures (339); implementing lenient grazing for long-term control of creeping thistle, alongside cutting and biological control via fungal pathogens or weevils to infect creeping thistle with systemic rust (123); applying herbicides, noting mixed results: a grass\\u2011specific herbicide eliminated black grass with a December treatment and reduced grass diversity while increasing broadleaved plants in one study, high\\u2011concentration herbicide killed less than half of broad\\u2011leaved dock plants, and herbicides reduced cover of certain grasses including purple moor grass in some studies (123, 1643); selecting sheep breeds that preferentially graze target species, as Hebridean sheep grazed more purple moor grass than Swaledale sheep (123); and using mowing, weeding, or herbicide as part of grassland restoration or creation efforts (3943). Annual mowing also maintained the highest number of plant species in wood pasture, supporting mowing as a maintenance action (649).\",\n  \"action_ids\": [\n    \"721\",\n    \"339\",\n    \"123\",\n    \"1643\",\n    \"649\",\n    \"3943\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "721",
+      "722"
+    ],
+    "regenerated_ids": [
+      "721",
+      "722"
+    ]
   }
 ]
