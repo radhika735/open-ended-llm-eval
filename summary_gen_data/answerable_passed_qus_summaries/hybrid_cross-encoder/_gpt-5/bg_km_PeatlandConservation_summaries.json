@@ -1477,5 +1477,329 @@
       "1731",
       "1732"
     ]
+  },
+  {
+    "query": "What are the documented benefits and trade-offs of using traditional management practices like mowing or grazing to maintain biodiversity in fen meadows?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "- In a fen meadow, summer mowing increased plant species richness more over two years than spring or autumn mowing, while overall community composition changes were typically similar across seasons (1771).\n- In fen meadows, grazing produced plant communities that differed from mown sites and sometimes had fewer total plant species and fewer fen\u2011characteristic species than mown meadows (1762). After reinstating grazing, plant species richness increased in one study but showed no typical effect in another; grazing increased some herb groups (e.g., sedges, cottongrasses) and reduced purple moor grass in one case, but effects on shrubs were mixed (reduced in one study, no effect in another) and Sphagnum cover decreased in one study (1762).\n- Maintaining traditional water meadows increased plant species richness in one study, but reviews noted mowing had variable effects on plant richness; cutting in June maintained relatively stable vegetation (696). For birds, management to maintain traditional water meadows increased numbers or territories of some waders (northern lapwing, common redshank, black\u2011tailed godwit), but common snipe declined on managed sites, and productivity of northern lapwings on grazed meadows was too low to sustain populations in most sites studied (696).\n- For butterflies, species richness and abundance were similar between wet meadows managed by annual autumn mowing and by light cattle/horse grazing; starting cattle grazing reduced bog fritillary emergence and use in one case, while intermediate\u2011intensity cattle grazing had higher marsh fritillary caterpillar web abundance than low or high intensity, and occupancy by marsh fritillary caterpillars was similar across grazed, burned, and unmanaged fen meadows (3971).",
+    "summary_action_ids": [
+      "1771",
+      "1762",
+      "696",
+      "3971"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"fen meadows biodiversity mowing grazing traditional management benefits trade-offs\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1761\",\n    \"action_title\": \"Cut large trees/shrubs to maintain or restore disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1771\",\n    \"action_title\": \"Change season/timing of cutting/mowing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1762\",\n    \"action_title\": \"Use grazing to maintain or restore disturbance\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"fen meadow mowing grazing biodiversity wetland meadow management\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"696\",\n    \"action_title\": \"Maintain traditional water meadows (includes management for breeding and/or wintering waders/waterfowl)\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3971\",\n    \"action_title\": \"Maintain or restore traditional water meadows and bogs\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1771\",\n    \"action_title\": \"Change season/timing of cutting/mowing\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"fen meadow cut mow hay meadow fen biodiversity management traditional\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"3971\",\n    \"action_title\": \"Maintain or restore traditional water meadows and bogs\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1762\",\n    \"action_title\": \"Use grazing to maintain or restore disturbance\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1743\",\n    \"action_title\": \"Reduce frequency of harvest (of wild biological resources)\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1771\"}",
+            "return_val": "{\n  \"action_id\": \"1771\",\n  \"action_title\": \"Change season/timing of cutting/mowing\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on peatland vegetation of mowing or cutting in different seasons. One study was in a fen meadow\\u00a0and one was in a peatland with mixed vegetation.\\nPlant community composition (2 studies): One replicated, randomized, paired, before-and after study in a fen meadow in the UK reported that changes in plant community composition were typically similar in spring-, summer- and autumn-mown plots. However, one study in a peatland in the Netherlands\\u00a0reported that summer- and winter-mown areas developed cover of different plant community types.\\nOverall plant richness/diversity (1 study): One replicated, randomized, paired, before-and after study in a fen meadow in the UK\\u00a0found that plant species richness increased more, over two years, in summer-mown plots than spring- or autumn-mown plots.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1762\"}",
+            "return_val": "{\n  \"action_id\": \"1762\",\n  \"action_title\": \"Use grazing to maintain or restore disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects, on peatland vegetation, of using grazing to maintain or restore disturbance. All four studies were in fens or fen meadows.\\u00a0N.B. Grazing in peatlands with no history of disturbance is considered as a separate action.\\nPlant community composition (1 study): One replicated, paired, site comparison study in Germany\\u00a0found that the overall plant community composition differed between grazed and mown fen meadows.\\nCharacteristic plants (3 studies): One replicated, paired, controlled study in Germany\\u00a0reported that the abundance of bog/fen-characteristic plants was similar in grazed and ungrazed fen meadows. One replicated before-and-after study in a fen in the UK\\u00a0reported that cover of fen-characteristic mosses did not change after grazers were introduced.\\u00a0One replicated, paired, site comparison study, also in Germany,\\u00a0found that grazed fen meadows contained fewer fen-characteristic plant species than mown meadows.\\nHerb cover (2 studies): Two before-and-after studies in fens in the UK reported that grazing increased cover of some herb groups (cottongrasses,\\u00a0sedges\\u00a0or\\u00a0all grass-like plants). One of the studies\\u00a0found that grazing reduced purple moor grass cover, but the other found that grazing typically had no effect.\\nMoss cover (2 studies): One replicated before-and-after study in a fen in the UK\\u00a0reported that cover of fen-characteristic mosses did not change after grazers were introduced. One controlled, before-and-after study in a fen in the UK\\u00a0found that grazing reduced Sphagnum moss cover.\\nTree/shrub cover (2 studies):\\u00a0Of two before-and-after studies in fens in the UK, one found that grazing reduced shrub cover but the other found that grazing typically had no effect on shrub cover.\\nOverall plant richness/diversity (3 studies): Of two before-and-after studies in fens in the UK, one found that plant species richness increased after grazing was reinstated but the other\\u00a0reported that there was typically no effect.\\u00a0One replicated, paired, site comparison study in Germany\\u00a0found that grazed fen meadows contained fewer plant species than mown meadows.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"696\"}",
+            "return_val": "{\n  \"action_id\": \"696\",\n  \"action_title\": \"Maintain traditional water meadows (includes management for breeding and/or wintering waders/waterfowl)\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies from Belgium, Germany, the Netherlands and the UK (including two site comparisons of which one also replicated) found that maintaining traditional water meadows resulted in an increased population size or number of territories of northern lapwing, common redshank and black-tailed godwit and increased plant species richness. However one of these studies also found common snipe declined on all sites under management to maintain traditional water meadows,\\u00a0and another of the studies found that differences in numbers of birds were present before meadow bird management.\\nTwo studies (a replicated study and a review of European studies) found that managing traditional water meadows by grazing had mixed impacts on wildlife and that the productivity of northern lapwings was too low to sustain populations on three of the four water meadows managed for waders. A randomized, replicated, controlled trial in the Netherlands found that cutting in June maintained relatively stable vegetation and a review found mowing could be used to maintain water meadows but had variable effects on plant species richness.\\nOne replicated site comparison from the Netherlands found more birds bred on 12.5 ha plots with management for wading birds (in combination with per-clutch payments), however at the field scale there was no difference in bird abundance or species richness between conventionally managed fields and those managed for birds.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3971\"}",
+            "return_val": "{\n  \"action_id\": \"3971\",\n  \"action_title\": \"Maintain or restore traditional water meadows and bogs\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effect on butterflies and moths of maintaining or restoring traditional water meadows and bogs. Two studies were in the UK\\u00a0and one was in each of Germany, Belgium\\u00a0and Poland.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Germany\\u00a0found that the species richness of butterflies was similar in wet meadows managed by mowing once/year in autumn, or by light grazing with cattle or horses.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): One of two replicated, before-and-after studies in Belgium\\u00a0and Poland\\u00a0found that after cattle grazing on wet grassland began, the number of bog fritillaries which emerged on grazed areas was lower than before grazing started. The other study reported that after trees and shrubs were removed from wet meadows, the number of marsh fritillary caterpillar webs increased the following year. One replicated, site comparison study in Germany\\u00a0found that the abundance of butterflies was similar in wet meadows managed by mowing once/year in autumn, or by light grazing with cattle or horses. One site comparison study in the UK\\u00a0found that wet grassland grazed at an intermediate intensity by cattle had a higher abundance of marsh fritillary caterpillar webs, but a similar abundance of adults, to grassland grazed at high or low intensity.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (2 studies): One replicated, before-and-after study in Belgium\\u00a0found that after cattle grazing on wet grassland began, the use of the grazed areas by bog fritillaries was lower than before grazing started. One replicated, site comparison study in the UK\\u00a0found that a similar proportion of fen meadows were occupied by marsh fritillary caterpillars whether they were managed by grazing (with cattle, sheep or horses), burning or were unmanaged.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented benefits and trade-offs of using traditional management practices like mowing or grazing to maintain biodiversity in fen meadows?\",\"summary\":\"- In a fen meadow, summer mowing increased plant species richness more over two years than spring or autumn mowing, while overall community composition changes were typically similar across seasons (1771).\\n- In fen meadows, grazing produced plant communities that differed from mown sites and sometimes had fewer total plant species and fewer fen\u2011characteristic species than mown meadows (1762). After reinstating grazing, plant species richness increased in one study but showed no typical effect in another; grazing increased some herb groups (e.g., sedges, cottongrasses) and reduced purple moor grass in one case, but effects on shrubs were mixed (reduced in one study, no effect in another) and Sphagnum cover decreased in one study (1762).\\n- Maintaining traditional water meadows increased plant species richness in one study, but reviews noted mowing had variable effects on plant richness; cutting in June maintained relatively stable vegetation (696). For birds, management to maintain traditional water meadows increased numbers or territories of some waders (northern lapwing, common redshank, black\u2011tailed godwit), but common snipe declined on managed sites, and productivity of northern lapwings on grazed meadows was too low to sustain populations in most sites studied (696).\\n- For butterflies, species richness and abundance were similar between wet meadows managed by annual autumn mowing and by light cattle/horse grazing; starting cattle grazing reduced bog fritillary emergence and use in one case, while intermediate\u2011intensity cattle grazing had higher marsh fritillary caterpillar web abundance than low or high intensity, and occupancy by marsh fritillary caterpillars was similar across grazed, burned, and unmanaged fen meadows (3971).\",\"action_ids\":[\"1771\",\"1762\",\"696\",\"3971\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and trade-offs of using traditional management practices like mowing or grazing to maintain biodiversity in fen meadows?\",\n  \"relevant_summary\": \"- In a fen meadow, summer mowing increased plant species richness more over two years than spring or autumn mowing, while overall community composition changes were typically similar across seasons (1771).\\n- In fen meadows, grazing produced plant communities that differed from mown sites and sometimes had fewer total plant species and fewer fen\\u2011characteristic species than mown meadows (1762). After reinstating grazing, plant species richness increased in one study but showed no typical effect in another; grazing increased some herb groups (e.g., sedges, cottongrasses) and reduced purple moor grass in one case, but effects on shrubs were mixed (reduced in one study, no effect in another) and Sphagnum cover decreased in one study (1762).\\n- Maintaining traditional water meadows increased plant species richness in one study, but reviews noted mowing had variable effects on plant richness; cutting in June maintained relatively stable vegetation (696). For birds, management to maintain traditional water meadows increased numbers or territories of some waders (northern lapwing, common redshank, black\\u2011tailed godwit), but common snipe declined on managed sites, and productivity of northern lapwings on grazed meadows was too low to sustain populations in most sites studied (696).\\n- For butterflies, species richness and abundance were similar between wet meadows managed by annual autumn mowing and by light cattle/horse grazing; starting cattle grazing reduced bog fritillary emergence and use in one case, while intermediate\\u2011intensity cattle grazing had higher marsh fritillary caterpillar web abundance than low or high intensity, and occupancy by marsh fritillary caterpillars was similar across grazed, burned, and unmanaged fen meadows (3971).\",\n  \"action_ids\": [\n    \"1771\",\n    \"1762\",\n    \"696\",\n    \"3971\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1759",
+      "1760",
+      "1761",
+      "1762",
+      "1763"
+    ],
+    "regenerated_ids": [
+      "1759",
+      "1760",
+      "1761",
+      "1762",
+      "1763"
+    ]
+  },
+  {
+    "query": "What are the typical outcomes for vegetation when the upper layer of degraded peatland soil is removed or disturbed without subsequent planting?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across multiple studies, removing the upper layer of peat/soil led to plant communities that differed from unstripped sites, with outcomes influenced by stripping depth [1809]. Following removal, cover of wetland- or peatland\u2011characteristic plants often increased over 4\u201313 years, and fen\u2011characteristic plant richness increased in one replicated comparison [1809]. Rush, reed, or sedge cover commonly increased within 2\u20136 years, while purple moor grass cover decreased for 2\u20135 years in two controlled studies; one study found no effect on sedge or bentgrass cover after five years [1809]. Vegetation biomass was reduced for up to 18 years in two studies, though another study reported no effect after four years [1809]. Total plant species richness frequently increased over 2\u201318 years, though results were mixed across sites and studies, and richness increased over time after stripping in one study [1809]. Disturbing the peat surface (without planting) altered plant community development over 2\u20133 years; in one study, disturbance promoted greater cover of weedy seed\u2011bank species, and in another, disturbed and undisturbed communities diverged over time [1811]. Disturbed plots saw colonization by wetland/fen\u2011characteristic species in both studies, but peat\u2011forming species did not colonize in one fen [1811]. Reprofiling degraded bogs (without planting) produced plant communities different from nearby natural fens and resulted in lower Sphagnum, other moss, and vascular plant cover after five years [1807].",
+    "summary_action_ids": [
+      "1809",
+      "1811",
+      "1807"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"peatland upper layer removal disturbed without planting vegetation outcomes degraded peat soil stripping topsoil vegetation response natural regeneration\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1809\",\n    \"action_title\": \"Remove upper layer of peat/soil (without planting)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1810\",\n    \"action_title\": \"Bury upper layer of peat/soil (without planting)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1836\",\n    \"action_title\": \"Bury upper layer of peat/soil (before planting)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"peatland upper layer removed disturbed without planting vegetation outcomes degraded\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1807\",\n    \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1836\",\n    \"action_title\": \"Bury upper layer of peat/soil (before planting)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1811\",\n    \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"upper layer removal peat strip without planting vegetation response degraded peatland\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"1815\",\n    \"action_title\": \"Stabilize peatland surface to help plants colonize\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1811\",\n    \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1738\",\n    \"action_title\": \"Replace blocks of vegetation after mining or peat extraction\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"remove upper layer peat soil without planting degraded peatland vegetation outcomes\", \"k\": 3, \"offset\": 9}",
+            "return_val": "[\n  {\n    \"action_id\": \"1738\",\n    \"action_title\": \"Replace blocks of vegetation after mining or peat extraction\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"1820\",\n    \"action_title\": \"Directly plant peatland trees/shrubs\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"3291\",\n    \"action_title\": \"Bury surface soil/sediment (before planting)\",\n    \"rank\": 12\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1809\"}",
+            "return_val": "{\n  \"action_id\": \"1809\",\n  \"action_title\": \"Remove upper layer of peat/soil (without planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies evaluated the effects of removing the upper layer of peat or soil (without planting afterwards) on peatland vegetation. Nine studies were in fens or fen meadows\\u00a0and one was in an unspecified peatland.\\nPlant community composition (6 studies): Five\\u00a0studies (including one replicated, randomized, paired, controlled) in a peatland in the USA\\u00a0and fens or fen meadows in the Netherlands\\u00a0and Poland\\u00a0reported that plots stripped of topsoil developed plant communities with a different composition to those in unstripped peatlands. In one study, the effect of stripping was not separated from the effect of rewetting.\\u00a0Two studies in fen meadows in Germany\\u00a0and Poland\\u00a0reported that the depth of soil stripping affected plant community development.\\nCharacteristic plants (5 studies): Four\\u00a0studies in fen meadows in Germany and the Netherlands, and a peatland in the USA, reported that stripping soil increased cover of wetland-characteristic\\u00a0or peatland-characteristic\\u00a0plants plants after 4\\u201313 years. In the Netherlands, the effect of stripping was not separated from the effect of rewetting.\\u00a0One replicated site comparison study in fens in Belgium and the Netherlands\\u00a0found that stripping soil increased fen-characteristic plant richness.\\nHerb cover (4 studies): Three studies (including one replicated, paired, controlled) in fens or fen meadows in Germany,\\u00a0the UK\\u00a0and Poland\\u00a0found that stripping soil increased cover of rushes, reeds\\u00a0or sedges after 2\\u20136 years. However, one controlled study in a fen meadow in the Netherlands\\u00a0reported that stripping soil had no effect on sedge or bentgrass cover after five years. Two controlled studies in a fen meadow in the Netherlands\\u00a0and a fen in the UK\\u00a0found that stripping soil reduced purple moor grass cover for 2\\u20135 years.\\nVegetation structure (3 studies): Two studies in fens or fen meadows in the Netherlands\\u00a0and Belgium\\u00a0found that stripping soil reduced vegetation biomass (total\\u00a0or herbs) for up to 18 years. One replicated, randomized, paired, controlled study in a peatland in the USA\\u00a0found that stripping soil had no effect on vegetation biomass after four years.\\nOverall plant richness/diversity (6 studies):\\u00a0Three studies (including one replicated, paired, controlled) in fens or fen meadows in the UK, Belgium and the Netherlands\\u00a0reported that stripping soil increased total plant species richness over 2\\u201318 years. In one study,\\u00a0the effect of stripping was not separated from the effect of rewetting.\\u00a0One replicated, controlled study in a fen in Poland\\u00a0found that stripping soil had no effect on plant species richness after three years. One replicated, randomized, paired, controlled study in a peatland in the USA\\u00a0found that stripping soil increased plant species richness and diversity, after four years, in one field but decreased it in another.\\u00a0One replicated study in a fen meadow in Poland\\u00a0reported that plant species richness increased over time, after stripping soil.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1810\"}",
+            "return_val": "{\n  \"action_id\": \"1810\",\n  \"action_title\": \"Bury upper layer of peat/soil (without planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects, on peatland vegetation,\\u00a0of burying the upper layer of peat or soil (without planting afterwards).\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1807\"}",
+            "return_val": "{\n  \"action_id\": \"1807\",\n  \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of reprofiling/relandscaping peatlands (without planting) on peatland vegetation. The study was in degraded bogs (being restored as fens).\\nPlant community composition (1 study): One site comparison study in Canada\\u00a0reported that after five years, reprofiled (and rewetted) bogs contained a different plant community to nearby natural fens.\\nVegetation cover (1 study): The same study reported that after five years, reprofiled (and rewetted) bogs had lower vegetation cover (Sphagnum moss, other moss and vascular plants) than nearby natural fens.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1811\"}",
+            "return_val": "{\n  \"action_id\": \"1811\",\n  \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of disturbing the peat surface (without planting) on peatland vegetation. Both studies were in fens.\\nPlant community composition (2 studies): Two replicated, paired, controlled, before-and-after studies (one also randomized) in fens in Germany\\u00a0and Sweden\\u00a0reported that soil disturbance affected development of the plant community over 2\\u20133 years.\\u00a0In Germany, disturbed plots developed greater cover of weedy species from the seed bank than undisturbed plots. In Sweden, the community in disturbed and undisturbed plots became less similar over time.\\u00a0\\nCharacteristic plants (2 studies): The same two\\u00a0studies reported that wetland- or fen-characteristic plant species colonized plots that had been disrturbed (along with other interventions). The study in Germany noted that peat-forming species did not colonize the fen.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the typical outcomes for vegetation when the upper layer of degraded peatland soil is removed or disturbed without subsequent planting?\",\"summary\":\"Across multiple studies, removing the upper layer of peat/soil led to plant communities that differed from unstripped sites, with outcomes influenced by stripping depth [1809]. Following removal, cover of wetland- or peatland\u2011characteristic plants often increased over 4\u201313 years, and fen\u2011characteristic plant richness increased in one replicated comparison [1809]. Rush, reed, or sedge cover commonly increased within 2\u20136 years, while purple moor grass cover decreased for 2\u20135 years in two controlled studies; one study found no effect on sedge or bentgrass cover after five years [1809]. Vegetation biomass was reduced for up to 18 years in two studies, though another study reported no effect after four years [1809]. Total plant species richness frequently increased over 2\u201318 years, though results were mixed across sites and studies, and richness increased over time after stripping in one study [1809]. Disturbing the peat surface (without planting) altered plant community development over 2\u20133 years; in one study, disturbance promoted greater cover of weedy seed\u2011bank species, and in another, disturbed and undisturbed communities diverged over time [1811]. Disturbed plots saw colonization by wetland/fen\u2011characteristic species in both studies, but peat\u2011forming species did not colonize in one fen [1811]. Reprofiling degraded bogs (without planting) produced plant communities different from nearby natural fens and resulted in lower Sphagnum, other moss, and vascular plant cover after five years [1807].\",\"action_ids\":[\"1809\",\"1811\",\"1807\"]}",
+            "return_val": "{\n  \"query\": \"What are the typical outcomes for vegetation when the upper layer of degraded peatland soil is removed or disturbed without subsequent planting?\",\n  \"relevant_summary\": \"Across multiple studies, removing the upper layer of peat/soil led to plant communities that differed from unstripped sites, with outcomes influenced by stripping depth [1809]. Following removal, cover of wetland- or peatland\\u2011characteristic plants often increased over 4\\u201313 years, and fen\\u2011characteristic plant richness increased in one replicated comparison [1809]. Rush, reed, or sedge cover commonly increased within 2\\u20136 years, while purple moor grass cover decreased for 2\\u20135 years in two controlled studies; one study found no effect on sedge or bentgrass cover after five years [1809]. Vegetation biomass was reduced for up to 18 years in two studies, though another study reported no effect after four years [1809]. Total plant species richness frequently increased over 2\\u201318 years, though results were mixed across sites and studies, and richness increased over time after stripping in one study [1809]. Disturbing the peat surface (without planting) altered plant community development over 2\\u20133 years; in one study, disturbance promoted greater cover of weedy seed\\u2011bank species, and in another, disturbed and undisturbed communities diverged over time [1811]. Disturbed plots saw colonization by wetland/fen\\u2011characteristic species in both studies, but peat\\u2011forming species did not colonize in one fen [1811]. Reprofiling degraded bogs (without planting) produced plant communities different from nearby natural fens and resulted in lower Sphagnum, other moss, and vascular plant cover after five years [1807].\",\n  \"action_ids\": [\n    \"1809\",\n    \"1811\",\n    \"1807\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1768",
+      "1809",
+      "1810",
+      "1811",
+      "1835",
+      "1836"
+    ],
+    "regenerated_ids": [
+      "1809",
+      "1810",
+      "1811"
+    ]
+  },
+  {
+    "query": "Besides direct legal protection, what alternative policy or financial incentives can be used to encourage peatland conservation?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"peatland conservation incentives alternative policy financial incentives subsidies carbon credits payments for ecosystem services\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1799\",\n    \"action_title\": \"Pay landowners to protect peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2349\",\n    \"action_title\": \"Cease/reduce payments to cull mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3820\",\n    \"action_title\": \"Eliminate fisheries subsidies that encourage overfishing\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1799\"}",
+            "return_val": "{\n  \"action_id\": \"1799\",\n  \"action_title\": \"Pay landowners to protect peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on peatland habitats of paying landowners to protect them. The study was of bogs.\\nPeatland habitat (1 study): One review from reported that agri-environment schemes in the UK had mixed effects on bogs, protecting the area of bog habitat in three of six cases.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"peatland policy incentives tax subsidies restoration payments carbon markets peat bog agriculture agri-environment schemes\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1799\",\n    \"action_title\": \"Pay landowners to protect peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3387\",\n    \"action_title\": \"Pay stakeholders to protect marshes or swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"818\",\n    \"action_title\": \"Pay farmers to cover the costs of conservation measures\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3387\"}",
+            "return_val": "{\n  \"action_id\": \"3387\",\n  \"action_title\": \"Pay stakeholders to protect marshes or swamps\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the overall effects, on vegetation or human behaviour, of paying stakeholders to protect marshes or swamps. There was one study in each of the UK\\u00a0and Nigeria.\\n\\nVEGETATION COMMUNITY\\n\\nOverall extent (1 study): One replicated, before-and-after, site comparison study in the UK\\u00a0found that paying landowners to manage farmland ditches under agri-environment rules had no clear or significant effect on the frequency of emergent vegetation.\\nOverall richness/diversity (1 study): One replicated, site comparison study in the UK\\u00a0found that farmland ditches managed under agri-environment rules contained a similar number of plant species to ditches not managed under these rules.\\n\\nVEGETATION ABUNDANCE\\n\\u00a0\\nVEGETATION STRUCTURE\\n\\u00a0\\nOTHER\\n\\nHuman behaviour (1 study): One study in Nigeria\\u00a0reported that 58 communities with access to micro-credits for sustainable development changed their behaviour. In particular, they switched from livelihood practices that damaged mangrove forests to more sustainable practices.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"818\"}",
+            "return_val": "{\n  \"action_id\": \"818\",\n  \"action_title\": \"Pay farmers to cover the costs of conservation measures\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated study) in Denmark, Sweden and Taiwan found that payments to farmers created amphibian breeding habitat or increased frog or toad populations. However, a second study in Taiwan found that payments did not maintain green tree frog habitat.\\nOne replicated, site comparison study in the Netherlands found that ditches managed under agri-environment schemes had higher numbers of amphibian species and higher abundance than those managed conventionally.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"peat bog incentives policy subsidy taxes conservation easements peatland restoration funding payments ecosystem services rewetting\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1799\",\n    \"action_title\": \"Pay landowners to protect peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3387\",\n    \"action_title\": \"Pay stakeholders to protect marshes or swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1807\",\n    \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"policy instrument peatland carbon credits subsidies payments ecosystem services tax incentives peatland conservation policy\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1799\",\n    \"action_title\": \"Pay landowners to protect peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3387\",\n    \"action_title\": \"Pay stakeholders to protect marshes or swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1848\",\n    \"action_title\": \"Provide education or training programmes about peatlands or peatland management\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"70\",\n    \"action_title\": \"Apply 'cross compliance' environmental standards linked to all subsidy payments\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1856\",\n    \"action_title\": \"Adopt zero burning policies near peatlands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"818\",\n    \"action_title\": \"Pay farmers to cover the costs of conservation measures\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"173\",\n    \"action_title\": \"Cross compliance standards for all subsidy payments\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1792\",\n    \"action_title\": \"Add water to peatlands to compensate for drought\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3486\",\n    \"action_title\": \"Pay farmers to cover the costs of conservation measures\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1807\",\n    \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"70\"}",
+            "return_val": "{\n  \"action_id\": \"70\",\n  \"action_title\": \"Apply 'cross compliance' environmental standards linked to all subsidy payments\",\n  \"key_messages\": \"Key Messages:\\n\\nWe have captured no evidence for the effects of applying 'cross compliance' environmental standards for all subsidy payments\\u00a0on farmland wildlife.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"173\"}",
+            "return_val": "{\n  \"action_id\": \"173\",\n  \"action_title\": \"Cross compliance standards for all subsidy payments\",\n  \"key_messages\": \"Key Messages:\\nApart from the Swiss Ecological Compensation Areas scheme (considered in another section), we found no studies comparing the effects of cross compliance standards with other means of implementing agri-environmental measures, or that considered the effects of cross compliance by monitoring farmland bird populations before and after it was implemented.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1848\"}",
+            "return_val": "{\n  \"action_id\": \"1848\",\n  \"action_title\": \"Provide education or training programmes about peatlands or peatland management\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of peatland education/training programmes on knowledge, behaviour, peatland habitats or peatland vegetation. Both studies were in tropical peat swamps.\\nBehaviour change (2 studies): One study in peat swamps in Indonesia\\u00a0reported that over 3,500 households adopted sustainable farming practices following workshops about sustainable farming. One before-and-after study in peat swamps in Indonesia\\u00a0reported that a training course on rubber farming increased the quality of rubber produced by local farmers.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1856\"}",
+            "return_val": "{\n  \"action_id\": \"1856\",\n  \"action_title\": \"Adopt zero burning policies near peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of adopting zero burning policies near peatlands.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1796",
+      "1797",
+      "1798",
+      "1799",
+      "1800",
+      "1801",
+      "1849"
+    ],
+    "regenerated_ids": [
+      "1797",
+      "1798",
+      "1799",
+      "1801",
+      "1849"
+    ]
   }
 ]
