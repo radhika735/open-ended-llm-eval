@@ -1722,5 +1722,109 @@
     "regenerated_ids": [
       "1901"
     ]
+  },
+  {
+    "query": "To improve the welfare of captive maned wolves, what are the most effective dietary and food presentation interventions documented?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "For captive maned wolves, a plant-derived protein diet was found to increase digestible energy and dry matter digestibility, but it also led to decreased mineral retention and plasma taurine levels when compared to an animal-based protein diet (1903). Providing a commercial diet resulted in similar dry matter intake and digestibility, despite a lower protein content (1900). Supplementing an animal-protein diet with taurine was found to increase plasma taurine levels (1908). In terms of food presentation, scattering food was found to increase locomotion in maned wolves, and they spent more time in the area of their enclosure with the scattered food (1921). Hiding food around the enclosure increased exploring and foraging behaviors in maned wolves and other carnivores (1915).",
+    "summary_action_ids": [
+      "1903",
+      "1900",
+      "1908",
+      "1921",
+      "1915"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"maned wolf captive diet\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1903\",\n    \"action_title\": \"Carnivores: Feed a plant-derived protein diet\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1900\",\n    \"action_title\": \"Carnivores: Feed commercially prepared diets\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1908\",\n    \"action_title\": \"Carnivores: Supplement meat-based diet with amino acids\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1903\"}",
+            "return_val": "{\n  \"action_id\": \"1903\",\n  \"action_title\": \"Carnivores: Feed a plant-derived protein diet\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study\\u00a0and one replicated, controlled study\\u00a0in the USA found that a plant-derived protein diet increased digestible energy and dry matter digestibility\\u00a0but decreased mineral retention\\u00a0and plasma taurine levels\\u00a0in maned wolves compared to a (supplemented) animal-based protein diet.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1900\"}",
+            "return_val": "{\n  \"action_id\": \"1900\",\n  \"action_title\": \"Carnivores: Feed commercially prepared diets\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the USA\\u00a0found that providing a commercial diet to maned wolves led to similar dry matter intake and digestibility despite having a lower protein content.\\nOne replicated, randomized study of African wildcats in the USA\\u00a0found that feeding a commercial diet decreased crude protein digestibility and increased food intake and faecal output compared to raw meat. One controlled study of African wildcats in the USA\\u00a0found lower organic matter digestibility compared to a ground-chicken diet.\\nOne replicated, controlled study in South Africa\\u00a0found that cheetahs fed a commercial diet had a similar likelihood of developing gastritis as those fed horse meat, lower levels of blood protein urea but higher levels of creatine. One study in USA\\u00a0found that cheetahs fed a commercial meat diet or whole chicken carcasses had plasma a-tocopherol, retinol and taurine concentrations within the ranges recommended for domestic cats.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1908\"}",
+            "return_val": "{\n  \"action_id\": \"1908\",\n  \"action_title\": \"Carnivores: Supplement meat-based diet with amino acids\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the USA\\u00a0found that supplementing an animal-protein diet with taurine, increased plasma taurine levels in maned wolves.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":3,\"query_string\":\"maned wolf captive diet\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1908\",\n    \"action_title\": \"Carnivores: Supplement meat-based diet with amino acids\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1907\",\n    \"action_title\": \"Carnivores: Supplement meat-based diet with vitamins or minerals\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2472\",\n    \"action_title\": \"Place captive young with captive foster parents\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1907\"}",
+            "return_val": "{\n  \"action_id\": \"1907\",\n  \"action_title\": \"Carnivores: Supplement meat-based diet with vitamins or minerals\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effect of supplementing meat-based diets with vitamins or minerals on captive carnivores.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"maned wolf food presentation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1921\",\n    \"action_title\": \"Carnivores: Scatter food around enclosure\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1915\",\n    \"action_title\": \"Carnivores: Hide food around enclosure\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3018\",\n    \"action_title\": \"Reintroduce overharvested animals\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1921\"}",
+            "return_val": "{\n  \"action_id\": \"1921\",\n  \"action_title\": \"Carnivores: Scatter food around enclosure\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in Brazil\\u00a0found that scattered feeding increased locomotion in maned wolves.\\nOne replicated study in Brazil\\u00a0found that maned wolves spent more time in the section of their enclosure with scattered food than in a section with food on a tray.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1915\"}",
+            "return_val": "{\n  \"action_id\": \"1915\",\n  \"action_title\": \"Carnivores: Hide food around enclosure\",\n  \"key_messages\": \"Key Messages:\\n\\nFour replicated, before-and-after studies in the USA, UK\\u00a0and Germany\\u00a0and one before-and-after study\\u00a0of a black bear, leopard cats, bush dogs, maned wolves\\u00a0and Malayan sun bears\\u00a0found that hiding food increased exploring\\u00a0and foraging behaviours.\\nOne replicated, before-and-after study and one before-and-after study in the USA\\u00a0found a decrease in stereotypical pacing in leopard cats\\u00a0and black bear.\\nOne before-and-after study\\u00a0in the USA found that hiding food reduced the time Canadian lynx spent sleeping during the day.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1903\",\"1900\",\"1908\",\"1921\",\"1915\"],\"query\":\"To improve the welfare of captive maned wolves, what are the most effective dietary and food presentation interventions documented?\",\"summary\":\"For captive maned wolves, a plant-derived protein diet was found to increase digestible energy and dry matter digestibility, but it also led to decreased mineral retention and plasma taurine levels when compared to an animal-based protein diet (1903). Providing a commercial diet resulted in similar dry matter intake and digestibility, despite a lower protein content (1900). Supplementing an animal-protein diet with taurine was found to increase plasma taurine levels (1908). In terms of food presentation, scattering food was found to increase locomotion in maned wolves, and they spent more time in the area of their enclosure with the scattered food (1921). Hiding food around the enclosure increased exploring and foraging behaviors in maned wolves and other carnivores (1915).\"}",
+            "return_val": "{\n  \"query\": \"To improve the welfare of captive maned wolves, what are the most effective dietary and food presentation interventions documented?\",\n  \"relevant_summary\": \"For captive maned wolves, a plant-derived protein diet was found to increase digestible energy and dry matter digestibility, but it also led to decreased mineral retention and plasma taurine levels when compared to an animal-based protein diet (1903). Providing a commercial diet resulted in similar dry matter intake and digestibility, despite a lower protein content (1900). Supplementing an animal-protein diet with taurine was found to increase plasma taurine levels (1908). In terms of food presentation, scattering food was found to increase locomotion in maned wolves, and they spent more time in the area of their enclosure with the scattered food (1921). Hiding food around the enclosure increased exploring and foraging behaviors in maned wolves and other carnivores (1915).\",\n  \"action_ids\": [\n    \"1903\",\n    \"1900\",\n    \"1908\",\n    \"1921\",\n    \"1915\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1900",
+      "1903",
+      "1908",
+      "1915",
+      "1921"
+    ],
+    "regenerated_ids": [
+      "1900",
+      "1903",
+      "1908",
+      "1915",
+      "1921"
+    ]
   }
 ]

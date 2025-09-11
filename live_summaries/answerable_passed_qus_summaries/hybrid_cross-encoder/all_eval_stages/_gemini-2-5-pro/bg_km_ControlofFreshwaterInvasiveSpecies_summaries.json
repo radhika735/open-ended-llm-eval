@@ -3071,5 +3071,525 @@
       "1032",
       "1036"
     ]
+  },
+  {
+    "query": "What is the evidence that public education campaigns can help control the spread of invasive species like the red-eared terrapin, Ponto-Caspian gobies, and skunk cabbage?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A review of education programs in the USA and Canada concluded that education was not sufficient to change behavior, but was a necessary catalytic factor for economic incentives and law enforcement (162). One study in Mexico found that raising awareness in tourists increased their knowledge of axolotls, while a study in Taiwan found that press conferences for frog conservation did not have an effect on a green tree frog project (831). A study in Lao People's Democratic Republic found that a social marketing campaign increased reporting of illegal hunting (2422). No evidence was found on the impact of education programs on the control of red-eared terrapin, Ponto-Caspian gobies, or skunk cabbage populations (1060, 1075, 1109).",
+    "summary_action_ids": [
+      "162",
+      "831",
+      "2422",
+      "1060",
+      "1075",
+      "1109"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"public education campaigns to control invasive species\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1148\",\n    \"action_title\": \"Water primrose: Public education\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"162\"}",
+            "return_val": "{\n  \"action_id\": \"162\",\n  \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n  \"key_messages\": \"Key Messages:\\nA review of programmes in the USA and Canada argues that education was not sufficient to change behaviour, although it was necessary as a catalytic factor for economic incentives and law enforcement.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"831\"}",
+            "return_val": "{\n  \"action_id\": \"831\",\n  \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, before-and-after study) in Estonia and the UK found that raising public awareness, along with other interventions, increased numbers of natterjack toads and created 1,023 ponds for amphibians.\\nOne before-and-after study in Mexico\\u00a0found that raising awareness in tourists, increased their knowledge of axolotls. One study in Taiwan\\u00a0found that holding press conferences to publicize frog conservation had no effect on a green tree frog project. \\nTwo studies in Panama and the UK found that awareness campaigns reached over 50,000 members of the public each year or trained 1,016 people at 57 events over four years.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"public education campaigns to control invasive species\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2422\",\n    \"action_title\": \"Use campaigns and public information to improve behaviour towards mammals and reduce threats\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1000\",\n    \"action_title\": \"Educate the public to improve perception of bats to improve behaviour towards bats\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"public education campaigns to control red-eared terrapin\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1060\",\n    \"action_title\": \"Red-eared terrapin:  Public education\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1059\",\n    \"action_title\": \"Red-eared terrapin:  Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1055\",\n    \"action_title\": \"Red-eared terrapin:  Direct removal of adults\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"public education campaigns to control Ponto-Caspian gobies\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1075\",\n    \"action_title\": \"Ponto-Caspian gobies: Public education\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1072\",\n    \"action_title\": \"Ponto-Caspian gobies: Changing salinity\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1067\",\n    \"action_title\": \"Ponto-Caspian gobies: Electrofishing\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"public education campaigns to control skunk cabbage\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1109\",\n    \"action_title\": \"Skunk cabbage:  Public education\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1102\",\n    \"action_title\": \"Skunk cabbage:  Chemical control using herbicides\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2422\"}",
+            "return_val": "{\n  \"action_id\": \"2422\",\n  \"action_title\": \"Use campaigns and public information to improve behaviour towards mammals and reduce threats\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of using campaigns and public information to improve behaviour towards mammals and reduce threats. One study was in the USA\\u00a0and one was in Lao People's Democratic Republic.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nHuman behaviour change (2 studies): A randomized, replicated, controlled, before-and-after study in the USA\\u00a0found that displaying education signs did not reduce the percentage of garbage containers that were accessible to black bears. A controlled, before-and-after study in Lao People's Democratic Republic\\u00a0found that a social marketing campaign promoting a telephone hotline increased reporting of illegal hunting.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1060\"}",
+            "return_val": "{\n  \"action_id\": \"1060\",\n  \"action_title\": \"Red-eared terrapin:  Public education\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of education programmes on reduction of red-eared terrapin populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1075\"}",
+            "return_val": "{\n  \"action_id\": \"1075\",\n  \"action_title\": \"Ponto-Caspian gobies: Public education\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of education programmes on control of goby populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1109\"}",
+            "return_val": "{\n  \"action_id\": \"1109\",\n  \"action_title\": \"Skunk cabbage:  Public education\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of public education programmes on control of skunk cabbage.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"162\",\"831\",\"2422\",\"1060\",\"1075\",\"1109\"],\"summary\":\"A review of education programs in the USA and Canada concluded that education was not sufficient to change behavior, but was a necessary catalytic factor for economic incentives and law enforcement (162). One study in Mexico found that raising awareness in tourists increased their knowledge of axolotls, while a study in Taiwan found that press conferences for frog conservation did not have an effect on a green tree frog project (831). A study in Lao People's Democratic Republic found that a social marketing campaign increased reporting of illegal hunting (2422). No evidence was found on the impact of education programs on the control of red-eared terrapin, Ponto-Caspian gobies, or skunk cabbage populations (1060, 1075, 1109).\",\"query\":\"What is the evidence that public education campaigns can help control the spread of invasive species like the red-eared terrapin, Ponto-Caspian gobies, and skunk cabbage?\"}",
+            "return_val": "{\n  \"query\": \"What is the evidence that public education campaigns can help control the spread of invasive species like the red-eared terrapin, Ponto-Caspian gobies, and skunk cabbage?\",\n  \"relevant_summary\": \"A review of education programs in the USA and Canada concluded that education was not sufficient to change behavior, but was a necessary catalytic factor for economic incentives and law enforcement (162). One study in Mexico found that raising awareness in tourists increased their knowledge of axolotls, while a study in Taiwan found that press conferences for frog conservation did not have an effect on a green tree frog project (831). A study in Lao People's Democratic Republic found that a social marketing campaign increased reporting of illegal hunting (2422). No evidence was found on the impact of education programs on the control of red-eared terrapin, Ponto-Caspian gobies, or skunk cabbage populations (1060, 1075, 1109).\",\n  \"action_ids\": [\n    \"162\",\n    \"831\",\n    \"2422\",\n    \"1060\",\n    \"1075\",\n    \"1109\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1049",
+      "1060",
+      "1075",
+      "1086",
+      "1109",
+      "1122",
+      "1134",
+      "1148",
+      "1311",
+      "1603"
+    ],
+    "regenerated_ids": [
+      "1060",
+      "1075",
+      "1109"
+    ]
+  },
+  {
+    "query": "Besides applying biocides, what are some effective methods for the complete eradication of black bullheads from UK ponds?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "There is no evidence for the effects of changing pH (1085) or draining invaded waterbodies (1078) on black bullhead populations.",
+    "summary_action_ids": [
+      "1085",
+      "1078"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"eradication of black bullheads from UK ponds\",\"offset\":0,\"k\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1085\",\n    \"action_title\": \"Brown and black bullheads: Changing pH\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1078\",\n    \"action_title\": \"Brown and black bullheads: Draining invaded waterbodies\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1085\"}",
+            "return_val": "{\n  \"action_id\": \"1085\",\n  \"action_title\": \"Brown and black bullheads: Changing pH\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of altering pH on bullhead populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1078\"}",
+            "return_val": "{\n  \"action_id\": \"1078\",\n  \"action_title\": \"Brown and black bullheads: Draining invaded waterbodies\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was found for use of draining invaded waterbodies to reduce the population size of invasive bullheads.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"There is no evidence for the effects of changing pH (1085) or draining invaded waterbodies (1078) on black bullhead populations.\",\"action_ids\":[\"1085\",\"1078\"],\"query\":\"Besides applying biocides, what are some effective methods for the complete eradication of black bullheads from UK ponds?\"}",
+            "return_val": "{\n  \"query\": \"Besides applying biocides, what are some effective methods for the complete eradication of black bullheads from UK ponds?\",\n  \"relevant_summary\": \"There is no evidence for the effects of changing pH (1085) or draining invaded waterbodies (1078) on black bullhead populations.\",\n  \"action_ids\": [\n    \"1085\",\n    \"1078\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1051",
+      "1053",
+      "1076",
+      "1077",
+      "1078",
+      "1079",
+      "1080",
+      "1081",
+      "1082",
+      "1083",
+      "1084",
+      "1085"
+    ],
+    "regenerated_ids": [
+      "1051"
+    ]
+  },
+  {
+    "query": "What factors influence the effectiveness of biological control for invasive aquatic plants such as floating pennywort and water primrose?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A replicated laboratory and field study in South America found that the South American weevil, a co-evolved, host-specific herbivore of floating pennywort, caused more feeding lesions on floating pennywort than on other plant species (1123). However, the same study found that the weevil did not reduce floating pennywort biomass in the field (1123). For water primrose, no evidence was found on the use of biological control using native herbivores (1136). Two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of parrot\u2019s feather (1599). In contrast, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce the biomass or cover of parrot\u2019s feather (1599). One field study in South Africa reported reduced growth of parrot\u2019s feather following the release of a South American leaf-feeding Lysathia (1599).",
+    "summary_action_ids": [
+      "1123",
+      "1136",
+      "1599"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"biological control for invasive aquatic plants\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1598\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using fungal-based herbicides\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1277\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"823\",\n    \"action_title\": \"Control invasive plants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1598\"}",
+            "return_val": "{\n  \"action_id\": \"1598\",\n  \"action_title\": \"Parrot\\u2019s feather: Biological control using fungal-based herbicides\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of biological control of parrot\\u2019s feather using fungal-based herbicides.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1277\"}",
+            "return_val": "{\n  \"action_id\": \"1277\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Biological control using herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of biological control using specific, non-selective or native herbivores on Crassula helmsii.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"823\"}",
+            "return_val": "{\n  \"action_id\": \"823\",\n  \"action_title\": \"Control invasive plants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the UK\\u00a0found that aquatic and terrestrial habitat management that included controlling swamp stonecrop, along with release of captive-reared toadlets, tripled a population of natterjack toads.\\nOne replicated, controlled study in the USA\\u00a0found that Oregon spotted frogs laid eggs in areas where invasive reed canarygrass had been mown more frequently than where it was not mown.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":0,\"query_string\":\"invasive aquatic plants\",\"k\":10}",
+            "return_val": "[\n  {\n    \"action_id\": \"815\",\n    \"action_title\": \"Remove specific aquatic plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"823\",\n    \"action_title\": \"Control invasive plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1604\",\n    \"action_title\": \"Parrot\\u2019s feather: Reduction of trade through legislation and codes of conduct\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1585\",\n    \"action_title\": \"Parrot\\u2019s feather: Water level drawdown\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1136\",\n    \"action_title\": \"Water primrose: Biological control using native herbivores\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1598\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using fungal-based herbicides\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1303\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Dry out waterbodies to control plants\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1276\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using fungal-based herbicides\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1599\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1277\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using herbivores\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1136\"}",
+            "return_val": "{\n  \"action_id\": \"1136\",\n  \"action_title\": \"Water primrose: Biological control using native herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was found on the use of biological control of water primrose using native herbivores.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1599\"}",
+            "return_val": "{\n  \"action_id\": \"1599\",\n  \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled laboratory study in Portugal\\u00a0found that grass carp did not reduce biomass or cover of parrot\\u2019s feather.\\nTwo replicated, randomized field studies in Argentina\\u00a0and the USA\\u00a0found that stocking with grass carp reduced the biomass\\u00a0or abundance\\u00a0of parrot\\u2019s feather.\\nOne field study in South Africa\\u00a0reported reduced growth of parrot\\u2019s feather following the release a South American leaf-feeding Lysathia.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1276\"}",
+            "return_val": "{\n  \"action_id\": \"1276\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Biological control using fungal-based herbicides\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of biological control using specific, non-selective or native herbivores on Crassula helmsii.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"floating pennywort\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1134\",\n    \"action_title\": \"Floating pennywort: Public education\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1123\",\n    \"action_title\": \"Floating pennywort: Biological control using co-evolved, host specific herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1126\",\n    \"action_title\": \"Floating pennywort: Physical removal\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1123\"}",
+            "return_val": "{\n  \"action_id\": \"1123\",\n  \"action_title\": \"Floating pennywort: Biological control using co-evolved, host specific herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated laboratory and field study in South America\\u00a0found that the South American weevil caused more feeding lesions on floating pennywort than on any other plant species, but field results found that the weevil did not reduce floating pennywort biomass.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What factors influence the effectiveness of biological control for invasive aquatic plants such as floating pennywort and water primrose?\",\"summary\":\"A replicated laboratory and field study in South America found that the South American weevil, a co-evolved, host-specific herbivore of floating pennywort, caused more feeding lesions on floating pennywort than on other plant species (1123). However, the same study found that the weevil did not reduce floating pennywort biomass in the field (1123). For water primrose, no evidence was found on the use of biological control using native herbivores (1136). Two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of parrot\u2019s feather (1599). In contrast, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce the biomass or cover of parrot\u2019s feather (1599). One field study in South Africa reported reduced growth of parrot\u2019s feather following the release of a South American leaf-feeding Lysathia (1599).\",\"action_ids\":[\"1123\",\"1136\",\"1599\"]}",
+            "return_val": "{\n  \"query\": \"What factors influence the effectiveness of biological control for invasive aquatic plants such as floating pennywort and water primrose?\",\n  \"relevant_summary\": \"A replicated laboratory and field study in South America found that the South American weevil, a co-evolved, host-specific herbivore of floating pennywort, caused more feeding lesions on floating pennywort than on other plant species (1123). However, the same study found that the weevil did not reduce floating pennywort biomass in the field (1123). For water primrose, no evidence was found on the use of biological control using native herbivores (1136). Two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of parrot\\u2019s feather (1599). In contrast, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce the biomass or cover of parrot\\u2019s feather (1599). One field study in South Africa reported reduced growth of parrot\\u2019s feather following the release of a South American leaf-feeding Lysathia (1599).\",\n  \"action_ids\": [\n    \"1123\",\n    \"1136\",\n    \"1599\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1123",
+      "1124",
+      "1125",
+      "1135",
+      "1136",
+      "1137",
+      "1276",
+      "1277",
+      "1598",
+      "1599",
+      "1601"
+    ],
+    "regenerated_ids": [
+      "1123",
+      "1135"
+    ]
+  },
+  {
+    "query": "How does the effectiveness of altering water salinity compare to altering temperature for controlling invasive invertebrates like Asian clams and Ponto-Caspian gammarids?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "For Asian clams, a controlled laboratory study in the USA reported 100% mortality when the clams were exposed to high salinities ranging from 18-34\u2030 [1115]. In another controlled laboratory study in the USA, it was found that temperatures of 36\u00b0C or higher resulted in the death of Asian clams within or after a period of four days [1116].\n\nIn the case of Ponto-Caspian gammarids, a controlled laboratory study from the UK discovered that heating water to a temperature greater than 36\u00b0C caused the death of all shrimp after 15 minutes of exposure. When the temperature was increased to over 43\u00b0C, all the shrimp died instantly [1092]. Regarding the use of salinity, one of two replicated laboratory studies, one of which was controlled, in Canada and the UK, showed that an increase in water salinity led to the death of the majority of invasive shrimp within five hours. However, another study indicated that increased salinity was not effective in killing invasive killer shrimp [1091].",
+    "summary_action_ids": [
+      "1115",
+      "1116",
+      "1092",
+      "1091"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"controlling invasive invertebrates water salinity temperature\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1091\",\n    \"action_title\": \"Ponto-Caspian gammarids: Change salinity of the water\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3141\",\n    \"action_title\": \"Control populations of wild invertebrates\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1110\",\n    \"action_title\": \"Asian clams: Drain the invaded water body\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Asian clams water salinity temperature\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1115\",\n    \"action_title\": \"Asian clams: Change salinity of the water\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1116\",\n    \"action_title\": \"Asian clams: Change temperature of the water\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1110\",\n    \"action_title\": \"Asian clams: Drain the invaded water body\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Ponto-Caspian gammarids water temperature\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1092\",\n    \"action_title\": \"Ponto-Caspian gammarids: Change water temperature\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1096\",\n    \"action_title\": \"Ponto-Caspian gammarids: Cleaning equipment\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1090\",\n    \"action_title\": \"Ponto-Caspian gammarids: Exposure to disease-causing organisms\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1091\"}",
+            "return_val": "{\n  \"action_id\": \"1091\",\n  \"action_title\": \"Ponto-Caspian gammarids: Change salinity of the water\",\n  \"key_messages\": \"Key Messages:\\nOne of two replicated laboratory studies (one controlled) in Canada and the UK found that increasing the salinity level of water killed the majority of invasive shrimp within five hours. One found that increased salinity did not kill invasive killer shrimp.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1115\"}",
+            "return_val": "{\n  \"action_id\": \"1115\",\n  \"action_title\": \"Asian clams: Change salinity of the water\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled, replicated laboratory study conducted in the USA\\u00a0found that Asian clams were killed (100% mortality) when exposed to high salinities (18-34\\u2030).\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1116\"}",
+            "return_val": "{\n  \"action_id\": \"1116\",\n  \"action_title\": \"Asian clams: Change temperature of the water\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled laboratory study in the USA found that temperatures of 36\\u00b0C or higher killed Asian clams within or after four days.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1092\"}",
+            "return_val": "{\n  \"action_id\": \"1092\",\n  \"action_title\": \"Ponto-Caspian gammarids: Change water temperature\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled laboratory study from the UK1 found that heating water to &gt;36\\u00b0C killed all shrimps after 15 minutes exposure and at &gt;43\\u00b0C all shrimps died immediately.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1115\",\"1116\",\"1092\",\"1091\"],\"summary\":\"For Asian clams, a controlled laboratory study in the USA reported 100% mortality when the clams were exposed to high salinities ranging from 18-34\u2030 [1115]. In another controlled laboratory study in the USA, it was found that temperatures of 36\u00b0C or higher resulted in the death of Asian clams within or after a period of four days [1116].\\n\\nIn the case of Ponto-Caspian gammarids, a controlled laboratory study from the UK discovered that heating water to a temperature greater than 36\u00b0C caused the death of all shrimp after 15 minutes of exposure. When the temperature was increased to over 43\u00b0C, all the shrimp died instantly [1092]. Regarding the use of salinity, one of two replicated laboratory studies, one of which was controlled, in Canada and the UK, showed that an increase in water salinity led to the death of the majority of invasive shrimp within five hours. However, another study indicated that increased salinity was not effective in killing invasive killer shrimp [1091].\",\"query\":\"How does the effectiveness of altering water salinity compare to altering temperature for controlling invasive invertebrates like Asian clams and Ponto-Caspian gammarids?\"}",
+            "return_val": "{\n  \"query\": \"How does the effectiveness of altering water salinity compare to altering temperature for controlling invasive invertebrates like Asian clams and Ponto-Caspian gammarids?\",\n  \"relevant_summary\": \"For Asian clams, a controlled laboratory study in the USA reported 100% mortality when the clams were exposed to high salinities ranging from 18-34\\u2030 [1115]. In another controlled laboratory study in the USA, it was found that temperatures of 36\\u00b0C or higher resulted in the death of Asian clams within or after a period of four days [1116].\\n\\nIn the case of Ponto-Caspian gammarids, a controlled laboratory study from the UK discovered that heating water to a temperature greater than 36\\u00b0C caused the death of all shrimp after 15 minutes of exposure. When the temperature was increased to over 43\\u00b0C, all the shrimp died instantly [1092]. Regarding the use of salinity, one of two replicated laboratory studies, one of which was controlled, in Canada and the UK, showed that an increase in water salinity led to the death of the majority of invasive shrimp within five hours. However, another study indicated that increased salinity was not effective in killing invasive killer shrimp [1091].\",\n  \"action_ids\": [\n    \"1115\",\n    \"1116\",\n    \"1092\",\n    \"1091\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1091",
+      "1092",
+      "1115",
+      "1116"
+    ],
+    "regenerated_ids": [
+      "1091",
+      "1092",
+      "1115",
+      "1116"
+    ]
+  },
+  {
+    "query": "What factors influence the effectiveness of using non-native herbivores as biological control agents for invasive aquatic plants like water primrose and parrot's feather?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A replicated, controlled laboratory study in Portugal found that grass carp did not reduce the biomass or cover of parrot's feather [1599]. In contrast, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of parrot's feather [1599]. One field study in South Africa reported reduced growth of parrot\u2019s feather following the release of a South American leaf-feeding Lysathia [1599]. A controlled, replicated field study in China found that a flea beetle caused heavy feeding destruction to prostrate water primrose seedlings and was specific to prostrate water primrose and Indian toothcup [1135]. Additionally, a replicated, before-and-after field study in the USA found that the introduction of flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow [1135].",
+    "summary_action_ids": [
+      "1599",
+      "1135"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":0,\"query_string\":\"effectiveness of non-native herbivores as biological control agents for invasive aquatic plants\",\"k\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1277\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using herbivores\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1276\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using fungal-based herbicides\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1599\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1599\"}",
+            "return_val": "{\n  \"action_id\": \"1599\",\n  \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled laboratory study in Portugal\\u00a0found that grass carp did not reduce biomass or cover of parrot\\u2019s feather.\\nTwo replicated, randomized field studies in Argentina\\u00a0and the USA\\u00a0found that stocking with grass carp reduced the biomass\\u00a0or abundance\\u00a0of parrot\\u2019s feather.\\nOne field study in South Africa\\u00a0reported reduced growth of parrot\\u2019s feather following the release a South American leaf-feeding Lysathia.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"water primrose biological control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1137\",\n    \"action_title\": \"Water primrose: Biological control using fungal-based herbicides\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1135\",\n    \"action_title\": \"Water primrose: Biological control using co-evolved, host specific herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1147\",\n    \"action_title\": \"Water primrose: Environmental control (e.g shading, altered flow, altered rooting depth, or dredging)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1135\"}",
+            "return_val": "{\n  \"action_id\": \"1135\",\n  \"action_title\": \"Water primrose: Biological control using co-evolved, host specific herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled, replicated field study in China, found a flea beetle caused heavy feeding destruction when added to field cages containing prostrate water primrose seedlings, and was specific to the prostrate water primrose and Indian toothcup.\\nA replicated, before-and-after field study in the USA\\u00a0found that introduction of flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1599\",\"1135\"],\"query\":\"What factors influence the effectiveness of using non-native herbivores as biological control agents for invasive aquatic plants like water primrose and parrot's feather?\",\"summary\":\"A replicated, controlled laboratory study in Portugal found that grass carp did not reduce the biomass or cover of parrot's feather [1599]. In contrast, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of parrot's feather [1599]. One field study in South Africa reported reduced growth of parrot\u2019s feather following the release of a South American leaf-feeding Lysathia [1599]. A controlled, replicated field study in China found that a flea beetle caused heavy feeding destruction to prostrate water primrose seedlings and was specific to prostrate water primrose and Indian toothcup [1135]. Additionally, a replicated, before-and-after field study in the USA found that the introduction of flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow [1135].\"}",
+            "return_val": "{\n  \"query\": \"What factors influence the effectiveness of using non-native herbivores as biological control agents for invasive aquatic plants like water primrose and parrot's feather?\",\n  \"relevant_summary\": \"A replicated, controlled laboratory study in Portugal found that grass carp did not reduce the biomass or cover of parrot's feather [1599]. In contrast, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of parrot's feather [1599]. One field study in South Africa reported reduced growth of parrot\\u2019s feather following the release of a South American leaf-feeding Lysathia [1599]. A controlled, replicated field study in China found that a flea beetle caused heavy feeding destruction to prostrate water primrose seedlings and was specific to prostrate water primrose and Indian toothcup [1135]. Additionally, a replicated, before-and-after field study in the USA found that the introduction of flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow [1135].\",\n  \"action_ids\": [\n    \"1599\",\n    \"1135\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1135",
+      "1599",
+      "1277"
+    ],
+    "regenerated_ids": [
+      "1135",
+      "1599"
+    ]
+  },
+  {
+    "query": "In industrial water systems in Europe, what are the most effective methods for controlling biofouling by Asian clams?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A controlled field-based trial in Spanish irrigation systems showed that fat-coated particles called BioBullets could kill 100% of the Asian clams within pipes [1118]. A replicated laboratory study in the USA found that dosing with the biocides chlorine, potassium and copper killed Asian clams [1118]. A controlled, replicated laboratory study and a controlled, replicated field study in the USA found that higher concentrations of chlorine and bromine, delivered at higher temperatures, shortened the time required to kill the Asian clams [1118]. A replicated, controlled, before-and-after field trial in Ireland found that three types of dredges were equally effective at removing Asian clams, resulting in a biomass reduction ranging from 74% to >95%, and a density reduction ranging from 65% to 95% [1120]. A replicated, controlled, before-and after trial in North America found that suction dredging reduced Asian clam densities within the sediment by 96% over two weeks and that the reduction persisted for a year [1120].",
+    "summary_action_ids": [
+      "1118",
+      "1120"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"biofouling control Asian clams\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1118\",\n    \"action_title\": \"Asian clams: Add chemicals to the water\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1110\",\n    \"action_title\": \"Asian clams: Drain the invaded water body\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1120\",\n    \"action_title\": \"Asian clams: Mechanical removal\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1118\"}",
+            "return_val": "{\n  \"action_id\": \"1118\",\n  \"action_title\": \"Asian clams: Add chemicals to the water\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated laboratory study in the USA found that dosing with the biocides chlorine, potassium and copper killed Asian clams. \\nA controlled, replicated laboratory study and a controlled, replicated field study in the USA\\u00a0found that higher concentrations of chlorine and bromine, delivered at higher temperatures, shortened the time required to kill the Asian clams. \\nA controlled field-based trial in Spanish irrigation systems\\u00a0showed that fat-coated particles called BioBullets could kill 100% of the Asian clams within pipes.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1110\"}",
+            "return_val": "{\n  \"action_id\": \"1110\",\n  \"action_title\": \"Asian clams: Drain the invaded water body\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the use of dewatering as a management tool for Asian clams.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1120\"}",
+            "return_val": "{\n  \"action_id\": \"1120\",\n  \"action_title\": \"Asian clams: Mechanical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled, before-and after trial in North America\\u00a0found that suction dredging reduced Asian clam densities within the sediment by 96% over two weeks and that the reduction persisted for a year.\\nA replicated, controlled, before-and-after field trial in Ireland\\u00a0found that three types of dredges were equally effective at removing Asian clams, resulting in a biomass reduction ranging from 74% to &gt;95%, and an density reduction ranging from 65% to 95%.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"A controlled field-based trial in Spanish irrigation systems showed that fat-coated particles called BioBullets could kill 100% of the Asian clams within pipes [1118]. A replicated laboratory study in the USA found that dosing with the biocides chlorine, potassium and copper killed Asian clams [1118]. A controlled, replicated laboratory study and a controlled, replicated field study in the USA found that higher concentrations of chlorine and bromine, delivered at higher temperatures, shortened the time required to kill the Asian clams [1118]. A replicated, controlled, before-and-after field trial in Ireland found that three types of dredges were equally effective at removing Asian clams, resulting in a biomass reduction ranging from 74% to >95%, and a density reduction ranging from 65% to 95% [1120]. A replicated, controlled, before-and after trial in North America found that suction dredging reduced Asian clam densities within the sediment by 96% over two weeks and that the reduction persisted for a year [1120].\",\"action_ids\":[\"1118\",\"1120\"],\"query\":\"In industrial water systems in Europe, what are the most effective methods for controlling biofouling by Asian clams?\"}",
+            "return_val": "{\n  \"query\": \"In industrial water systems in Europe, what are the most effective methods for controlling biofouling by Asian clams?\",\n  \"relevant_summary\": \"A controlled field-based trial in Spanish irrigation systems showed that fat-coated particles called BioBullets could kill 100% of the Asian clams within pipes [1118]. A replicated laboratory study in the USA found that dosing with the biocides chlorine, potassium and copper killed Asian clams [1118]. A controlled, replicated laboratory study and a controlled, replicated field study in the USA found that higher concentrations of chlorine and bromine, delivered at higher temperatures, shortened the time required to kill the Asian clams [1118]. A replicated, controlled, before-and-after field trial in Ireland found that three types of dredges were equally effective at removing Asian clams, resulting in a biomass reduction ranging from 74% to >95%, and a density reduction ranging from 65% to 95% [1120]. A replicated, controlled, before-and after trial in North America found that suction dredging reduced Asian clam densities within the sediment by 96% over two weeks and that the reduction persisted for a year [1120].\",\n  \"action_ids\": [\n    \"1118\",\n    \"1120\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1118",
+      "1119",
+      "1120"
+    ],
+    "regenerated_ids": [
+      "1118",
+      "1119"
+    ]
   }
 ]
