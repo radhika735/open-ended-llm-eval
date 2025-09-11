@@ -786,5 +786,225 @@
       "3425",
       "3433"
     ]
+  },
+  {
+    "query": "What management practices, when combined with seeding or planting, have been shown to affect the survival of new plants in grassland restoration?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A review of 40 studies found that grazing, introducing plant species, hay spreading, and mowing, used alone or in combination, were effective techniques for restoring species-rich grassland [133]. In contrast, one study found that wetland prairie restored by planting native seed mixes and flooding annually had lower survival of great copper eggs and caterpillars than degraded, unflooded prairie [3949].",
+    "summary_action_ids": [
+      "133",
+      "3949"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"management practices and seeding or planting in grassland restoration\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3949\",\n    \"action_title\": \"Restore or create wetlands and floodplains\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3929\",\n    \"action_title\": \"Restore arable land to permanent grassland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"133\",\n    \"action_title\": \"Restore/create species-rich, semi-natural grassland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3949\"}",
+            "return_val": "{\n  \"action_id\": \"3949\",\n  \"action_title\": \"Restore or create wetlands and floodplains\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of restoring or creating wetlands and floodplains. Two studies were in the USA\\u00a0and one was in Sweden.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Sweden\\u00a0found that wetland creation increased macroinvertebrate diversity (including butterflies and moths), and that species richness increased with wetland age and was similar to mature ponds.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One site comparison study in the USA\\u00a0found that wetland prairie restored by seeding willow dock and seasonal flooding had a higher abundance of great copper eggs than degraded, unflooded prairie.\\nSurvival (1 study): One site comparison study in the USA\\u00a0found that the survival of great copper eggs and caterpillars was lower in wetland prairie restored by planting native seed mixes and flooding annually than in degraded, unflooded prairie.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One site comparison study in the USA\\u00a0found that wetland prairie restored by planting native seed mixes and flooding annually was used more by adult great copper than degraded, unflooded prairie.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3929\"}",
+            "return_val": "{\n  \"action_id\": \"3929\",\n  \"action_title\": \"Restore arable land to permanent grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies evaluated the effects on butterflies and moths of restoring arable land to permanent grassland. Six studies were in the UK, two were in Finland, and one was in each of Switzerland\\u00a0and Taiwan.\\n\\nCOMMUNITY RESPONSE (9 STUDIES)\\n\\nCommunity composition (2 studies): One of two replicated, site comparison studies in the UK\\u00a0and Finland\\u00a0found that grasslands restored from bare soil by seeding developed butterfly communities that were increasingly similar to existing high-quality grasslands over the first 10 years after establishment. The other study found that older grasslands established by sowing with competitive seed mixes had a greater proportion of specialist butterflies than newer grasslands sown with less competitive species which required re-seeding every 4\\u20135 years.\\nRichness/diversity (8 studies): Three replicated, site comparison studies (including two paired studies) in Switzerland, the UK\\u00a0and Taiwan\\u00a0found that 4\\u20135-year-old created grasslands\\u00a0and abandoned cropland\\u00a0had a greater species richness of butterflies, burnet moths\\u00a0and all moths\\u00a0than conventionally managed grassland\\u00a0or cultivated farms. Two of three replicated studies (including one randomized, paired, controlled study and two site comparison studies) in the UK\\u00a0and Finland\\u00a0found that grasslands established by sowing grasses, legumes and other non-woody, broadleaved plants (forbs), or perennial grass mixes, had a higher species richness of butterflies (in one case including other pollinators) than grasslands established with grass-only mixes\\u00a0or less competitive species. The third study found that grasslands established by sowing complex or simple seed mixes, or by natural regeneration, all had a similar species richness of butterflies and day-flying moths, but species richness was higher on grasslands created &lt;10 years ago than on grasslands created &gt;20 years ago. One before-and-after study in the UK\\u00a0found that after the adoption of an Environmentally Sensitive Areas scheme, including reverting arable land to permanent grassland, the species richness of large moths on a farm increased. One replicated, site comparison study in the UK\\u00a0found that over 10 years after restoration, the number of species of butterfly on seeded grassland remained similar each year.\\n\\nPOPULATION RESPONSE (7 STUDIES)\\n\\nAbundance (7 studies): Two of three replicated, paired, site comparison studies in the UK\\u00a0and Taiwan\\u00a0found that restored grassland had a higher abundance of moths than conventional grassland\\u00a0or unrestored crop fields, and a similar abundance to semi-natural grasslands, but abundance did not increase with time since restoration. The third study found that abandoned cropland had a similar abundance of butterflies to cultivated farms. Two of three replicated studies (including one randomized, paired, controlled study and two site comparison studies) in the UK\\u00a0and Finland\\u00a0found that grasslands established by sowing grasses, legumes and other non-woody, broadleaved plants (forbs), or perennial grass mixes, had a higher abundance of butterflies (in one case including other pollinators) than grasslands established with grass-only mixes\\u00a0or less competitive species. The third study found that grasslands restored by sowing complex or simple seed mixes, or by natural regeneration, all had a similar abundance of caterpillars. One before-and-after study in the UK\\u00a0found that after the adoption of an Environmentally Sensitive Areas scheme on a farm, including reverting arable land to permanent grassland, the abundance of large moths and five species of butterfly increased, but the abundance of two species of butterfly decreased.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"133\"}",
+            "return_val": "{\n  \"action_id\": \"133\",\n  \"action_title\": \"Restore/create species-rich, semi-natural grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-eight studies monitored the effects on wildlife of restoring species-rich grassland. Of these, 20 from Finland, Germany, Lithuania, Sweden, Switzerland and the UK (15 replicated of which eight controlled and three also randomized) found restoring species-rich grassland resulted in higher ground beetle abundance, increased plant species richness, farmland bird abundance, pollinating insect density and diversity and earthworm abundance than other types of grassland, or that restored grasslands had similar abundance and species richness of insects to old traditionally managed sites.\\nSeven studies from Denmark, Finland, Sweden, Switzerland and the UK (five replicated and controlled, two also randomized) found that efforts to restore species-rich grassland had no clear effect on the species richness or abundance of plants, beetles, or the abundance of butterflies and moths. Three replicated studies from Sweden and the UK (one also controlled and two site comparisons) found that restored grassland had a lower diversity and frequency of certain plant species, and attracted fewer foraging queen bumblebees than continuously grazed or unmanaged grasslands.\\nWe captured 40 studies (including 19 replicated and controlled studies of which six were also randomized, and six reviews) from nine European countries that found ten different techniques used alone or in combinations were effective for restoring species-rich grassland. Effective techniques included: grazing, introducing plant species, hay spreading and mowing.\\nWe found 22 studies from seven European countries that included information on the length of time taken to restore grassland communities (including 16 replicated trials of which nine also controlled and three reviews). Six studies saw positive signs of restoration in less than five years, 11 studies within 10 years and two studies found restoration took more than 10 years. Six studies found limited or slow changes in plant communities following restoration. Two studies from Germany and the UK (one replicated controlled trial) found differences in vegetation between restored and existing species-rich grasslands nine or 60 years after restoration.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"A review of 40 studies found that grazing, introducing plant species, hay spreading, and mowing, used alone or in combination, were effective techniques for restoring species-rich grassland [133]. In contrast, one study found that wetland prairie restored by planting native seed mixes and flooding annually had lower survival of great copper eggs and caterpillars than degraded, unflooded prairie [3949].\",\"action_ids\":[\"133\",\"3949\"],\"query\":\"What management practices, when combined with seeding or planting, have been shown to affect the survival of new plants in grassland restoration?\"}",
+            "return_val": "{\n  \"query\": \"What management practices, when combined with seeding or planting, have been shown to affect the survival of new plants in grassland restoration?\",\n  \"relevant_summary\": \"A review of 40 studies found that grazing, introducing plant species, hay spreading, and mowing, used alone or in combination, were effective techniques for restoring species-rich grassland [133]. In contrast, one study found that wetland prairie restored by planting native seed mixes and flooding annually had lower survival of great copper eggs and caterpillars than degraded, unflooded prairie [3949].\",\n  \"action_ids\": [\n    \"133\",\n    \"3949\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3400",
+      "3402",
+      "3403",
+      "3413",
+      "3415",
+      "3419",
+      "3421",
+      "3423",
+      "3427"
+    ],
+    "regenerated_ids": [
+      "3400",
+      "3402",
+      "3403",
+      "3413",
+      "3415",
+      "3419",
+      "3421",
+      "3423",
+      "3427"
+    ]
+  },
+  {
+    "query": "How do different mechanical seeding methods like drill seeding, strip seeding, and hydroseeding compare in their effects on grassland vegetation in the US and UK?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Five studies in the USA found that drill seeding did not alter plant species richness in two out of three studies (3410). One study showed an increase in the density of two sown grass species, while two other studies reported no change or a reduction in the abundance of sown plants (3410). Another study in the USA found that drill seeding increased the abundance of warm-season grass species (3410). Two studies in the UK on strip seeding found that it increased grass and forb species richness (3411). However, a review in the UK also found that strip seeding resulted in failed introductions of sown species in the majority of cases (3411). Four studies on hydroseeding, including one in the USA, found mixed results. One study found no alteration in plant diversity, while another reported an increase in plant species richness in one of two cases (3412). In the USA, one study found that hydroseeding increased the abundance of half of the sown plant species compared to drill seeding (3412). Another study found that hydroseeding with non-native seeds increased overall plant cover in most cases (3412). One study also found that hydroseeding led to an increase in the height of herb species (3412).",
+    "summary_action_ids": [
+      "3410",
+      "3411",
+      "3412"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mechanical seeding methods for grassland vegetation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3417\",\n    \"action_title\": \"Burn vegetation before seeding/planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3418\",\n    \"action_title\": \"Apply herbicide before seeding/planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3416\",\n    \"action_title\": \"Remove vegetation before seeding/planting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"seeding methods for grassland vegetation\",\"k\":10}",
+            "return_val": "[\n  {\n    \"action_id\": \"3426\",\n    \"action_title\": \"Transfer plant material from intact grassland alongside seeding/planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3412\",\n    \"action_title\": \"Spray slurry of seed, mulch and water (\\u2018hydroseeding\\u2019)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3417\",\n    \"action_title\": \"Burn vegetation before seeding/planting\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3418\",\n    \"action_title\": \"Apply herbicide before seeding/planting\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3416\",\n    \"action_title\": \"Remove vegetation before seeding/planting\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3431\",\n    \"action_title\": \"Use erosion blanket after seeding/planting\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"3419\",\n    \"action_title\": \"Mow before or after seeding/planting\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3399\",\n    \"action_title\": \"Plant grassland plants\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3405\",\n    \"action_title\": \"Sow seeds at a higher density\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3406\",\n    \"action_title\": \"Increase number of species in seed mix\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"drill seeding\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3410\",\n    \"action_title\": \"Drill seed rather than seeding by hand\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3411\",\n    \"action_title\": \"Use slot/strip seeding\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2062\",\n    \"action_title\": \"Cease or prohibit the deposit of drill cuttings on the seabed\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"strip seeding\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3411\",\n    \"action_title\": \"Use slot/strip seeding\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1711\",\n    \"action_title\": \"Strip/disturb topsoil (alongside planting/seeding)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1414\",\n    \"action_title\": \"Other biodiversity: Plant flowers\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3412\"}",
+            "return_val": "{\n  \"action_id\": \"3412\",\n  \"action_title\": \"Spray slurry of seed, mulch and water (\\u2018hydroseeding\\u2019)\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies examined the effects of spraying a slurry of seed, mulch and water (\\u2018hydroseeding\\u2019) on grassland vegetation. Two studies were in Spain, one study was in the USA\\u00a0and one was in Italy.\\n\\nVEGETATION COMMUNITY (2 STUDIES)\\n\\nOverall richness/diversity (2 studies): One of two replicated, controlled studies (one of which was randomized and paired) in Spain\\u00a0and Italy\\u00a0found that hydroseeding with non-native seeds did not alter plant diversity in most cases. The other study\\u00a0found that hydroseeding increased plant species richness in one of two cases.\\n\\nVEGETATION ABUNDANCE (3 STUDIES)\\n\\nOverall abundance (2 studies): One of two controlled studies (one of which was replicated, randomized and paired) in Spain\\u00a0found that hydroseeding with non-native seeds increased overall plant cover in most cases. The other study\\u00a0found that hydroseeding did not alter vegetation cover.\\nSown/planted species abundance (1 study): One replicated, randomized, paired, controlled study in the USA\\u00a0found that hydroseeding increased the abundance of half of the sown plant species compared to drill seeding.\\n\\nVEGETATION STRUCTURE (1 STUDY)\\n\\nHeight (1 study): One replicated, controlled study in Italy\\u00a0found that hydroseeding led to an increase in the height of herb species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3410\"}",
+            "return_val": "{\n  \"action_id\": \"3410\",\n  \"action_title\": \"Drill seed rather than seeding by hand\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies examined the effects of drill seeding rather than sowing by hand on grassland vegetation. The studies were in the USA.\\n\\nVEGETATION COMMUNITY (3 STUDIES)\\n\\nOverall richness/diversity (3 studies): Two of three replicated, controlled studies (two of which were paired) in the USA\\u00a0found that sowing seeds with a seed drill did not alter plant species richness. The other study found mixed effects.\\n\\nVEGETATION ABUNDANCE (4 STUDIES)\\n\\nSown/planted species abundance (3 studies): One of three replicated, controlled studies (two of which were randomized and one paired) in the USA\\u00a0found that sowing seeds with a seed drill increased the density of two sown grass species compared to sowing by hand.\\u00a0The two other studies\\u00a0found that in most cases sowing seeds with a seed drill led to no change or a reduction in the abundance of sown plants compared to hydroseeding\\u00a0or sowing by hand.\\nGrass abundance (1 study): One replicated, paired, controlled study in the USA\\u00a0found that sowing grassland seeds with a seed drill increased the abundance of warm-season grass species compared to sowing by hand.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3411\"}",
+            "return_val": "{\n  \"action_id\": \"3411\",\n  \"action_title\": \"Use slot/strip seeding\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of using slot/strip seeding on grassland vegetation. Both studies were in the UK.\\n\\nVEGETATION COMMUNITY (1 STUDY)\\n\\nGrass richness/diversity (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that strip seeding increased grass species richness.\\nForb richness/diversity (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that strip seeding increased forb species richness.\\n\\nVEGETATION ABUNDANCE (1 STUDY)\\n\\nSown/planted species abundance (1 study): One review\\u00a0in the UK found that in the majority of cases strip seeding resulted in failed introductions of sown species.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How do different mechanical seeding methods like drill seeding, strip seeding, and hydroseeding compare in their effects on grassland vegetation in the US and UK?\",\"action_ids\":[\"3410\",\"3411\",\"3412\"],\"summary\":\"Five studies in the USA found that drill seeding did not alter plant species richness in two out of three studies (3410). One study showed an increase in the density of two sown grass species, while two other studies reported no change or a reduction in the abundance of sown plants (3410). Another study in the USA found that drill seeding increased the abundance of warm-season grass species (3410). Two studies in the UK on strip seeding found that it increased grass and forb species richness (3411). However, a review in the UK also found that strip seeding resulted in failed introductions of sown species in the majority of cases (3411). Four studies on hydroseeding, including one in the USA, found mixed results. One study found no alteration in plant diversity, while another reported an increase in plant species richness in one of two cases (3412). In the USA, one study found that hydroseeding increased the abundance of half of the sown plant species compared to drill seeding (3412). Another study found that hydroseeding with non-native seeds increased overall plant cover in most cases (3412). One study also found that hydroseeding led to an increase in the height of herb species (3412).\"}",
+            "return_val": "{\n  \"query\": \"How do different mechanical seeding methods like drill seeding, strip seeding, and hydroseeding compare in their effects on grassland vegetation in the US and UK?\",\n  \"relevant_summary\": \"Five studies in the USA found that drill seeding did not alter plant species richness in two out of three studies (3410). One study showed an increase in the density of two sown grass species, while two other studies reported no change or a reduction in the abundance of sown plants (3410). Another study in the USA found that drill seeding increased the abundance of warm-season grass species (3410). Two studies in the UK on strip seeding found that it increased grass and forb species richness (3411). However, a review in the UK also found that strip seeding resulted in failed introductions of sown species in the majority of cases (3411). Four studies on hydroseeding, including one in the USA, found mixed results. One study found no alteration in plant diversity, while another reported an increase in plant species richness in one of two cases (3412). In the USA, one study found that hydroseeding increased the abundance of half of the sown plant species compared to drill seeding (3412). Another study found that hydroseeding with non-native seeds increased overall plant cover in most cases (3412). One study also found that hydroseeding led to an increase in the height of herb species (3412).\",\n  \"action_ids\": [\n    \"3410\",\n    \"3411\",\n    \"3412\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3410",
+      "3411",
+      "3412"
+    ],
+    "regenerated_ids": [
+      "3410",
+      "3411",
+      "3412"
+    ]
+  },
+  {
+    "query": "Which site preparation techniques appear most effective at increasing species richness before seeding in European grasslands?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Forty studies from nine European countries found that ten different techniques used alone or in combinations were effective for restoring species-rich grassland (133). Effective techniques included: grazing, introducing plant species, hay spreading and mowing (133).",
+    "summary_action_ids": [
+      "133"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"site preparation techniques for increasing species richness in European grasslands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"133\",\n    \"action_title\": \"Restore/create species-rich, semi-natural grassland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2566\",\n    \"action_title\": \"Restore or create grassland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2539\",\n    \"action_title\": \"Reduce pesticide or fertilizer use\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"133\"}",
+            "return_val": "{\n  \"action_id\": \"133\",\n  \"action_title\": \"Restore/create species-rich, semi-natural grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-eight studies monitored the effects on wildlife of restoring species-rich grassland. Of these, 20 from Finland, Germany, Lithuania, Sweden, Switzerland and the UK (15 replicated of which eight controlled and three also randomized) found restoring species-rich grassland resulted in higher ground beetle abundance, increased plant species richness, farmland bird abundance, pollinating insect density and diversity and earthworm abundance than other types of grassland, or that restored grasslands had similar abundance and species richness of insects to old traditionally managed sites.\\nSeven studies from Denmark, Finland, Sweden, Switzerland and the UK (five replicated and controlled, two also randomized) found that efforts to restore species-rich grassland had no clear effect on the species richness or abundance of plants, beetles, or the abundance of butterflies and moths. Three replicated studies from Sweden and the UK (one also controlled and two site comparisons) found that restored grassland had a lower diversity and frequency of certain plant species, and attracted fewer foraging queen bumblebees than continuously grazed or unmanaged grasslands.\\nWe captured 40 studies (including 19 replicated and controlled studies of which six were also randomized, and six reviews) from nine European countries that found ten different techniques used alone or in combinations were effective for restoring species-rich grassland. Effective techniques included: grazing, introducing plant species, hay spreading and mowing.\\nWe found 22 studies from seven European countries that included information on the length of time taken to restore grassland communities (including 16 replicated trials of which nine also controlled and three reviews). Six studies saw positive signs of restoration in less than five years, 11 studies within 10 years and two studies found restoration took more than 10 years. Six studies found limited or slow changes in plant communities following restoration. Two studies from Germany and the UK (one replicated controlled trial) found differences in vegetation between restored and existing species-rich grasslands nine or 60 years after restoration.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2566\"}",
+            "return_val": "{\n  \"action_id\": \"2566\",\n  \"action_title\": \"Restore or create grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of restoring or creating grassland. One study each was in Portugal, the USA\\u00a0and Hungary.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): A replicated, site comparison study in Hungary\\u00a0found that grassland restored on former cropland hosted a similar small mammal species richness compared to native grassland.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (2 studies): A controlled, before-and-after study in Portugal\\u00a0found that sowing pasture grasses into areas cleared of scrub did not increase European rabbit densities. A replicated, site comparison study in Hungary\\u00a0found that grassland restored on former cropland hosted a similar abundance of small mammals compared to native grassland.\\nSurvival (1 study): A replicated, site comparison study in the USA\\u00a0found that seeding with grassland species as part of a suite of actions including mechanical disturbance and herbicide application increased overwinter survival of mule deer fawns.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Forty studies from nine European countries found that ten different techniques used alone or in combinations were effective for restoring species-rich grassland (133). Effective techniques included: grazing, introducing plant species, hay spreading and mowing (133).\",\"query\":\"Which site preparation techniques appear most effective at increasing species richness before seeding in European grasslands?\",\"action_ids\":[\"133\"]}",
+            "return_val": "{\n  \"query\": \"Which site preparation techniques appear most effective at increasing species richness before seeding in European grasslands?\",\n  \"relevant_summary\": \"Forty studies from nine European countries found that ten different techniques used alone or in combinations were effective for restoring species-rich grassland (133). Effective techniques included: grazing, introducing plant species, hay spreading and mowing (133).\",\n  \"action_ids\": [\n    \"133\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3413",
+      "3414",
+      "3415",
+      "3416",
+      "3418"
+    ],
+    "regenerated_ids": [
+      "3413",
+      "3415",
+      "3418"
+    ]
   }
 ]
