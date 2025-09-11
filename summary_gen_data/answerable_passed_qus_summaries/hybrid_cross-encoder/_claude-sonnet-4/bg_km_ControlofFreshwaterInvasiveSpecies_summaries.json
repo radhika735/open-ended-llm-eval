@@ -1044,5 +1044,194 @@
       "1094",
       "1095"
     ]
+  },
+  {
+    "query": "How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Three laboratory studies in the USA and Brazil found that 2,4-D reduced the growth of parrot's feather (Action 1606). One replicated, controlled laboratory study in Brazil found that 2,4-D led to a greater reduction in growth of parrot's feather than the herbicides diquat, glyphosate or imazapyr (Action 1606). Field trials showed that 2,4-D amine reduced the biomass of parrot's feather in Portugal, and the combined application of 2,4-D and MCPA completely eliminated parrot's feather (Action 1606). In comparison, diquat showed mixed results: two laboratory studies in the USA found that diquat reduced the growth of parrot's feather, but one replicated, randomized, controlled field study in Portugal found that growth was not reduced after the application of diquat (Action 1680). For glyphosate, one replicated, randomized, controlled field study in Portugal and one replicated, controlled, laboratory study in the USA reported reduced parrot's feather biomass after treatment with glyphosate (Action 1699). The direct comparison study indicates that 2,4-D was more effective than both diquat and glyphosate in reducing parrot's feather growth under laboratory conditions.",
+    "summary_action_ids": [
+      "1606",
+      "1680",
+      "1699"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"herbicide parrot's feather 2,4-D diquat glyphosate control\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1606\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1680\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - diquat\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1681\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - endohall\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1676\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - carfentrazone-ethyl\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1699\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1689\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - triclopyr\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1598\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using fungal-based herbicides\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1279\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Chemical control using herbicides\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1605\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of salt\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"parrot's feather glyphosate herbicide\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"1606\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1681\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - endohall\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1689\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - triclopyr\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1699\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1606\"}",
+            "return_val": "{\n  \"action_id\": \"1606\",\n  \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n  \"key_messages\": \"Key Messages:\\n\\nThree laboratory studies (including two replicated, controlled studies and one randomized, controlled study) in the USA\\u00a0and Brazil\\u00a0found that the herbicide 2,4-D reduced the growth of parrot\\u2019s feather.\\nOne replicated, controlled laboratory study in Brazil\\u00a0found that 2,4-D led to a greater reduction in growth of parrot\\u2019s feather than the herbicides diquat, glyphosate or imazapyr.\\nOne replicated, randomized, controlled field study in Portugal\\u00a0found that 2,4-D amine reduced the biomass of parrot\\u2019s feather.\\nOne randomized, controlled field study in Portugal found that the combined application of 2,4-D and MCPA completely eliminated parrot\\u2019s feather.\\nOne randomized, controlled laboratory study in the USA\\u00a0found that the combined application of 2,4-D and carfentrazone-ethyl led to a higher reduction in the cover of parrot\\u2019s feather than the application of the herbicide dichlobenil eight days after treatment but not 45 days after treatment.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1680\"}",
+            "return_val": "{\n  \"action_id\": \"1680\",\n  \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - diquat\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo laboratory studies (including a replicated, randomized, controlled study) in the USA\\u00a0found that diquat reduced the growth of parrot\\u2019s feather.\\nOne replicated, randomized, controlled field study in Portugal\\u00a0found that growth was not reduced after the application of diquat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1699\"}",
+            "return_val": "{\n  \"action_id\": \"1699\",\n  \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled laboratory study in New Zealand\\u00a0found that the application of dichlobenil reduced the growth of parrot\\u2019s feather.\\nTwo replicated, randomized, controlled field studies in Portugal and New Zealand found that the application of dichlobenil reduced cover less than the combined application of the herbicides 2,4-D and MCPA eight days after treatment but not 45 days after treatment\\u00a0and that plants treated with dichlobenil presented lower vegetation cover soon after herbicide application but cover later increased to levels close to pre-treatment.\\nThree laboratory studies (including two replicated, controlled studies and one randomized, controlled study) in the USA found that the herbicides imazamox\\u00a0and imazapyr\\u00a0reduced the growth of parrot\\u2019s feather.\\nOne replicated, randomized, controlled field study in Portugal\\u00a0and one replicated, controlled, laboratory study in the USA\\u00a0reported reduced parrot\\u2019s feather biomass after treatment with glyphosate.\\u00a0One replicated, randomized, controlled field study in Portugal\\u00a0found that the application of gluphosinate-ammonium reduced the biomass of parrot\\u2019s feather.\\nThree replicated, controlled laboratory studies in New Zealand and the USA found that treatment with fluridone, clopyralid\\u00a0and copper chelate\\u00a0did not reduce growth of parrot\\u2019s feather.\\nOne replicated, controlled laboratory study in the USA\\u00a0found that the application of flumioxazin reduced the growth of parrot\\u2019s feather.\\nOne replicated, randomized, controlled laboratory study in the USA\\u00a0found that the application of florpyrauxifen-benzyl reduced the growth of parrot\\u2019s feather.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"parrot's feather herbicide effectiveness comparison\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"1606\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1681\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - endohall\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1676\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - carfentrazone-ethyl\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1699\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?\", \"summary\": \"Three laboratory studies in the USA and Brazil found that 2,4-D reduced the growth of parrot's feather (Action 1606). One replicated, controlled laboratory study in Brazil found that 2,4-D led to a greater reduction in growth of parrot's feather than the herbicides diquat, glyphosate or imazapyr (Action 1606). Field trials showed that 2,4-D amine reduced the biomass of parrot's feather in Portugal, and the combined application of 2,4-D and MCPA completely eliminated parrot's feather (Action 1606). In comparison, diquat showed mixed results: two laboratory studies in the USA found that diquat reduced the growth of parrot's feather, but one replicated, randomized, controlled field study in Portugal found that growth was not reduced after the application of diquat (Action 1680). For glyphosate, one replicated, randomized, controlled field study in Portugal and one replicated, controlled, laboratory study in the USA reported reduced parrot's feather biomass after treatment with glyphosate (Action 1699). The direct comparison study indicates that 2,4-D was more effective than both diquat and glyphosate in reducing parrot's feather growth under laboratory conditions.\", \"action_ids\": [\"1606\",\"1680\",\"1699\"]}",
+            "return_val": "{\n  \"query\": \"How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?\",\n  \"relevant_summary\": \"Three laboratory studies in the USA and Brazil found that 2,4-D reduced the growth of parrot's feather (Action 1606). One replicated, controlled laboratory study in Brazil found that 2,4-D led to a greater reduction in growth of parrot's feather than the herbicides diquat, glyphosate or imazapyr (Action 1606). Field trials showed that 2,4-D amine reduced the biomass of parrot's feather in Portugal, and the combined application of 2,4-D and MCPA completely eliminated parrot's feather (Action 1606). In comparison, diquat showed mixed results: two laboratory studies in the USA found that diquat reduced the growth of parrot's feather, but one replicated, randomized, controlled field study in Portugal found that growth was not reduced after the application of diquat (Action 1680). For glyphosate, one replicated, randomized, controlled field study in Portugal and one replicated, controlled, laboratory study in the USA reported reduced parrot's feather biomass after treatment with glyphosate (Action 1699). The direct comparison study indicates that 2,4-D was more effective than both diquat and glyphosate in reducing parrot's feather growth under laboratory conditions.\",\n  \"action_ids\": [\n    \"1606\",\n    \"1680\",\n    \"1699\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1606",
+      "1676",
+      "1680",
+      "1681",
+      "1689",
+      "1699"
+    ],
+    "regenerated_ids": [
+      "1606",
+      "1680",
+      "1699"
+    ]
+  },
+  {
+    "query": "What are the documented effects of introducing native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the documented evidence, introducing native predators has shown effectiveness in controlling both invasive American bullfrogs and Procambarus crayfish. For American bullfrogs, one replicated, controlled study conducted in Belgium found that the introduction of northern pike led to a strong decline in bullfrog tadpole numbers (Action 1039). For Procambarus crayfish control, two replicated, controlled studies in Italy found that eels fed on red swamp crayfish and reduced population size, and one replicated, controlled study from France found that pike predated red swamp crayfish (Action 1030). Combined approaches appear more effective, as a before-and-after study in Switzerland found that introducing predators combined with trapping significantly reduced red swamp crayfish populations in a pond, and a replicated, controlled study from Italy demonstrated that trapping and predation in combination was more effective at reducing red swamp crayfish populations than predation alone (Action 1031). However, it should be noted that while these studies demonstrate the effectiveness of native predators, the documented studies were conducted primarily in European locations rather than specifically in North American freshwater systems.",
+    "summary_action_ids": [
+      "1039",
+      "1030",
+      "1031"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"native predators control invasive American bullfrogs Procambarus crayfish North American freshwater\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1038\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1033\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Removal of food source\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1039\",\n    \"action_title\": \"American bullfrog control: Biological control using native predators\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1040\",\n    \"action_title\": \"American bullfrog control: Biological control of co-occurring beneficial species\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1042\",\n    \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1030\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Encouraging predators\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1041\",\n    \"action_title\": \"American bullfrog control: Habitat modification\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1056\",\n    \"action_title\": \"Red-eared terrapin:  Biological control using native predators\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1039\"}",
+            "return_val": "{\n  \"action_id\": \"1039\",\n  \"action_title\": \"American bullfrog control: Biological control using native predators\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study conducted in Belgium\\u00a0found the introduction of the northern pike led to a strong decline in bullfrog tadpole numbers.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1030\"}",
+            "return_val": "{\n  \"action_id\": \"1030\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Encouraging predators\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled studies\\u00a0in Italy found that eels fed on the red swamp crayfish and reduced population size. \\nOne replicated, controlled study from France in 2001 found that pike predated red swamp crayfish.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"797\"}",
+            "return_val": "{\n  \"action_id\": \"797\",\n  \"action_title\": \"Remove or control non-native crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing or controlling non-native crayfish on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1038\"}",
+            "return_val": "{\n  \"action_id\": \"1038\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"825\"}",
+            "return_val": "{\n  \"action_id\": \"825\",\n  \"action_title\": \"Remove or control invasive bullfrogs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the USA\\u00a0found that removing American bullfrogs significantly increased a population of California red-legged frogs. \\nOne before-and-after study in the USA and Mexico found that eradicating bullfrogs from the area increased the range of leopard frogs. One replicated, before-and-after study in the USA found that once bullfrogs had been removed, California red-legged frogs were found out in the open twice as frequently.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"biological control predators bullfrogs crayfish effects outcomes results\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1040\",\n    \"action_title\": \"American bullfrog control: Biological control of co-occurring beneficial species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1039\",\n    \"action_title\": \"American bullfrog control: Biological control using native predators\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1033\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Removal of food source\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1042\",\n    \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1031\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Trapping combined with encouragement of predators\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1047\",\n    \"action_title\": \"American bullfrog control: Collection of egg clutches\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1030\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Encouraging predators\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1034\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Draining the waterway\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1040\"}",
+            "return_val": "{\n  \"action_id\": \"1040\",\n  \"action_title\": \"American bullfrog control: Biological control of co-occurring beneficial species\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of removing co-occurring beneficial species on the control of American bullfrogs.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1031\"}",
+            "return_val": "{\n  \"action_id\": \"1031\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Trapping combined with encouragement of predators\",\n  \"key_messages\": \"Key Messages:\\n\\nA before-and-after study in Switzerland\\u00a0found that introducing predators, combined with trapping significantly reduced red swamp crayfish populations in a pond. A second replicated, controlled study from Italy\\u00a0demonstrated that trapping and predation in combination was more effective at reducing red swamp crayfish populations than predation alone.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1033\"}",
+            "return_val": "{\n  \"action_id\": \"1033\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Removal of food source\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effect of removing food sources as a control tool for Procambarus crayfish.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the documented effects of introducing native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems?\", \"summary\": \"Based on the documented evidence, introducing native predators has shown effectiveness in controlling both invasive American bullfrogs and Procambarus crayfish. For American bullfrogs, one replicated, controlled study conducted in Belgium found that the introduction of northern pike led to a strong decline in bullfrog tadpole numbers (Action 1039). For Procambarus crayfish control, two replicated, controlled studies in Italy found that eels fed on red swamp crayfish and reduced population size, and one replicated, controlled study from France found that pike predated red swamp crayfish (Action 1030). Combined approaches appear more effective, as a before-and-after study in Switzerland found that introducing predators combined with trapping significantly reduced red swamp crayfish populations in a pond, and a replicated, controlled study from Italy demonstrated that trapping and predation in combination was more effective at reducing red swamp crayfish populations than predation alone (Action 1031). However, it should be noted that while these studies demonstrate the effectiveness of native predators, the documented studies were conducted primarily in European locations rather than specifically in North American freshwater systems.\", \"action_ids\": [\"1039\",\"1030\",\"1031\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of introducing native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems?\",\n  \"relevant_summary\": \"Based on the documented evidence, introducing native predators has shown effectiveness in controlling both invasive American bullfrogs and Procambarus crayfish. For American bullfrogs, one replicated, controlled study conducted in Belgium found that the introduction of northern pike led to a strong decline in bullfrog tadpole numbers (Action 1039). For Procambarus crayfish control, two replicated, controlled studies in Italy found that eels fed on red swamp crayfish and reduced population size, and one replicated, controlled study from France found that pike predated red swamp crayfish (Action 1030). Combined approaches appear more effective, as a before-and-after study in Switzerland found that introducing predators combined with trapping significantly reduced red swamp crayfish populations in a pond, and a replicated, controlled study from Italy demonstrated that trapping and predation in combination was more effective at reducing red swamp crayfish populations than predation alone (Action 1031). However, it should be noted that while these studies demonstrate the effectiveness of native predators, the documented studies were conducted primarily in European locations rather than specifically in North American freshwater systems.\",\n  \"action_ids\": [\n    \"1039\",\n    \"1030\",\n    \"1031\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1030",
+      "1039",
+      "1031",
+      "1053"
+    ],
+    "regenerated_ids": [
+      "1030",
+      "1039"
+    ]
   }
 ]

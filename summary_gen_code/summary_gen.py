@@ -617,7 +617,7 @@ def main():
     summary_out_base_dir = f"summary_gen_data/{qu_type}_{filter_stage}_qus_summaries"
     offset = 0
     max_qu_files = 8
-    max_qus = 1
+    max_qus = 3
 
     try:
         run_summary_gen_for_qu_dir(

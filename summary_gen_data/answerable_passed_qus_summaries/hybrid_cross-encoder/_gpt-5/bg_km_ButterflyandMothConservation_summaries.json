@@ -775,5 +775,257 @@
       "3929",
       "3955"
     ]
+  },
+  {
+    "query": "What does the evidence say about the effectiveness of restoring different types of wetland habitats, such as peatlands and floodplains, for butterfly conservation?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across three studies on restoring or creating wetlands and floodplains, wetland creation increased macroinvertebrate diversity (including butterflies and moths), with species richness increasing with wetland age and approaching that of mature ponds; in a wetland prairie, restored habitat had higher abundance of great copper eggs and was used more by adults than degraded prairie, but egg and caterpillar survival were lower than in degraded prairie (3949). Across six studies on peatland restoration, restored mires had moth communities intermediate between drained and pristine mires; mire restoration increased species richness of mire specialist butterflies to levels similar to pristine mires, while re-wetted protected bogs had moth richness similar to unrestored, unprotected bogs; abundances of rosy marsh moth caterpillars and mire specialist butterflies increased after re-wetting and restoration to levels similar to pristine sites, though moth abundance responses were mixed by species; where water levels rose after restoration, large heath caterpillar winter survival was lower, and Alcon large blue occupied recently re-wetted wet heathland less frequently than sites without raised water levels (3948).",
+    "summary_action_ids": [
+      "3949",
+      "3948"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"wetland restoration peatland floodplain butterfly conservation effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3949\",\n    \"action_title\": \"Restore or create wetlands and floodplains\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3948\",\n    \"action_title\": \"Restore or create peatland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3260\",\n    \"action_title\": \"Introduce fragments of non-woody plants: freshwater wetlands\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"wetland restoration peatland floodplain butterfly conservation effectiveness\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3955\",\n    \"action_title\": \"Restore or create species-rich, semi-natural grassland\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3959\",\n    \"action_title\": \"Reduce grazing intensity on grassland by reducing stocking density\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"174\",\n    \"action_title\": \"Reduce field size (or maintain small fields)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3949\"}",
+            "return_val": "{\n  \"action_id\": \"3949\",\n  \"action_title\": \"Restore or create wetlands and floodplains\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of restoring or creating wetlands and floodplains. Two studies were in the USA\\u00a0and one was in Sweden.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Sweden\\u00a0found that wetland creation increased macroinvertebrate diversity (including butterflies and moths), and that species richness increased with wetland age and was similar to mature ponds.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One site comparison study in the USA\\u00a0found that wetland prairie restored by seeding willow dock and seasonal flooding had a higher abundance of great copper eggs than degraded, unflooded prairie.\\nSurvival (1 study): One site comparison study in the USA\\u00a0found that the survival of great copper eggs and caterpillars was lower in wetland prairie restored by planting native seed mixes and flooding annually than in degraded, unflooded prairie.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One site comparison study in the USA\\u00a0found that wetland prairie restored by planting native seed mixes and flooding annually was used more by adult great copper than degraded, unflooded prairie.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3948\"}",
+            "return_val": "{\n  \"action_id\": \"3948\",\n  \"action_title\": \"Restore or create peatland\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on butterflies and moths of restoring or creating peatland. Two studies were in each of Finland\\u00a0and the UK, and one was in each of the Netherlands\\u00a0and Ireland.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nCommunity composition (1 study): One replicated, paired, site comparison study in Finland\\u00a0found that mires restored by filling ditches and cutting trees had a moth community which was intermediate between drained and pristine mires.\\nRichness/diversity (2 studies): One replicated, paired, controlled, before-and-after study in Finland\\u00a0found that after mires were restored by raising the water table and removing large trees, they had a higher species richness of mire specialist butterflies than before restoration or than unrestored, drained mires, and a similar species richness to pristine mires. One replicated, paired, site comparison study in Ireland\\u00a0reported that protected bogs re-wetted by blocking drains had a similar species richness of moths to unrestored and unprotected bogs.\\n\\nPOPULATION RESPONSE (5 STUDIES)\\n\\nAbundance (4 studies): Two before-and-after studies (including one replicated, paired, controlled study) in the UK\\u00a0and Finland\\u00a0found that bogs re-wetted by blocking drains\\u00a0and mires restored by raising the water table and removing large trees\\u00a0had a higher abundance of rosy marsh moth caterpillars\\u00a0and mire specialist butterflies\\u00a0than before restoration\\u00a0or than unrestored mires, and a similar abundance to pristine mires. Two replicated, paired, site comparison studies in Finland\\u00a0and Ireland\\u00a0found that mires restored by filling ditches and cutting trees\\u00a0and bogs restored by blocking drains (along with legal protection)\\u00a0had mixed effects on moth abundance compared to unrestored sites depending on species.\\nSurvival (1 study): One replicated study in the UK\\u00a0found that where water levels had risen due to peatland restoration, large heath butterfly caterpillars had lower winter survival than in areas where water levels had not risen.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated, site comparison study in the Netherlands\\u00a0found that wet heathland where water levels had been recently raised were less frequently occupied by Alcon large blue than sites where the water level had not been raised.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3260\"}",
+            "return_val": "{\n  \"action_id\": \"3260\",\n  \"action_title\": \"Introduce fragments of non-woody plants: freshwater wetlands\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects, on vegetation, of introducing fragments of emergent, non-woody plants to freshwater wetlands. Three studies were in the USA. Two studies were in one marsh in Australia, but used different experimental set-ups.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\nOverall abundance (2 studies): Two replicated, randomized, paired, controlled, before-and-after studies in a floodplain marsh in Australia\\u00a0found that plots planted with wick grass Hymenachne acutigluma had similar overall vegetation cover to unplanted plots after one year. One of the studies\\u00a0continued for longer, and found that planted plots had greater overall vegetation cover than unplanted plots after three years.\\nHerb abundance (1 study): One replicated, randomized, paired, controlled, before-and-after study in a floodplain marsh in Australia\\u00a0found that plots planted with wick grass Hymenachne acutigluma had similar overall sedge/grass cover to unplanted plots after one year.\\nIndividual species abundance (4 studies): Four studies\\u00a0quantified the effect of this action on the abundance of individual plant species. For example, of two replicated, randomized, paired, controlled, before-and-after studies in a floodplain marsh in Australia, one\\u00a0found that wick grass Hymenachne acutigluma was more frequent and had greater cover, after 1\\u20133 years, in plots where its runners had been planted than where they had not been planted. The other study\\u00a0reported that wick grass cover was present, with approximately 1% cover, in 5 of 10 plots where its runners had been planted. This study monitored vegetation one year after planting.\\n\\nVEGETATION STRUCTURE\\n\\u00a0\\nOTHER\\n\\nGermination/emergence (1 study): One replicated, randomized, paired, controlled study in a floodplain marsh in Australia\\u00a0found that planting wick grass Hymenachne acutigluma had no significant effect on the germination rate of invasive mimosa Mimosa pigra over three years.\\nSurvival (5 studies): Two replicated studies planted sedge Carex fragments into freshwater wetlands in the USA. One study\\u00a0reported 38\\u201379% survival of planted tubers over one growing season, whilst the other study\\u00a0reported 0\\u201373% survival of planted rhizomes after 1\\u20139 months. One replicated study in a tidal freshwater marsh in the USA\\u00a0reported that 6\\u201331% of planted California bulrush Schoenoplectus californicus rhizomes had produced shoots after three months. For two other species, all planted rhizomes died within three months. Two replicated, randomized, paired, controlled, before-and-after studies in a floodplain marsh in Australia\\u00a0reported absence of planted wick grass Hymenachne acutigluma from 17\\u201350% of plots after one year.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What does the evidence say about the effectiveness of restoring different types of wetland habitats, such as peatlands and floodplains, for butterfly conservation?\",\"summary\":\"Across three studies on restoring or creating wetlands and floodplains, wetland creation increased macroinvertebrate diversity (including butterflies and moths), with species richness increasing with wetland age and approaching that of mature ponds; in a wetland prairie, restored habitat had higher abundance of great copper eggs and was used more by adults than degraded prairie, but egg and caterpillar survival were lower than in degraded prairie (3949). Across six studies on peatland restoration, restored mires had moth communities intermediate between drained and pristine mires; mire restoration increased species richness of mire specialist butterflies to levels similar to pristine mires, while re-wetted protected bogs had moth richness similar to unrestored, unprotected bogs; abundances of rosy marsh moth caterpillars and mire specialist butterflies increased after re-wetting and restoration to levels similar to pristine sites, though moth abundance responses were mixed by species; where water levels rose after restoration, large heath caterpillar winter survival was lower, and Alcon large blue occupied recently re-wetted wet heathland less frequently than sites without raised water levels (3948).\",\"action_ids\":[\"3949\",\"3948\"]}",
+            "return_val": "{\n  \"query\": \"What does the evidence say about the effectiveness of restoring different types of wetland habitats, such as peatlands and floodplains, for butterfly conservation?\",\n  \"relevant_summary\": \"Across three studies on restoring or creating wetlands and floodplains, wetland creation increased macroinvertebrate diversity (including butterflies and moths), with species richness increasing with wetland age and approaching that of mature ponds; in a wetland prairie, restored habitat had higher abundance of great copper eggs and was used more by adults than degraded prairie, but egg and caterpillar survival were lower than in degraded prairie (3949). Across six studies on peatland restoration, restored mires had moth communities intermediate between drained and pristine mires; mire restoration increased species richness of mire specialist butterflies to levels similar to pristine mires, while re-wetted protected bogs had moth richness similar to unrestored, unprotected bogs; abundances of rosy marsh moth caterpillars and mire specialist butterflies increased after re-wetting and restoration to levels similar to pristine sites, though moth abundance responses were mixed by species; where water levels rose after restoration, large heath caterpillar winter survival was lower, and Alcon large blue occupied recently re-wetted wet heathland less frequently than sites without raised water levels (3948).\",\n  \"action_ids\": [\n    \"3949\",\n    \"3948\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3948",
+      "3949",
+      "3950",
+      "3971"
+    ],
+    "regenerated_ids": [
+      "3948",
+      "3949",
+      "3971"
+    ]
+  },
+  {
+    "query": "What are the documented benefits and negative impacts of using prescribed fire in forest ecosystems for butterfly and moth populations?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across five studies on prescribed fire in forests, three USA studies reported higher butterfly species richness in coniferous forests restored 1\u20132 years after burning with thinning or in forests burned once within the last 20 years compared to unburned forests [3877]. Two USA studies found higher butterfly abundance in pine forests 1\u20132 years after burning with thinning than in unburned forests [3877]. One USA study found mixed forest and shrubland sites burned the previous year had similar butterfly species richness to unburned sites [3877]. A replicated, before-and-after study in Australia reported fewer Eltham copper caterpillars in the spring after selective burning of eucalyptus forest than before, indicating a negative impact on this moth species [3877].",
+    "summary_action_ids": [
+      "3877"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed fire forest butterfly moth impacts benefits negative effects lepidoptera\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3877\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3882\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in grasslands or other open habitats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3885\",\n    \"action_title\": \"Remove, control or exclude invertebrate herbivores\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3877\"}",
+            "return_val": "{\n  \"action_id\": \"3877\",\n  \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects on butterflies and moths of using prescribed fire to maintain or restore disturbance in forests. Four studies were in the USA\\u00a0and one was in Australia.\\n\\nCOMMUNITY RESPONSE (4 STUDIES)\\n\\nRichness/diversity (4 studies): Three of four studies (including one replicated study, one paired study, two controlled studies, two before-and-after studies, and one site comparison study) in the USA\\u00a0found that coniferous forest restored 1\\u20132 years ago by burning (in combination with thinning)\\u00a0or burned once within the last 20 years, had a higher species richness of butterflies than unburned forest. The fourth study\\u00a0found that mixed forest and shrubland sites which had been burned the year before had similar butterfly species richness to unburned sites.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): Two studies (including one controlled, before-and-after study and one site comparison study) in the USA\\u00a0found that pine forest restored 1\\u20132 years ago by burning (in combination with thinning) had a higher abundance of butterflies than unburned forest. One replicated, before-and-after study in Australia\\u00a0reported that in the spring after selective burning of eucalyptus forest there were fewer Eltham copper caterpillars than before.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed fire forest butterflies moths USA Australia burn thinning Lepidoptera forest\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3890\",\n    \"action_title\": \"Remove or control non-native or problematic plants\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3887\",\n    \"action_title\": \"Increase biosecurity checks\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3808\",\n    \"action_title\": \"Limit the number or length of static fishing nets in an area\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented benefits and negative impacts of using prescribed fire in forest ecosystems for butterfly and moth populations?\",\"summary\":\"Across five studies on prescribed fire in forests, three USA studies reported higher butterfly species richness in coniferous forests restored 1\u20132 years after burning with thinning or in forests burned once within the last 20 years compared to unburned forests [3877]. Two USA studies found higher butterfly abundance in pine forests 1\u20132 years after burning with thinning than in unburned forests [3877]. One USA study found mixed forest and shrubland sites burned the previous year had similar butterfly species richness to unburned sites [3877]. A replicated, before-and-after study in Australia reported fewer Eltham copper caterpillars in the spring after selective burning of eucalyptus forest than before, indicating a negative impact on this moth species [3877].\",\"action_ids\":[\"3877\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and negative impacts of using prescribed fire in forest ecosystems for butterfly and moth populations?\",\n  \"relevant_summary\": \"Across five studies on prescribed fire in forests, three USA studies reported higher butterfly species richness in coniferous forests restored 1\\u20132 years after burning with thinning or in forests burned once within the last 20 years compared to unburned forests [3877]. Two USA studies found higher butterfly abundance in pine forests 1\\u20132 years after burning with thinning than in unburned forests [3877]. One USA study found mixed forest and shrubland sites burned the previous year had similar butterfly species richness to unburned sites [3877]. A replicated, before-and-after study in Australia reported fewer Eltham copper caterpillars in the spring after selective burning of eucalyptus forest than before, indicating a negative impact on this moth species [3877].\",\n  \"action_ids\": [\n    \"3877\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3877",
+      "3878",
+      "3879"
+    ],
+    "regenerated_ids": [
+      "3877"
+    ]
+  },
+  {
+    "query": "What conservation actions can be implemented in urban environments to support butterfly and moth populations?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Protecting greenfield or undeveloped land in urban areas was associated with higher butterfly species richness than urban parks or non-native plantations in site comparisons from Singapore and Mexico [3836]. Altering mowing regimes on urban greenspaces and road verges showed: higher species richness and diversity on less frequently mown or unmown greenspaces in Germany and the UK; no effect on species richness along some Canadian verges; higher abundance on unmown public parks in the UK and on some unmown verges/under power lines in Canada; higher ringlet abundance on Finnish roadsides mown in late summer than mid-summer; fewer traffic-killed butterflies on Polish verges mown less frequently or later; greater occupancy by scarce copper on less frequently mown Swedish urban grasslands; and butterfly presence on Dutch verges mown once or twice a year or not mown, with presence on mowed verges only where hay was removed [3841]. Stopping the use of insecticides and herbicides in gardens was associated with higher butterfly abundance, while not using fungicides and snail pellets was associated with lower butterfly abundance, in a replicated site comparison in France [3900]. No studies were found evaluating the effects of planting trees to reduce urban temperatures on butterflies and moths [3838].",
+    "summary_action_ids": [
+      "3836",
+      "3841",
+      "3900",
+      "3838"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"urban environments butterfly moth conservation actions urban\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3836\",\n    \"action_title\": \"Protect greenfield sites or undeveloped land in urban areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3838\",\n    \"action_title\": \"Plant trees to reduce temperatures in cities\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3900\",\n    \"action_title\": \"Stop using pesticides as seed dressings and sprays in flower beds and greenspace\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"urban environments butterfly moth conservation actions urban\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3841\",\n    \"action_title\": \"Alter mowing regimes on greenspaces and road verges\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"383\",\n    \"action_title\": \"Control invasive ants on islands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"384\",\n    \"action_title\": \"Control predators not on islands\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"urban environments butterfly moth conservation actions urban\", \"k\": 3, \"offset\": 6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"urban environments butterfly moth conservation actions urban\", \"k\": 3, \"offset\": 6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"urban environments butterfly moth conservation actions urban\", \"k\": 3, \"offset\": 6}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3836\"}",
+            "return_val": "{\n  \"action_id\": \"3836\",\n  \"action_title\": \"Protect greenfield sites or undeveloped land in urban areas\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of protecting greenfield sites or undeveloped land in urban areas on butterflies and moths. One study was in Singapore\\u00a0and the other was in Mexico.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nRichness/diversity (2 studies): Two site comparison studies (including one replicated study) in Singapore\\u00a0and Mexico found that protected native forest\\u00a0and grassland\\u00a0in urban areas had a higher species richness of butterflies than urban parks\\u00a0or non-native Eucalyptus plantations.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3838\"}",
+            "return_val": "{\n  \"action_id\": \"3838\",\n  \"action_title\": \"Plant trees to reduce temperatures in cities\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of planting trees to reduce temperatures in cities on butterflies and moths.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3900\"}",
+            "return_val": "{\n  \"action_id\": \"3900\",\n  \"action_title\": \"Stop using pesticides as seed dressings and sprays in flower beds and greenspace\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on butterflies and moths of stopping the use of pesticides as seed dressings and sprays in flower beds and greenspaces. The study was in France.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, site comparison study in France\\u00a0found that gardens where insecticides and herbicides were not used had a higher abundance of butterflies, but gardens where fungicides and snail pellets were not used had a lower abundance of butterflies\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3841\"}",
+            "return_val": "{\n  \"action_id\": \"3841\",\n  \"action_title\": \"Alter mowing regimes on greenspaces and road verges\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies evaluated the effects of altering mowing regimes on greenspaces and road verges on butterflies and moths. One study was in each of Finland, the Netherlands, Poland, Germany, the\\u00a0UK, Canada\\u00a0and Sweden.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): Two replicated, paired, controlled studies in Germany and the UK\\u00a0found that less frequently mown\\u00a0or unmown\\u00a0urban greenspaces had a higher species richness and diversity of butterflies and moths than more frequently mown areas. One replicated, site comparison study in Canada\\u00a0found that the management of road verges (and land under power lines) did not affect the species richness of butterflies.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (3 studies): Two replicated studies (including one paired, controlled study) in the UK\\u00a0and Canada\\u00a0found that unmown public parks\\u00a0and road verges (and land under power lines)\\u00a0had a higher abundance of all adult butterflies\\u00a0and pearl crescent and northern pearl crescent butterflies\\u00a0than regularly mown areas, but the abundance of other butterflies on the road verges (and under power lines) was similar between mown and unmown areas in the second study. One study in Finland\\u00a0found that roadsides mown in late summer had more ringlet butterflies than those mown in mid-summer.\\nSurvival (1 study):\\u00a0One\\u00a0replicated, site comparison study in Poland\\u00a0found that road verges mown less frequently, or later in summer, had fewer dead butterflies killed by traffic than more frequently or earlier mown verges.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (2 studies): One replicated, site comparison study in Sweden\\u00a0reported that less frequently mown urban grasslands were more frequently occupied by scarce copper butterflies than more frequently mown grasslands. One replicated, randomized, controlled study in the Netherlands\\u00a0found that butterflies were recorded on verges which were mowed once or twice a year and those which were not mowed, but on mowed verges butterflies were only recorded on those where hay was removed.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What conservation actions can be implemented in urban environments to support butterfly and moth populations?\",\"summary\":\"Protecting greenfield or undeveloped land in urban areas was associated with higher butterfly species richness than urban parks or non-native plantations in site comparisons from Singapore and Mexico [3836]. Altering mowing regimes on urban greenspaces and road verges showed: higher species richness and diversity on less frequently mown or unmown greenspaces in Germany and the UK; no effect on species richness along some Canadian verges; higher abundance on unmown public parks in the UK and on some unmown verges/under power lines in Canada; higher ringlet abundance on Finnish roadsides mown in late summer than mid-summer; fewer traffic-killed butterflies on Polish verges mown less frequently or later; greater occupancy by scarce copper on less frequently mown Swedish urban grasslands; and butterfly presence on Dutch verges mown once or twice a year or not mown, with presence on mowed verges only where hay was removed [3841]. Stopping the use of insecticides and herbicides in gardens was associated with higher butterfly abundance, while not using fungicides and snail pellets was associated with lower butterfly abundance, in a replicated site comparison in France [3900]. No studies were found evaluating the effects of planting trees to reduce urban temperatures on butterflies and moths [3838].\",\"action_ids\":[\"3836\",\"3841\",\"3900\",\"3838\"]}",
+            "return_val": "{\n  \"query\": \"What conservation actions can be implemented in urban environments to support butterfly and moth populations?\",\n  \"relevant_summary\": \"Protecting greenfield or undeveloped land in urban areas was associated with higher butterfly species richness than urban parks or non-native plantations in site comparisons from Singapore and Mexico [3836]. Altering mowing regimes on urban greenspaces and road verges showed: higher species richness and diversity on less frequently mown or unmown greenspaces in Germany and the UK; no effect on species richness along some Canadian verges; higher abundance on unmown public parks in the UK and on some unmown verges/under power lines in Canada; higher ringlet abundance on Finnish roadsides mown in late summer than mid-summer; fewer traffic-killed butterflies on Polish verges mown less frequently or later; greater occupancy by scarce copper on less frequently mown Swedish urban grasslands; and butterfly presence on Dutch verges mown once or twice a year or not mown, with presence on mowed verges only where hay was removed [3841]. Stopping the use of insecticides and herbicides in gardens was associated with higher butterfly abundance, while not using fungicides and snail pellets was associated with lower butterfly abundance, in a replicated site comparison in France [3900]. No studies were found evaluating the effects of planting trees to reduce urban temperatures on butterflies and moths [3838].\",\n  \"action_ids\": [\n    \"3836\",\n    \"3841\",\n    \"3900\",\n    \"3838\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3834",
+      "3835",
+      "3836",
+      "3837",
+      "3838",
+      "3841",
+      "3842",
+      "3899",
+      "3900"
+    ],
+    "regenerated_ids": [
+      "3834",
+      "3836",
+      "3837",
+      "3838",
+      "3841",
+      "3842",
+      "3899",
+      "3900"
+    ]
   }
 ]

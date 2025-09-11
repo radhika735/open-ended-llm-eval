@@ -578,5 +578,197 @@
       "3929",
       "3955"
     ]
+  },
+  {
+    "query": "What does the evidence say about the effectiveness of restoring different types of wetland habitats, such as peatlands and floodplains, for butterfly conservation?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study found that wetland creation increased the diversity of macroinvertebrates, including butterflies and moths, with species richness increasing with the age of the wetland (3949). The restoration of a wetland prairie through seeding and seasonal flooding was found to result in a greater abundance of great copper eggs than in a degraded, unflooded prairie (3949). However, a separate study found that the survival of great copper eggs and caterpillars was lower in a wetland prairie restored with native seed mixes and annual flooding compared to a degraded, unflooded prairie (3949). Despite this, the restored wetland prairie was used more by adult great copper butterflies (3949). In relation to management, fens that were managed by mowing had a greater species richness of butterflies than fens that were managed by cattle grazing (3950). However, recently cut fens or those cut in autumn or winter had a lower number of large copper eggs and lower caterpillar survival than fens that remained uncut (3950).",
+    "summary_action_ids": [
+      "3949",
+      "3950"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of restoring wetland habitats for butterfly conservation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3949\",\n    \"action_title\": \"Restore or create wetlands and floodplains\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3950\",\n    \"action_title\": \"Manage wetlands or ponds by grazing or cutting to prevent succession\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3877\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3949\"}",
+            "return_val": "{\n  \"action_id\": \"3949\",\n  \"action_title\": \"Restore or create wetlands and floodplains\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of restoring or creating wetlands and floodplains. Two studies were in the USA\\u00a0and one was in Sweden.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Sweden\\u00a0found that wetland creation increased macroinvertebrate diversity (including butterflies and moths), and that species richness increased with wetland age and was similar to mature ponds.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One site comparison study in the USA\\u00a0found that wetland prairie restored by seeding willow dock and seasonal flooding had a higher abundance of great copper eggs than degraded, unflooded prairie.\\nSurvival (1 study): One site comparison study in the USA\\u00a0found that the survival of great copper eggs and caterpillars was lower in wetland prairie restored by planting native seed mixes and flooding annually than in degraded, unflooded prairie.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One site comparison study in the USA\\u00a0found that wetland prairie restored by planting native seed mixes and flooding annually was used more by adult great copper than degraded, unflooded prairie.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3950\"}",
+            "return_val": "{\n  \"action_id\": \"3950\",\n  \"action_title\": \"Manage wetlands or ponds by grazing or cutting to prevent succession\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of managing wetlands or ponds by grazing or cutting. Two studies were in the Netherlands\\u00a0and one was in Switzerland.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Switzerland\\u00a0found that fens managed by mowing had a greater species richness of butterflies than fens managed by cattle grazing.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One replicated, site comparison study in the Netherlands\\u00a0found that recently cut fens had fewer large copper eggs than uncut fens.\\nSurvival (2 studies): Two replicated, site comparison studies in the Netherlands\\u00a0found that large copper caterpillar survival was lower in recently cut fens, and fens cut in autumn or winter, than in uncut fens.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What does the evidence say about the effectiveness of restoring different types of wetland habitats, such as peatlands and floodplains, for butterfly conservation?\",\"summary\":\"One study found that wetland creation increased the diversity of macroinvertebrates, including butterflies and moths, with species richness increasing with the age of the wetland (3949). The restoration of a wetland prairie through seeding and seasonal flooding was found to result in a greater abundance of great copper eggs than in a degraded, unflooded prairie (3949). However, a separate study found that the survival of great copper eggs and caterpillars was lower in a wetland prairie restored with native seed mixes and annual flooding compared to a degraded, unflooded prairie (3949). Despite this, the restored wetland prairie was used more by adult great copper butterflies (3949). In relation to management, fens that were managed by mowing had a greater species richness of butterflies than fens that were managed by cattle grazing (3950). However, recently cut fens or those cut in autumn or winter had a lower number of large copper eggs and lower caterpillar survival than fens that remained uncut (3950).\",\"action_ids\":[\"3949\",\"3950\"]}",
+            "return_val": "{\n  \"query\": \"What does the evidence say about the effectiveness of restoring different types of wetland habitats, such as peatlands and floodplains, for butterfly conservation?\",\n  \"relevant_summary\": \"One study found that wetland creation increased the diversity of macroinvertebrates, including butterflies and moths, with species richness increasing with the age of the wetland (3949). The restoration of a wetland prairie through seeding and seasonal flooding was found to result in a greater abundance of great copper eggs than in a degraded, unflooded prairie (3949). However, a separate study found that the survival of great copper eggs and caterpillars was lower in a wetland prairie restored with native seed mixes and annual flooding compared to a degraded, unflooded prairie (3949). Despite this, the restored wetland prairie was used more by adult great copper butterflies (3949). In relation to management, fens that were managed by mowing had a greater species richness of butterflies than fens that were managed by cattle grazing (3950). However, recently cut fens or those cut in autumn or winter had a lower number of large copper eggs and lower caterpillar survival than fens that remained uncut (3950).\",\n  \"action_ids\": [\n    \"3949\",\n    \"3950\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3948",
+      "3949",
+      "3950",
+      "3971"
+    ],
+    "regenerated_ids": [
+      "3948",
+      "3949",
+      "3971"
+    ]
+  },
+  {
+    "query": "What are the documented benefits and negative impacts of using prescribed fire in forest ecosystems for butterfly and moth populations?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "In a review of five studies, prescribed fire was found to have both positive and negative effects on butterfly and moth populations [3877]. In the USA, three studies found that burning coniferous forests, sometimes in combination with thinning, resulted in higher butterfly species richness compared to unburned forests [3877]. One study, however, found similar butterfly species richness between burned and unburned mixed forest and shrubland sites [3877]. Two studies in the USA found that burning pine forests, also sometimes with thinning, led to a higher abundance of butterflies [3877]. Conversely, a study in Australia reported a decrease in Eltham copper caterpillar abundance after selective burning of eucalyptus forests [3877]. Another study in Australia found that early-season burning in a tropical savanna and floodplain increased caterpillar abundance, while late-season burning did not [3878]. The practice of leaving unburned patches during prescribed burns has also been studied. In the USA, one study reported an increase in Karner blue butterfly abundance in oak savannas and prairies where unburned patches were left [3879]. Another US study found that six out of nine specialist butterfly species were more abundant in pine barrens and prairies with unburned areas, while one was less abundant, and two showed no difference [3879]. The same study noted that Karner blue butterflies were observed using all 11 unburned patches that were surveyed [3879]. Finally, a US study found that the abundance of Karner blue butterflies was similar in grasslands burned in summer or autumn compared to unmanaged grasslands [3878].",
+    "summary_action_ids": [
+      "3877",
+      "3879",
+      "3878"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed fire butterfly and moth populations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3877\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3879\",\n    \"action_title\": \"Leave some areas unburned during prescribed burning\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3878\",\n    \"action_title\": \"Change season/timing of prescribed burning\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3877\"}",
+            "return_val": "{\n  \"action_id\": \"3877\",\n  \"action_title\": \"Use prescribed fire to maintain or restore disturbance in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects on butterflies and moths of using prescribed fire to maintain or restore disturbance in forests. Four studies were in the USA\\u00a0and one was in Australia.\\n\\nCOMMUNITY RESPONSE (4 STUDIES)\\n\\nRichness/diversity (4 studies): Three of four studies (including one replicated study, one paired study, two controlled studies, two before-and-after studies, and one site comparison study) in the USA\\u00a0found that coniferous forest restored 1\\u20132 years ago by burning (in combination with thinning)\\u00a0or burned once within the last 20 years, had a higher species richness of butterflies than unburned forest. The fourth study\\u00a0found that mixed forest and shrubland sites which had been burned the year before had similar butterfly species richness to unburned sites.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): Two studies (including one controlled, before-and-after study and one site comparison study) in the USA\\u00a0found that pine forest restored 1\\u20132 years ago by burning (in combination with thinning) had a higher abundance of butterflies than unburned forest. One replicated, before-and-after study in Australia\\u00a0reported that in the spring after selective burning of eucalyptus forest there were fewer Eltham copper caterpillars than before.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3879\"}",
+            "return_val": "{\n  \"action_id\": \"3879\",\n  \"action_title\": \"Leave some areas unburned during prescribed burning\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on butterflies and moths of leaving some areas unburned during prescribed burning. Both studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): One replicated study in the USA\\u00a0reported that the abundance of Karner blue butterflies increased over 2\\u20133 years in oak savannas and prairies where unburned patches were left during prescribed burning. One replicated, site comparison study in the USA\\u00a0found that six out of nine specialist butterfly species were more abundant, one was less abundant, and two had similar abundance in pine barrens and prairies where unburned areas were left during prescribed burning compared to at sites without unburned areas.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated study in the USA\\u00a0reported that Karner blue butterflies were recorded using all 11 unburned patches which were surveyed within oak savannas and prairies managed by burning.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3878\"}",
+            "return_val": "{\n  \"action_id\": \"3878\",\n  \"action_title\": \"Change season/timing of prescribed burning\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on butterflies and moths of changing the season or timing of prescribed burning. One study was in each of Australia\\u00a0and the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): One replicated, controlled, before-and-after study in Australia\\u00a0found that management of a tropical savanna and floodplain with early season burning or no burning for 2\\u20135 years increased the abundance of caterpillars, but management with late season burning did not. One replicated, paired, controlled study in the USA\\u00a0found that Karner blue butterfly abundance was similar on grasslands managed by burning in summer or autumn, and on unmanaged grasslands.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"In a review of five studies, prescribed fire was found to have both positive and negative effects on butterfly and moth populations [3877]. In the USA, three studies found that burning coniferous forests, sometimes in combination with thinning, resulted in higher butterfly species richness compared to unburned forests [3877]. One study, however, found similar butterfly species richness between burned and unburned mixed forest and shrubland sites [3877]. Two studies in the USA found that burning pine forests, also sometimes with thinning, led to a higher abundance of butterflies [3877]. Conversely, a study in Australia reported a decrease in Eltham copper caterpillar abundance after selective burning of eucalyptus forests [3877]. Another study in Australia found that early-season burning in a tropical savanna and floodplain increased caterpillar abundance, while late-season burning did not [3878]. The practice of leaving unburned patches during prescribed burns has also been studied. In the USA, one study reported an increase in Karner blue butterfly abundance in oak savannas and prairies where unburned patches were left [3879]. Another US study found that six out of nine specialist butterfly species were more abundant in pine barrens and prairies with unburned areas, while one was less abundant, and two showed no difference [3879]. The same study noted that Karner blue butterflies were observed using all 11 unburned patches that were surveyed [3879]. Finally, a US study found that the abundance of Karner blue butterflies was similar in grasslands burned in summer or autumn compared to unmanaged grasslands [3878].\",\"action_ids\":[\"3877\",\"3879\",\"3878\"],\"query\":\"What are the documented benefits and negative impacts of using prescribed fire in forest ecosystems for butterfly and moth populations?\"}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and negative impacts of using prescribed fire in forest ecosystems for butterfly and moth populations?\",\n  \"relevant_summary\": \"In a review of five studies, prescribed fire was found to have both positive and negative effects on butterfly and moth populations [3877]. In the USA, three studies found that burning coniferous forests, sometimes in combination with thinning, resulted in higher butterfly species richness compared to unburned forests [3877]. One study, however, found similar butterfly species richness between burned and unburned mixed forest and shrubland sites [3877]. Two studies in the USA found that burning pine forests, also sometimes with thinning, led to a higher abundance of butterflies [3877]. Conversely, a study in Australia reported a decrease in Eltham copper caterpillar abundance after selective burning of eucalyptus forests [3877]. Another study in Australia found that early-season burning in a tropical savanna and floodplain increased caterpillar abundance, while late-season burning did not [3878]. The practice of leaving unburned patches during prescribed burns has also been studied. In the USA, one study reported an increase in Karner blue butterfly abundance in oak savannas and prairies where unburned patches were left [3879]. Another US study found that six out of nine specialist butterfly species were more abundant in pine barrens and prairies with unburned areas, while one was less abundant, and two showed no difference [3879]. The same study noted that Karner blue butterflies were observed using all 11 unburned patches that were surveyed [3879]. Finally, a US study found that the abundance of Karner blue butterflies was similar in grasslands burned in summer or autumn compared to unmanaged grasslands [3878].\",\n  \"action_ids\": [\n    \"3877\",\n    \"3879\",\n    \"3878\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3877",
+      "3878",
+      "3879"
+    ],
+    "regenerated_ids": [
+      "3877"
+    ]
+  },
+  {
+    "query": "What conservation actions can be implemented in urban environments to support butterfly and moth populations?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in France indicated that the cessation of insecticide and herbicide use in gardens led to a greater abundance of butterflies (3900). Conversely, the study also observed a decrease in butterfly numbers in gardens that discontinued the use of fungicides and snail pellets (3900). For the action of planting trees to mitigate urban temperatures, no studies were found that assessed its impact on butterfly and moth populations (3838).",
+    "summary_action_ids": [
+      "3900",
+      "3838"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"butterfly and moth conservation in urban environments\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3900\",\n    \"action_title\": \"Stop using pesticides as seed dressings and sprays in flower beds and greenspace\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3838\",\n    \"action_title\": \"Plant trees to reduce temperatures in cities\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3915\",\n    \"action_title\": \"Pay farmers to cover the costs of conservation measures (as in agri-environment schemes or conservation incentives)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3900\"}",
+            "return_val": "{\n  \"action_id\": \"3900\",\n  \"action_title\": \"Stop using pesticides as seed dressings and sprays in flower beds and greenspace\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on butterflies and moths of stopping the use of pesticides as seed dressings and sprays in flower beds and greenspaces. The study was in France.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, site comparison study in France\\u00a0found that gardens where insecticides and herbicides were not used had a higher abundance of butterflies, but gardens where fungicides and snail pellets were not used had a lower abundance of butterflies\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3838\"}",
+            "return_val": "{\n  \"action_id\": \"3838\",\n  \"action_title\": \"Plant trees to reduce temperatures in cities\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of planting trees to reduce temperatures in cities on butterflies and moths.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"butterfly and moth conservation in urban environments\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3912\",\n    \"action_title\": \"Introduce mated females to increase genetic diversity\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"383\",\n    \"action_title\": \"Control invasive ants on islands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"384\",\n    \"action_title\": \"Control predators not on islands\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What conservation actions can be implemented in urban environments to support butterfly and moth populations?\",\"summary\":\"One study in France indicated that the cessation of insecticide and herbicide use in gardens led to a greater abundance of butterflies (3900). Conversely, the study also observed a decrease in butterfly numbers in gardens that discontinued the use of fungicides and snail pellets (3900). For the action of planting trees to mitigate urban temperatures, no studies were found that assessed its impact on butterfly and moth populations (3838).\",\"action_ids\":[\"3900\",\"3838\"]}",
+            "return_val": "{\n  \"query\": \"What conservation actions can be implemented in urban environments to support butterfly and moth populations?\",\n  \"relevant_summary\": \"One study in France indicated that the cessation of insecticide and herbicide use in gardens led to a greater abundance of butterflies (3900). Conversely, the study also observed a decrease in butterfly numbers in gardens that discontinued the use of fungicides and snail pellets (3900). For the action of planting trees to mitigate urban temperatures, no studies were found that assessed its impact on butterfly and moth populations (3838).\",\n  \"action_ids\": [\n    \"3900\",\n    \"3838\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3834",
+      "3835",
+      "3836",
+      "3837",
+      "3838",
+      "3841",
+      "3842",
+      "3899",
+      "3900"
+    ],
+    "regenerated_ids": [
+      "3834",
+      "3836",
+      "3837",
+      "3838",
+      "3841",
+      "3842",
+      "3899",
+      "3900"
+    ]
   }
 ]

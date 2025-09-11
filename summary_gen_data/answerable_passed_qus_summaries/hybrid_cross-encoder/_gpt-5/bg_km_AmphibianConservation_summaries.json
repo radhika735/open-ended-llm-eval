@@ -3217,5 +3217,295 @@
       "862",
       "877"
     ]
+  },
+  {
+    "query": "What is the state of evidence on the effectiveness of removing various types of invasive predators to benefit native amphibians?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Mammals: One controlled study found rat control had no significant effect on Hochstetter\u2019s frog numbers, while another controlled study found Maud Island frog survival was higher in a predator\u2011proof enclosure; a further study reported 58% first\u2011year survival of translocated Hamilton\u2019s frogs in a predator\u2011proof enclosure (839). Fish (catching): Four studies (including two replicated, controlled) reported increased salamander or frog abundance or increased cascades frog recruitment, survival, and population growth after fish removal; however, before\u2011and\u2011after studies in the UK and Sweden found no significant benefits for great crested newts or green toad breeding success, and fish persisted or were reintroduced (827). Fish (rotenone): Three studies reported increased amphibian species numbers, abundance, recruitment, or newt populations after fish elimination, and one review found increased breeding success for four species with fish control including rotenone; two replicated studies reported many frog mortalities and some negative effects on newts during rotenone application (828). Crayfish: No evidence on the effects of removing or controlling non\u2011native crayfish on amphibian populations (797). Bullfrogs: A replicated, before\u2011and\u2011after study found removing American bullfrogs significantly increased California red\u2011legged frogs; another before\u2011and\u2011after study in the USA and Mexico found leopard frog range expanded after bullfrog eradication; a replicated, before\u2011and\u2011after study reported California red\u2011legged frogs were observed out in the open twice as frequently post\u2011removal (825). Cane toads: No evidence on the effects of removing or controlling invasive cane toads on amphibian populations (798). Cuban tree frogs: One before\u2011and\u2011after study reported increased abundance of squirrel tree frogs and green tree frogs after removal of invasive Cuban tree frogs (822).",
+    "summary_action_ids": [
+      "839",
+      "827",
+      "828",
+      "797",
+      "825",
+      "798",
+      "822"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invasive predator removal amphibians effectiveness evidence types of predators\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"798\",\n    \"action_title\": \"Remove or control invasive cane toads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"822\",\n    \"action_title\": \"Remove or control invasive Cuban tree frogs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"839\",\n    \"action_title\": \"Remove or control mammals\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"remove or control invasive predators amphibians fish crayfish trout mosquitofish bullfrogs predatory fish evidence\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"827\",\n    \"action_title\": \"Remove or control fish by catching\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1035\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Remove the crayfish by electrofishing\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1040\",\n    \"action_title\": \"American bullfrog control: Biological control of co-occurring beneficial species\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1068\",\n    \"action_title\": \"Ponto-Caspian gobies: Using a combination of netting and electrofishing\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1041\",\n    \"action_title\": \"American bullfrog control: Habitat modification\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1047\",\n    \"action_title\": \"American bullfrog control: Collection of egg clutches\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"796\",\n    \"action_title\": \"Encourage aquatic plant growth as refuge against fish predation\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"remove or control mosquitofish invasive fish amphibians evidence\", \"k\": 10, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"827\",\n    \"action_title\": \"Remove or control fish by catching\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1068\",\n    \"action_title\": \"Ponto-Caspian gobies: Using a combination of netting and electrofishing\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"798\",\n    \"action_title\": \"Remove or control invasive cane toads\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1080\",\n    \"action_title\": \"Brown and black bullheads: Using a combination of netting and electrofishing\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"822\",\n    \"action_title\": \"Remove or control invasive Cuban tree frogs\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"839\",\n    \"action_title\": \"Remove or control mammals\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1041\",\n    \"action_title\": \"American bullfrog control: Habitat modification\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1074\",\n    \"action_title\": \"Ponto-Caspian gobies: Use of barriers to prevent migration\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"839\"}",
+            "return_val": "{\n  \"action_id\": \"839\",\n  \"action_title\": \"Remove or control mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in New Zealand\\u00a0found that controlling rats had no significant effect on numbers of Hochstetter\\u2019s frog.\\nOne controlled study in New Zealand\\u00a0found that survival of Maud  Island frogs was significantly higher in a predator-proof enclosure than in the wild. One study in New Zealand found that at 58% of translocated Hamilton's frogs survived the first year within a predator-proof enclosure.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"827\"}",
+            "return_val": "{\n  \"action_id\": \"827\",\n  \"action_title\": \"Remove or control fish by catching\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies (including two replicated, controlled studies) in the USA\\u00a0found that removing fish by catching them significantly increased abundance of salamanders or frogs or increased recruitment, survival and population growth rate of cascades frog. One before-and-after study in the UK found that fish control had no significant effect on great crested newt populations and fish remained or returned within a few years.\\nOne replicated, before-and-after study in Sweden found that fish control did not increase green toad breeding success and fish were soon reintroduced.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"828\"}",
+            "return_val": "{\n  \"action_id\": \"828\",\n  \"action_title\": \"Remove or control fish using rotenone\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated study) in Sweden, the UK and USA found that eliminating fish using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations.\\nOne review in Australia, the UK and USA found that fish control, which included using rotenone, increased breeding success for four amphibian species.\\nTwo replicated studies in Pakistan and the UK found when rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"797\"}",
+            "return_val": "{\n  \"action_id\": \"797\",\n  \"action_title\": \"Remove or control non-native crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing or controlling non-native crayfish on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"825\"}",
+            "return_val": "{\n  \"action_id\": \"825\",\n  \"action_title\": \"Remove or control invasive bullfrogs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the USA\\u00a0found that removing American bullfrogs significantly increased a population of California red-legged frogs. \\nOne before-and-after study in the USA and Mexico found that eradicating bullfrogs from the area increased the range of leopard frogs. One replicated, before-and-after study in the USA found that once bullfrogs had been removed, California red-legged frogs were found out in the open twice as frequently.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"798\"}",
+            "return_val": "{\n  \"action_id\": \"798\",\n  \"action_title\": \"Remove or control invasive cane toads\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing or controlling invasive cane toads on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"822\"}",
+            "return_val": "{\n  \"action_id\": \"822\",\n  \"action_title\": \"Remove or control invasive Cuban tree frogs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in the USA found that the abundance of squirrel tree frogs and green tree frogs increased after removal of invasive Cuban tree frogs.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the state of evidence on the effectiveness of removing various types of invasive predators to benefit native amphibians?\",\"summary\":\"Mammals: One controlled study found rat control had no significant effect on Hochstetter\u2019s frog numbers, while another controlled study found Maud Island frog survival was higher in a predator\u2011proof enclosure; a further study reported 58% first\u2011year survival of translocated Hamilton\u2019s frogs in a predator\u2011proof enclosure (839). Fish (catching): Four studies (including two replicated, controlled) reported increased salamander or frog abundance or increased cascades frog recruitment, survival, and population growth after fish removal; however, before\u2011and\u2011after studies in the UK and Sweden found no significant benefits for great crested newts or green toad breeding success, and fish persisted or were reintroduced (827). Fish (rotenone): Three studies reported increased amphibian species numbers, abundance, recruitment, or newt populations after fish elimination, and one review found increased breeding success for four species with fish control including rotenone; two replicated studies reported many frog mortalities and some negative effects on newts during rotenone application (828). Crayfish: No evidence on the effects of removing or controlling non\u2011native crayfish on amphibian populations (797). Bullfrogs: A replicated, before\u2011and\u2011after study found removing American bullfrogs significantly increased California red\u2011legged frogs; another before\u2011and\u2011after study in the USA and Mexico found leopard frog range expanded after bullfrog eradication; a replicated, before\u2011and\u2011after study reported California red\u2011legged frogs were observed out in the open twice as frequently post\u2011removal (825). Cane toads: No evidence on the effects of removing or controlling invasive cane toads on amphibian populations (798). Cuban tree frogs: One before\u2011and\u2011after study reported increased abundance of squirrel tree frogs and green tree frogs after removal of invasive Cuban tree frogs (822).\",\"action_ids\":[\"839\",\"827\",\"828\",\"797\",\"825\",\"798\",\"822\"]}",
+            "return_val": "{\n  \"query\": \"What is the state of evidence on the effectiveness of removing various types of invasive predators to benefit native amphibians?\",\n  \"relevant_summary\": \"Mammals: One controlled study found rat control had no significant effect on Hochstetter\\u2019s frog numbers, while another controlled study found Maud Island frog survival was higher in a predator\\u2011proof enclosure; a further study reported 58% first\\u2011year survival of translocated Hamilton\\u2019s frogs in a predator\\u2011proof enclosure (839). Fish (catching): Four studies (including two replicated, controlled) reported increased salamander or frog abundance or increased cascades frog recruitment, survival, and population growth after fish removal; however, before\\u2011and\\u2011after studies in the UK and Sweden found no significant benefits for great crested newts or green toad breeding success, and fish persisted or were reintroduced (827). Fish (rotenone): Three studies reported increased amphibian species numbers, abundance, recruitment, or newt populations after fish elimination, and one review found increased breeding success for four species with fish control including rotenone; two replicated studies reported many frog mortalities and some negative effects on newts during rotenone application (828). Crayfish: No evidence on the effects of removing or controlling non\\u2011native crayfish on amphibian populations (797). Bullfrogs: A replicated, before\\u2011and\\u2011after study found removing American bullfrogs significantly increased California red\\u2011legged frogs; another before\\u2011and\\u2011after study in the USA and Mexico found leopard frog range expanded after bullfrog eradication; a replicated, before\\u2011and\\u2011after study reported California red\\u2011legged frogs were observed out in the open twice as frequently post\\u2011removal (825). Cane toads: No evidence on the effects of removing or controlling invasive cane toads on amphibian populations (798). Cuban tree frogs: One before\\u2011and\\u2011after study reported increased abundance of squirrel tree frogs and green tree frogs after removal of invasive Cuban tree frogs (822).\",\n  \"action_ids\": [\n    \"839\",\n    \"827\",\n    \"828\",\n    \"797\",\n    \"825\",\n    \"798\",\n    \"822\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "797",
+      "798",
+      "822",
+      "825",
+      "826",
+      "827",
+      "828",
+      "829",
+      "830",
+      "839"
+    ],
+    "regenerated_ids": [
+      "797",
+      "822",
+      "825",
+      "826",
+      "827",
+      "828",
+      "829",
+      "830",
+      "839"
+    ]
+  },
+  {
+    "query": "How does the success of reintroduction programs using captive-bred amphibians differ for Mallorcan midwife toads in Mallorca compared to green and golden bell frogs in Australia?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "In Mallorca, captive-bred Mallorcan midwife toads released as tadpoles, toadlets or adults established breeding populations at 38%, 80% or 100% of sites, respectively [873]. In Australia, captive-bred green and golden bell frogs released mainly as tadpoles generally did not establish breeding populations, with stable breeding achieved following only one of four release programmes; a small proportion of released tadpoles survived at least 13 months after release [872].",
+    "summary_action_ids": [
+      "873",
+      "872"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"reintroduction captive-bred amphibians Mallorcan midwife toad Mallorca success; green and golden bell frog Australia reintroduction captive-bred success\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"837\",\n    \"action_title\": \"Captive breeding Mallorcan midwife toads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"873\",\n    \"action_title\": \"Release captive-bred Mallorcan midwife toads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"872\",\n    \"action_title\": \"Release captive-bred green and golden bell frogs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"837\"}",
+            "return_val": "{\n  \"action_id\": \"837\",\n  \"action_title\": \"Captive breeding Mallorcan midwife toads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in the UK found that Mallorcan midwife toads produced eggs that were raised to metamorphs or toadlets successfully in captivity. One found that clutches dropped by males were not successfully maintained artificially.\\nOne replicated study in the UK found that survival to metamorphosis was 85%. One randomized, replicated, controlled study in the UK found that toads bred in captivity for nine or more generations had slower tadpole development, reduction in one predator defence trait and decreased genetic diversity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"873\"}",
+            "return_val": "{\n  \"action_id\": \"873\",\n  \"action_title\": \"Release captive-bred Mallorcan midwife toads\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated study and one review) in Mallorca found that captive-bred midwife toads released as tadpoles, toadlets or adults established breeding populations at 38%, 80% or 100% of sites.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that predator defences were maintained, but genetic diversity reduced in a captive-bred reintroduced population.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"872\"}",
+            "return_val": "{\n  \"action_id\": \"872\",\n  \"action_title\": \"Release captive-bred green and golden bell frogs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne review and two before-and-after studies in Australia found that captive-bred green and golden bell frogs released mainly as tadpoles did not established breeding populations, or only established stable breeding populations following one of four release programmes.\\nOne study in Australia found that a small proportion of captive-bred green and golden bell frog released as tadpoles survived at least 13 months after release.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How does the success of reintroduction programs using captive-bred amphibians differ for Mallorcan midwife toads in Mallorca compared to green and golden bell frogs in Australia?\",\"summary\":\"In Mallorca, captive-bred Mallorcan midwife toads released as tadpoles, toadlets or adults established breeding populations at 38%, 80% or 100% of sites, respectively [873]. In Australia, captive-bred green and golden bell frogs released mainly as tadpoles generally did not establish breeding populations, with stable breeding achieved following only one of four release programmes; a small proportion of released tadpoles survived at least 13 months after release [872].\",\"action_ids\":[\"873\",\"872\"]}",
+            "return_val": "{\n  \"query\": \"How does the success of reintroduction programs using captive-bred amphibians differ for Mallorcan midwife toads in Mallorca compared to green and golden bell frogs in Australia?\",\n  \"relevant_summary\": \"In Mallorca, captive-bred Mallorcan midwife toads released as tadpoles, toadlets or adults established breeding populations at 38%, 80% or 100% of sites, respectively [873]. In Australia, captive-bred green and golden bell frogs released mainly as tadpoles generally did not establish breeding populations, with stable breeding achieved following only one of four release programmes; a small proportion of released tadpoles survived at least 13 months after release [872].\",\n  \"action_ids\": [\n    \"873\",\n    \"872\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "870",
+      "871",
+      "872",
+      "873",
+      "874",
+      "875"
+    ],
+    "regenerated_ids": [
+      "872",
+      "873"
+    ]
+  },
+  {
+    "query": "In Australian captive breeding programs, how do artificial fertilization and hormone treatments compare in their success and challenges for frogs?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across studies that included Australia, hormone treatments to induce reproduction showed that males commonly produced or increased sperm and sometimes resulted in successful captive breeding, though in one case hormone treatment did not lead to breeding; in females, results were mixed with 30\u201371% producing viable eggs and outcomes depending on hormone type, dose, or dosing schedule, with some hormone-induced eggs successfully reared to later stages but other cases reporting high early mortality [883]. For artificial fertilization, studies including Australia found success depended on the hormone regimen used to stimulate eggs, and one Australian study reported 55% of eggs were fertilized artificially but the embryos soon died [834].",
+    "summary_action_ids": [
+      "883",
+      "834"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Australian captive breeding artificial fertilization hormone treatments frogs\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"883\",\n    \"action_title\": \"Use hormone treatment to induce sperm and egg release during captive breeding\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3767\",\n    \"action_title\": \"Use hormones and/or other drugs during captive-breeding programmes to induce reproduction/birth\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"835\",\n    \"action_title\": \"Captive breeding frogs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"883\"}",
+            "return_val": "{\n  \"action_id\": \"883\",\n  \"action_title\": \"Use hormone treatment to induce sperm and egg release during captive breeding\",\n  \"key_messages\": \"Key Messages:\\n\\nOne review and nine of 10 replicated studies (including two randomized, controlled studies) in Austria, Australia, China, Latvia, Russia and the USA\\u00a0found that hormone treatment of male amphibians stimulated or increased sperm production (Mansour, Lahnsteiner & Patzner 2010, Silla 2011) or resulted in successful breeding in captivity. One found that hormone treatment of males and females did not result in breeding. Four found that the amount and viability of sperm produced was affected by the type, amount or number of doses of hormone.\\nOne review and nine of 14 replicated studies (including six randomized and/or controlled studies) in Australia, Canada, China, Ecuador, Latvia and the USA\\u00a0found that hormone treatment of female amphibians had mixed results, with 30\\u201371% of females producing viable eggs following treatment, or with egg production depending on the combination, amount or number of doses of hormones. Three found that hormone treatment stimulated egg production or successful breeding in captivity. Two found that hormone treatment did not stimulate or increase egg production.\\nFive replicated studies (including one controlled study) in Canada, Latvia and the USA found that eggs induced by hormone treatment were raised successfully to tadpoles, toadlets or froglets in captivity. Two replicated studies, one of which was small, in Ecuador and the USA found that most toads died before or soon after hatching.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3767\"}",
+            "return_val": "{\n  \"action_id\": \"3767\",\n  \"action_title\": \"Use hormones and/or other drugs during captive-breeding programmes to induce reproduction/birth\",\n  \"key_messages\": \"Key Messages:\\n\\nNine studies evaluated the effects on reptile populations of using hormones and/or other drugs during captive-breeding programmes to induce reproduction/birth. Three studies were in each of the USA and New Zealand and one study was in each of the Netherlands, China and Japan.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (9 STUDIES)\\n\\nReproductive success (9 studies): Three of four replicated, controlled studies (including one before-and-after study) in the USA and China found that plains gartersnakes, eastern painted turtles and red-eared sliders induced with oxytocin produced a similar percentage of live young compared to individuals that were not induced and laid eggs with similar hatching success or laid a similar number of eggs compared to what was observed in wild nests. The other study found that 25% of eggs from hormone-injected (luteinizing hormone and gonadotropin) four-eyed turtles were fertile, compared to 7\\u201352% for females that were not injected or injected with a saline solution. One study also found mixed effects of different combinations of hormones and other drugs on inducing 13 turtle species. Five studies (including one before-and-after study) in the Netherlands, New Zealand and Japan found that oxytocin, arginine vasotocin and follicle-stimulating hormone induced egg laying/birth in yellow-headed box turtles, tuatara and common geckos or ovulation in hawksbill turtles. One study also found that only one yellow-headed box turtle female produced fertile eggs.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"835\"}",
+            "return_val": "{\n  \"action_id\": \"835\",\n  \"action_title\": \"Captive breeding frogs\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-three studies investigated the success of breeding frogs in captivity.\\nTwenty-three of 33 studies, three of which were reviews and 30 replicated studies, across the world\\u00a0found that amphibians produced egg in captivity, in four cases by captive-bred females. Seven found mixed results, with some species of frogs or 17\\u201350% of captive populations \\u00a0reproducing successfully in captivity, but with other species difficult to maintain or raise to adults. One found that frogs did not breed successfully in captivity and another that all breeding frogs died. Seventeen of the studies found that captive-bred frogs were raised successfully to hatching, tadpoles, froglets or adults in captivity. One found that froglet survival was low and another that three species were not successfully raised to adulthood.\\nFour replicated studies (including one small study) in,Canada, Fiji, Hong Kong and Italy found that 30\\u201388% of eggs hatched or survival to metamorphosis was 75%, as froglets was 17\\u201351% or to adults was 50\\u201390% in captivity.\\nOne review and four replicated studies (including two small studies) in Germany, Italy and the USA found that reproductive success of frogs in captivity depended on temperature or a simulated wet and dry season, but not on whether frogs were housed in high or low maintenance facilities. Three replicated studies (including one small study) in Germany, Australia and Canada found that egg or tadpole development in captivity was affected by parental care, density or temperature.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"artificial fertilization frogs Australia captive breeding artificial fertilisation in vitro fertilization amphibians Australia\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"834\",\n    \"action_title\": \"Use artificial fertilization in captive breeding\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"835\",\n    \"action_title\": \"Captive breeding frogs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"601\",\n    \"action_title\": \"Use artificial insemination in captive breeding\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"834\"}",
+            "return_val": "{\n  \"action_id\": \"834\",\n  \"action_title\": \"Use artificial fertilization in captive breeding\",\n  \"key_messages\": \"Key Messages:\\n\\nThree replicated studies (including two randomized studies) in Australia and the USA found that the success of artificial fertilization depended on the type and number of doses of hormones used to stimulate egg production. One replicated study in Australia found that 55% of eggs were fertilized artificially, but soon died.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"601\"}",
+            "return_val": "{\n  \"action_id\": \"601\",\n  \"action_title\": \"Use artificial insemination in captive breeding\",\n  \"key_messages\": \"Key Messages:\\n\\nA review of artificial insemination argued that it could be a useful tool to conservationists, but that there were challenges to its use. Deep and repeated inseminations increased fertility.\\nTwo trials from the USA found that artificial insemination of raptors achieved approximately 50% fertility or 0%.\\nA review of a houbara bustard Chlamydotis undulata macqueenii captive breeding programme in Saudi Arabia found that artificial insemination increased fertility, whilst another review found that the highest fertility levels were achieved with inseminations of at least 10 million spermatozoa every 4\\u20135 days.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Australia frog hormone treatment captive breeding success eggs sperm viability Australia study\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"883\",\n    \"action_title\": \"Use hormone treatment to induce sperm and egg release during captive breeding\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"876\",\n    \"action_title\": \"Freeze sperm or eggs for future use\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"834\",\n    \"action_title\": \"Use artificial fertilization in captive breeding\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"In Australian captive breeding programs, how do artificial fertilization and hormone treatments compare in their success and challenges for frogs?\",\"summary\":\"Across studies that included Australia, hormone treatments to induce reproduction showed that males commonly produced or increased sperm and sometimes resulted in successful captive breeding, though in one case hormone treatment did not lead to breeding; in females, results were mixed with 30\u201371% producing viable eggs and outcomes depending on hormone type, dose, or dosing schedule, with some hormone-induced eggs successfully reared to later stages but other cases reporting high early mortality [883]. For artificial fertilization, studies including Australia found success depended on the hormone regimen used to stimulate eggs, and one Australian study reported 55% of eggs were fertilized artificially but the embryos soon died [834].\",\"action_ids\":[\"883\",\"834\"]}",
+            "return_val": "{\n  \"query\": \"In Australian captive breeding programs, how do artificial fertilization and hormone treatments compare in their success and challenges for frogs?\",\n  \"relevant_summary\": \"Across studies that included Australia, hormone treatments to induce reproduction showed that males commonly produced or increased sperm and sometimes resulted in successful captive breeding, though in one case hormone treatment did not lead to breeding; in females, results were mixed with 30\\u201371% producing viable eggs and outcomes depending on hormone type, dose, or dosing schedule, with some hormone-induced eggs successfully reared to later stages but other cases reporting high early mortality [883]. For artificial fertilization, studies including Australia found success depended on the hormone regimen used to stimulate eggs, and one Australian study reported 55% of eggs were fertilized artificially but the embryos soon died [834].\",\n  \"action_ids\": [\n    \"883\",\n    \"834\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "834",
+      "835",
+      "870",
+      "872",
+      "876",
+      "883"
+    ],
+    "regenerated_ids": [
+      "834",
+      "872",
+      "876",
+      "883"
+    ]
   }
 ]
