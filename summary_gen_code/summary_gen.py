@@ -25,6 +25,7 @@ if RETRIEVAL_TYPE == "hybrid":
     FUSION_TYPE = "cross-encoder" # other option: "reciprocal rank fusion"
 
 
+
 # API Configuration
 def get_client():
     """
@@ -40,6 +41,7 @@ def get_client():
         base_url="https://openrouter.ai/api/v1",
         api_key=api_key,
     )
+
 
 
 def search_actions(query_string, k=3, offset=0):
@@ -60,6 +62,7 @@ def search_actions(query_string, k=3, offset=0):
     else:
         logging.warning("Invalid RETRIEVAL_TYPE set for retrieving action documents by similarity to query string. Must be either 'sparse', 'dense' or 'hybrid'. Defaulting to sparse retrieval.")
         return sparse_retrieve_docs(query_string=query_string, context=RAG_ACTION_CONTEXT, k=k, offset=offset)
+
 
 
 def get_action_details(action_id):
@@ -104,6 +107,7 @@ def get_formatted_result(query, summary, action_ids):
     }
     return formatted_result
     
+
 
 # Tool definition for OpenAI/OpenRouter function calling
 tools = [
@@ -190,6 +194,7 @@ TOOL_MAPPING = {
 }
 
 
+
 def call_llm(messages, model, provider):
     """
     Make a call to the LLM with tool capabilities.
@@ -253,6 +258,7 @@ def call_llm(messages, model, provider):
         return call_llm(messages=messages, model=model, provider=provider)
 
 
+
 def execute_tool_call(tool_call):
     """
     Execute a tool call and return the result.
@@ -291,6 +297,7 @@ def execute_tool_call(tool_call):
             "content": "NONE - ERRONEOUS TOOL CALL"
         }
         return full_tool_details, tool_success
+
 
 
 def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None, max_iterations=10):
@@ -404,6 +411,7 @@ def run_agentic_loop(user_query, model="google/gemini-2.5-flash", provider=None,
     return final_message_content, all_tool_calls# FAILED EXIT
 
 
+
 def get_prev_summaries(filename):
     if os.path.exists(filename):
         try:
@@ -420,6 +428,7 @@ def get_prev_summaries(filename):
         logging.info(f"Creating new summary output file {filename}.")
         return []
     
+
 
 def assemble_summary_details(qu_details : dict, llm_response : dict, tool_use_track, model, provider="unpinned"):
     print("assembling summary")
@@ -460,6 +469,7 @@ def assemble_summary_details(qu_details : dict, llm_response : dict, tool_use_tr
     return summary_details
 
 
+
 def write_to_json_file(data_list, filename):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     try:
@@ -469,19 +479,26 @@ def write_to_json_file(data_list, filename):
         logging.error(f"Error writing to JSON file {filename}: {e}")
 
 
-def append_new_summary(summary, filename, reset_file = False):
-    if not reset_file:
-        try:
-            all_summaries = get_prev_summaries(filename=filename)
-        except RetrievalError as e:
-            logging.error(f"Could not load existing summaries, so failed writing new summary to file {filename}. Error: {e}")
-            return
-        all_summaries.append(summary)
-    else:
-        all_summaries = [summary]
 
-    write_to_json_file(data_list=all_summaries, filename=filename)
-    logging.info(f"Updated {filename} with new summary.")
+def append_new_summary(summary, out_filepaths, reset_file = False):
+    out_data = []
+    for filepath in out_filepaths:
+        all_summaries = []
+        if not reset_file:
+            try:
+                all_summaries = get_prev_summaries(filename=filepath)
+            except RetrievalError as e:
+                logging.error(f"Could not load existing summaries, so failed writing new summary to file {filepath}. Error: {e}")
+                return
+            all_summaries.append(summary)
+        else:
+            all_summaries = [summary]
+        out_data.append((all_summaries, filepath))
+
+    for data, filepath in out_data:
+        write_to_json_file(data_list=data, filename=filepath)
+        logging.info(f"Updated {filepath} with new summary.")
+
 
 
 def parse_model_name(model):
@@ -496,6 +513,7 @@ def parse_model_name(model):
     return cleaned_name
 
 
+
 def parse_provider_name(provider):
     if provider is not None:
         provider_split = provider.split("/")
@@ -505,12 +523,14 @@ def parse_provider_name(provider):
         return ""
 
 
+
 def run_models(query, model_provider_list):
     model_summaries = []
     for model, provider in model_provider_list:
         response, tool_calls = run_agentic_loop(user_query=query, model=model, provider=provider)
         model_summaries.append((model, provider, response, tool_calls))
     return model_summaries
+
 
 
 def get_questions_from_file(filename):
@@ -528,7 +548,8 @@ def get_questions_from_file(filename):
         raise RetrievalError(f"Questions file {filename} not found.")
     
 
-def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dir, summary_filename, model_provider_list):
+
+def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dirs, summary_filename, model_provider_list):
     try:
         file_qu_dicts = get_questions_from_file(queries_filepath)
     except RetrievalError as e:
@@ -556,9 +577,13 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dir,
             for model, provider, response, tool_calls in model_summaries:
                 cleaned_model_name = parse_model_name(model)
                 cleaned_provider_name = parse_provider_name(provider)
-                summary_out_filepath = os.path.join(summary_out_base_dir, f"{cleaned_provider_name}_{cleaned_model_name}", summary_filename)
+
+                summary_out_filepaths = []
+                for dir in summary_out_base_dirs:
+                    summary_out_filepaths.append(os.path.join(dir, f"{cleaned_provider_name}_{cleaned_model_name}", summary_filename))
+
                 assembled_summary = assemble_summary_details(qu_details=qu_dict, llm_response=response, tool_use_track=tool_calls, model=model, provider=provider)
-                append_new_summary(summary=assembled_summary, filename=summary_out_filepath)
+                append_new_summary(summary=assembled_summary, out_filepaths=summary_out_filepaths)
 
             qu_dict["used_by_models"] = used_by_models + unused_by_models
             qu_count += 1
@@ -567,29 +592,31 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dir,
     write_to_json_file(data_list=qu_dicts, filename=queries_filepath)
 
 
-def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_dir, offset_to_first_qu_file=0, max_qu_files=1, max_qus=1): 
+
+def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_dirs, offset_to_first_qu_file=0, max_qu_files=1, max_qus_per_file=1): 
     if not os.path.exists(qus_dir):
         logging.error(f"Questions directory {qus_dir} does not exist.")
         return
     else:
         logging.info(f"Starting summary generation for questions in directory {qus_dir}.")
-        qus_filenames = []
-        for qus_filename in sorted(os.listdir(qus_dir)):
-            if qus_filename.endswith(".json"):
-                qus_filenames.append(qus_filename)
+
+        retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
+        new_summary_out_base_dirs = [os.path.join(dir, retrieval_subdir) for dir in summary_out_base_dirs]
+
+        qus_filenames = [name for name in sorted(os.listdir(qus_dir)) if name.endswith(".json")]
 
         for qus_filename in qus_filenames[offset_to_first_qu_file : offset_to_first_qu_file + max_qu_files]:
             if qus_filename.endswith(".json"):
-                retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
                 filename_list = os.path.splitext(qus_filename)[0].split("_")
                 filename_list[-1] = "summaries"
                 summary_filename = "_".join(filename_list) + ".json"
+
                 run_summary_gen_for_qu_file(
-                    queries_filepath=os.path.join(qus_dir, qus_filename),
-                    max_qus=max_qus,
-                    summary_out_base_dir=os.path.join(summary_out_base_dir, retrieval_subdir), 
-                    summary_filename=summary_filename, 
-                    model_provider_list=model_provider_list
+                    queries_filepath = os.path.join(qus_dir, qus_filename),
+                    max_qus = max_qus_per_file,
+                    summary_out_base_dirs = new_summary_out_base_dirs, 
+                    summary_filename = summary_filename, 
+                    model_provider_list = model_provider_list
                 )
             
 
@@ -601,32 +628,38 @@ def main():
     # disable bm25s logging
     logging.getLogger("bm25s").setLevel(logging.WARNING)
 
-    model_provider_list = [
+    MODEL_PROVIDER_LIST = [
         ("openai/gpt-5", None),
         ("anthropic/claude-sonnet-4", None),
         ("google/gemini-2.5-pro", None),
         ("moonshotai/kimi-k2-0905", "fireworks/fp8")
     ]
 
+    QU_TYPE = "answerable" # options: "answerable", "unanswerable"
+    FILTER_STAGE = "passed" # options: "passed", "failed"
+    OFFSET = 0
+    MAX_QU_FILES = 8
+    MAX_QUS_PER_FILE = 3
+
     ## SUMMARY GENERATION PROCESS
+    outer_summaries_dir = f"live_summaries/{QU_TYPE}_{FILTER_STAGE}_qus_summaries"
+    qus_dir = f"live_questions/bg_km_qus/{QU_TYPE}/{FILTER_STAGE}/usage_annotated"
+    summary_out_base_dirs = [
+        os.path.join(outer_summaries_dir, "all_eval_stages_for_evaluation"),
+        os.path.join(outer_summaries_dir, "eval_annotated")
+    ]
+
+
     logging.info("STARTING summary generation process.")
     start_time = time.monotonic()
-    qu_type = "answerable" # options: "answerable", "unanswerable"
-    filter_stage = "passed" # options: "passed", "failed"
-    qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/usage_annotated"
-    summary_out_base_dir = f"summary_gen_data/{qu_type}_{filter_stage}_qus_summaries"
-    offset = 0
-    max_qu_files = 10
-    max_qus = 2
-
     try:
         run_summary_gen_for_qu_dir(
             qus_dir = qus_dir,
-            model_provider_list=model_provider_list, 
-            summary_out_base_dir=summary_out_base_dir, 
-            max_qu_files=max_qu_files,
-            offset_to_first_qu_file=offset,
-            max_qus=max_qus
+            model_provider_list=MODEL_PROVIDER_LIST, 
+            summary_out_base_dirs=summary_out_base_dirs, 
+            max_qu_files=MAX_QU_FILES,
+            offset_to_first_qu_file=OFFSET,
+            max_qus_per_file=MAX_QUS_PER_FILE
         )
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {e}")
