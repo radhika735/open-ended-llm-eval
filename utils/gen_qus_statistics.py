@@ -160,7 +160,7 @@ def write_distribution_file(id_dist, filepath):
             file.write(synopsis + "," + ids + "\n")
 
 
-def get_summary_gen_qus_usage(model, provider, qu_types=["answerable", "unanswerable"], filter_stage=["passed", "failed"]):
+def get_summary_gen_qus_usage_separate(model, provider, qu_types=["answerable", "unanswerable"], filter_stage=["passed", "failed"]):
     usage = []
 
     for qu_type in qu_types:
@@ -185,6 +185,21 @@ def get_summary_gen_qus_usage(model, provider, qu_types=["answerable", "unanswer
             })
 
     return usage
+
+
+def get_summary_gen_qus_usage_combined(model, provider, qu_types=["answerable", "unanswerable"], filter_stage=["passed", "failed"]):
+    total_used = 0
+    total_unused = 0
+
+    usage = get_summary_gen_qus_usage_separate(model=model, provider=provider, qu_types=qu_types, filter_stage=filter_stage)
+    for u in usage:
+        total_used += u["used"]
+        total_unused += u["unused"]
+
+    return {
+        "used": total_used,
+        "unused": total_unused
+    }
 
 
 def get_viable_summaries_split_for_model(model_provider):
@@ -263,7 +278,7 @@ def main():
     ]
 
     for model, provider in model_provider_list:
-        usage = get_summary_gen_qus_usage(model, provider)
+        usage = get_summary_gen_qus_usage_combined(model, provider)
         print(f"\n\nModel: {model}, Provider: {provider}, Usage: {usage}")
 
     for mp in cleaned_mp_list:
