@@ -619,7 +619,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
 
 
 def main():
-    logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename = "logfiles/summary_gen_parallel.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
     # disable bm25s logging
@@ -634,9 +634,9 @@ def main():
 
     QU_TYPE = "answerable" # options: "answerable", "unanswerable"
     FILTER_STAGE = "passed" # options: "passed", "failed"
-    OFFSET = 0
-    MAX_QU_FILES = 8
-    MAX_QUS_PER_FILE = 3
+    OFFSET = 10
+    MAX_QU_FILES = 1
+    MAX_QUS_PER_FILE = 1
 
 
     ## SUMMARY GENERATION PROCESS
@@ -647,7 +647,7 @@ def main():
     summary_out_base_dirs = [
         os.path.join(outer_summaries_dir, retrieval_subdir, "all_eval_stages"),
         os.path.join(outer_summaries_dir, retrieval_subdir, "eval_annotated"),
-        os.path.join(f"summary_gen_data/{QU_TYPE}_{FILTER_STAGE}/_qus_summaries", retrieval_subdir)
+        os.path.join(f"summary_gen_data/{QU_TYPE}_{FILTER_STAGE}_qus_summaries", retrieval_subdir)
     ]
 
     logging.info("STARTING summary generation process.")
