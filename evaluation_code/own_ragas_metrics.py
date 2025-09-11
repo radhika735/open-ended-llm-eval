@@ -1,5 +1,4 @@
-# copied heavily from "Evaluation of RAG Metrics for Question Answering in the Telecom Domain" paper
-from multiprocessing import context
+# some parts copied heavily from "Evaluation of RAG Metrics for Question Answering in the Telecom Domain" paper
 import os
 import json
 import logging
@@ -7,15 +6,12 @@ import re
 from dotenv import load_dotenv
 from openai import OpenAI
 from google import genai
-from google.genai import types, errors
+from google.genai import types
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-from typer import prompt
 from pydantic import BaseModel, Field
-from pydantic.config import ConfigDict
-from typing import Annotated
 
 from utils import action_parsing
 

@@ -358,20 +358,35 @@ def process_all_synopses(context : FilterContext, first_synopsis="Amphibian Cons
 
 
 def main():
-    # synopsis = "Amphibian Conservation"
-    # queries = ["What are the most effective interventions for controlling invasive predators to protect native amphibian populations?"]
-    # stored_action_ids = [["797", "798", "821", "822", "825", "826", "827", "828", "829", "830", "839"]]
-    # print(get_llm_relevant_actions(query_list=queries, synopsis=synopsis))
-
     logging.basicConfig(filename="logfiles/qus_filter_by_all_relevant_actions.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
-    QUS_SOURCE_DIR = "question_gen_data/bg_km_multi_action_data/bg_km_qus/unanswerable"
+    QU_TYPE = "answerable" # options: "answerable", "unanswerable"
     MAX_CALLS = 20
     MAX_SYNOPSES = 25
 
-    context = FilterContext(qus_base_dir=QUS_SOURCE_DIR, max_calls=MAX_CALLS, max_synopses=MAX_SYNOPSES)
+
+    ## QUESTION FILTERING PROCESS
+
+    outer_dir = f"live_questions/bg_km_qus"
+    untested_qus_dir = os.path.join(outer_dir, QU_TYPE, "untested")
+    passed_qus_dirs = [
+        os.path.join(outer_dir, QU_TYPE, "passed/all_usage_stages_for_summary_gen"),
+        os.path.join(outer_dir, QU_TYPE, "passed/usage_annotated")
+    ]
+    failed_qus_dirs = [
+        os.path.join(outer_dir, QU_TYPE, "failed/all_usage_stages_for_summary_gen"),
+        os.path.join(outer_dir, QU_TYPE, "failed/usage_annotated")
+    ]
+
+    context = FilterContext(
+        max_calls=MAX_CALLS, 
+        max_synopses=MAX_SYNOPSES,
+        untested_qus_dir=untested_qus_dir,
+        passed_qus_dirs=passed_qus_dirs,
+        failed_qus_dirs=failed_qus_dirs
+    )
 
     logging.info("STARTING question filtering process.")
     process_all_synopses(context=context, first_synopsis="Amphibian Conservation")
