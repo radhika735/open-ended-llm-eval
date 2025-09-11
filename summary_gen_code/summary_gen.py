@@ -620,7 +620,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
 
 
 def main():
-    logging.basicConfig(filename = "logfiles/summary_gen_parallel.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
     # disable bm25s logging
@@ -633,9 +633,9 @@ def main():
         ("moonshotai/kimi-k2-0905", "fireworks/fp8")
     ]
 
-    QU_TYPE = "unanswerable" # options: "answerable", "unanswerable"
+    QU_TYPE = "answerable" # options: "answerable", "unanswerable"
     FILTER_STAGE = "passed" # options: "passed", "failed"
-    OFFSET = 0
+    OFFSET_TO_FIRST_QU_FILE = 0
     MAX_QU_FILES = 10
     MAX_QUS_PER_FILE = 10
 

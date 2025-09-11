@@ -105,25 +105,6 @@ def get_id_dist_all_synopses(qus_dir, action_doc_type="bg_km"):
     return full_id_dist
 
 
-def get_id_dist_to_rm(id_dist, cutoff=1):
-    # cutoff number of times an id has to be used for it to be included in the id_dist for removal.
-    return {synopsis: {id: count for id, count in id_counts.items() if count >= cutoff}
-            for synopsis, id_counts in id_dist.items()}
-
-
-def get_id_dist_as_str_list(id_dist):
-    all_id_dist_str_list = []
-
-    for synopsis, id_counts in id_dist.items():
-        id_counts_str = ""
-        for id in id_counts.keys():
-            id_counts_str += f"{id} "
-        id_counts_str = id_counts_str.rstrip()
-        all_id_dist_str_list.append([synopsis, id_counts_str])
-
-    return all_id_dist_str_list
-
-
 def get_num_ids_used_for_synopsis(synopsis, qus_dir, action_doc_type="bg_km"):
     id_dist = get_id_dist_for_synopsis(synopsis=synopsis, qus_dir=qus_dir, action_doc_type=action_doc_type)
     return len(id_dist)
