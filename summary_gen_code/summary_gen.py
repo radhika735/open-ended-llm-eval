@@ -564,14 +564,19 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dir,
     write_to_json_file(data_list=qu_dicts, filename=queries_filepath)
 
 
-def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_dir, max_qu_files=1, max_qus=1): 
+def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_dir, offset_to_first_qu_file=0, max_qu_files=1, max_qus=1): 
     qu_file_count = 0
     if not os.path.exists(qus_dir):
         logging.error(f"Questions directory {qus_dir} does not exist.")
         return
     else:
         logging.info(f"Starting summary generation for questions in directory {qus_dir}.")
-        for qus_filename in os.listdir(qus_dir):
+        qus_filenames = []
+        for qus_filename in sorted(os.listdir(qus_dir)):
+            if qus_filename.endswith(".json"):
+                qus_filenames.append(qus_filename)
+
+        for qus_filename in qus_filenames[offset_to_first_qu_file : offset_to_first_qu_file + max_qu_files]:
             if qus_filename.endswith(".json"):
                 if qu_file_count < max_qu_files:
                     retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
@@ -611,6 +616,7 @@ def main():
     filter_stage = "passed" # other option: "failed"
     qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/usage_annotated"
     summary_out_base_dir = f"summary_gen_data/{qu_type}_{filter_stage}_qus_summaries"
+    offset = 0
     max_qu_files = 24
     max_qus = 1
 
@@ -620,6 +626,7 @@ def main():
             model_provider_list=model_provider_list, 
             summary_out_base_dir=summary_out_base_dir, 
             max_qu_files=max_qu_files,
+            offset_to_first_qu_file=offset,
             max_qus=max_qus
         )
     except KeyboardInterrupt as e:
