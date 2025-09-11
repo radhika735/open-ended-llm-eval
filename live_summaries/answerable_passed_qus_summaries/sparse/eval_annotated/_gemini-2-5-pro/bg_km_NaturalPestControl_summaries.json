@@ -1,0 +1,147 @@
+[
+  {
+    "query": "When managing pastureland for natural pest control, is it better to delay mowing/grazing or to use grazing instead of cutting?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Eight studies found that delaying mowing or grazing dates on pasture or grassland can lead to benefits for some plants, invertebrates, or birds, including higher plant species richness, more insect species and individuals, and a greater abundance of some spiders and ground beetles (131). However, six other studies found no clear effect on plant species richness, ground beetle communities, or the abundance of some insects and spiders from the same practice (131).\n\nCeasing mowing altogether to allow for early succession has shown varied effects on butterflies and moths. While some studies found that meadows left uncut all summer had a higher species richness and abundance of butterflies (3957), other studies found that grasslands abandoned for extended periods (1-20 years) had a lower abundance of all butterflies or certain species when compared to mown grasslands (3957). The community composition can also shift, with one study noting that abandoned areas became dominated by generalist butterfly species (3957).\n\nWhen comparing cutting/mowing to grazing, the outcomes are also mixed. One trial in Spain indicated that cutting to mimic grazing increased the number of plant species, but another trial found this was not always the case (1627). Different studies have found that mowing or cutting can increase, decrease, or have no effect on heather abundance compared to grass, depending on the location and specific conditions (1627). Mowing has been found to increase grass cover in some studies and reduce tree cover in another (1627).",
+    "summary_action_ids": [
+      "131",
+      "3957",
+      "1627"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"pastureland management for natural pest control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1392\",\n    \"action_title\": \"Pest regulation: Add compost to the soil\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"720\",\n    \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1393\",\n    \"action_title\": \"Pest regulation: Use organic fertilizer instead of inorganic\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"pest control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1392\",\n    \"action_title\": \"Pest regulation: Add compost to the soil\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1396\",\n    \"action_title\": \"Pest regulation: Use crop rotations\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1393\",\n    \"action_title\": \"Pest regulation: Use organic fertilizer instead of inorganic\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mowing or grazing pastureland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1627\",\n    \"action_title\": \"Use cutting/mowing to mimic grazing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3957\",\n    \"action_title\": \"Cease mowing on grassland to allow early succession\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"131\",\n    \"action_title\": \"Delay mowing or first grazing date on pasture or grassland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1627\"}",
+            "return_val": "{\n  \"action_id\": \"1627\",\n  \"action_title\": \"Use cutting/mowing to mimic grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne systematic review of three studies in lowland heathland in North Western Europe\\u00a0found that mowing did not alter heather abundance relative to grass abundance.\\u00a0A site comparison in Italy\\u00a0found that mowing increased heather cover. Two replicated, randomized, before-and-after trials in Spain\\u00a0(one of which was controlled) found that using cutting to mimic grazing reduced heather cover.\\nOne replicated, randomized, controlled, before-and-after trial in Spain\\u00a0found that cutting increased the number of plant species. However, a replicated, randomized, before-and-after trial\\u00a0found that the number of plant species only increased in a minority of cases.\\nOne replicated, randomized, before-and-after trial in Spain found that cutting to mimic grazing increased grass cover. A site comparison in Italy\\u00a0found that mowing increased grass cover.\\nOne site comparison study in Italy\\u00a0found a reduction in tree cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3957\"}",
+            "return_val": "{\n  \"action_id\": \"3957\",\n  \"action_title\": \"Cease mowing on grassland to allow early succession\",\n  \"key_messages\": \"Key Messages:\\n\\nSixteen studies evaluated the effects on butterflies and moths of ceasing mowing on grassland to allow early succession. Three studies were in Germany, two were in each of the USA, Spain\\u00a0and the Czech Republic, and one was in each of Switzerland, Poland, Slovakia, Hungary, Japan, Russia\\u00a0and Italy.\\n\\nCOMMUNITY RESPONSE (8 STUDIES)\\n\\nCommunity composition (3 studies): Two replicated, site comparison studies in the Czech Republic and Germany found that the community composition of butterflies and moths in grasslands which had been abandoned for &gt;5 years\\u00a0or an unspecified length of time\\u00a0was similar to grasslands managed by mowing or grazing (results not distinguished). One replicated, controlled, before-and-after study in Spain\\u00a0found that after mowing and grazing was abandoned, over 6 years the butterfly community became dominated by generalist species, and species with fewer generations/year.\\n\\n\\nRichness/diversity (7 studies): Five of seven replicated, site comparison studies in Germany, Poland, Japan, the Czech Republic, Russia\\u00a0and Italy\\u00a0found that grasslands which had been abandoned for 3\\u201313 years, 10\\u201320 years\\u00a0or an unspecified length of time, had a similar species richness of butterflies\\u00a0and burnet moths\\u00a0or all moths\\u00a0to grasslands managed by annual\\u00a0or unspecified frequency\\u00a0mowing, or mown within the last three years\\u00a0(in two studies mowing and grazing were not distinguished). One of these studies also found that grasslands abandoned for more than 50 years had lower species richness than grasslands mowed annually to up to 20 years ago, and another found that grasslands abandoned for 6\\u201313 years had a lower species richness of butterflies than grasslands managed by traditional rotational mowing and burning. One of the studies found that meadows not cut all summer had a higher species richness of butterflies than meadows cut 1\\u20133 times/summer. The other study found that grasslands abandoned for at least 5\\u201320 years had a lower species richness of butterflies than grasslands managed by mowing or grazing (results not distinguished).\\n\\nPOPULATION RESPONSE (14 STUDIES)\\n\\nAbundance (14 studies): Four replicated studies (including one randomized, paired, controlled study and three site comparison studies) in Germany, Spain, Slovakia\\u00a0and Hungary\\u00a0found that grasslands which had been abandoned for &gt;1\\u201320 years had a lower abundance of all butterflies\\u00a0or some species of butterfly\\u00a0and caterpillars, than grasslands managed by mowing once\\u00a0or twice\\u00a0per year (in two studies mowing and grazing were not distinguished). Four replicated, site comparison studies (including one paired study) in Germany, the Czech Republic, Russia\\u00a0and Italy\\u00a0found that grasslands which had been abandoned for &gt;3 years, were temporarily abandoned, or were uncut all summer, had a higher abundance of all butterflies, 11 species of butterfly, Scotch argus adults\\u00a0and meadow neb moth caterpillars, than grasslands managed by mowing\\u00a0annually, 1\\u20133 times/summer, or within the last three years. Two replicated studies (including one controlled, before-and-after study and one site comparison study) in Spain\\u00a0and Germany\\u00a0found that grasslands which had been abandoned for 1\\u20136 years\\u00a0or an unspecified time period\\u00a0had a higher abundance of woodland and hedgerow butterflies\\u00a0and burnet moths, but a lower abundance of grassland\\u00a0or farmland\\u00a0species, than grasslands managed by mowing and/or grazing (results not distinguished). One of these studies also found that silver-studded blue went extinct in some abandoned meadows. Three replicated, site comparison studies in the USA\\u00a0and Poland\\u00a0found that in grasslands which had been abandoned for many years\\u00a0or 10 to over 50 years before\\u00a0abundance was mixed depending on butterfly species compared to grasslands managed by grazing\\u00a0or mowing. One replicated, site comparison study in Switzerland\\u00a0found that grasslands which had been abandoned for around six years had a similar abundance of heath fritillary adults and caterpillars to grasslands managed by annual mowing, but that grasslands abandoned for &gt;25 years had a lower abundance of adults and no caterpillars.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (2 studies): One replicated, paired, site comparison study in Germany\\u00a0found that grassland which had been abandoned for &gt;5 years had a similar occurrence of hoary bell moth caterpillars to grassland managed by mowing. One replicated, site comparison study in Spain\\u00a0found that grizzled skipper and painted lady occurred less frequently, but small pearl-bordered fritillary occurred more frequently, in meadows which had been abandoned for at least 1\\u20132 years than in meadows managed by mowing or grazing (results not distinguished).\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"131\"}",
+            "return_val": "{\n  \"action_id\": \"131\",\n  \"action_title\": \"Delay mowing or first grazing date on pasture or grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies from the Netherlands, Sweden and the UK (three replicated and controlled of which one also randomized and one European systematic review) found that delaying mowing or grazing dates resulted in benefits to some or all plants, invertebrates or birds studied. These benefits included: higher plant species richness, higher densities of two rare arable weeds, more insect species and individuals visiting flowers, greater abundance of some spiders and ground beetles, increased breeding wading bird densities, and increased Eurasian skylark productivity.\\nThree reviews found the UK corncrake population increased after measures including delaying mowing dates were introduced.\\nSix studies from Finland, the Netherlands, Sweden, Switzerland and the UK (including three replicated controlled trials of which one was also randomized and a European systematic review) found that delaying mowing or grazing dates on grassland had no clear effect on plant species richness, ground beetle communities, abundance of some insects and spiders, or population trends of wading bird species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"131\",\"3957\",\"1627\"],\"summary\":\"Eight studies found that delaying mowing or grazing dates on pasture or grassland can lead to benefits for some plants, invertebrates, or birds, including higher plant species richness, more insect species and individuals, and a greater abundance of some spiders and ground beetles (131). However, six other studies found no clear effect on plant species richness, ground beetle communities, or the abundance of some insects and spiders from the same practice (131).\\n\\nCeasing mowing altogether to allow for early succession has shown varied effects on butterflies and moths. While some studies found that meadows left uncut all summer had a higher species richness and abundance of butterflies (3957), other studies found that grasslands abandoned for extended periods (1-20 years) had a lower abundance of all butterflies or certain species when compared to mown grasslands (3957). The community composition can also shift, with one study noting that abandoned areas became dominated by generalist butterfly species (3957).\\n\\nWhen comparing cutting/mowing to grazing, the outcomes are also mixed. One trial in Spain indicated that cutting to mimic grazing increased the number of plant species, but another trial found this was not always the case (1627). Different studies have found that mowing or cutting can increase, decrease, or have no effect on heather abundance compared to grass, depending on the location and specific conditions (1627). Mowing has been found to increase grass cover in some studies and reduce tree cover in another (1627).\",\"query\":\"When managing pastureland for natural pest control, is it better to delay mowing/grazing or to use grazing instead of cutting?\"}",
+            "return_val": "{\n  \"query\": \"When managing pastureland for natural pest control, is it better to delay mowing/grazing or to use grazing instead of cutting?\",\n  \"relevant_summary\": \"Eight studies found that delaying mowing or grazing dates on pasture or grassland can lead to benefits for some plants, invertebrates, or birds, including higher plant species richness, more insect species and individuals, and a greater abundance of some spiders and ground beetles (131). However, six other studies found no clear effect on plant species richness, ground beetle communities, or the abundance of some insects and spiders from the same practice (131).\\n\\nCeasing mowing altogether to allow for early succession has shown varied effects on butterflies and moths. While some studies found that meadows left uncut all summer had a higher species richness and abundance of butterflies (3957), other studies found that grasslands abandoned for extended periods (1-20 years) had a lower abundance of all butterflies or certain species when compared to mown grasslands (3957). The community composition can also shift, with one study noting that abandoned areas became dominated by generalist butterfly species (3957).\\n\\nWhen comparing cutting/mowing to grazing, the outcomes are also mixed. One trial in Spain indicated that cutting to mimic grazing increased the number of plant species, but another trial found this was not always the case (1627). Different studies have found that mowing or cutting can increase, decrease, or have no effect on heather abundance compared to grass, depending on the location and specific conditions (1627). Mowing has been found to increase grass cover in some studies and reduce tree cover in another (1627).\",\n  \"action_ids\": [\n    \"131\",\n    \"3957\",\n    \"1627\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "727",
+      "885"
+    ],
+    "regenerated_ids": [
+      "727",
+      "885"
+    ]
+  },
+  {
+    "query": "What are the overall effects of altering pesticide application strategies to benefit natural enemies?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Altering pesticide application strategies can have varying effects on natural enemies and crop outcomes. One strategy is to only use pesticides when pests or crop damage reach a certain threshold. This can lead to an increase in the number of natural enemies, although these effects can be short-lived (750). Pest control under this regime has been reported as satisfactory in some studies, while in others it has been found to be inadequate (750). Crop damage is often similar to conventional spraying, but in some cases, it can increase (750). Yields and profits can be similar to conventional methods, with some studies showing mixed results depending on the location, year, and pest type (750). However, this approach generally requires fewer pesticide applications and can lead to lower production costs (750). Another strategy is to allow the natural regeneration of ground cover beneath perennial crops. This has been shown to have mixed effects on natural enemy populations, with some studies reporting an increase while others find no difference or varied effects depending on the specific group of natural enemies (720). The impact on pests and crop damage is also inconsistent, with some studies showing a reduction in pests while others report varied effects (720). A third strategy is to grow non-crop plants that produce chemicals to attract natural enemies. This has been found to increase the number of natural enemies, and in all reviewed studies, it led to a decrease in either pest populations or crop damage (724). One study also reported an increase in crop yield with this method (724).",
+    "summary_action_ids": [
+      "750",
+      "720",
+      "724"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"pesticide application strategies natural enemies\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"750\",\n    \"action_title\": \"Use pesticides only when pests or crop damage reach threshold levels\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"720\",\n    \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"724\",\n    \"action_title\": \"Grow non-crop plants that produce chemicals that attract natural enemies\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"750\"}",
+            "return_val": "{\n  \"action_id\": \"750\",\n  \"action_title\": \"Use pesticides only when pests or crop damage reach threshold levels\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One randomised, replicated, controlled study from Finland found that threshold-based spraying regimes increased numbers of natural enemies in two of three years but effects lasted for as little as three weeks. Pests and disease: Two of four studies from France, Malaysia and the USA reported that pests were satisfactorily controlled. One randomised, replicated, controlled study found pest numbers were similar under threshold-based and conventional spraying regimes and one study reported that pest control was inadequate. A randomised, replicated, controlled study found mixed effects on disease severity. Crop damage: Four of five randomised, replicated, controlled studies from New Zealand, the Philippines and the USA found similar crop damage under threshold-based and conventional, preventative spraying regimes, but one study found damage increased. Another study found slightly less crop damage compared to unsprayed controls. Yield: Two of four randomised, replicated, controlled studies found similar yields under threshold-based and conventional spraying regimes. Two studies found mixed effects depending on site, year, pest stage/type or control treatment. Profit: Two of three randomised, replicated, controlled studies found similar profits using threshold-based and conventional spraying regimes. One study found effects varied between sites and years. Costs: Nine studies found fewer pesticide applications were needed and three studies found or predicted lower production costs.\\nCrops studied were barley, broccoli, cabbages, cauliflower, celery, cocoa, cotton, grape, peanut, potato, rice, tomato and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"720\"}",
+            "return_val": "{\n  \"action_id\": \"720\",\n  \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies on crop trees and vines: Five studies (including one replicated, randomised, controlled test) from Australia, China, Italy and Portugal compared natural and bare ground covers by measuring numbers of natural enemies in fruit tree or vine canopies. Three found effects varied between groups of natural enemies, two found no difference. Two studies from Australia and France compared natural to sown ground cover and found no effect on enemies in crop canopies. Natural enemies on the ground: Five studies (including three replicated, randomised, controlled trials) from Australia, Canada, China, France, and Spain compared natural and bare ground covers by measuring natural enemies on the ground. Two studies found more natural enemies in natural ground cover, but in one the effects were only short-term for most natural enemy groups. Three studies found mixed effects, with higher numbers of some natural enemy groups but not others. Two studies compared natural and sown ground covers, one study found more natural enemies and one found no effect. Pests and crop damage: Four studies (three controlled, one also replicated and randomised) from Italy, Australia and China measured pests and crop damage in regenerated and bare ground covers. Two studies found fewer pests, whilst two studies found effects on pests and crop damage varied for different pest or disease groups. One study found more pests in natural than in sown ground covers.\\nCrops studied were apple, grape, lemon, olive and pear.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"724\"}",
+            "return_val": "{\n  \"action_id\": \"724\",\n  \"action_title\": \"Grow non-crop plants that produce chemicals that attract natural enemies\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: Four studies from China, Germany, India and Kenya tested the effects of growing plants that produce chemicals that attract natural enemies. Three (including one replicated, randomised, controlled trail) found higher numbers of natural enemies in plots with plants that produce attractive chemicals, and one found that the attractive plant also attracted natural enemies in lab studies. One found no effect on parasitism but the plant used was found not to be attractive to natural enemies in lab studies. Pests: All four studies found a decrease in either pest population or pest damage in plots with plants that produce chemicals that attract natural enemies. Yield: One replicated, randomised, controlled study found an increase in crop yield in plots with plants that produce attractive chemicals.\\nCrops studied were lettuce, orange,\\u00a0safflower and\\u00a0sorghum.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the overall effects of altering pesticide application strategies to benefit natural enemies?\",\"action_ids\":[\"750\",\"720\",\"724\"],\"summary\":\"Altering pesticide application strategies can have varying effects on natural enemies and crop outcomes. One strategy is to only use pesticides when pests or crop damage reach a certain threshold. This can lead to an increase in the number of natural enemies, although these effects can be short-lived (750). Pest control under this regime has been reported as satisfactory in some studies, while in others it has been found to be inadequate (750). Crop damage is often similar to conventional spraying, but in some cases, it can increase (750). Yields and profits can be similar to conventional methods, with some studies showing mixed results depending on the location, year, and pest type (750). However, this approach generally requires fewer pesticide applications and can lead to lower production costs (750). Another strategy is to allow the natural regeneration of ground cover beneath perennial crops. This has been shown to have mixed effects on natural enemy populations, with some studies reporting an increase while others find no difference or varied effects depending on the specific group of natural enemies (720). The impact on pests and crop damage is also inconsistent, with some studies showing a reduction in pests while others report varied effects (720). A third strategy is to grow non-crop plants that produce chemicals to attract natural enemies. This has been found to increase the number of natural enemies, and in all reviewed studies, it led to a decrease in either pest populations or crop damage (724). One study also reported an increase in crop yield with this method (724).\"}",
+            "return_val": "{\n  \"query\": \"What are the overall effects of altering pesticide application strategies to benefit natural enemies?\",\n  \"relevant_summary\": \"Altering pesticide application strategies can have varying effects on natural enemies and crop outcomes. One strategy is to only use pesticides when pests or crop damage reach a certain threshold. This can lead to an increase in the number of natural enemies, although these effects can be short-lived (750). Pest control under this regime has been reported as satisfactory in some studies, while in others it has been found to be inadequate (750). Crop damage is often similar to conventional spraying, but in some cases, it can increase (750). Yields and profits can be similar to conventional methods, with some studies showing mixed results depending on the location, year, and pest type (750). However, this approach generally requires fewer pesticide applications and can lead to lower production costs (750). Another strategy is to allow the natural regeneration of ground cover beneath perennial crops. This has been shown to have mixed effects on natural enemy populations, with some studies reporting an increase while others find no difference or varied effects depending on the specific group of natural enemies (720). The impact on pests and crop damage is also inconsistent, with some studies showing a reduction in pests while others report varied effects (720). A third strategy is to grow non-crop plants that produce chemicals to attract natural enemies. This has been found to increase the number of natural enemies, and in all reviewed studies, it led to a decrease in either pest populations or crop damage (724). One study also reported an increase in crop yield with this method (724).\",\n  \"action_ids\": [\n    \"750\",\n    \"720\",\n    \"724\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "723",
+      "726",
+      "750",
+      "774"
+    ],
+    "regenerated_ids": [
+      "723",
+      "750",
+      "726"
+    ]
+  }
+]

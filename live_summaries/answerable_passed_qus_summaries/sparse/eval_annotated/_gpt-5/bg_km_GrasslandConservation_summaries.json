@@ -1,0 +1,222 @@
+[
+  {
+    "query": "When restoring grasslands, how do the outcomes of simply disturbing the soil before seeding compare to removing the topsoil entirely?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across studies, removing topsoil (or turf) before seeding/planting more consistently increased desired plant metrics than soil disturbance alone: removing topsoil increased plant species richness and community similarity to reference vegetation, increased richness of sown species, increased grass and forb richness compared to soil disturbance in most cases, increased cover of planted species, reduced common knapweed cover, and increased seedling/plant survival, while not altering overall vegetation cover (3415). By contrast, disturbing soil before seeding showed mixed effects: some studies reported increased plant or seedling richness and higher grass/forb richness with more intensive disturbance (rotovating) than lighter disturbance (harrowing), but others found no change in richness; total plant biomass often did not change, forb cover increased in one study, seed emergence increased in most cases, seedling survival increased in one study but not another, and seedling growth was unaffected (3413). Additional evidence indicates topsoil stripping can shift composition by increasing cover of specialist and generalist species without increasing richness, increasing annual grasses while decreasing perennial grasses, and yielding mixed responses of heathland species cover, with some increases in heather or gorse and overall species number in certain trials (1685). Further, simple topsoil disturbance sometimes increased abundance or richness, but in other contexts did not change vegetation cover or native plant density (1728). When topsoil removal was combined with adding seed or plant clippings, studies reported increased cover of target heathland plants and reductions in competitive grasses such as perennial rye-grass, alongside decreased perennial grass cover (1711).",
+    "summary_action_ids": [
+      "3415",
+      "3413",
+      "1685",
+      "1728",
+      "1711"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"grassland restoration soil disturbance before seeding vs topsoil removal outcomes\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3415\",\n    \"action_title\": \"Remove topsoil or turf before seeding/planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1711\",\n    \"action_title\": \"Strip/disturb topsoil (alongside planting/seeding)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3413\",\n    \"action_title\": \"Disturb soil before seeding/planting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"grassland restoration soil disturbance before seeding vs topsoil removal outcomes\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3420\",\n    \"action_title\": \"Add topsoil before seeding/planting\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3222\",\n    \"action_title\": \"Remove surface soil/sediment: brackish/salt marshes\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1728\",\n    \"action_title\": \"Disturb topsoil\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"grassland restoration soil disturbance before seeding vs topsoil removal outcomes\",\"k\":3,\"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"2566\",\n    \"action_title\": \"Restore or create grassland\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1685\",\n    \"action_title\": \"Strip topsoil\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3221\",\n    \"action_title\": \"Remove surface soil/sediment: freshwater marshes\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"grassland restoration soil disturbance before seeding vs topsoil removal outcomes\",\"k\":3,\"offset\":9}",
+            "return_val": "[\n  {\n    \"action_id\": \"3422\",\n    \"action_title\": \"Add charcoal to soil before seeding/planting\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"2544\",\n    \"action_title\": \"Remove topsoil that has had fertilizer added to mimic low nutrient soil\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 12\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"grassland restoration soil disturbance before seeding vs topsoil removal outcomes\",\"k\":3,\"offset\":12}",
+            "return_val": "[\n  {\n    \"action_id\": \"3429\",\n    \"action_title\": \"Inoculate soil with mycorrhiza before seeding/planting\",\n    \"rank\": 13\n  },\n  {\n    \"action_id\": \"3433\",\n    \"action_title\": \"Add carbon to soil before or after seeding/planting\",\n    \"rank\": 14\n  },\n  {\n    \"action_id\": \"3416\",\n    \"action_title\": \"Remove vegetation before seeding/planting\",\n    \"rank\": 15\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3415\"}",
+            "return_val": "{\n  \"action_id\": \"3415\",\n  \"action_title\": \"Remove topsoil or turf before seeding/planting\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies examined the effects of removing topsoil or turf before seeding/planting on grassland vegetation. Three studies were in the UK, two studies were\\u00a0in the USA\\u00a0and one was in France.\\n\\nVEGETATION COMMUNITY (3 STUDIES)\\n\\nCommunity composition (1 study): One replicated, randomized, controlled study in France\\u00a0found that removing topsoil before sowing seeds increased plant community similarity to that of intact steppe.\\nOverall richness/diversity (1 study): One replicated, randomized, controlled study in France\\u00a0found that removing topsoil before sowing seeds increased plant species richness.\\nSown/planted species richness/diversity (1 study): One replicated, controlled study in the UK\\u00a0found that removing topsoil before sowing seeds increased the species richness of sown plants.\\nGrass richness/diversity (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that removing turf before sowing seeds increased grass species richness in most cases compared to disturbing the soil before sowing.\\nForb richness/diversity (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that removing turf before sowing seeds increased forb species richness in most cases compared to disturbing the soil before sowing.\\n\\nVEGETATION ABUNDANCE (2 STUDIES)\\n\\nOverall abundance (1 study): One replicated, randomized, controlled study in France\\u00a0found that removing topsoil before sowing seeds did not alter overall vegetation cover.\\nSown/planted species abundance (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that removing topsoil before planting seedlings led to higher cover of planted species.\\nIndividual species abundance (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that removing topsoil before planting seedlings led to lower cover of common knapweed.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nSurvival (2 studies): Two replicated, controlled studies\\u00a0(one paired and one randomized) in the USA\\u00a0found that removing topsoil before planting California oatgrass or sowing and planting purple needlegrass increased the survival of seedlings and plants.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3413\"}",
+            "return_val": "{\n  \"action_id\": \"3413\",\n  \"action_title\": \"Disturb soil before seeding/planting\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies examined the effects of disturbing soil before seeding/planting on grassland vegetation. Five studies were in Europe\\u00a0and one study was in each of the USA\\u00a0and China.\\n\\nVEGETATION COMMUNITY (3 STUDIES)\\n\\nOverall richness/diversity (2 studies): One of two replicated, controlled studies in the UK\\u00a0and Germany\\u00a0found that disturbing soil before sowing seeds increased plant and seedling species richness. The other study\\u00a0found no change in plant species richness or diversity.\\nGrass richness/diversity (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that rotovating soil before sowing seeds increased grass species richness in most cases compared to harrowing before sowing.\\nForb richness/diversity (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that rotovating soil before sowing seeds increased forb species richness in most cases compared to harrowing before sowing.\\n\\nVEGETATION ABUNDANCE (2 STUDIES)\\n\\nOverall abundance (1 study): One replicated, controlled study in the UK\\u00a0found that disturbing soil before sowing seeds did not alter total plant biomass.\\nForb abundance (1 study): One replicated, randomized, paired, controlled study in the USA\\u00a0found that disturbing soil before sowing forb seeds increased the cover of forb species.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\\nOTHER (5 STUDIES) \\n\\nGermination/Emergence (5 studies): Four of five replicated, controlled studies (three of which were randomized and paired) in the USA, Germany, China\\u00a0and Spain\\u00a0found that disturbing soil before sowing seeds increased plant emergence in most cases compared to sowing alone. The other study\\u00a0found no change in seed germination.\\nSurvival (2 studies): One of two replicated, controlled studies (one of which was randomized and paired) in China\\u00a0and Spain\\u00a0found that disturbing soil before sowing seeds increased the survival of seedlings. The other study\\u00a0found that ploughing to disturb soil followed by planting did not alter the survival of planted species.\\nGrowth (1 study): One replicated, randomized, paired, controlled study in the USA\\u00a0found that disturbing soil before planting forb seedlings had no effect on seedling growth.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1711\"}",
+            "return_val": "{\n  \"action_id\": \"1711\",\n  \"action_title\": \"Strip/disturb topsoil (alongside planting/seeding)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled studies in the UK\\u00a0found that removal of topsoil and addition seed/clippings increased cover of heathland plants\\u00a0or cover of heather and gorse. One controlled study in the UK\\u00a0found that soil disturbance using a rotovator and spreading clippings of heathland plants (alongside mowing) increased the number of heathland plants.\\nOne replicated, controlled study in the UK\\u00a0found that stripping the surface layers of soil and adding seed reduced the cover of perennial rye-grass. One randomized, replicated, paired, controlled study in the UK\\u00a0found that removal of topsoil and addition of the clippings of heathland plants did not alter the cover of annual grasses but led to a decrease in cover of perennial grasses.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1685\"}",
+            "return_val": "{\n  \"action_id\": \"1685\",\n  \"action_title\": \"Strip topsoil\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo randomized, replicated, controlled studies in the UK\\u00a0found that removal of topsoil did not increase heather cover\\u00a0or cover of heathland species. However, one controlled study in the UK\\u00a0found an increase in heather cover.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that removing topsoil increased the cover of both specialist and generalist plant species, but did not increase species richness.\\nOne randomized, replicated, paired, controlled study in the UK\\u00a0found that removal of topsoil increased cover of annual grasses but led to a decrease in the cover of perennial grasses. One controlled study in the UK\\u00a0found that removal of turf reduced cover of wavy hair grass.\\nOne controlled, before-and-after trial in the UK\\u00a0found that stripping surface layers of soil increased the cover of gorse and sheep\\u2019s sorrel as well as the number of plant species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1728\"}",
+            "return_val": "{\n  \"action_id\": \"1728\",\n  \"action_title\": \"Disturb topsoil\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled study in a former pine plantation in South Africa\\u00a0found that digging soil did not alter vegetation cover or the density of native plants.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that soil disturbance increased the abundance or species richness of specialist and generalist plant species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2566\"}",
+            "return_val": "{\n  \"action_id\": \"2566\",\n  \"action_title\": \"Restore or create grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of restoring or creating grassland. One study each was in Portugal, the USA\\u00a0and Hungary.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): A replicated, site comparison study in Hungary\\u00a0found that grassland restored on former cropland hosted a similar small mammal species richness compared to native grassland.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (2 studies): A controlled, before-and-after study in Portugal\\u00a0found that sowing pasture grasses into areas cleared of scrub did not increase European rabbit densities. A replicated, site comparison study in Hungary\\u00a0found that grassland restored on former cropland hosted a similar abundance of small mammals compared to native grassland.\\nSurvival (1 study): A replicated, site comparison study in the USA\\u00a0found that seeding with grassland species as part of a suite of actions including mechanical disturbance and herbicide application increased overwinter survival of mule deer fawns.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2544\"}",
+            "return_val": "{\n  \"action_id\": \"2544\",\n  \"action_title\": \"Remove topsoil that has had fertilizer added to mimic low nutrient soil\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on mammals of removing topsoil that has had fertilizer added to mimic low nutrient soil.\\n\\n'We found no studies' means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"When restoring grasslands, how do the outcomes of simply disturbing the soil before seeding compare to removing the topsoil entirely?\",\"summary\":\"Across studies, removing topsoil (or turf) before seeding/planting more consistently increased desired plant metrics than soil disturbance alone: removing topsoil increased plant species richness and community similarity to reference vegetation, increased richness of sown species, increased grass and forb richness compared to soil disturbance in most cases, increased cover of planted species, reduced common knapweed cover, and increased seedling/plant survival, while not altering overall vegetation cover (3415). By contrast, disturbing soil before seeding showed mixed effects: some studies reported increased plant or seedling richness and higher grass/forb richness with more intensive disturbance (rotovating) than lighter disturbance (harrowing), but others found no change in richness; total plant biomass often did not change, forb cover increased in one study, seed emergence increased in most cases, seedling survival increased in one study but not another, and seedling growth was unaffected (3413). Additional evidence indicates topsoil stripping can shift composition by increasing cover of specialist and generalist species without increasing richness, increasing annual grasses while decreasing perennial grasses, and yielding mixed responses of heathland species cover, with some increases in heather or gorse and overall species number in certain trials (1685). Further, simple topsoil disturbance sometimes increased abundance or richness, but in other contexts did not change vegetation cover or native plant density (1728). When topsoil removal was combined with adding seed or plant clippings, studies reported increased cover of target heathland plants and reductions in competitive grasses such as perennial rye-grass, alongside decreased perennial grass cover (1711).\",\"action_ids\":[\"3415\",\"3413\",\"1685\",\"1728\",\"1711\"]}",
+            "return_val": "{\n  \"query\": \"When restoring grasslands, how do the outcomes of simply disturbing the soil before seeding compare to removing the topsoil entirely?\",\n  \"relevant_summary\": \"Across studies, removing topsoil (or turf) before seeding/planting more consistently increased desired plant metrics than soil disturbance alone: removing topsoil increased plant species richness and community similarity to reference vegetation, increased richness of sown species, increased grass and forb richness compared to soil disturbance in most cases, increased cover of planted species, reduced common knapweed cover, and increased seedling/plant survival, while not altering overall vegetation cover (3415). By contrast, disturbing soil before seeding showed mixed effects: some studies reported increased plant or seedling richness and higher grass/forb richness with more intensive disturbance (rotovating) than lighter disturbance (harrowing), but others found no change in richness; total plant biomass often did not change, forb cover increased in one study, seed emergence increased in most cases, seedling survival increased in one study but not another, and seedling growth was unaffected (3413). Additional evidence indicates topsoil stripping can shift composition by increasing cover of specialist and generalist species without increasing richness, increasing annual grasses while decreasing perennial grasses, and yielding mixed responses of heathland species cover, with some increases in heather or gorse and overall species number in certain trials (1685). Further, simple topsoil disturbance sometimes increased abundance or richness, but in other contexts did not change vegetation cover or native plant density (1728). When topsoil removal was combined with adding seed or plant clippings, studies reported increased cover of target heathland plants and reductions in competitive grasses such as perennial rye-grass, alongside decreased perennial grass cover (1711).\",\n  \"action_ids\": [\n    \"3415\",\n    \"3413\",\n    \"1685\",\n    \"1728\",\n    \"1711\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3413",
+      "3415"
+    ],
+    "regenerated_ids": [
+      "3413",
+      "3415"
+    ]
+  },
+  {
+    "query": "What are the documented effects of adding soil amendments like charcoal, sulphur, or carbon before or after seeding on grassland vegetation?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across the identified action documents: Adding charcoal to soil before sowing did not change overall plant biomass or grass cover, but increased legume cover while not altering other forbs (3422). Adding sulphur to soil before sowing reduced overall vegetation cover in one UK study, reduced plant species richness in one study but not another, did not change the number of native species in one USA study, and low sulphur amounts increased cover of three of six sown species in one UK study; native plant cover was unchanged in one USA study (3428). Adding carbon to soil after sowing either reduced or did not change the density of sown forb species in two USA studies (3433). Adding sulphur alongside sowing did not increase heather cover in most cases, had mixed effects on cover of common heather, perennial rye-grass, and common bent when combined with heathland clippings, and increased survival of planted heather seedlings initially though survival was very low after two years (1710). Adding sulphur to the soil of a former agricultural field did not increase the number of heather seedlings in five of six cases (1691).",
+    "summary_action_ids": [
+      "3422",
+      "3428",
+      "3433",
+      "1710",
+      "1691"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of adding soil amendments charcoal sulphur carbon before or after seeding on grassland vegetation\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3422\",\n    \"action_title\": \"Add charcoal to soil before seeding/planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3428\",\n    \"action_title\": \"Add sulphur to soil before seeding/planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3433\",\n    \"action_title\": \"Add carbon to soil before or after seeding/planting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of adding soil amendments charcoal sulphur carbon before or after seeding on grassland vegetation\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1710\",\n    \"action_title\": \"Add sulphur to soil (alongside planting/seeding)\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3429\",\n    \"action_title\": \"Inoculate soil with mycorrhiza before seeding/planting\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1691\",\n    \"action_title\": \"Add sulphur to soil\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of adding soil amendments charcoal sulphur carbon before or after seeding on grassland vegetation\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"3427\",\n    \"action_title\": \"Add fertilizer to soil before or after seeding/planting\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3420\",\n    \"action_title\": \"Add topsoil before seeding/planting\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3422\"}",
+            "return_val": "{\n  \"action_id\": \"3422\",\n  \"action_title\": \"Add charcoal to soil before seeding/planting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of adding charcoal to soil before seeding/planting on grassland vegetation. The study was in the Netherlands.\\n\\nVEGETATION COMMUNITY (0 STUDIES)\\nVEGETATION ABUNDANCE (1 STUDY)\\n\\nOverall abundance (1 study): One replicated, randomized, paired, controlled study in the Netherlands\\u00a0found that adding charcoal to soil before sowing seeds did not alter overall plant biomass.\\nGrass abundance (1 study): One replicated, randomized, paired, controlled study in the Netherlands\\u00a0found that adding charcoal to soil before sowing seeds did not alter grass cover.\\nForb abundance (1 study): One replicated, randomized, paired, controlled study in the Netherlands\\u00a0found that adding charcoal to soil before sowing seeds increased the cover of legumes but did not alter the cover of other forbs.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3428\"}",
+            "return_val": "{\n  \"action_id\": \"3428\",\n  \"action_title\": \"Add sulphur to soil before seeding/planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of adding sulphur to soil before seeding/planting on grassland vegetation. One study was in the UK\\u00a0and one was in the USA.\\n\\nVEGETATION COMMUNITY (2 STUDIES)\\n\\nOverall richness/diversity (1 study): One of two replicated, controlled studies (one of which was randomized and paired) in the UK\\u00a0and USA\\u00a0found that adding sulphur to soil before sowing seeds reduced plant species richness. The other study\\u00a0found no change in overall plant species richness.\\nNative/non-target species richness/diversity (1 study): One replicated, controlled study in the USA\\u00a0found that adding sulphur to soil before sowing seeds did not alter the number of native plant species.\\n\\nVEGETATION ABUNDANCE (2 STUDIES)\\n\\nOverall abundance (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that adding sulphur to soil before sowing seeds reduced overall vegetation cover.\\nSown/planted species abundance (1 study): One replicated, randomized, paired, controlled study in the UK\\u00a0found that adding low amounts of sulphur to soil before sowing seeds increased the cover of three of six sown species.\\nNative/non-target species abundance (1 study): One replicated, controlled study in the USA\\u00a0found that adding sulphur to soil before sowing seeds did not alter the cover of native plant species.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3433\"}",
+            "return_val": "{\n  \"action_id\": \"3433\",\n  \"action_title\": \"Add carbon to soil before or after seeding/planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of adding carbon to soil before or after seeding/planting on grassland vegetation. Both studies were in the USA.\\n\\nVEGETATION COMMUNITY (0 STUDIES)\\nVEGETATION ABUNDANCE (2 STUDIES)\\n\\nSown/planted species abundance (2 studies): Two replicated, randomized, controlled studies in the USA\\u00a0found that adding carbon to soil after sowing seeds either reduced\\u00a0or did not alter\\u00a0the density of sown forb species.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1710\"}",
+            "return_val": "{\n  \"action_id\": \"1710\",\n  \"action_title\": \"Add sulphur to soil (alongside planting/seeding)\",\n  \"key_messages\": \"Key Messages:\\n\\nA randomized, replicated, controlled study in the UK\\u00a0found that adding sulphur to soil alongside sowing seeds did not increase heather cover in a majority of cases. One replicated, controlled study in the UK\\u00a0found that adding sulphur and spreading heathland clippings had mixed effects on cover of common heather, perennial rye-grass, and common bent. One randomized, controlled study in the UK\\u00a0found that adding sulphur to soil alongside planting of heather seedlings increased their survival, though after two years survival was very low.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1691\"}",
+            "return_val": "{\n  \"action_id\": \"1691\",\n  \"action_title\": \"Add sulphur to soil\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled study in the UK\\u00a0found that adding sulphur to the soil of a former agricultural field did not increase the number of heather seedlings in five of six cases.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented effects of adding soil amendments like charcoal, sulphur, or carbon before or after seeding on grassland vegetation?\",\"summary\":\"Across the identified action documents: Adding charcoal to soil before sowing did not change overall plant biomass or grass cover, but increased legume cover while not altering other forbs (3422). Adding sulphur to soil before sowing reduced overall vegetation cover in one UK study, reduced plant species richness in one study but not another, did not change the number of native species in one USA study, and low sulphur amounts increased cover of three of six sown species in one UK study; native plant cover was unchanged in one USA study (3428). Adding carbon to soil after sowing either reduced or did not change the density of sown forb species in two USA studies (3433). Adding sulphur alongside sowing did not increase heather cover in most cases, had mixed effects on cover of common heather, perennial rye-grass, and common bent when combined with heathland clippings, and increased survival of planted heather seedlings initially though survival was very low after two years (1710). Adding sulphur to the soil of a former agricultural field did not increase the number of heather seedlings in five of six cases (1691).\",\"action_ids\":[\"3422\",\"3428\",\"3433\",\"1710\",\"1691\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of adding soil amendments like charcoal, sulphur, or carbon before or after seeding on grassland vegetation?\",\n  \"relevant_summary\": \"Across the identified action documents: Adding charcoal to soil before sowing did not change overall plant biomass or grass cover, but increased legume cover while not altering other forbs (3422). Adding sulphur to soil before sowing reduced overall vegetation cover in one UK study, reduced plant species richness in one study but not another, did not change the number of native species in one USA study, and low sulphur amounts increased cover of three of six sown species in one UK study; native plant cover was unchanged in one USA study (3428). Adding carbon to soil after sowing either reduced or did not change the density of sown forb species in two USA studies (3433). Adding sulphur alongside sowing did not increase heather cover in most cases, had mixed effects on cover of common heather, perennial rye-grass, and common bent when combined with heathland clippings, and increased survival of planted heather seedlings initially though survival was very low after two years (1710). Adding sulphur to the soil of a former agricultural field did not increase the number of heather seedlings in five of six cases (1691).\",\n  \"action_ids\": [\n    \"3422\",\n    \"3428\",\n    \"3433\",\n    \"1710\",\n    \"1691\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3422",
+      "3427",
+      "3428",
+      "3429",
+      "3433"
+    ],
+    "regenerated_ids": [
+      "3422",
+      "3428",
+      "3433"
+    ]
+  }
+]

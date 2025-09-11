@@ -1,0 +1,755 @@
+[
+  {
+    "query": "When managing pastureland for natural pest control, is it better to delay mowing/grazing or to use grazing instead of cutting?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Reducing management intensity on permanent grasslands has been shown in sixteen studies to benefit some or all invertebrates (69). However, two studies found more invertebrates in grasslands with intensive management (69). Under a mosaic management system, black-tailed godwit nests were less likely to be destroyed by mowing or trampled by livestock (130). Additionally, hedges cut every two years provided more suitable nesting habitat for grey partridge than other management regimes (116).",
+    "summary_action_ids": [
+      "69",
+      "130",
+      "116"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"natural pest control on pastureland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1400\",\n    \"action_title\": \"Pest regulation: Plant flowers\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1392\",\n    \"action_title\": \"Pest regulation: Add compost to the soil\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1643\",\n    \"action_title\": \"Use herbicide to control grass\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\":10,\"offset\":0,\"query_string\":\"pastureland management\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"69\",\n    \"action_title\": \"Reduce management intensity on permanent grasslands (several interventions at once)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"694\",\n    \"action_title\": \"Reduce chemical inputs in grassland management\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"130\",\n    \"action_title\": \"Implement 'mosaic management', a Dutch agri-environment option\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1743\",\n    \"action_title\": \"Reduce frequency of harvest (of wild biological resources)\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"116\",\n    \"action_title\": \"Manage hedgerows to benefit wildlife (includes no spray, gap-filling and laying)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"749\",\n    \"action_title\": \"Manage ditches\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"722\",\n    \"action_title\": \"Grow plants that compete with damaging weeds\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"177\",\n    \"action_title\": \"Manage hedges to benefit birds\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"361\",\n    \"action_title\": \"Restore or create grasslands\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2198\",\n    \"action_title\": \"Regulate the use, dosage and disposal of agrichemicals\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"69\"}",
+            "return_val": "{\n  \"action_id\": \"69\",\n  \"action_title\": \"Reduce management intensity on permanent grasslands (several interventions at once)\",\n  \"key_messages\": \"Key Messages:\\n\\nA total of 32 individual studies from the Czech Republic, Germany, Ireland, the Netherlands, Switzerland and the UK looked at the effects on farmland wildlife of reducing management intensity on permanent grasslands. Twenty-two studies found benefits to some or all wildlife groups studied. Eleven studies (including four replicated site comparisons and three reviews) found reduced management intensity on permanent grassland benefited plants. Sixteen studies (including eight site comparisons of which four paired and three reviews) found benefits to some or all invertebrates. Five studies (including two replicated site comparisons, of which one paired, and a review) found positive effects on some or all birds.\\nTwenty-one studies from six European countries found no clear effects of reducing management intensity on some or all plants, invertebrates or birds. Seven studies (including two replicated paired site comparisons and a review) found no clear effect on plants. Ten studies (including four site comparisons and one paired site comparison) found mixed or no effects on some or all invertebrates. Two studies (one review, one site comparison) found invertebrate communities on less intensively managed grasslands were distinct from those on intensively managed grasslands. Four studies (including three site comparisons, of which one paired and two replicated) found no clear effects on bird numbers or species richness.\\nFive studies from four European countries found negative effects of reducing management intensity on plants, invertebrates or birds. Two studies (one review, one replicated trial) found some plant species were lost under extensive management. Two studies (one paired site comparison) found more invertebrates in grasslands with intensive management. One paired site comparison found fewer wading birds on grasslands with reduced management intensity than on conventionally managed grassland.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"130\"}",
+            "return_val": "{\n  \"action_id\": \"130\",\n  \"action_title\": \"Implement 'mosaic management', a Dutch agri-environment option\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled, before-and-after study from the Netherlands found that northern lapwing population trends changed from decreases to increases following the introduction of mosaic management. Three other species of wading bird did not show such a response and Eurasian oystercatcher populations did less well under mosaic management than other management types.\\nA replicated, paired sites study in the Netherlands that black-tailed godwit had higher productivity under mosaic management than other management types due to higher nest survival, and nests were less likely to be trampled by livestock or destroyed by mowing under mosaic management.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"116\"}",
+            "return_val": "{\n  \"action_id\": \"116\",\n  \"action_title\": \"Manage hedgerows to benefit wildlife (includes no spray, gap-filling and laying)\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies from Switzerland and the UK (three replicated and controlled studies of which one was randomized) found that managing hedges for wildlife resulted in increased berry yields, species diversity or richness of plants and invertebrates and diversity or abundance of farmland birds.\\nFive studies from the UK (including one replicated, controlled and randomized study) found that hedge management did not affect plant species richness, numbers of bumblebee queens or farmland birds. Two replicated studies have shown mixed or adverse effects, with hedge management having mixed effects on invertebrates or leading to reduced hawthorn berry yield.\\nA replicated site comparison in the UK found hedges cut every two years had more suitable nesting habitat for grey partridge than other management regimes. A replicated study from the UK found that hawthorn berry yield was reduced when management involved removing fruit-bearing wood.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"694\"}",
+            "return_val": "{\n  \"action_id\": \"694\",\n  \"action_title\": \"Reduce chemical inputs in grassland management\",\n  \"key_messages\": \"Key Messages:\\n\\nA total of 16 studies (including five reviews) investigated the effects of reducing inputs in permanent grasslands. Six studies from the Netherlands, Switzerland and the UK (including one review and four replicated studies of which one was also controlled and one a randomized and controlled before-and-after trial) found that stopping fertilizer inputs in permanent grassland resulted in an increase in plant species richness, reduced the rate of plant species loss and attracted a higher abundance or species richness of some or all invertebrates studied. One review from the Netherlands found that low fertilizer input grasslands favour common meadow bird species. One review found a study showing that densities of some invertebrates were higher in unfertilized plots compared with those receiving nitrogen inputs.\\nTwo replicated, controlled trials from the Czech Republic and the UK (one randomized) found that applying fertilizer to permanent grasslands reduced plant species richness or diversity and that the effects on plant communities were still apparent 16 years after the cessation of fertilizer application.\\nFour studies from Ireland, the Netherlands and the UK (including two replicated trials of which one randomized and one controlled and a review) found that reducing fertilizer inputs on grassland had no clear or rapid effect on plant species richness. A review found no clear effect of reducing fertilizer inputs on the density of soil-dwelling invertebrates. One replicated study found that fertilizer treatment only affected seed production of a small number of meadow plants. One replicated study from the UK found lower invertebrate abundance on plots with reduced fertilizer inputs but the differences were not significant.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Reducing management intensity on permanent grasslands has been shown in sixteen studies to benefit some or all invertebrates (69). However, two studies found more invertebrates in grasslands with intensive management (69). Under a mosaic management system, black-tailed godwit nests were less likely to be destroyed by mowing or trampled by livestock (130). Additionally, hedges cut every two years provided more suitable nesting habitat for grey partridge than other management regimes (116).\",\"query\":\"When managing pastureland for natural pest control, is it better to delay mowing/grazing or to use grazing instead of cutting?\",\"action_ids\":[\"69\",\"130\",\"116\"]}",
+            "return_val": "{\n  \"query\": \"When managing pastureland for natural pest control, is it better to delay mowing/grazing or to use grazing instead of cutting?\",\n  \"relevant_summary\": \"Reducing management intensity on permanent grasslands has been shown in sixteen studies to benefit some or all invertebrates (69). However, two studies found more invertebrates in grasslands with intensive management (69). Under a mosaic management system, black-tailed godwit nests were less likely to be destroyed by mowing or trampled by livestock (130). Additionally, hedges cut every two years provided more suitable nesting habitat for grey partridge than other management regimes (116).\",\n  \"action_ids\": [\n    \"69\",\n    \"130\",\n    \"116\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "727",
+      "885"
+    ],
+    "regenerated_ids": [
+      "727",
+      "885"
+    ]
+  },
+  {
+    "query": "What are the overall effects of altering pesticide application strategies to benefit natural enemies?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Altering pesticide application strategies can have varying effects on natural enemies, pests, crop yield, and profitability. One controlled study reported that spraying insecticides earlier in the growing season resulted in a higher number of natural enemies (723). Similarly, two randomized, replicated, controlled trials found that delaying herbicide treatments led to an increase in natural enemies (774). Another study found that threshold-based spraying regimes also increased the number of natural enemies, although the effects were temporary (750).\n\nWhen it comes to pests, two of four studies found that applying insecticides early resulted in fewer pests or less disease damage (723), while two other studies showed no significant effect on pests (723). In the case of threshold-based spraying, two of four studies reported satisfactory pest control, while one study found no difference and another reported inadequate control (750). Delaying herbicide use had mixed results on insect pests, with one study finding an increase in some pest groups and another finding a decrease in certain cases (774).\n\nIn terms of crop yield, one study found that applying insecticides at times of suspected crop susceptibility led to higher yields (723), while two other studies showed mixed effects, and one reported no effect at all (723). For threshold-based spraying, two of four studies found similar yields compared to conventional methods, while the other two had mixed results (750). Delaying herbicide use either resulted in lower yields or had no effect on yield in two separate studies (774).\n\nRegarding financial outcomes, one controlled study indicated that applying insecticides only at times of suspected crop susceptibility led to higher profits with similar costs (723). For threshold-based spraying, two of three studies found similar profits to conventional methods, and nine studies noted a reduction in the number of pesticide applications needed, with three studies also finding or predicting lower production costs (750).",
+    "summary_action_ids": [
+      "723",
+      "750",
+      "774"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"pesticide application strategies for natural enemies\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"723\",\n    \"action_title\": \"Alter the timing of insecticide use\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"750\",\n    \"action_title\": \"Use pesticides only when pests or crop damage reach threshold levels\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"774\",\n    \"action_title\": \"Delay herbicide use\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"723\"}",
+            "return_val": "{\n  \"action_id\": \"723\",\n  \"action_title\": \"Alter the timing of insecticide use\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One controlled study from the UK reported more natural enemies when insecticides were sprayed earlier rather than later in the growing season. Pests: Two of four studies from Mozambique, the UK and the USA found fewer pests or less disease damage when insecticides were applied early rather than late. Effects on a disease-carrying pest varied with insecticide type. Two studies (one a randomised, replicated, controlled test) found no effect on pests or pest damage. Yield: Four studies (including one randomised, replicated, controlled test) from Mozambique, the Philippines, the UK and the USA measured yields. Two studies found mixed effects and one study found no effect on yield when insecticides were applied early. One study found higher yields when insecticides were applied at times of suspected crop susceptibility.Profit and costs: One controlled study from the Philippines found higher profits and similar costs when insecticides were only applied at times of suspected crop susceptibility.\\nCrops studied were aubergine,\\u00a0barley, maize,\\u00a0pear and stringbean.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"750\"}",
+            "return_val": "{\n  \"action_id\": \"750\",\n  \"action_title\": \"Use pesticides only when pests or crop damage reach threshold levels\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One randomised, replicated, controlled study from Finland found that threshold-based spraying regimes increased numbers of natural enemies in two of three years but effects lasted for as little as three weeks. Pests and disease: Two of four studies from France, Malaysia and the USA reported that pests were satisfactorily controlled. One randomised, replicated, controlled study found pest numbers were similar under threshold-based and conventional spraying regimes and one study reported that pest control was inadequate. A randomised, replicated, controlled study found mixed effects on disease severity. Crop damage: Four of five randomised, replicated, controlled studies from New Zealand, the Philippines and the USA found similar crop damage under threshold-based and conventional, preventative spraying regimes, but one study found damage increased. Another study found slightly less crop damage compared to unsprayed controls. Yield: Two of four randomised, replicated, controlled studies found similar yields under threshold-based and conventional spraying regimes. Two studies found mixed effects depending on site, year, pest stage/type or control treatment. Profit: Two of three randomised, replicated, controlled studies found similar profits using threshold-based and conventional spraying regimes. One study found effects varied between sites and years. Costs: Nine studies found fewer pesticide applications were needed and three studies found or predicted lower production costs.\\nCrops studied were barley, broccoli, cabbages, cauliflower, celery, cocoa, cotton, grape, peanut, potato, rice, tomato and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"774\"}",
+            "return_val": "{\n  \"action_id\": \"774\",\n  \"action_title\": \"Delay herbicide use\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: Two randomised, replicated, controlled trials from Australia and Denmark found more natural enemies when herbicide treatments were delayed. One of the studies found some but not all natural enemy groups benefited and fewer groups benefitted early in the season. Weeds: One randomised, replicated, controlled study found more weeds when herbicide treatments were delayed. Insect pests and damage: One of two randomised, replicated, controlled studies from Canada and Denmark found more insect pests, but only for some pest groups, and one study found fewer pests in one of two experiments and for one of two crop varieties. One study found lower crop damage in some but not all varieties and study years. Yield: One randomised, replicated, controlled study found lower yields and one study found no effect.\\nCrops studied were beet and oilseed.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"723\",\"750\",\"774\"],\"summary\":\"Altering pesticide application strategies can have varying effects on natural enemies, pests, crop yield, and profitability. One controlled study reported that spraying insecticides earlier in the growing season resulted in a higher number of natural enemies (723). Similarly, two randomized, replicated, controlled trials found that delaying herbicide treatments led to an increase in natural enemies (774). Another study found that threshold-based spraying regimes also increased the number of natural enemies, although the effects were temporary (750).\\n\\nWhen it comes to pests, two of four studies found that applying insecticides early resulted in fewer pests or less disease damage (723), while two other studies showed no significant effect on pests (723). In the case of threshold-based spraying, two of four studies reported satisfactory pest control, while one study found no difference and another reported inadequate control (750). Delaying herbicide use had mixed results on insect pests, with one study finding an increase in some pest groups and another finding a decrease in certain cases (774).\\n\\nIn terms of crop yield, one study found that applying insecticides at times of suspected crop susceptibility led to higher yields (723), while two other studies showed mixed effects, and one reported no effect at all (723). For threshold-based spraying, two of four studies found similar yields compared to conventional methods, while the other two had mixed results (750). Delaying herbicide use either resulted in lower yields or had no effect on yield in two separate studies (774).\\n\\nRegarding financial outcomes, one controlled study indicated that applying insecticides only at times of suspected crop susceptibility led to higher profits with similar costs (723). For threshold-based spraying, two of three studies found similar profits to conventional methods, and nine studies noted a reduction in the number of pesticide applications needed, with three studies also finding or predicting lower production costs (750).\",\"query\":\"What are the overall effects of altering pesticide application strategies to benefit natural enemies?\"}",
+            "return_val": "{\n  \"query\": \"What are the overall effects of altering pesticide application strategies to benefit natural enemies?\",\n  \"relevant_summary\": \"Altering pesticide application strategies can have varying effects on natural enemies, pests, crop yield, and profitability. One controlled study reported that spraying insecticides earlier in the growing season resulted in a higher number of natural enemies (723). Similarly, two randomized, replicated, controlled trials found that delaying herbicide treatments led to an increase in natural enemies (774). Another study found that threshold-based spraying regimes also increased the number of natural enemies, although the effects were temporary (750).\\n\\nWhen it comes to pests, two of four studies found that applying insecticides early resulted in fewer pests or less disease damage (723), while two other studies showed no significant effect on pests (723). In the case of threshold-based spraying, two of four studies reported satisfactory pest control, while one study found no difference and another reported inadequate control (750). Delaying herbicide use had mixed results on insect pests, with one study finding an increase in some pest groups and another finding a decrease in certain cases (774).\\n\\nIn terms of crop yield, one study found that applying insecticides at times of suspected crop susceptibility led to higher yields (723), while two other studies showed mixed effects, and one reported no effect at all (723). For threshold-based spraying, two of four studies found similar yields compared to conventional methods, while the other two had mixed results (750). Delaying herbicide use either resulted in lower yields or had no effect on yield in two separate studies (774).\\n\\nRegarding financial outcomes, one controlled study indicated that applying insecticides only at times of suspected crop susceptibility led to higher profits with similar costs (723). For threshold-based spraying, two of three studies found similar profits to conventional methods, and nine studies noted a reduction in the number of pesticide applications needed, with three studies also finding or predicting lower production costs (750).\",\n  \"action_ids\": [\n    \"723\",\n    \"750\",\n    \"774\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "723",
+      "726",
+      "750",
+      "774"
+    ],
+    "regenerated_ids": [
+      "723",
+      "750",
+      "726"
+    ]
+  },
+  {
+    "query": "When planting non-crop vegetation to enhance natural pest control, what is the comparative evidence for planting new hedges versus plants that attract natural enemies with chemicals?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "When growing non-crop plants that produce chemicals to attract natural enemies, three of four studies found higher numbers of natural enemies, and all four studies found a decrease in pest population or damage (724). One study also reported an increase in crop yield (724). For newly planted hedges, two studies found a higher abundance and diversity of beetles and spiders compared to crop fields (538). A review also indicated lower pest outbreaks in areas with new hedges (538). However, another study found no effect on spiders in crops from new hedges, and the effect on natural enemies can vary between crop types, hedge species, and years (752). The type of shrub or tree planted in the hedge also affects the abundance of natural enemies (752).",
+    "summary_action_ids": [
+      "724",
+      "538",
+      "752"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"natural pest control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1392\",\n    \"action_title\": \"Pest regulation: Add compost to the soil\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1400\",\n    \"action_title\": \"Pest regulation: Plant flowers\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"774\",\n    \"action_title\": \"Delay herbicide use\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"planting non-crop vegetation for pest control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"724\",\n    \"action_title\": \"Grow non-crop plants that produce chemicals that attract natural enemies\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"718\",\n    \"action_title\": \"Use alley cropping\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"753\",\n    \"action_title\": \"Combine trap and repellent crops in a push-pull system\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"planting new hedges for natural pest control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"538\",\n    \"action_title\": \"Plant new hedges\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"752\",\n    \"action_title\": \"Plant new hedges\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"718\",\n    \"action_title\": \"Use alley cropping\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"724\"}",
+            "return_val": "{\n  \"action_id\": \"724\",\n  \"action_title\": \"Grow non-crop plants that produce chemicals that attract natural enemies\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: Four studies from China, Germany, India and Kenya tested the effects of growing plants that produce chemicals that attract natural enemies. Three (including one replicated, randomised, controlled trail) found higher numbers of natural enemies in plots with plants that produce attractive chemicals, and one found that the attractive plant also attracted natural enemies in lab studies. One found no effect on parasitism but the plant used was found not to be attractive to natural enemies in lab studies. Pests: All four studies found a decrease in either pest population or pest damage in plots with plants that produce chemicals that attract natural enemies. Yield: One replicated, randomised, controlled study found an increase in crop yield in plots with plants that produce attractive chemicals.\\nCrops studied were lettuce, orange,\\u00a0safflower and\\u00a0sorghum.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"538\"}",
+            "return_val": "{\n  \"action_id\": \"538\",\n  \"action_title\": \"Plant new hedges\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies from France and the UK compared newly planted hedges with control areas. Both (including one replicated trial) found newly planted hedges had higher abundance, species richness or diversity of beetles or spiders than crop fields or field margins. The replicated study also found vascular plant species diversity and grass species richness were higher in newly planted hedges than recently established grass field margins.\\u00a0A review found newly established hedges supported more ground beetles than older hedges.\\nA small-scale study from the UK found that local hawthorn plants exhibited better growth and were more stock proof than those of eight other provenances. A literature review found lower pest outbreaks in areas with new hedges. A replicated study in the UK found that the diversity of arthropods supported by newly planted hedges varied between seven different plant species\\nAn unreplicated site comparison study in Germany found that two out of 85 ground beetle species used newly planted hedges as stepping stones for dispersal. Results from the same study found that invertebrates that moved passively (attached to mammals and birds), such as snails, benefited most from the hedge-islands compared to actively moving ground beetles and harvestmen.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"752\"}",
+            "return_val": "{\n  \"action_id\": \"752\",\n  \"action_title\": \"Plant new hedges\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One randomised, replicated, controlled study from China compared plots with and without hedges and found no effect on spiders in crops. One of two studies from France and China found more natural enemies in a hedge than in adjacent crops while one study found this effect varied between crop types, hedge species and years. Two randomised, replicated, controlled studies from France and Kenya found natural enemy abundance in hedges was affected by the type of hedge shrub/tree planted and one also found this effect varied between natural enemy groups. Pests: One randomised, replicated, controlled study from Kenya compared fallow plots with and without hedges and found effects varied between nematode (roundworm) groups.\\nCrops studied were barley, beans, maize and wheat.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"When growing non-crop plants that produce chemicals to attract natural enemies, three of four studies found higher numbers of natural enemies, and all four studies found a decrease in pest population or damage (724). One study also reported an increase in crop yield (724). For newly planted hedges, two studies found a higher abundance and diversity of beetles and spiders compared to crop fields (538). A review also indicated lower pest outbreaks in areas with new hedges (538). However, another study found no effect on spiders in crops from new hedges, and the effect on natural enemies can vary between crop types, hedge species, and years (752). The type of shrub or tree planted in the hedge also affects the abundance of natural enemies (752).\",\"action_ids\":[\"724\",\"538\",\"752\"],\"query\":\"When planting non-crop vegetation to enhance natural pest control, what is the comparative evidence for planting new hedges versus plants that attract natural enemies with chemicals?\"}",
+            "return_val": "{\n  \"query\": \"When planting non-crop vegetation to enhance natural pest control, what is the comparative evidence for planting new hedges versus plants that attract natural enemies with chemicals?\",\n  \"relevant_summary\": \"When growing non-crop plants that produce chemicals to attract natural enemies, three of four studies found higher numbers of natural enemies, and all four studies found a decrease in pest population or damage (724). One study also reported an increase in crop yield (724). For newly planted hedges, two studies found a higher abundance and diversity of beetles and spiders compared to crop fields (538). A review also indicated lower pest outbreaks in areas with new hedges (538). However, another study found no effect on spiders in crops from new hedges, and the effect on natural enemies can vary between crop types, hedge species, and years (752). The type of shrub or tree planted in the hedge also affects the abundance of natural enemies (752).\",\n  \"action_ids\": [\n    \"724\",\n    \"538\",\n    \"752\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "724",
+      "752"
+    ],
+    "regenerated_ids": [
+      "752",
+      "724"
+    ]
+  },
+  {
+    "query": "What are the potential negative impacts on crops when incorporating plant remains into the soil to control weeds?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Two of three studies found that crop growth was inhibited by incorporating plant remains that produce weed-controlling chemicals into the soil (728). However, this effect could be minimized by changing the application timing (728). Additionally, one of three studies that compared crop yields in plots with amended soils to weeded control plots found negative effects on yield (728).",
+    "summary_action_ids": [
+      "728"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"negative impacts of plant remains on crops for weed control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"728\",\n    \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"722\",\n    \"action_title\": \"Grow plants that compete with damaging weeds\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1394\",\n    \"action_title\": \"Pest regulation: Grow cover crops in arable fields\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"728\"}",
+            "return_val": "{\n  \"action_id\": \"728\",\n  \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n  \"key_messages\": \"Key Messages:\\nWeeds: Six studies (including six randomised, replicated, controlled tests) from Asia, Europe and North America examined the effect of allelopathic plant remains on weeds by comparing amended soils with weeded controls. Three studies found a reduction in weed growth, and three found effects varied between years, weed groups, or the type of weeding method in controls.Four studies from Asia \\u00a0and North America examined the effect on weeds by comparing amended soils with unweeded controls. Two studies found a reduction in weed growth, but one found that residues applied too far in advance of crop planting had the reverse effect. Two studies found that effects varied between trials, weed species or the type of residue used.Two studies, including one randomised, replicated, controlled laboratory study, found that the decrease in weeds did not last beyond a few days or weeks after residue incorporation. Pests: One randomised, replicated, controlled study in the Philippines found mixed effects on pests. Crop growth: Two of three studies found crop growth was inhibited by allelopathic plant remains, but this could be minimised by changing the timing of application. One study found effects varied between years. Yield: Three\\u00a0randomised, replicated, controlled studies compared yields in amended plots with weeded controls and found positive, negative and\\u00a0mixed effects. Three studies compared amended plots with unweeded controls, two found positive effects on yield and one found mixed effects (depending on the crop). Profit: One study found that amending soils increased profit compared to unweeded controls, but not compared to weeded controls.\\n\\u00a0\\nCrops studied were beans, cotton, maize, rice and wheat.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Two of three studies found that crop growth was inhibited by incorporating plant remains that produce weed-controlling chemicals into the soil (728). However, this effect could be minimized by changing the application timing (728). Additionally, one of three studies that compared crop yields in plots with amended soils to weeded control plots found negative effects on yield (728).\",\"query\":\"What are the potential negative impacts on crops when incorporating plant remains into the soil to control weeds?\",\"action_ids\":[\"728\"]}",
+            "return_val": "{\n  \"query\": \"What are the potential negative impacts on crops when incorporating plant remains into the soil to control weeds?\",\n  \"relevant_summary\": \"Two of three studies found that crop growth was inhibited by incorporating plant remains that produce weed-controlling chemicals into the soil (728). However, this effect could be minimized by changing the application timing (728). Additionally, one of three studies that compared crop yields in plots with amended soils to weeded control plots found negative effects on yield (728).\",\n  \"action_ids\": [\n    \"728\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "728"
+    ],
+    "regenerated_ids": [
+      "728"
+    ]
+  },
+  {
+    "query": "What actions can be taken to control weeds on farmland without relying on herbicides?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Specific management regimes can be used to reduce the abundance of pernicious weeds (123). Methods such as cutting and infecting with fungal pathogens have been found to be effective for controlling creeping thistle (123). Additionally, long-term control of creeping thistle can be achieved through lenient grazing (123).\n\nPlanting crops in spring instead of autumn has been shown to result in a higher diversity and density of weeds (137). Moreover, one study found that an arable weed species produced a greater amount of fruit on crops sown in the spring (137).",
+    "summary_action_ids": [
+      "123",
+      "137"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control on farmland without herbicides\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1645\",\n    \"action_title\": \"Apply herbicide and remove plants to control grass\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"98\",\n    \"action_title\": \"Make selective use of spring herbicides\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control on farmland without herbicides\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"137\",\n    \"action_title\": \"Plant crops in spring rather than autumn\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1733\",\n    \"action_title\": \"Use barriers to keep livestock off ungrazed peatlands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1675\",\n    \"action_title\": \"Legally protect habitat around shrubland\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"123\"}",
+            "return_val": "{\n  \"action_id\": \"123\",\n  \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies looked at the effects of controlling weeds on the surrounding vegetation. One study from the UK found that new populations of rare arable plants established following the control of perennial weeds in a nature conservation area. A replicated, controlled and randomized study in the UK found that using grass-specific herbicide reduced grass diversity and resulted in increases in broadleaved plants. \\nEleven studies investigated different methods of controlling plants. A review found that specific management regimes can reduce the abundance of pernicious weeds in nature conservation areas. Four replicated controlled studies (one also randomized) from Denmark and Germany found cutting and infection with fungal pathogens were effective methods for controlling creeping thistle and one replicated, randomized, controlled trial from the UK found long-term control was achieved by lenient grazing. A replicated, controlled and randomized study in Germany found weevils could be used to infect creeping thistle with systemic rust. One study found a non-native beetle was unsuitable for controlling creeping thistle because it had poor survival in the UK climate. A replicated controlled study found that spraying a high concentration of herbicide killed less than half of broad-leaved dock plants. A replicated, controlled, randomized study found black grass was eliminated with a December treatment of grass-specific herbicide. A small replicated study found that Hebridean sheep grazed more purple moor grass than Swaledale sheep.\\nTwo\\u00a0replicated controlled laboratory and grassland studies found negative impacts of the herbicide asulam on green dock beetles.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"137\"}",
+            "return_val": "{\n  \"action_id\": \"137\",\n  \"action_title\": \"Plant crops in spring rather than autumn\",\n  \"key_messages\": \"Key Messages:\\n\\nA total of nine studies from Denmark, Sweden and the UK looked at the effects of sowing crops in spring or autumn on farmland wildlife. Five studies (including one replicated controlled trial, and a review) found that planting crops in spring rather than autumn resulted in higher numbers of farmland birds, weed diversity or weed density and one arable weed species produced more fruit on spring-sown crops.\\nA review found one study from the UK showing that four out of five species of arable weed produced more fruits on autumn-sown crops. A second review found one study showing that there were more invertebrates in winter wheat than spring wheat.\\nA replicated study from the UK found that winter and spring sown crops were used for different broods by Eurasian skylarks. A replicated site comparison found arthropod abundance was higher in autumn barley in early summer and spring barley in late summer. A replicated, controlled study in Sweden, found that northern lapwings nested on spring-sown crops more than expected based on their availability, but hatching success on spring crops was lower than on autumn crops.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"98\"}",
+            "return_val": "{\n  \"action_id\": \"98\",\n  \"action_title\": \"Make selective use of spring herbicides\",\n  \"key_messages\": \"Key Messages:\\nA replicated, controlled, randomized study in the UK found that spring herbicides had some benefits for beneficial weeds and arthropods.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1645\"}",
+            "return_val": "{\n  \"action_id\": \"1645\",\n  \"action_title\": \"Apply herbicide and remove plants to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, paired study in the USA\\u00a0found that areas sprayed with herbicide and weeded to control non-native grass cover had higher cover of native grasses and forbs than areas that were not sprayed or weeded, but not a higher number of native plant species. The same study found that spraying with herbicide and weeding reduced non-native grass cover.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Specific management regimes can be used to reduce the abundance of pernicious weeds (123). Methods such as cutting and infecting with fungal pathogens have been found to be effective for controlling creeping thistle (123). Additionally, long-term control of creeping thistle can be achieved through lenient grazing (123).\\n\\nPlanting crops in spring instead of autumn has been shown to result in a higher diversity and density of weeds (137). Moreover, one study found that an arable weed species produced a greater amount of fruit on crops sown in the spring (137).\",\"action_ids\":[\"123\",\"137\"],\"query\":\"What actions can be taken to control weeds on farmland without relying on herbicides?\"}",
+            "return_val": "{\n  \"query\": \"What actions can be taken to control weeds on farmland without relying on herbicides?\",\n  \"relevant_summary\": \"Specific management regimes can be used to reduce the abundance of pernicious weeds (123). Methods such as cutting and infecting with fungal pathogens have been found to be effective for controlling creeping thistle (123). Additionally, long-term control of creeping thistle can be achieved through lenient grazing (123).\\n\\nPlanting crops in spring instead of autumn has been shown to result in a higher diversity and density of weeds (137). Moreover, one study found that an arable weed species produced a greater amount of fruit on crops sown in the spring (137).\",\n  \"action_ids\": [\n    \"123\",\n    \"137\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "722",
+      "721",
+      "717",
+      "728",
+      "718",
+      "753",
+      "774"
+    ],
+    "regenerated_ids": [
+      "717",
+      "718",
+      "721",
+      "722",
+      "728",
+      "753"
+    ]
+  },
+  {
+    "query": "To provide refuge for natural enemies, what is the comparative evidence for creating beetle banks versus leaving part of a crop unharvested?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Leaving part of a crop unharvested led to an increase in the abundance of predatory insects or spiders in three studies, and four studies found more predators in the unharvested area itself [725]. Two studies also found that the ratio of predators to pests was higher in partially cut plots [725]. One study showed an increase in predation and parasitism rates of pest eggs in unharvested strips [725]. However, the effect on pests was inconsistent, with two studies finding a decrease in pest numbers, while four studies found an increase in pests in either the partially cut plots or the uncut areas [725]. These studies were conducted in alfalfa and meadow pasture [725].\n\nFor beetle banks, one review found that predators increased in adjacent crops, but another study found the effects varied with time, and a third found no effect [729]. Four studies and a review found more invertebrate predators on the beetle banks than in the surrounding crops [729]. However, when comparing beetle banks to other refuge habitats, the results were mixed: two studies found more natural enemies on beetle banks, but five studies found similar or lower numbers [729]. In terms of pest control, one study and a review found the largest pest reductions in areas closest to the beetle bank or on the bank itself, and another review found fewer pests in fields with beetle banks [729]. Beetle banks could also lead to economic savings if they prevent pests from reaching a spray threshold [729]. Studies on beetle banks have been conducted on a wider range of crops, including barley, field bean, maize, oats, pea, radish, rapeseed, soybean, wheat, and pasture [729].",
+    "summary_action_ids": [
+      "725",
+      "729"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"beetle banks vs leaving part of a crop unharvested\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"725\",\n    \"action_title\": \"Leave part of the crop or pasture unharvested or uncut\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"729\",\n    \"action_title\": \"Create beetle banks\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2393\",\n    \"action_title\": \"Create beetle banks on farmland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"725\"}",
+            "return_val": "{\n  \"action_id\": \"725\",\n  \"action_title\": \"Leave part of the crop or pasture unharvested or uncut\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: We found eight studies from Australia, Germany, Hungary, New Zealand, Switzerland and the USA that tested leaving part of the crop or pasture unharvested or unmown. Three (including one replicated, controlled trial) found an increase in abundance of predatory insects or spiders in the crop field or pasture that was partly uncut, while four (including three replicated, controlled trials) found more predators in the unharvested or unmown area itself. Two studies (one replicated and controlled) found that the ratio of predators to pests was higher in partially cut plots and one replicated, controlled study found the same result in the uncut area. Two replicated, controlled studies found differing effects between species or groups of natural enemies. Predation and parasitism: One replicated, controlled study from Australia found an increase in predation and parasitism rates of pest eggs in unharvested strips. Pests: Two studies (including one replicated, controlled study) found a decrease in pest numbers in partially cut plots, one of them only for one species out of two. Two studies (one replicated, the other controlled) found an increase in pest numbers in partially cut plots, and two studies (including one replicated, controlled study) found more pests in uncut areas.\\nCrops studied were alfalfa and meadow pasture.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"729\"}",
+            "return_val": "{\n  \"action_id\": \"729\",\n  \"action_title\": \"Create beetle banks\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies in fields: Six studies from Canada, the UK and USA (three replicated, controlled, of which two were also randomised) examined the effects on predator numbers in adjacent crops. A review found that predators increased in adjacent crops, but one study found effects varied with time and another found no effect. Two studies found small or slow movements of predators from banks to crops. One study found greater beetle activity in fields but this did not improve pest predation. Natural enemies on banks: Four studies and a review found more invertebrate predators on beetle banks than in surrounding crops, but one of these found that effects varied with time.\\u00a0Eight studies from the UK and USA (including two randomised, replicated, controlled trials and two reviews) compared numbers of predatory invertebrates on beetle banks with other refuge habitats.\\u00a0Two studies found more natural enemies on beetle banks, but one of these found only seasonal effects. One review found similar or higher numbers of predators on beetle banks and four studies found similar or lower numbers. Pests: A replicated, randomised study and a review found the largest pest reductions in areas closest to a beetle bank or on the beetle bank itself. One review found fewer pests in fields with than without a beetle bank. Economics: One replicated, randomised, controlled trial and a review showed that beetle banks could make economic savings if they prevented pests from reaching a spray threshold or causing 5% yield loss. Beetle bank design: Two studies from the UK found certain grass species held higher numbers of predatory invertebrates than others.\\nCrops studied were barley, field bean, maize, oats, pea, radish, rapeseed, soybean, wheat and pasture.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2393\"}",
+            "return_val": "{\n  \"action_id\": \"2393\",\n  \"action_title\": \"Create beetle banks on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on mammals of creating beetle banks on farmland. This study was in the UK.\\n\\nKEY COMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated study in the UK found that beetle banks had higher densities of harvest mouse nests than did field margins.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"To provide refuge for natural enemies, what is the comparative evidence for creating beetle banks versus leaving part of a crop unharvested?\",\"action_ids\":[\"725\",\"729\"],\"summary\":\"Leaving part of a crop unharvested led to an increase in the abundance of predatory insects or spiders in three studies, and four studies found more predators in the unharvested area itself [725]. Two studies also found that the ratio of predators to pests was higher in partially cut plots [725]. One study showed an increase in predation and parasitism rates of pest eggs in unharvested strips [725]. However, the effect on pests was inconsistent, with two studies finding a decrease in pest numbers, while four studies found an increase in pests in either the partially cut plots or the uncut areas [725]. These studies were conducted in alfalfa and meadow pasture [725].\\n\\nFor beetle banks, one review found that predators increased in adjacent crops, but another study found the effects varied with time, and a third found no effect [729]. Four studies and a review found more invertebrate predators on the beetle banks than in the surrounding crops [729]. However, when comparing beetle banks to other refuge habitats, the results were mixed: two studies found more natural enemies on beetle banks, but five studies found similar or lower numbers [729]. In terms of pest control, one study and a review found the largest pest reductions in areas closest to the beetle bank or on the bank itself, and another review found fewer pests in fields with beetle banks [729]. Beetle banks could also lead to economic savings if they prevent pests from reaching a spray threshold [729]. Studies on beetle banks have been conducted on a wider range of crops, including barley, field bean, maize, oats, pea, radish, rapeseed, soybean, wheat, and pasture [729].\"}",
+            "return_val": "{\n  \"query\": \"To provide refuge for natural enemies, what is the comparative evidence for creating beetle banks versus leaving part of a crop unharvested?\",\n  \"relevant_summary\": \"Leaving part of a crop unharvested led to an increase in the abundance of predatory insects or spiders in three studies, and four studies found more predators in the unharvested area itself [725]. Two studies also found that the ratio of predators to pests was higher in partially cut plots [725]. One study showed an increase in predation and parasitism rates of pest eggs in unharvested strips [725]. However, the effect on pests was inconsistent, with two studies finding a decrease in pest numbers, while four studies found an increase in pests in either the partially cut plots or the uncut areas [725]. These studies were conducted in alfalfa and meadow pasture [725].\\n\\nFor beetle banks, one review found that predators increased in adjacent crops, but another study found the effects varied with time, and a third found no effect [729]. Four studies and a review found more invertebrate predators on the beetle banks than in the surrounding crops [729]. However, when comparing beetle banks to other refuge habitats, the results were mixed: two studies found more natural enemies on beetle banks, but five studies found similar or lower numbers [729]. In terms of pest control, one study and a review found the largest pest reductions in areas closest to the beetle bank or on the bank itself, and another review found fewer pests in fields with beetle banks [729]. Beetle banks could also lead to economic savings if they prevent pests from reaching a spray threshold [729]. Studies on beetle banks have been conducted on a wider range of crops, including barley, field bean, maize, oats, pea, radish, rapeseed, soybean, wheat, and pasture [729].\",\n  \"action_ids\": [\n    \"725\",\n    \"729\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "729",
+      "725"
+    ],
+    "regenerated_ids": [
+      "725",
+      "729"
+    ]
+  },
+  {
+    "query": "What are the potential economic outcomes of adopting organic farming or alley cropping systems?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A study in the USA concerning alley cropping noted decreased costs, but also a reduction in profit (718). Another study from the USA focusing on alley cropping demonstrated reduced yields, while a study from the Philippines indicated comparable or diminished yields (718).\n\nWhen converting to organic farming, one study discovered that profits saw an increase if the produce was sold at a premium; otherwise, profits declined (717). Another study reported either a negative impact or no impact on profitability (717). In terms of yield, six studies showed varied results: one indicated a positive effect, one a negative effect, one a combination of effects, and three reported no or inconsistent effects (717). Another study in Canada also found lower yields in organically managed soils (895). However, two trials in the USA found that while fruit might be smaller, it was of a higher quality and showed more resistance to disease (895).",
+    "summary_action_ids": [
+      "718",
+      "717",
+      "895"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"economic outcomes of organic farming and alley cropping\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"718\",\n    \"action_title\": \"Use alley cropping\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"895\",\n    \"action_title\": \"Convert to organic farming\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"717\",\n    \"action_title\": \"Convert to organic farming\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"718\"}",
+            "return_val": "{\n  \"action_id\": \"718\",\n  \"action_title\": \"Use alley cropping\",\n  \"key_messages\": \"Key Messages:\\nParasitism, infection and predation: Two of four studies from Kenya and the USA (including three randomised, replicated, controlled trials) found that effects of alley cropping on parasitism varied between study sites, sampling dates, pest life stages or the width of crop alleys. Two studies found no effect on parasitism. One study found mixed effects on fungal infections in pests and one study found lower egg predation. Natural enemies: One randomised, replicated, controlled study from Kenya found more wasps and spiders but fewer ladybirds. Some natural enemy groups were affected by the types of trees used in hedges. Pests and crop damage: Two of four replicated, controlled studies (two also randomised) from Kenya, the Philippines and the UK found more pests in alley cropped plots. One study found fewer pests and one study found effects varied with pest group and between years. One study found more pest damage to crops but another study found no effect. Weeds: One randomised, replicated, controlled study from the Philippines found mixed effects on weeds, with more grasses in alley cropped than conventional fields under some soil conditions. Yield: One controlled study from the USA found lower yield and one study from the Philippines reported similar or lower yields. Costs and profit: One study from the USA found lower costs but also lower profit in alley cropped plots.\\nCrops studied were alfalfa, barley, cowpea, maize, pea, rice and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"895\"}",
+            "return_val": "{\n  \"action_id\": \"895\",\n  \"action_title\": \"Convert to organic farming\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Four studies in Asia, Europe, and the USA (including two site comparison studies and three replicated trials) found higher numbers, diversity, functional diversity (see background) or activity of soil organisms under organic management.\\nSoil organic carbon: Two replicated trials in Italy and the USA showed that organically managed orchards had higher soil carbon levels compared to conventionally managed orchards. One randomized, replicated trial in the USA found soil carbon was lower under organic management compared to alley cropping.  \\nSoil organic matter: One replicated trial in Canada found that soil nutrients were lower in organically managed soils.\\nYields: One replicated trial in Canada found lower yields in organically managed soils. Two replicated trials in the USA (one also randomized) found that fruit was of a higher quality and more resistant to disease, though smaller or that organic management had mixed effects on yield.\\nSOIL TYPES COVERED: clay, clay loam, fine sandy-loam, loam, sandy loam, sandy-clay loam, silt, silty-clay, silt-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"717\"}",
+            "return_val": "{\n  \"action_id\": \"717\",\n  \"action_title\": \"Convert to organic farming\",\n  \"key_messages\": \"Key Messages:\\nThis synopsis includes experimental tests of organic farming only. Comparative studies of existing organic systems are not included.\\nParasitism and mortality (caused by natural enemies): One of five studies (three replicated, controlled tests and two also randomised) from Europe, North America, Asia and Australasia found that organic farming increased parasitism or natural enemy-induced mortality of pests. Two studies found mixed effects of organic farming and two randomised, replicated, controlled studies found no effect. Natural enemies: Eight of 12 studies (including six randomised, replicated, controlled tests) from Europe, North America Asia and Australasia found more natural enemies under organic farming, although seven of these found effects varied over time or between natural enemy species or groups and/or crops or management practices. Three studies (one randomised, replicated, controlled) found no or inconsistent effects on natural enemies and one study found a negative effect. Pests and diseases: One of eight studies (including five randomised, replicated, controlled tests) found that organic farming reduced pests or disease, but two studies found more pests. Three studies found mixed effects and two studies found no effect. Crop damage: One of seven studies (including five randomised, replicated, controlled tests) found less crop damage in organic fields but two studies found more. One study found a mixed response and three studies found no or inconsistent effects. Weed seed predation and weed abundance: One randomised, replicated, controlled study from the USA found mixed effects of organic farming on weed seed predation by natural enemies. Three randomised, replicated, controlled studies from the USA found more weeds in organically farmed fields, but in one of these studies this effect varied between crops and years. One study found no effect. Yield and profit: Six randomised, replicated, controlled studies measured yields and found one positive effect, one negative effect and one mixed effect, plus no or inconsistent effects in three studies. One study found net profit increased if produce received a premium, but otherwise profit decreased. Another study found a negative or no effect on profit.\\n\\u00a0\\nCrops studied were apple, barley, beans, cabbage, carrot, gourd, maize, mixed vegetables, pea, pepper, safflower, soybean, tomato and wheat.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"718\",\"717\",\"895\"],\"summary\":\"A study in the USA concerning alley cropping noted decreased costs, but also a reduction in profit (718). Another study from the USA focusing on alley cropping demonstrated reduced yields, while a study from the Philippines indicated comparable or diminished yields (718).\\n\\nWhen converting to organic farming, one study discovered that profits saw an increase if the produce was sold at a premium; otherwise, profits declined (717). Another study reported either a negative impact or no impact on profitability (717). In terms of yield, six studies showed varied results: one indicated a positive effect, one a negative effect, one a combination of effects, and three reported no or inconsistent effects (717). Another study in Canada also found lower yields in organically managed soils (895). However, two trials in the USA found that while fruit might be smaller, it was of a higher quality and showed more resistance to disease (895).\",\"query\":\"What are the potential economic outcomes of adopting organic farming or alley cropping systems?\"}",
+            "return_val": "{\n  \"query\": \"What are the potential economic outcomes of adopting organic farming or alley cropping systems?\",\n  \"relevant_summary\": \"A study in the USA concerning alley cropping noted decreased costs, but also a reduction in profit (718). Another study from the USA focusing on alley cropping demonstrated reduced yields, while a study from the Philippines indicated comparable or diminished yields (718).\\n\\nWhen converting to organic farming, one study discovered that profits saw an increase if the produce was sold at a premium; otherwise, profits declined (717). Another study reported either a negative impact or no impact on profitability (717). In terms of yield, six studies showed varied results: one indicated a positive effect, one a negative effect, one a combination of effects, and three reported no or inconsistent effects (717). Another study in Canada also found lower yields in organically managed soils (895). However, two trials in the USA found that while fruit might be smaller, it was of a higher quality and showed more resistance to disease (895).\",\n  \"action_ids\": [\n    \"718\",\n    \"717\",\n    \"895\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "717",
+      "718",
+      "719",
+      "723",
+      "728",
+      "729",
+      "750",
+      "753"
+    ],
+    "regenerated_ids": [
+      "717",
+      "718"
+    ]
+  },
+  {
+    "query": "Which interventions are most effective for increasing pest parasitism rates?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Two studies in Kenya indicated that push-pull cropping systems increased parasitism of stem borer larvae, while another study from the same country showed no impact on egg parasitism [753]. In Japan and the USA, one study revealed that excluding ants from trees resulted in higher pest parasitism by natural enemies, whereas another study reported increased parasitism at one site but no effect at another [886]. A study in New Zealand that used parasitism rates to guide insecticide application found acceptable levels of crop damage from pests, but the effects on natural enemy populations were not monitored [726].",
+    "summary_action_ids": [
+      "753",
+      "886",
+      "726"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"pest parasitism\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"726\",\n    \"action_title\": \"Incorporate parasitism rates when setting thresholds for insecticide use\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"886\",\n    \"action_title\": \"Exclude ants that protect pests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"753\",\n    \"action_title\": \"Combine trap and repellent crops in a push-pull system\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"726\"}",
+            "return_val": "{\n  \"action_id\": \"726\",\n  \"action_title\": \"Incorporate parasitism rates when setting thresholds for insecticide use\",\n  \"key_messages\": \"Key Messages:\\nPest damage: One controlled study from New Zealand found using parasitism rates to inform spraying decisions resulted in acceptable levels of crop damage from pests. Effects on natural enemy populations were not monitored.\\nThe crop studied was tomato.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"886\"}",
+            "return_val": "{\n  \"action_id\": \"886\",\n  \"action_title\": \"Exclude ants that protect pests\",\n  \"key_messages\": \"Key Messages:\\nParasitism: One of two replicated, controlled studies (one also randomised) from Japan and the USA found greater parasitism of pests by natural enemies when ants were excluded from trees. The other study found greater parasitism at one site but no effect at another. Natural enemies: Five studies (including four randomised, replicated, controlled trials) from Japan, Switzerland and the USA found effects varied between natural enemy species and groups, sampling dates, sites, crop varieties and ground cover types beneath trees. Pests: Three of seven studies (including four randomised, replicated, controlled trials) found fewer pests and another found fewer pests at times of peak abundance only. One study found mixed effects depending on date and other actions taken simultaneously (predator attractant and ground cover treatments). One study found no effect. Damage and tree growth: One study found no effect on damage to tree foliage but one study found greater tree growth. Ants: Six studies found that glue or pesticide barriers reduced ant numbers in tree or vine canopies. One study found that citrus oil barriers had no effect.\\nCrops studied were cherimoyas, cherry, grape, grapefruit,\\u00a0orange, pecan and satsuma mandarin.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"753\"}",
+            "return_val": "{\n  \"action_id\": \"753\",\n  \"action_title\": \"Combine trap and repellent crops in a push-pull system\",\n  \"key_messages\": \"Key Messages:\\nParasitism: Two randomised, replicated, controlled studies from Kenya found that push-pull cropping systems increased parasitism of stem borer larvae. One of the studies found no effect on egg parasitism. Natural enemies: Two randomised, replicated, controlled studies from Kenya and South Africa found push-pull systems had more natural predators, both in overall totals and the abundance of different predator groups. Pests: Two of three studies (two randomised, replicated, controlled) in Ethiopia, Kenya and South Africa found fewer pests. One study found no effect on pest infestation, but pests were scarce throughout. Two replicated, controlled studies\\u00a0(one also randomised) found fewer witchweeds. Crop damage: Two of three replicated, controlled studies (one also randomised) found less pest damage, but one study (where pest numbers were low) found effects varied between years and types of damage symptom. Yield: Four of five replicated, controlled studies (two also randomised) found higher yields and\\u00a0one found no effect. Profit and cost: Two studies in Kenya and a review found greater economic benefits. One study found higher production costs in the first year, but equal or lower costs in the following five years.\\nCrops studied were maize and beans.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":3,\"query_string\":\"pest parasitism\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"895\",\n    \"action_title\": \"Convert to organic farming\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"763\",\n    \"action_title\": \"Use antibacterial treatment to reduce chytridiomycosis infection\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"231\",\n    \"action_title\": \"Plant Brassica fodder crops\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"895\"}",
+            "return_val": "{\n  \"action_id\": \"895\",\n  \"action_title\": \"Convert to organic farming\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Four studies in Asia, Europe, and the USA (including two site comparison studies and three replicated trials) found higher numbers, diversity, functional diversity (see background) or activity of soil organisms under organic management.\\nSoil organic carbon: Two replicated trials in Italy and the USA showed that organically managed orchards had higher soil carbon levels compared to conventionally managed orchards. One randomized, replicated trial in the USA found soil carbon was lower under organic management compared to alley cropping.  \\nSoil organic matter: One replicated trial in Canada found that soil nutrients were lower in organically managed soils.\\nYields: One replicated trial in Canada found lower yields in organically managed soils. Two replicated trials in the USA (one also randomized) found that fruit was of a higher quality and more resistant to disease, though smaller or that organic management had mixed effects on yield.\\nSOIL TYPES COVERED: clay, clay loam, fine sandy-loam, loam, sandy loam, sandy-clay loam, silt, silty-clay, silt-loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Two studies in Kenya indicated that push-pull cropping systems increased parasitism of stem borer larvae, while another study from the same country showed no impact on egg parasitism [753]. In Japan and the USA, one study revealed that excluding ants from trees resulted in higher pest parasitism by natural enemies, whereas another study reported increased parasitism at one site but no effect at another [886]. A study in New Zealand that used parasitism rates to guide insecticide application found acceptable levels of crop damage from pests, but the effects on natural enemy populations were not monitored [726].\",\"action_ids\":[\"753\",\"886\",\"726\"],\"query\":\"Which interventions are most effective for increasing pest parasitism rates?\"}",
+            "return_val": "{\n  \"query\": \"Which interventions are most effective for increasing pest parasitism rates?\",\n  \"relevant_summary\": \"Two studies in Kenya indicated that push-pull cropping systems increased parasitism of stem borer larvae, while another study from the same country showed no impact on egg parasitism [753]. In Japan and the USA, one study revealed that excluding ants from trees resulted in higher pest parasitism by natural enemies, whereas another study reported increased parasitism at one site but no effect at another [886]. A study in New Zealand that used parasitism rates to guide insecticide application found acceptable levels of crop damage from pests, but the effects on natural enemy populations were not monitored [726].\",\n  \"action_ids\": [\n    \"753\",\n    \"886\",\n    \"726\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "753",
+      "886",
+      "754",
+      "775",
+      "717",
+      "718",
+      "725"
+    ],
+    "regenerated_ids": [
+      "717",
+      "718",
+      "725",
+      "753",
+      "754",
+      "775",
+      "886"
+    ]
+  },
+  {
+    "query": "For pasture management in the UK, what is the comparative evidence on natural enemy abundance when delaying mowing versus using grazing instead of cutting?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "For delaying mowing in the UK, one replicated, randomised, controlled study found fewer predatory spiders (727). Two other UK studies found no change in insect predator numbers and one replicated, randomised, controlled study found no effect on spider and beetle diversity (727). For using grazing instead of cutting, one replicated trial in the UK found mixed effects on natural enemies, with some species and groups affected on some dates but not others (885).",
+    "summary_action_ids": [
+      "727",
+      "885"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"pasture management UK natural enemy abundance\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"727\",\n    \"action_title\": \"Delay mowing or first grazing date on pasture or grassland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"885\",\n    \"action_title\": \"Use grazing instead of cutting for pasture or grassland management\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"752\",\n    \"action_title\": \"Plant new hedges\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"727\"}",
+            "return_val": "{\n  \"action_id\": \"727\",\n  \"action_title\": \"Delay mowing or first grazing date on pasture or grassland\",\n  \"key_messages\": \"Key Messages:\\nNatural enemy abundance: One replicated, randomised, controlled study found fewer predatory spiders with delayed cutting. Three studies from the UK (two of them replicated, randomised and controlled) found no change in insect predator numbers and one replicated study from Sweden found mixed effects between different predator groups. Natural enemy diversity: One replicated study from Sweden found a decrease in ant diversity with delayed cutting and one replicated, randomised, controlled study from the UK found no effect on spider and beetle diversity. Pests: One of two replicated, randomised, controlled studies from the UK and USA found more pest insects in late-cut plots and one found no effect. Insects in general: Four replicated, randomised, controlled studies measured the abundance of insect groups without classifying them as pests or natural enemies. One UK study found lower numbers in late-cut plots, while two found effects varied between groups. Two\\u00a0studies from the UK and USA found no effect on insect numbers.\\nCrops studied were barley, bird\\u2019s-foot trefoil, clovers, fescues, rapeseed, ryegrass, other grasses and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"885\"}",
+            "return_val": "{\n  \"action_id\": \"885\",\n  \"action_title\": \"Use grazing instead of cutting for pasture or grassland management\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: Two studies (one before-and-after and one replicated trial) from Australia and the UK found grazing instead of cutting had mixed effects on natural enemies, with some species and groups affected on some dates but not others. One replicated study from New Zealand found no effect. Pests and diseases: One of five studies (including three replicated trials) from Australia, New Zealand, the UK and the USA found more pests, and two studies found effects varied between pest groups and sampling dates. Two studies found no effect on pests. One study found no effect on disease when grazing was used in addition to cutting. Pasture damage and plant survival: One randomised study found more ryegrass shoots were attacked by pests. One study found lower survival of alfalfa plants but another found no effect. Yield: One of four randomised, replicated studies (one also controlled) found lower yields and two found no effect. One study found lower ryegrass and higher clover yields, but no difference between clover varieties. Another randomised study found more ryegrass shoots.\\nCrops studied were alfalfa, cock\\u2019s-foot, perennial ryegrass, other grasses and white clover.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"For delaying mowing in the UK, one replicated, randomised, controlled study found fewer predatory spiders (727). Two other UK studies found no change in insect predator numbers and one replicated, randomised, controlled study found no effect on spider and beetle diversity (727). For using grazing instead of cutting, one replicated trial in the UK found mixed effects on natural enemies, with some species and groups affected on some dates but not others (885).\",\"query\":\"For pasture management in the UK, what is the comparative evidence on natural enemy abundance when delaying mowing versus using grazing instead of cutting?\",\"action_ids\":[\"727\",\"885\"]}",
+            "return_val": "{\n  \"query\": \"For pasture management in the UK, what is the comparative evidence on natural enemy abundance when delaying mowing versus using grazing instead of cutting?\",\n  \"relevant_summary\": \"For delaying mowing in the UK, one replicated, randomised, controlled study found fewer predatory spiders (727). Two other UK studies found no change in insect predator numbers and one replicated, randomised, controlled study found no effect on spider and beetle diversity (727). For using grazing instead of cutting, one replicated trial in the UK found mixed effects on natural enemies, with some species and groups affected on some dates but not others (885).\",\n  \"action_ids\": [\n    \"727\",\n    \"885\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "727",
+      "885",
+      "721",
+      "725"
+    ],
+    "regenerated_ids": [
+      "727",
+      "885"
+    ]
+  },
+  {
+    "query": "What is the evidence for the effectiveness of manipulating field structure by adding linear features like hedges, beetle banks, or alley cropping?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in Madagascar found that reptile communities in cultivated areas with hedges were more similar to those found in forests than were communities from cultivated areas without hedges. The study also found that more reptile species were found only in areas with hedges than only in areas without hedges (3519). One replicated, site comparison study in Canada found that agricultural landscapes with smaller fields had higher activity (relative abundance) of six of seven bat species than landscapes with larger fields (1939). We found no studies that evaluated the effects of restoring or creating linear habitat features/green corridors on bat populations (2035).",
+    "summary_action_ids": [
+      "3519",
+      "1939",
+      "2035"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"manipulating field structure by adding linear features\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3519\",\n    \"action_title\": \"Provide or maintain hedgerows on farmland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2035\",\n    \"action_title\": \"Restore or create linear habitat features/green corridors\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1939\",\n    \"action_title\": \"Reduce field size (or maintain small fields)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3519\"}",
+            "return_val": "{\n  \"action_id\": \"3519\",\n  \"action_title\": \"Provide or maintain hedgerows on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of providing or maintaining linear features on reptile populations. This study was in Madagascar.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nCommunity composition (1 study): One site comparison study in Madagascar\\u00a0found that reptile communities in cultivated areas with hedges were more similar to those found in forests than were communities from cultivated areas without hedges. The study\\u00a0also found that more reptile species were found only areas with hedges than only in areas without hedges.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2035\"}",
+            "return_val": "{\n  \"action_id\": \"2035\",\n  \"action_title\": \"Restore or create linear habitat features/green corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of restoring or creating linear habitat features/green corridors on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1939\"}",
+            "return_val": "{\n  \"action_id\": \"1939\",\n  \"action_title\": \"Reduce field size (or maintain small fields)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of maintaining small fields on bat populations. The study was in Canada.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, site comparison study in Canada\\u00a0found that agricultural landscapes with smaller fields had higher activity (relative abundance) of six of seven bat species than landscapes with larger fields.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the evidence for the effectiveness of manipulating field structure by adding linear features like hedges, beetle banks, or alley cropping?\",\"summary\":\"One study in Madagascar found that reptile communities in cultivated areas with hedges were more similar to those found in forests than were communities from cultivated areas without hedges. The study also found that more reptile species were found only in areas with hedges than only in areas without hedges (3519). One replicated, site comparison study in Canada found that agricultural landscapes with smaller fields had higher activity (relative abundance) of six of seven bat species than landscapes with larger fields (1939). We found no studies that evaluated the effects of restoring or creating linear habitat features/green corridors on bat populations (2035).\",\"action_ids\":[\"3519\",\"1939\",\"2035\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence for the effectiveness of manipulating field structure by adding linear features like hedges, beetle banks, or alley cropping?\",\n  \"relevant_summary\": \"One study in Madagascar found that reptile communities in cultivated areas with hedges were more similar to those found in forests than were communities from cultivated areas without hedges. The study also found that more reptile species were found only in areas with hedges than only in areas without hedges (3519). One replicated, site comparison study in Canada found that agricultural landscapes with smaller fields had higher activity (relative abundance) of six of seven bat species than landscapes with larger fields (1939). We found no studies that evaluated the effects of restoring or creating linear habitat features/green corridors on bat populations (2035).\",\n  \"action_ids\": [\n    \"3519\",\n    \"1939\",\n    \"2035\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "752",
+      "729",
+      "718"
+    ],
+    "regenerated_ids": [
+      "718",
+      "729",
+      "752"
+    ]
+  },
+  {
+    "query": "What actions are available to a farmer growing perennial crops to enhance natural enemy populations on the ground versus in the tree canopy?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Allowing natural regeneration of ground cover beneath perennial crops has been studied for its effects on natural enemy populations, with varied results [720]. On the ground, two studies found more natural enemies in natural ground cover, while three other studies reported mixed effects, with increases in some natural enemy groups but not others [720]. In the tree and vine canopies, the effects of natural ground cover on natural enemies were inconsistent, with three studies finding that the effects varied among different groups of natural enemies and two studies finding no difference [720]. In a study on cashew trees, isolating colonies of beneficial predatory ants led to a higher number of trees being occupied by these ants [773]. This also resulted in lower pest damage and higher yields [773]. Another action is to grow non-crop plants that produce chemicals to attract natural enemies [724]. Three studies found that this practice led to higher numbers of natural enemies, and all four studies that looked at pest populations found a decrease in either the pest population or crop damage [724]. The crops studied for these actions include apple, grape, lemon, olive, pear, cashew, lettuce, orange, safflower, and sorghum [720, 773, 724].",
+    "summary_action_ids": [
+      "720",
+      "773",
+      "724"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"enhance natural enemy populations in perennial crops\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"720\",\n    \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"773\",\n    \"action_title\": \"Isolate colonies of beneficial ants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"724\",\n    \"action_title\": \"Grow non-crop plants that produce chemicals that attract natural enemies\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"720\"}",
+            "return_val": "{\n  \"action_id\": \"720\",\n  \"action_title\": \"Allow natural regeneration of ground cover beneath perennial crops\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies on crop trees and vines: Five studies (including one replicated, randomised, controlled test) from Australia, China, Italy and Portugal compared natural and bare ground covers by measuring numbers of natural enemies in fruit tree or vine canopies. Three found effects varied between groups of natural enemies, two found no difference. Two studies from Australia and France compared natural to sown ground cover and found no effect on enemies in crop canopies. Natural enemies on the ground: Five studies (including three replicated, randomised, controlled trials) from Australia, Canada, China, France, and Spain compared natural and bare ground covers by measuring natural enemies on the ground. Two studies found more natural enemies in natural ground cover, but in one the effects were only short-term for most natural enemy groups. Three studies found mixed effects, with higher numbers of some natural enemy groups but not others. Two studies compared natural and sown ground covers, one study found more natural enemies and one found no effect. Pests and crop damage: Four studies (three controlled, one also replicated and randomised) from Italy, Australia and China measured pests and crop damage in regenerated and bare ground covers. Two studies found fewer pests, whilst two studies found effects on pests and crop damage varied for different pest or disease groups. One study found more pests in natural than in sown ground covers.\\nCrops studied were apple, grape, lemon, olive and pear.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"773\"}",
+            "return_val": "{\n  \"action_id\": \"773\",\n  \"action_title\": \"Isolate colonies of beneficial ants\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One replicated, controlled study from Australia found predatory ants occupied more cashew trees when colonies were kept isolated. Pest damage and yield: The same study found lower pest damage to cashews and higher yields.\\nThe crop studied was cashew.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"724\"}",
+            "return_val": "{\n  \"action_id\": \"724\",\n  \"action_title\": \"Grow non-crop plants that produce chemicals that attract natural enemies\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: Four studies from China, Germany, India and Kenya tested the effects of growing plants that produce chemicals that attract natural enemies. Three (including one replicated, randomised, controlled trail) found higher numbers of natural enemies in plots with plants that produce attractive chemicals, and one found that the attractive plant also attracted natural enemies in lab studies. One found no effect on parasitism but the plant used was found not to be attractive to natural enemies in lab studies. Pests: All four studies found a decrease in either pest population or pest damage in plots with plants that produce chemicals that attract natural enemies. Yield: One replicated, randomised, controlled study found an increase in crop yield in plots with plants that produce attractive chemicals.\\nCrops studied were lettuce, orange,\\u00a0safflower and\\u00a0sorghum.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions are available to a farmer growing perennial crops to enhance natural enemy populations on the ground versus in the tree canopy?\",\"summary\":\"Allowing natural regeneration of ground cover beneath perennial crops has been studied for its effects on natural enemy populations, with varied results [720]. On the ground, two studies found more natural enemies in natural ground cover, while three other studies reported mixed effects, with increases in some natural enemy groups but not others [720]. In the tree and vine canopies, the effects of natural ground cover on natural enemies were inconsistent, with three studies finding that the effects varied among different groups of natural enemies and two studies finding no difference [720]. In a study on cashew trees, isolating colonies of beneficial predatory ants led to a higher number of trees being occupied by these ants [773]. This also resulted in lower pest damage and higher yields [773]. Another action is to grow non-crop plants that produce chemicals to attract natural enemies [724]. Three studies found that this practice led to higher numbers of natural enemies, and all four studies that looked at pest populations found a decrease in either the pest population or crop damage [724]. The crops studied for these actions include apple, grape, lemon, olive, pear, cashew, lettuce, orange, safflower, and sorghum [720, 773, 724].\",\"action_ids\":[\"720\",\"773\",\"724\"]}",
+            "return_val": "{\n  \"query\": \"What actions are available to a farmer growing perennial crops to enhance natural enemy populations on the ground versus in the tree canopy?\",\n  \"relevant_summary\": \"Allowing natural regeneration of ground cover beneath perennial crops has been studied for its effects on natural enemy populations, with varied results [720]. On the ground, two studies found more natural enemies in natural ground cover, while three other studies reported mixed effects, with increases in some natural enemy groups but not others [720]. In the tree and vine canopies, the effects of natural ground cover on natural enemies were inconsistent, with three studies finding that the effects varied among different groups of natural enemies and two studies finding no difference [720]. In a study on cashew trees, isolating colonies of beneficial predatory ants led to a higher number of trees being occupied by these ants [773]. This also resulted in lower pest damage and higher yields [773]. Another action is to grow non-crop plants that produce chemicals to attract natural enemies [724]. Three studies found that this practice led to higher numbers of natural enemies, and all four studies that looked at pest populations found a decrease in either the pest population or crop damage [724]. The crops studied for these actions include apple, grape, lemon, olive, pear, cashew, lettuce, orange, safflower, and sorghum [720, 773, 724].\",\n  \"action_ids\": [\n    \"720\",\n    \"773\",\n    \"724\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "720",
+      "773",
+      "886"
+    ],
+    "regenerated_ids": [
+      "720",
+      "773",
+      "886"
+    ]
+  }
+]

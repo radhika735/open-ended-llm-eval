@@ -600,9 +600,6 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
     else:
         logging.info(f"Starting summary generation for questions in directory {qus_dir}.")
 
-        retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
-        new_summary_out_base_dirs = [os.path.join(dir, retrieval_subdir) for dir in summary_out_base_dirs]
-
         qus_filenames = [name for name in sorted(os.listdir(qus_dir)) if name.endswith(".json")]
 
         for qus_filename in qus_filenames[offset_to_first_qu_file : offset_to_first_qu_file + max_qu_files]:
@@ -614,7 +611,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
                 run_summary_gen_for_qu_file(
                     queries_filepath = os.path.join(qus_dir, qus_filename),
                     max_qus = max_qus_per_file,
-                    summary_out_base_dirs = new_summary_out_base_dirs, 
+                    summary_out_base_dirs = summary_out_base_dirs, 
                     summary_filename = summary_filename, 
                     model_provider_list = model_provider_list
                 )
@@ -641,14 +638,17 @@ def main():
     MAX_QU_FILES = 8
     MAX_QUS_PER_FILE = 3
 
-    ## SUMMARY GENERATION PROCESS
-    outer_summaries_dir = f"live_summaries/{QU_TYPE}_{FILTER_STAGE}_qus_summaries"
-    qus_dir = f"live_questions/bg_km_qus/{QU_TYPE}/{FILTER_STAGE}/usage_annotated"
-    summary_out_base_dirs = [
-        os.path.join(outer_summaries_dir, "all_eval_stages_for_evaluation"),
-        os.path.join(outer_summaries_dir, "eval_annotated")
-    ]
 
+    ## SUMMARY GENERATION PROCESS
+    qus_dir = f"live_questions/bg_km_qus/{QU_TYPE}/{FILTER_STAGE}/usage_annotated"
+
+    outer_summaries_dir = f"live_summaries/{QU_TYPE}_{FILTER_STAGE}_qus_summaries"
+    retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
+    summary_out_base_dirs = [
+        os.path.join(outer_summaries_dir, retrieval_subdir, "all_eval_stages"),
+        os.path.join(outer_summaries_dir, retrieval_subdir, "eval_annotated"),
+        os.path.join(f"summary_gen_data/{QU_TYPE}_{FILTER_STAGE}/_qus_summaries", retrieval_subdir)
+    ]
 
     logging.info("STARTING summary generation process.")
     start_time = time.monotonic()

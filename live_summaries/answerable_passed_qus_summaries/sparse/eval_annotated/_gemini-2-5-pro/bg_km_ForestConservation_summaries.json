@@ -1,0 +1,309 @@
+[
+  {
+    "query": "Considering different timber harvesting methods, which are most effective for increasing understory plant diversity?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Six of seven studies found that shelterwood harvesting increased the abundance, species richness and diversity of understory plants [1223]. One study found that shelterwood harvesting decreased plant species richness and abundance [1223]. Four of eight studies found that group-selection harvesting increased the cover and diversity of understory plants [1224]. Two studies found it decreased understory species richness and biomass [1224]. Two studies found no effect of group-selection harvest on understory species richness and diversity [1224]. One of six studies found that woody debris removal increased understory vegetation cover, and four of the studies found no effect or mixed effects on understory vegetation species richness and diversity [1213].",
+    "summary_action_ids": [
+      "1223",
+      "1224",
+      "1213"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"timber harvesting methods for increasing understory plant diversity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1224\",\n    \"action_title\": \"Use group-selection harvesting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1213\",\n    \"action_title\": \"Remove woody debris after timber harvest\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1223\",\n    \"action_title\": \"Use shelterwood harvesting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1224\"}",
+            "return_val": "{\n  \"action_id\": \"1224\",\n  \"action_title\": \"Use group-selection harvesting\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of eight studies (including one replicated, controlled study) in Australia, Canada, Costa Rica\\u00a0and the USA\\u00a0found that group-selection harvesting increased cover and diversity of understory plants and the density of young trees. Two studies found it decreased understory species richness2 and biomass.Two studies found no effect on understory species richness and diversity and two found no effect of group-selection harvest on tree density and growth-rate.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1213\"}",
+            "return_val": "{\n  \"action_id\": \"1213\",\n  \"action_title\": \"Remove woody debris after timber harvest\",\n  \"key_messages\": \"Key Messages:\\n\\nOne of six studies (including two replicated, randomized, controlled studies) in the USA and France found that woody debris removal increased understory vegetation cover. Three studies found no effect or mixed effects on cover. Four of the studies\\u00a0found no effect or mixed effects on understory vegetation species richness and diversity and two found no effect of woody debris removal on coverand species diversity of trees.\\nSix studies (including two replicated, randomized, controlled studies) in Canada, Ethiopia, Spain\\u00a0and the USA\\u00a0examined the effect of woody debris removal on young trees. One study found that debris removal increased young tree density, another study found that it decreased young tree density, and three studies found mixed effects or no effect on young tree density. One found no effect of woody-debris removal on young tree survival.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1223\"}",
+            "return_val": "{\n  \"action_id\": \"1223\",\n  \"action_title\": \"Use shelterwood harvesting\",\n  \"key_messages\": \"Key Messages:\\n\\nSix of seven studies (including five replicated, controlled studies) in Australia, Iran, Nepal\\u00a0and the USA\\u00a0found that shelterwood harvesting increased abundance, species richness and diversity of understory plants, as well as the growth and survival rate of young trees. One study found shelterwood harvesting decreased plant species richness and abundance. One study found no effect of shelterwood harvest on tree abundance.\\nOne replicated, controlled study in Canada\\u00a0found no effect of shelterwood harvest on red oak acorn production.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1223\",\"1224\",\"1213\"],\"query\":\"Considering different timber harvesting methods, which are most effective for increasing understory plant diversity?\",\"summary\":\"Six of seven studies found that shelterwood harvesting increased the abundance, species richness and diversity of understory plants [1223]. One study found that shelterwood harvesting decreased plant species richness and abundance [1223]. Four of eight studies found that group-selection harvesting increased the cover and diversity of understory plants [1224]. Two studies found it decreased understory species richness and biomass [1224]. Two studies found no effect of group-selection harvest on understory species richness and diversity [1224]. One of six studies found that woody debris removal increased understory vegetation cover, and four of the studies found no effect or mixed effects on understory vegetation species richness and diversity [1213].\"}",
+            "return_val": "{\n  \"query\": \"Considering different timber harvesting methods, which are most effective for increasing understory plant diversity?\",\n  \"relevant_summary\": \"Six of seven studies found that shelterwood harvesting increased the abundance, species richness and diversity of understory plants [1223]. One study found that shelterwood harvesting decreased plant species richness and abundance [1223]. Four of eight studies found that group-selection harvesting increased the cover and diversity of understory plants [1224]. Two studies found it decreased understory species richness and biomass [1224]. Two studies found no effect of group-selection harvest on understory species richness and diversity [1224]. One of six studies found that woody debris removal increased understory vegetation cover, and four of the studies found no effect or mixed effects on understory vegetation species richness and diversity [1213].\",\n  \"action_ids\": [\n    \"1223\",\n    \"1224\",\n    \"1213\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1214",
+      "1223",
+      "1222",
+      "1215",
+      "1224",
+      "1209",
+      "1210",
+      "1211",
+      "1271",
+      "1273"
+    ],
+    "regenerated_ids": [
+      "1214",
+      "1215",
+      "1222",
+      "1223",
+      "1224",
+      "1211",
+      "1273"
+    ]
+  },
+  {
+    "query": "What are the main benefits and negative impacts of using prescribed fire as a management tool in North American forests?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Prescribed fire as a management tool in North American forests has several documented effects. In terms of benefits, some studies have found that prescribed fires can increase amphibian abundance or the number of amphibian species (877), and one study showed an increase in spotted salamander hatching success (877). For bee conservation, controlling fire with a combination of cutting and burning can increase herbaceous plant cover (37). Additionally, one study found that prescribed fire increased tree cover, and another found it increased tree size (1217). However, there are also negative impacts. One study noted a decrease in amphibian abundance following a fire (877). More significantly, four studies found that prescribed fire decreased tree cover, density, and diversity, and seven studies showed it increased tree mortality (1217). The effects can also be mixed or neutral. Eight of 14 studies on amphibians found no effect from prescribed fires on abundance or species numbers, while four studies reported mixed effects (877). Similarly, some studies on trees found no effect or mixed effects on tree cover and density (1217), and two studies found no effect on tree size (1217).",
+    "summary_action_ids": [
+      "37",
+      "877",
+      "1217"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"prescribed fire in North American forests\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"877\",\n    \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"37\",\n    \"action_title\": \"Control fire risk using mechanical shrub control and/or prescribed burning\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1217\",\n    \"action_title\": \"Use prescribed fire: effects on mature trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"877\"}",
+            "return_val": "{\n  \"action_id\": \"877\",\n  \"action_title\": \"Use prescribed fire or modifications to burning regime in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nEight of 14 studies (including three randomized, replicated, controlled studies) in Australia, North America and the USA found no effect of prescribed forest fires on amphibian abundance or numbers of species. Four found that forest fires had mixed effects on amphibian abundance depending on species, species and year or season of burn. Three found that fires increased amphibian abundance or numbers of species. One found that abundance decreased with fires.\\nTwo studies (including one randomized, replicated, controlled study) in the USA found that numbers of amphibian species and abundance increased or abundance decreased with time since prescribed forest fires.\\nOne before-and-after study in the USA found that spotted salamander hatching success increased following a prescribed forest fire.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"37\"}",
+            "return_val": "{\n  \"action_id\": \"37\",\n  \"action_title\": \"Control fire risk using mechanical shrub control and/or prescribed burning\",\n  \"key_messages\": \"Key Messages:\\nOne replicated controlled trial in mixed temperate forest in the USA showed that for bee conservation, it is best to control fire using cutting and burning combined. This increases herbaceous plant cover in subsequent years.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1217\"}",
+            "return_val": "{\n  \"action_id\": \"1217\",\n  \"action_title\": \"Use prescribed fire: effects on mature trees\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of eight studies (including two replicated, randomized, controlled studies) from the USA found that prescribed fire decreased  tree cover, density and diversity. One study\\u00a0found it increased tree cover and three found no effect or mixed effects of prescribed fire on cover and density of trees.\\nSeven studies from the USA (including one replicated, randomized, controlled study) found that prescribed fire increased tree mortality.\\nOne of three studies from the USA (including one replicated, controlled study) found that prescribed fire increased tree size while two found no effect of prescribed fire on tree size.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the main benefits and negative impacts of using prescribed fire as a management tool in North American forests?\",\"summary\":\"Prescribed fire as a management tool in North American forests has several documented effects. In terms of benefits, some studies have found that prescribed fires can increase amphibian abundance or the number of amphibian species (877), and one study showed an increase in spotted salamander hatching success (877). For bee conservation, controlling fire with a combination of cutting and burning can increase herbaceous plant cover (37). Additionally, one study found that prescribed fire increased tree cover, and another found it increased tree size (1217). However, there are also negative impacts. One study noted a decrease in amphibian abundance following a fire (877). More significantly, four studies found that prescribed fire decreased tree cover, density, and diversity, and seven studies showed it increased tree mortality (1217). The effects can also be mixed or neutral. Eight of 14 studies on amphibians found no effect from prescribed fires on abundance or species numbers, while four studies reported mixed effects (877). Similarly, some studies on trees found no effect or mixed effects on tree cover and density (1217), and two studies found no effect on tree size (1217).\",\"action_ids\":[\"37\",\"877\",\"1217\"]}",
+            "return_val": "{\n  \"query\": \"What are the main benefits and negative impacts of using prescribed fire as a management tool in North American forests?\",\n  \"relevant_summary\": \"Prescribed fire as a management tool in North American forests has several documented effects. In terms of benefits, some studies have found that prescribed fires can increase amphibian abundance or the number of amphibian species (877), and one study showed an increase in spotted salamander hatching success (877). For bee conservation, controlling fire with a combination of cutting and burning can increase herbaceous plant cover (37). Additionally, one study found that prescribed fire increased tree cover, and another found it increased tree size (1217). However, there are also negative impacts. One study noted a decrease in amphibian abundance following a fire (877). More significantly, four studies found that prescribed fire decreased tree cover, density, and diversity, and seven studies showed it increased tree mortality (1217). The effects can also be mixed or neutral. Eight of 14 studies on amphibians found no effect from prescribed fires on abundance or species numbers, while four studies reported mixed effects (877). Similarly, some studies on trees found no effect or mixed effects on tree cover and density (1217), and two studies found no effect on tree size (1217).\",\n  \"action_ids\": [\n    \"37\",\n    \"877\",\n    \"1217\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1196",
+      "1217",
+      "1220",
+      "1221",
+      "1227",
+      "1234",
+      "1255"
+    ],
+    "regenerated_ids": [
+      "1217",
+      "1220",
+      "1221",
+      "1227",
+      "1255",
+      "1196"
+    ]
+  },
+  {
+    "query": "How does the evidence for using shelterwood harvesting compare with clearcutting for promoting plant diversity and tree regeneration?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Three replicated, controlled studies in Sweden and the USA found that shelterwood harvesting resulted in higher plant diversity, lower grass cover and a higher density of tree species when compared to clearcutting [1214].",
+    "summary_action_ids": [
+      "1214"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"shelterwood harvesting vs clearcutting plant diversity and tree regeneration\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1214\",\n    \"action_title\": \"Use shelterwood harvest instead of clearcutting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3871\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1223\",\n    \"action_title\": \"Use shelterwood harvesting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1214\"}",
+            "return_val": "{\n  \"action_id\": \"1214\",\n  \"action_title\": \"Use shelterwood harvest instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree replicated, controlled studies in Sweden\\u00a0and the USA found that shelterwood harvesting resulted in higher plant diversity,  lower grass cover and higher  density of tree species compared with clearcutting.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3871\"}",
+            "return_val": "{\n  \"action_id\": \"3871\",\n  \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of using shelterwood harvesting instead of clearcutting. All three studies were in the USA.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): One controlled, before-and-after study in the USA found that the species richness of macro-moths was higher after a forest was managed by shelterwood harvesting, than after harvest by patch-cutting or clearcutting, and the richness in the shelterwood harvested forest was similar to a thinned forest and an unharvested forest. One replicated, controlled, before-and-after study in the USA\\u00a0found that forests managed by shelterwood harvesting had a similar species richness of moths to forests managed by single tree harvesting, group selection harvesting or clearcutting, but a lower species richness than unharvested forest. One replicated, controlled, before-and-after study in the USA\\u00a0found that moth species richness recovered faster after shelterwood harvesting than after group selection harvesting or clearcutting.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1223\"}",
+            "return_val": "{\n  \"action_id\": \"1223\",\n  \"action_title\": \"Use shelterwood harvesting\",\n  \"key_messages\": \"Key Messages:\\n\\nSix of seven studies (including five replicated, controlled studies) in Australia, Iran, Nepal\\u00a0and the USA\\u00a0found that shelterwood harvesting increased abundance, species richness and diversity of understory plants, as well as the growth and survival rate of young trees. One study found shelterwood harvesting decreased plant species richness and abundance. One study found no effect of shelterwood harvest on tree abundance.\\nOne replicated, controlled study in Canada\\u00a0found no effect of shelterwood harvest on red oak acorn production.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Three replicated, controlled studies in Sweden and the USA found that shelterwood harvesting resulted in higher plant diversity, lower grass cover and a higher density of tree species when compared to clearcutting [1214].\",\"query\":\"How does the evidence for using shelterwood harvesting compare with clearcutting for promoting plant diversity and tree regeneration?\",\"action_ids\":[\"1214\"]}",
+            "return_val": "{\n  \"query\": \"How does the evidence for using shelterwood harvesting compare with clearcutting for promoting plant diversity and tree regeneration?\",\n  \"relevant_summary\": \"Three replicated, controlled studies in Sweden and the USA found that shelterwood harvesting resulted in higher plant diversity, lower grass cover and a higher density of tree species when compared to clearcutting [1214].\",\n  \"action_ids\": [\n    \"1214\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1214",
+      "1215",
+      "1222",
+      "1223"
+    ],
+    "regenerated_ids": [
+      "1214",
+      "1223",
+      "1222",
+      "1215"
+    ]
+  },
+  {
+    "query": "After a wildfire, what are the documented benefits and harms of interventions like thinning and sowing seeds?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Five replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain found that thinning increased plant species richness and one in Canada found that it increased the cover of aspen saplings (1234). One study in the USA found thinning decreased plant biomass and one in Israel found it decreased mortality of pine seedlings (1234). One paired-site study in Canada found that logging after wildfire decreased species richness and diversity of mosses (1234). Three studies in the USA examined the effect of sowing herbaceous plant seeds in burnt forest areas. One found it decreased the number and cover of native species and one found it decreased the density of tree seedlings (1236). All three found no effect of seeding on total plant cover or species richness (1236). One study in Spain found that removing burned trees and branches after wildfire did not increase European wild rabbit numbers compared to removing burned trees but leaving branches in place (2478). We found no evidence for the effects of planting trees after wildfire on forests (1235).",
+    "summary_action_ids": [
+      "1234",
+      "1236",
+      "2478",
+      "1235"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"post-wildfire interventions\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2478\",\n    \"action_title\": \"Remove burnt trees and branches after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1235\",\n    \"action_title\": \"Plant trees after wildfire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3659\",\n    \"action_title\": \"Put out wildfires\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"thinning after wildfire\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2477\",\n    \"action_title\": \"Thin trees to reduce wildfire risk\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2478\",\n    \"action_title\": \"Remove burnt trees and branches after wildfire\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"sowing seeds after wildfire\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1236\",\n    \"action_title\": \"Sow tree seeds after wildfire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3423\",\n    \"action_title\": \"Graze with livestock after seeding/planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3430\",\n    \"action_title\": \"Irrigate before or after seeding/planting\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1234\"}",
+            "return_val": "{\n  \"action_id\": \"1234\",\n  \"action_title\": \"Thin trees after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nFive replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain\\u00a0found that thinning increased plant species richness. One in Canada\\u00a0found that it increased the cover of aspen saplings. One study in the USA\\u00a0found thinning decreased plant biomass and one in Israel\\u00a0found it decreased mortality of pine seedlings.\\nOne paired-site study in Canada\\u00a0found that logging after wildfire decreased species richness and diversity of mosses.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2478\"}",
+            "return_val": "{\n  \"action_id\": \"2478\",\n  \"action_title\": \"Remove burnt trees and branches after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on mammals of removing burnt trees and branches after wildfire. This study was in Spain.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A replicated, randomized, controlled study in Spain\\u00a0found that removing burned trees and branches after wildfire did not increase European wild rabbit numbers compared to removing burned trees but leaving branches in place.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1235\"}",
+            "return_val": "{\n  \"action_id\": \"1235\",\n  \"action_title\": \"Plant trees after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of planting trees after wildfire on forests.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1236\"}",
+            "return_val": "{\n  \"action_id\": \"1236\",\n  \"action_title\": \"Sow tree seeds after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated, randomized, controlled study) in the USA\\u00a0examined the effect of sowing herbaceous plant seeds in burnt forest areas. One found it decreased the number and cover of native species and one found it decreased the density of tree seedlings. All three found no effect of seeding on total plant cover or species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3423\"}",
+            "return_val": "{\n  \"action_id\": \"3423\",\n  \"action_title\": \"Graze with livestock after seeding/planting\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies examined the effects of grazing with livestock after seeding/planting on grassland vegetation. Five studies were in Europe, one study was in New Zealand and one was in the USA.\\n\\nVEGETATION COMMUNITY (5 STUDIES)\\n\\nOverall richness/diversity (2 studies): One replicated, randomized, paired, controlled study in Italy\\u00a0found that grazing with livestock after sowing seeds increased plant species richness compared to sowing without grazing. One replicated, controlled study in the UK\\u00a0found that grazing with livestock after sowing seeds reduced plant species richness compared to cutting vegetation after sowing.\\nSown/planted species richness/diversity (2 studies): One replicated study in the UK\\u00a0found that grazing with cattle after sowing seeds increased sown species richness compared to grazing with sheep.\\u00a0One replicated, randomized, controlled study in New Zealand\\u00a0found that grazing with sheep continuously after sowing seeds did not alter sown species richness compared to grazing on rotation.\\nNative/non-target species richness/diversity (1 study): One replicated, controlled study in the USA\\u00a0found that grazing with cattle after sowing seeds increased native plant species richness compared to sowing without grazing.\\n\\nVEGETATION ABUNDANCE (4 STUDIES)\\n\\nCharacteristic plant abundance (1 study): One replicated, controlled study in Hungary\\u00a0found that grazing with livestock after sowing seeds did not alter the cover of target plant species compared to sowing without grazing.\\nSown/planted species abundance (2 studies): One replicated study in the UK\\u00a0found that grazing with cattle after sowing seeds reduced the cover of sown species compared to grazing with sheep.\\u00a0One replicated, randomized, controlled study in New Zealand\\u00a0found that grazing with sheep continuously after sowing seeds increased the cover of four of eight sown species compared to grazing on rotation.\\nNative/non-target species abundance (1 study): One replicated, controlled study in the USA\\u00a0found that grazing with cattle after sowing seeds reduced the cover of native plant species compared to sowing without grazing.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\\nOTHER (1 STUDY)\\n\\nSurvival (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that grazing in the winter after sowing seeds resulted in higher survival of cut-leaved cranesbill seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3430\"}",
+            "return_val": "{\n  \"action_id\": \"3430\",\n  \"action_title\": \"Irrigate before or after seeding/planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of irrigating before or after seeding/planting on grasslands. One study was in Spain\\u00a0and one in the USA.\\n\\nVEGETATION COMMUNITY (2 STUDIES)\\n\\nOverall richness/diversity (2 studies): One of two replicated, controlled studies (one of which was randomized and paired) in Spain\\u00a0and the USA\\u00a0found that irrigating after sowing non-native seeds increased plant diversity in four of 10 cases. The other study\\u00a0found that irrigating after sowing native seeds did not alter plant species richness.\\nNative/non-target species richness/diversity (1 study): One replicated, controlled study in the USA\\u00a0found that irrigating after sowing seeds did not alter the species richness of native plants.\\n\\nVEGETATION ABUNDANCE (2 STUDIES)\\n\\nOverall abundance (1 study): One replicated, randomized, paired, controlled study in Spain\\u00a0found that irrigating after sowing non-native seeds increased vegetation cover in six of 10 cases.\\nNative/non-target species abundance (1 study): One replicated, controlled study in the USA\\u00a0found that irrigating after sowing seeds did not alter the cover of native plant species.\\n\\nVEGETATION STRUCTURE (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"After a wildfire, what are the documented benefits and harms of interventions like thinning and sowing seeds?\",\"action_ids\":[\"1234\",\"1236\",\"2478\",\"1235\"],\"summary\":\"Five replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain found that thinning increased plant species richness and one in Canada found that it increased the cover of aspen saplings (1234). One study in the USA found thinning decreased plant biomass and one in Israel found it decreased mortality of pine seedlings (1234). One paired-site study in Canada found that logging after wildfire decreased species richness and diversity of mosses (1234). Three studies in the USA examined the effect of sowing herbaceous plant seeds in burnt forest areas. One found it decreased the number and cover of native species and one found it decreased the density of tree seedlings (1236). All three found no effect of seeding on total plant cover or species richness (1236). One study in Spain found that removing burned trees and branches after wildfire did not increase European wild rabbit numbers compared to removing burned trees but leaving branches in place (2478). We found no evidence for the effects of planting trees after wildfire on forests (1235).\"}",
+            "return_val": "{\n  \"query\": \"After a wildfire, what are the documented benefits and harms of interventions like thinning and sowing seeds?\",\n  \"relevant_summary\": \"Five replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain found that thinning increased plant species richness and one in Canada found that it increased the cover of aspen saplings (1234). One study in the USA found thinning decreased plant biomass and one in Israel found it decreased mortality of pine seedlings (1234). One paired-site study in Canada found that logging after wildfire decreased species richness and diversity of mosses (1234). Three studies in the USA examined the effect of sowing herbaceous plant seeds in burnt forest areas. One found it decreased the number and cover of native species and one found it decreased the density of tree seedlings (1236). All three found no effect of seeding on total plant cover or species richness (1236). One study in Spain found that removing burned trees and branches after wildfire did not increase European wild rabbit numbers compared to removing burned trees but leaving branches in place (2478). We found no evidence for the effects of planting trees after wildfire on forests (1235).\",\n  \"action_ids\": [\n    \"1234\",\n    \"1236\",\n    \"2478\",\n    \"1235\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1234",
+      "1235",
+      "1236",
+      "1237"
+    ],
+    "regenerated_ids": [
+      "1234",
+      "1236",
+      "1237"
+    ]
+  }
+]

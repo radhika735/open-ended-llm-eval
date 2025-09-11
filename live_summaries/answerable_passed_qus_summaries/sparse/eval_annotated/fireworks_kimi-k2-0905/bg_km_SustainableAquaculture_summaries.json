@@ -1,0 +1,270 @@
+[
+  {
+    "query": "What methods are available to control disease and sea lice in Atlantic salmon farms?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "Several methods are available to control disease and sea lice in Atlantic salmon farms. Fallowing systems have shown mixed results, with one Scottish study recording lower lice numbers on salmon (Action 1026). Natural control agents such as cleaner wrasse can be effective - one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments at controlling lice infestation, though rockcook cleaner wrasse were ineffective (Action 738). Probiotics and immunostimulants have demonstrated benefits, with one Scottish study showing increased salmon survival when fed probiotics before bacterial exposure, and a Norwegian study finding 28% reduction in lice infection when salmon were fed diets with beta-glucans (Action 732). Vaccinations have proven effective against multiple diseases including Aeromonas salmonicida, Yersinia ruckeri, marine flexibacteriosis, bacterial kidney disease, and infectious salmon anaemia, with higher survival rates in vaccinated salmon across studies from Iceland, Norway, Australia, and Canada (Action 733). Selective breeding for resistance traits has also been successful, with a Norwegian study showing increased survival in salmon bred for high resistance to infectious pancreatic necrosis (Action 735). Additionally, lighting modification can help control sea lice, with a Norwegian study reporting lower lice numbers on salmon kept in low intensity artificial light or natural lighting (Action 741).",
+    "summary_action_ids": [
+      "1026",
+      "738",
+      "732",
+      "733",
+      "735",
+      "741"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"disease control Atlantic salmon farms sea lice\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"738\",\n    \"action_title\": \"Use natural control agents: cleaner wrasse\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"disease control Atlantic salmon farms sea lice\", \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2775\",\n    \"action_title\": \"Use acoustic devices at aquaculture systems\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"sea lice control Atlantic salmon\", \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"738\",\n    \"action_title\": \"Use natural control agents: cleaner wrasse\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"disease prevention salmon aquaculture\", \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"735\",\n    \"action_title\": \"Breed for resistance traits\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1026\"}",
+            "return_val": "{\n  \"action_id\": \"1026\",\n  \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n  \"key_messages\": \"Key Messages:\\nA study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system. Another study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"738\"}",
+            "return_val": "{\n  \"action_id\": \"738\",\n  \"action_title\": \"Use natural control agents: cleaner wrasse\",\n  \"key_messages\": \"Key Messages:\\n\\n\\n\\nTwo studies in Ireland found mixed effects of cleaner wrasse on sea lice numbers infesting salmon. One controlled\\u00a0study found corkwing and goldskinny cleaner wrasse were as effective at controlling lice infestation as chemical treatments. One replicated, controlled study found rockcook cleaner wrasse were ineffective at preventing lice outbreaks.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"732\"}",
+            "return_val": "{\n  \"action_id\": \"732\",\n  \"action_title\": \"Use of probiotics and immunostimulants\",\n  \"key_messages\": \"Key Messages:\\n \\n\\nOne replicated study in\\u00a0Scotland\\u00a0found\\u00a0increased survival in salmon fed a probiotic before exposure to four different disease-causing bacteria over a 28 day period compared with controls.\\nA replicated, controlled study in Norway found the number of salmon infected with lice was reduced by 28% when fed a diet composed of fish meal and 28% plant-based protein. Adding beta-glucans to the diet decreased lice infection levels by a further 28% compared with controls.\\nThe same study\\u00a0found the addition of mannan oligosaccharides improved gut function by preventing the development of soybean-induced enteritis compared with controls.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"733\"}",
+            "return_val": "{\n  \"action_id\": \"733\",\n  \"action_title\": \"Use vaccinations\",\n  \"key_messages\": \"Key Messages:\\n \\n\\nTwo controlled studies from Iceland and Norway found higher survival rates in vaccinated salmon compared to unvaccinated control groups. This was post exposure to the disease-causing bacteria, Aeromonas salmonicida spp.achromogenes and Yersinia ruckeri, respectively.\\nTwo controlled studies in\\u00a0Australia and Canadia reported higher survival in salmon infected with marine flexibacteriosis and bacterial kidney disease, post vaccination.\\nTwo controlled studies in Norway reported similar results for salmon vaccinated against infectious salmon anaemia.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"735\"}",
+            "return_val": "{\n  \"action_id\": \"735\",\n  \"action_title\": \"Breed for resistance traits\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nA replicated, controlled study in\\u00a0Norway\\u00a0found increased survival levels in salmon exposed to infectious pancreatic necrosis when the family was bred for high resistance to the disease compared to a family bred for low resistance to the disease.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"741\"}",
+            "return_val": "{\n  \"action_id\": \"741\",\n  \"action_title\": \"Alter lighting\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled study in Norway reported lower numbers of lice on salmon kept in low intensity artificial light or natural lighting. The more intense the artificial light was, the higher the number of lice found on fish.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What methods are available to control disease and sea lice in Atlantic salmon farms?\", \"summary\": \"Several methods are available to control disease and sea lice in Atlantic salmon farms. Fallowing systems have shown mixed results, with one Scottish study recording lower lice numbers on salmon (Action 1026). Natural control agents such as cleaner wrasse can be effective - one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments at controlling lice infestation, though rockcook cleaner wrasse were ineffective (Action 738). Probiotics and immunostimulants have demonstrated benefits, with one Scottish study showing increased salmon survival when fed probiotics before bacterial exposure, and a Norwegian study finding 28% reduction in lice infection when salmon were fed diets with beta-glucans (Action 732). Vaccinations have proven effective against multiple diseases including Aeromonas salmonicida, Yersinia ruckeri, marine flexibacteriosis, bacterial kidney disease, and infectious salmon anaemia, with higher survival rates in vaccinated salmon across studies from Iceland, Norway, Australia, and Canada (Action 733). Selective breeding for resistance traits has also been successful, with a Norwegian study showing increased survival in salmon bred for high resistance to infectious pancreatic necrosis (Action 735). Additionally, lighting modification can help control sea lice, with a Norwegian study reporting lower lice numbers on salmon kept in low intensity artificial light or natural lighting (Action 741).\", \"action_ids\": [\"1026\", \"738\", \"732\", \"733\", \"735\", \"741\"]}",
+            "return_val": "{\n  \"query\": \"What methods are available to control disease and sea lice in Atlantic salmon farms?\",\n  \"relevant_summary\": \"Several methods are available to control disease and sea lice in Atlantic salmon farms. Fallowing systems have shown mixed results, with one Scottish study recording lower lice numbers on salmon (Action 1026). Natural control agents such as cleaner wrasse can be effective - one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments at controlling lice infestation, though rockcook cleaner wrasse were ineffective (Action 738). Probiotics and immunostimulants have demonstrated benefits, with one Scottish study showing increased salmon survival when fed probiotics before bacterial exposure, and a Norwegian study finding 28% reduction in lice infection when salmon were fed diets with beta-glucans (Action 732). Vaccinations have proven effective against multiple diseases including Aeromonas salmonicida, Yersinia ruckeri, marine flexibacteriosis, bacterial kidney disease, and infectious salmon anaemia, with higher survival rates in vaccinated salmon across studies from Iceland, Norway, Australia, and Canada (Action 733). Selective breeding for resistance traits has also been successful, with a Norwegian study showing increased survival in salmon bred for high resistance to infectious pancreatic necrosis (Action 735). Additionally, lighting modification can help control sea lice, with a Norwegian study reporting lower lice numbers on salmon kept in low intensity artificial light or natural lighting (Action 741).\",\n  \"action_ids\": [\n    \"1026\",\n    \"738\",\n    \"732\",\n    \"733\",\n    \"735\",\n    \"741\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1026",
+      "732",
+      "733",
+      "735",
+      "738",
+      "739",
+      "740",
+      "741",
+      "742"
+    ],
+    "regenerated_ids": [
+      "1026",
+      "732",
+      "733",
+      "735",
+      "738",
+      "739",
+      "740",
+      "741",
+      "742"
+    ]
+  },
+  {
+    "query": "How do plant-based and bacterial protein alternatives to fish meal compare in terms of their effect on Atlantic salmon growth rates in Norway?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "Studies comparing plant-based protein alternatives to fish meal in Atlantic salmon diets show mixed results for growth rates in Norway. Six studies (four replicated, controlled) found that plant-based proteins led to decreased growth rates, while three studies found similar growth rates compared to fish meal diets. Four studies found reduced final body weights with plant-based proteins, while two found similar weights. Studies on bacterial protein alternatives show more positive results with two replicated, controlled studies finding similar growth rates when up to 25% bacterial protein replaced fish meal, though growth rates were lower at 50% replacement. Another study reported higher growth rates with 18% and 36% bacterial protein inclusion compared to control diets.",
+    "summary_action_ids": [
+      "924",
+      "918",
+      "915"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"plant-based protein fish meal Atlantic salmon growth rates Norway\", \"k\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 3, \"query_string\": \"bacterial protein fish meal Atlantic salmon growth Norway\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 3, \"offset\": 3, \"query_string\": \"plant-based protein fish meal Atlantic salmon growth rates Norway\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"926\",\n    \"action_title\": \"Use an alternative oil source: plant-based\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"928\",\n    \"action_title\": \"Use genetically modified alternatives\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 3, \"offset\": 6, \"query_string\": \"plant-based protein fish meal Atlantic salmon growth rates Norway\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"915\",\n    \"action_title\": \"Reduce fish meal in diet\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"920\",\n    \"action_title\": \"Use an alternative protein source: yeast\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"922\",\n    \"action_title\": \"Use an alternative protein source: animal\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 3, \"offset\": 9, \"query_string\": \"plant-based protein fish meal Atlantic salmon growth rates Norway\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"930\",\n    \"action_title\": \"Use supplements\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"1903\",\n    \"action_title\": \"Carnivores: Feed a plant-derived protein diet\",\n    \"rank\": 12\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"924\"}",
+            "return_val": "{\n  \"action_id\": \"924\",\n  \"action_title\": \"Use an alternative protein source: plant-based\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies (four replicated, controlled) in\\u00a0Norway, Scotland and the USA found that inclusion of plant-based proteins within feed led to decreased growth rates in salmon. Three replicated and/or controlled studies from Norway, Canada and Scotland found similar growth rates in salmon fed either plant-based or fish meal diets.\\nFour replicated, controlled\\u00a0studies (three randomised) from Norway and Scotland found reduced final body weights in salmon fed plant-based protein diets compared to fish meal-based diets. Two controlled studies (one replicated) from Norway found similar final body weights in salmon fed either plant-based or fish meal diets.\\nTwo replicated, controlled studies (one randomised)\\u00a0from Norway found lowered levels of feeding efficiency, whereas a replicated study in Norway found increased levels of feeding efficiency in salmon fed plant-based protein diets compared to fish meal diets. Two replicated studies (one controlled) in\\u00a0Canada and Scotland\\u00a0study found similar levels of feeding efficiency across both diet types.\\nDigestibility of feed components by salmon was found to be lower in two replicated, controlled studies when the diets contained plant proteins compared to fish meal. Similar levels of digestibility across both diet types were identified by two randomised, replicated, controlled studies in Scotland\\u00a0and Norway. \\nTwo of the studies found that survival rates and appetite were not affected by plant- or fish meal-based protein diets. However morphology of the distal intestine was altered in two randomised, replicated, controlled studies where salmon were fed diets containing plant-based proteins. Condition of the salmon was increased in plant-based protein diets in one randomised, replicated, controlled study but reduced in two other replicated studies.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"918\"}",
+            "return_val": "{\n  \"action_id\": \"918\",\n  \"action_title\": \"Use an alternative protein source: bacteria\",\n  \"key_messages\": \"Key Messages:\\n\\nEvidence for the effects of replacing fish meal with bacterial protein is mixed.\\nTwo replicated, controlled studies in Norway found similar growth rates in salmon fed either a 100% fish meal (control) diet or experimental diets containing up to 25% bacterial protein to replace fish meal. In the diet containing 50% bacterial protein, growth rates were lower compared to the control. \\nAnother replicated, controlled study in Norway reported higher growth rates in salmon that were fed diets containing 18% and 36% bacterial protein compared to the control or a diet containing 4.5% bacterial protein.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"915\"}",
+            "return_val": "{\n  \"action_id\": \"915\",\n  \"action_title\": \"Reduce fish meal in diet\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in Norway found similar final weights in salmon that were fed diets containing low, medium or high levels of fish meal.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1903\"}",
+            "return_val": "{\n  \"action_id\": \"1903\",\n  \"action_title\": \"Carnivores: Feed a plant-derived protein diet\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study\\u00a0and one replicated, controlled study\\u00a0in the USA found that a plant-derived protein diet increased digestible energy and dry matter digestibility\\u00a0but decreased mineral retention\\u00a0and plasma taurine levels\\u00a0in maned wolves compared to a (supplemented) animal-based protein diet.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 3, \"query_string\": \"bacterial protein meal Atlantic salmon growth performance Norway\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 3, \"offset\": 3, \"query_string\": \"bacterial protein meal Atlantic salmon growth performance Norway\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"920\",\n    \"action_title\": \"Use an alternative protein source: yeast\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"915\",\n    \"action_title\": \"Reduce fish meal in diet\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"920\"}",
+            "return_val": "{\n  \"action_id\": \"920\",\n  \"action_title\": \"Use an alternative protein source: yeast\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled      experiment in Norway found no differences in weight between      Atlantic salmon that were fed diets containing the yeast Yarrowia lipolytica compared to a      control diet containing fishmeal.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"How do plant-based and bacterial protein alternatives to fish meal compare in terms of their effect on Atlantic salmon growth rates in Norway?\", \"summary\": \"Studies comparing plant-based protein alternatives to fish meal in Atlantic salmon diets show mixed results for growth rates in Norway. Six studies (four replicated, controlled) found that plant-based proteins led to decreased growth rates, while three studies found similar growth rates compared to fish meal diets. Four studies found reduced final body weights with plant-based proteins, while two found similar weights. Studies on bacterial protein alternatives show more positive results with two replicated, controlled studies finding similar growth rates when up to 25% bacterial protein replaced fish meal, though growth rates were lower at 50% replacement. Another study reported higher growth rates with 18% and 36% bacterial protein inclusion compared to control diets.\", \"action_ids\": [\"924\", \"918\", \"915\"]}",
+            "return_val": "{\n  \"query\": \"How do plant-based and bacterial protein alternatives to fish meal compare in terms of their effect on Atlantic salmon growth rates in Norway?\",\n  \"relevant_summary\": \"Studies comparing plant-based protein alternatives to fish meal in Atlantic salmon diets show mixed results for growth rates in Norway. Six studies (four replicated, controlled) found that plant-based proteins led to decreased growth rates, while three studies found similar growth rates compared to fish meal diets. Four studies found reduced final body weights with plant-based proteins, while two found similar weights. Studies on bacterial protein alternatives show more positive results with two replicated, controlled studies finding similar growth rates when up to 25% bacterial protein replaced fish meal, though growth rates were lower at 50% replacement. Another study reported higher growth rates with 18% and 36% bacterial protein inclusion compared to control diets.\",\n  \"action_ids\": [\n    \"924\",\n    \"918\",\n    \"915\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "915",
+      "916",
+      "918",
+      "920",
+      "922",
+      "924"
+    ],
+    "regenerated_ids": [
+      "918",
+      "924"
+    ]
+  }
+]
