@@ -2654,5 +2654,334 @@
       "866",
       "868"
     ]
+  },
+  {
+    "query": "What are some alternatives to clearcutting forests, and what are their documented effects on amphibian populations?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One alternative to clearcutting forests is to leave standing deadwood/snags (845). Leaving dead or wildlife trees during clearcutting did not result in higher abundances of salamanders compared to total clearcutting, and did not prevent a decrease in salamander abundance or change in species composition compared to no harvesting (845). The number of amphibian species and their abundance were similar with the removal or creation of dead trees within a forest (845). The proportion of female salamanders carrying eggs, eggs per female, or proportion of juveniles were similar or lower in harvested plots where dead and wildlife trees were left, compared to unharvested plots (845). Another alternative to clearcutting is to leave coarse woody debris in forests (843). In clearcuts with woody debris retained, there was no significant difference in abundance for eight of nine amphibian species, but the overall response of amphibians was more negative (843). The removal of coarse woody debris from a standing forest did not decrease amphibian diversity or overall amphibian abundance, but did reduce species richness in one study (843). Migrating amphibians used clearcuts where woody debris was retained more than where it was removed (843). Within a clearcut forest, the survival of juvenile amphibians was significantly higher in piles of woody debris than in open areas, and was similar to unharvested forests (843). A third alternative is patch retention, but there is no evidence for its effect on amphibian populations (847). However, one study found that red-legged frogs selected larger patches more and moved out of them less than smaller patches (847).",
+    "summary_action_ids": [
+      "845",
+      "843",
+      "847"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"alternatives to clearcutting forests and effects on amphibian populations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"847\",\n    \"action_title\": \"Use patch retention instead of clearcutting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"843\",\n    \"action_title\": \"Leave coarse woody debris in forests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"845\",\n    \"action_title\": \"Leave standing deadwood/snags in forests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"847\"}",
+            "return_val": "{\n  \"action_id\": \"847\",\n  \"action_title\": \"Use patch retention instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effect of retaining patches of trees rather than clearcutting on amphibian populations.\\nOne replicated study in Canada found that although released red-legged frogs did not show significant movement towards retained tree patches, large patches were selected more and moved out of less than small patches.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"843\"}",
+            "return_val": "{\n  \"action_id\": \"843\",\n  \"action_title\": \"Leave coarse woody debris in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled studies in the USA found that there was no significant difference in abundance in clearcuts with woody debris retained or removed for eight of nine amphibian species, but that the overall response (population, physiological and behavioural) of amphibians was more negative where woody debris was retained.\\nTwo replicated, controlled studies in the USA and Indonesia found that the removal of coarse woody debris from standing forest did not decrease amphibian diversity\\u00a0or overall amphibian abundance, but did reduce species richness in one study.\\nOne replicated, controlled study in the USA found that migrating amphibians used clearcuts where woody debris was retained more than where it was removed.\\nOne replicated, site comparison study in the USA found that within clearcut forest, survival of juvenile amphibians was significantly higher in piles of woody debris than in open areas, and was similar in wood piles to unharvested forest.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"845\"}",
+            "return_val": "{\n  \"action_id\": \"845\",\n  \"action_title\": \"Leave standing deadwood/snags in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, before-and-after study in the USA found that compared to total clearcutting, leaving dead or wildlife trees did not result in higher abundances of salamanders. \\nTwo studies (including one randomized, replicated, controlled, before-and-after study) in the USA found that compared to no harvesting, leaving dead or wildlife trees during clearcutting did not prevent a decrease in salamander abundance or change in species composition. \\nOne randomized, replicated, controlled study in the USA found that numbers of amphibian species and abundance were similar with removal or creation of dead trees within forest. \\nOne randomized, replicated, controlled, before-and-after study in the USA found that compared to unharvested plots, the proportion of female salamanders carrying eggs, eggs per female or proportion of juveniles were similar or lower in harvested plots that included plots where dead and wildlife trees were left during clearcutting, depending on species and time since harvest.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"845\",\"843\",\"847\"],\"summary\":\"One alternative to clearcutting forests is to leave standing deadwood/snags (845). Leaving dead or wildlife trees during clearcutting did not result in higher abundances of salamanders compared to total clearcutting, and did not prevent a decrease in salamander abundance or change in species composition compared to no harvesting (845). The number of amphibian species and their abundance were similar with the removal or creation of dead trees within a forest (845). The proportion of female salamanders carrying eggs, eggs per female, or proportion of juveniles were similar or lower in harvested plots where dead and wildlife trees were left, compared to unharvested plots (845). Another alternative to clearcutting is to leave coarse woody debris in forests (843). In clearcuts with woody debris retained, there was no significant difference in abundance for eight of nine amphibian species, but the overall response of amphibians was more negative (843). The removal of coarse woody debris from a standing forest did not decrease amphibian diversity or overall amphibian abundance, but did reduce species richness in one study (843). Migrating amphibians used clearcuts where woody debris was retained more than where it was removed (843). Within a clearcut forest, the survival of juvenile amphibians was significantly higher in piles of woody debris than in open areas, and was similar to unharvested forests (843). A third alternative is patch retention, but there is no evidence for its effect on amphibian populations (847). However, one study found that red-legged frogs selected larger patches more and moved out of them less than smaller patches (847).\",\"query\":\"What are some alternatives to clearcutting forests, and what are their documented effects on amphibian populations?\"}",
+            "return_val": "{\n  \"query\": \"What are some alternatives to clearcutting forests, and what are their documented effects on amphibian populations?\",\n  \"relevant_summary\": \"One alternative to clearcutting forests is to leave standing deadwood/snags (845). Leaving dead or wildlife trees during clearcutting did not result in higher abundances of salamanders compared to total clearcutting, and did not prevent a decrease in salamander abundance or change in species composition compared to no harvesting (845). The number of amphibian species and their abundance were similar with the removal or creation of dead trees within a forest (845). The proportion of female salamanders carrying eggs, eggs per female, or proportion of juveniles were similar or lower in harvested plots where dead and wildlife trees were left, compared to unharvested plots (845). Another alternative to clearcutting is to leave coarse woody debris in forests (843). In clearcuts with woody debris retained, there was no significant difference in abundance for eight of nine amphibian species, but the overall response of amphibians was more negative (843). The removal of coarse woody debris from a standing forest did not decrease amphibian diversity or overall amphibian abundance, but did reduce species richness in one study (843). Migrating amphibians used clearcuts where woody debris was retained more than where it was removed (843). Within a clearcut forest, the survival of juvenile amphibians was significantly higher in piles of woody debris than in open areas, and was similar to unharvested forests (843). A third alternative is patch retention, but there is no evidence for its effect on amphibian populations (847). However, one study found that red-legged frogs selected larger patches more and moved out of them less than smaller patches (847).\",\n  \"action_ids\": [\n    \"845\",\n    \"843\",\n    \"847\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "747",
+      "843",
+      "844",
+      "845",
+      "846",
+      "847",
+      "851",
+      "852"
+    ],
+    "regenerated_ids": [
+      "747",
+      "844",
+      "846",
+      "847",
+      "851",
+      "852"
+    ]
+  },
+  {
+    "query": "What are the documented benefits and potential negative impacts of releasing captive-bred or head-started toads into the wild?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Two of three studies found that releasing captive-bred toads as tadpoles, juveniles or metamorphs led to the establishment of new populations (875). Six of ten studies which head-started amphibians found that their release as tadpoles, metamorphs or juveniles established breeding frog populations or increased populations of frogs or toads (881). Nine of ten studies found that released head-started amphibians metamorphosed successfully, tended to survive the first season, winter or year, or bred successfully (881). Four studies also found that head-started frogs had greater survival to metamorphosis and size at metamorphosis, and a shorter time to metamorphosis, than wild frogs (881).\n\nHowever, one study found that releasing captive-bred and head-started toads did not establish any new populations (875). Two studies in Puerto Rico found the survival of released captive-bred Puerto Rican crested toads to be low, with one reporting that 25% were predated within two days of release (875). Two studies which head-started amphibians found that this did not prevent a population decline or establish a breeding population (881). Another study found that adult survival was 1-17% over four years and that there was limited breeding after their release (881). Finally, a Canadian study found that young head-started leopard frogs were smaller than those in the wild (881).",
+    "summary_action_ids": [
+      "875",
+      "881"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"benefits and negative impacts of releasing captive-bred or head-started toads into the wild\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"875\",\n    \"action_title\": \"Release captive-bred toads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"881\",\n    \"action_title\": \"Head-start amphibians for release\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3778\",\n    \"action_title\": \"Head-start wild-caught reptiles for release: Crocodilians\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"875\"}",
+            "return_val": "{\n  \"action_id\": \"875\",\n  \"action_title\": \"Release captive-bred toads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo of three studies (including two replicated studies) in Denmark, Sweden and the USA found that captive-bred toads released as tadpoles, juveniles or metamorphs established populations, in one case at 70% of sites. One of the studies\\u00a0found that populations were not established from captive-bred and head-started toads.\\nTwo studies in Puerto Rico found that survival of released captive-bred Puerto Rican crested toads was low and that 25% were predated within two days of release.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"881\"}",
+            "return_val": "{\n  \"action_id\": \"881\",\n  \"action_title\": \"Head-start amphibians for release\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-two studies head-started amphibians from eggs and monitored them after release.\\nSix of 10 studies (including five replicated studies) in Denmark, Spain, the UK and USA and a global review found that released head-started tadpoles, metamorphs or juveniles established breeding frog populations or increased populations of frogs or toads. Two found mixed results with breeding populations established in 12 of 17 studies reviewed or at two of four sites. Two found that head-started metamorphs or adults did not prevent a frog population decline or establish a breeding toad population. For five of the studies, release of captive-bred individuals, translocation or habitat management were also carried out.\\nNine of 10 studies (including nine replicated studies) in Australia, Canada, Europe and the USA found that head-started amphibians released as tadpoles, metamorphs or adults metamorphosed successfully, tended to survive the first season, winter or year or bred successfully. One found adult survival was 1\\u201317% over four years and one found limited breeding following the release of adults.\\nFour replicated studies in Australia, the UK and USA found that frog survival to metamorphosis\\u00a0and size at metamorphosis was greater and time to metamorphosis shorter in head-started compared to wild animals. One replicated study in Canada found that young head-started leopard frogs were smaller than those in the wild. One replicated study in Australia found that corroboree frog tadpoles released earlier had higher survival, but metamorphosed two weeks later than those released a month later.\\nThree studies (including one replicated study) in the USA only provided results for head-starting in captivity. Two found that Houston toad eggs could be captive-reared to tadpoles, but only one successfully reared adults. Three studies (including two replicated studies) in Canada and the USA found that during head-starting, amphibian growth rate, size, stress levels and survival was affected by the amount of protein provided, housing density or enclosure location. One found that mass, stress levels and survival were not affected by the amount of food or habitat complexity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented benefits and potential negative impacts of releasing captive-bred or head-started toads into the wild?\",\"summary\":\"Two of three studies found that releasing captive-bred toads as tadpoles, juveniles or metamorphs led to the establishment of new populations (875). Six of ten studies which head-started amphibians found that their release as tadpoles, metamorphs or juveniles established breeding frog populations or increased populations of frogs or toads (881). Nine of ten studies found that released head-started amphibians metamorphosed successfully, tended to survive the first season, winter or year, or bred successfully (881). Four studies also found that head-started frogs had greater survival to metamorphosis and size at metamorphosis, and a shorter time to metamorphosis, than wild frogs (881).\\n\\nHowever, one study found that releasing captive-bred and head-started toads did not establish any new populations (875). Two studies in Puerto Rico found the survival of released captive-bred Puerto Rican crested toads to be low, with one reporting that 25% were predated within two days of release (875). Two studies which head-started amphibians found that this did not prevent a population decline or establish a breeding population (881). Another study found that adult survival was 1-17% over four years and that there was limited breeding after their release (881). Finally, a Canadian study found that young head-started leopard frogs were smaller than those in the wild (881).\",\"action_ids\":[\"875\",\"881\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and potential negative impacts of releasing captive-bred or head-started toads into the wild?\",\n  \"relevant_summary\": \"Two of three studies found that releasing captive-bred toads as tadpoles, juveniles or metamorphs led to the establishment of new populations (875). Six of ten studies which head-started amphibians found that their release as tadpoles, metamorphs or juveniles established breeding frog populations or increased populations of frogs or toads (881). Nine of ten studies found that released head-started amphibians metamorphosed successfully, tended to survive the first season, winter or year, or bred successfully (881). Four studies also found that head-started frogs had greater survival to metamorphosis and size at metamorphosis, and a shorter time to metamorphosis, than wild frogs (881).\\n\\nHowever, one study found that releasing captive-bred and head-started toads did not establish any new populations (875). Two studies in Puerto Rico found the survival of released captive-bred Puerto Rican crested toads to be low, with one reporting that 25% were predated within two days of release (875). Two studies which head-started amphibians found that this did not prevent a population decline or establish a breeding population (881). Another study found that adult survival was 1-17% over four years and that there was limited breeding after their release (881). Finally, a Canadian study found that young head-started leopard frogs were smaller than those in the wild (881).\",\n  \"action_ids\": [\n    \"875\",\n    \"881\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "854",
+      "855",
+      "859",
+      "871",
+      "873",
+      "875",
+      "881"
+    ],
+    "regenerated_ids": [
+      "873",
+      "875",
+      "881"
+    ]
+  },
+  {
+    "query": "What actions can be taken to provide or improve shelter and refuge habitats for amphibians?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Two replicated, controlled studies in the USA and Indonesia found that adding coarse woody debris to forest floors had no effect on the number of amphibian species or overall abundance, but had mixed effects on the abundance of individual species [772]. However, one before-and-after study in Australia found that restoration that included reintroducing coarse woody debris to the forest floor increased frog species [772]. One replicated, before-and-after study in the UK found that creating refugia for great crested newts, along with other interventions, maintained four populations [772]. Artificial refugia were used by translocated Hamilton's frogs and hellbenders, although few were used for breeding [772]. One replicated, before-and-after study in the UK found that providing artificial hibernacula, along with other terrestrial habitat management, maintained populations of great crested newts [759]. Created hibernacula were used by common frogs and smooth newts [759]. There is no evidence for the effects of creating refuge areas in aquatic habitats on amphibian populations [813].",
+    "summary_action_ids": [
+      "772",
+      "759",
+      "813"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian shelter and refuge habitats\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"813\",\n    \"action_title\": \"Create refuge areas in aquatic habitats\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"772\",\n    \"action_title\": \"Create refuges\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"759\",\n    \"action_title\": \"Create artificial hibernacula or aestivation sites\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"813\"}",
+            "return_val": "{\n  \"action_id\": \"813\",\n  \"action_title\": \"Create refuge areas in aquatic habitats\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of creating refuge areas in aquatic habitats on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"772\"}",
+            "return_val": "{\n  \"action_id\": \"772\",\n  \"action_title\": \"Create refuges\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled studies (including one randomized study) in the USA and Indonesia found that adding coarse woody debris to forest floors had no effect on the number of amphibian species or overall abundance, but had mixed effects on abundance of individual species. One before-and-after study in Australia found that restoration that included reintroducing coarse woody debris to the forest floor increased frog species.\\nOne replicated, before-and-after study in the UK found that creating refugia for great crested newts, along with other interventions, maintained four populations.\\nTwo studies (including one replicated study) in New Zealand and the USA found that artificial refugia were used by translocated Hamilton's frogs and hellbenders, although few were used for breeding.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"759\"}",
+            "return_val": "{\n  \"action_id\": \"759\",\n  \"action_title\": \"Create artificial hibernacula or aestivation sites\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the UK\\u00a0found that providing artificial hibernacula, along with other terrestrial habitat management, maintained populations of great crested newts.\\nOne replicated study in the UK found that created hibernacula were used by common frog and smooth newts, but not great crested newts. One replicated study in the UK found four amphibian species close to hibernacula at two of three sites.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions can be taken to provide or improve shelter and refuge habitats for amphibians?\",\"summary\":\"Two replicated, controlled studies in the USA and Indonesia found that adding coarse woody debris to forest floors had no effect on the number of amphibian species or overall abundance, but had mixed effects on the abundance of individual species [772]. However, one before-and-after study in Australia found that restoration that included reintroducing coarse woody debris to the forest floor increased frog species [772]. One replicated, before-and-after study in the UK found that creating refugia for great crested newts, along with other interventions, maintained four populations [772]. Artificial refugia were used by translocated Hamilton's frogs and hellbenders, although few were used for breeding [772]. One replicated, before-and-after study in the UK found that providing artificial hibernacula, along with other terrestrial habitat management, maintained populations of great crested newts [759]. Created hibernacula were used by common frogs and smooth newts [759]. There is no evidence for the effects of creating refuge areas in aquatic habitats on amphibian populations [813].\",\"action_ids\":[\"772\",\"759\",\"813\"]}",
+            "return_val": "{\n  \"query\": \"What actions can be taken to provide or improve shelter and refuge habitats for amphibians?\",\n  \"relevant_summary\": \"Two replicated, controlled studies in the USA and Indonesia found that adding coarse woody debris to forest floors had no effect on the number of amphibian species or overall abundance, but had mixed effects on the abundance of individual species [772]. However, one before-and-after study in Australia found that restoration that included reintroducing coarse woody debris to the forest floor increased frog species [772]. One replicated, before-and-after study in the UK found that creating refugia for great crested newts, along with other interventions, maintained four populations [772]. Artificial refugia were used by translocated Hamilton's frogs and hellbenders, although few were used for breeding [772]. One replicated, before-and-after study in the UK found that providing artificial hibernacula, along with other terrestrial habitat management, maintained populations of great crested newts [759]. Created hibernacula were used by common frogs and smooth newts [759]. There is no evidence for the effects of creating refuge areas in aquatic habitats on amphibian populations [813].\",\n  \"action_ids\": [\n    \"772\",\n    \"759\",\n    \"813\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "759",
+      "772",
+      "813",
+      "814",
+      "843",
+      "845"
+    ],
+    "regenerated_ids": [
+      "759",
+      "772",
+      "843"
+    ]
+  },
+  {
+    "query": "What factors have been found to influence the success of amphibian translocation projects?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A review of amphibian translocation projects revealed that those involving the release of more than 1,000 animals were more likely to be successful (854). However, the same review noted that the success of these projects was not influenced by whether the animals were sourced from the wild or captivity, their life stage, the continent where the translocation occurred, or the specific reason for the translocation (854). In 35 out of 54 assessed cases, amphibian translocations led to the establishment of breeding populations or significant recruitment into the adult population (854). The success of created ponds for amphibians, which can be used in translocation projects, has been found to be influenced by several factors: the age of the pond, its permanence, the amount of vegetation cover, the surrounding landscape, the distance to other existing ponds, and the presence of fish (869). Additionally, in one instance, the restoration of a pond, which included the removal of the tree canopy, was followed by the establishment of a breeding population of translocated garlic toads (758).",
+    "summary_action_ids": [
+      "854",
+      "869",
+      "758"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"amphibian translocation success factors\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"854\",\n    \"action_title\": \"Translocate amphibians\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"758\",\n    \"action_title\": \"Remove tree canopy to reduce pond shading\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"869\",\n    \"action_title\": \"Create ponds for amphibians\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"854\"}",
+            "return_val": "{\n  \"action_id\": \"854\",\n  \"action_title\": \"Translocate amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nOverall, three global reviews and one replicated, before-and-after study in the USA found that 35 of 54 (65%) amphibian translocations that could be assessed resulted in established breeding populations or substantial recruitment to the adult population. A further two translocations resulted in breeding and one in survival following release.\\nOne review found that translocations of over 1,000 animals were more successful, but that success was not related to the source of animals (wild or captive), life-stage, continent or reason for translocation.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"758\"}",
+            "return_val": "{\n  \"action_id\": \"758\",\n  \"action_title\": \"Remove tree canopy to reduce pond shading\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Denmark found that translocated garlic toads established breeding populations following pond restoration that included canopy removal.\\nOne before-and-after study in the USA found that canopy removal did not increase hatching success of spotted salamanders.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"869\"}",
+            "return_val": "{\n  \"action_id\": \"869\",\n  \"action_title\": \"Create ponds for amphibians\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-eight studies investigated the colonization of created ponds by amphibians in general (rather than by targeted species, which are discussed below). All of the studies found that amphibians used some or all created ponds.\\nNine site comparison studies (including seven replicated studies) in Australia, Canada, Spain, the UK and USA compared amphibian numbers in created and natural ponds. Five found that numbers of species or breeding species were similar or higher in created ponds, and numbers of ponds colonized were similar. Four found that species composition differed, and comparisons between abundance of individual species, juvenile productivity and size at metamorphosis differed depending on species. One found that numbers of species were similar or lower depending on the permanence of created water bodies. One found that populations in created ponds were less stable.\\nOne review and two replicated, before-and-after studies in Denmark and the USA found that amphibians established stable populations in 50\\u2013100% of created ponds. Six replicated studies (including one randomized study) in France, the Netherlands, UK and USA found that amphibians used 64\\u2013100%\\u00a0and reproduced in 64\\u201368% of created ponds, or used 8\\u2013100% and reproduced in 2\\u201362% depending on species. One review and 15 studies (including 12 replicated studies, one of which was randomized) in Europe and the USA found that created ponds were used or colonized by up to 15 naturally colonizing species, up to 10 species that reproduced, as well as by captive-bred amphibians. Five replicated studies (including three site comparison studies) in Denmark, Estonia, France, Italy and the USA found that pond creation, and restoration in three cases, maintained and increased amphibian populations or increased numbers of species.\\nSeven studies (including one review) in Austria, Denmark, Poland, the Netherlands and USA found that use or colonization of or reproductive success in created ponds was affected by pond age, permanence, vegetation cover, surrounding landscape, distance to existing ponds and presence of fish.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What factors have been found to influence the success of amphibian translocation projects?\",\"summary\":\"A review of amphibian translocation projects revealed that those involving the release of more than 1,000 animals were more likely to be successful (854). However, the same review noted that the success of these projects was not influenced by whether the animals were sourced from the wild or captivity, their life stage, the continent where the translocation occurred, or the specific reason for the translocation (854). In 35 out of 54 assessed cases, amphibian translocations led to the establishment of breeding populations or significant recruitment into the adult population (854). The success of created ponds for amphibians, which can be used in translocation projects, has been found to be influenced by several factors: the age of the pond, its permanence, the amount of vegetation cover, the surrounding landscape, the distance to other existing ponds, and the presence of fish (869). Additionally, in one instance, the restoration of a pond, which included the removal of the tree canopy, was followed by the establishment of a breeding population of translocated garlic toads (758).\",\"action_ids\":[\"854\",\"869\",\"758\"]}",
+            "return_val": "{\n  \"query\": \"What factors have been found to influence the success of amphibian translocation projects?\",\n  \"relevant_summary\": \"A review of amphibian translocation projects revealed that those involving the release of more than 1,000 animals were more likely to be successful (854). However, the same review noted that the success of these projects was not influenced by whether the animals were sourced from the wild or captivity, their life stage, the continent where the translocation occurred, or the specific reason for the translocation (854). In 35 out of 54 assessed cases, amphibian translocations led to the establishment of breeding populations or significant recruitment into the adult population (854). The success of created ponds for amphibians, which can be used in translocation projects, has been found to be influenced by several factors: the age of the pond, its permanence, the amount of vegetation cover, the surrounding landscape, the distance to other existing ponds, and the presence of fish (869). Additionally, in one instance, the restoration of a pond, which included the removal of the tree canopy, was followed by the establishment of a breeding population of translocated garlic toads (758).\",\n  \"action_ids\": [\n    \"854\",\n    \"869\",\n    \"758\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "854",
+      "855",
+      "856",
+      "858",
+      "859",
+      "860",
+      "861"
+    ],
+    "regenerated_ids": [
+      "854",
+      "859",
+      "861"
+    ]
+  },
+  {
+    "query": "In the USA, how do partial harvesting techniques like shelterwood, leave-tree, and group harvesting compare in their effects on salamander populations versus clearcutting?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "In the USA, three studies found that shelterwood harvesting resulted in higher, similar, or initially higher and then similar salamander abundance compared to clearcutting (851). In contrast, three studies in the USA found that harvesting trees in small groups did not lead to higher amphibian or salamander abundance when compared to clearcutting (844). When comparing thinning to clearcutting, two studies in the USA found higher amphibian abundance or a less negative overall response in thinned forests, while two other studies found mixed effects depending on the species, life stage, and time since harvest (852). A meta-analysis of 24 studies in North America, which included shelterwood, group harvesting, and thinning, discovered that partial harvesting resulted in smaller reductions in salamander populations than clearcutting (844, 851, 852). Compared to no harvesting, two out of three studies in the USA found that shelterwood harvesting decreased salamander abundance and altered species composition (851). Similarly, two studies in the USA found that harvesting trees in small groups significantly decreased salamander abundance and changed species composition when compared to no harvesting (844). Five studies in the USA comparing thinned to unharvested forests showed mixed effects on amphibian abundance, with some species increasing, some decreasing, and some showing no change (852).",
+    "summary_action_ids": [
+      "844",
+      "851",
+      "852"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of harvesting techniques on salamander populations in the USA\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"851\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"844\",\n    \"action_title\": \"Harvest groups of trees instead of clearcutting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"852\",\n    \"action_title\": \"Thin trees within forests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"851\"}",
+            "return_val": "{\n  \"action_id\": \"851\",\n  \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including two randomized, replicated, controlled, before-and-after studies) in the USA found that compared to clearcutting, shelterwood harvesting resulted in higher, similar or initially higher and then similar salamander abundance. A meta-analysis of 24 studies in North  America\\u00a0found that partial harvest, which included shelterwood harvesting with three other types, resulted in smaller reductions in salamander populations than clearcutting\\nTwo of three studies (including two randomized, replicated, controlled, before-and-after studies) in the USA found that compared to no harvesting, shelterwood harvesting decreased salamander abundance and changed species composition. One found that shelterwood harvesting did not affect salamander abundance.\\nOne randomized, replicated, controlled, before-and-after study in the USA found that compared to unharvested plots, the proportion of female salamanders carrying eggs, eggs per female or proportion of juveniles were similar or lower in harvested plots that included shelterwood harvested plots, depending on species and time since harvest.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"844\"}",
+            "return_val": "{\n  \"action_id\": \"844\",\n  \"action_title\": \"Harvest groups of trees instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including two randomized, replicated, controlled, before-and-after studies) in the USA found that compared to clearcutting, harvesting trees in small groups did not result in higher amphibian or salamander abundance. A meta-analysis of 24 studies in North America\\u00a0found that partial harvest, which included harvesting groups or individual trees, thinning and shelterwood harvesting, resulted in smaller reductions in salamander populations than clearcutting\\nTwo studies (including one randomized, replicated, controlled, before-and-after study) in the USA found that compared to no harvesting, harvesting trees in small groups significantly decreased salamander abundance and changed species composition.\\nOne randomized, replicated, controlled, before-and-after study in the USA found that compared to unharvested plots, the proportion of female salamanders carrying eggs were similar and proportion of eggs per female and juveniles similar or lower in harvested plots that included harvest of groups of trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"852\"}",
+            "return_val": "{\n  \"action_id\": \"852\",\n  \"action_title\": \"Thin trees within forests\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies (including four replicated and/or controlled studies) in the USA compared amphibians in thinned to unharvested forest. Two found mixed effects of thinning on abundance, depending on amphibian species and time since harvest. One found that amphibian abundance increased, except for ensatina salamanders. One found a negative overall response (population, physiological and behavioural) of amphibians and one found that thinning did not affect abundance. A meta-analysis of 24 studies in North America\\u00a0found that partial harvest, which included thinning with three other types, decreased salamander populations. One controlled, before-and-after site comparison study in the USA found that high volumes of pre-existing downed wood prevented declines in amphibian populations following thinning.\\nFour studies (including two replicated, controlled studies) in the USA compared amphibians in thinned to clearcut forest. Two found higher amphibian abundance, apart from ensatina salamanders, or a less negative overall response (population, physiological and behavioural) of amphibians in thinned forest. Two found mixed effects on abundance depending on species, life stage and time since harvest. A meta-analysis of 24 studies in North America found that partial harvest, which included thinning with three other types, resulted in smaller reductions in salamander populations than clearcutting.\\nOne randomized, replicated, controlled study in the USA found that migrating amphibians used thinned forest a similar amount, or for one species more than unharvested forest and that emigrating salamanders, but not frogs, used it significantly more than clearcuts.\\nOne site comparison study in the USA found that thinning decreased the body condition of ensatina salamanders 10 years after harvest.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"In the USA, three studies found that shelterwood harvesting resulted in higher, similar, or initially higher and then similar salamander abundance compared to clearcutting (851). In contrast, three studies in the USA found that harvesting trees in small groups did not lead to higher amphibian or salamander abundance when compared to clearcutting (844). When comparing thinning to clearcutting, two studies in the USA found higher amphibian abundance or a less negative overall response in thinned forests, while two other studies found mixed effects depending on the species, life stage, and time since harvest (852). A meta-analysis of 24 studies in North America, which included shelterwood, group harvesting, and thinning, discovered that partial harvesting resulted in smaller reductions in salamander populations than clearcutting (844, 851, 852). Compared to no harvesting, two out of three studies in the USA found that shelterwood harvesting decreased salamander abundance and altered species composition (851). Similarly, two studies in the USA found that harvesting trees in small groups significantly decreased salamander abundance and changed species composition when compared to no harvesting (844). Five studies in the USA comparing thinned to unharvested forests showed mixed effects on amphibian abundance, with some species increasing, some decreasing, and some showing no change (852).\",\"action_ids\":[\"844\",\"851\",\"852\"],\"query\":\"In the USA, how do partial harvesting techniques like shelterwood, leave-tree, and group harvesting compare in their effects on salamander populations versus clearcutting?\"}",
+            "return_val": "{\n  \"query\": \"In the USA, how do partial harvesting techniques like shelterwood, leave-tree, and group harvesting compare in their effects on salamander populations versus clearcutting?\",\n  \"relevant_summary\": \"In the USA, three studies found that shelterwood harvesting resulted in higher, similar, or initially higher and then similar salamander abundance compared to clearcutting (851). In contrast, three studies in the USA found that harvesting trees in small groups did not lead to higher amphibian or salamander abundance when compared to clearcutting (844). When comparing thinning to clearcutting, two studies in the USA found higher amphibian abundance or a less negative overall response in thinned forests, while two other studies found mixed effects depending on the species, life stage, and time since harvest (852). A meta-analysis of 24 studies in North America, which included shelterwood, group harvesting, and thinning, discovered that partial harvesting resulted in smaller reductions in salamander populations than clearcutting (844, 851, 852). Compared to no harvesting, two out of three studies in the USA found that shelterwood harvesting decreased salamander abundance and altered species composition (851). Similarly, two studies in the USA found that harvesting trees in small groups significantly decreased salamander abundance and changed species composition when compared to no harvesting (844). Five studies in the USA comparing thinned to unharvested forests showed mixed effects on amphibian abundance, with some species increasing, some decreasing, and some showing no change (852).\",\n  \"action_ids\": [\n    \"844\",\n    \"851\",\n    \"852\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "844",
+      "846",
+      "851",
+      "852"
+    ],
+    "regenerated_ids": [
+      "844",
+      "846",
+      "851"
+    ]
   }
 ]

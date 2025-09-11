@@ -813,5 +813,327 @@
       "145",
       "700"
     ]
+  },
+  {
+    "query": "For managing heather moorland in the UK, what is the comparative evidence for the effectiveness of swiping versus controlled burning on plant diversity?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "A replicated controlled trial in Northern Ireland reported that eight years after management, burned heather moorland plots had more plant species than plots treated by swiping, and both treatments had more plant species than untreated control plots [152, 151].",
+    "summary_action_ids": [
+      "151",
+      "152"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"heather moorland UK swiping vs controlled burning plant diversity comparative effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"647\",\n    \"action_title\": \"Maintain upland heath/moorland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"151\",\n    \"action_title\": \"Manage heather by swiping to simulate burning\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"152\",\n    \"action_title\": \"Manage heather, gorse or grass by burning\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"647\"}",
+            "return_val": "{\n  \"action_id\": \"647\",\n  \"action_title\": \"Maintain upland heath/moorland\",\n  \"key_messages\": \"Key Messages:\\n\\nOf 15 individual studies from the UK, eight (including three replicated, controlled trials, of which one also randomized) found that appropriate management can help to maintain the conservation value of upland heath or moorland.\\nOf these eight studies, four tested the effectiveness of excluding or reducing grazing. Impacts included increases in the abundance of Scottish primrose and other broadleaved plant species, heather cover and numbers of true bugs, biomass of arthropods associated with the bird diet, number and diversity of moths and benefits to black grouse. Among other treatments, repeated cutting and grazing by goats were found to be effective in controlling the dominance of certain grass species. A review found management under the Environmentally Sensitive Areas scheme had broadly positive effects on moorland birds and a reduction in grazing benefited most bird species and increased heath vegetation and heather cover. A replicated before-and-after study found that moorland management under the Environmentally Sensitive Area scheme maintained the number of plant species in two out of three areas.\\nThree studies (including one before-and-after trial) reported mixed results for invertebrates or birds, where management to maintain upland heath or moorland benefited some but not all species or where the effect depended on the vegetation type. Treatments tested included reducing grazing intensity and grouse moor management (burning and predator control).\\nFour studies (including one controlled site comparison and two reviews) found that reducing the intensity of livestock grazing reduced the abundance of soil organisms including invertebrates, bacteria or fungi. A randomized, replicated before-and-after study found that heather cover declined over nine years on a moorland site managed under the Environmentally Sensitive Areas scheme in which grazing intensity had increased.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"151\"}",
+            "return_val": "{\n  \"action_id\": \"151\",\n  \"action_title\": \"Manage heather by swiping to simulate burning\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated controlled trial in Northern Ireland found that heather moorland subject to flailing to simulate burning had more plant species eight years after the management, than control unflailed plots, but fewer plant species than burned plots.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"152\"}",
+            "return_val": "{\n  \"action_id\": \"152\",\n  \"action_title\": \"Manage heather, gorse or grass by burning\",\n  \"key_messages\": \"Key Messages:\\n\\nA long-term replicated controlled trial in Switzerland found that annual spring burning of calcareous grassland did not increase plant species richness relative to abandoned plots, after 15 years.\\n\\n\\nA replicated controlled trial in Northern Ireland found that heather moorland subject to a single burn had more plant species eight years after the management, than control unburned plots.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"heather moorland swiping vs burning plant diversity Northern Ireland replicated controlled trial eight years\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"151\",\n    \"action_title\": \"Manage heather by swiping to simulate burning\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"152\",\n    \"action_title\": \"Manage heather, gorse or grass by burning\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"647\",\n    \"action_title\": \"Maintain upland heath/moorland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"For managing heather moorland in the UK, what is the comparative evidence for the effectiveness of swiping versus controlled burning on plant diversity?\",\"summary\":\"A replicated controlled trial in Northern Ireland reported that eight years after management, burned heather moorland plots had more plant species than plots treated by swiping, and both treatments had more plant species than untreated control plots [152, 151].\",\"action_ids\":[\"151\",\"152\"]}",
+            "return_val": "{\n  \"query\": \"For managing heather moorland in the UK, what is the comparative evidence for the effectiveness of swiping versus controlled burning on plant diversity?\",\n  \"relevant_summary\": \"A replicated controlled trial in Northern Ireland reported that eight years after management, burned heather moorland plots had more plant species than plots treated by swiping, and both treatments had more plant species than untreated control plots [152, 151].\",\n  \"action_ids\": [\n    \"151\",\n    \"152\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "151",
+      "152",
+      "647",
+      "650"
+    ],
+    "regenerated_ids": [
+      "151",
+      "152"
+    ]
+  },
+  {
+    "query": "What are the documented effects on farmland biodiversity of switching from mineral to organic fertilizers?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Across 17 studies from Austria, Belgium, Germany, Ireland, Switzerland and the UK, switching from mineral to organic fertilizers was associated with higher plant diversity and cover or species richness, increased earthworm abundance or diversity, biomass and density, and increased abundance and/or species richness of some or all invertebrates investigated (134). A literature review reported that organic fertilizers used without pesticides produced the highest earthworm biomass, and a small Belgian trial found more predatory beetles two years after organic fertilizer application than on control plots (134). Reported neutral or limited effects include one randomized, replicated, controlled UK trial that found no effect on the abundance of three weed species, an Irish replicated study that found no long-term effect of farmyard manure on invertebrates, and two UK studies where increases in arthropod predators and springtails were only local rather than field\u2011scale (134). One review noted that heavy applications of slurry can be toxic to common earthworms (134).",
+    "summary_action_ids": [
+      "134"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects on farmland biodiversity of switching from mineral to organic fertilizers\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"134\",\n    \"action_title\": \"Use organic rather than mineral fertilizers\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1785\",\n    \"action_title\": \"Convert to organic agriculture or aquaculture near peatlands\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"135\",\n    \"action_title\": \"Manage ditches to benefit wildlife\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects on farmland biodiversity of switching from mineral to organic fertilizers\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"701\",\n    \"action_title\": \"Restore or create traditional orchards\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1420\",\n    \"action_title\": \"Other biodiversity: Use rotational grazing\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1360\",\n    \"action_title\": \"Crop production: Plant flowers\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"134\"}",
+            "return_val": "{\n  \"action_id\": \"134\",\n  \"action_title\": \"Use organic rather than mineral fertilizers\",\n  \"key_messages\": \"Key Messages:\\n\\nSeventeen studies (including three reviews) from Austria, Belgium, Germany, Ireland, Switzerland and the UK looked at the effects of using organic rather than mineral fertilizers. Fourteen studies (including two reviews and seven replicated and controlled studies, of which four also randomized) from Austria, Belgium, Germany, Ireland, Switzerland and the UK found that areas treated with organic rather than mineral fertilizers supported higher plant diversity and cover or species richness, increased earthworm abundance or diversity, biomass and density and increased abundance and/or species richness of some or all invertebrates investigated. \\nA literature review found organic fertilizers without pesticides produced highest earthworm biomass. A small trial in Belgium found more predatory beetles on an arable field two years after organic fertilizer application than on a control plot.\\nOne randomized, replicated, controlled trial in the UK found that using organic rather than mineral fertilizers did not affect the abundance of three weed species. A replicated study from Ireland found that the application of farmyard manure had no long-term effect on invertebrates, whilst two studies from the UK found the increase in arthropod predators and springtails was only seen at a local not a field scale. A review found one study from the UK reporting that heavy applications of slurry can be toxic to common earthworms.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1785\"}",
+            "return_val": "{\n  \"action_id\": \"1785\",\n  \"action_title\": \"Convert to organic agriculture or aquaculture near peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects, on peatland vegetation, of converting to organic agriculture or aquaculture near peatlands.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented effects on farmland biodiversity of switching from mineral to organic fertilizers?\",\"summary\":\"Across 17 studies from Austria, Belgium, Germany, Ireland, Switzerland and the UK, switching from mineral to organic fertilizers was associated with higher plant diversity and cover or species richness, increased earthworm abundance or diversity, biomass and density, and increased abundance and/or species richness of some or all invertebrates investigated (134). A literature review reported that organic fertilizers used without pesticides produced the highest earthworm biomass, and a small Belgian trial found more predatory beetles two years after organic fertilizer application than on control plots (134). Reported neutral or limited effects include one randomized, replicated, controlled UK trial that found no effect on the abundance of three weed species, an Irish replicated study that found no long-term effect of farmyard manure on invertebrates, and two UK studies where increases in arthropod predators and springtails were only local rather than field\u2011scale (134). One review noted that heavy applications of slurry can be toxic to common earthworms (134).\",\"action_ids\":[\"134\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented effects on farmland biodiversity of switching from mineral to organic fertilizers?\",\n  \"relevant_summary\": \"Across 17 studies from Austria, Belgium, Germany, Ireland, Switzerland and the UK, switching from mineral to organic fertilizers was associated with higher plant diversity and cover or species richness, increased earthworm abundance or diversity, biomass and density, and increased abundance and/or species richness of some or all invertebrates investigated (134). A literature review reported that organic fertilizers used without pesticides produced the highest earthworm biomass, and a small Belgian trial found more predatory beetles two years after organic fertilizer application than on control plots (134). Reported neutral or limited effects include one randomized, replicated, controlled UK trial that found no effect on the abundance of three weed species, an Irish replicated study that found no long-term effect of farmyard manure on invertebrates, and two UK studies where increases in arthropod predators and springtails were only local rather than field\\u2011scale (134). One review noted that heavy applications of slurry can be toxic to common earthworms (134).\",\n  \"action_ids\": [\n    \"134\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "134",
+      "139",
+      "694"
+    ],
+    "regenerated_ids": [
+      "134"
+    ]
+  },
+  {
+    "query": "What is the extent of the evidence base for the effectiveness of managing land under power lines to benefit wildlife on European farmland?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"effectiveness of managing land under power lines to benefit wildlife on European farmland evidence base extent\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"effectiveness managing land under power lines to benefit wildlife on European farmland extent of the evidence base\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"effectiveness of managing land under power lines for wildlife on European farmland evidence base\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of managing land under power lines to benefit wildlife on European farmland evidence base extent\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"managing land under power lines to benefit wildlife on European farmland effectiveness evidence base\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness managing land under power lines to benefit wildlife on European farmland evidence base extent\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of managing land under power lines to benefit wildlife on European farmland evidence base extent\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of managing land under power lines to benefit wildlife on European farmland evidence base extent\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"effectiveness of managing land under power lines to benefit wildlife on European farmland evidence base\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effectiveness of managing land under power lines to benefit wildlife on European farmland\", \"k\": 3, \"offset\": 0}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "99"
+    ],
+    "regenerated_ids": [
+      "99"
+    ]
+  },
+  {
+    "query": "As an alternative to conventional ploughing, what are the wildlife benefits of undersowing spring cereals?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "Evidence reports multiple wildlife benefits from undersowing spring cereals: increases in barnacle goose abundance; higher densities of singing Eurasian skylark and nesting dunnock; greater arthropod abundance and species richness; and higher abundances of bumblebees, butterflies, earthworms, ground beetles, spiders and springtails [136]. Spring barley undersown with a mix of grasses and legumes supported higher butterfly species richness and abundance than extensively or conventionally managed grassland [3926]. Studies also found higher densities of some study species on undersown fields or margins, and increased use of fields after they were undersown [208].",
+    "summary_action_ids": [
+      "136",
+      "3926",
+      "208"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"undersowing spring cereals wildlife benefits alternative to conventional ploughing\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"136\",\n    \"action_title\": \"Undersow spring cereals, with clover for example\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3926\",\n    \"action_title\": \"Undersow spring cereals, with clover for example\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"208\",\n    \"action_title\": \"Undersow spring cereals, with clover for example\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"undersowing spring cereals wildlife benefits\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2088\",\n    \"action_title\": \"Limit, cease or prohibit recreational boating\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1388\",\n    \"action_title\": \"Water: Restore habitat along watercourses\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"136\"}",
+            "return_val": "{\n  \"action_id\": \"136\",\n  \"action_title\": \"Undersow spring cereals, with clover for example\",\n  \"key_messages\": \"Key Messages:\\n\\nA total of fifteen studies from the UK, Austria, Denmark, Finland and Switzerland (including four replicated, controlled and randomised studies and two reviews) looked at the effects of undersowing spring cereals on biodiversity. Eleven studies (including seven replicated trials, of which one controlled and three randomized and controlled, and one review) found that undersowing spring cereals benefited some birds, plants, insects, spiders and earthworms. These benefits to farmland wildlife included increases in barnacle goose abundance, densities of singing Eurasian skylark and nesting dunnock, arthropod abundance and species richness, and bumblebee, butterfly, earthworm, ground beetle, spider or springtail abundances.\\nFive studies from Austria, Finland and the UK (including three replicated studies of which one was also controlled and randomized, and a review) found that undersowing spring cereals did not benefit invertebrates, plants, grey partridge population indicators, or nesting densities of two out of three farmland bird species. One replicated study from the UK found only one out of five bird species was found more frequently on undersown wheat stubbles than conventionally managed barley.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3926\"}",
+            "return_val": "{\n  \"action_id\": \"3926\",\n  \"action_title\": \"Undersow spring cereals, with clover for example\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on butterflies and moths of undersowing spring cereals. One study was in the UK\\u00a0and one was in Switzerland.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nRichness/diversity (2 studies): One replicated, randomized, controlled study in the UK\\u00a0found that spring barley undersown with a mix of grasses and legumes had a higher species richness of butterflies than extensively or conventionally managed grassland. One replicated, site comparison study in Switzerland\\u00a0found that farms with a larger area of in-field agri-environment scheme options, including undersown cereals, had a similar species richness of butterflies to farms with a smaller area of in-field agri-environment scheme\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): One replicated, randomized, controlled study in the UK\\u00a0found that spring barley undersown with a mix of grasses and legumes had a higher abundance of butterflies, but a lower abundance of caterpillars, than extensively or conventionally managed grassland. One replicated, site comparison study in Switzerland\\u00a0found that farms with a larger area of in-field agri-environment scheme options, including undersown cereals, had a similar abundance of butterflies to farms with a smaller area of in-field agri-environment scheme\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"208\"}",
+            "return_val": "{\n  \"action_id\": \"208\",\n  \"action_title\": \"Undersow spring cereals, with clover for example\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies from the UK, two replicated, found that there were higher densities of some study species on undersown fields or margins, compared with other fields, or that use of fields increased after they were undersown. One of these (reported in two places) found that not all species nested at higher densities. One replicated study from the UK found that various measures of grey partridge population health declined as the amount of undersown cereal on sites increased.\\nA replicated study from the UK found no relationship between the amount of undersown cereals on a site and the productivity of grey partridge on that site.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"As an alternative to conventional ploughing, what are the wildlife benefits of undersowing spring cereals?\",\"summary\":\"Evidence reports multiple wildlife benefits from undersowing spring cereals: increases in barnacle goose abundance; higher densities of singing Eurasian skylark and nesting dunnock; greater arthropod abundance and species richness; and higher abundances of bumblebees, butterflies, earthworms, ground beetles, spiders and springtails [136]. Spring barley undersown with a mix of grasses and legumes supported higher butterfly species richness and abundance than extensively or conventionally managed grassland [3926]. Studies also found higher densities of some study species on undersown fields or margins, and increased use of fields after they were undersown [208].\",\"action_ids\":[\"136\",\"3926\",\"208\"]}",
+            "return_val": "{\n  \"query\": \"As an alternative to conventional ploughing, what are the wildlife benefits of undersowing spring cereals?\",\n  \"relevant_summary\": \"Evidence reports multiple wildlife benefits from undersowing spring cereals: increases in barnacle goose abundance; higher densities of singing Eurasian skylark and nesting dunnock; greater arthropod abundance and species richness; and higher abundances of bumblebees, butterflies, earthworms, ground beetles, spiders and springtails [136]. Spring barley undersown with a mix of grasses and legumes supported higher butterfly species richness and abundance than extensively or conventionally managed grassland [3926]. Studies also found higher densities of some study species on undersown fields or margins, and increased use of fields after they were undersown [208].\",\n  \"action_ids\": [\n    \"136\",\n    \"3926\",\n    \"208\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "136",
+      "126",
+      "643"
+    ],
+    "regenerated_ids": [
+      "136"
+    ]
   }
 ]
