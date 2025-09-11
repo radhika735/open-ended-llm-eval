@@ -636,7 +636,7 @@ def main():
     FILTER_STAGE = "passed" # options: "passed", "failed"
     OFFSET = 0
     MAX_QU_FILES = 10
-    MAX_QUS_PER_FILE = 5
+    MAX_QUS_PER_FILE = 3
 
 
     ## SUMMARY GENERATION PROCESS
