@@ -160,29 +160,31 @@ def write_distribution_file(id_dist, filepath):
             file.write(synopsis + "," + ids + "\n")
 
 
-def get_summary_gen_qus_usage(model, provider):
-    num_qus_used = 0
-    num_qus_unused = 0
-    dirs = [
-        f"live_questions/bg_km_qus/answerable/passed/usage_annotated",
-        # f"live_questions/bg_km_qus/answerable/failed/usage_annotated",
-        # f"live_questions/bg_km_qus/unanswerable/passed/usage_annotated",
-        # f"live_questions/bg_km_qus/unanswerable/failed/usage_annotated",
-    ]
-    for dir in dirs:
-        for filename in os.listdir(dir):
-            filepath = os.path.join(dir, filename)
-            with open(filepath, 'r', encoding="utf-8") as f:
-                qus = json.load(f)
-            for qu in qus:
-                if [model, provider] in qu.get("used_by_models", []):
-                    num_qus_used += 1
-                else:
-                    num_qus_unused += 1
-    return {
-        "used": num_qus_used,
-        "unused": num_qus_unused
-    }
+def get_summary_gen_qus_usage(model, provider, qu_types=["answerable", "unanswerable"], filter_stage=["passed", "failed"]):
+    usage = []
+
+    for qu_type in qu_types:
+        for stage in filter_stage:
+            dir = f"live_questions/bg_km_qus/{qu_type}/{stage}/usage_annotated"
+            num_qus_used = 0
+            num_qus_unused = 0
+            for filename in os.listdir(dir):
+                filepath = os.path.join(dir, filename)
+                with open(filepath, 'r', encoding="utf-8") as f:
+                    qus = json.load(f)
+                for qu in qus:
+                    if [model, provider] in qu.get("used_by_models", []):
+                        num_qus_used += 1
+                    else:
+                        num_qus_unused += 1
+            usage.append({
+                "qu_type": qu_type,
+                "filter_stage": stage,
+                "used": num_qus_used,
+                "unused": num_qus_unused
+            })
+
+    return usage
 
 
 def get_viable_summaries_split_for_model(model_provider):
