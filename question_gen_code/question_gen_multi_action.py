@@ -7,7 +7,7 @@ from pydantic import BaseModel
 import json
 import time
 
-from utils.gen_qus_statistics import get_n_representative_qus_for_synopsis
+from utils.gen_data_statistics import get_n_representative_qus_for_synopsis
 from utils.action_parsing import get_synopsis_data_as_str
 from utils.exceptions import RetrievalError, FatalAPIError, NonFatalAPIError, FileWriteError
 
