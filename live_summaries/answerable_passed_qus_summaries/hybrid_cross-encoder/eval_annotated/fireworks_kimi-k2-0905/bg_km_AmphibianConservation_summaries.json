@@ -5394,5 +5394,315 @@
       "840",
       "853"
     ]
+  },
+  {
+    "query": "To manage chytridiomycosis in captive amphibians, what are the most and least beneficial treatment strategies?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "Based on evidence from action documents, the most beneficial treatment strategies for managing chytridiomycosis in captive amphibians are antifungal treatment and temperature treatment. Antifungal treatment, particularly itraconazole, was effective at curing amphibians of chytridiomycosis in 12 of 16 studies, including six of eight studies specifically testing itraconazole (Action ID: 882). However, six studies found that specific fungicides caused death or other negative side effects in amphibians. Temperature treatment showed high effectiveness, with four of five studies finding that increasing enclosure or water temperature to 30-37\u00b0C for over 16 hours cured frogs and toads of chytridiomycosis (Action ID: 770).\n\nThe least beneficial treatment strategies are antifungal skin bacteria or peptides and antibacterial treatments. Three of four studies found that adding antifungal bacteria to the skin of salamanders or frogs exposed to chytrid fungus did not reduce infection rate or death, and treatment with antimicrobial skin peptides did not significantly increase survival of common toads (Action ID: 764). Antibacterial treatments showed mixed results, with trimethoprim-sulfadiazine increasing survival time but not curing blue-and-yellow poison dart frogs of chytridiomycosis (Action ID: 763).",
+    "summary_action_ids": [
+      "882",
+      "770",
+      "764",
+      "763"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"chytridiomycosis amphibian treatment\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"767\",\n    \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"770\",\n    \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"chytridiomycosis antifungal treatment captive amphibians\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"767\",\n    \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"764\",\n    \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"chytridiomycosis temperature treatment amphibians\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"770\",\n    \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"767\",\n    \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"882\"}",
+            "return_val": "{\n  \"action_id\": \"882\",\n  \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n  \"key_messages\": \"Key Messages:\\n\\nTwelve of 16 studies (including four randomized, replicated, controlled studies) in Europe, Australia, Tasmania, Japan and the USA found that antifungal treatment cured or increased survival of amphibians with chytridiomycosis. Four studies found that treatments did not cure chytridiomycosis, but did reduce infection levels\\u00a0or had mixed results.\\nSix of the eight studies (including two randomized, replicated, controlled studies) in Japan, Tasmania, the UK and USA testing treatment with itraconazole found that it was effective at curing amphibians of chytridiomycosis. One study found that it reduced infection levels and one found mixed effects.\\nSix studies found that specific fungicides caused death or other negative side effects in amphibians.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"770\"}",
+            "return_val": "{\n  \"action_id\": \"770\",\n  \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of five studies (including four replicated, controlled studies) in Australia, Switzerland and the USA\\u00a0found that increasing enclosure or water temperature to 30\\u201337\\u00b0C for over 16 hours cured frogs and toads of chytridiomycosis. One found that heat treatment at 30\\u201335\\u00b0C for 36 hours did not cure northern leopard frogs.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"767\"}",
+            "return_val": "{\n  \"action_id\": \"767\",\n  \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n  \"key_messages\": \"Key Messages:\\n\\n\\nOne before-and-after study in Mallorca found that treating wild midwife toads with fungicide, along with pond drying, reduced infection levels but did not eradicate chytridiomycosis.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"764\"}",
+            "return_val": "{\n  \"action_id\": \"764\",\n  \"action_title\": \"Use antifungal skin bacteria or peptides to reduce chytridiomycosis infection\",\n  \"key_messages\": \"Key Messages:\\n\\nThree of four randomized, replicated, controlled studies in the USA found that adding antifungal bacteria to the skin of salamanders or frogs exposed to the chytrid fungus did not reduce chytridiomycosis infection rate or death. One found that adding antifungal bacteria to frogs prevented infection and death. One randomized, replicated, controlled study in the USA\\u00a0found that adding antifungal skin bacteria to soil significantly reduced chytridiomycosis infection rate of red-backed salamanders. \\nOne randomized, replicated, controlled study in Switzerland found that treatment with antimicrobial skin peptides before or after infection with chytridiomycosis did not significantly increase survival of common toads.\\nThree randomized, replicated, controlled studies in the USA found that adding antifungal skin bacteria to chytrid infected amphibians reduced weight loss.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"chytridiomycosis treatment side effects captive amphibians\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"767\",\n    \"action_title\": \"Treat amphibians with chytridiomycosis in the wild or pre-release\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"770\",\n    \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"chytridiomycosis treatment ineffective harmful negative\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"882\",\n    \"action_title\": \"Use antifungal treatment to reduce chytridiomycosis infection\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"763\",\n    \"action_title\": \"Use antibacterial treatment to reduce chytridiomycosis infection\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"770\",\n    \"action_title\": \"Use temperature treatment to reduce chytridiomycosis infection\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"763\"}",
+            "return_val": "{\n  \"action_id\": \"763\",\n  \"action_title\": \"Use antibacterial treatment to reduce chytridiomycosis infection\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one randomized, replicated, controlled study) in New Zealand and Australia found that treatment with chloramphenicol antibiotic ointment (Bishop et al. 2009) or solution, with other interventions in some cases, cured green tree frogs and one Archey\\u2019s frog of chytridiomycosis.\\nOne replicated, controlled study found that treatment with trimethoprim-sulfadiazine increased survival time but did not cure blue-and-yellow poison dart frogs of chytridiomycosis.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\": \"Based on evidence from action documents, the most beneficial treatment strategies for managing chytridiomycosis in captive amphibians are antifungal treatment and temperature treatment. Antifungal treatment, particularly itraconazole, was effective at curing amphibians of chytridiomycosis in 12 of 16 studies, including six of eight studies specifically testing itraconazole (Action ID: 882). However, six studies found that specific fungicides caused death or other negative side effects in amphibians. Temperature treatment showed high effectiveness, with four of five studies finding that increasing enclosure or water temperature to 30-37\u00b0C for over 16 hours cured frogs and toads of chytridiomycosis (Action ID: 770).\\n\\nThe least beneficial treatment strategies are antifungal skin bacteria or peptides and antibacterial treatments. Three of four studies found that adding antifungal bacteria to the skin of salamanders or frogs exposed to chytrid fungus did not reduce infection rate or death, and treatment with antimicrobial skin peptides did not significantly increase survival of common toads (Action ID: 764). Antibacterial treatments showed mixed results, with trimethoprim-sulfadiazine increasing survival time but not curing blue-and-yellow poison dart frogs of chytridiomycosis (Action ID: 763).\", \"action_ids\": [\"882\", \"770\", \"764\", \"763\"], \"query\": \"To manage chytridiomycosis in captive amphibians, what are the most and least beneficial treatment strategies?\"}",
+            "return_val": "{\n  \"query\": \"To manage chytridiomycosis in captive amphibians, what are the most and least beneficial treatment strategies?\",\n  \"relevant_summary\": \"Based on evidence from action documents, the most beneficial treatment strategies for managing chytridiomycosis in captive amphibians are antifungal treatment and temperature treatment. Antifungal treatment, particularly itraconazole, was effective at curing amphibians of chytridiomycosis in 12 of 16 studies, including six of eight studies specifically testing itraconazole (Action ID: 882). However, six studies found that specific fungicides caused death or other negative side effects in amphibians. Temperature treatment showed high effectiveness, with four of five studies finding that increasing enclosure or water temperature to 30-37\\u00b0C for over 16 hours cured frogs and toads of chytridiomycosis (Action ID: 770).\\n\\nThe least beneficial treatment strategies are antifungal skin bacteria or peptides and antibacterial treatments. Three of four studies found that adding antifungal bacteria to the skin of salamanders or frogs exposed to chytrid fungus did not reduce infection rate or death, and treatment with antimicrobial skin peptides did not significantly increase survival of common toads (Action ID: 764). Antibacterial treatments showed mixed results, with trimethoprim-sulfadiazine increasing survival time but not curing blue-and-yellow poison dart frogs of chytridiomycosis (Action ID: 763).\",\n  \"action_ids\": [\n    \"882\",\n    \"770\",\n    \"764\",\n    \"763\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "762",
+      "763",
+      "764",
+      "765",
+      "766",
+      "767",
+      "770",
+      "882"
+    ],
+    "regenerated_ids": [
+      "763",
+      "764",
+      "765",
+      "770",
+      "882"
+    ]
+  },
+  {
+    "query": "What are the general outcomes of releasing captive-bred toads, including species like the Mallorcan midwife toad?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "Studies on captive-bred toad releases have shown mixed but generally positive results for population establishment. For Mallorcan midwife toads specifically, three studies found that captive-bred individuals released as tadpoles, toadlets or adults established breeding populations at 38%, 80% or 100% of sites. However, one study found that genetic diversity was reduced in reintroduced captive-bred populations, although predator defenses were maintained.\n\nMore broadly, two of three studies on captive-bred toads found successful population establishment in Denmark, Sweden and the USA, with one case showing 70% success rate at sites. However, one study found no population establishment from captive-bred and head-started toads. For Puerto Rican crested toads, survival was notably low with 25% being predated within two days of release.\n\nIn terms of captive breeding success, Mallorcan midwife toads achieved 85% survival to metamorphosis, though toads bred for nine or more generations showed slower tadpole development and decreased genetic diversity. Ten replicated studies found that various toad species successfully produced eggs in captivity, with eight finding successful rearing to tadpoles, toadlets or adults, while two studies documented high mortality after hatching or metamorphosis.",
+    "summary_action_ids": [
+      "873",
+      "875",
+      "837",
+      "848"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"captive-bred toad release Mallorcan midwife\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"873\",\n    \"action_title\": \"Release captive-bred Mallorcan midwife toads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"875\",\n    \"action_title\": \"Release captive-bred toads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"837\",\n    \"action_title\": \"Captive breeding Mallorcan midwife toads\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"873\"}",
+            "return_val": "{\n  \"action_id\": \"873\",\n  \"action_title\": \"Release captive-bred Mallorcan midwife toads\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated study and one review) in Mallorca found that captive-bred midwife toads released as tadpoles, toadlets or adults established breeding populations at 38%, 80% or 100% of sites.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that predator defences were maintained, but genetic diversity reduced in a captive-bred reintroduced population.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"875\"}",
+            "return_val": "{\n  \"action_id\": \"875\",\n  \"action_title\": \"Release captive-bred toads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo of three studies (including two replicated studies) in Denmark, Sweden and the USA found that captive-bred toads released as tadpoles, juveniles or metamorphs established populations, in one case at 70% of sites. One of the studies\\u00a0found that populations were not established from captive-bred and head-started toads.\\nTwo studies in Puerto Rico found that survival of released captive-bred Puerto Rican crested toads was low and that 25% were predated within two days of release.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"837\"}",
+            "return_val": "{\n  \"action_id\": \"837\",\n  \"action_title\": \"Captive breeding Mallorcan midwife toads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in the UK found that Mallorcan midwife toads produced eggs that were raised to metamorphs or toadlets successfully in captivity. One found that clutches dropped by males were not successfully maintained artificially.\\nOne replicated study in the UK found that survival to metamorphosis was 85%. One randomized, replicated, controlled study in the UK found that toads bred in captivity for nine or more generations had slower tadpole development, reduction in one predator defence trait and decreased genetic diversity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"toad release outcomes captive breeding success\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"848\",\n    \"action_title\": \"Captive breeding toads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"873\",\n    \"action_title\": \"Release captive-bred Mallorcan midwife toads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"883\",\n    \"action_title\": \"Use hormone treatment to induce sperm and egg release during captive breeding\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"859\",\n    \"action_title\": \"Translocate natterjack toads\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"836\",\n    \"action_title\": \"Captive breeding harlequin toads (<i>Atelopus</i> species)\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"848\"}",
+            "return_val": "{\n  \"action_id\": \"848\",\n  \"action_title\": \"Captive breeding toads\",\n  \"key_messages\": \"Key Messages:\\n\\nTen replicated studies (including three small studies) in Germany, Italy, Spain, the UK and USA\\u00a0found that toads produced eggs in captivity, in one case by second generation captive females. Eight found that captive-bred toads were raised successfully to tadpoles, toadlets or adults in captivity. Two found that most toads died after hatching or after metamorphosis. Two reviews found mixed results with four species of toad or 21% of captive populations of Puerto Rican crested toad breeding successfully in captivity.\\nFour replicated studies in Germany, Spain and the USA found that reproductive success of captive toads was affected by tank humidity or was higher in outdoor enclosures than indoor tanks. One replicated study in Germany found that survival of European red-bellied toad eggs, tadpoles and juveniles was higher in captivity than the wild.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Puerto Rican crested toad release survival\", \"k\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"875\",\n    \"action_title\": \"Release captive-bred toads\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"848\",\n    \"action_title\": \"Captive breeding toads\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"629\",\n    \"action_title\": \"Release captive-bred individuals into the wild to restore or augment wild populations of parrots\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the general outcomes of releasing captive-bred toads, including species like the Mallorcan midwife toad?\", \"summary\": \"Studies on captive-bred toad releases have shown mixed but generally positive results for population establishment. For Mallorcan midwife toads specifically, three studies found that captive-bred individuals released as tadpoles, toadlets or adults established breeding populations at 38%, 80% or 100% of sites. However, one study found that genetic diversity was reduced in reintroduced captive-bred populations, although predator defenses were maintained.\\n\\nMore broadly, two of three studies on captive-bred toads found successful population establishment in Denmark, Sweden and the USA, with one case showing 70% success rate at sites. However, one study found no population establishment from captive-bred and head-started toads. For Puerto Rican crested toads, survival was notably low with 25% being predated within two days of release.\\n\\nIn terms of captive breeding success, Mallorcan midwife toads achieved 85% survival to metamorphosis, though toads bred for nine or more generations showed slower tadpole development and decreased genetic diversity. Ten replicated studies found that various toad species successfully produced eggs in captivity, with eight finding successful rearing to tadpoles, toadlets or adults, while two studies documented high mortality after hatching or metamorphosis.\", \"action_ids\": [\"873\", \"875\", \"837\", \"848\"]}",
+            "return_val": "{\n  \"query\": \"What are the general outcomes of releasing captive-bred toads, including species like the Mallorcan midwife toad?\",\n  \"relevant_summary\": \"Studies on captive-bred toad releases have shown mixed but generally positive results for population establishment. For Mallorcan midwife toads specifically, three studies found that captive-bred individuals released as tadpoles, toadlets or adults established breeding populations at 38%, 80% or 100% of sites. However, one study found that genetic diversity was reduced in reintroduced captive-bred populations, although predator defenses were maintained.\\n\\nMore broadly, two of three studies on captive-bred toads found successful population establishment in Denmark, Sweden and the USA, with one case showing 70% success rate at sites. However, one study found no population establishment from captive-bred and head-started toads. For Puerto Rican crested toads, survival was notably low with 25% being predated within two days of release.\\n\\nIn terms of captive breeding success, Mallorcan midwife toads achieved 85% survival to metamorphosis, though toads bred for nine or more generations showed slower tadpole development and decreased genetic diversity. Ten replicated studies found that various toad species successfully produced eggs in captivity, with eight finding successful rearing to tadpoles, toadlets or adults, while two studies documented high mortality after hatching or metamorphosis.\",\n  \"action_ids\": [\n    \"873\",\n    \"875\",\n    \"837\",\n    \"848\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "873",
+      "875",
+      "837",
+      "848",
+      "871"
+    ],
+    "regenerated_ids": [
+      "873",
+      "875"
+    ]
+  },
+  {
+    "query": "For road mitigation projects, what design factors are associated with the success or failure of tunnels and culverts for amphibian passage?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "For amphibian road mitigation projects using tunnels and culverts, research shows several key design factors affect their success or failure. Diameter is important, with three of six studies finding that wider culverts are used more by amphibians. Length matters too, with one of two studies showing long culverts are avoided by amphibians. Lighting affects usage patterns, with all three studies showing mixed effects of lighting conditions. Substrate type influences success, with three of six studies finding that natural substrates are used more than artificial ones. The presence of water has mixed effects according to two of three studies. Entrance location affects usage, as does tunnel climate. Importantly, the majority of successful culverts/tunnels had barrier fencing installed to guide amphibians to entrances. Certain designs should be avoided: one-way tunnels with vertical entry chutes caused high mortality in common toads, and condensation from steel culverts created toxic metal concentrations. Even with well-designed passages, thousands of amphibians may still be killed on roads, indicating that tunnels and culverts alone may not eliminate road mortality.",
+    "summary_action_ids": [
+      "884"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"amphibian road tunnels passage design\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"884\",\n    \"action_title\": \"Install culverts or tunnels as road crossings\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"840\",\n    \"action_title\": \"Restore habitat connectivity\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2514\",\n    \"action_title\": \"Install tunnels/culverts/underpass under roads\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"756\",\n    \"action_title\": \"Install barrier fencing along roads\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2523\",\n    \"action_title\": \"Install ledges in culverts under roads/railways\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3508\",\n    \"action_title\": \"Install tunnels/culverts/underpasses under roads/railways\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2519\",\n    \"action_title\": \"Install tunnels/culverts/underpass under railways\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3507\",\n    \"action_title\": \"Install barriers and crossing structures along roads/railways\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"853\",\n    \"action_title\": \"Retain connectivity between habitat patches\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2525\",\n    \"action_title\": \"Install fences around existing culverts or underpasses under roads/railways\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"884\"}",
+            "return_val": "{\n  \"action_id\": \"884\",\n  \"action_title\": \"Install culverts or tunnels as road crossings\",\n  \"key_messages\": \"Key Messages:\\n\\nThirty-two studies investigated the effectiveness of installing culverts or tunnels as road crossings for amphibians.\\nSix of seven studies (including three replicated studies) in Canada, Germany, Italy, Hungary and the USA\\u00a0found that installing culverts or tunnels significantly decreased amphibian road deaths; in one study this was the case only when barrier fencing was also installed. One found no effect on road deaths.\\nFifteen of 24 studies (including one review and 17 replicated studies) in Australia, Canada, Europe and the USA found that culverts/tunnels were used by amphibians, by 15\\u201385% of amphibians or 3\\u201315 species, or that 23\\u2013100% of culverts or tunnels were used by amphibians or used in 12 of 14 studies reviewed. The majority of culverts/tunnels had barrier fencing to guide amphibians to entrances. Four found mixed effects depending on species, or for toads depending on the site or culvert type. Five found that culverts were used by less than 10% of amphibians or were not used. The use of culverts/tunnels was affected by diameter in three of six studies, with wider culverts used more, length in one of two studies, with long culverts avoided, lighting in all three studies, with mixed effects, substrate in three of six studies, with natural substrates used more, presence of water in two of three studies, with mixed effects, entrance location in one and tunnel climate in one study.\\nSix studies (including one replicated, controlled study) in Canada, Spain, the Netherlands and USA investigated the use of culverts with flowing water and found that they were used by amphibians, or rarely used by salamanders or not used, and were used more or the same amount as dry culverts.\\nCertain culvert designs were not suitable for amphibians; one-way tunnels with vertical entry chutes resulted in high mortality of common toads and condensation deposits from steel culverts had very high metal concentrations. One study found that thousands of amphibians were still killed on the road.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2514\"}",
+            "return_val": "{\n  \"action_id\": \"2514\",\n  \"action_title\": \"Install tunnels/culverts/underpass under roads\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-five studies evaluated the effects on mammals of installing tunnels, culverts or underpass under roads. Eight studies were in the USA, four were in Australia, four were in Canada, two were in Spain, one each was in Germany, the Netherlands and South Korea and three were reviews with wide geographic coverage.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nSurvival (3 studies): A study in South Korea found that road sections with higher underpass density did not have fewer wildlife-vehicle collisions. A review found that most studies recorded no evidence of predation of mammals using crossings under roads. A controlled, before-and-after, site comparison study in Australia found that overwinter survival of mountain pygmy-possums increased after an artificial rocky corridor, which included two underpasses, was installed.\\n\\nBEHAVIOUR (23 STUDIES)\\n\\nUse (23 studies): Seventeen of 20 studies (including seven replicated studies and two reviews), in the USA, Canada, Australia, Spain, the Netherlands, and across multiple continents, found that crossing structures beneath roads were used by mammals whilst two studies found mixed results depending on species and one study found that culverts were rarely used as crossings by mammals. One of the studies found that crossing structures were used by two of four species more than expected compared to their movements through adjacent habitats. A controlled, before-and-after, site comparison study in Australia found that an artificial rocky corridor, which included two underpasses, was used by mountain pygmy-possums. A replicated study in Germany found that use of tunnels by fallow deer was affected by tunnel colour and design. A study in the USA found that a range of mammals used culverts, including those with shelves fastened to the sides.\\nBehaviour change (1 study): A controlled, before-and-after, site comparison study in Australia found that after an artificial rocky corridor, which included two underpasses, was installed, dispersal of mountain pygmy-possums increased.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2523\"}",
+            "return_val": "{\n  \"action_id\": \"2523\",\n  \"action_title\": \"Install ledges in culverts under roads/railways\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of installing ledges in culverts under roads or railways. Two studies were in the USA and one was in Portugal.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (3 STUDIES)\\n\\nUse (3 studies): A replicated, controlled study in Portugal found that under-road culverts with ledges were used more than culverts without ledges by two of five mammal species. A before-and-after study in the USA found that installing ledges within under-road culverts did not increase the number or diversity of small mammal species crossing through them, and only one of six species used ledges. A study in the USA found that ledges in under-road culverts were used by nine of 12 small mammal species and ledges with access ramps were used more often than those without.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3508\"}",
+            "return_val": "{\n  \"action_id\": \"3508\",\n  \"action_title\": \"Install tunnels/culverts/underpasses under roads/railways\",\n  \"key_messages\": \"Key Messages:\\n\\nFifteen studies evaluated the effects of installing tunnels/culverts/underpasses under roads/railways on reptile populations. Four of the studies were in the USA, four were in Australia, three were in Spain, two were in Canada and one was in each of Australia, Europe and North America and South Africa.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nSurvival (3 studies): Two site comparison studies (including one before-and-after study) in Australia and South Africa found a similar number of reptile road mortalities with or without culverts or wildlife underpasses. One replicated study in Spain found that the number of underpasses in an area did not affect the number of reptile road mortalities.\\n\\nBEHAVIOUR (12 STUDIES)\\n\\nUse (12 studies): Six studies (including four replicated studies and one replicated, before-and-after study) and one review in Spain, Australia, the USA and Australia, Europe and North America found that crossing structures, including tunnels, culverts, underpasses, pipes and trenches under roads and railways were used by reptiles, lizards, snakes and/or tortoises. One review in Australia, Europe and North America also found that wildlife underpasses were used by reptiles in only one of 13 studies. Three of four replicated studies (including one before-and-after study) in the USA and Canada found that desert tortoises, painted and snapping turtles and rattlesnakes and garter snakes showed a willingness to enter some, or all types of tunnel. The other study found that only 9% of painted turtles entered a culvert during a choice experiment. One site comparison study in Australia found that the area under an overpass was used by five reptile species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\": 10, \"k\": 10, \"query_string\": \"amphibian tunnel design diameter length substrate lighting\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1876\",\n    \"action_title\": \"Amphibians: Provide particular enclosure furniture for calling sites, breeding areas or egg laying sites\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"853\",\n    \"action_title\": \"Retain connectivity between habitat patches\",\n    \"rank\": 12\n  },\n  {\n    \"action_id\": \"1887\",\n    \"action_title\": \"Amphibians: Supplement diets with carotenoids (including for colouration)\",\n    \"rank\": 13\n  },\n  {\n    \"action_id\": \"2519\",\n    \"action_title\": \"Install tunnels/culverts/underpass under railways\",\n    \"rank\": 14\n  },\n  {\n    \"action_id\": \"2706\",\n    \"action_title\": \"Decrease the circumference or diameter of the codend of a trawl net\",\n    \"rank\": 15\n  },\n  {\n    \"action_id\": \"1882\",\n    \"action_title\": \"Amphibians: Allow female mate choice\",\n    \"rank\": 16\n  },\n  {\n    \"action_id\": \"843\",\n    \"action_title\": \"Leave coarse woody debris in forests\",\n    \"rank\": 17\n  },\n  {\n    \"action_id\": \"2523\",\n    \"action_title\": \"Install ledges in culverts under roads/railways\",\n    \"rank\": 18\n  },\n  {\n    \"action_id\": \"2522\",\n    \"action_title\": \"Modify culverts to make them more accessible to mammals\",\n    \"rank\": 19\n  },\n  {\n    \"action_id\": \"1881\",\n    \"action_title\": \"Amphibians: Play recordings of breeding calls to simulate breeding season in the wild\",\n    \"rank\": 20\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"amphibian culvert diameter substrate lighting water\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"884\",\n    \"action_title\": \"Install culverts or tunnels as road crossings\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"804\",\n    \"action_title\": \"Use irrigation systems for amphibian sites\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1874\",\n    \"action_title\": \"Amphibians: Provide natural substrate for species which do not breed in water (e.g. burrowing/tunnel breeders)\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2021\",\n    \"action_title\": \"Use red lighting rather than other lighting colours\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1873\",\n    \"action_title\": \"Amphibians: Provide multiple egg laying sites within an enclosure\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\": \"For amphibian road mitigation projects using tunnels and culverts, research shows several key design factors affect their success or failure. Diameter is important, with three of six studies finding that wider culverts are used more by amphibians. Length matters too, with one of two studies showing long culverts are avoided by amphibians. Lighting affects usage patterns, with all three studies showing mixed effects of lighting conditions. Substrate type influences success, with three of six studies finding that natural substrates are used more than artificial ones. The presence of water has mixed effects according to two of three studies. Entrance location affects usage, as does tunnel climate. Importantly, the majority of successful culverts/tunnels had barrier fencing installed to guide amphibians to entrances. Certain designs should be avoided: one-way tunnels with vertical entry chutes caused high mortality in common toads, and condensation from steel culverts created toxic metal concentrations. Even with well-designed passages, thousands of amphibians may still be killed on roads, indicating that tunnels and culverts alone may not eliminate road mortality.\", \"query\": \"For road mitigation projects, what design factors are associated with the success or failure of tunnels and culverts for amphibian passage?\", \"action_ids\": [\"884\"]}",
+            "return_val": "{\n  \"query\": \"For road mitigation projects, what design factors are associated with the success or failure of tunnels and culverts for amphibian passage?\",\n  \"relevant_summary\": \"For amphibian road mitigation projects using tunnels and culverts, research shows several key design factors affect their success or failure. Diameter is important, with three of six studies finding that wider culverts are used more by amphibians. Length matters too, with one of two studies showing long culverts are avoided by amphibians. Lighting affects usage patterns, with all three studies showing mixed effects of lighting conditions. Substrate type influences success, with three of six studies finding that natural substrates are used more than artificial ones. The presence of water has mixed effects according to two of three studies. Entrance location affects usage, as does tunnel climate. Importantly, the majority of successful culverts/tunnels had barrier fencing installed to guide amphibians to entrances. Certain designs should be avoided: one-way tunnels with vertical entry chutes caused high mortality in common toads, and condensation from steel culverts created toxic metal concentrations. Even with well-designed passages, thousands of amphibians may still be killed on roads, indicating that tunnels and culverts alone may not eliminate road mortality.\",\n  \"action_ids\": [\n    \"884\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "884",
+      "756",
+      "782",
+      "840",
+      "841",
+      "842"
+    ],
+    "regenerated_ids": [
+      "884",
+      "756",
+      "840"
+    ]
   }
 ]

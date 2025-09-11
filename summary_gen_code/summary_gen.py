@@ -632,11 +632,11 @@ def main():
         ("moonshotai/kimi-k2-0905", "fireworks/fp8")
     ]
 
-    QU_TYPE = "answerable" # options: "answerable", "unanswerable"
+    QU_TYPE = "unanswerable" # options: "answerable", "unanswerable"
     FILTER_STAGE = "passed" # options: "passed", "failed"
-    OFFSET = 15
-    MAX_QU_FILES = 10
-    MAX_QUS_PER_FILE = 5
+    OFFSET = 0
+    MAX_QU_FILES = 5
+    MAX_QUS_PER_FILE = 10
 
 
     ## SUMMARY GENERATION PROCESS
