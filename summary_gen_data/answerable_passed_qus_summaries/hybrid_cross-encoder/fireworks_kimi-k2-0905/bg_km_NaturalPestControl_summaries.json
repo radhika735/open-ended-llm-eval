@@ -2207,5 +2207,99 @@
       "750",
       "753"
     ]
+  },
+  {
+    "query": "What actions are available to control weeds specifically in pasture or grassland systems?",
+    "model": "moonshotai/kimi-k2-0905",
+    "provider": "fireworks/fp8",
+    "relevant_summary": "Based on the action documents found, several approaches are available for weed control in pasture and grassland systems. Action 123 provides evidence for controlling weeds without damaging other plants in conservation areas, showing that specific management regimes can reduce pernicious weeds, with cutting and fungal pathogen infection being effective for controlling creeping thistle, and lenient grazing providing long-term control. Mixed pasture (Action 721) was found to reduce weeds in two studies from the USA, with both randomized, replicated trials showing reduced weeds compared to monoculture pasture. Delaying mowing or first grazing date on pasture or grassland (Action 131) resulted in benefits including higher plant species richness and higher densities of rare arable weeds according to studies from the Netherlands, Sweden and the UK. Reducing chemical inputs in permanent grassland management (Action 459) was tested as an approach, though the evidence showed no increase in foraging birds attracted to pasture plots with no fertiliser compared to controls. Additional vegetation management approaches include using prescribed fire to maintain or restore disturbance in grasslands (Action 3882) and managing vegetation using livestock grazing (Action 2545), though these were primarily studied for their effects on butterflies/moths and mammals respectively rather than specifically for weed control.",
+    "summary_action_ids": [
+      "123",
+      "721",
+      "131",
+      "459",
+      "3882",
+      "2545"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"weed control pasture grassland\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"459\",\n    \"action_title\": \"Reduce chemical inputs in permanent grassland management\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"721\",\n    \"action_title\": \"Use mixed pasture\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"131\",\n    \"action_title\": \"Delay mowing or first grazing date on pasture or grassland\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2294\",\n    \"action_title\": \"(CFT) Scrubland plants: Extensive livestock grazing (animals at low stocking density and left to wander) (29a)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3960\",\n    \"action_title\": \"Reduce grazing intensity on grassland by seasonal removal of livestock\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"649\",\n    \"action_title\": \"Maintain wood pasture and parkland\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3965\",\n    \"action_title\": \"Use rotational grazing\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"348\",\n    \"action_title\": \"Employ grazing in natural grasslands\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\": 10, \"offset\": 0, \"query_string\": \"pasture weed management\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"721\",\n    \"action_title\": \"Use mixed pasture\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2545\",\n    \"action_title\": \"Manage vegetation using livestock grazing\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3882\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in grasslands or other open habitats\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"63\",\n    \"action_title\": \"Create uncultivated margins around intensive arable or pasture fields\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3972\",\n    \"action_title\": \"Maintain or restore native wood pasture and parkland\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"649\",\n    \"action_title\": \"Maintain wood pasture and parkland\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2398\",\n    \"action_title\": \"Graze herbivores on pasture, instead of sustaining with artificial foods\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1733\",\n    \"action_title\": \"Use barriers to keep livestock off ungrazed peatlands\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"123\"}",
+            "return_val": "{\n  \"action_id\": \"123\",\n  \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies looked at the effects of controlling weeds on the surrounding vegetation. One study from the UK found that new populations of rare arable plants established following the control of perennial weeds in a nature conservation area. A replicated, controlled and randomized study in the UK found that using grass-specific herbicide reduced grass diversity and resulted in increases in broadleaved plants. \\nEleven studies investigated different methods of controlling plants. A review found that specific management regimes can reduce the abundance of pernicious weeds in nature conservation areas. Four replicated controlled studies (one also randomized) from Denmark and Germany found cutting and infection with fungal pathogens were effective methods for controlling creeping thistle and one replicated, randomized, controlled trial from the UK found long-term control was achieved by lenient grazing. A replicated, controlled and randomized study in Germany found weevils could be used to infect creeping thistle with systemic rust. One study found a non-native beetle was unsuitable for controlling creeping thistle because it had poor survival in the UK climate. A replicated controlled study found that spraying a high concentration of herbicide killed less than half of broad-leaved dock plants. A replicated, controlled, randomized study found black grass was eliminated with a December treatment of grass-specific herbicide. A small replicated study found that Hebridean sheep grazed more purple moor grass than Swaledale sheep.\\nTwo\\u00a0replicated controlled laboratory and grassland studies found negative impacts of the herbicide asulam on green dock beetles.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"459\"}",
+            "return_val": "{\n  \"action_id\": \"459\",\n  \"action_title\": \"Reduce chemical inputs in permanent grassland management\",\n  \"key_messages\": \"Key Messages:\\nA randomised, replicated, controlled study from the UK found that no more foraging birds were attracted to pasture plots with no fertiliser, compared to control plots.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"721\"}",
+            "return_val": "{\n  \"action_id\": \"721\",\n  \"action_title\": \"Use mixed pasture\",\n  \"key_messages\": \"Key Messages:\\nWeeds: Two of two studies (both randomised, replicated trials, one also controlled) from the USA found reduced weeds in mixed compared to monoculture pasture. Pests: Five studies from North America measured pests including four randomised, replicated, controlled tests. One study found fewer pests and two studies found reductions in some pest groups or in some pasture mixes. One study found no effect and another found more pests, although the effect was potentially inseparable from grazing treatments. Crop mortality: One randomised, replicated study from the USA found no effect on forage crop mortality caused by nematodes.Yield: Two of five studies (including two randomised, replicated, controlled tests) from North America found increased forage crop yields and two studies found mixed effects depending on the crop type and year. One study found no effect.\\nCrops studied were alfalfa, bird\\u2019s-foot trefoil, chicory, cicer milkvetch, clovers, fescues, oats, ryegrass, other grasses,\\u00a0other legumes, rapeseed and turnip.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"131\"}",
+            "return_val": "{\n  \"action_id\": \"131\",\n  \"action_title\": \"Delay mowing or first grazing date on pasture or grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies from the Netherlands, Sweden and the UK (three replicated and controlled of which one also randomized and one European systematic review) found that delaying mowing or grazing dates resulted in benefits to some or all plants, invertebrates or birds studied. These benefits included: higher plant species richness, higher densities of two rare arable weeds, more insect species and individuals visiting flowers, greater abundance of some spiders and ground beetles, increased breeding wading bird densities, and increased Eurasian skylark productivity.\\nThree reviews found the UK corncrake population increased after measures including delaying mowing dates were introduced.\\nSix studies from Finland, the Netherlands, Sweden, Switzerland and the UK (including three replicated controlled trials of which one was also randomized and a European systematic review) found that delaying mowing or grazing dates on grassland had no clear effect on plant species richness, ground beetle communities, abundance of some insects and spiders, or population trends of wading bird species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3882\"}",
+            "return_val": "{\n  \"action_id\": \"3882\",\n  \"action_title\": \"Use prescribed fire to maintain or restore disturbance in grasslands or other open habitats\",\n  \"key_messages\": \"Key Messages:\\n\\n\\n\\nThirteen studies evaluated the effects on butterflies and moths of using prescribed fire to maintain or restore disturbance in grasslands or other open habitats. Eight studies were in the USA, three were in the UK, one was in South Africa\\u00a0and one was a review across Europe.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nCommunity composition (1 study): One replicated, site comparison study in the USA\\u00a0found that pastures managed by patch-burning had a similar butterfly community to rotationally or continuously grazed pastures.\\nRichness/diversity (3 studies): Two replicated, before-and-after studies (including one randomized, controlled study and one paired sites, site comparison study) in the USA\\u00a0found that shrubland plots\\u00a0and grass field margins\\u00a0managed by burning had a similar species richness of butterflies to those which were unburned. One replicated, site comparison study in the USA\\u00a0reported that pastures managed by patch-burning had a lower species richness of butterflies than rotationally grazed pastures, a similar richness to rotationally grazed and mown pastures, and a higher species richness than continuously grazed pastures.\\n\\nPOPULATION RESPONSE (12 STUDIES)\\n\\nAbundance (12 studies): Four of nine studies (including six replicated studies, two randomized studies, two paired sites studies, three controlled studies, two before-and-after studies, and five site comparison studies) in the UK, South Africa\\u00a0and the USA\\u00a0found that the abundance of heath fritillary adults, marsh fritillary caterpillar webs\\u00a0and Fender\\u2019s blue caterpillars and eggs\\u00a0was higher (sometimes after initial reductions in abundance) on heathland, fen meadows\\u00a0and prairies\\u00a0one or more years after management by burning than before burning, or compared to unburned\\u00a0or grazed\\u00a0land, although the total population of Fender\\u2019s blue declined in adjacent burned and unburned areas. Three studies found that the abundance of Brenton blue butterfly eggs and adults, rosy marsh moth caterpillars\\u00a0and regal fritillary adults\\u00a0was lower on a bog\\u00a0and prairies\\u00a0managed by burning than on unburned land, at least one\\u00a0and five\\u00a0years after burning. One study found that grass field margins managed by burning had a similar abundance of butterflies to unburned field margins. The seventh study found that abundance of Powershiek skipperling to burning, along with haying and idling, depended on the site\\u2019s vegetation characteristics. Two replicated, site comparison studies in the USA\\u00a0found that two prairie specialists (regal fritillary and arogos skipper)\\u00a0and three out of nine butterfly species\\u00a0were less abundant in prairies\\u00a0or pastures\\u00a0managed by burning than in prairies managed by haying\\u00a0or grazed pastures. These studies also found that the abundance of generalist and migrant species, and of purplish copper, was higher in burned prairies\\u00a0or pastures\\u00a0than hayed prairies\\u00a0or grazed pastures. One review across Europe\\u00a0reported that occasional burning on grassland benefitted 10 out of 67 butterfly species of conservation concern.\\nSurvival (1 study): One replicated, paired sites, controlled study in the USA\\u00a0found that in prairie plots burned one year before, Fender\\u2019s blue butterfly caterpillars had lower survival than in unburned plots.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated, site comparison study in the UK\\u00a0found that a similar proportion of fen meadows were occupied by marsh fritillary caterpillars whether they were managed by burning, grazing or were unmanaged.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2545\"}",
+            "return_val": "{\n  \"action_id\": \"2545\",\n  \"action_title\": \"Manage vegetation using livestock grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on mammals of managing vegetation using livestock grazing. Four studies were in the USA, one was in Norway\\u00a0and one was in Mexico.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A replicated, controlled, before-and-after study in the USA\\u00a0found that introduction of livestock grazing increased the abundance of Stephens\\u2019 kangaroo rat after two years.\\n\\nBEHAVIOUR (5 STUDIES)\\n\\nUse (4 studies): One of four studies (three replicated controlled studies and a before-and-after study), in the USA\\u00a0and Norway, found that sheep-grazed pasture was used by feeding reindeer more than was ungrazed pasture. One found mixed effects on Rocky Mountain elk use of grazed plots\\u00a0and another found no response of Rocky Mountain elk to spring cattle grazing. The forth study found cattle grazing to increase the proportion of rough fescue biomass utilized by elk in the first, but not second winter after grazing.\\nBehaviour change (1 study): A replicated, paired sites study in Mexico\\u00a0found that in pastures grazed by cattle, Tehuantepec jackrabbits spent more time feeding than they did in pastures not grazed by cattle.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What actions are available to control weeds specifically in pasture or grassland systems?\", \"summary\": \"Based on the action documents found, several approaches are available for weed control in pasture and grassland systems. Action 123 provides evidence for controlling weeds without damaging other plants in conservation areas, showing that specific management regimes can reduce pernicious weeds, with cutting and fungal pathogen infection being effective for controlling creeping thistle, and lenient grazing providing long-term control. Mixed pasture (Action 721) was found to reduce weeds in two studies from the USA, with both randomized, replicated trials showing reduced weeds compared to monoculture pasture. Delaying mowing or first grazing date on pasture or grassland (Action 131) resulted in benefits including higher plant species richness and higher densities of rare arable weeds according to studies from the Netherlands, Sweden and the UK. Reducing chemical inputs in permanent grassland management (Action 459) was tested as an approach, though the evidence showed no increase in foraging birds attracted to pasture plots with no fertiliser compared to controls. Additional vegetation management approaches include using prescribed fire to maintain or restore disturbance in grasslands (Action 3882) and managing vegetation using livestock grazing (Action 2545), though these were primarily studied for their effects on butterflies/moths and mammals respectively rather than specifically for weed control.\", \"action_ids\": [\"123\", \"721\", \"131\", \"459\", \"3882\", \"2545\"]}",
+            "return_val": "{\n  \"query\": \"What actions are available to control weeds specifically in pasture or grassland systems?\",\n  \"relevant_summary\": \"Based on the action documents found, several approaches are available for weed control in pasture and grassland systems. Action 123 provides evidence for controlling weeds without damaging other plants in conservation areas, showing that specific management regimes can reduce pernicious weeds, with cutting and fungal pathogen infection being effective for controlling creeping thistle, and lenient grazing providing long-term control. Mixed pasture (Action 721) was found to reduce weeds in two studies from the USA, with both randomized, replicated trials showing reduced weeds compared to monoculture pasture. Delaying mowing or first grazing date on pasture or grassland (Action 131) resulted in benefits including higher plant species richness and higher densities of rare arable weeds according to studies from the Netherlands, Sweden and the UK. Reducing chemical inputs in permanent grassland management (Action 459) was tested as an approach, though the evidence showed no increase in foraging birds attracted to pasture plots with no fertiliser compared to controls. Additional vegetation management approaches include using prescribed fire to maintain or restore disturbance in grasslands (Action 3882) and managing vegetation using livestock grazing (Action 2545), though these were primarily studied for their effects on butterflies/moths and mammals respectively rather than specifically for weed control.\",\n  \"action_ids\": [\n    \"123\",\n    \"721\",\n    \"131\",\n    \"459\",\n    \"3882\",\n    \"2545\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "721",
+      "722"
+    ],
+    "regenerated_ids": [
+      "721",
+      "722"
+    ]
   }
 ]

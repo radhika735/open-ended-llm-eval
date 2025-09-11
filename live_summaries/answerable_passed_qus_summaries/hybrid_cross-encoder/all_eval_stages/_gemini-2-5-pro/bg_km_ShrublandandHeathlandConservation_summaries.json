@@ -713,5 +713,677 @@
       "1710",
       "1857"
     ]
+  },
+  {
+    "query": "When attempting to control problematic grass in UK shrublands, how does mowing compare to stripping turf?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One controlled study in the UK found that cutting and removing turf increased the number of heathland plants, while another UK study found that mowing increased the number of heathland plants in one of two sites (1647, 1638). The study on turf stripping also found that the presence of a small number of heathland plants increased, and the presence of a small number of non-heathland plants decreased (1647). The study on mowing found that the presence of a small minority of heathland plants increased, but the presence of non-heathland plants did not change (1638). \n\nOne replicated, controlled study in the UK found that the presence of heather was similar in areas where turf was cut and areas that were mown or rotovated (1647). Another replicated, controlled study in the UK found that cutting to control purple moor grass did not alter the cover of common heather (1638). However, two randomized, replicated, controlled studies in the UK found that the removal of topsoil did not increase heather cover or the cover of heathland species, though one controlled study in the UK did find an increase in heather cover (1685). Three replicated, controlled studies in the UK and the USA found that cutting to control grass did not alter the cover of common heather or shrub seedling abundance (1638).\n\nOne replicated, controlled study in the UK found that the presence of wavy hair grass was similar in areas where turf was cut and those that were mown or rotovated (1647). A similar study found that mowing did not alter the abundance of wavy hair grass relative to rotovating or cutting turf (1638). One controlled study in the UK found that the removal of turf reduced the cover of wavy hair grass (1685). Another UK study found that the removal of topsoil increased the cover of annual grasses but led to a decrease in the cover of perennial grasses (1685).\n\nTwo randomized, controlled studies in the USA found that mowing reduced grass cover, though in one study the grass cover recovered over time (1638).",
+    "summary_action_ids": [
+      "1647",
+      "1638",
+      "1685"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Compare mowing and turf stripping for controlling problematic grass in UK shrublands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1647\",\n    \"action_title\": \"Strip turf to control grass\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1638\",\n    \"action_title\": \"Cut/mow to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1685\",\n    \"action_title\": \"Strip topsoil\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1647\"}",
+            "return_val": "{\n  \"action_id\": \"1647\",\n  \"action_title\": \"Strip turf to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in the UK\\u00a0found that cutting and removing turf increased the number of heathland plants. The same study found that the presence of a small number of heathland plants increased, and that the presence of a small number of non-heathland plants decreased.\\nOne replicated, controlled study in the UK\\u00a0found that presence of heather was similar in areas where turf was cut and areas that were mown or rotovated.\\nOne replicated, controlled study in the UK\\u00a0found that the presence of wavy hair grass was similar in areas where turf was cut and those that were mown or rotovated.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1638\"}",
+            "return_val": "{\n  \"action_id\": \"1638\",\n  \"action_title\": \"Cut/mow to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in the UK\\u00a0found that mowing increased the number of heathland plants in one of two sites. The same study found that the presence of a small minority of heathland plants increased, but the presence of non-heathland plants did not change. Three replicated, controlled studies in the UK\\u00a0and the USA found that cutting to control grass did not alter cover of common heather or shrub seedling abundance.\\nOne replicated, controlled study in the UK\\u00a0found that cutting to control purple moor grass reduced vegetation height, had mixed effects on purple moor grass cover and the number of plant species, and did not alter cover of common heather.\\nTwo randomized, controlled studies in the USA\\u00a0found that mowing did not increase the cover of native forb species. Both studies found that mowing reduced grass cover but in one of these studies\\u00a0grass cover recovered over time. One replicated, controlled study in the UK\\u00a0found that mowing did not alter the abundance of wavy hair grass relative to rotovating or cutting turf.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1685\"}",
+            "return_val": "{\n  \"action_id\": \"1685\",\n  \"action_title\": \"Strip topsoil\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo randomized, replicated, controlled studies in the UK\\u00a0found that removal of topsoil did not increase heather cover\\u00a0or cover of heathland species. However, one controlled study in the UK\\u00a0found an increase in heather cover.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that removing topsoil increased the cover of both specialist and generalist plant species, but did not increase species richness.\\nOne randomized, replicated, paired, controlled study in the UK\\u00a0found that removal of topsoil increased cover of annual grasses but led to a decrease in the cover of perennial grasses. One controlled study in the UK\\u00a0found that removal of turf reduced cover of wavy hair grass.\\nOne controlled, before-and-after trial in the UK\\u00a0found that stripping surface layers of soil increased the cover of gorse and sheep\\u2019s sorrel as well as the number of plant species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One controlled study in the UK found that cutting and removing turf increased the number of heathland plants, while another UK study found that mowing increased the number of heathland plants in one of two sites (1647, 1638). The study on turf stripping also found that the presence of a small number of heathland plants increased, and the presence of a small number of non-heathland plants decreased (1647). The study on mowing found that the presence of a small minority of heathland plants increased, but the presence of non-heathland plants did not change (1638). \\n\\nOne replicated, controlled study in the UK found that the presence of heather was similar in areas where turf was cut and areas that were mown or rotovated (1647). Another replicated, controlled study in the UK found that cutting to control purple moor grass did not alter the cover of common heather (1638). However, two randomized, replicated, controlled studies in the UK found that the removal of topsoil did not increase heather cover or the cover of heathland species, though one controlled study in the UK did find an increase in heather cover (1685). Three replicated, controlled studies in the UK and the USA found that cutting to control grass did not alter the cover of common heather or shrub seedling abundance (1638).\\n\\nOne replicated, controlled study in the UK found that the presence of wavy hair grass was similar in areas where turf was cut and those that were mown or rotovated (1647). A similar study found that mowing did not alter the abundance of wavy hair grass relative to rotovating or cutting turf (1638). One controlled study in the UK found that the removal of turf reduced the cover of wavy hair grass (1685). Another UK study found that the removal of topsoil increased the cover of annual grasses but led to a decrease in the cover of perennial grasses (1685).\\n\\nTwo randomized, controlled studies in the USA found that mowing reduced grass cover, though in one study the grass cover recovered over time (1638).\",\"action_ids\":[\"1647\",\"1638\",\"1685\"],\"query\":\"When attempting to control problematic grass in UK shrublands, how does mowing compare to stripping turf?\"}",
+            "return_val": "{\n  \"query\": \"When attempting to control problematic grass in UK shrublands, how does mowing compare to stripping turf?\",\n  \"relevant_summary\": \"One controlled study in the UK found that cutting and removing turf increased the number of heathland plants, while another UK study found that mowing increased the number of heathland plants in one of two sites (1647, 1638). The study on turf stripping also found that the presence of a small number of heathland plants increased, and the presence of a small number of non-heathland plants decreased (1647). The study on mowing found that the presence of a small minority of heathland plants increased, but the presence of non-heathland plants did not change (1638). \\n\\nOne replicated, controlled study in the UK found that the presence of heather was similar in areas where turf was cut and areas that were mown or rotovated (1647). Another replicated, controlled study in the UK found that cutting to control purple moor grass did not alter the cover of common heather (1638). However, two randomized, replicated, controlled studies in the UK found that the removal of topsoil did not increase heather cover or the cover of heathland species, though one controlled study in the UK did find an increase in heather cover (1685). Three replicated, controlled studies in the UK and the USA found that cutting to control grass did not alter the cover of common heather or shrub seedling abundance (1638).\\n\\nOne replicated, controlled study in the UK found that the presence of wavy hair grass was similar in areas where turf was cut and those that were mown or rotovated (1647). A similar study found that mowing did not alter the abundance of wavy hair grass relative to rotovating or cutting turf (1638). One controlled study in the UK found that the removal of turf reduced the cover of wavy hair grass (1685). Another UK study found that the removal of topsoil increased the cover of annual grasses but led to a decrease in the cover of perennial grasses (1685).\\n\\nTwo randomized, controlled studies in the USA found that mowing reduced grass cover, though in one study the grass cover recovered over time (1638).\",\n  \"action_ids\": [\n    \"1647\",\n    \"1638\",\n    \"1685\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1638",
+      "1641",
+      "1647",
+      "1648",
+      "1685"
+    ],
+    "regenerated_ids": [
+      "1638",
+      "1647"
+    ]
+  },
+  {
+    "query": "Apart from herbicides, what alternative interventions have been trialled to control bracken in shrublands?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One randomized, controlled, before-and-after trial in Norway and one randomized, controlled study in the UK found that cutting bracken increased the cover or biomass of heather, while two randomized, replicated, controlled studies in the UK found that cutting bracken did not increase heather cover or abundance of heather seedlings (1653). In the UK, one randomized, replicated, controlled study showed that cutting to control bracken increased the species richness of heathland plant species, whereas another similar study found that it did not alter species richness but did increase species diversity (1653). Additionally, a UK-based randomized, replicated, controlled study revealed that cutting bracken increased the cover of wavy hair-grass and sheep\u2019s fescue, but a separate controlled study in the UK found no increase in the abundance of gorse or common cow-wheat (1653). The effectiveness of cutting bracken also shows mixed results, with one randomized, controlled, before-and-after trial in Norway and two randomized, controlled studies in the UK indicating that cutting reduced bracken cover or biomass, and one randomized, replicated, controlled, paired study in the UK showing mixed effects on bracken cover (1653). However, another controlled study in the UK found that cutting bracken did not decrease its abundance (1653). There were no studies found that evaluated the effects of cutting and burning bracken on shrublands (1655).",
+    "summary_action_ids": [
+      "1653",
+      "1655"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Bracken control in shrubland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1658\",\n    \"action_title\": \"Use herbicide and sow seed of shrubland plants to control bracken\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1655\",\n    \"action_title\": \"Cut and burn bracken\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1653\",\n    \"action_title\": \"Cut to control bracken\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1655\"}",
+            "return_val": "{\n  \"action_id\": \"1655\",\n  \"action_title\": \"Cut and burn bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of cutting and burning bracken on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1653\"}",
+            "return_val": "{\n  \"action_id\": \"1653\",\n  \"action_title\": \"Cut to control bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled, before-and-after trial in Norway\\u00a0and one randomized, controlled study in the UK\\u00a0found that cutting bracken increased the cover\\u00a0or biomass\\u00a0of heather. However, two randomized, replicated, controlled studies in the UK\\u00a0found that cutting bracken did not increase heather cover\\u00a0or abundance of heather seedlings.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that cutting to control bracken increased the species richness of heathland plant species. However, another randomized, replicated, controlled study in the UK\\u00a0found that cutting to control bracken did not alter species richness but did increase species diversity.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that cutting bracken increased cover of wavy hair-grass and sheep\\u2019s fescue. One controlled study in the UK\\u00a0found that cutting bracken did not increase the abundance of gorse or common cow-wheat.\\nOne randomized, controlled, before-and-after trial in Norway\\u00a0and two randomized, controlled studies in the UK\\u00a0found that cutting bracken reduced bracken cover\\u00a0or biomass. One randomized, replicated, controlled, paired study the UK\\u00a0found that cutting had mixed effects on bracken cover. However, one controlled study in the UK\\u00a0found that cutting bracken did not decrease the abundance of bracken.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":3,\"query_string\":\"Bracken control in shrubland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1652\",\n    \"action_title\": \"Use herbicide to control bracken\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1653\",\n    \"action_title\": \"Cut to control bracken\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1654\",\n    \"action_title\": \"Cut and apply herbicide to control bracken\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1653\",\"1655\"],\"query\":\"Apart from herbicides, what alternative interventions have been trialled to control bracken in shrublands?\",\"summary\":\"One randomized, controlled, before-and-after trial in Norway and one randomized, controlled study in the UK found that cutting bracken increased the cover or biomass of heather, while two randomized, replicated, controlled studies in the UK found that cutting bracken did not increase heather cover or abundance of heather seedlings (1653). In the UK, one randomized, replicated, controlled study showed that cutting to control bracken increased the species richness of heathland plant species, whereas another similar study found that it did not alter species richness but did increase species diversity (1653). Additionally, a UK-based randomized, replicated, controlled study revealed that cutting bracken increased the cover of wavy hair-grass and sheep\u2019s fescue, but a separate controlled study in the UK found no increase in the abundance of gorse or common cow-wheat (1653). The effectiveness of cutting bracken also shows mixed results, with one randomized, controlled, before-and-after trial in Norway and two randomized, controlled studies in the UK indicating that cutting reduced bracken cover or biomass, and one randomized, replicated, controlled, paired study in the UK showing mixed effects on bracken cover (1653). However, another controlled study in the UK found that cutting bracken did not decrease its abundance (1653). There were no studies found that evaluated the effects of cutting and burning bracken on shrublands (1655).\"}",
+            "return_val": "{\n  \"query\": \"Apart from herbicides, what alternative interventions have been trialled to control bracken in shrublands?\",\n  \"relevant_summary\": \"One randomized, controlled, before-and-after trial in Norway and one randomized, controlled study in the UK found that cutting bracken increased the cover or biomass of heather, while two randomized, replicated, controlled studies in the UK found that cutting bracken did not increase heather cover or abundance of heather seedlings (1653). In the UK, one randomized, replicated, controlled study showed that cutting to control bracken increased the species richness of heathland plant species, whereas another similar study found that it did not alter species richness but did increase species diversity (1653). Additionally, a UK-based randomized, replicated, controlled study revealed that cutting bracken increased the cover of wavy hair-grass and sheep\\u2019s fescue, but a separate controlled study in the UK found no increase in the abundance of gorse or common cow-wheat (1653). The effectiveness of cutting bracken also shows mixed results, with one randomized, controlled, before-and-after trial in Norway and two randomized, controlled studies in the UK indicating that cutting reduced bracken cover or biomass, and one randomized, replicated, controlled, paired study in the UK showing mixed effects on bracken cover (1653). However, another controlled study in the UK found that cutting bracken did not decrease its abundance (1653). There were no studies found that evaluated the effects of cutting and burning bracken on shrublands (1655).\",\n  \"action_ids\": [\n    \"1653\",\n    \"1655\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1652",
+      "1653",
+      "1654",
+      "1655",
+      "1656",
+      "1658",
+      "1659",
+      "1660",
+      "1661",
+      "1726"
+    ],
+    "regenerated_ids": [
+      "1653",
+      "1655",
+      "1656",
+      "1659",
+      "1726"
+    ]
+  },
+  {
+    "query": "What is the state of the evidence for using physical barriers or deterrents to reduce disturbance from people in shrublands?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "There are no studies that evaluated the effects of planting spiny shrubs as barriers to people in shrublands (1621). One study in the USA found that closing or removing roads led to increased use of those areas by black bears (2325).",
+    "summary_action_ids": [
+      "1621",
+      "2325"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"physical barriers or deterrents to reduce disturbance from people in shrublands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1621\",\n    \"action_title\": \"Plant spiny shrubs to act as barriers to people\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2325\",\n    \"action_title\": \"Use signs or access restrictions to reduce disturbance to mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1670\",\n    \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1621\"}",
+            "return_val": "{\n  \"action_id\": \"1621\",\n  \"action_title\": \"Plant spiny shrubs to act as barriers to people\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of planting spiny shrubs to act as barriers to people on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2325\"}",
+            "return_val": "{\n  \"action_id\": \"2325\",\n  \"action_title\": \"Use signs or access restrictions to reduce disturbance to mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of using signs or access restrictions to reduce disturbance to mammals. This study was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): A replicated, paired sites, site comparison study in the USA\\u00a0found that removing or closing roads increased use of those areas by black bears.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1621\",\"2325\"],\"summary\":\"There are no studies that evaluated the effects of planting spiny shrubs as barriers to people in shrublands (1621). One study in the USA found that closing or removing roads led to increased use of those areas by black bears (2325).\",\"query\":\"What is the state of the evidence for using physical barriers or deterrents to reduce disturbance from people in shrublands?\"}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence for using physical barriers or deterrents to reduce disturbance from people in shrublands?\",\n  \"relevant_summary\": \"There are no studies that evaluated the effects of planting spiny shrubs as barriers to people in shrublands (1621). One study in the USA found that closing or removing roads led to increased use of those areas by black bears (2325).\",\n  \"action_ids\": [\n    \"1621\",\n    \"2325\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1613",
+      "1619",
+      "1620",
+      "1621"
+    ],
+    "regenerated_ids": [
+      "1613",
+      "1619",
+      "1620",
+      "1621"
+    ]
+  },
+  {
+    "query": "What is the state of the evidence regarding creating or maintaining habitat corridors to mitigate the effects of human development, transportation, or energy production in shrublands?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "There is no evidence to support creating or maintaining habitat corridors in developed areas (1543), over or under roads and other transportation corridors (1617), or in areas of energy production or mining (1610) to mitigate the effects of human development on shrublands. For all three actions, no studies were found that evaluated their effects on shrublands (1543, 1610, 1617).",
+    "summary_action_ids": [
+      "1543",
+      "1617",
+      "1610"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"habitat corridors in shrublands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1543\",\n    \"action_title\": \"Maintain/create habitat corridors in developed areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1617\",\n    \"action_title\": \"Maintain habitat corridors over or under roads and other transportation corridors\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1610\",\n    \"action_title\": \"Maintain habitat corridors in areas of energy production or mining\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1543\"}",
+            "return_val": "{\n  \"action_id\": \"1543\",\n  \"action_title\": \"Maintain/create habitat corridors in developed areas\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of maintaining or creating habitat corridors in developed areas on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1617\"}",
+            "return_val": "{\n  \"action_id\": \"1617\",\n  \"action_title\": \"Maintain habitat corridors over or under roads and other transportation corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of maintaining habitat corridors over or under roads and other transportation corridors on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1610\"}",
+            "return_val": "{\n  \"action_id\": \"1610\",\n  \"action_title\": \"Maintain habitat corridors in areas of energy production or mining\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of maintaining habitat corridors in areas of energy production or mining on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"There is no evidence to support creating or maintaining habitat corridors in developed areas (1543), over or under roads and other transportation corridors (1617), or in areas of energy production or mining (1610) to mitigate the effects of human development on shrublands. For all three actions, no studies were found that evaluated their effects on shrublands (1543, 1610, 1617).\",\"query\":\"What is the state of the evidence regarding creating or maintaining habitat corridors to mitigate the effects of human development, transportation, or energy production in shrublands?\",\"action_ids\":[\"1543\",\"1617\",\"1610\"]}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence regarding creating or maintaining habitat corridors to mitigate the effects of human development, transportation, or energy production in shrublands?\",\n  \"relevant_summary\": \"There is no evidence to support creating or maintaining habitat corridors in developed areas (1543), over or under roads and other transportation corridors (1617), or in areas of energy production or mining (1610) to mitigate the effects of human development on shrublands. For all three actions, no studies were found that evaluated their effects on shrublands (1543, 1610, 1617).\",\n  \"action_ids\": [\n    \"1543\",\n    \"1617\",\n    \"1610\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1543",
+      "1610",
+      "1617",
+      "1677"
+    ],
+    "regenerated_ids": [
+      "1543",
+      "1610",
+      "1617",
+      "1677"
+    ]
+  },
+  {
+    "query": "When managing tree encroachment in UK shrublands, how does cutting trees and applying herbicide compare with just cutting the trees?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "In the UK, one controlled study found that cutting trees and applying herbicide enhanced the abundance of heather seedlings (1636). In contrast, a replicated, controlled study in the UK discovered that cutting silver birch trees and applying herbicide did not affect the cover of common heather when compared to cutting alone (1636). This method was, however, found to reduce the cover of silver birch trees in a replicated, controlled UK study (1636). There were no studies found that assessed the effects of solely cutting or mowing to control trees in shrublands (1633).",
+    "summary_action_ids": [
+      "1636",
+      "1633"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"tree encroachment shrublands UK cutting herbicide\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1636\",\n    \"action_title\": \"Cut trees and apply herbicide\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3108\",\n    \"action_title\": \"Use cutting to control problematic large trees/shrubs: freshwater marshes\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1654\",\n    \"action_title\": \"Cut and apply herbicide to control bracken\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"cutting trees in shrublands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1633\",\n    \"action_title\": \"Cut/mow shrubland to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1635\",\n    \"action_title\": \"Cut trees and increase livestock numbers\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1631\",\n    \"action_title\": \"Cut trees and remove leaf litter\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1636\"}",
+            "return_val": "{\n  \"action_id\": \"1636\",\n  \"action_title\": \"Cut trees and apply herbicide\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study in the UK\\u00a0found that cutting trees and applying herbicide increased the abundance of heather seedlings. However, one replicated, controlled study in the UK\\u00a0found that cutting silver birch trees and applying herbicide did not alter cover of common heather when compared to cutting alone.\\nTwo controlled studies (one of which was a before-and-after study) in South Africa \\u00a0found that cutting of trees and applying herbicide did not increase shrub cover.\\nTwo controlled studies in South Africa\\u00a0found that cutting trees and applying herbicide increased the total number of plant species and plant diversity.\\nOne replicated, controlled study in the UK\\u00a0found that cutting and applying herbicide reduced cover of silver birch trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1633\"}",
+            "return_val": "{\n  \"action_id\": \"1633\",\n  \"action_title\": \"Cut/mow shrubland to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of cutting/mowing to control trees on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"In the UK, one controlled study found that cutting trees and applying herbicide enhanced the abundance of heather seedlings (1636). In contrast, a replicated, controlled study in the UK discovered that cutting silver birch trees and applying herbicide did not affect the cover of common heather when compared to cutting alone (1636). This method was, however, found to reduce the cover of silver birch trees in a replicated, controlled UK study (1636). There were no studies found that assessed the effects of solely cutting or mowing to control trees in shrublands (1633).\",\"action_ids\":[\"1636\",\"1633\"],\"query\":\"When managing tree encroachment in UK shrublands, how does cutting trees and applying herbicide compare with just cutting the trees?\"}",
+            "return_val": "{\n  \"query\": \"When managing tree encroachment in UK shrublands, how does cutting trees and applying herbicide compare with just cutting the trees?\",\n  \"relevant_summary\": \"In the UK, one controlled study found that cutting trees and applying herbicide enhanced the abundance of heather seedlings (1636). In contrast, a replicated, controlled study in the UK discovered that cutting silver birch trees and applying herbicide did not affect the cover of common heather when compared to cutting alone (1636). This method was, however, found to reduce the cover of silver birch trees in a replicated, controlled UK study (1636). There were no studies found that assessed the effects of solely cutting or mowing to control trees in shrublands (1633).\",\n  \"action_ids\": [\n    \"1636\",\n    \"1633\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1630",
+      "1636"
+    ],
+    "regenerated_ids": [
+      "1630",
+      "1636"
+    ]
+  },
+  {
+    "query": "What management techniques have been evaluated for controlling bracken in shrublands, and what are their effects on heather?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One controlled, before-and-after trial in the UK found that applying herbicide to control bracken increased the number of heather seedlings, while a randomized, controlled study in the UK found that it increased heather biomass (1652). However, two randomized, controlled studies in the UK found that spraying with herbicide did not increase heather cover (1652). One randomized, controlled, before-and-after trial in Norway and one randomized, controlled study in the UK found that cutting bracken increased the cover or biomass of heather (1653). In contrast, two randomized, replicated, controlled studies in the UK found that cutting bracken did not increase heather cover or the abundance of heather seedlings (1653). One randomized, controlled study in the UK found that cutting and applying herbicide to control bracken did not alter heather biomass, but a randomized, controlled, before-and-after trial in Norway found that this combination increased heather cover (1654). All three of these methods were found to reduce bracken biomass or cover in some studies (1652, 1653, 1654).",
+    "summary_action_ids": [
+      "1652",
+      "1653",
+      "1654"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"bracken control in shrublands and effects on heather\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1652\",\n    \"action_title\": \"Use herbicide to control bracken\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1653\",\n    \"action_title\": \"Cut to control bracken\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1654\",\n    \"action_title\": \"Cut and apply herbicide to control bracken\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1652\"}",
+            "return_val": "{\n  \"action_id\": \"1652\",\n  \"action_title\": \"Use herbicide to control bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, before-and-after trial in the UK\\u00a0found that applying herbicide to control bracken increased the number of heather seedlings. However, two randomized, controlled studies in the UK\\u00a0found that spraying with herbicide did not increase heather cover. One randomized, controlled study in the UK\\u00a0found that applying herbicide to control bracken increased heather biomass.\\nOne replicated, randomized, controlled study in the UK\\u00a0found that the application of herbicide increased the number of plant species in a heathland site. However, one replicated, randomized, controlled study in the UK\\u00a0found that spraying bracken with herbicide had no effect on species richness or diversity.\\nOne randomized, controlled study in the UK\\u00a0found that applying herbicide to control bracken increased the cover of wavy hair-grass and sheep\\u2019s fescue. One controlled study in the UK\\u00a0found that applying herbicide to control bracken increased the cover of gorse and the abundance of common cow-wheat.\\nOne controlled, before-and-after trial in the UK\\u00a0found that the application of herbicide reduced the abundance of bracken but increased the number of silver birch seedlings. Three randomized, controlled studies in the UK\\u00a0found that the application of herbicide reduced the biomass\\u00a0or cover\\u00a0of bracken. However, one controlled study in the UK\\u00a0found that applying herbicide did not change the abundance of bracken.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1653\"}",
+            "return_val": "{\n  \"action_id\": \"1653\",\n  \"action_title\": \"Cut to control bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled, before-and-after trial in Norway\\u00a0and one randomized, controlled study in the UK\\u00a0found that cutting bracken increased the cover\\u00a0or biomass\\u00a0of heather. However, two randomized, replicated, controlled studies in the UK\\u00a0found that cutting bracken did not increase heather cover\\u00a0or abundance of heather seedlings.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that cutting to control bracken increased the species richness of heathland plant species. However, another randomized, replicated, controlled study in the UK\\u00a0found that cutting to control bracken did not alter species richness but did increase species diversity.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that cutting bracken increased cover of wavy hair-grass and sheep\\u2019s fescue. One controlled study in the UK\\u00a0found that cutting bracken did not increase the abundance of gorse or common cow-wheat.\\nOne randomized, controlled, before-and-after trial in Norway\\u00a0and two randomized, controlled studies in the UK\\u00a0found that cutting bracken reduced bracken cover\\u00a0or biomass. One randomized, replicated, controlled, paired study the UK\\u00a0found that cutting had mixed effects on bracken cover. However, one controlled study in the UK\\u00a0found that cutting bracken did not decrease the abundance of bracken.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1654\"}",
+            "return_val": "{\n  \"action_id\": \"1654\",\n  \"action_title\": \"Cut and apply herbicide to control bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled study in the UK\\u00a0found that cutting and applying herbicide to control bracken did not alter heather biomass. One randomized, controlled, before-and-after trial in Norway\\u00a0found that cutting and applying herbicide increased heather cover. One\\u00a0randomized, replicated, controlled, paired study in the UK found that cutting and using herbicide had no significant effect on the cover of seven plant species.\\nOne replicated, randomized, controlled study in the UK\\u00a0found that cutting bracken followed by applying herbicide increased plant species richness when compared with applying herbicide followed by cutting.\\nThree randomized, controlled studies (one also a before-and-after trial, and one of which was a paired study) in the UK\\u00a0and Norway\\u00a0found that cutting and applying herbicide reduced bracken biomass\\u00a0or cover.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One controlled, before-and-after trial in the UK found that applying herbicide to control bracken increased the number of heather seedlings, while a randomized, controlled study in the UK found that it increased heather biomass (1652). However, two randomized, controlled studies in the UK found that spraying with herbicide did not increase heather cover (1652). One randomized, controlled, before-and-after trial in Norway and one randomized, controlled study in the UK found that cutting bracken increased the cover or biomass of heather (1653). In contrast, two randomized, replicated, controlled studies in the UK found that cutting bracken did not increase heather cover or the abundance of heather seedlings (1653). One randomized, controlled study in the UK found that cutting and applying herbicide to control bracken did not alter heather biomass, but a randomized, controlled, before-and-after trial in Norway found that this combination increased heather cover (1654). All three of these methods were found to reduce bracken biomass or cover in some studies (1652, 1653, 1654).\",\"query\":\"What management techniques have been evaluated for controlling bracken in shrublands, and what are their effects on heather?\",\"action_ids\":[\"1652\",\"1653\",\"1654\"]}",
+            "return_val": "{\n  \"query\": \"What management techniques have been evaluated for controlling bracken in shrublands, and what are their effects on heather?\",\n  \"relevant_summary\": \"One controlled, before-and-after trial in the UK found that applying herbicide to control bracken increased the number of heather seedlings, while a randomized, controlled study in the UK found that it increased heather biomass (1652). However, two randomized, controlled studies in the UK found that spraying with herbicide did not increase heather cover (1652). One randomized, controlled, before-and-after trial in Norway and one randomized, controlled study in the UK found that cutting bracken increased the cover or biomass of heather (1653). In contrast, two randomized, replicated, controlled studies in the UK found that cutting bracken did not increase heather cover or the abundance of heather seedlings (1653). One randomized, controlled study in the UK found that cutting and applying herbicide to control bracken did not alter heather biomass, but a randomized, controlled, before-and-after trial in Norway found that this combination increased heather cover (1654). All three of these methods were found to reduce bracken biomass or cover in some studies (1652, 1653, 1654).\",\n  \"action_ids\": [\n    \"1652\",\n    \"1653\",\n    \"1654\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1652",
+      "1653",
+      "1654",
+      "1655",
+      "1656",
+      "1658",
+      "1659",
+      "1660",
+      "1661",
+      "1726"
+    ],
+    "regenerated_ids": [
+      "1652",
+      "1653",
+      "1654",
+      "1656",
+      "1660"
+    ]
+  },
+  {
+    "query": "What are the documented effects of changing the type of livestock or shortening the grazing period on shrubland vegetation?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Changing the type of livestock has shown mixed effects on shrub cover, with two studies indicating a reduction in herbaceous species cover [1608]. One study found that grazing with both cattle and sheep, compared to sheep alone, reduced the cover of purple moor grass but had no impact on four other plant species [1608]. Shortening the livestock grazing period has also been found to have mixed results. One study found that it increased the abundance and size of regenerating oak trees [1208], while another found it had no effect on native plant species richness [1208]. Additionally, the number of tree seedlings was higher after summer grazing compared to winter grazing [1208]. Another study found that shortening the grazing period had varied effects on heather, bilberry, crowberry, and grass cover [1609]. Finally, one study reported that grazing only in winter or summer did not affect heather or grass height when compared to year-round grazing [1609].",
+    "summary_action_ids": [
+      "1608",
+      "1208",
+      "1609"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of changing livestock type or shortening grazing period on shrubland vegetation\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1608\",\n    \"action_title\": \"Change type of livestock\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1208\",\n    \"action_title\": \"Shorten livestock grazing period or control grazing season in forests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1609\",\n    \"action_title\": \"Shorten the period during which livestock can graze\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1608\"}",
+            "return_val": "{\n  \"action_id\": \"1608\",\n  \"action_title\": \"Change type of livestock\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, before-and-after studies\\u00a0and one controlled study in Spain\\u00a0and the UK\\u00a0found changing the type of livestock led to mixed effects on shrub cover. However, in two of these studies changing the type of livestock reduced the cover of herbaceous species.\\nOne replicated, controlled, before-and-after study in the UK found that grazing with both cattle and sheep, as opposed to grazing with sheep, reduced cover of purple moor grass, but had no effect on four other plant species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1208\"}",
+            "return_val": "{\n  \"action_id\": \"1208\",\n  \"action_title\": \"Shorten livestock grazing period or control grazing season in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Spain\\u00a0found that shortening the livestock grazing period increased the abundance and size of regenerating oak trees.\\nOne paired-sites study in Australia\\u00a0found no effect of shortening the livestock grazing period on native plant species richness. \\nOne replicated study in the UK\\u00a0found that the number of tree seedlings was higher following summer compared to winter grazing.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1609\"}",
+            "return_val": "{\n  \"action_id\": \"1609\",\n  \"action_title\": \"Shorten the period during which livestock can graze\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled, before-and-after study in the UK\\u00a0found that shortening the period in which livestock can graze had mixed effects on heather, bilberry, crowberry, and grass cover.\\nOne replicated, randomized, controlled study in the UK\\u00a0found that grazing in only winter or summer did not affect heather or grass height compared to year-round grazing.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Changing the type of livestock has shown mixed effects on shrub cover, with two studies indicating a reduction in herbaceous species cover [1608]. One study found that grazing with both cattle and sheep, compared to sheep alone, reduced the cover of purple moor grass but had no impact on four other plant species [1608]. Shortening the livestock grazing period has also been found to have mixed results. One study found that it increased the abundance and size of regenerating oak trees [1208], while another found it had no effect on native plant species richness [1208]. Additionally, the number of tree seedlings was higher after summer grazing compared to winter grazing [1208]. Another study found that shortening the grazing period had varied effects on heather, bilberry, crowberry, and grass cover [1609]. Finally, one study reported that grazing only in winter or summer did not affect heather or grass height when compared to year-round grazing [1609].\",\"action_ids\":[\"1608\",\"1208\",\"1609\"],\"query\":\"What are the documented effects of changing the type of livestock or shortening the grazing period on shrubland vegetation?\"}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of changing the type of livestock or shortening the grazing period on shrubland vegetation?\",\n  \"relevant_summary\": \"Changing the type of livestock has shown mixed effects on shrub cover, with two studies indicating a reduction in herbaceous species cover [1608]. One study found that grazing with both cattle and sheep, compared to sheep alone, reduced the cover of purple moor grass but had no impact on four other plant species [1608]. Shortening the livestock grazing period has also been found to have mixed results. One study found that it increased the abundance and size of regenerating oak trees [1208], while another found it had no effect on native plant species richness [1208]. Additionally, the number of tree seedlings was higher after summer grazing compared to winter grazing [1208]. Another study found that shortening the grazing period had varied effects on heather, bilberry, crowberry, and grass cover [1609]. Finally, one study reported that grazing only in winter or summer did not affect heather or grass height when compared to year-round grazing [1609].\",\n  \"action_ids\": [\n    \"1608\",\n    \"1208\",\n    \"1609\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1608",
+      "1609"
+    ],
+    "regenerated_ids": [
+      "1608",
+      "1609"
+    ]
+  },
+  {
+    "query": "How do the effects of reducing or stopping livestock grazing on shrub cover vary across different countries?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "In the UK and South Africa, reducing or stopping grazing was found to increase the abundance or cover of shrubs (1607). Two site comparison studies in the UK found that the cover of common heather declined in sites with high livestock density but increased in sites with low livestock density (1607). In the Netherlands, a site comparison study revealed that dwarf shrub cover was higher in ungrazed sites (1607). A study in Spain showed that reducing grazing led to an increase in the cover of western gorse (1607). However, in the USA, stopping grazing did not result in an increase in shrub abundance (1607). A study in France indicated that ungrazed sites had a higher cover of ericaceous shrubs but a lower cover of non-ericaceous shrubs compared to grazed sites (1607). Another study in the UK found that reducing grazing had mixed effects on shrub cover (1607). In Spain and the UK, changing the type of livestock was found to have mixed effects on shrub cover (1608). In Belgium, one study found that grazing increased the cover of heather (1628).",
+    "summary_action_ids": [
+      "1607",
+      "1608",
+      "1628"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of reducing or stopping livestock grazing on shrub cover\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1608\",\n    \"action_title\": \"Change type of livestock\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1607\",\n    \"action_title\": \"Reduce number of livestock\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1628\",\n    \"action_title\": \"Increase number of livestock\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1607\"}",
+            "return_val": "{\n  \"action_id\": \"1607\",\n  \"action_title\": \"Reduce number of livestock\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after trials in the UK and South Africa\\u00a0and one replicated, controlled study in the UK\\u00a0found that the reducing\\u00a0or stopping\\u00a0grazing increased the abundance\\u00a0or cover\\u00a0of shrubs. Two site comparison studies in the UK\\u00a0found that cover of common heather declined in sites with high livestock density, but increased in sites with low livestock density. One site comparison study in the Netherlands\\u00a0found that dwarf shrub cover was higher in ungrazed sites. One replicated, randomized, before-and-after study in Spain\\u00a0found that reducing grazing increased the cover of western gorse. One randomized, controlled trial and one before-and-after trial in the USA\\u00a0found that stopping grazing did not increase shrub abundance. One site comparison study in France\\u00a0found that ungrazed sites had higher cover of ericaceous shrubs, but lower cover of non-ericaceous shrubs than grazed sites. One site comparison study in the UK\\u00a0found that reducing grazing had mixed effects on shrub cover.\\nOne replicated, randomized, controlled study in the UK\\u00a0found that reducing grazing increased vegetation height. However, one replicated, controlled, paired site, site comparison study in the UK\\u00a0found that reducing grazing led to a reduction in the height of heather plants.\\nTwo site comparison studies in France\\u00a0and the Netherlands\\u00a0found that ungrazed sites had a lower number of plant species than grazed sites. One replicated, controlled, paired, site comparison study in Namibia and South Africa\\u00a0found that reducing livestock numbers increased plant cover and the number of plant species.\\nOne controlled study in Israel\\u00a0found that reducing grazing increased plant biomass. However, one randomized, site comparison on the island of Gomera, Spain\\u00a0found that reducing grazing did not increase plant cover and one replicated, controlled study in the UK\\u00a0found that the number of plant species did not change .\\nOne replicated, controlled study in the UK\\u00a0found no change in the cover of rush or herbaceous species as a result of a reduction in grazing. Two site comparison studies in France\\u00a0and the Netherlands\\u00a0found that grass cover\\u00a0and sedge cover\\u00a0were lower in ungrazed sites than in grazed sites. One randomized, controlled study in the USA\\u00a0found a mixed effect of reducing grazing on grass cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1608\"}",
+            "return_val": "{\n  \"action_id\": \"1608\",\n  \"action_title\": \"Change type of livestock\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, before-and-after studies\\u00a0and one controlled study in Spain\\u00a0and the UK\\u00a0found changing the type of livestock led to mixed effects on shrub cover. However, in two of these studies changing the type of livestock reduced the cover of herbaceous species.\\nOne replicated, controlled, before-and-after study in the UK found that grazing with both cattle and sheep, as opposed to grazing with sheep, reduced cover of purple moor grass, but had no effect on four other plant species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1628\"}",
+            "return_val": "{\n  \"action_id\": \"1628\",\n  \"action_title\": \"Increase number of livestock\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo site comparison studies in the UK\\u00a0found that cover of common heather declined in sites with a high density of livestock. One site comparison in the Netherlands\\u00a0found that dwarf shrub cover was lower in grazed areas than in ungrazed areas. One before-and-after study in Belgium\\u00a0found that grazing increased cover of heather. One site comparison in France\\u00a0found that areas grazed by cattle had higher cover of non-ericaceous shrubs, but lower cover of ericaceous shrubs. One before-and-after study in the Netherlands\\u00a0found that increasing the number of livestock resulted in an increase in the number of common heather\\u00a0and cross-leaved heath seedlings. One randomized, replicated, paired, controlled study in the USA\\u00a0found that increasing the number of livestock did not alter shrub cover. One replicated, site comparison study\\u00a0and one before-and-after study\\u00a0in the UK\\u00a0and Netherlands\\u00a0found that increasing grazing had mixed effects on shrub\\u00a0and heather cover.\\nThree site comparisons in France,\\u00a0the Netherlands\\u00a0and Greece found that grazed areas had a higher number of plant species than ungrazed areas. One before-and-after study in Belgium\\u00a0found that the number of plant species did not change after the introduction of grazing.\\u00a0One replicated, before-and-after study in the Netherlands\\u00a0found a decrease in the number of plant species.\\nOne before-and-after study in the Netherlands\\u00a0found that increasing the number of livestock resulted in a decrease in vegetation height. One replicated, before-and-after trial in France\\u00a0found that grazing to control native woody species increased vegetation cover in one of five sites but did not increase vegetation cover in four of five sites.\\nA systematic review of four studies in North Western Europe\\u00a0found that increased grazing intensity increased the cover of grass species, relative to heather species. One before-and-after study and two site comparisons in the Netherlands\\u00a0and France\\u00a0found areas with high livestock density had higher grass\\u00a0and sedge\\u00a0cover than ungrazed areas. One randomized, replicated, paired, controlled study in the USA\\u00a0found that increasing the number of livestock reduced grass and herb cover. One before-and-after study in Spain\\u00a0found that increasing the number of ponies in a heathland site reduced grass height.\\u00a0One replicated, site comparison in the UK\\u00a0and one replicated before-and-after study in the Netherlands\\u00a0found that increasing cattle had mixed effects on grass\\u00a0and herbaceous species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How do the effects of reducing or stopping livestock grazing on shrub cover vary across different countries?\",\"summary\":\"In the UK and South Africa, reducing or stopping grazing was found to increase the abundance or cover of shrubs (1607). Two site comparison studies in the UK found that the cover of common heather declined in sites with high livestock density but increased in sites with low livestock density (1607). In the Netherlands, a site comparison study revealed that dwarf shrub cover was higher in ungrazed sites (1607). A study in Spain showed that reducing grazing led to an increase in the cover of western gorse (1607). However, in the USA, stopping grazing did not result in an increase in shrub abundance (1607). A study in France indicated that ungrazed sites had a higher cover of ericaceous shrubs but a lower cover of non-ericaceous shrubs compared to grazed sites (1607). Another study in the UK found that reducing grazing had mixed effects on shrub cover (1607). In Spain and the UK, changing the type of livestock was found to have mixed effects on shrub cover (1608). In Belgium, one study found that grazing increased the cover of heather (1628).\",\"action_ids\":[\"1607\",\"1608\",\"1628\"]}",
+            "return_val": "{\n  \"query\": \"How do the effects of reducing or stopping livestock grazing on shrub cover vary across different countries?\",\n  \"relevant_summary\": \"In the UK and South Africa, reducing or stopping grazing was found to increase the abundance or cover of shrubs (1607). Two site comparison studies in the UK found that the cover of common heather declined in sites with high livestock density but increased in sites with low livestock density (1607). In the Netherlands, a site comparison study revealed that dwarf shrub cover was higher in ungrazed sites (1607). A study in Spain showed that reducing grazing led to an increase in the cover of western gorse (1607). However, in the USA, stopping grazing did not result in an increase in shrub abundance (1607). A study in France indicated that ungrazed sites had a higher cover of ericaceous shrubs but a lower cover of non-ericaceous shrubs compared to grazed sites (1607). Another study in the UK found that reducing grazing had mixed effects on shrub cover (1607). In Spain and the UK, changing the type of livestock was found to have mixed effects on shrub cover (1608). In Belgium, one study found that grazing increased the cover of heather (1628).\",\n  \"action_ids\": [\n    \"1607\",\n    \"1608\",\n    \"1628\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1607"
+    ],
+    "regenerated_ids": [
+      "1607"
+    ]
+  },
+  {
+    "query": "What are the most beneficial interventions for encouraging shrubland recovery after a fire?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Five before-and-after trials in the USA, UK, and Norway found that allowing shrubland to recover after fire without any active management increased shrub cover or biomass (1679). One replicated, paired, site comparison in the USA found that sites that were allowed to recover without active restoration had similar shrub cover to unburned areas (1679). One before-and-after trial in Norway found an increase in heather height (1679). Two replicated, randomized, controlled, before-and-after trials in Spain and Portugal found that there was an increase in the cover of woody plant species (1679). One replicated, before-and-after study in South Africa found that the height of three protea species increased after recovery from fire (1679). However, one controlled, before-and-after trial in the USA found no increase in shrub cover (1679).\n\nTwo before-and-after trials in the USA and UK found that allowing shrubland to recover after fire without active management resulted in a decrease in grass cover or biomass (1679). In contrast, one replicated controlled, paired, before-and-after study in the UK found that prescribed burning to reduce the cover of purple moor grass, did not reduce its cover but did reduce the cover of common heather (1723). One randomized, replicated, controlled study in the UK found that prescribed burning initially reduced vegetation height, but this recovered over time (1723). One randomized, controlled study in Italy found that prescribed burning to control trees reduced cover of common heather and increased cover of purple moor grass (1721).",
+    "summary_action_ids": [
+      "1679",
+      "1723",
+      "1721"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"shrubland recovery after fire\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1679\",\n    \"action_title\": \"Allow shrubland to regenerate without active management\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1723\",\n    \"action_title\": \"Use prescribed burning to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1679\"}",
+            "return_val": "{\n  \"action_id\": \"1679\",\n  \"action_title\": \"Allow shrubland to regenerate without active management\",\n  \"key_messages\": \"Key Messages:\\n\\nFive before-and-after trials (two of which were replicated) in the USA, UK, and Norway, found that allowing shrubland to recover after fire without any active management increased shrub cover or biomass. One replicated, paired, site comparison in the USA\\u00a0found that sites that were allowed to recover without active restoration had similar shrub cover to unburned areas. One controlled, before-and-after trial in the USA\\u00a0found no increase in shrub cover. One before-and-after trial in Norway\\u00a0found an increase in heather height. One before-and-after trial in Spain\\u00a0found that there was an increase in seedlings for one of three shrub species. Two replicated, randomized, controlled, before-and-after trials in Spain\\u00a0and Portugal\\u00a0found that there was an increase in the cover of woody plant species. One before-and-after study in Spain\\u00a0found that cover of woody plants increased, but the number of woody plant species did not.\\u00a0One replicated, before-and-after study in South Africa\\u00a0found that the height of three protea species increased after recovery from fire.\\nOne before-and-after trial in South Africa\\u00a0found that there was an increase in vegetation cover, but not in the number of plant species. One before-and-after trial in South Africa\\u00a0found an increase in a minority of plant species.\\u00a0\\nTwo before-and-after trials in the USA\\u00a0and UK\\u00a0found that allowing shrubland to recover after fire without active management resulted in a decrease in grass cover or biomass. One controlled, before-and-after trial in the USA\\u00a0found an increase in the cover of a minority of grass species. One before-and-after study in Spain\\u00a0found that cover of herbaceous species declined. One replicated, before-and-after study in the UK\\u00a0found mixed effects on cover of wavy hair grass.\\nOne controlled, before-and-after trial in the USA\\u00a0found no increase in forb cover. One replicated, randomized, controlled before-and-after trial in Spain\\u00a0found that herb cover declined after allowing recovery of shrubland after fire.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1723\"}",
+            "return_val": "{\n  \"action_id\": \"1723\",\n  \"action_title\": \"Use prescribed burning to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated controlled, paired, before-and-after study in the UK\\u00a0found that prescribed burning to reduce the cover of purple moor grass, did not reduce its cover but did reduce the cover of common heather.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that prescribed burning initially reduced vegetation height, but this recovered over time.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1721\"}",
+            "return_val": "{\n  \"action_id\": \"1721\",\n  \"action_title\": \"Use prescribed burning to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, before-and-after trial in the USA\\u00a0found that burning to control trees did not change cover of two of three grass species.\\nOne randomized, controlled study in Italy\\u00a0found that prescribed burning to control trees reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Five before-and-after trials in the USA, UK, and Norway found that allowing shrubland to recover after fire without any active management increased shrub cover or biomass (1679). One replicated, paired, site comparison in the USA found that sites that were allowed to recover without active restoration had similar shrub cover to unburned areas (1679). One before-and-after trial in Norway found an increase in heather height (1679). Two replicated, randomized, controlled, before-and-after trials in Spain and Portugal found that there was an increase in the cover of woody plant species (1679). One replicated, before-and-after study in South Africa found that the height of three protea species increased after recovery from fire (1679). However, one controlled, before-and-after trial in the USA found no increase in shrub cover (1679).\\n\\nTwo before-and-after trials in the USA and UK found that allowing shrubland to recover after fire without active management resulted in a decrease in grass cover or biomass (1679). In contrast, one replicated controlled, paired, before-and-after study in the UK found that prescribed burning to reduce the cover of purple moor grass, did not reduce its cover but did reduce the cover of common heather (1723). One randomized, replicated, controlled study in the UK found that prescribed burning initially reduced vegetation height, but this recovered over time (1723). One randomized, controlled study in Italy found that prescribed burning to control trees reduced cover of common heather and increased cover of purple moor grass (1721).\",\"query\":\"What are the most beneficial interventions for encouraging shrubland recovery after a fire?\",\"action_ids\":[\"1679\",\"1723\",\"1721\"]}",
+            "return_val": "{\n  \"query\": \"What are the most beneficial interventions for encouraging shrubland recovery after a fire?\",\n  \"relevant_summary\": \"Five before-and-after trials in the USA, UK, and Norway found that allowing shrubland to recover after fire without any active management increased shrub cover or biomass (1679). One replicated, paired, site comparison in the USA found that sites that were allowed to recover without active restoration had similar shrub cover to unburned areas (1679). One before-and-after trial in Norway found an increase in heather height (1679). Two replicated, randomized, controlled, before-and-after trials in Spain and Portugal found that there was an increase in the cover of woody plant species (1679). One replicated, before-and-after study in South Africa found that the height of three protea species increased after recovery from fire (1679). However, one controlled, before-and-after trial in the USA found no increase in shrub cover (1679).\\n\\nTwo before-and-after trials in the USA and UK found that allowing shrubland to recover after fire without active management resulted in a decrease in grass cover or biomass (1679). In contrast, one replicated controlled, paired, before-and-after study in the UK found that prescribed burning to reduce the cover of purple moor grass, did not reduce its cover but did reduce the cover of common heather (1723). One randomized, replicated, controlled study in the UK found that prescribed burning initially reduced vegetation height, but this recovered over time (1723). One randomized, controlled study in Italy found that prescribed burning to control trees reduced cover of common heather and increased cover of purple moor grass (1721).\",\n  \"action_ids\": [\n    \"1679\",\n    \"1723\",\n    \"1721\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1679",
+      "1698",
+      "1686"
+    ],
+    "regenerated_ids": [
+      "1679"
+    ]
+  },
+  {
+    "query": "What are the comparative effects of different methods for controlling problematic trees in shrublands, such as cutting, burning, grazing, and herbicide use?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in South Africa found that using herbicide to control trees increased plant diversity but did not increase shrub cover [1629]. Another study in the UK found that herbicide treatment of trees led to an increase in the abundance of common heather seedlings [1629]. A study in Italy found that prescribed burning to control trees reduced the cover of common heather, increased the cover of purple moor grass, and had mixed effects on the basal area of trees [1721]. A study in the USA found that burning to control trees did not change the cover of two of three grass species [1721]. A study in Italy found that grazing to reduce tree cover also reduced the cover of common heather and the basal area of trees, but did not alter the cover of purple moor grass [1634]. There were no studies found that evaluated the effects of cutting or mowing to control trees in shrublands [1633].",
+    "summary_action_ids": [
+      "1629",
+      "1721",
+      "1634",
+      "1633"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"methods for controlling problematic trees in shrublands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1633\",\n    \"action_title\": \"Cut/mow shrubland to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1634\",\n    \"action_title\": \"Use grazing to control trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1633\"}",
+            "return_val": "{\n  \"action_id\": \"1633\",\n  \"action_title\": \"Cut/mow shrubland to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of cutting/mowing to control trees on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1721\"}",
+            "return_val": "{\n  \"action_id\": \"1721\",\n  \"action_title\": \"Use prescribed burning to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, before-and-after trial in the USA\\u00a0found that burning to control trees did not change cover of two of three grass species.\\nOne randomized, controlled study in Italy\\u00a0found that prescribed burning to control trees reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1634\"}",
+            "return_val": "{\n  \"action_id\": \"1634\",\n  \"action_title\": \"Use grazing to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled, before-and-after study in Italy\\u00a0found that grazing to reduce tree cover reduced cover of common heather and the basal area of trees, but did not alter cover of purple moor grass.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"herbicide use for controlling problematic trees in shrublands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1629\",\n    \"action_title\": \"Apply herbicide to trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1644\",\n    \"action_title\": \"Apply herbicide and sow seeds of shrubland plants to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1629\"}",
+            "return_val": "{\n  \"action_id\": \"1629\",\n  \"action_title\": \"Apply herbicide to trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled, before-and-after study in South Africa\\u00a0found that using herbicide to control trees increased plant diversity but did not increase shrub cover.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that herbicide treatment of trees increased the abundance of common heather seedlings.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One study in South Africa found that using herbicide to control trees increased plant diversity but did not increase shrub cover [1629]. Another study in the UK found that herbicide treatment of trees led to an increase in the abundance of common heather seedlings [1629]. A study in Italy found that prescribed burning to control trees reduced the cover of common heather, increased the cover of purple moor grass, and had mixed effects on the basal area of trees [1721]. A study in the USA found that burning to control trees did not change the cover of two of three grass species [1721]. A study in Italy found that grazing to reduce tree cover also reduced the cover of common heather and the basal area of trees, but did not alter the cover of purple moor grass [1634]. There were no studies found that evaluated the effects of cutting or mowing to control trees in shrublands [1633].\",\"query\":\"What are the comparative effects of different methods for controlling problematic trees in shrublands, such as cutting, burning, grazing, and herbicide use?\",\"action_ids\":[\"1629\",\"1721\",\"1634\",\"1633\"]}",
+            "return_val": "{\n  \"query\": \"What are the comparative effects of different methods for controlling problematic trees in shrublands, such as cutting, burning, grazing, and herbicide use?\",\n  \"relevant_summary\": \"One study in South Africa found that using herbicide to control trees increased plant diversity but did not increase shrub cover [1629]. Another study in the UK found that herbicide treatment of trees led to an increase in the abundance of common heather seedlings [1629]. A study in Italy found that prescribed burning to control trees reduced the cover of common heather, increased the cover of purple moor grass, and had mixed effects on the basal area of trees [1721]. A study in the USA found that burning to control trees did not change the cover of two of three grass species [1721]. A study in Italy found that grazing to reduce tree cover also reduced the cover of common heather and the basal area of trees, but did not alter the cover of purple moor grass [1634]. There were no studies found that evaluated the effects of cutting or mowing to control trees in shrublands [1633].\",\n  \"action_ids\": [\n    \"1629\",\n    \"1721\",\n    \"1634\",\n    \"1633\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1629",
+      "1630",
+      "1631",
+      "1632",
+      "1633",
+      "1634",
+      "1635",
+      "1636",
+      "1637",
+      "1721",
+      "1722"
+    ],
+    "regenerated_ids": [
+      "1629",
+      "1630",
+      "1631",
+      "1632",
+      "1633",
+      "1634",
+      "1635",
+      "1636",
+      "1637",
+      "1721",
+      "1722"
+    ]
   }
 ]

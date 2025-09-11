@@ -1333,5 +1333,66 @@
       "750",
       "753"
     ]
+  },
+  {
+    "query": "What actions are available to control weeds specifically in pasture or grassland systems?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Utilizing mixed pasture instead of monoculture has been found to reduce weeds (721). In conservation areas, the application of grass-specific herbicides has been shown to decrease grass diversity while promoting the growth of broadleaved plants (123). Other methods for controlling creeping thistle include cutting, introducing fungal pathogens, and implementing lenient grazing strategies (123). Additionally, weevils can be employed to infect creeping thistle with systemic rust (123). In prairie restoration efforts, methods such as seeding with native species, mowing, and weeding or applying herbicides have been used (3943). It was also observed that Hebridean sheep tended to graze more on purple moor grass compared to Swaledale sheep (123).",
+    "summary_action_ids": [
+      "123",
+      "721",
+      "3943"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weed control in pasture or grassland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"123\",\n    \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"721\",\n    \"action_title\": \"Use mixed pasture\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3943\",\n    \"action_title\": \"Restore or create grassland/savannas\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"123\"}",
+            "return_val": "{\n  \"action_id\": \"123\",\n  \"action_title\": \"Control weeds without damaging other plants in conservation areas\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies looked at the effects of controlling weeds on the surrounding vegetation. One study from the UK found that new populations of rare arable plants established following the control of perennial weeds in a nature conservation area. A replicated, controlled and randomized study in the UK found that using grass-specific herbicide reduced grass diversity and resulted in increases in broadleaved plants. \\nEleven studies investigated different methods of controlling plants. A review found that specific management regimes can reduce the abundance of pernicious weeds in nature conservation areas. Four replicated controlled studies (one also randomized) from Denmark and Germany found cutting and infection with fungal pathogens were effective methods for controlling creeping thistle and one replicated, randomized, controlled trial from the UK found long-term control was achieved by lenient grazing. A replicated, controlled and randomized study in Germany found weevils could be used to infect creeping thistle with systemic rust. One study found a non-native beetle was unsuitable for controlling creeping thistle because it had poor survival in the UK climate. A replicated controlled study found that spraying a high concentration of herbicide killed less than half of broad-leaved dock plants. A replicated, controlled, randomized study found black grass was eliminated with a December treatment of grass-specific herbicide. A small replicated study found that Hebridean sheep grazed more purple moor grass than Swaledale sheep.\\nTwo\\u00a0replicated controlled laboratory and grassland studies found negative impacts of the herbicide asulam on green dock beetles.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"721\"}",
+            "return_val": "{\n  \"action_id\": \"721\",\n  \"action_title\": \"Use mixed pasture\",\n  \"key_messages\": \"Key Messages:\\nWeeds: Two of two studies (both randomised, replicated trials, one also controlled) from the USA found reduced weeds in mixed compared to monoculture pasture. Pests: Five studies from North America measured pests including four randomised, replicated, controlled tests. One study found fewer pests and two studies found reductions in some pest groups or in some pasture mixes. One study found no effect and another found more pests, although the effect was potentially inseparable from grazing treatments. Crop mortality: One randomised, replicated study from the USA found no effect on forage crop mortality caused by nematodes.Yield: Two of five studies (including two randomised, replicated, controlled tests) from North America found increased forage crop yields and two studies found mixed effects depending on the crop type and year. One study found no effect.\\nCrops studied were alfalfa, bird\\u2019s-foot trefoil, chicory, cicer milkvetch, clovers, fescues, oats, ryegrass, other grasses,\\u00a0other legumes, rapeseed and turnip.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3943\"}",
+            "return_val": "{\n  \"action_id\": \"3943\",\n  \"action_title\": \"Restore or create grassland/savannas\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on butterflies and moths of restoring or creating grassland or savanna. Three studies were in the USA, two were in the UK, and one was in Italy.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, paired, site comparison study in Italy\\u00a0found that created semi-natural grasslands had a greater diversity of butterflies than adjacent conifer forests, but a lower diversity than species-rich pastures.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): Two site comparison studies (including one replicated, paired study) in Italy\\u00a0and the USA\\u00a0found that created semi-natural grasslands\\u00a0and restored grasslands and oak barrens\\u00a0had a higher abundance of butterflies\\u00a0and regal fritillaries\\u00a0than adjacent conifer forests, species-rich pastures\\u00a0or unmanaged or remnant prairies. One site comparison study in the USA\\u00a0found that prairies restored 5\\u201310 years ago by seeding with native species, mowing, and weeding or applying herbicide, had a greater abundance of Fender\\u2019s blue eggs than a prairie restored 1\\u20132 years ago, and a similar abundance to remnant prairies. One study in the USA\\u00a0reported that restored prairie supported a translocated population of regal fritillaries for at least three years after restoration.\\n\\nBEHAVIOUR (3 STUDIES)\\n\\nUse (2 studies): One of two replicated, before-and-after studies in the UK\\u00a0reported that following grassland restoration the area occupied by small pearl-bordered fritilliaries increased. The other study reported that following grassland restoration the number of marsh fritillary populations at each site remained the same or increased.\\nBehaviour change (1 study): One site comparison study in the USA\\u00a0found that Fender\\u2019s blue butterflies spent a similar proportion of time laying eggs in prairies restored 5\\u201310 years ago by seeding with nectar species, mowing, and weeding or applying herbicide, and in remnant prairies.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions are available to control weeds specifically in pasture or grassland systems?\",\"action_ids\":[\"123\",\"721\",\"3943\"],\"summary\":\"Utilizing mixed pasture instead of monoculture has been found to reduce weeds (721). In conservation areas, the application of grass-specific herbicides has been shown to decrease grass diversity while promoting the growth of broadleaved plants (123). Other methods for controlling creeping thistle include cutting, introducing fungal pathogens, and implementing lenient grazing strategies (123). Additionally, weevils can be employed to infect creeping thistle with systemic rust (123). In prairie restoration efforts, methods such as seeding with native species, mowing, and weeding or applying herbicides have been used (3943). It was also observed that Hebridean sheep tended to graze more on purple moor grass compared to Swaledale sheep (123).\"}",
+            "return_val": "{\n  \"query\": \"What actions are available to control weeds specifically in pasture or grassland systems?\",\n  \"relevant_summary\": \"Utilizing mixed pasture instead of monoculture has been found to reduce weeds (721). In conservation areas, the application of grass-specific herbicides has been shown to decrease grass diversity while promoting the growth of broadleaved plants (123). Other methods for controlling creeping thistle include cutting, introducing fungal pathogens, and implementing lenient grazing strategies (123). Additionally, weevils can be employed to infect creeping thistle with systemic rust (123). In prairie restoration efforts, methods such as seeding with native species, mowing, and weeding or applying herbicides have been used (3943). It was also observed that Hebridean sheep tended to graze more on purple moor grass compared to Swaledale sheep (123).\",\n  \"action_ids\": [\n    \"123\",\n    \"721\",\n    \"3943\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "721",
+      "722"
+    ],
+    "regenerated_ids": [
+      "721",
+      "722"
+    ]
   }
 ]
