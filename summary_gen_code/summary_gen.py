@@ -9,6 +9,7 @@ import copy
 from utils.action_parsing import ActionParsingContext, get_parsed_action_by_id
 from utils.rag import sparse_retrieve_docs, dense_retrieve_docs, hybrid_retrieve_docs
 from utils.exceptions import RetrievalError, FatalAPIError
+from utils.gen_data_statistics import get_summary_gen_qus_usage_separate
 
 
 load_dotenv()
@@ -619,7 +620,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
 
 
 def main():
-    logging.basicConfig(filename = "logfiles/summary_gen.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename = "logfiles/summary_gen_parallel_second.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
     # disable bm25s logging
@@ -634,9 +635,9 @@ def main():
 
     QU_TYPE = "answerable" # options: "answerable", "unanswerable"
     FILTER_STAGE = "passed" # options: "passed", "failed"
-    OFFSET = 0
-    MAX_QU_FILES = 5
-    MAX_QUS_PER_FILE = 10
+    OFFSET_TO_FIRST_QU_FILE = 15
+    MAX_QU_FILES = 3
+    MAX_QUS_PER_FILE = 1
 
 
     ## SUMMARY GENERATION PROCESS
@@ -651,6 +652,13 @@ def main():
     ]
 
     logging.info("STARTING summary generation process.")
+    start_usage = {}
+    for m,p in MODEL_PROVIDER_LIST:
+        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
+        cleaned_m = parse_model_name(m)
+        cleaned_p = parse_provider_name(p)
+        start_usage[f"{cleaned_p}_{cleaned_m}"] = usage_stats[0]
+
     start_time = time.monotonic()
     try:
         run_summary_gen_for_qu_dir(
@@ -658,13 +666,29 @@ def main():
             model_provider_list=MODEL_PROVIDER_LIST, 
             summary_out_base_dirs=summary_out_base_dirs, 
             max_qu_files=MAX_QU_FILES,
-            offset_to_first_qu_file=OFFSET,
+            offset_to_first_qu_file=OFFSET_TO_FIRST_QU_FILE,
             max_qus_per_file=MAX_QUS_PER_FILE
         )
     except KeyboardInterrupt as e:
         logging.error(f"Keyboard interrupt: {e}")
     end_time = time.monotonic() - start_time
+
+    end_usage = {}
+    for m,p in MODEL_PROVIDER_LIST:
+        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
+        cleaned_m = parse_model_name(m)
+        cleaned_p = parse_provider_name(p)
+        end_usage[f"{cleaned_p}_{cleaned_m}"] = usage_stats[0]
+
+    qus_used = {}
+    for mp in start_usage.keys():
+        qus_used[mp] = end_usage[mp]["used"] - start_usage[mp]["used"]
+
     print("Time taken:",end_time)
+    print("Questions used:", qus_used)
+    logging.info(f"Time taken for summary generation process: {end_time} seconds.")
+    logging.info(f"Questions used for summary generation process: {qus_used}.")
+
     logging.info("ENDED summary generation process.")
 
 
