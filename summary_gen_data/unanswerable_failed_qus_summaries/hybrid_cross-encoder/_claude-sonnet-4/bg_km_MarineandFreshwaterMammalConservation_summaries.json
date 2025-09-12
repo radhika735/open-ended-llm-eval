@@ -1,0 +1,142 @@
+[
+  {
+    "query": "Is it more effective to restore degraded coastal habitats or to create new artificial habitats for the conservation of seal populations?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available action documents, there is insufficient evidence to determine which approach is more effective for seal conservation. Action 2921 found no studies that evaluated the effects of creating artificial habitat for marine and freshwater mammals. Action 2922 similarly found no studies that evaluated leaving anthropogenic structures in place after decommissioning on marine and freshwater mammal populations. The only specific evidence for marine mammals was found in Action 2930, which showed that translocating Hawaiian monk seals resulted in 50-83% survival rates for at least one year, with more than a quarter of translocated seals reproducing, and survival rates similar to or greater than non-translocated pups. However, this action involved translocation rather than habitat creation or restoration. Action 367 provided evidence that restored or created coastal and intertidal wetlands were used by target bird species, with numbers and/or diversity at least as high as in natural wetlands in some cases. Action 2258 showed that artificial reefs can support marine invertebrate communities, though community composition differed from natural reefs and species richness was often lower. Action 2265 found that habitat restoration to offset lost habitat was colonized by over 198 invertebrate species. The evidence base specifically addressing seal habitat restoration versus artificial habitat creation is currently lacking.",
+    "summary_action_ids": [
+      "2921",
+      "2922",
+      "2930",
+      "367",
+      "2258",
+      "2265"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"seal conservation habitat restoration artificial\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2922\",\n    \"action_title\": \"Leave anthropogenic structures in place after decommissioning\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3732\",\n    \"action_title\": \"Create or restore rock outcrops\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2825\",\n    \"action_title\": \"Switch off artificial lighting at wild fisheries\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"seal habitat coastal restoration\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"367\",\n    \"action_title\": \"Restore or create coastal and intertidal wetlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2930\",\n    \"action_title\": \"Translocate marine and freshwater mammals to re-establish or boost native populations\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2929\",\n    \"action_title\": \"Remove individual marine and freshwater mammals exhibiting aggressive behaviours that may limit population recovery\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"marine mammals coastal habitat degraded artificial structures\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2921\",\n    \"action_title\": \"Create artificial habitat for marine and freshwater mammals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3435\",\n    \"action_title\": \"Create natural rocky reef topography on intertidal artificial structures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3461\",\n    \"action_title\": \"Reduce the slope of intertidal artificial structures\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2921\"}",
+            "return_val": "{\n  \"action_id\": \"2921\",\n  \"action_title\": \"Create artificial habitat for marine and freshwater mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of creating artificial habitat for marine and freshwater mammals.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2922\"}",
+            "return_val": "{\n  \"action_id\": \"2922\",\n  \"action_title\": \"Leave anthropogenic structures in place after decommissioning\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of leaving anthropogenic structures in place after decommissioning on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"367\"}",
+            "return_val": "{\n  \"action_id\": \"367\",\n  \"action_title\": \"Restore or create coastal and intertidal wetlands\",\n  \"key_messages\": \"Key Messages:\\n\\nAll six studies found, from the USA and UK, found that target bird species used restored or created wetlands. Two found that numbers and/or diversity were at least as high as in natural wetlands, one that numbers were higher than in unrestored sites. Three found that bird numbers on wetlands increased over time.\\nTwo studies from the UK found that songbirds and waders decreased following wetland restoration, whilst a study from the USA found that songbirds were more common on unrestored sites than restored wetlands.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3732\"}",
+            "return_val": "{\n  \"action_id\": \"3732\",\n  \"action_title\": \"Create or restore rock outcrops\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects of creating or restoring rock outcrops on reptile populations. All five studies were in Australia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, paired sites, controlled study in Australia\\u00a0found that areas restored with artificial rocks had a higher abundance of adult velvet geckos and similar numbers of juveniles compared to unrestored areas.\\nSurvival (1 study): One replicated, paired sites, controlled study in Australia\\u00a0found that in areas restored with artificial rocks, juvenile velvet geckos had higher survival rates than in unrestored areas.\\n\\nBEHAVIOUR (4 STUDIES)\\n\\nUse (4 studies): One replicated, randomized, controlled study in Australia\\u00a0found that some restored rocky outcrops were recolonized by pink-tailed worm-lizards. One replicated, controlled study in Australia\\u00a0found that constructed rock outcrops were used by two snake and six lizard species at least as often as natural outcrops. Two replicated studies (including one randomized study) in Australia\\u00a0found that artificial rock outcrops were used by two lizard and one snake species\\u00a0and six lizard and two snake species. One study\\u00a0also found that unshaded artificial rocks were used more frequently by velvet geckos than shaded ones.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2930\"}",
+            "return_val": "{\n  \"action_id\": \"2930\",\n  \"action_title\": \"Translocate marine and freshwater mammals to re-establish or boost native populations\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of translocating marine mammals to re-establish or boost native populations. The four studies were in the North Pacific Ocean\\u00a0(USA).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nReproductive success (2 studies): One replicated study\\u00a0and one review\\u00a0in the North Pacific Ocean found that after translocating Hawaiian monk seals, along with rehabilitation\\u00a0or at least seven other interventions to enhance survival, more than a quarter of the seals reproduced.\\nSurvival (4 studies): Two studies (including one replicated and one controlled study) in the North Pacific Ocean\\u00a0found that 50\\u201383% of translocated, and 52% of rehabilitated and translocated, Hawaiian monk seal pups survived for at least one year. One of the studies\\u00a0and one review\\u00a0in the North Pacific Ocean found that translocated seal pups had similar survival rates to non-translocated pups born at release sites\\u00a0or greater survival rates than non-translocated pups remaining at the original site. One review in the North Pacific Ocean\\u00a0found that translocating Hawaiian monk seals, along with at least seven other interventions to enhance survival, resulted in more than a quarter of the seals surviving.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nBehaviour change (1 study): One review in the North Pacific Ocean\\u00a0found that translocated Hawaiian monk seal pups had similar dispersal times to non-translocated seal pups born at release sites.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3435\"}",
+            "return_val": "{\n  \"action_id\": \"3435\",\n  \"action_title\": \"Create natural rocky reef topography on intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of creating natural rocky reef topography on intertidal artificial structures on the biodiversity of those structures. One study was on an open coastline and in estuaries in the UK, and one was on an open coastline in the UK.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall richness/diversity (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that creating natural rocky reef topography on intertidal artificial structures did not increase the combined macroalgae and invertebrate species richness on structure surfaces.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nInvertebrate abundance (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that creating natural rocky reef topography on intertidal artificial structures had mixed effects on barnacle and mobile invertebrate abundances on structure surfaces, depending on the site.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One study in the UK\\u00a0reported that natural topography created on intertidal artificial structures was colonized by macroalgae and limpets, and that limpets used shaded grooves and water-retaining depressions created by the topography.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"coastal habitat degradation restoration effectiveness\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3034\",\n    \"action_title\": \"Facilitate tidal exchange to restore degraded freshwater marshes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3036\",\n    \"action_title\": \"Facilitate tidal exchange to restore degraded freshwater swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3035\",\n    \"action_title\": \"Facilitate tidal exchange to restore degraded brackish/salt marshes\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"marine mammal habitat create restore artificial natural\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2921\",\n    \"action_title\": \"Create artificial habitat for marine and freshwater mammals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2265\",\n    \"action_title\": \"Offset habitat loss from human activity by restoring or creating habitats elsewhere\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2258\",\n    \"action_title\": \"Create artificial reefs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2265\"}",
+            "return_val": "{\n  \"action_id\": \"2265\",\n  \"action_title\": \"Offset habitat loss from human activity by restoring or creating habitats elsewhere\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of offsetting habitat loss from human activity by restoring or creating habitats elsewhere on subtidal benthic invertebrate populations. One study was in the Delaware Bay (USA), the other in the Persian Gulf (Kuwait).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall richness/diversity (1 study): One study in the Persian Gulf\\u00a0found that an area of low ecological value restored to offset habitat lost to land reclamation was colonized by over 198 invertebrate species.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nOTHER (1 STUDY) \\n\\nBiological production (1 study): One study in Delaware Bay\\u00a0found that an artificial reef built to offset lost soft-sediment habitat had higher annual secondary production/unit area from sessile invertebrates, but lower total annual secondary production, compared to habitat similar to that lost.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2258\"}",
+            "return_val": "{\n  \"action_id\": \"2258\",\n  \"action_title\": \"Create artificial reefs\",\n  \"key_messages\": \"Key Messages:\\n\\nTwelve studies examined the effects of creating artificial reefs on subtidal benthic invertebrate populations. Three studies were in the Mediterranean Sea\\u00a0(Italy); three were in the North Atlantic Ocean\\u00a0(USA, Portugal, France); one in the Firth of Lorn (UK); two in the North Pacific Ocean\\u00a0(USA); one in the English Channel (UK), one in the Gulf of Mexico (USA); and one in the Yellow Sea (China).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (8 STUDIES)\\n\\nOverall community composition (3 studies): Two site comparison studies (one replicated) in the English Channel\\u00a0and North Atlantic Ocean\\u00a0found that invertebrate communities growing on artificial reefs were different to that of natural reefs. One replicated study the North Pacific Ocean\\u00a0found that invertebrate community composition changed over time on an artificial reef.\\nOverall richness/diversity (6 studies): Two site comparison studies (one replicated) in the Mediterranean Sea\\u00a0and North Atlantic Ocean\\u00a0found that invertebrate species richness and/or diversity on the artificial reef\\u00a0or in the sediments\\u00a0inside and adjacent to the reef area were lower compared to on natural reefs or in nearby natural sediments. One replicated, site comparison study in the Gulf of Mexico\\u00a0found that artificial breakwaters had more species of nekton compared to adjacent mudflats. One site comparison study in English Channel\\u00a0recorded 263 taxa on the artificial reef, including at least nine not recorded on nearby natural reefs but excluding at least 39 recorded on natural reefs. One replicated study in the North Pacific Ocean\\u00a0found a 49% increase in species richness over five years on an artificial reef. One study in the North Atlantic Ocean\\u00a0found that artificial reefs hosted at least five species of large mobile invertebrates.\\nMollusc richness/diversity (1 study): One replicated, site comparison study in the Mediterranean Sea\\u00a0found that mollusc species richness and diversity were lower on artificial reefs compared to natural reefs.\\nWorm community composition (1 study): One replicated, site comparison study in the North Pacific Ocean\\u00a0found that polychaete worm community composition was similar at one of two artificial reefs compared to a natural reef.\\nWorm richness/diversity (1 study): One replicated, site comparison study in the North Pacific Ocean\\u00a0found that polychaete worm species richness and diversity were similar at one of two artificial reefs compared to a natural reef, but lower at the second artificial reef.\\n\\nPOPULATION RESPONSE (12 STUDIES)\\n\\nOverall abundance (10 studies): One of two site comparison studies (one replicated) in the Mediterranean Sea\\u00a0found that abundance of invertebrates in the sediment was lower at the reef sites than in nearby natural sediments, but increased in the sediments directly adjacent to the reefs, while the other study found that abundance was similar in the sediments inside and directly adjacent to the artificial reef area, but lower than in nearby natural sediments. Of five site comparison studies (four replicated) in the North Pacific Ocean, the North Atlantic Ocean, the Gulf of Mexico\\u00a0and the Yellow Sea, one\\u00a0found that invertebrate biomass was higher on the artificial reef than in adjacent natural sediments, two that invertebrate abundance and biomass\\u00a0and nekton abundance\\u00a0were similar on artificial reefs and natural habitats (reef; mudflat), and two\\u00a0found mixed effects on abundances of invertebrates. One site comparison study in the English Channel\\u00a0reported that the abundances of some species were lower on the artificial reef compared to natural reefs. One replicated study in the North Pacific Ocean\\u00a0reported an 86% increase in invertebrate abundance growing on an artificial reef over five years. One study in the North Atlantic Ocean\\u00a0found that two of five species at one artificial reef, and three of seven at another, were recorded during &gt;50% of dives.\\nOverall condition (1 study): One replicated, site comparison study in the Yellow Sea\\u00a0found mixed effects of creating an artificial reef on the sizes of mobile invertebrates.\\nMollusc abundance (1 study): One\\u00a0replicated, site comparison study in the Mediterranean Sea\\u00a0found that mollusc abundance was lower on artificial reefs compared to natural reefs.\\nCrustacean abundance (1 study): One replicated, site comparison in the Firth of Lorn\\u00a0found that abundances of edible crabs and velvet swimming crabs were typically higher on artificial than natural reefs.\\n\\nOTHER (1 STUDY)\\n\\nBiological production (1 study): One site comparison study in North Atlantic Ocean\\u00a0found that secondary production was higher from invertebrates growing on an artificial reef than from invertebrates in adjacent natural sediments.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3034\"}",
+            "return_val": "{\n  \"action_id\": \"3034\",\n  \"action_title\": \"Facilitate tidal exchange to restore degraded freshwater marshes\",\n  \"key_messages\": \"Key Messages:\\nWe found no studies that evaluated the effects, on vegetation, of facilitating tidal exchange to restore degraded freshwater marshes.\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"Is it more effective to restore degraded coastal habitats or to create new artificial habitats for the conservation of seal populations?\", \"summary\": \"Based on the available action documents, there is insufficient evidence to determine which approach is more effective for seal conservation. Action 2921 found no studies that evaluated the effects of creating artificial habitat for marine and freshwater mammals. Action 2922 similarly found no studies that evaluated leaving anthropogenic structures in place after decommissioning on marine and freshwater mammal populations. The only specific evidence for marine mammals was found in Action 2930, which showed that translocating Hawaiian monk seals resulted in 50-83% survival rates for at least one year, with more than a quarter of translocated seals reproducing, and survival rates similar to or greater than non-translocated pups. However, this action involved translocation rather than habitat creation or restoration. Action 367 provided evidence that restored or created coastal and intertidal wetlands were used by target bird species, with numbers and/or diversity at least as high as in natural wetlands in some cases. Action 2258 showed that artificial reefs can support marine invertebrate communities, though community composition differed from natural reefs and species richness was often lower. Action 2265 found that habitat restoration to offset lost habitat was colonized by over 198 invertebrate species. The evidence base specifically addressing seal habitat restoration versus artificial habitat creation is currently lacking.\", \"action_ids\": [\"2921\",\"2922\",\"2930\",\"367\",\"2258\",\"2265\"]}",
+            "return_val": "{\n  \"query\": \"Is it more effective to restore degraded coastal habitats or to create new artificial habitats for the conservation of seal populations?\",\n  \"relevant_summary\": \"Based on the available action documents, there is insufficient evidence to determine which approach is more effective for seal conservation. Action 2921 found no studies that evaluated the effects of creating artificial habitat for marine and freshwater mammals. Action 2922 similarly found no studies that evaluated leaving anthropogenic structures in place after decommissioning on marine and freshwater mammal populations. The only specific evidence for marine mammals was found in Action 2930, which showed that translocating Hawaiian monk seals resulted in 50-83% survival rates for at least one year, with more than a quarter of translocated seals reproducing, and survival rates similar to or greater than non-translocated pups. However, this action involved translocation rather than habitat creation or restoration. Action 367 provided evidence that restored or created coastal and intertidal wetlands were used by target bird species, with numbers and/or diversity at least as high as in natural wetlands in some cases. Action 2258 showed that artificial reefs can support marine invertebrate communities, though community composition differed from natural reefs and species richness was often lower. Action 2265 found that habitat restoration to offset lost habitat was colonized by over 198 invertebrate species. The evidence base specifically addressing seal habitat restoration versus artificial habitat creation is currently lacking.\",\n  \"action_ids\": [\n    \"2921\",\n    \"2922\",\n    \"2930\",\n    \"367\",\n    \"2258\",\n    \"2265\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2920",
+      "2921"
+    ],
+    "regenerated_ids": [
+      "2920",
+      "2921",
+      "2922"
+    ]
+  }
+]
