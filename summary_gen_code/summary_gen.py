@@ -634,10 +634,10 @@ def main():
     ]
 
     QU_TYPE = "answerable" # options: "answerable", "unanswerable"
-    FILTER_STAGE = "passed" # options: "passed", "failed"
+    FILTER_STAGE = "failed" # options: "passed", "failed"
     OFFSET_TO_FIRST_QU_FILE = 0
-    MAX_QU_FILES = 10
-    MAX_QUS_PER_FILE = 10
+    MAX_QU_FILES = 30
+    MAX_QUS_PER_FILE = 20
 
 
     ## SUMMARY GENERATION PROCESS
@@ -687,7 +687,7 @@ def main():
     print("Time taken:",end_time)
     print("Questions used:", qus_used)
     logging.info(f"Time taken for summary generation process: {end_time} seconds.")
-    logging.info(f"Questions used for summary generation process: {qus_used}.")
+    logging.info(f"Num questions used: {qus_used}.")
 
     logging.info("ENDED summary generation process.")
 

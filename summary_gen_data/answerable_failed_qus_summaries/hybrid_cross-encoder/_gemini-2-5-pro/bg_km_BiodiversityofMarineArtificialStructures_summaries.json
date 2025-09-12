@@ -777,5 +777,430 @@
       "3473",
       "3474"
     ]
+  },
+  {
+    "query": "Which habitat creation methods appear most consistently effective at increasing overall species richness on subtidal artificial structures?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One of two replicated, randomized, controlled studies found that creating groove habitats and small ledges on a subtidal artificial structure, along with holes and environmentally-sensitive material, increased the combined macroalgae and invertebrate species richness and diversity on structure surfaces (3452). The other study found that creating grooves and small protrusions did not increase the species diversity but had mixed effects on species richness, depending on the orientation of structure surfaces (3452). One study found that creating grooves and small protrusions had mixed effects on the community composition, depending on the orientation of structure surfaces (3452). One study in the Mediterranean Sea recorded at least 53 invertebrate species having colonised a sunken oil rig after 30 years (2262).",
+    "summary_action_ids": [
+      "3452",
+      "2262"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"habitat creation on subtidal artificial structures\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3446\",\n    \"action_title\": \"Create natural rocky reef topography on subtidal artificial structures\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3452\",\n    \"action_title\": \"Create grooves <i>and</i> small protrusions, ridges or ledges (1\\u201350 mm) on subtidal artificial structures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2262\",\n    \"action_title\": \"Repurpose obsolete offshore structures to act as artificial reefs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3446\"}",
+            "return_val": "{\n  \"action_id\": \"3446\",\n  \"action_title\": \"Create natural rocky reef topography on subtidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of creating natural rocky reef topography on subtidal artificial structures on the biodiversity of those structures. The study was on an open coastline in Italy.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAlgal abundance (1 study): One replicated, randomized, controlled study in Italy\\u00a0found that creating natural rocky reef topography on subtidal artificial structures did not increase the abundance of juvenile canopy macroalgae that settled onto structure surfaces, regardless of the topography depth.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3452\"}",
+            "return_val": "{\n  \"action_id\": \"3452\",\n  \"action_title\": \"Create grooves <i>and</i> small protrusions, ridges or ledges (1\\u201350 mm) on subtidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies examined the effects of creating groove habitats and small protrusions, ridges or ledges on subtidal artificial structures on the biodiversity of those structures. Two studies were in marinas in northern Israel\\u00a0and the UK\\u00a0and one was on an open coastline in southeast Spain.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nOverall community composition (2 studies): One of two replicated, randomized, controlled studies (including one paired sites, before-and-after study) in Israel\\u00a0and the UK\\u00a0found that groove habitats and small ledges created on a subtidal artificial structure, along with holes and environmentally-sensitive material, altered the combined macroalgae and invertebrate community composition on structure surfaces. They also supported non-mobile invertebrate species that were absent from structure surfaces without added habitat features. One study\\u00a0found that creating grooves and small protrusions had mixed effects on the community composition, depending on the orientation of structure surfaces.\\nOverall richness/diversity (2 studies): One of two replicated, randomized, controlled studies (including one paired sites, before-and-after study) in Israel\\u00a0and the UK\\u00a0found that creating groove habitats and small ledges on a subtidal artificial structure, along with holes and environmentally-sensitive material, increased the combined macroalgae and invertebrate species richness and diversity on structure surfaces. One study\\u00a0found that creating grooves and small protrusions did not increase the species diversity but had mixed effects on species richness, depending on the orientation of structure surfaces.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nOverall abundance (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that creating groove habitats and small protrusions on subtidal artificial structures had mixed effects on the combined macroalgae and non-mobile invertebrate abundance, depending on the orientation of structure surfaces.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated study in Spain\\u00a0reported that groove habitats and small protrusions created on subtidal artificial structures were colonized by macroalgae and non-mobile invertebrates.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2262\"}",
+            "return_val": "{\n  \"action_id\": \"2262\",\n  \"action_title\": \"Repurpose obsolete offshore structures to act as artificial reefs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of repurposing obsolete offshore structures on subtidal benthic invertebrates. The study was of a sunken oil rig in the Mediterranean Sea (Italy).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall species richness/diversity (1 study): One study in the Mediterranean Sea recorded at least 53 invertebrate species having colonised a sunken oil rig after 30 years. Species included 14 species of molluscs, 14 species of worms, and 11 species of crustaceans.\\n\\nPOPULATION RESPONSE (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"3452\",\"2262\"],\"query\":\"Which habitat creation methods appear most consistently effective at increasing overall species richness on subtidal artificial structures?\",\"summary\":\"One of two replicated, randomized, controlled studies found that creating groove habitats and small ledges on a subtidal artificial structure, along with holes and environmentally-sensitive material, increased the combined macroalgae and invertebrate species richness and diversity on structure surfaces (3452). The other study found that creating grooves and small protrusions did not increase the species diversity but had mixed effects on species richness, depending on the orientation of structure surfaces (3452). One study found that creating grooves and small protrusions had mixed effects on the community composition, depending on the orientation of structure surfaces (3452). One study in the Mediterranean Sea recorded at least 53 invertebrate species having colonised a sunken oil rig after 30 years (2262).\"}",
+            "return_val": "{\n  \"query\": \"Which habitat creation methods appear most consistently effective at increasing overall species richness on subtidal artificial structures?\",\n  \"relevant_summary\": \"One of two replicated, randomized, controlled studies found that creating groove habitats and small ledges on a subtidal artificial structure, along with holes and environmentally-sensitive material, increased the combined macroalgae and invertebrate species richness and diversity on structure surfaces (3452). The other study found that creating grooves and small protrusions did not increase the species diversity but had mixed effects on species richness, depending on the orientation of structure surfaces (3452). One study found that creating grooves and small protrusions had mixed effects on the community composition, depending on the orientation of structure surfaces (3452). One study in the Mediterranean Sea recorded at least 53 invertebrate species having colonised a sunken oil rig after 30 years (2262).\",\n  \"action_ids\": [\n    \"3452\",\n    \"2262\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3434",
+      "3436",
+      "3448",
+      "3455",
+      "3456"
+    ],
+    "regenerated_ids": [
+      "3434",
+      "3448",
+      "3455",
+      "3456",
+      "3470",
+      "3471"
+    ]
+  },
+  {
+    "query": "What is the evidence for enhancing biodiversity on subtidal artificial structures by creating crevices, protrusions, ridges, ledges, or by reducing their slope?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Three studies investigated the effects of creating grooves and small protrusions, ridges, or ledges (1\u201350 mm) on subtidal artificial structures. One of these studies, a replicated, randomized, controlled study, revealed that these features, in conjunction with holes and environmentally-sensitive materials, altered the macroalgae and invertebrate community composition, increased species richness and diversity, and supported non-mobile invertebrate species absent from unmodified surfaces (3452). Another study with a similar design reported mixed effects on community composition and species richness depending on the orientation of the structure's surfaces, with no increase in species diversity (3452). This same study also found mixed effects on the abundance of macroalgae and non-mobile invertebrates (3452). A third replicated study reported that grooves and small protrusions were colonized by macroalgae and non-mobile invertebrates (3452). One replicated, randomized, controlled study in Italy that focused on creating natural rocky reef topography on subtidal artificial structures found no increase in the abundance of juvenile canopy macroalgae (3446). There were no studies found that evaluated the effects of creating large ridges or ledges (>50 mm) or reducing the slope of subtidal artificial structures on biodiversity (3445, 3442).",
+    "summary_action_ids": [
+      "3452",
+      "3446",
+      "3445",
+      "3442"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"enhancing biodiversity on subtidal artificial structures\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3442\",\n    \"action_title\": \"Reduce the slope of subtidal artificial structures\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3457\",\n    \"action_title\": \"Manage or restrict harvesting of species on subtidal artificial structures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3461\",\n    \"action_title\": \"Reduce the slope of intertidal artificial structures\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"enhancing biodiversity on subtidal artificial structures\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3441\",\n    \"action_title\": \"Control or remove non-native or nuisance species on subtidal artificial structures\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3461\",\n    \"action_title\": \"Reduce the slope of intertidal artificial structures\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3470\",\n    \"action_title\": \"Use environmentally-sensitive material on subtidal artificial structures\",\n    \"rank\": 6\n  }\n]"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3442\"}",
+            "return_val": "{\n  \"action_id\": \"3442\",\n  \"action_title\": \"Reduce the slope of subtidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of reducing the slope of subtidal artificial structures on the biodiversity of those structures.\\n\\nThis means we did not find any studies that directly evaluated this intervention during our literature searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"enhance biodiversity on subtidal artificial structures by creating crevices, protrusions, ridges, ledges\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3452\",\n    \"action_title\": \"Create grooves <i>and</i> small protrusions, ridges or ledges (1\\u201350 mm) on subtidal artificial structures\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3446\",\n    \"action_title\": \"Create natural rocky reef topography on subtidal artificial structures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3445\",\n    \"action_title\": \"Create large ridges or ledges (>50 mm) on subtidal artificial structures\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3452\"}",
+            "return_val": "{\n  \"action_id\": \"3452\",\n  \"action_title\": \"Create grooves <i>and</i> small protrusions, ridges or ledges (1\\u201350 mm) on subtidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies examined the effects of creating groove habitats and small protrusions, ridges or ledges on subtidal artificial structures on the biodiversity of those structures. Two studies were in marinas in northern Israel\\u00a0and the UK\\u00a0and one was on an open coastline in southeast Spain.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nOverall community composition (2 studies): One of two replicated, randomized, controlled studies (including one paired sites, before-and-after study) in Israel\\u00a0and the UK\\u00a0found that groove habitats and small ledges created on a subtidal artificial structure, along with holes and environmentally-sensitive material, altered the combined macroalgae and invertebrate community composition on structure surfaces. They also supported non-mobile invertebrate species that were absent from structure surfaces without added habitat features. One study\\u00a0found that creating grooves and small protrusions had mixed effects on the community composition, depending on the orientation of structure surfaces.\\nOverall richness/diversity (2 studies): One of two replicated, randomized, controlled studies (including one paired sites, before-and-after study) in Israel\\u00a0and the UK\\u00a0found that creating groove habitats and small ledges on a subtidal artificial structure, along with holes and environmentally-sensitive material, increased the combined macroalgae and invertebrate species richness and diversity on structure surfaces. One study\\u00a0found that creating grooves and small protrusions did not increase the species diversity but had mixed effects on species richness, depending on the orientation of structure surfaces.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nOverall abundance (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that creating groove habitats and small protrusions on subtidal artificial structures had mixed effects on the combined macroalgae and non-mobile invertebrate abundance, depending on the orientation of structure surfaces.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated study in Spain\\u00a0reported that groove habitats and small protrusions created on subtidal artificial structures were colonized by macroalgae and non-mobile invertebrates.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3446\"}",
+            "return_val": "{\n  \"action_id\": \"3446\",\n  \"action_title\": \"Create natural rocky reef topography on subtidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of creating natural rocky reef topography on subtidal artificial structures on the biodiversity of those structures. The study was on an open coastline in Italy.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAlgal abundance (1 study): One replicated, randomized, controlled study in Italy\\u00a0found that creating natural rocky reef topography on subtidal artificial structures did not increase the abundance of juvenile canopy macroalgae that settled onto structure surfaces, regardless of the topography depth.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3445\"}",
+            "return_val": "{\n  \"action_id\": \"3445\",\n  \"action_title\": \"Create large ridges or ledges (>50 mm) on subtidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of creating large ridges or ledges on subtidal artificial structures on the biodiversity of those structures.\\n\\nThis means we did not find any studies that directly evaluated this intervention during our literature searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"3452\",\"3446\",\"3445\",\"3442\"],\"summary\":\"Three studies investigated the effects of creating grooves and small protrusions, ridges, or ledges (1\u201350 mm) on subtidal artificial structures. One of these studies, a replicated, randomized, controlled study, revealed that these features, in conjunction with holes and environmentally-sensitive materials, altered the macroalgae and invertebrate community composition, increased species richness and diversity, and supported non-mobile invertebrate species absent from unmodified surfaces (3452). Another study with a similar design reported mixed effects on community composition and species richness depending on the orientation of the structure's surfaces, with no increase in species diversity (3452). This same study also found mixed effects on the abundance of macroalgae and non-mobile invertebrates (3452). A third replicated study reported that grooves and small protrusions were colonized by macroalgae and non-mobile invertebrates (3452). One replicated, randomized, controlled study in Italy that focused on creating natural rocky reef topography on subtidal artificial structures found no increase in the abundance of juvenile canopy macroalgae (3446). There were no studies found that evaluated the effects of creating large ridges or ledges (>50 mm) or reducing the slope of subtidal artificial structures on biodiversity (3445, 3442).\",\"query\":\"What is the evidence for enhancing biodiversity on subtidal artificial structures by creating crevices, protrusions, ridges, ledges, or by reducing their slope?\"}",
+            "return_val": "{\n  \"query\": \"What is the evidence for enhancing biodiversity on subtidal artificial structures by creating crevices, protrusions, ridges, ledges, or by reducing their slope?\",\n  \"relevant_summary\": \"Three studies investigated the effects of creating grooves and small protrusions, ridges, or ledges (1\\u201350 mm) on subtidal artificial structures. One of these studies, a replicated, randomized, controlled study, revealed that these features, in conjunction with holes and environmentally-sensitive materials, altered the macroalgae and invertebrate community composition, increased species richness and diversity, and supported non-mobile invertebrate species absent from unmodified surfaces (3452). Another study with a similar design reported mixed effects on community composition and species richness depending on the orientation of the structure's surfaces, with no increase in species diversity (3452). This same study also found mixed effects on the abundance of macroalgae and non-mobile invertebrates (3452). A third replicated study reported that grooves and small protrusions were colonized by macroalgae and non-mobile invertebrates (3452). One replicated, randomized, controlled study in Italy that focused on creating natural rocky reef topography on subtidal artificial structures found no increase in the abundance of juvenile canopy macroalgae (3446). There were no studies found that evaluated the effects of creating large ridges or ledges (>50 mm) or reducing the slope of subtidal artificial structures on biodiversity (3445, 3442).\",\n  \"action_ids\": [\n    \"3452\",\n    \"3446\",\n    \"3445\",\n    \"3442\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3454",
+      "3443",
+      "3444",
+      "3445",
+      "3442"
+    ],
+    "regenerated_ids": [
+      "3442",
+      "3443",
+      "3444",
+      "3445",
+      "3453",
+      "3454"
+    ]
+  },
+  {
+    "query": "Which habitat creation methods are most consistently effective at altering the overall community composition on intertidal artificial structures?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in Australia found that creating short flexible habitats (1-50 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates, but had mixed effects on mobile invertebrates and fish (3459). Another study in the Netherlands reported that creating long flexible habitats (>50 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates (3460). The habitats also supported macroalgae, mobile and non-mobile invertebrates that were not present on structure surfaces without the flexible habitats (3460). For groove habitats (1-50 mm), two of three studies in Australia and the UK found that they did not alter the macroalgae and invertebrate community composition, while one study did find that they altered community composition (3473). However, one of these studies noted that grooves supported species of macroalgae, mobile and non-mobile invertebrates that were absent from surfaces without grooves (3473). A study in Singapore found that creating groove habitats along with pits altered the fish community composition and supported species absent from surfaces without these features (3473).",
+    "summary_action_ids": [
+      "3459",
+      "3460",
+      "3473"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"habitat creation methods for altering community composition on intertidal artificial structures\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3459\",\n    \"action_title\": \"Create short flexible habitats (1\\u201350 mm) on intertidal artificial structures\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3460\",\n    \"action_title\": \"Create long flexible habitats (>50 mm) on intertidal artificial structures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3473\",\n    \"action_title\": \"Create groove habitats (1\\u201350 mm) on intertidal artificial structures\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3459\"}",
+            "return_val": "{\n  \"action_id\": \"3459\",\n  \"action_title\": \"Create short flexible habitats (1\\u201350 mm) on intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of creating short flexible habitats on intertidal artificial structures on the biodiversity of those structures. The study was in an estuary in southeast Australia.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures altered the combined macroalgae and non-mobile invertebrate community composition on structure surfaces, and had mixed effects on the combined mobile invertebrate and fish community composition on and around structure surfaces during low tide, depending on the site.\\nInvertebrate community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not alter the mobile invertebrate community composition on and around structure surfaces during high tide.\\nFish community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not alter the fish community composition on and around structure surfaces during high tide.\\nOverall richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures decreased the combined macroalgae, invertebrate and fish species richness on and around structure surfaces during low tide.\\nInvertebrate richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the mobile invertebrate species richness on and around structure surfaces during high tide, depending on the site.\\nFish richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the fish species richness on and around structure surfaces during high tide.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nOverall abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the combined mobile invertebrate and fish abundance on and around structure surfaces during low tide.\\nAlgal abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the macroalgal abundance on structure surfaces, depending on the species group and site.\\nInvertebrate abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the abundance of non-mobile invertebrates on structure surfaces, and of mobile invertebrates during high tide, depending on the species group and site.\\nFish abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the fish abundance on and around structure surfaces during high tide.\\n\\nBEHAVIOUR (1 STUDY)\\nFish behaviour change (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the number of bites fishes took of structure surfaces.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3460\"}",
+            "return_val": "{\n  \"action_id\": \"3460\",\n  \"action_title\": \"Create long flexible habitats (>50 mm) on intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of creating long flexible habitats on intertidal artificial structures on the biodiversity of those structures. The study was in a port in the Netherlands.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall community composition (1 study): One replicated, controlled study in the Netherlands\\u00a0reported that creating long flexible habitats on intertidal artificial structures altered the combined macroalgae and non-mobile invertebrate community composition on structure surfaces. The flexible habitats themselves supported macroalgae, mobile and non-mobile invertebrates that were absent from structure surfaces without flexible habitats.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\n\\u00a0\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3473\"}",
+            "return_val": "{\n  \"action_id\": \"3473\",\n  \"action_title\": \"Create groove habitats (1\\u201350 mm) on intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nFourteen studies examined the effects of creating groove habitats on intertidal artificial structures on the biodiversity of those structures. Seven studies were in estuaries in southeast Australia, the UK\\u00a0and Hong Kong, four were on open coastlines in the UK\\u00a0and the Netherlands, two were on island coastlines in the Singapore Strait, and one was in a port in the Netherlands.\\n\\nCOMMUNITY RESPONSE (11 STUDIES)\\n\\nOverall community composition (3 studies): Two of three replicated, controlled studies (including one randomized and two before-and-after studies) in Australia\\u00a0and the UK\\u00a0found that creating groove habitats on intertidal artificial structures did not alter the combined macroalgae and invertebrate community composition on structure surfaces. However, one of these studies\\u00a0reported that grooves supported macroalgae, mobile and non-mobile invertebrate species that were absent from structure surfaces without grooves. One study\\u00a0found that creating grooves did alter the community composition.\\nFish community composition (1 study): One replicated, randomized, controlled study in Singapore\\u00a0found that groove habitats created on an intertidal artificial structure, along with pits, altered the fish community composition on and around structure surfaces, and supported species that were absent from surfaces without grooves and pits.\\nOverall richness/diversity (8 studies): Three of six replicated, controlled studies (including two randomized and two before-and-after studies) in the UK\\u00a0and Singapore\\u00a0found that creating groove habitats on intertidal artificial structures, along with pits in one study, increased the combined macroalgae and invertebrate species richness\\u00a0and/or diversity\\u00a0on structure surfaces. Two studies\\u00a0found that creating grooves did not increase their species richness. One\\u00a0found that creating grooves, along with pits, had mixed effects on species richness depending on the site. One of the studies\\u00a0found that increasing the density and fragmentation of grooves, along with pits, had mixed effects on species richness. Two replicated studies (including one randomized, paired sites study) in Hong Kong\\u00a0and Australia\\u00a0found that grooves supported higher species richness than small ridges\\u00a0or ledges\\u00a0created in between them, but one\\u00a0found that species diversity in grooves vs ridges varied depending on the groove depth.\\nAlgal richness/diversity (1 study): One replicated, paired sites, controlled study in Australia\\u00a0found that creating groove habitats on intertidal artificial structures did not increase the macroalgal species richness on structure surfaces.\\nInvertebrate richness/diversity (3 studies): Two replicated, controlled studies (including one randomized and one paired sites study) in Australia\\u00a0found that creating groove habitats on intertidal artificial structures did not increase the species richness of mobile or non-mobile invertebrates\\u00a0or limpets\\u00a0on structure surfaces. One replicated study in Australia\\u00a0found that grooves supported higher mobile invertebrate species richness than small ledges created in between them.\\nFish richness/diversity (2 studies): One replicated, randomized, controlled study in Singapore\\u00a0found that creating groove habitats on an intertidal artificial structure, along with pits, increased the fish species richness on and around structure surfaces. One replicated study in Australia\\u00a0found that grooves supported similar fish species richness to small ledges created in between them.\\n\\nPOPULATION RESPONSE (9 STUDIES)\\n\\nOverall abundance (4 studies): Two of three replicated, controlled studies (including one randomized and two before-and-after studies) in the UK\\u00a0and Singapore\\u00a0found that creating groove habitats on intertidal artificial structures, along with pits in one study, increased the combined macroalgae and invertebrate abundance on structure surfaces. One\\u00a0found that creating grooves did not increase their abundance. One\\u00a0replicated study in Australia\\u00a0found that grooves supported similar abundances to small ledges created in between them.\\nAlgal abundance (2 studies): Two replicated, paired sites, controlled studies in the Netherlands\\u00a0reported that creating groove habitats on intertidal artificial structures did not increase the macroalgal abundance on structure surfaces.\\nInvertebrate abundance (6 studies): Three of four replicated, controlled studies (including two randomized and two paired sites studies) in Australia, the Netherlands\\u00a0and the UK\\u00a0found that creating groove habitats on intertidal artificial structures did not increase the invertebrate, limpet\\u00a0or chiton\\u00a0abundances on structure surfaces. One study\\u00a0found that creating grooves, along with pits, had mixed effects on mobile invertebrate and barnacle abundances, depending on the site. One replicated, paired sites, controlled study in Australia\\u00a0reported that grooves supported non-mobile invertebrates more frequently than structure surfaces without grooves, but not mobile invertebrates. One replicated study in Australia\\u00a0found that grooves supported higher mobile invertebrate and oyster abundances than small ledges created in between them.\\nFish abundance (2 studies): One replicated, randomized, controlled study in Singapore\\u00a0found that creating groove habitats on an intertidal artificial structure, along with pits, increased the fish abundance on and around structure surfaces. One replicated study in Australia\\u00a0found that grooves supported similar fish abundance to small ledges created in between them.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (1 study): One replicated, paired sites, controlled study in the Netherlands\\u00a0reported that groove habitats created on an intertidal artificial structure were used by mussels and periwinkles.\\nFish behaviour change (1 study): One replicated, randomized, controlled study in Singapore\\u00a0found that creating groove habitats on an intertidal artificial structure, along with pits, increased the number of bites fishes took from structure surfaces.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One study in Australia found that creating short flexible habitats (1-50 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates, but had mixed effects on mobile invertebrates and fish (3459). Another study in the Netherlands reported that creating long flexible habitats (>50 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates (3460). The habitats also supported macroalgae, mobile and non-mobile invertebrates that were not present on structure surfaces without the flexible habitats (3460). For groove habitats (1-50 mm), two of three studies in Australia and the UK found that they did not alter the macroalgae and invertebrate community composition, while one study did find that they altered community composition (3473). However, one of these studies noted that grooves supported species of macroalgae, mobile and non-mobile invertebrates that were absent from surfaces without grooves (3473). A study in Singapore found that creating groove habitats along with pits altered the fish community composition and supported species absent from surfaces without these features (3473).\",\"query\":\"Which habitat creation methods are most consistently effective at altering the overall community composition on intertidal artificial structures?\",\"action_ids\":[\"3459\",\"3460\",\"3473\"]}",
+            "return_val": "{\n  \"query\": \"Which habitat creation methods are most consistently effective at altering the overall community composition on intertidal artificial structures?\",\n  \"relevant_summary\": \"One study in Australia found that creating short flexible habitats (1-50 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates, but had mixed effects on mobile invertebrates and fish (3459). Another study in the Netherlands reported that creating long flexible habitats (>50 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates (3460). The habitats also supported macroalgae, mobile and non-mobile invertebrates that were not present on structure surfaces without the flexible habitats (3460). For groove habitats (1-50 mm), two of three studies in Australia and the UK found that they did not alter the macroalgae and invertebrate community composition, while one study did find that they altered community composition (3473). However, one of these studies noted that grooves supported species of macroalgae, mobile and non-mobile invertebrates that were absent from surfaces without grooves (3473). A study in Singapore found that creating groove habitats along with pits altered the fish community composition and supported species absent from surfaces without these features (3473).\",\n  \"action_ids\": [\n    \"3459\",\n    \"3460\",\n    \"3473\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3467",
+      "3473",
+      "3474",
+      "3476",
+      "3469",
+      "3459",
+      "3460",
+      "3462",
+      "3464",
+      "3475"
+    ],
+    "regenerated_ids": [
+      "3459",
+      "3460",
+      "3462",
+      "3463",
+      "3464",
+      "3467",
+      "3468",
+      "3473",
+      "3474",
+      "3475",
+      "3476"
+    ]
+  },
+  {
+    "query": "What are the potential negative impacts or limitations of adding topographical complexity to enhance biodiversity on intertidal artificial structures?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One replicated, randomized, controlled study in Australia found that creating short flexible habitats on intertidal artificial structures decreased the combined macroalgae, invertebrate and fish species richness on and around structure surfaces during low tide (3459). One study found that creating pit habitats on intertidal artificial structures decreased the combined macroalgae and invertebrate abundance on structure surfaces (3475). Another study in the UK found that creating natural rocky reef topography on intertidal artificial structures did not increase the combined macroalgae and invertebrate species richness on structure surfaces (3435). Other studies found that creating pit habitats did not increase species richness (3475), and creating short flexible habitats did not increase fish species richness or the combined mobile invertebrate and fish abundance (3459). The creation of pit habitats has been found to have mixed effects on the abundance of invertebrates and the overall community composition (3475). Similarly, creating natural rocky reef topography was found to have mixed effects on barnacle and mobile invertebrate abundances (3435). Adding short, flexible habitats also had mixed effects on invertebrate and fish community composition, mobile invertebrate species richness, and the abundance of macroalgae and non-mobile invertebrates (3459).",
+    "summary_action_ids": [
+      "3459",
+      "3475",
+      "3435"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"negative impacts of adding topographical complexity to intertidal artificial structures\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3475\",\n    \"action_title\": \"Create pit habitats (1\\u201350 mm) on intertidal artificial structures\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3435\",\n    \"action_title\": \"Create natural rocky reef topography on intertidal artificial structures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3459\",\n    \"action_title\": \"Create short flexible habitats (1\\u201350 mm) on intertidal artificial structures\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3475\"}",
+            "return_val": "{\n  \"action_id\": \"3475\",\n  \"action_title\": \"Create pit habitats (1\\u201350 mm) on intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nTwenty-two studies examined the effects of creating pit habitats on intertidal artificial structures on the biodiversity of those structures. Ten studies were on open coastlines in the UK, the Netherlands\\u00a0and the Azores, six were on island coastlines in the Singapore Strait, three were in estuaries in southeast Australia\\u00a0and the UK, one was in a port in the Netherlands, one was in an estuary and on an open coastline in the UK, and one was on island coastlines in the Singapore Strait and in estuaries in the UK.\\n\\nCOMMUNITY RESPONSE (16 STUDIES)\\n\\nOverall community composition (9 studies): Four of six replicated, controlled studies (including four randomized and two before-and-after studies) in Australia, Singapore\\u00a0and the UK\\u00a0found that creating pit habitats on intertidal artificial structures altered the combined macroalgae and invertebrate community composition on structure surfaces. One study\\u00a0found that creating pits did not alter the community composition. One\\u00a0found that creating pits, along with grooves, small protrusions and ridges, had mixed effects depending on the size and arrangement of pits and other habitats and the site, while one\\u00a0found that varying the pit size and arrangement had no significant effect. Three of these studies, along with three other replicated, controlled studies (including one that was randomized) in the UK\\u00a0and Singapore, reported that pit habitats, along with grooves and ridges in one, supported macroalgae, invertebrate\\u00a0and/or fish\\u00a0species that were absent from structure surfaces without added habitats.\\nFish community composition (1 study): One replicated, randomized, controlled study in Singapore\\u00a0found that pit habitats created on an intertidal artificial structure, along with grooves, altered the fish community composition on and around structure surfaces, and supported species that were absent from surfaces without pits and grooves.\\nOverall richness/diversity (12 studies): Eight of 12 replicated controlled studies (including six randomized and two before-and-after studies) in the UK\\u00a0and Singapore\\u00a0found that creating pit habitats on intertidal artificial structures, along with grooves, or grooves, small protrusions and ridges\\u00a0in two studies, increased the combined macroalgae and invertebrate species richness\\u00a0and/or diversity\\u00a0on structure surfaces. Two studies\\u00a0found that creating pits did not increase the species richness, while two\\u00a0found that creating pits, along with grooves\\u00a0or using environmentally-sensitive material, had mixed effects depending on the site. One of the studies\\u00a0found that varying the pit size and arrangement resulted in higher species richness, while one\\u00a0found that this had mixed effects depending on the shore level. Two of the studies\\u00a0found that varying the pit size did not affect species richness. One of them\\u00a0found that increasing the density and fragmentation of pits, along with grooves, had mixed effects on species richness.\\nAlgal richness/diversity (1 study): One replicated, randomized, controlled study in Singapore\\u00a0reported that creating pits on an intertidal artificial structure, along with grooves and small ridges, increased the macroalgal species richness on structure surfaces.\\nInvertebrate richness/diversity (2 studies): One of two replicated, randomized, controlled studies in Australia\\u00a0and the Azores\\u00a0reported that creating pits on an intertidal artificial structure increased the limpet and periwinkle species richness on structure surfaces, and that their richness and diversity varied depending on the pit arrangement. One\\u00a0found that creating pits did not affect the limpet species richness, regardless of the pit size.\\nFish richness/diversity (1 study): One replicated, randomized, controlled study in Singapore\\u00a0found that creating pit habitats on an intertidal artificial structure, along with grooves, increased the fish species richness on and around structure surfaces.\\n\\nPOPULATION RESPONSE (15 STUDIES)\\n\\nOverall abundance (5 studies): Two of five replicated, controlled studies (including three randomized and two before-and-after studies) in Singapore\\u00a0and the UK\\u00a0found that creating pit habitats on intertidal artificial structures, along with grooves in one study, increased the combined macroalgae and invertebrate abundance on structure surfaces. One study\\u00a0found that creating pits decreased their abundance and one\\u00a0found no effect. One found that creating pits, along with grooves, small protrusions and ridges, had mixed effects on abundance depending on the pit size and arrangement, shore level and site.\\nAlgal abundance (4 studies): Three of four replicated, controlled studies (including two randomized and two paired sites studies) in the Netherlands, Singapore\\u00a0and the Azores\\u00a0found that creating pit habitats on intertidal artificial structures, along with grooves and small ridges in one study, did not increase the macroalgal abundance on structure surfaces. One study\\u00a0found that creating pits had mixed effects on abundance depending on the pit size and arrangement and the site.\\nInvertebrate abundance (9 studies): Three of eight replicated, controlled studies (including six randomized and two paired sites studies) in the Azores, the Netherlands, Australia\\u00a0and the UK\\u00a0found that creating pit habitats on intertidal artificial structures did not increase the combined invertebrate\\u00a0or mobile invertebrate\\u00a0abundance on structure surfaces. Three studies\\u00a0found that creating pits, along with grooves in one study, had mixed effects on barnacle\\u00a0and/or mobile invertebrate\\u00a0abundances, depending on the site, the species, the size of animals, and/or the pit size and arrangement. Two studies\\u00a0found that creating pits, along with using environmentally-sensitive material in one, increased barnacle\\u00a0and/or mobile invertebrate\\u00a0abundances. Two of the studies found that the pit size\\u00a0or arrangement\\u00a0did not affect abundances, while two found that the effects of pit size and arrangement varied depending on the site\\u00a0and species. One replicated randomized study in the UK\\u00a0found that increasing pit density increased periwinkle abundance, but pit arrangement did not.\\nFish abundance (1 study): One replicated, randomized, controlled study in Singapore\\u00a0found that creating pit habitats on an intertidal artificial structure, along with grooves, increased the fish abundance on and around structure surfaces.\\n\\nBEHAVIOUR (6 STUDIES)\\n\\nUse (5 studies): Two replicated, randomized, controlled studies in the Azores\\u00a0reported that occupancy of pit habitats created on intertidal artificial structures by limpets\\u00a0and/or periwinkles\\u00a0varied depending on the pit size\\u00a0and arrangement, the size of animals, the species\\u00a0and/or site. Three replicated studies (including two paired sites, controlled studies) in the Netherlands\\u00a0and in Singapore and the UK\\u00a0reported that pit habitats were used by periwinkles, macroalgae and invertebrates.\\nFish behaviour change (1 study): One replicated, randomized, controlled study in Singapore\\u00a0found that creating pit habitats on an intertidal artificial structure, along with grooves, increased the number of bites fishes took from structure surfaces.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3435\"}",
+            "return_val": "{\n  \"action_id\": \"3435\",\n  \"action_title\": \"Create natural rocky reef topography on intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of creating natural rocky reef topography on intertidal artificial structures on the biodiversity of those structures. One study was on an open coastline and in estuaries in the UK, and one was on an open coastline in the UK.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall richness/diversity (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that creating natural rocky reef topography on intertidal artificial structures did not increase the combined macroalgae and invertebrate species richness on structure surfaces.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nInvertebrate abundance (1 study): One replicated, randomized, controlled study in the UK\\u00a0found that creating natural rocky reef topography on intertidal artificial structures had mixed effects on barnacle and mobile invertebrate abundances on structure surfaces, depending on the site.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One study in the UK\\u00a0reported that natural topography created on intertidal artificial structures was colonized by macroalgae and limpets, and that limpets used shaded grooves and water-retaining depressions created by the topography.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3459\"}",
+            "return_val": "{\n  \"action_id\": \"3459\",\n  \"action_title\": \"Create short flexible habitats (1\\u201350 mm) on intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of creating short flexible habitats on intertidal artificial structures on the biodiversity of those structures. The study was in an estuary in southeast Australia.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures altered the combined macroalgae and non-mobile invertebrate community composition on structure surfaces, and had mixed effects on the combined mobile invertebrate and fish community composition on and around structure surfaces during low tide, depending on the site.\\nInvertebrate community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not alter the mobile invertebrate community composition on and around structure surfaces during high tide.\\nFish community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not alter the fish community composition on and around structure surfaces during high tide.\\nOverall richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures decreased the combined macroalgae, invertebrate and fish species richness on and around structure surfaces during low tide.\\nInvertebrate richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the mobile invertebrate species richness on and around structure surfaces during high tide, depending on the site.\\nFish richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the fish species richness on and around structure surfaces during high tide.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nOverall abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the combined mobile invertebrate and fish abundance on and around structure surfaces during low tide.\\nAlgal abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the macroalgal abundance on structure surfaces, depending on the species group and site.\\nInvertebrate abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the abundance of non-mobile invertebrates on structure surfaces, and of mobile invertebrates during high tide, depending on the species group and site.\\nFish abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the fish abundance on and around structure surfaces during high tide.\\n\\nBEHAVIOUR (1 STUDY)\\nFish behaviour change (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the number of bites fishes took of structure surfaces.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One replicated, randomized, controlled study in Australia found that creating short flexible habitats on intertidal artificial structures decreased the combined macroalgae, invertebrate and fish species richness on and around structure surfaces during low tide (3459). One study found that creating pit habitats on intertidal artificial structures decreased the combined macroalgae and invertebrate abundance on structure surfaces (3475). Another study in the UK found that creating natural rocky reef topography on intertidal artificial structures did not increase the combined macroalgae and invertebrate species richness on structure surfaces (3435). Other studies found that creating pit habitats did not increase species richness (3475), and creating short flexible habitats did not increase fish species richness or the combined mobile invertebrate and fish abundance (3459). The creation of pit habitats has been found to have mixed effects on the abundance of invertebrates and the overall community composition (3475). Similarly, creating natural rocky reef topography was found to have mixed effects on barnacle and mobile invertebrate abundances (3435). Adding short, flexible habitats also had mixed effects on invertebrate and fish community composition, mobile invertebrate species richness, and the abundance of macroalgae and non-mobile invertebrates (3459).\",\"query\":\"What are the potential negative impacts or limitations of adding topographical complexity to enhance biodiversity on intertidal artificial structures?\",\"action_ids\":[\"3459\",\"3475\",\"3435\"]}",
+            "return_val": "{\n  \"query\": \"What are the potential negative impacts or limitations of adding topographical complexity to enhance biodiversity on intertidal artificial structures?\",\n  \"relevant_summary\": \"One replicated, randomized, controlled study in Australia found that creating short flexible habitats on intertidal artificial structures decreased the combined macroalgae, invertebrate and fish species richness on and around structure surfaces during low tide (3459). One study found that creating pit habitats on intertidal artificial structures decreased the combined macroalgae and invertebrate abundance on structure surfaces (3475). Another study in the UK found that creating natural rocky reef topography on intertidal artificial structures did not increase the combined macroalgae and invertebrate species richness on structure surfaces (3435). Other studies found that creating pit habitats did not increase species richness (3475), and creating short flexible habitats did not increase fish species richness or the combined mobile invertebrate and fish abundance (3459). The creation of pit habitats has been found to have mixed effects on the abundance of invertebrates and the overall community composition (3475). Similarly, creating natural rocky reef topography was found to have mixed effects on barnacle and mobile invertebrate abundances (3435). Adding short, flexible habitats also had mixed effects on invertebrate and fish community composition, mobile invertebrate species richness, and the abundance of macroalgae and non-mobile invertebrates (3459).\",\n  \"action_ids\": [\n    \"3459\",\n    \"3475\",\n    \"3435\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3435",
+      "3459",
+      "3463",
+      "3475",
+      "3462",
+      "3464",
+      "3466",
+      "3473"
+    ],
+    "regenerated_ids": [
+      "3435",
+      "3437",
+      "3459",
+      "3460",
+      "3462",
+      "3463",
+      "3464",
+      "3467",
+      "3473",
+      "3474",
+      "3475",
+      "3476"
+    ]
+  },
+  {
+    "query": "Besides choosing different construction materials, what other interventions can modify the surface of artificial structures to benefit biodiversity?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in southeast Australia found that creating short flexible habitats (1\u201350 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates, but had mixed effects on mobile invertebrates and fish during low tide (3459). The same study found that this intervention decreased the overall species richness of macroalgae, invertebrates and fish during low tide (3459). One study in an estuary in southeast Australia reported that reducing the slope of an intertidal artificial structure, in conjunction with creating rock pools, led to an increase in the combined species richness of macroalgae, invertebrates and fish (3461). However, another study in the same region found that reducing the slope alone did not increase the abundance of macroalgae, oysters, or mobile invertebrates (3461). There were no studies found that evaluated the effects of creating large ridges or ledges (>50 mm) on subtidal artificial structures on the biodiversity of those structures (3445).",
+    "summary_action_ids": [
+      "3459",
+      "3461",
+      "3445"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"modify surface of artificial structures for biodiversity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3459\",\n    \"action_title\": \"Create short flexible habitats (1\\u201350 mm) on intertidal artificial structures\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3461\",\n    \"action_title\": \"Reduce the slope of intertidal artificial structures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3445\",\n    \"action_title\": \"Create large ridges or ledges (>50 mm) on subtidal artificial structures\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3459\"}",
+            "return_val": "{\n  \"action_id\": \"3459\",\n  \"action_title\": \"Create short flexible habitats (1\\u201350 mm) on intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of creating short flexible habitats on intertidal artificial structures on the biodiversity of those structures. The study was in an estuary in southeast Australia.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures altered the combined macroalgae and non-mobile invertebrate community composition on structure surfaces, and had mixed effects on the combined mobile invertebrate and fish community composition on and around structure surfaces during low tide, depending on the site.\\nInvertebrate community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not alter the mobile invertebrate community composition on and around structure surfaces during high tide.\\nFish community composition (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not alter the fish community composition on and around structure surfaces during high tide.\\nOverall richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures decreased the combined macroalgae, invertebrate and fish species richness on and around structure surfaces during low tide.\\nInvertebrate richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the mobile invertebrate species richness on and around structure surfaces during high tide, depending on the site.\\nFish richness/diversity (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the fish species richness on and around structure surfaces during high tide.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nOverall abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the combined mobile invertebrate and fish abundance on and around structure surfaces during low tide.\\nAlgal abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the macroalgal abundance on structure surfaces, depending on the species group and site.\\nInvertebrate abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures had mixed effects on the abundance of non-mobile invertebrates on structure surfaces, and of mobile invertebrates during high tide, depending on the species group and site.\\nFish abundance (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the fish abundance on and around structure surfaces during high tide.\\n\\nBEHAVIOUR (1 STUDY)\\nFish behaviour change (1 study): One replicated, randomized, controlled study in Australia\\u00a0found that creating short flexible habitats on intertidal artificial structures did not increase the number of bites fishes took of structure surfaces.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3461\"}",
+            "return_val": "{\n  \"action_id\": \"3461\",\n  \"action_title\": \"Reduce the slope of intertidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies examined the effects of reducing the slope of intertidal artificial structures on the biodiversity of those structures. The studies were in an estuary in southeast Australia.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nOverall richness/diversity (1 study): One before-and-after study in Australia\\u00a0reported that reducing the slope of an intertidal artificial structure, along with creating rock pools, increased the combined macroalgae, invertebrate and fish species richness on the structure.\\n\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAlgal abundance (1 study): One replicated, controlled study in Australia\\u00a0found that reducing the slope of an intertidal artificial structure did not increase the macroalgal abundance on structure surfaces.\\nInvertebrate abundance (1 study): One replicated, controlled study in Australia\\u00a0found that reducing the slope of an intertidal artificial structure did not increase the oyster or mobile invertebrate abundance on structure surfaces.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3445\"}",
+            "return_val": "{\n  \"action_id\": \"3445\",\n  \"action_title\": \"Create large ridges or ledges (>50 mm) on subtidal artificial structures\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of creating large ridges or ledges on subtidal artificial structures on the biodiversity of those structures.\\n\\nThis means we did not find any studies that directly evaluated this intervention during our literature searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One study in southeast Australia found that creating short flexible habitats (1\u201350 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates, but had mixed effects on mobile invertebrates and fish during low tide (3459). The same study found that this intervention decreased the overall species richness of macroalgae, invertebrates and fish during low tide (3459). One study in an estuary in southeast Australia reported that reducing the slope of an intertidal artificial structure, in conjunction with creating rock pools, led to an increase in the combined species richness of macroalgae, invertebrates and fish (3461). However, another study in the same region found that reducing the slope alone did not increase the abundance of macroalgae, oysters, or mobile invertebrates (3461). There were no studies found that evaluated the effects of creating large ridges or ledges (>50 mm) on subtidal artificial structures on the biodiversity of those structures (3445).\",\"action_ids\":[\"3459\",\"3461\",\"3445\"],\"query\":\"Besides choosing different construction materials, what other interventions can modify the surface of artificial structures to benefit biodiversity?\"}",
+            "return_val": "{\n  \"query\": \"Besides choosing different construction materials, what other interventions can modify the surface of artificial structures to benefit biodiversity?\",\n  \"relevant_summary\": \"One study in southeast Australia found that creating short flexible habitats (1\\u201350 mm) on intertidal artificial structures altered the community composition of macroalgae and non-mobile invertebrates, but had mixed effects on mobile invertebrates and fish during low tide (3459). The same study found that this intervention decreased the overall species richness of macroalgae, invertebrates and fish during low tide (3459). One study in an estuary in southeast Australia reported that reducing the slope of an intertidal artificial structure, in conjunction with creating rock pools, led to an increase in the combined species richness of macroalgae, invertebrates and fish (3461). However, another study in the same region found that reducing the slope alone did not increase the abundance of macroalgae, oysters, or mobile invertebrates (3461). There were no studies found that evaluated the effects of creating large ridges or ledges (>50 mm) on subtidal artificial structures on the biodiversity of those structures (3445).\",\n  \"action_ids\": [\n    \"3459\",\n    \"3461\",\n    \"3445\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "3434",
+      "3435",
+      "3446",
+      "3448",
+      "3449",
+      "3452",
+      "3453",
+      "3455",
+      "3462",
+      "3463",
+      "3464",
+      "3465",
+      "3466",
+      "3467",
+      "3469",
+      "3470",
+      "3473",
+      "3474",
+      "3475"
+    ],
+    "regenerated_ids": [
+      "3434",
+      "3435",
+      "3436",
+      "3437",
+      "3438",
+      "3442",
+      "3443",
+      "3444",
+      "3445",
+      "3446",
+      "3448",
+      "3449",
+      "3450",
+      "3451",
+      "3452",
+      "3453",
+      "3454",
+      "3455",
+      "3456",
+      "3459",
+      "3460",
+      "3461",
+      "3462",
+      "3463",
+      "3464",
+      "3465",
+      "3466",
+      "3467",
+      "3468",
+      "3473",
+      "3474",
+      "3475",
+      "3476"
+    ]
   }
 ]
