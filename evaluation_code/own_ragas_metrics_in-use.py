@@ -7,10 +7,12 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from google import genai
 from google.genai import types
+
+import nltk
+for resource in ["punkt", "punkt_tab"]:
+    nltk.download(resource, quiet=True)
 from nltk.tokenize import sent_tokenize
-from sentence_transformers import SentenceTransformer
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
 from pydantic import BaseModel, Field
 
 from utils import action_parsing
@@ -401,8 +403,7 @@ def get_oracle_actions_as_str(id_list, context : action_parsing.ActionParsingCon
 
 ### FULL METRIC EVALUATION PIPELINE
 
-
-def evaluate_metric(metric_name, question, summary, action_ids_in_summary, oracle_ids, context : action_parsing.ActionParsingContext):
+def evaluate_metric(metric_name, question, summary, summary_statements, action_ids_in_summary, oracle_ids, context : action_parsing.ActionParsingContext):
     # Getting the oracle actions
     oracle_actions = get_oracle_actions(id_list=oracle_ids, context=context)
     oracle_actions_str = "\n\n".join([action_parsing.get_parsed_action_as_str(action=action) for action in oracle_actions])
@@ -413,8 +414,6 @@ def evaluate_metric(metric_name, question, summary, action_ids_in_summary, oracl
 
     all_docs = oracle_actions + cited_actions
     all_docs_str = oracle_actions_str + "\n\n" + cited_actions_str
-
-    summary_statements = get_statements(question=question, answer=summary)
 
     if metric_name == "faithfulness":
         result = faithfulness(question=question, summary=summary, docs=all_docs_str, statements=summary_statements)
@@ -454,10 +453,10 @@ def main():
     # oracle_ids = ["906","857","902","907","911"]
 
     ## Bears bad answer
-    question = "What are the most beneficial actions for reducing human-wildlife conflict with bears?"
-    answer = "The most effective bear conflict reduction strategies include deterrence techniques and preventing access to food sources, while translocation shows mixed results.\nScaring or deterring bears using projectiles, noisemakers, guard dogs, or unpleasant substances has proven beneficial in modifying bear behavior and reducing conflicts in human-occupied areas (ref: 2347). Preventing bears from accessing anthropogenic food sources like garbage, crops, and pet food through bear-proof containers or exclusion methods is also likely beneficial for conflict reduction (ref: 2346). Conditioned taste aversion, which involves adding illness-inducing agents to problem foods at non-residential sites like orchards or campsites, shows promise in creating food aversions (ref: 2384). Enforcement measures for bear-proof garbage disposal demonstrate unknown effectiveness due to limited evidence (ref: 2345). Translocation of habituated bears is less recommended because it often leads to trade-offs - bears may return to conflict sites or re-offend after relocation (ref: 2341)."
-    action_ids_in_answer = ['2341', '2345', '2346', '2347', '2384']
-    oracle_ids = ["2330","2336","2346","2347","2385"]
+    # question = "What are the most beneficial actions for reducing human-wildlife conflict with bears?"
+    # answer = "The most effective bear conflict reduction strategies include deterrence techniques and preventing access to food sources, while translocation shows mixed results.\nScaring or deterring bears using projectiles, noisemakers, guard dogs, or unpleasant substances has proven beneficial in modifying bear behavior and reducing conflicts in human-occupied areas (ref: 2347). Preventing bears from accessing anthropogenic food sources like garbage, crops, and pet food through bear-proof containers or exclusion methods is also likely beneficial for conflict reduction (ref: 2346). Conditioned taste aversion, which involves adding illness-inducing agents to problem foods at non-residential sites like orchards or campsites, shows promise in creating food aversions (ref: 2384). Enforcement measures for bear-proof garbage disposal demonstrate unknown effectiveness due to limited evidence (ref: 2345). Translocation of habituated bears is less recommended because it often leads to trade-offs - bears may return to conflict sites or re-offend after relocation (ref: 2341)."
+    # action_ids_in_answer = ['2341', '2345', '2346', '2347', '2384']
+    # oracle_ids = ["2330","2336","2346","2347","2385"]
     # statements = [
     #     'The most effective bear conflict reduction strategies include deterrence techniques.', 
     #     'The most effective bear conflict reduction strategies include preventing access to food sources.', 
@@ -483,10 +482,10 @@ def main():
     # ]
 
     ## Bears good summary
-    # question = "What are the most beneficial actions for reducing human-wildlife conflict with bears?"
-    # answer = "Evidence indicates several actions can reduce bear-related conflicts. Diversionary feeding reduced nuisance behaviour by black bears in two before-and-after studies, and brown bears in Slovenia obtained 22\u201363% of annual dietary energy from provided food (2323). Scaring/deterrence had mixed outcomes: some studies found noise/pain deterrents did not prevent black bears returning to urban or human-occupied sites, while other studies found such actions deterred bears from seeking food; chasing nuisance black bears with dogs caused them to stay away longer; an electric fence prevented polar bear entry to a compound; chemical and acoustic repellents did not deter polar bears from baits in most cases (2347). Preventing access to food sources with electric shock devices stopped American black bears from accessing or damaging bird feeders (2346). Conditioned taste aversion led black bears to avoid treated foods (2384). Issuing enforcement notices requiring appropriate dumpster use did not reduce garbage accessibility to black bears (2345). Translocating problem or habituated bears often resulted in bears returning to capture locations and/or continuing nuisance, and for grizzly and black bears reduced survival compared to non-translocated bears; however, one controlled study found translocated brown bears occurred less frequently inside high potential conflict areas than non-translocated bears (2336, 2341)."
-    # action_ids_in_answer = ["2323","2336","2341","2345","2346","2347","2384"]
-    # oracle_ids = ["2330","2336","2346","2347","2385"]
+    question = "What are the most beneficial actions for reducing human-wildlife conflict with bears?"
+    answer = "Evidence indicates several actions can reduce bear-related conflicts. Diversionary feeding reduced nuisance behaviour by black bears in two before-and-after studies, and brown bears in Slovenia obtained 22\u201363% of annual dietary energy from provided food (2323). Scaring/deterrence had mixed outcomes: some studies found noise/pain deterrents did not prevent black bears returning to urban or human-occupied sites, while other studies found such actions deterred bears from seeking food; chasing nuisance black bears with dogs caused them to stay away longer; an electric fence prevented polar bear entry to a compound; chemical and acoustic repellents did not deter polar bears from baits in most cases (2347). Preventing access to food sources with electric shock devices stopped American black bears from accessing or damaging bird feeders (2346). Conditioned taste aversion led black bears to avoid treated foods (2384). Issuing enforcement notices requiring appropriate dumpster use did not reduce garbage accessibility to black bears (2345). Translocating problem or habituated bears often resulted in bears returning to capture locations and/or continuing nuisance, and for grizzly and black bears reduced survival compared to non-translocated bears; however, one controlled study found translocated brown bears occurred less frequently inside high potential conflict areas than non-translocated bears (2336, 2341)."
+    action_ids_in_answer = ["2323","2336","2341","2345","2346","2347","2384"]
+    oracle_ids = ["2330","2336","2346","2347","2385"]
     # statements = [
     #     'Evidence indicates several actions can reduce bear-related conflicts.',
     #     'Diversionary feeding reduced nuisance behaviour by black bears in two before-and-after studies.',
@@ -509,13 +508,25 @@ def main():
     # answer = "Evidence suggests several management practices influence soil properties on loamy soils. Adopting no-tillage or reduced tillage practices consistently resulted in the stratification and accumulation of organic carbon near the soil surface compared to conventional tillage, although effects on total carbon in the deeper soil profile were mixed (1114). The application of lime to acidic loamy soils successfully raised pH into the optimal range for common row crops, which improved nutrient availability but did not alter the soil's water holding capacity (1131). The inclusion of cover crops in rotations was found to increase soil organic carbon stocks in the topsoil in multiple meta-analyses, though the magnitude of effect varied by climate and species (1102). Precision irrigation technologies, such as drip systems, significantly reduced water consumption by 30-50% compared to furrow irrigation in arid and semi-arid regions, improving water use efficiency (1120). Direct application of organic amendments like compost or animal manure was a highly effective strategy, with one long-term study showing a doubling of soil carbon content over 20 years in treated plots (1125). Subsurface tile drainage systems were shown to improve soil aeration and trafficability in poorly drained loams, but had little effect on phosphorus leaching (1105)."
 
 
-    all_ids = list(set(action_ids_in_answer) | set(oracle_ids))
+    # all_ids = list(set(action_ids_in_answer) | set(oracle_ids))
 
-    docs_str = get_oracle_actions_as_str(id_list=all_ids, context=context)
-    docs = get_oracle_actions(id_list=all_ids, context=context)
+    # docs_str = get_oracle_actions_as_str(id_list=all_ids, context=context)
+    # docs = get_oracle_actions(id_list=all_ids, context=context)
     # print(faithfulness(question=question, summary=answer, docs=docs_str))
 
-    result = completeness(question=question, summary=answer, docs=docs)
+    print("getting statements")
+    statements = get_statements(question=question, answer=answer)
+    for metric in ["faithfulness", "citation_correctness"]:
+        print("evaluating",metric)
+        result = evaluate_metric(
+            metric_name=metric, 
+            question=question, 
+            summary=answer, 
+            summary_statements=statements, 
+            action_ids_in_summary=action_ids_in_answer,
+            oracle_ids=oracle_ids,
+            context=context    
+        )
 
     print(f"'score':{result['score']}")
     # print(f"\n'question': {question}")
