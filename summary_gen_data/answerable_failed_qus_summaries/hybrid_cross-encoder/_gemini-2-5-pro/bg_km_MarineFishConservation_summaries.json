@@ -1734,5 +1734,57 @@
       "2729",
       "2732"
     ]
+  },
+  {
+    "query": "What are the documented ecological outcomes of managing small-scale traditional fisheries, either through prohibition or by making them the only permitted fishing type?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in the Adriatic Sea found that a marine protected area zone that permitted only artisanal fishing for three years had higher overall commercial catch rates for five of seven species compared to unprotected areas that were openly fished [2678].",
+    "summary_action_ids": [
+      "2678"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"managing small-scale traditional fisheries\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2678\",\n    \"action_title\": \"Allow only small-scale, traditional (artisanal) fishing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2141\",\n    \"action_title\": \"Use a larger mesh size on trammel nets\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3941\",\n    \"action_title\": \"Create young plantations within mature woodland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2678\"}",
+            "return_val": "{\n  \"action_id\": \"2678\",\n  \"action_title\": \"Allow only small-scale, traditional (artisanal) fishing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of allowing only small-scale traditional (artisanal) fishing in an area on marine fish populations. The study was in the Adriatic Sea (Italy).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (1 STUDY)\\n\\nCommercial catch abundance (1 study): One site comparison study in the Adriatic Sea\\u00a0found that a marine protected area zone allowing only artisanal fishing activity for three years had higher overall commercial catch rates of five of seven species compared to unprotected areas openly fished.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One study in the Adriatic Sea found that a marine protected area zone that permitted only artisanal fishing for three years had higher overall commercial catch rates for five of seven species compared to unprotected areas that were openly fished [2678].\",\"query\":\"What are the documented ecological outcomes of managing small-scale traditional fisheries, either through prohibition or by making them the only permitted fishing type?\",\"action_ids\":[\"2678\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented ecological outcomes of managing small-scale traditional fisheries, either through prohibition or by making them the only permitted fishing type?\",\n  \"relevant_summary\": \"One study in the Adriatic Sea found that a marine protected area zone that permitted only artisanal fishing for three years had higher overall commercial catch rates for five of seven species compared to unprotected areas that were openly fished [2678].\",\n  \"action_ids\": [\n    \"2678\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2675",
+      "2678"
+    ],
+    "regenerated_ids": [
+      "2675",
+      "2677",
+      "2678",
+      "2679",
+      "2910"
+    ]
   }
 ]

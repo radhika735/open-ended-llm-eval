@@ -1486,5 +1486,147 @@
       "773",
       "886"
     ]
+  },
+  {
+    "query": "What are some alternative strategies to routine, preventative insecticide spraying for managing farm pests?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Alternative strategies to routine, preventative insecticide spraying for managing farm pests include using pesticides only when pests or crop damage reach threshold levels [750]. This approach has been found to increase the number of natural enemies and require fewer pesticide applications, leading to lower production costs [750]. While some studies have reported satisfactory pest control and similar crop damage and yields compared to conventional spraying, others have found that pest control can be inadequate, and crop damage may increase [750]. Profits have been found to be similar to conventional methods, though effects can vary [750]. To help set these thresholds, parasitism rates can be incorporated, which one study on tomatoes found resulted in acceptable levels of crop damage [726]. Another alternative is to alter the timing of insecticide use, such as spraying earlier in the growing season, which has been shown to result in a greater number of natural enemies and, in some cases, fewer pests [723]. While the effects on yield can be mixed, one study showed that applying insecticides only at times of suspected crop susceptibility could lead to higher profits [723].",
+    "summary_action_ids": [
+      "726",
+      "750",
+      "723"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"alternative pest management strategies to insecticide spraying\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"726\",\n    \"action_title\": \"Incorporate parasitism rates when setting thresholds for insecticide use\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"750\",\n    \"action_title\": \"Use pesticides only when pests or crop damage reach threshold levels\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"723\",\n    \"action_title\": \"Alter the timing of insecticide use\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"726\"}",
+            "return_val": "{\n  \"action_id\": \"726\",\n  \"action_title\": \"Incorporate parasitism rates when setting thresholds for insecticide use\",\n  \"key_messages\": \"Key Messages:\\nPest damage: One controlled study from New Zealand found using parasitism rates to inform spraying decisions resulted in acceptable levels of crop damage from pests. Effects on natural enemy populations were not monitored.\\nThe crop studied was tomato.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"750\"}",
+            "return_val": "{\n  \"action_id\": \"750\",\n  \"action_title\": \"Use pesticides only when pests or crop damage reach threshold levels\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One randomised, replicated, controlled study from Finland found that threshold-based spraying regimes increased numbers of natural enemies in two of three years but effects lasted for as little as three weeks. Pests and disease: Two of four studies from France, Malaysia and the USA reported that pests were satisfactorily controlled. One randomised, replicated, controlled study found pest numbers were similar under threshold-based and conventional spraying regimes and one study reported that pest control was inadequate. A randomised, replicated, controlled study found mixed effects on disease severity. Crop damage: Four of five randomised, replicated, controlled studies from New Zealand, the Philippines and the USA found similar crop damage under threshold-based and conventional, preventative spraying regimes, but one study found damage increased. Another study found slightly less crop damage compared to unsprayed controls. Yield: Two of four randomised, replicated, controlled studies found similar yields under threshold-based and conventional spraying regimes. Two studies found mixed effects depending on site, year, pest stage/type or control treatment. Profit: Two of three randomised, replicated, controlled studies found similar profits using threshold-based and conventional spraying regimes. One study found effects varied between sites and years. Costs: Nine studies found fewer pesticide applications were needed and three studies found or predicted lower production costs.\\nCrops studied were barley, broccoli, cabbages, cauliflower, celery, cocoa, cotton, grape, peanut, potato, rice, tomato and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"723\"}",
+            "return_val": "{\n  \"action_id\": \"723\",\n  \"action_title\": \"Alter the timing of insecticide use\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: One controlled study from the UK reported more natural enemies when insecticides were sprayed earlier rather than later in the growing season. Pests: Two of four studies from Mozambique, the UK and the USA found fewer pests or less disease damage when insecticides were applied early rather than late. Effects on a disease-carrying pest varied with insecticide type. Two studies (one a randomised, replicated, controlled test) found no effect on pests or pest damage. Yield: Four studies (including one randomised, replicated, controlled test) from Mozambique, the Philippines, the UK and the USA measured yields. Two studies found mixed effects and one study found no effect on yield when insecticides were applied early. One study found higher yields when insecticides were applied at times of suspected crop susceptibility.Profit and costs: One controlled study from the Philippines found higher profits and similar costs when insecticides were only applied at times of suspected crop susceptibility.\\nCrops studied were aubergine,\\u00a0barley, maize,\\u00a0pear and stringbean.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"726\",\"750\",\"723\"],\"query\":\"What are some alternative strategies to routine, preventative insecticide spraying for managing farm pests?\",\"summary\":\"Alternative strategies to routine, preventative insecticide spraying for managing farm pests include using pesticides only when pests or crop damage reach threshold levels [750]. This approach has been found to increase the number of natural enemies and require fewer pesticide applications, leading to lower production costs [750]. While some studies have reported satisfactory pest control and similar crop damage and yields compared to conventional spraying, others have found that pest control can be inadequate, and crop damage may increase [750]. Profits have been found to be similar to conventional methods, though effects can vary [750]. To help set these thresholds, parasitism rates can be incorporated, which one study on tomatoes found resulted in acceptable levels of crop damage [726]. Another alternative is to alter the timing of insecticide use, such as spraying earlier in the growing season, which has been shown to result in a greater number of natural enemies and, in some cases, fewer pests [723]. While the effects on yield can be mixed, one study showed that applying insecticides only at times of suspected crop susceptibility could lead to higher profits [723].\"}",
+            "return_val": "{\n  \"query\": \"What are some alternative strategies to routine, preventative insecticide spraying for managing farm pests?\",\n  \"relevant_summary\": \"Alternative strategies to routine, preventative insecticide spraying for managing farm pests include using pesticides only when pests or crop damage reach threshold levels [750]. This approach has been found to increase the number of natural enemies and require fewer pesticide applications, leading to lower production costs [750]. While some studies have reported satisfactory pest control and similar crop damage and yields compared to conventional spraying, others have found that pest control can be inadequate, and crop damage may increase [750]. Profits have been found to be similar to conventional methods, though effects can vary [750]. To help set these thresholds, parasitism rates can be incorporated, which one study on tomatoes found resulted in acceptable levels of crop damage [726]. Another alternative is to alter the timing of insecticide use, such as spraying earlier in the growing season, which has been shown to result in a greater number of natural enemies and, in some cases, fewer pests [723]. While the effects on yield can be mixed, one study showed that applying insecticides only at times of suspected crop susceptibility could lead to higher profits [723].\",\n  \"action_ids\": [\n    \"726\",\n    \"750\",\n    \"723\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "717",
+      "723",
+      "726",
+      "750"
+    ],
+    "regenerated_ids": [
+      "717",
+      "723",
+      "724",
+      "726",
+      "750",
+      "753",
+      "773",
+      "886"
+    ]
+  },
+  {
+    "query": "What is the evidence that natural pest control interventions can increase the parasitism of pests by natural enemies?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Three replicated studies from Italy and the USA found greater pest reduction or higher proportions of parasitized pests in fields and farms with planted flower strips (1400). Two replicated studies from the USA found more natural enemies in fields with planted flower strips, compared to fields without planted flower strips, in some comparisons (1400). Two randomised, replicated, controlled trials from Australia and Denmark found more natural enemies when herbicide treatments were delayed (774). One replicated, controlled study from the USA found that similar percentages of pests were consumed by natural enemies in plots with or without added compost (1392). This study also found similar ratios of natural enemies to pests (mostly aphids) in plots with or without added compost (1392).",
+    "summary_action_ids": [
+      "1400",
+      "774",
+      "1392"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"natural pest control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1392\",\n    \"action_title\": \"Pest regulation: Add compost to the soil\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1400\",\n    \"action_title\": \"Pest regulation: Plant flowers\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"774\",\n    \"action_title\": \"Delay herbicide use\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1392\"}",
+            "return_val": "{\n  \"action_id\": \"1392\",\n  \"action_title\": \"Pest regulation: Add compost to the soil\",\n  \"key_messages\": \"Key Messages:\\nPest regulation (2 studies): Of two replicated, randomized, controlled studies from the USA and an unspecified Mediterranean country, one study\\u00a0found less disease in crops grown in soils with added compost, compared to soils without it, in some comparisons, but one study\\u00a0found no differences in most crop diseases. One replicated, controlled study from the USA\\u00a0found similar amounts of Escherichia coli bacteria in plots with or without added compost. This study\\u00a0also found that similar percentages of pests were consumed by natural enemies in plots with or without added compost.\\nCrop damage (1 study): One replicated, randomized, controlled study\\u00a0found fewer dead tomato plants in soil with added compost, compared to soil without added compost, in some comparisons.\\nRatio of natural enemies to pests (1 study): One replicated, controlled study from the USA\\u00a0found similar ratios of natural enemies to pests (mostly aphids) in plots with or without added compost.\\nPest numbers (1 study): One replicated, controlled study from the USA\\u00a0found similar pest numbers in plots with or without added compost.\\nNatural enemy numbers (0 studies)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1400\"}",
+            "return_val": "{\n  \"action_id\": \"1400\",\n  \"action_title\": \"Pest regulation: Plant flowers\",\n  \"key_messages\": \"Key Messages:\\nPest regulation (3 studies): Three replicated studies from Italy and the USA found greater pest reduction\\u00a0or higher proportions of parasitized pests\\u00a0in fields and farms with planted flower strips.\\nCrop damage (2 studies): One replicated, randomized, controlled study from Italy\\u00a0found more damage by caterpillars, but not by aphids, in tomatoes next to planted flower strips, compared to tomatoes next to bare ground. One replicated, paired, controlled study from Italy\\u00a0found that planted flower strips had inconsistent effects on crop damage by pests.\\nPest numbers (2 studies): One replicated, paired, controlled study from Italy\\u00a0found more pests on tomatoes next to planted flower strips, compared to tomatoes next to unplanted field margins. One replicated before-and-after study from the USA\\u00a0found more aphids in fields after flower strips were made available.\\nNatural enemy numbers (4 studies): Two replicated studies from the USA\\u00a0found more natural enemies in fields with planted flower strips, compared to fields without planted flower strips, in some comparisons. Two replicated, controlled studies from Italy\\u00a0found more natural enemies in planted flower strips than on bare ground, and one of these studies\\u00a0also found more species of natural enemies.\\nImplementation options (4 studies): Two replicated, controlled studies from the USA and Spain found that some flower species were more attractive to natural enemies than others. Two replicated, controlled studies from Italy\\u00a0found that planting more species of flowers, compared to fewer, had inconsistent effects on pests and pest species, but one of these\\u00a0found less crop damage next to flower strips with more species, compared to fewer, in some comparisons. This study\\u00a0also found more species of natural enemies in flower strips, over time, but did not find more individuals.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"774\"}",
+            "return_val": "{\n  \"action_id\": \"774\",\n  \"action_title\": \"Delay herbicide use\",\n  \"key_messages\": \"Key Messages:\\nNatural enemies: Two randomised, replicated, controlled trials from Australia and Denmark found more natural enemies when herbicide treatments were delayed. One of the studies found some but not all natural enemy groups benefited and fewer groups benefitted early in the season. Weeds: One randomised, replicated, controlled study found more weeds when herbicide treatments were delayed. Insect pests and damage: One of two randomised, replicated, controlled studies from Canada and Denmark found more insect pests, but only for some pest groups, and one study found fewer pests in one of two experiments and for one of two crop varieties. One study found lower crop damage in some but not all varieties and study years. Yield: One randomised, replicated, controlled study found lower yields and one study found no effect.\\nCrops studied were beet and oilseed.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the evidence that natural pest control interventions can increase the parasitism of pests by natural enemies?\",\"action_ids\":[\"1400\",\"774\",\"1392\"],\"summary\":\"Three replicated studies from Italy and the USA found greater pest reduction or higher proportions of parasitized pests in fields and farms with planted flower strips (1400). Two replicated studies from the USA found more natural enemies in fields with planted flower strips, compared to fields without planted flower strips, in some comparisons (1400). Two randomised, replicated, controlled trials from Australia and Denmark found more natural enemies when herbicide treatments were delayed (774). One replicated, controlled study from the USA found that similar percentages of pests were consumed by natural enemies in plots with or without added compost (1392). This study also found similar ratios of natural enemies to pests (mostly aphids) in plots with or without added compost (1392).\"}",
+            "return_val": "{\n  \"query\": \"What is the evidence that natural pest control interventions can increase the parasitism of pests by natural enemies?\",\n  \"relevant_summary\": \"Three replicated studies from Italy and the USA found greater pest reduction or higher proportions of parasitized pests in fields and farms with planted flower strips (1400). Two replicated studies from the USA found more natural enemies in fields with planted flower strips, compared to fields without planted flower strips, in some comparisons (1400). Two randomised, replicated, controlled trials from Australia and Denmark found more natural enemies when herbicide treatments were delayed (774). One replicated, controlled study from the USA found that similar percentages of pests were consumed by natural enemies in plots with or without added compost (1392). This study also found similar ratios of natural enemies to pests (mostly aphids) in plots with or without added compost (1392).\",\n  \"action_ids\": [\n    \"1400\",\n    \"774\",\n    \"1392\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "717",
+      "718",
+      "725",
+      "753",
+      "754",
+      "775",
+      "886"
+    ],
+    "regenerated_ids": [
+      "717",
+      "718",
+      "724",
+      "725",
+      "726",
+      "753",
+      "754",
+      "775",
+      "886"
+    ]
   }
 ]

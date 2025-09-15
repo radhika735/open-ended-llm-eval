@@ -3160,5 +3160,110 @@
       "2729",
       "2732"
     ]
+  },
+  {
+    "query": "What are the documented ecological outcomes of managing small-scale traditional fisheries, either through prohibition or by making them the only permitted fishing type?",
+    "model": "openai/gpt-5",
+    "provider": null,
+    "relevant_summary": "- Allowing only small-scale traditional (artisanal) fishing in a marine protected area zone for three years was associated with higher overall commercial catch rates for five of seven species compared to openly fished areas (2678).\n- Prohibiting all fishing with limited exceptions in marine protected areas produced mixed fish community and population responses: lower total fish species richness in some areas compared to unprotected sites; similar biomass and lower total fish density when only bait fishing was allowed; similar abundance for several rockfish species and lingcod relative to fished sites; increased cod survival inside the protected area; and frequent, prolonged use of protected habitats by some shark species, reducing likelihood of fishing mortality (2681).\n- Closing areas to all non-towed (static) fishing gears was associated with higher overall shark abundance when sampled with longlines (but not with gillnets) and greater length for two of five shark species/groups compared to areas permitting commercial gillnets (2670).\n- Prohibiting commercial fishing was associated with different benthic invertebrate community composition relative to fished areas; no change in overall invertebrate species richness in one case; greater overall invertebrate abundance in closed areas in two cases, with biomass higher in one and similar in another; no difference in lobster abundance after up to two years; and greater biological production from invertebrates where trawling and dredging had been excluded for 28 years (2097).",
+    "summary_action_ids": [
+      "2678",
+      "2681",
+      "2670",
+      "2097"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"small-scale traditional fisheries prohibition only permitted fishing type ecological outcomes\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2678\",\n    \"action_title\": \"Allow only small-scale, traditional (artisanal) fishing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2681\",\n    \"action_title\": \"Cease or prohibit all fishing activity in a marine protected area with limited exceptions\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2670\",\n    \"action_title\": \"Cease or prohibit all non-towed (static) fishing gear\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2678\"}",
+            "return_val": "{\n  \"action_id\": \"2678\",\n  \"action_title\": \"Allow only small-scale, traditional (artisanal) fishing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of allowing only small-scale traditional (artisanal) fishing in an area on marine fish populations. The study was in the Adriatic Sea (Italy).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (1 STUDY)\\n\\nCommercial catch abundance (1 study): One site comparison study in the Adriatic Sea\\u00a0found that a marine protected area zone allowing only artisanal fishing activity for three years had higher overall commercial catch rates of five of seven species compared to unprotected areas openly fished.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2681\"}",
+            "return_val": "{\n  \"action_id\": \"2681\",\n  \"action_title\": \"Cease or prohibit all fishing activity in a marine protected area with limited exceptions\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies examined the effects of ceasing or prohibiting all fishing activity in a marine protected area with limited exceptions on marine fish populations. One study was in each of the Pacific Ocean (USA), the Caribbean Sea (US Virgin Islands), the Great Barrier Reef (Australia) and the Skagerrak (Norway).\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One site comparison study in the Caribbean Sea found that in marine protected areas closed to all fishing with limited exceptions for up to seven years, there was lower total fish species richness compared to unprotected areas.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (2 studies): One replicated, site comparison study in the Pacific Ocean found that abundance of copper rockfish, quillback rockfish, china rockfish and lingcod was similar between non-voluntary and voluntary \\u2018no-take\\u2019 reserve sites where all fishing with limited exceptions had been prohibited for one to eight years, and sites open to fishing. One site comparison study in the Caribbean Sea found that restricting all fishing activity except for bait fishing in marine protected areas for seven years resulted in similar total fish biomass and lower total fish density, compared to unprotected areas.\\n\\n\\nSurvival (1 study): One replicated, controlled, before-and-after study in the Skagerrak found that cod survival increased inside a marine protected area in the eight years after almost all fishing was prohibited, compared to outside areas fished with a wider range of gear types.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated study in the Great Barrier Reef found that immature pigeye sharks and adult spottail sharks were detected frequently and over long time periods inside marine protected areas five years after prohibiting almost all fishing except restricted line fishing and bait netting, thus reducing the overall likelihood of fishing mortality.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2670\"}",
+            "return_val": "{\n  \"action_id\": \"2670\",\n  \"action_title\": \"Cease or prohibit all non-towed (static) fishing gear\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of ceasing or prohibiting all non-towed (static) fishing gears on marine fish populations. The study was in the Coral Sea\\u00a0(Australia).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, site comparison study in the Coral Sea\\u00a0found that in areas closed to non-towed fishing gears overall shark abundance was higher when sampled with longlines but not gillnets compared to areas where commercial gillnets were permitted.\\nCondition (1 study): One replicated, site comparison study in the Coral Sea\\u00a0found that in areas closed to non-towed fishing gears shark length was greater for two of five species/groups, similar for two and dependent on sampling gear for one species, compared to areas where commercial gillnets were permitted.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"small-scale traditional fisheries prohibition only permitted fishing type ecological outcomes\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3810\",\n    \"action_title\": \"Prohibit certain gear types\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3830\",\n    \"action_title\": \"Enforce gear and vessel restrictions (e.g. cap engine power, ban gears)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2670\",\n    \"action_title\": \"Cease or prohibit all non-towed (static) fishing gear\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"small-scale traditional fisheries prohibition only permitted fishing type ecological outcomes\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"3543\",\n    \"action_title\": \"Cease or prohibit all types of fishing\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2670\",\n    \"action_title\": \"Cease or prohibit all non-towed (static) fishing gear\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2097\",\n    \"action_title\": \"Cease or prohibit commercial fishing\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3543\"}",
+            "return_val": "{\n  \"action_id\": \"3543\",\n  \"action_title\": \"Cease or prohibit all types of fishing\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on reptile populations of ceasing or prohibiting all types of fishing.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2097\"}",
+            "return_val": "{\n  \"action_id\": \"2097\",\n  \"action_title\": \"Cease or prohibit commercial fishing\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies examined the effects of ceasing or prohibiting commercial fishing on subtidal benthic invertebrate populations. Two studies were in the Tasman Sea (New Zealand), the third on Gorges Bank in the North Atlantic Ocean (USA).\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nOverall community composition (1 study): One site comparison study in the Tasman Sea \\u00a0found that an area closed to commercial trawling and dredging for 28 years had different overall invertebrate communities than an area subject to commercial fishing.\\nOverall species richness/diversity (1 study): One site comparison study on Georges Bank\\u00a0found no difference in invertebrate species richness between an area closed to commercial fishing for 10 to 14 years and a fished area.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nOverall abundance (2 studies): Two site comparison studies in the Tasman Sea \\u00a0and on Georges Bank\\u00a0found that areas prohibiting commercial fishing for 10 to 14 years\\u00a0and 28 years had greater overall invertebrate abundance compared to areas where commercial fishing occurred. One of the studies \\u00a0also found higher biomass, while the other\\u00a0found similar biomass in closed and fished areas.\\nCrustacean abundance (1 study): One replicated, site comparison study in the Tasman Sea\\u00a0found that in commercial fishing exclusion zones lobster abundance was not different to adjacent fished areas after up to two years.\\n\\nOTHER (1 STUDY)\\n\\nOverall community biological production (1 study): One site comparison study in the Tasman Sea \\u00a0found that an area closed to commercial trawling and dredging for 28 years had greater biological production from invertebrates than an area where commercial fishing occurred.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the documented ecological outcomes of managing small-scale traditional fisheries, either through prohibition or by making them the only permitted fishing type?\",\"summary\":\"- Allowing only small-scale traditional (artisanal) fishing in a marine protected area zone for three years was associated with higher overall commercial catch rates for five of seven species compared to openly fished areas (2678).\\n- Prohibiting all fishing with limited exceptions in marine protected areas produced mixed fish community and population responses: lower total fish species richness in some areas compared to unprotected sites; similar biomass and lower total fish density when only bait fishing was allowed; similar abundance for several rockfish species and lingcod relative to fished sites; increased cod survival inside the protected area; and frequent, prolonged use of protected habitats by some shark species, reducing likelihood of fishing mortality (2681).\\n- Closing areas to all non-towed (static) fishing gears was associated with higher overall shark abundance when sampled with longlines (but not with gillnets) and greater length for two of five shark species/groups compared to areas permitting commercial gillnets (2670).\\n- Prohibiting commercial fishing was associated with different benthic invertebrate community composition relative to fished areas; no change in overall invertebrate species richness in one case; greater overall invertebrate abundance in closed areas in two cases, with biomass higher in one and similar in another; no difference in lobster abundance after up to two years; and greater biological production from invertebrates where trawling and dredging had been excluded for 28 years (2097).\",\"action_ids\":[\"2678\",\"2681\",\"2670\",\"2097\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented ecological outcomes of managing small-scale traditional fisheries, either through prohibition or by making them the only permitted fishing type?\",\n  \"relevant_summary\": \"- Allowing only small-scale traditional (artisanal) fishing in a marine protected area zone for three years was associated with higher overall commercial catch rates for five of seven species compared to openly fished areas (2678).\\n- Prohibiting all fishing with limited exceptions in marine protected areas produced mixed fish community and population responses: lower total fish species richness in some areas compared to unprotected sites; similar biomass and lower total fish density when only bait fishing was allowed; similar abundance for several rockfish species and lingcod relative to fished sites; increased cod survival inside the protected area; and frequent, prolonged use of protected habitats by some shark species, reducing likelihood of fishing mortality (2681).\\n- Closing areas to all non-towed (static) fishing gears was associated with higher overall shark abundance when sampled with longlines (but not with gillnets) and greater length for two of five shark species/groups compared to areas permitting commercial gillnets (2670).\\n- Prohibiting commercial fishing was associated with different benthic invertebrate community composition relative to fished areas; no change in overall invertebrate species richness in one case; greater overall invertebrate abundance in closed areas in two cases, with biomass higher in one and similar in another; no difference in lobster abundance after up to two years; and greater biological production from invertebrates where trawling and dredging had been excluded for 28 years (2097).\",\n  \"action_ids\": [\n    \"2678\",\n    \"2681\",\n    \"2670\",\n    \"2097\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2675",
+      "2678"
+    ],
+    "regenerated_ids": [
+      "2675",
+      "2677",
+      "2678",
+      "2679",
+      "2910"
+    ]
   }
 ]
