@@ -1647,5 +1647,151 @@
       "1646",
       "1659"
     ]
+  },
+  {
+    "query": "Besides cutting, what other actions are available to manage problematic tree species in shrublands?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Besides cutting, several alternative actions are available to manage problematic tree species in shrublands. Prescribed burning can be used to control trees, with one study in Italy finding that it reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees (Action 1721). Grazing with livestock can control trees, with one study in Italy showing that grazing reduced cover of common heather and the basal area of trees (Action 1634). A combination approach of increasing livestock numbers and using prescribed burning together can also control trees, with research in Italy demonstrating that this method reduced the cover of common heather and the basal area of trees (Action 1722). Herbicide application to trees is another option, with studies showing that herbicide treatment increased plant diversity in South Africa and increased the abundance of common heather seedlings in the UK (Action 1629).",
+    "summary_action_ids": [
+      "1721",
+      "1634",
+      "1722",
+      "1629"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"tree management shrublands invasive species\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1633\",\n    \"action_title\": \"Cut/mow shrubland to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1640\",\n    \"action_title\": \"Rake to control grass\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed burning trees shrubland control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1723\",\n    \"action_title\": \"Use prescribed burning to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1722\",\n    \"action_title\": \"Increase number of livestock and use prescribed burning to control trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"livestock grazing tree control shrubland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1634\",\n    \"action_title\": \"Use grazing to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1722\",\n    \"action_title\": \"Increase number of livestock and use prescribed burning to control trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1635\",\n    \"action_title\": \"Cut trees and increase livestock numbers\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"herbicide tree control shrubland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1629\",\n    \"action_title\": \"Apply herbicide to trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1644\",\n    \"action_title\": \"Apply herbicide and sow seeds of shrubland plants to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1652\",\n    \"action_title\": \"Use herbicide to control bracken\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1721\"}",
+            "return_val": "{\n  \"action_id\": \"1721\",\n  \"action_title\": \"Use prescribed burning to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, before-and-after trial in the USA\\u00a0found that burning to control trees did not change cover of two of three grass species.\\nOne randomized, controlled study in Italy\\u00a0found that prescribed burning to control trees reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1634\"}",
+            "return_val": "{\n  \"action_id\": \"1634\",\n  \"action_title\": \"Use grazing to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled, before-and-after study in Italy\\u00a0found that grazing to reduce tree cover reduced cover of common heather and the basal area of trees, but did not alter cover of purple moor grass.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1722\"}",
+            "return_val": "{\n  \"action_id\": \"1722\",\n  \"action_title\": \"Increase number of livestock and use prescribed burning to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled, before-and-after study in Italy\\u00a0found that using prescribed burning and grazing to reduce tree cover reduced the cover of common heather and the basal area of trees. However, it did not alter the cover of purple moor grass.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1629\"}",
+            "return_val": "{\n  \"action_id\": \"1629\",\n  \"action_title\": \"Apply herbicide to trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled, before-and-after study in South Africa\\u00a0found that using herbicide to control trees increased plant diversity but did not increase shrub cover.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that herbicide treatment of trees increased the abundance of common heather seedlings.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"tree removal shrubland restoration management\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1683\",\n    \"action_title\": \"Remove trees/crops to restore shrubland structure\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3946\",\n    \"action_title\": \"Restore or create heathland/shrubland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2569\",\n    \"action_title\": \"Restore or create shrubland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1683\"}",
+            "return_val": "{\n  \"action_id\": \"1683\",\n  \"action_title\": \"Remove trees/crops to restore shrubland structure\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of removing trees/crops to restore shrubland structure on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"mechanical treatment shrubland tree species control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3881\",\n    \"action_title\": \"Mechanically remove mid-storey or ground vegetation to create fire breaks\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1629\",\n    \"action_title\": \"Apply herbicide to trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1648\",\n    \"action_title\": \"Rotovate to control grass\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"Besides cutting, what other actions are available to manage problematic tree species in shrublands?\", \"summary\": \"Besides cutting, several alternative actions are available to manage problematic tree species in shrublands. Prescribed burning can be used to control trees, with one study in Italy finding that it reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees (Action 1721). Grazing with livestock can control trees, with one study in Italy showing that grazing reduced cover of common heather and the basal area of trees (Action 1634). A combination approach of increasing livestock numbers and using prescribed burning together can also control trees, with research in Italy demonstrating that this method reduced the cover of common heather and the basal area of trees (Action 1722). Herbicide application to trees is another option, with studies showing that herbicide treatment increased plant diversity in South Africa and increased the abundance of common heather seedlings in the UK (Action 1629).\", \"action_ids\": [\"1721\",\"1634\",\"1722\",\"1629\"]}",
+            "return_val": "{\n  \"query\": \"Besides cutting, what other actions are available to manage problematic tree species in shrublands?\",\n  \"relevant_summary\": \"Besides cutting, several alternative actions are available to manage problematic tree species in shrublands. Prescribed burning can be used to control trees, with one study in Italy finding that it reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees (Action 1721). Grazing with livestock can control trees, with one study in Italy showing that grazing reduced cover of common heather and the basal area of trees (Action 1634). A combination approach of increasing livestock numbers and using prescribed burning together can also control trees, with research in Italy demonstrating that this method reduced the cover of common heather and the basal area of trees (Action 1722). Herbicide application to trees is another option, with studies showing that herbicide treatment increased plant diversity in South Africa and increased the abundance of common heather seedlings in the UK (Action 1629).\",\n  \"action_ids\": [\n    \"1721\",\n    \"1634\",\n    \"1722\",\n    \"1629\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1629",
+      "1630",
+      "1631",
+      "1632",
+      "1633",
+      "1634",
+      "1635",
+      "1636",
+      "1637",
+      "1721",
+      "1722"
+    ],
+    "regenerated_ids": [
+      "1629",
+      "1631",
+      "1632",
+      "1633",
+      "1634",
+      "1635",
+      "1636",
+      "1637",
+      "1683",
+      "1684",
+      "1721",
+      "1722"
+    ]
   }
 ]
