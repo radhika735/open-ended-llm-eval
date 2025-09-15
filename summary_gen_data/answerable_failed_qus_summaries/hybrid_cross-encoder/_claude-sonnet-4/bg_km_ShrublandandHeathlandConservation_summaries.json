@@ -1647,5 +1647,963 @@
       "1646",
       "1659"
     ]
+  },
+  {
+    "query": "Besides cutting, what other actions are available to manage problematic tree species in shrublands?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Besides cutting, several alternative actions are available to manage problematic tree species in shrublands. Prescribed burning can be used to control trees, with one study in Italy finding that it reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees (Action 1721). Grazing with livestock can control trees, with one study in Italy showing that grazing reduced cover of common heather and the basal area of trees (Action 1634). A combination approach of increasing livestock numbers and using prescribed burning together can also control trees, with research in Italy demonstrating that this method reduced the cover of common heather and the basal area of trees (Action 1722). Herbicide application to trees is another option, with studies showing that herbicide treatment increased plant diversity in South Africa and increased the abundance of common heather seedlings in the UK (Action 1629).",
+    "summary_action_ids": [
+      "1721",
+      "1634",
+      "1722",
+      "1629"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"tree management shrublands invasive species\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1633\",\n    \"action_title\": \"Cut/mow shrubland to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1640\",\n    \"action_title\": \"Rake to control grass\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed burning trees shrubland control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1723\",\n    \"action_title\": \"Use prescribed burning to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1722\",\n    \"action_title\": \"Increase number of livestock and use prescribed burning to control trees\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"livestock grazing tree control shrubland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1634\",\n    \"action_title\": \"Use grazing to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1722\",\n    \"action_title\": \"Increase number of livestock and use prescribed burning to control trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1635\",\n    \"action_title\": \"Cut trees and increase livestock numbers\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"herbicide tree control shrubland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1629\",\n    \"action_title\": \"Apply herbicide to trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1644\",\n    \"action_title\": \"Apply herbicide and sow seeds of shrubland plants to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1652\",\n    \"action_title\": \"Use herbicide to control bracken\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1721\"}",
+            "return_val": "{\n  \"action_id\": \"1721\",\n  \"action_title\": \"Use prescribed burning to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, before-and-after trial in the USA\\u00a0found that burning to control trees did not change cover of two of three grass species.\\nOne randomized, controlled study in Italy\\u00a0found that prescribed burning to control trees reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1634\"}",
+            "return_val": "{\n  \"action_id\": \"1634\",\n  \"action_title\": \"Use grazing to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled, before-and-after study in Italy\\u00a0found that grazing to reduce tree cover reduced cover of common heather and the basal area of trees, but did not alter cover of purple moor grass.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1722\"}",
+            "return_val": "{\n  \"action_id\": \"1722\",\n  \"action_title\": \"Increase number of livestock and use prescribed burning to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, controlled, before-and-after study in Italy\\u00a0found that using prescribed burning and grazing to reduce tree cover reduced the cover of common heather and the basal area of trees. However, it did not alter the cover of purple moor grass.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1629\"}",
+            "return_val": "{\n  \"action_id\": \"1629\",\n  \"action_title\": \"Apply herbicide to trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled, before-and-after study in South Africa\\u00a0found that using herbicide to control trees increased plant diversity but did not increase shrub cover.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that herbicide treatment of trees increased the abundance of common heather seedlings.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"tree removal shrubland restoration management\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1683\",\n    \"action_title\": \"Remove trees/crops to restore shrubland structure\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3946\",\n    \"action_title\": \"Restore or create heathland/shrubland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2569\",\n    \"action_title\": \"Restore or create shrubland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1683\"}",
+            "return_val": "{\n  \"action_id\": \"1683\",\n  \"action_title\": \"Remove trees/crops to restore shrubland structure\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of removing trees/crops to restore shrubland structure on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"mechanical treatment shrubland tree species control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3881\",\n    \"action_title\": \"Mechanically remove mid-storey or ground vegetation to create fire breaks\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1629\",\n    \"action_title\": \"Apply herbicide to trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1648\",\n    \"action_title\": \"Rotovate to control grass\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"Besides cutting, what other actions are available to manage problematic tree species in shrublands?\", \"summary\": \"Besides cutting, several alternative actions are available to manage problematic tree species in shrublands. Prescribed burning can be used to control trees, with one study in Italy finding that it reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees (Action 1721). Grazing with livestock can control trees, with one study in Italy showing that grazing reduced cover of common heather and the basal area of trees (Action 1634). A combination approach of increasing livestock numbers and using prescribed burning together can also control trees, with research in Italy demonstrating that this method reduced the cover of common heather and the basal area of trees (Action 1722). Herbicide application to trees is another option, with studies showing that herbicide treatment increased plant diversity in South Africa and increased the abundance of common heather seedlings in the UK (Action 1629).\", \"action_ids\": [\"1721\",\"1634\",\"1722\",\"1629\"]}",
+            "return_val": "{\n  \"query\": \"Besides cutting, what other actions are available to manage problematic tree species in shrublands?\",\n  \"relevant_summary\": \"Besides cutting, several alternative actions are available to manage problematic tree species in shrublands. Prescribed burning can be used to control trees, with one study in Italy finding that it reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees (Action 1721). Grazing with livestock can control trees, with one study in Italy showing that grazing reduced cover of common heather and the basal area of trees (Action 1634). A combination approach of increasing livestock numbers and using prescribed burning together can also control trees, with research in Italy demonstrating that this method reduced the cover of common heather and the basal area of trees (Action 1722). Herbicide application to trees is another option, with studies showing that herbicide treatment increased plant diversity in South Africa and increased the abundance of common heather seedlings in the UK (Action 1629).\",\n  \"action_ids\": [\n    \"1721\",\n    \"1634\",\n    \"1722\",\n    \"1629\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1629",
+      "1630",
+      "1631",
+      "1632",
+      "1633",
+      "1634",
+      "1635",
+      "1636",
+      "1637",
+      "1721",
+      "1722"
+    ],
+    "regenerated_ids": [
+      "1629",
+      "1631",
+      "1632",
+      "1633",
+      "1634",
+      "1635",
+      "1636",
+      "1637",
+      "1683",
+      "1684",
+      "1721",
+      "1722"
+    ]
+  },
+  {
+    "query": "What are the documented negative impacts of using prescribed burning to control unwanted vegetation in shrublands?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the action documents reviewed, several negative impacts of prescribed burning in shrublands have been documented. Prescribed burning reduced cover of common heather in studies from the UK (action 1723, 1725), showing that the practice can negatively affect desirable native vegetation while failing to control the target species. In one study, prescribed burning to reduce purple moor grass cover did not reduce the target species but did reduce common heather cover (action 1723). Similarly, burning combined with herbicide application reduced common heather cover but failed to reduce purple moor grass cover (action 1725). For wildlife impacts, studies showed that some individual bird species had similar or lower densities on burned areas compared to control areas (action 321). In reptile populations, immediate negative effects were documented, with reptile abundance being lower immediately after burning compared to before burning, though abundance recovered after vegetation regrew (action 3651). Additionally, areas burned 1-4 years earlier had lower reptile species richness and abundance compared to areas burned 11-15 years earlier (action 3651). Reptile species composition was found to be different immediately after burning and remained different after vegetation regrowth in some grass types (action 3651). One study found that a reptile species was less abundant in areas managed by burning compared to areas grazed by sheep (action 3651).",
+    "summary_action_ids": [
+      "321",
+      "1723",
+      "1725",
+      "3651"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed burning negative impacts shrublands vegetation control\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1723\",\n    \"action_title\": \"Use prescribed burning to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1670\",\n    \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1722\",\n    \"action_title\": \"Increase number of livestock and use prescribed burning to control trees\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1725\",\n    \"action_title\": \"Use herbicide and prescribed burning to control grass\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1623\",\n    \"action_title\": \"Use prescribed burning to reduce potential for large wild fires\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"321\",\n    \"action_title\": \"Use prescribed burning on shrublands\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1669\",\n    \"action_title\": \"Mow shrubland to reduce impacts of pollutants\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3652\",\n    \"action_title\": \"Use prescribed burning: Wetland\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2482\",\n    \"action_title\": \"Remove understorey vegetation in forest\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"prescribed burning disadvantages negative effects side effects shrubland\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1623\",\n    \"action_title\": \"Use prescribed burning to reduce potential for large wild fires\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1614\",\n    \"action_title\": \"Reduce the frequency of prescribed burning\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1622\",\n    \"action_title\": \"Use prescribed burning to mimic natural fire cycle\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1670\",\n    \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1723\",\n    \"action_title\": \"Use prescribed burning to control grass\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"3651\",\n    \"action_title\": \"Use prescribed burning: Grassland & shrubland\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3652\",\n    \"action_title\": \"Use prescribed burning: Wetland\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"321\",\n    \"action_title\": \"Use prescribed burning on shrublands\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1625\",\n    \"action_title\": \"Reinstate the use of traditional burning practices\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"321\"}",
+            "return_val": "{\n  \"action_id\": \"321\",\n  \"action_title\": \"Use prescribed burning on shrublands\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled study from the USA, of eight captured, found that overall bird densities were similar between burned and unburned areas, whilst a replicated and controlled study found that species numbers and bird densities did not vary between areas burned in summer and those burned in winter.\\nThree studies found that some species were more abundant on areas that were burned, compared to those managed differently, or not at all. Four studies found that the densities of individual species were similar or lower on burned areas compared to control areas or those under different management.\\nA before-and-after study found that sage sparrows chose different nest sites before burning compared to after. A controlled study found no differences in greater sage grouse movement between burned and unburned areas.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1670\"}",
+            "return_val": "{\n  \"action_id\": \"1670\",\n  \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled study in the UK\\u00a0found that prescribed burning to reduce the impact of nitrogen deposition did not alter the shoot length of common heather or the number of purple moor grass seedlings compared to mowing.\\nA controlled study in the UK\\u00a0found that burning to reduce the concentration of pollutants in a heathland affected by nitrogen pollution did not alter the cover or shoot length of heather relative to areas that were mowed.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3651\"}",
+            "return_val": "{\n  \"action_id\": \"3651\",\n  \"action_title\": \"Use prescribed burning: Grassland & shrubland\",\n  \"key_messages\": \"Key Messages:\\n\\nFourteen studies evaluated the effects of using prescribed burning in grassland and shrubland on reptile populations. Seven studies were in the USA, four were in Australia and one was in each of South Africa, Argentina and France.\\n\\nCOMMUNITY RESPONSE (6 STUDIES)\\n\\nCommunity composition (1 study): One replicated, before-and-after study in Australia found that reptile species composition was different before and immediately after burning in three grass types and remained different after vegetation grew back in one of three grass types.\\nRichness/diversity (5 studies): Two of three studies (including one replicated, controlled, before-and-after study) in South Africa, Argentina and the USA found that areas with annual burning had similar reptile species richness and diversity compared to unburned areas or that richness was similar across areas with a range of burn frequencies. The other study found that burned areas had higher reptile species richness than unburned areas. One replicated, site comparison study in Australia found that areas burned 1\\u20134 years earlier had lower reptile species richness than areas burned 11\\u201315 years earlier. One replicated, site comparison study in the USA found that areas with different burn frequencies had similar reptile species richness and diversity.\\n\\nPOPULATION RESPONSE (11 STUDIES)\\n\\nAbundance (11 studies): Three of six studies (including three replicated, randomized, controlled studies) in the USA and Argentina found that burned areas had a similar abundance of lizards, snakes and lizards and combined reptiles and amphibians compared to unburned areas. Two studies found that burning had mixed effects on the abundance of different reptile species and western yellow-bellied racer snakes.The other study found that burned areas had more eastern massasauga rattlesnakes than unburned areas. One replicated, site comparison study in Australia found that areas burned 1\\u20134 years earlier had a lower abundance of reptiles than areas burned 11\\u201315 years earlier. One controlled before-and-after study in the USA found that a burned area had a similar number of four snake species compared to when the area was managed by mowing. One site comparison study in France found that one reptile species was less abundant in areas managed by burning than areas grazed by sheep, whereas the abundance of five other species was similar in all areas. One replicated, before-and-after study in Australia found that immediately after burning, the abundance of reptiles was lower than before burning, but was similar after vegetation grew back. One replicated, randomized, site comparison study in Australia found that small-scale patch burning was associated with increased abundance of sand goanna burrows.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One replicated, randomized, controlled study in Australia found that some rocky outcrops that were burned were recolonized by pink-tailed worm-lizards.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1614\"}",
+            "return_val": "{\n  \"action_id\": \"1614\",\n  \"action_title\": \"Reduce the frequency of prescribed burning\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of reducing the frequency of prescribed burning on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1721\"}",
+            "return_val": "{\n  \"action_id\": \"1721\",\n  \"action_title\": \"Use prescribed burning to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, before-and-after trial in the USA\\u00a0found that burning to control trees did not change cover of two of three grass species.\\nOne randomized, controlled study in Italy\\u00a0found that prescribed burning to control trees reduced cover of common heather, increased cover of purple moor grass, and had mixed effects on the basal area of trees.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1723\"}",
+            "return_val": "{\n  \"action_id\": \"1723\",\n  \"action_title\": \"Use prescribed burning to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated controlled, paired, before-and-after study in the UK\\u00a0found that prescribed burning to reduce the cover of purple moor grass, did not reduce its cover but did reduce the cover of common heather.\\nOne randomized, replicated, controlled study in the UK\\u00a0found that prescribed burning initially reduced vegetation height, but this recovered over time.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1622\"}",
+            "return_val": "{\n  \"action_id\": \"1622\",\n  \"action_title\": \"Use prescribed burning to mimic natural fire cycle\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using prescribed burning to mimic the natural fire cycle on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1623\"}",
+            "return_val": "{\n  \"action_id\": \"1623\",\n  \"action_title\": \"Use prescribed burning to reduce potential for large wild fires\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using prescribed burning to reduce the potential for large wild fires on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"burning harmful effects adverse impacts wildlife vegetation shrubland\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1670\",\n    \"action_title\": \"Burn shrublands to reduce impacts of pollutants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1655\",\n    \"action_title\": \"Cut and burn bracken\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1623\",\n    \"action_title\": \"Use prescribed burning to reduce potential for large wild fires\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1690\",\n    \"action_title\": \"Burn leaf litter\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1721\",\n    \"action_title\": \"Use prescribed burning to control trees\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3652\",\n    \"action_title\": \"Use prescribed burning: Wetland\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1622\",\n    \"action_title\": \"Use prescribed burning to mimic natural fire cycle\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1723\",\n    \"action_title\": \"Use prescribed burning to control grass\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3651\",\n    \"action_title\": \"Use prescribed burning: Grassland & shrubland\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1725\",\n    \"action_title\": \"Use herbicide and prescribed burning to control grass\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1655\"}",
+            "return_val": "{\n  \"action_id\": \"1655\",\n  \"action_title\": \"Cut and burn bracken\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of cutting and burning bracken on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1725\"}",
+            "return_val": "{\n  \"action_id\": \"1725\",\n  \"action_title\": \"Use herbicide and prescribed burning to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled, paired, before-and-after study in the UK found that burning and applying herbicide to reduce the cover of purple moor grass reduced cover of common heather but did not reduce cover of purple moor grass.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the documented negative impacts of using prescribed burning to control unwanted vegetation in shrublands?\", \"summary\": \"Based on the action documents reviewed, several negative impacts of prescribed burning in shrublands have been documented. Prescribed burning reduced cover of common heather in studies from the UK (action 1723, 1725), showing that the practice can negatively affect desirable native vegetation while failing to control the target species. In one study, prescribed burning to reduce purple moor grass cover did not reduce the target species but did reduce common heather cover (action 1723). Similarly, burning combined with herbicide application reduced common heather cover but failed to reduce purple moor grass cover (action 1725). For wildlife impacts, studies showed that some individual bird species had similar or lower densities on burned areas compared to control areas (action 321). In reptile populations, immediate negative effects were documented, with reptile abundance being lower immediately after burning compared to before burning, though abundance recovered after vegetation regrew (action 3651). Additionally, areas burned 1-4 years earlier had lower reptile species richness and abundance compared to areas burned 11-15 years earlier (action 3651). Reptile species composition was found to be different immediately after burning and remained different after vegetation regrowth in some grass types (action 3651). One study found that a reptile species was less abundant in areas managed by burning compared to areas grazed by sheep (action 3651).\", \"action_ids\": [\"321\",\"1723\",\"1725\",\"3651\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented negative impacts of using prescribed burning to control unwanted vegetation in shrublands?\",\n  \"relevant_summary\": \"Based on the action documents reviewed, several negative impacts of prescribed burning in shrublands have been documented. Prescribed burning reduced cover of common heather in studies from the UK (action 1723, 1725), showing that the practice can negatively affect desirable native vegetation while failing to control the target species. In one study, prescribed burning to reduce purple moor grass cover did not reduce the target species but did reduce common heather cover (action 1723). Similarly, burning combined with herbicide application reduced common heather cover but failed to reduce purple moor grass cover (action 1725). For wildlife impacts, studies showed that some individual bird species had similar or lower densities on burned areas compared to control areas (action 321). In reptile populations, immediate negative effects were documented, with reptile abundance being lower immediately after burning compared to before burning, though abundance recovered after vegetation regrew (action 3651). Additionally, areas burned 1-4 years earlier had lower reptile species richness and abundance compared to areas burned 11-15 years earlier (action 3651). Reptile species composition was found to be different immediately after burning and remained different after vegetation regrowth in some grass types (action 3651). One study found that a reptile species was less abundant in areas managed by burning compared to areas grazed by sheep (action 3651).\",\n  \"action_ids\": [\n    \"321\",\n    \"1723\",\n    \"1725\",\n    \"3651\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1721",
+      "1722",
+      "1723",
+      "1724",
+      "1725"
+    ],
+    "regenerated_ids": [
+      "1625",
+      "1721",
+      "1722",
+      "1723",
+      "1724",
+      "1725"
+    ]
+  },
+  {
+    "query": "To manage shrubland succession without using prescribed fire, what evidence exists for alternative methods like cutting/mowing or altering grazing intensity?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Evidence for alternative methods to manage shrubland succession without prescribed fire includes both cutting/mowing and grazing intensity alterations, though research is limited. For cutting/mowing, one site comparison study in the USA found that a pine barren managed for 13 years by mechanical cutting had higher abundance of Karner blue butterflies than barrens managed by rotational burning or unburned refuges (Action 3947). Studies evaluating cutting to mimic grazing found mixed results: a systematic review of three studies in lowland heathland in North Western Europe found that mowing did not alter heather abundance relative to grass abundance, while a site comparison in Italy found that mowing increased heather cover and grass cover and reduced tree cover (Action 1627). For bird conservation, one controlled study from the USA found that overall bird diversity was similar between chained areas, burned areas and controls, while five studies from the USA and Europe found that some species were found at greater densities or abundances on sites with mechanical vegetation control than on sites with prescribed burning or no management (Action 337). Regarding grazing intensity, one replicated, paired, controlled study in bogs in the UK found that reducing grazing intensity resulted in greater total vegetation and shrub cover, and higher vegetation biomass (Action 1735). One replicated controlled trial in mixed temperate forest in the USA showed that for bee conservation, controlling fire using cutting and burning combined increases herbaceous plant cover in subsequent years (Action 37). However, no studies were found that evaluated cutting/mowing shrubland specifically to control trees (Action 1633) or cutting trees and increasing livestock numbers (Action 1635).",
+    "summary_action_ids": [
+      "3947",
+      "1627",
+      "337",
+      "1735",
+      "37",
+      "1633",
+      "1635"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrubland succession cutting mowing grazing management\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1633\",\n    \"action_title\": \"Cut/mow shrubland to control trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3950\",\n    \"action_title\": \"Manage wetlands or ponds by grazing or cutting to prevent succession\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3947\",\n    \"action_title\": \"Manage heathland by cutting\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3713\",\n    \"action_title\": \"Manage vegetation by cutting or mowing\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1639\",\n    \"action_title\": \"Cut/mow to control grass and sow seed of shrubland plants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1635\",\n    \"action_title\": \"Cut trees and increase livestock numbers\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1627\",\n    \"action_title\": \"Use cutting/mowing to mimic grazing\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1638\",\n    \"action_title\": \"Cut/mow to control grass\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3711\",\n    \"action_title\": \"Manage vegetation using livestock grazing\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3957\",\n    \"action_title\": \"Cease mowing on grassland to allow early succession\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrubland grazing intensity livestock succession alternative prescribed fire\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1735\",\n    \"action_title\": \"Reduce intensity of livestock grazing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1722\",\n    \"action_title\": \"Increase number of livestock and use prescribed burning to control trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3652\",\n    \"action_title\": \"Use prescribed burning: Wetland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3878\",\n    \"action_title\": \"Change season/timing of prescribed burning\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3882\",\n    \"action_title\": \"Use prescribed fire to maintain or restore disturbance in grasslands or other open habitats\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3657\",\n    \"action_title\": \"Use prescribed burning in combination with grazing\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1622\",\n    \"action_title\": \"Use prescribed burning to mimic natural fire cycle\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1623\",\n    \"action_title\": \"Use prescribed burning to reduce potential for large wild fires\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1723\",\n    \"action_title\": \"Use prescribed burning to control grass\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3651\",\n    \"action_title\": \"Use prescribed burning: Grassland & shrubland\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1633\"}",
+            "return_val": "{\n  \"action_id\": \"1633\",\n  \"action_title\": \"Cut/mow shrubland to control trees\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of cutting/mowing to control trees on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3950\"}",
+            "return_val": "{\n  \"action_id\": \"3950\",\n  \"action_title\": \"Manage wetlands or ponds by grazing or cutting to prevent succession\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of managing wetlands or ponds by grazing or cutting. Two studies were in the Netherlands\\u00a0and one was in Switzerland.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Switzerland\\u00a0found that fens managed by mowing had a greater species richness of butterflies than fens managed by cattle grazing.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One replicated, site comparison study in the Netherlands\\u00a0found that recently cut fens had fewer large copper eggs than uncut fens.\\nSurvival (2 studies): Two replicated, site comparison studies in the Netherlands\\u00a0found that large copper caterpillar survival was lower in recently cut fens, and fens cut in autumn or winter, than in uncut fens.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3947\"}",
+            "return_val": "{\n  \"action_id\": \"3947\",\n  \"action_title\": \"Manage heathland by cutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of managing heathland by cutting. Two studies were in the USA1,2 and one was in the UK3.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): One site comparison study in the USA2 found that a pine barren managed for 13 years by mechanical cutting had a higher abundance of Karner blue butterflies than barrens managed by rotational burning or unburned refuges. One before-and-after study in the USA1 found that the abundance of five butterfly species did not change after the management of a pine barren was changed from rotational burning to unintensive cutting. One before-and-after study in the UK3 reported that the abundance of high brown fritillary and small pearl-bordered fritillary increased after scrub cutting, along with tree felling, coppicing and grazing.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3713\"}",
+            "return_val": "{\n  \"action_id\": \"3713\",\n  \"action_title\": \"Manage vegetation by cutting or mowing\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies evaluated the effects of managing vegetation by cutting or mowing on reptile populations. Five studies were in the USA, one was in Australia, and one was in Spain.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): Three replicated, randomized, controlled studies (including one before-and-after study) in the USA\\u00a0found that areas where vegetation was managed by cutting had similar reptile species richness compared to areas with no cutting.\\n\\nPOPULATION RESPONSE (5 STUDIES)\\n\\nAbundance (4 studies): Three of four replicated, controlled studies (including three randomized studies) in the USA\\u00a0found that areas where vegetation was managed by cutting had similar reptile abundance compared to areas with no cutting. The other study\\u00a0found that densities of eastern Massassauga rattlesnakes were higher after cutting during the first three years, but similar after four years.\\nCondition (1 study): One replicated, randomized, controlled, before-and-after study in Spain\\u00a0found that an adapted brush cutter caused less damage to tortoise carcasses than a conventional brush cutter.\\n\\nBEHAVIOUR (1 STUDIES)\\n\\nUse (2 studies): One replicated, randomized, controlled study in Australia\\u00a0found that after cutting back canopy vegetation, reptiles used unshaded rocks more often than shaded rocks in winter but not spring. One randomized study in the USA\\u00a0found that mown areas were used for nesting by Blanding\\u2019s turtles less frequently than tilled areas.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1627\"}",
+            "return_val": "{\n  \"action_id\": \"1627\",\n  \"action_title\": \"Use cutting/mowing to mimic grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne systematic review of three studies in lowland heathland in North Western Europe\\u00a0found that mowing did not alter heather abundance relative to grass abundance.\\u00a0A site comparison in Italy\\u00a0found that mowing increased heather cover. Two replicated, randomized, before-and-after trials in Spain\\u00a0(one of which was controlled) found that using cutting to mimic grazing reduced heather cover.\\nOne replicated, randomized, controlled, before-and-after trial in Spain\\u00a0found that cutting increased the number of plant species. However, a replicated, randomized, before-and-after trial\\u00a0found that the number of plant species only increased in a minority of cases.\\nOne replicated, randomized, before-and-after trial in Spain found that cutting to mimic grazing increased grass cover. A site comparison in Italy\\u00a0found that mowing increased grass cover.\\nOne site comparison study in Italy\\u00a0found a reduction in tree cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3711\"}",
+            "return_val": "{\n  \"action_id\": \"3711\",\n  \"action_title\": \"Manage vegetation using livestock grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of managing vegetation using livestock grazing on reptile populations. One study was in France\\u00a0and one was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One site comparison study in France\\u00a0found that one reptile species was more abundant in areas grazed by sheep than in areas managed by burning, whereas the abundance of five other species was similar in all areas.\\nReproductive success (1 study): One before-and-after study in the USA\\u00a0found that after grazing cattle to restore bog turtle habitat, along with providing artificial nest covers, more bog turtle eggs were laid and hatching success was higher than before.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One before-and-after study in the USA\\u00a0found that bog turtle nests were laid only in areas that had been grazed in the current or previous growing season.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1735\"}",
+            "return_val": "{\n  \"action_id\": \"1735\",\n  \"action_title\": \"Reduce intensity of livestock grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on peatland vegetation of reducing livestock grazing intensity. This study was in bogs.\\nVegetation cover (1 study): One replicated, paired, controlled study in bogs in the UK\\u00a0found that total vegetation and shrub cover were greater where grazing intensity was lower. Cottongrass cover was greater where grazing intensity was lower (one species) or unaffected by grazing intensity (one species).\\nVegetation structure (1 study): The same study\\u00a0found that vegetation biomass was higher where grazing intensity was lower.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1635\"}",
+            "return_val": "{\n  \"action_id\": \"1635\",\n  \"action_title\": \"Cut trees and increase livestock numbers\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of controlling tree species by cutting and increasing grazing intensity of livestock on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"mechanical cutting shrubland management alternative fire control succession\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"37\",\n    \"action_title\": \"Control fire risk using mechanical shrub control and/or prescribed burning\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1624\",\n    \"action_title\": \"Cut strips of shrubland vegetation to reduce the spread of fire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3881\",\n    \"action_title\": \"Mechanically remove mid-storey or ground vegetation to create fire breaks\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"337\",\n    \"action_title\": \"Manually control or remove midstorey and ground-level vegetation (including mowing, chaining, cutting etc) in shrubland\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3947\",\n    \"action_title\": \"Manage heathland by cutting\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3713\",\n    \"action_title\": \"Manage vegetation by cutting or mowing\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1679\",\n    \"action_title\": \"Allow shrubland to regenerate without active management\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1724\",\n    \"action_title\": \"Cut and use prescribed burning to control grass\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3655\",\n    \"action_title\": \"Use prescribed burning in combination with vegetation cutting\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1648\",\n    \"action_title\": \"Rotovate to control grass\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"37\"}",
+            "return_val": "{\n  \"action_id\": \"37\",\n  \"action_title\": \"Control fire risk using mechanical shrub control and/or prescribed burning\",\n  \"key_messages\": \"Key Messages:\\nOne replicated controlled trial in mixed temperate forest in the USA showed that for bee conservation, it is best to control fire using cutting and burning combined. This increases herbaceous plant cover in subsequent years.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"337\"}",
+            "return_val": "{\n  \"action_id\": \"337\",\n  \"action_title\": \"Manually control or remove midstorey and ground-level vegetation (including mowing, chaining, cutting etc) in shrubland\",\n  \"key_messages\": \"Key Messages:\\n\\nOf seven studies, one controlled study from the USA, found that overall bird diversity was similar between chained areas, burned areas and controls. A replicated and controlled study from the USA found that overall diversity was lower on mown sites than\\u00a0 controls, but that grassland-specialist species were present on managed sites.\\nFive studies from the USA and Europe found than some study species were found at greater densities or abundances on sites with mechanical vegetation control than on sites with prescribed burning or\\u00a0 no management, or that abundances increased after management. One study investigated several interventions at once.\\nOne study from the USA found that total bird densities were similar between chained, burned and control sites. A replicated controlled study from the USA found that mown sites had lower bird abundances than control sites. Three studies from the USA found that some species were less abundant on sites with mechanical vegetation removal, compared with burned or control sites, or showed smaller increases after management.\\nOne replicated, controlled study from the USA found no differences between areas cut in winter and those cut in summer.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1639\"}",
+            "return_val": "{\n  \"action_id\": \"1639\",\n  \"action_title\": \"Cut/mow to control grass and sow seed of shrubland plants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne randomized, replicated, controlled study in the USA\\u00a0found that the biomass of sagebrush plants in areas where grass was cut and seeds sown did not differ from areas where grass was not cut, but seeds were sown.\\nOne randomized controlled study in the USA\\u00a0found that cutting grass and sowing seeds increased shrub seedling abundance and reduced grass cover\\nOne randomized, replicated, controlled study in the USA\\u00a0found that sowing seeds and mowing did not change the cover of non-native plants or the number of native plant species.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\": \"Evidence for alternative methods to manage shrubland succession without prescribed fire includes both cutting/mowing and grazing intensity alterations, though research is limited. For cutting/mowing, one site comparison study in the USA found that a pine barren managed for 13 years by mechanical cutting had higher abundance of Karner blue butterflies than barrens managed by rotational burning or unburned refuges (Action 3947). Studies evaluating cutting to mimic grazing found mixed results: a systematic review of three studies in lowland heathland in North Western Europe found that mowing did not alter heather abundance relative to grass abundance, while a site comparison in Italy found that mowing increased heather cover and grass cover and reduced tree cover (Action 1627). For bird conservation, one controlled study from the USA found that overall bird diversity was similar between chained areas, burned areas and controls, while five studies from the USA and Europe found that some species were found at greater densities or abundances on sites with mechanical vegetation control than on sites with prescribed burning or no management (Action 337). Regarding grazing intensity, one replicated, paired, controlled study in bogs in the UK found that reducing grazing intensity resulted in greater total vegetation and shrub cover, and higher vegetation biomass (Action 1735). One replicated controlled trial in mixed temperate forest in the USA showed that for bee conservation, controlling fire using cutting and burning combined increases herbaceous plant cover in subsequent years (Action 37). However, no studies were found that evaluated cutting/mowing shrubland specifically to control trees (Action 1633) or cutting trees and increasing livestock numbers (Action 1635).\", \"action_ids\": [\"3947\",\"1627\",\"337\",\"1735\",\"37\",\"1633\",\"1635\"], \"query\": \"To manage shrubland succession without using prescribed fire, what evidence exists for alternative methods like cutting/mowing or altering grazing intensity?\"}",
+            "return_val": "{\n  \"query\": \"To manage shrubland succession without using prescribed fire, what evidence exists for alternative methods like cutting/mowing or altering grazing intensity?\",\n  \"relevant_summary\": \"Evidence for alternative methods to manage shrubland succession without prescribed fire includes both cutting/mowing and grazing intensity alterations, though research is limited. For cutting/mowing, one site comparison study in the USA found that a pine barren managed for 13 years by mechanical cutting had higher abundance of Karner blue butterflies than barrens managed by rotational burning or unburned refuges (Action 3947). Studies evaluating cutting to mimic grazing found mixed results: a systematic review of three studies in lowland heathland in North Western Europe found that mowing did not alter heather abundance relative to grass abundance, while a site comparison in Italy found that mowing increased heather cover and grass cover and reduced tree cover (Action 1627). For bird conservation, one controlled study from the USA found that overall bird diversity was similar between chained areas, burned areas and controls, while five studies from the USA and Europe found that some species were found at greater densities or abundances on sites with mechanical vegetation control than on sites with prescribed burning or no management (Action 337). Regarding grazing intensity, one replicated, paired, controlled study in bogs in the UK found that reducing grazing intensity resulted in greater total vegetation and shrub cover, and higher vegetation biomass (Action 1735). One replicated controlled trial in mixed temperate forest in the USA showed that for bee conservation, controlling fire using cutting and burning combined increases herbaceous plant cover in subsequent years (Action 37). However, no studies were found that evaluated cutting/mowing shrubland specifically to control trees (Action 1633) or cutting trees and increasing livestock numbers (Action 1635).\",\n  \"action_ids\": [\n    \"3947\",\n    \"1627\",\n    \"337\",\n    \"1735\",\n    \"37\",\n    \"1633\",\n    \"1635\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1627",
+      "1628",
+      "1614",
+      "1622",
+      "1623",
+      "1625",
+      "1670",
+      "1721",
+      "1722",
+      "1723",
+      "1724",
+      "1725"
+    ],
+    "regenerated_ids": [
+      "1545",
+      "1607",
+      "1608",
+      "1609",
+      "1627",
+      "1628",
+      "1634"
+    ]
+  },
+  {
+    "query": "What are the documented effects of manipulating livestock density\u2014both increasing and decreasing it\u2014on shrubland plant communities?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Studies document multiple effects of manipulating livestock density on shrubland plant communities. When increasing livestock numbers, research shows that cover of common heather declined in sites with high livestock density (1628), dwarf shrub cover was lower in grazed areas than ungrazed areas (1628), and areas grazed by cattle had lower cover of ericaceous shrubs but higher cover of non-ericaceous shrubs (1628). Increased grazing intensity increased cover of grass species relative to heather species (1628), and areas with high livestock density had higher grass and sedge cover than ungrazed areas (1628). However, increasing livestock numbers resulted in an increase in the number of common heather and cross-leaved heath seedlings in one study (1628), and one study found no alteration in shrub cover (1628).\n\nWhen reducing livestock numbers or excluding livestock, different patterns emerge. Reducing or stopping grazing increased abundance or cover of shrubs (1607), dwarf shrub cover was higher in ungrazed sites (1607), and reducing grazing increased cover of western gorse (1607). Using fences to exclude livestock increased shrub cover, abundance, biomass, and individual heather plant biomass and height (1545). Removing feral sheep, cattle and horses increased shrub cover and reduced grass cover (1663), and reducing grazing pressure by red deer increased cover and height of common heather (1663). However, ungrazed sites had lower cover of non-ericaceous shrubs than grazed sites (1607), and grass and sedge cover were lower in ungrazed sites than grazed sites (1607).\n\nReducing grazing intensity showed that total vegetation and shrub cover were greater where grazing intensity was lower, and vegetation biomass was higher where grazing intensity was lower (1735). Effects on species diversity varied, with some studies finding grazed areas had higher numbers of plant species than ungrazed areas (1628), while others found ungrazed sites had fewer plant species than grazed sites (1607).",
+    "summary_action_ids": [
+      "1628",
+      "1607",
+      "1545",
+      "1663",
+      "1735"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"livestock density shrubland plant communities grazing\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1628\",\n    \"action_title\": \"Increase number of livestock\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3496\",\n    \"action_title\": \"Modify grazing regime: Wetland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1663\",\n    \"action_title\": \"Reduce numbers of large herbivores\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1608\",\n    \"action_title\": \"Change type of livestock\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1205\",\n    \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2979\",\n    \"action_title\": \"Change type of livestock grazing: brackish/salt marshes\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1545\",\n    \"action_title\": \"Use fences to exclude livestock from shrublands\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2301\",\n    \"action_title\": \"(CFT) Wetland plants: Extensive grazing (29a)\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1646\",\n    \"action_title\": \"Use grazing or alter livestock to control grass\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1662\",\n    \"action_title\": \"Use fences to exclude large herbivores\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"livestock density manipulation vegetation effects\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1786\",\n    \"action_title\": \"Limit the density of livestock on farmland near peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1206\",\n    \"action_title\": \"Prevent livestock grazing in forests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1628\",\n    \"action_title\": \"Increase number of livestock\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2981\",\n    \"action_title\": \"Change type of livestock grazing: brackish/saline swamps\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2980\",\n    \"action_title\": \"Change type of livestock grazing: freshwater swamps\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2978\",\n    \"action_title\": \"Change type of livestock grazing: freshwater marshes\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1878\",\n    \"action_title\": \"Amphibians: Manipulate adult density within the enclosure\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2977\",\n    \"action_title\": \"Change season/timing of livestock grazing: brackish/saline swamps\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1077\",\n    \"action_title\": \"Brown and black bullheads: Habitat manipulation\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1213\",\n    \"action_title\": \"Remove woody debris after timber harvest\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1628\"}",
+            "return_val": "{\n  \"action_id\": \"1628\",\n  \"action_title\": \"Increase number of livestock\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo site comparison studies in the UK\\u00a0found that cover of common heather declined in sites with a high density of livestock. One site comparison in the Netherlands\\u00a0found that dwarf shrub cover was lower in grazed areas than in ungrazed areas. One before-and-after study in Belgium\\u00a0found that grazing increased cover of heather. One site comparison in France\\u00a0found that areas grazed by cattle had higher cover of non-ericaceous shrubs, but lower cover of ericaceous shrubs. One before-and-after study in the Netherlands\\u00a0found that increasing the number of livestock resulted in an increase in the number of common heather\\u00a0and cross-leaved heath seedlings. One randomized, replicated, paired, controlled study in the USA\\u00a0found that increasing the number of livestock did not alter shrub cover. One replicated, site comparison study\\u00a0and one before-and-after study\\u00a0in the UK\\u00a0and Netherlands\\u00a0found that increasing grazing had mixed effects on shrub\\u00a0and heather cover.\\nThree site comparisons in France,\\u00a0the Netherlands\\u00a0and Greece found that grazed areas had a higher number of plant species than ungrazed areas. One before-and-after study in Belgium\\u00a0found that the number of plant species did not change after the introduction of grazing.\\u00a0One replicated, before-and-after study in the Netherlands\\u00a0found a decrease in the number of plant species.\\nOne before-and-after study in the Netherlands\\u00a0found that increasing the number of livestock resulted in a decrease in vegetation height. One replicated, before-and-after trial in France\\u00a0found that grazing to control native woody species increased vegetation cover in one of five sites but did not increase vegetation cover in four of five sites.\\nA systematic review of four studies in North Western Europe\\u00a0found that increased grazing intensity increased the cover of grass species, relative to heather species. One before-and-after study and two site comparisons in the Netherlands\\u00a0and France\\u00a0found areas with high livestock density had higher grass\\u00a0and sedge\\u00a0cover than ungrazed areas. One randomized, replicated, paired, controlled study in the USA\\u00a0found that increasing the number of livestock reduced grass and herb cover. One before-and-after study in Spain\\u00a0found that increasing the number of ponies in a heathland site reduced grass height.\\u00a0One replicated, site comparison in the UK\\u00a0and one replicated before-and-after study in the Netherlands\\u00a0found that increasing cattle had mixed effects on grass\\u00a0and herbaceous species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1663\"}",
+            "return_val": "{\n  \"action_id\": \"1663\",\n  \"action_title\": \"Reduce numbers of large herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after trial in the USA\\u00a0found that removing feral sheep, cattle and horses increased shrub cover and reduced grass cover. One replicated study in the UK\\u00a0found that reducing grazing pressure by red deer increased the cover and height of common heather.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1545\"}",
+            "return_val": "{\n  \"action_id\": \"1545\",\n  \"action_title\": \"Use fences to exclude livestock from shrublands\",\n  \"key_messages\": \"Key Messages:\\n\\u00a0\\n\\nTwo replicated, controlled, randomized studies (one of which was also a before-and-after trial) and one controlled before-and-after trial in the UK\\u00a0found that using fences to exclude livestock increased shrub cover or abundance. Two replicated, controlled, randomized studies in Germany\\u00a0and the UK\\u00a0found that using fences increased shrub biomass\\u00a0or the biomass and height of individual heather plants. Two controlled studies (one of which was a before-and-after study) in Denmark\\u00a0and the UK\\u00a0found that heather presence or cover was higher in fenced areas that in areas that were not fenced.\\u00a0However, one site comparison study in the USA\\u00a0found that using fences led to decreased cover of woody plants. Three replicated, controlled studies (one of which was a before and after study) in the USA\\u00a0and the UK\\u00a0found that fencing either had a mixed effect on shrub cover or did not alter shrub cover.\\nOne randomized, replicated, controlled, paired study in the UK\\u00a0found that using fences to exclude livestock did not alter the number of plant species, but did increase vegetation height and biomass. One controlled, before-and-after study in the UK\\u00a0found that fenced areas had lower species richness than unfenced areas.\\nOne randomized, replicated, controlled, before-and-after trial in the UK\\u00a0and one site comparison study in the USA\\u00a0found that using fences to exclude livestock led to a decline in grass cover. However, four controlled studies (one of which a before-and-after trial) in the USA, the UK, and Finland\\u00a0found that using fences did not alter cover of grass species. One site comparison study in the USA\\u00a0and one replicated, controlled study in the UK\\u00a0recorded an increase in grass cover.\\nOne controlled study in Finland\\u00a0found that using fences to exclude livestock did not alter the abundance of herb species and one site comparison in the USA\\u00a0found no difference in forb cover between fenced and unfenced areas. One replicated, controlled study in the USA\\u00a0found fencing had a mixed effect on herb cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1786\"}",
+            "return_val": "{\n  \"action_id\": \"1786\",\n  \"action_title\": \"Limit the density of livestock on farmland near peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe\\u00a0found no studies that evaluated the effects, on peatland vegetation, of limiting the density of livestock on farmland near peatlands.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1646\"}",
+            "return_val": "{\n  \"action_id\": \"1646\",\n  \"action_title\": \"Use grazing or alter livestock to control grass\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled, before-and-after study in the Netherlands\\u00a0found that grazing to reduce grass cover had mixed effects on cover of common heather and cross-leaved heath.\\nOne replicated, controlled, before-and-after study in the Netherlands\\u00a0found that cover of wavy-hair grass increased and one before-and-after study in Spain\\u00a0found a reduction in grass height.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrub cover heather vegetation density grazing effects\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1628\",\n    \"action_title\": \"Increase number of livestock\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1607\",\n    \"action_title\": \"Reduce number of livestock\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1735\",\n    \"action_title\": \"Reduce intensity of livestock grazing\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1663\",\n    \"action_title\": \"Reduce numbers of large herbivores\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1545\",\n    \"action_title\": \"Use fences to exclude livestock from shrublands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1762\",\n    \"action_title\": \"Use grazing to maintain or restore disturbance\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1630\",\n    \"action_title\": \"Cut trees\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1734\",\n    \"action_title\": \"Exclude or remove livestock from degraded peatlands\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"647\",\n    \"action_title\": \"Maintain upland heath/moorland\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1824\",\n    \"action_title\": \"Introduce seeds of peatland trees/shrubs\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1607\"}",
+            "return_val": "{\n  \"action_id\": \"1607\",\n  \"action_title\": \"Reduce number of livestock\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after trials in the UK and South Africa\\u00a0and one replicated, controlled study in the UK\\u00a0found that the reducing\\u00a0or stopping\\u00a0grazing increased the abundance\\u00a0or cover\\u00a0of shrubs. Two site comparison studies in the UK\\u00a0found that cover of common heather declined in sites with high livestock density, but increased in sites with low livestock density. One site comparison study in the Netherlands\\u00a0found that dwarf shrub cover was higher in ungrazed sites. One replicated, randomized, before-and-after study in Spain\\u00a0found that reducing grazing increased the cover of western gorse. One randomized, controlled trial and one before-and-after trial in the USA\\u00a0found that stopping grazing did not increase shrub abundance. One site comparison study in France\\u00a0found that ungrazed sites had higher cover of ericaceous shrubs, but lower cover of non-ericaceous shrubs than grazed sites. One site comparison study in the UK\\u00a0found that reducing grazing had mixed effects on shrub cover.\\nOne replicated, randomized, controlled study in the UK\\u00a0found that reducing grazing increased vegetation height. However, one replicated, controlled, paired site, site comparison study in the UK\\u00a0found that reducing grazing led to a reduction in the height of heather plants.\\nTwo site comparison studies in France\\u00a0and the Netherlands\\u00a0found that ungrazed sites had a lower number of plant species than grazed sites. One replicated, controlled, paired, site comparison study in Namibia and South Africa\\u00a0found that reducing livestock numbers increased plant cover and the number of plant species.\\nOne controlled study in Israel\\u00a0found that reducing grazing increased plant biomass. However, one randomized, site comparison on the island of Gomera, Spain\\u00a0found that reducing grazing did not increase plant cover and one replicated, controlled study in the UK\\u00a0found that the number of plant species did not change .\\nOne replicated, controlled study in the UK\\u00a0found no change in the cover of rush or herbaceous species as a result of a reduction in grazing. Two site comparison studies in France\\u00a0and the Netherlands\\u00a0found that grass cover\\u00a0and sedge cover\\u00a0were lower in ungrazed sites than in grazed sites. One randomized, controlled study in the USA\\u00a0found a mixed effect of reducing grazing on grass cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1735\"}",
+            "return_val": "{\n  \"action_id\": \"1735\",\n  \"action_title\": \"Reduce intensity of livestock grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on peatland vegetation of reducing livestock grazing intensity. This study was in bogs.\\nVegetation cover (1 study): One replicated, paired, controlled study in bogs in the UK\\u00a0found that total vegetation and shrub cover were greater where grazing intensity was lower. Cottongrass cover was greater where grazing intensity was lower (one species) or unaffected by grazing intensity (one species).\\nVegetation structure (1 study): The same study\\u00a0found that vegetation biomass was higher where grazing intensity was lower.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1762\"}",
+            "return_val": "{\n  \"action_id\": \"1762\",\n  \"action_title\": \"Use grazing to maintain or restore disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects, on peatland vegetation, of using grazing to maintain or restore disturbance. All four studies were in fens or fen meadows.\\u00a0N.B. Grazing in peatlands with no history of disturbance is considered as a separate action.\\nPlant community composition (1 study): One replicated, paired, site comparison study in Germany\\u00a0found that the overall plant community composition differed between grazed and mown fen meadows.\\nCharacteristic plants (3 studies): One replicated, paired, controlled study in Germany\\u00a0reported that the abundance of bog/fen-characteristic plants was similar in grazed and ungrazed fen meadows. One replicated before-and-after study in a fen in the UK\\u00a0reported that cover of fen-characteristic mosses did not change after grazers were introduced.\\u00a0One replicated, paired, site comparison study, also in Germany,\\u00a0found that grazed fen meadows contained fewer fen-characteristic plant species than mown meadows.\\nHerb cover (2 studies): Two before-and-after studies in fens in the UK reported that grazing increased cover of some herb groups (cottongrasses,\\u00a0sedges\\u00a0or\\u00a0all grass-like plants). One of the studies\\u00a0found that grazing reduced purple moor grass cover, but the other found that grazing typically had no effect.\\nMoss cover (2 studies): One replicated before-and-after study in a fen in the UK\\u00a0reported that cover of fen-characteristic mosses did not change after grazers were introduced. One controlled, before-and-after study in a fen in the UK\\u00a0found that grazing reduced Sphagnum moss cover.\\nTree/shrub cover (2 studies):\\u00a0Of two before-and-after studies in fens in the UK, one found that grazing reduced shrub cover but the other found that grazing typically had no effect on shrub cover.\\nOverall plant richness/diversity (3 studies): Of two before-and-after studies in fens in the UK, one found that plant species richness increased after grazing was reinstated but the other\\u00a0reported that there was typically no effect.\\u00a0One replicated, paired, site comparison study in Germany\\u00a0found that grazed fen meadows contained fewer plant species than mown meadows.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\": \"Studies document multiple effects of manipulating livestock density on shrubland plant communities. When increasing livestock numbers, research shows that cover of common heather declined in sites with high livestock density (1628), dwarf shrub cover was lower in grazed areas than ungrazed areas (1628), and areas grazed by cattle had lower cover of ericaceous shrubs but higher cover of non-ericaceous shrubs (1628). Increased grazing intensity increased cover of grass species relative to heather species (1628), and areas with high livestock density had higher grass and sedge cover than ungrazed areas (1628). However, increasing livestock numbers resulted in an increase in the number of common heather and cross-leaved heath seedlings in one study (1628), and one study found no alteration in shrub cover (1628).\\n\\nWhen reducing livestock numbers or excluding livestock, different patterns emerge. Reducing or stopping grazing increased abundance or cover of shrubs (1607), dwarf shrub cover was higher in ungrazed sites (1607), and reducing grazing increased cover of western gorse (1607). Using fences to exclude livestock increased shrub cover, abundance, biomass, and individual heather plant biomass and height (1545). Removing feral sheep, cattle and horses increased shrub cover and reduced grass cover (1663), and reducing grazing pressure by red deer increased cover and height of common heather (1663). However, ungrazed sites had lower cover of non-ericaceous shrubs than grazed sites (1607), and grass and sedge cover were lower in ungrazed sites than grazed sites (1607).\\n\\nReducing grazing intensity showed that total vegetation and shrub cover were greater where grazing intensity was lower, and vegetation biomass was higher where grazing intensity was lower (1735). Effects on species diversity varied, with some studies finding grazed areas had higher numbers of plant species than ungrazed areas (1628), while others found ungrazed sites had fewer plant species than grazed sites (1607).\", \"action_ids\": [\"1628\",\"1607\",\"1545\",\"1663\",\"1735\"], \"query\": \"What are the documented effects of manipulating livestock density\u2014both increasing and decreasing it\u2014on shrubland plant communities?\"}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of manipulating livestock density\\u2014both increasing and decreasing it\\u2014on shrubland plant communities?\",\n  \"relevant_summary\": \"Studies document multiple effects of manipulating livestock density on shrubland plant communities. When increasing livestock numbers, research shows that cover of common heather declined in sites with high livestock density (1628), dwarf shrub cover was lower in grazed areas than ungrazed areas (1628), and areas grazed by cattle had lower cover of ericaceous shrubs but higher cover of non-ericaceous shrubs (1628). Increased grazing intensity increased cover of grass species relative to heather species (1628), and areas with high livestock density had higher grass and sedge cover than ungrazed areas (1628). However, increasing livestock numbers resulted in an increase in the number of common heather and cross-leaved heath seedlings in one study (1628), and one study found no alteration in shrub cover (1628).\\n\\nWhen reducing livestock numbers or excluding livestock, different patterns emerge. Reducing or stopping grazing increased abundance or cover of shrubs (1607), dwarf shrub cover was higher in ungrazed sites (1607), and reducing grazing increased cover of western gorse (1607). Using fences to exclude livestock increased shrub cover, abundance, biomass, and individual heather plant biomass and height (1545). Removing feral sheep, cattle and horses increased shrub cover and reduced grass cover (1663), and reducing grazing pressure by red deer increased cover and height of common heather (1663). However, ungrazed sites had lower cover of non-ericaceous shrubs than grazed sites (1607), and grass and sedge cover were lower in ungrazed sites than grazed sites (1607).\\n\\nReducing grazing intensity showed that total vegetation and shrub cover were greater where grazing intensity was lower, and vegetation biomass was higher where grazing intensity was lower (1735). Effects on species diversity varied, with some studies finding grazed areas had higher numbers of plant species than ungrazed areas (1628), while others found ungrazed sites had fewer plant species than grazed sites (1607).\",\n  \"action_ids\": [\n    \"1628\",\n    \"1607\",\n    \"1545\",\n    \"1663\",\n    \"1735\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1607",
+      "1628"
+    ],
+    "regenerated_ids": [
+      "1545",
+      "1607",
+      "1628"
+    ]
+  },
+  {
+    "query": "What is the state of the evidence for conservation actions aimed at mitigating the impacts of human infrastructure, such as residential development and transportation corridors, on shrublands?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "The evidence for conservation actions aimed at mitigating the impacts of human infrastructure on shrublands is extremely limited. For shrubland-specific conservation actions related to infrastructure impacts, no studies were found that evaluated maintaining habitat corridors over or under roads and other transportation corridors (Action 1617), creating buffer zones beside roads and other transportation corridors (Action 1618), maintaining or creating habitat corridors in developed areas (Action 1543), removing residential or commercial development (Action 1542), or improving connectivity between areas of shrubland to allow species movements and habitat shifts in response to climate change (Action 1673). Additionally, no studies were found that evaluated legally protecting habitat around shrubland (Action 1675). The only relevant evidence found was one before-and-after study in Belize that found black howler monkey numbers increased by 138% over 13 years after the protection of a forest corridor, alongside other interventions (Action 1580), though this was not specific to shrublands. One replicated study in Botswana found that retained wildlife corridors in residential areas were used by 19 mammal species, including African elephants (Action 2354), but again this was not shrubland-specific. Overall, there is a significant lack of empirical evidence for the effectiveness of conservation actions specifically designed to mitigate infrastructure impacts on shrubland habitats.",
+    "summary_action_ids": [
+      "1617",
+      "1618",
+      "1543",
+      "1542",
+      "1673",
+      "1675",
+      "1580",
+      "2354"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrublands infrastructure residential development transportation corridors conservation mitigation\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1617\",\n    \"action_title\": \"Maintain habitat corridors over or under roads and other transportation corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1618\",\n    \"action_title\": \"Create buffer zones beside roads and other transportation corridors\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1543\",\n    \"action_title\": \"Maintain/create habitat corridors in developed areas\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1542\",\n    \"action_title\": \"Remove residential or commercial development\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2995\",\n    \"action_title\": \"Design transportation or service corridors to maintain water flow\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2354\",\n    \"action_title\": \"Retain wildlife corridors in residential areas\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2254\",\n    \"action_title\": \"Use green engineering techniques on artificial structures - Modify rock dump to make it more similar to natural substrate\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2255\",\n    \"action_title\": \"Use green engineering techniques on artificial structures - Cover subsea cables with artificial reefs\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2256\",\n    \"action_title\": \"Use green engineering techniques on artificial structures - Cover subsea cables with materials that encourage the accumulation of natural sediments\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1739\",\n    \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrubland habitat development roads transportation infrastructure\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1617\",\n    \"action_title\": \"Maintain habitat corridors over or under roads and other transportation corridors\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1618\",\n    \"action_title\": \"Create buffer zones beside roads and other transportation corridors\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1665\",\n    \"action_title\": \"Plant vegetation to act as a buffer to exclude pollution\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2995\",\n    \"action_title\": \"Design transportation or service corridors to maintain water flow\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1464\",\n    \"action_title\": \"Re-route vehicles around protected areas\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3506\",\n    \"action_title\": \"Limit road construction in important habitats\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1461\",\n    \"action_title\": \"Avoid building roads in key habitat or migration routes\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"840\",\n    \"action_title\": \"Restore habitat connectivity\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3854\",\n    \"action_title\": \"Restore or maintain species-rich grassland along road/railway verges\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1739\",\n    \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1617\"}",
+            "return_val": "{\n  \"action_id\": \"1617\",\n  \"action_title\": \"Maintain habitat corridors over or under roads and other transportation corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of maintaining habitat corridors over or under roads and other transportation corridors on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1618\"}",
+            "return_val": "{\n  \"action_id\": \"1618\",\n  \"action_title\": \"Create buffer zones beside roads and other transportation corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of creating buffer zones beside roads and other transportation corridors on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1543\"}",
+            "return_val": "{\n  \"action_id\": \"1543\",\n  \"action_title\": \"Maintain/create habitat corridors in developed areas\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of maintaining or creating habitat corridors in developed areas on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1542\"}",
+            "return_val": "{\n  \"action_id\": \"1542\",\n  \"action_title\": \"Remove residential or commercial development\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of removing residential or commercial development on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2354\"}",
+            "return_val": "{\n  \"action_id\": \"2354\",\n  \"action_title\": \"Retain wildlife corridors in residential areas\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on mammals of retaining wildlife corridors in residential areas. This study was in Botswana.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): A replicated study in Botswana found that retained wildlife corridors in residential areas were used by 19 mammal species, including African elephants.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1461\"}",
+            "return_val": "{\n  \"action_id\": \"1461\",\n  \"action_title\": \"Avoid building roads in key habitat or migration routes\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of avoiding building roads in key habitat or migration routes on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3506\"}",
+            "return_val": "{\n  \"action_id\": \"3506\",\n  \"action_title\": \"Limit road construction in important habitats\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of limiting road construction in important habitats on reptile populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1464\"}",
+            "return_val": "{\n  \"action_id\": \"1464\",\n  \"action_title\": \"Re-route vehicles around protected areas\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of re-routing vehicles containing invasive species around protected areas on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"840\"}",
+            "return_val": "{\n  \"action_id\": \"840\",\n  \"action_title\": \"Restore habitat connectivity\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Italy found that restoring connectivity between two wetlands by raising a road on a viaduct, significantly decreased deaths of migrating amphibians.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrubland development fragmentation\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1542\",\n    \"action_title\": \"Remove residential or commercial development\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3751\",\n    \"action_title\": \"Create or restore shrubland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2569\",\n    \"action_title\": \"Restore or create shrubland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1673\",\n    \"action_title\": \"Improve connectivity between areas of shrubland to allow species movements and habitat shifts in response to climate change\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1543\",\n    \"action_title\": \"Maintain/create habitat corridors in developed areas\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1683\",\n    \"action_title\": \"Remove trees/crops to restore shrubland structure\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1703\",\n    \"action_title\": \"Plant turf\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1675\",\n    \"action_title\": \"Legally protect habitat around shrubland\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1580\",\n    \"action_title\": \"Create/protect habitat corridors\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1687\",\n    \"action_title\": \"Add peat to soil\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1673\"}",
+            "return_val": "{\n  \"action_id\": \"1673\",\n  \"action_title\": \"Improve connectivity between areas of shrubland to allow species movements and habitat shifts in response to climate change\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of improving connectivity between areas of shrubland to allow species movements in response to climate change on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1675\"}",
+            "return_val": "{\n  \"action_id\": \"1675\",\n  \"action_title\": \"Legally protect habitat around shrubland\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of legally protecting shrubland habitat around shrubland on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1580\"}",
+            "return_val": "{\n  \"action_id\": \"1580\",\n  \"action_title\": \"Create/protect habitat corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Belize\\u00a0found that black howler monkey numbers increased by 138% over 13 years after the protection of a forest corridor, alongside other interventions.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the state of the evidence for conservation actions aimed at mitigating the impacts of human infrastructure, such as residential development and transportation corridors, on shrublands?\", \"summary\": \"The evidence for conservation actions aimed at mitigating the impacts of human infrastructure on shrublands is extremely limited. For shrubland-specific conservation actions related to infrastructure impacts, no studies were found that evaluated maintaining habitat corridors over or under roads and other transportation corridors (Action 1617), creating buffer zones beside roads and other transportation corridors (Action 1618), maintaining or creating habitat corridors in developed areas (Action 1543), removing residential or commercial development (Action 1542), or improving connectivity between areas of shrubland to allow species movements and habitat shifts in response to climate change (Action 1673). Additionally, no studies were found that evaluated legally protecting habitat around shrubland (Action 1675). The only relevant evidence found was one before-and-after study in Belize that found black howler monkey numbers increased by 138% over 13 years after the protection of a forest corridor, alongside other interventions (Action 1580), though this was not specific to shrublands. One replicated study in Botswana found that retained wildlife corridors in residential areas were used by 19 mammal species, including African elephants (Action 2354), but again this was not shrubland-specific. Overall, there is a significant lack of empirical evidence for the effectiveness of conservation actions specifically designed to mitigate infrastructure impacts on shrubland habitats.\", \"action_ids\": [\"1617\",\"1618\",\"1543\",\"1542\",\"1673\",\"1675\",\"1580\",\"2354\"]}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence for conservation actions aimed at mitigating the impacts of human infrastructure, such as residential development and transportation corridors, on shrublands?\",\n  \"relevant_summary\": \"The evidence for conservation actions aimed at mitigating the impacts of human infrastructure on shrublands is extremely limited. For shrubland-specific conservation actions related to infrastructure impacts, no studies were found that evaluated maintaining habitat corridors over or under roads and other transportation corridors (Action 1617), creating buffer zones beside roads and other transportation corridors (Action 1618), maintaining or creating habitat corridors in developed areas (Action 1543), removing residential or commercial development (Action 1542), or improving connectivity between areas of shrubland to allow species movements and habitat shifts in response to climate change (Action 1673). Additionally, no studies were found that evaluated legally protecting habitat around shrubland (Action 1675). The only relevant evidence found was one before-and-after study in Belize that found black howler monkey numbers increased by 138% over 13 years after the protection of a forest corridor, alongside other interventions (Action 1580), though this was not specific to shrublands. One replicated study in Botswana found that retained wildlife corridors in residential areas were used by 19 mammal species, including African elephants (Action 2354), but again this was not shrubland-specific. Overall, there is a significant lack of empirical evidence for the effectiveness of conservation actions specifically designed to mitigate infrastructure impacts on shrubland habitats.\",\n  \"action_ids\": [\n    \"1617\",\n    \"1618\",\n    \"1543\",\n    \"1542\",\n    \"1673\",\n    \"1675\",\n    \"1580\",\n    \"2354\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1542",
+      "1543",
+      "1610",
+      "1617",
+      "1618"
+    ],
+    "regenerated_ids": [
+      "1542",
+      "1543",
+      "1610",
+      "1617",
+      "1618",
+      "1619"
+    ]
+  },
+  {
+    "query": "In UK heathlands, besides direct seeding, what are alternative methods for re-introducing plants, and what does the evidence say about their effectiveness?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": null,
+    "summary_action_ids": null,
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathlands plant reintroduction restoration methods\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland plant re-introduction restoration methods\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland plant re-introduction restoration methods seeding\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland plant reintroduction restoration methods seeding\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland plant reintroduction restoration methods seeding\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland restoration plant reintroduction methods seeding\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland restoration plant reintroduction methods\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland restoration plant reintroduction methods seeding\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland plant restoration re-introduction\", \"k\": 10}",
+            "return_val": "NONE - ERRONEOUS TOOL CALL"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"UK heathland restoration plant introduction methods seeding\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1711\",\n    \"action_title\": \"Strip/disturb topsoil (alongside planting/seeding)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1703\",\n    \"action_title\": \"Plant turf\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3946\",\n    \"action_title\": \"Restore or create heathland/shrubland\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1651\",\n    \"action_title\": \"Cut/mow, rotovate and sow seeds to control grass\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1643\",\n    \"action_title\": \"Use herbicide to control grass\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3399\",\n    \"action_title\": \"Plant grassland plants\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1698\",\n    \"action_title\": \"Sow seeds\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1686\",\n    \"action_title\": \"Add topsoil\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1710\",\n    \"action_title\": \"Add sulphur to soil (alongside planting/seeding)\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1701\",\n    \"action_title\": \"Spread clippings\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1697",
+      "1698",
+      "1700",
+      "1701",
+      "1702",
+      "1703",
+      "1712",
+      "1713",
+      "1714",
+      "1715",
+      "1716"
+    ],
+    "regenerated_ids": [
+      "1701",
+      "1703",
+      "1711"
+    ]
+  },
+  {
+    "query": "What are the observed effects of interventions designed to manage public access and reduce human disturbance in shrublands?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available action documents, there is very limited evidence for the effects of interventions designed to manage public access and reduce human disturbance specifically in shrublands. No studies were found that evaluated the effects of placing signs to discourage access to sensitive areas of shrub habitat on shrublands (Action 1620). Similarly, no evidence was found for the effects of creating managed paths/signs to contain disturbance on forests (Action 1170), and no studies evaluated the effects of limiting, ceasing or prohibiting access for recreational purposes on subtidal benthic invertebrate populations (Action 2152). While one study in Turkey found that using signs and access restrictions (specifically fencing sea turtle nests with signs) resulted in higher hatching success compared to areas with no fencing or signs (Action 3642), this was in a marine turtle context rather than shrubland habitat. For broader access management, studies on mammals showed that excluding or limiting visitors to protected areas resulted in higher population abundance of medium-sized and large mammals on roads with restricted access compared to unrestricted access, fewer bear killings when visitor access was temporarily restricted, and increased use of protected areas by grizzly bears and leopards when human access was restricted (Action 2330). However, these findings are not specific to shrubland ecosystems.",
+    "summary_action_ids": [
+      "1620",
+      "3642",
+      "1170",
+      "2152",
+      "2330"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrublands public access management human disturbance\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"999\",\n    \"action_title\": \"Install and maintain cave gates to restrict public access\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1963\",\n    \"action_title\": \"Install and maintain gates at mine entrances to restrict public access\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"309\",\n    \"action_title\": \"Use signs and access restrictions to reduce disturbance at nest sites\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrublands disturbance reduction access control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1620\",\n    \"action_title\": \"Use signs and access restrictions to reduce disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"309\",\n    \"action_title\": \"Use signs and access restrictions to reduce disturbance at nest sites\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1728\",\n    \"action_title\": \"Disturb topsoil\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrublands trail management recreation impact\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3642\",\n    \"action_title\": \"Use signs and access restrictions to reduce disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2088\",\n    \"action_title\": \"Limit, cease or prohibit recreational boating\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1628\",\n    \"action_title\": \"Increase number of livestock\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"habitat protection access management disturbance control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1170\",\n    \"action_title\": \"Create managed paths/signs to contain disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2152\",\n    \"action_title\": \"Limit, cease or prohibit access for recreational purposes\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2917\",\n    \"action_title\": \"Cease or prohibit activities that cause disturbance in sensitive areas for marine and freshwater mammals\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1620\"}",
+            "return_val": "{\n  \"action_id\": \"1620\",\n  \"action_title\": \"Use signs and access restrictions to reduce disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of placing signs to discourage access to sensitive areas of shrub habitat on shrublands.\\n\\n'We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3642\"}",
+            "return_val": "{\n  \"action_id\": \"3642\",\n  \"action_title\": \"Use signs and access restrictions to reduce disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on reptile populations of using signs and access restrictions to reduce disturbance. This study was in Turkey.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nReproductive success (1 study): One replicated, controlled study in Turkey found that in an area with signs where sea turtle nests were fenced, nests had higher hatching success than nests from areas with no fencing or signs.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1170\"}",
+            "return_val": "{\n  \"action_id\": \"1170\",\n  \"action_title\": \"Create managed paths/signs to contain disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of creating managed paths/signs to contain disturbance on forests.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2152\"}",
+            "return_val": "{\n  \"action_id\": \"2152\",\n  \"action_title\": \"Limit, cease or prohibit access for recreational purposes\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of limiting, ceasing or prohibiting access for recreational purposes on subtidal benthic invertebrate populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"shrubland habitat fencing exclusion\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1532\",\n    \"action_title\": \"Control habitat-altering mammals (e.g. elephants) through exclusion (e.g. fences) or translocation\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1522\",\n    \"action_title\": \"Reduce primate predation by other primate species through exclusion (e.g. fences) or translocation\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1520\",\n    \"action_title\": \"Control inter-specific competition for food through exclusion (e.g. fences) or translocation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"recreation management visitor impact trampling\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3022\",\n    \"action_title\": \"Restrict pedestrian access\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"312\",\n    \"action_title\": \"Reduce visitor group size\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2330\",\n    \"action_title\": \"Exclude or limit number of visitors to reserves or protected areas\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3022\"}",
+            "return_val": "{\n  \"action_id\": \"3022\",\n  \"action_title\": \"Restrict pedestrian access\",\n  \"key_messages\": \"Key Messages:\\nWe found no studies that evaluated the effects, on vegetation, of restricting pedestrian access to marshes or swamps.\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"312\"}",
+            "return_val": "{\n  \"action_id\": \"312\",\n  \"action_title\": \"Reduce visitor group size\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no intervention-based studies examining the effects of reducing visitor numbers on bird populations. However, a single, replicated study in forests in Spain in 2004 (Remacha et al. 2011) found that fewer birds, but not fewer species, were observed as visitor number increased. This effect was largely due to decreases in collared dove Streptopelia decaocto presence and serin Serinus serinus abundance.\\nRemacha, C., Perez-Tris, J. & Antonio Delgado, J. (2011) Reducing visitors\\u2019 group size increases the number of birds during educational activities: Implications for management of nature-based recreation,Journal of Environmental Management, 92, 1564\\u20131568.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2330\"}",
+            "return_val": "{\n  \"action_id\": \"2330\",\n  \"action_title\": \"Exclude or limit number of visitors to reserves or protected areas\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects on mammals of excluding or limiting the number of visitors to reserves or protected areas. Three studies were in the USA, one was in Ecuador and one was in Thailand.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): A site comparison study in Ecuador found that a road with restricted access had a higher population of medium-sized and large mammals compared to a road with unrestricted access.\\nSurvival (1 study): A before-and-after study in the USA found that temporarily restricting visitor access resulted in fewer bears being killed to protect humans.\\n\\nBEHAVIOUR (3 STUDIES)\\n\\nUse (3 studies): Three studies\\u00a0(one a before-and-after study), in the USA\\u00a0and Thailand, found that restricting human access to protected areas resulted in increased use of these areas by grizzly bears and leopards.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the observed effects of interventions designed to manage public access and reduce human disturbance in shrublands?\", \"summary\": \"Based on the available action documents, there is very limited evidence for the effects of interventions designed to manage public access and reduce human disturbance specifically in shrublands. No studies were found that evaluated the effects of placing signs to discourage access to sensitive areas of shrub habitat on shrublands (Action 1620). Similarly, no evidence was found for the effects of creating managed paths/signs to contain disturbance on forests (Action 1170), and no studies evaluated the effects of limiting, ceasing or prohibiting access for recreational purposes on subtidal benthic invertebrate populations (Action 2152). While one study in Turkey found that using signs and access restrictions (specifically fencing sea turtle nests with signs) resulted in higher hatching success compared to areas with no fencing or signs (Action 3642), this was in a marine turtle context rather than shrubland habitat. For broader access management, studies on mammals showed that excluding or limiting visitors to protected areas resulted in higher population abundance of medium-sized and large mammals on roads with restricted access compared to unrestricted access, fewer bear killings when visitor access was temporarily restricted, and increased use of protected areas by grizzly bears and leopards when human access was restricted (Action 2330). However, these findings are not specific to shrubland ecosystems.\", \"action_ids\": [\"1620\",\"3642\",\"1170\",\"2152\",\"2330\"]}",
+            "return_val": "{\n  \"query\": \"What are the observed effects of interventions designed to manage public access and reduce human disturbance in shrublands?\",\n  \"relevant_summary\": \"Based on the available action documents, there is very limited evidence for the effects of interventions designed to manage public access and reduce human disturbance specifically in shrublands. No studies were found that evaluated the effects of placing signs to discourage access to sensitive areas of shrub habitat on shrublands (Action 1620). Similarly, no evidence was found for the effects of creating managed paths/signs to contain disturbance on forests (Action 1170), and no studies evaluated the effects of limiting, ceasing or prohibiting access for recreational purposes on subtidal benthic invertebrate populations (Action 2152). While one study in Turkey found that using signs and access restrictions (specifically fencing sea turtle nests with signs) resulted in higher hatching success compared to areas with no fencing or signs (Action 3642), this was in a marine turtle context rather than shrubland habitat. For broader access management, studies on mammals showed that excluding or limiting visitors to protected areas resulted in higher population abundance of medium-sized and large mammals on roads with restricted access compared to unrestricted access, fewer bear killings when visitor access was temporarily restricted, and increased use of protected areas by grizzly bears and leopards when human access was restricted (Action 2330). However, these findings are not specific to shrubland ecosystems.\",\n  \"action_ids\": [\n    \"1620\",\n    \"3642\",\n    \"1170\",\n    \"2152\",\n    \"2330\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1619",
+      "1620",
+      "1621"
+    ],
+    "regenerated_ids": [
+      "1612",
+      "1613",
+      "1619",
+      "1620",
+      "1621",
+      "1717",
+      "1718"
+    ]
   }
 ]

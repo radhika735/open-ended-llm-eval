@@ -421,12 +421,12 @@ def get_prev_summaries(filename):
                 if not isinstance(summary_list, list):
                     raise RetrievalError(f"Expected JSON file to contain a list: {filename}")
                 else:
-                    logging.info(f"Loaded existing summaries from {filename}")
+                    logging.debug(f"Loaded existing summaries from {filename}")
                     return summary_list
         except json.JSONDecodeError as e:
             raise RetrievalError(f"Failed to load JSON from existing summaries file: {filename}. Error: {e}")
     else:
-        logging.info(f"Creating new summary output file {filename}.")
+        logging.debug(f"Creating new summary output file {filename}.")
         return []
     
 
@@ -498,7 +498,7 @@ def append_new_summary(summary, out_filepaths : list, reset_file = False):
 
     for data, filepath in out_data:
         write_to_json_file(data_list=data, filename=filepath)
-        logging.info(f"Updated {filepath} with new summary.")
+        logging.debug(f"Updated {filepath} with new summary.")
 
 
 
@@ -597,8 +597,10 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dirs
         # write the new summaries to all output files
         for summary, summary_out_filepaths in new_summaries_and_outfiles:
             append_new_summary(summary=summary, out_filepaths=summary_out_filepaths)
+        logging.info(f"Wrote {len(new_summaries_and_outfiles)} new summaries to output files.")
         # overwrite the question file (it will contain the updated used_by_models field)
         write_to_json_file(data_list=qu_dicts, filename=queries_filepath)
+        logging.info(f"Updated questions file {queries_filepath} used_by_models fields.")
 
 
 
@@ -627,7 +629,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
 
 
 def main():
-    logging.basicConfig(filename = "logfiles/summary_gen_parallel.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename = "logfiles/summary_gen_parallel_second.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
     # disable bm25s logging
@@ -642,7 +644,7 @@ def main():
 
     QU_TYPE = "answerable" # options: "answerable", "unanswerable"
     FILTER_STAGE = "failed" # options: "passed", "failed"
-    OFFSET_TO_FIRST_QU_FILE = 0
+    OFFSET_TO_FIRST_QU_FILE = 10
     MAX_QU_FILES = 30
     MAX_QUS_PER_FILE = 20
 
