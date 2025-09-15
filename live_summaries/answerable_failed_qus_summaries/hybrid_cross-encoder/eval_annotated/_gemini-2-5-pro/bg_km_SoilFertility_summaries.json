@@ -1,0 +1,575 @@
+[
+  {
+    "query": "What actions can be taken to increase soil organic matter on agricultural land?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A study in Denmark on sandy-loam soil found that including leys in crop rotations and reducing the amount of grass pasture in them led to a decrease in nitrogen uptake by the grasses. This reduction in nitrogen uptake subsequently lowered the fertilizer requirements for the crops that followed (900). In a different setting, a study conducted in a coastal swamp in Brazil observed that the addition of manure to plots where tree seedlings were planted had varied effects on the seedlings' survival and growth over a three-year period. The outcomes depended on the specific tree species and the amount of manure applied (3311). Furthermore, a study in a created wetland in the USA that involved planting tree seedlings found that amending the plots with large quantities of compost led to a plant community characteristic of drier conditions and resulted in lower plant species richness and diversity after three years when compared to plots that were not amended. However, the study also noted that birch saplings grew larger in the compost-amended plots. There was no significant difference in the overall vegetation biomass between the amended and unamended plots (3310).",
+    "summary_action_ids": [
+      "900",
+      "3311",
+      "3310"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"actions to increase soil organic matter on agricultural land\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3311\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3310\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: freshwater wetlands\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"900\",\n    \"action_title\": \"Incorporate leys into crop rotation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"900\"}",
+            "return_val": "{\n  \"action_id\": \"900\",\n  \"action_title\": \"Incorporate leys into crop rotation\",\n  \"key_messages\": \"Key Messages:\\nOne replicated study from Denmark showed that reducing the extent of grass pasture in leys reduced the undesirable uptake of nitrogen by grasses, therefore requiring lower rates of fertilizer for subsequent crops.\\nSOIL TYPE COVERED: sandy-loam.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"increase soil organic matter on agricultural land\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"3311\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3310\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: freshwater wetlands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3309\",\n    \"action_title\": \"Add below-ground organic matter before/after planting non-woody plants: brackish/saline wetlands\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3311\"}",
+            "return_val": "{\n  \"action_id\": \"3311\",\n  \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: brackish/saline wetlands\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of adding below-ground organic matter to brackish/saline wetlands planted with trees/shrubs. The study was in Brazil.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\u00a0\\nVEGETATION STRUCTURE\\n\\u00a0\\nOTHER\\n\\nSurvival (1 study): One replicated, randomized, controlled study in a coastal swamp in Brazil\\u00a0reported that adding manure to plots planted with tree seedlings had mixed effects on their survival over three years, depending on the species of tree and dose of manure.\\nGrowth (1 study): The same study\\u00a0reported that adding manure to plots planted with tree seedlings had mixed effects on their growth over three years, depending on the species of tree and dose of manure.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3310\"}",
+            "return_val": "{\n  \"action_id\": \"3310\",\n  \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: freshwater wetlands\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of adding below-ground organic matter to freshwater wetlands planted with trees/shrubs. The study was in the USA.\\n\\nVEGETATION COMMUNITY\\n\\nCommunity composition (1 study): One replicated, randomized, paired, controlled study in a created wetland in the USA\\u00a0found that amongst plots planted with tree\\u00a0seedlings, those amended with large amounts compost contained a plant community characteristic of drier conditions, three years later, than the community in unamended plots. The lowest compost dose had no significant effect on this outcome.\\nOverall richness/diversity (1 study): The same study\\u00a0found that amongst plots planted with tree\\u00a0seedlings, those amended with a large amount of compost had lower plant species richness and diversity, three years later, than unamended plots. Lower compost doses had no significant effect on either outcome.\\n\\nVEGETATION ABUNDANCE\\n\\nOverall abundance (1 study): One replicated, randomized, paired, controlled study in a created wetland in the USA\\u00a0found that amongst plots planted with tree\\u00a0seedlings, those amended with compost supported a similar overall vegetation biomass, three years later, to unamended plots.\\n\\nVEGETATION STRUCTURE\\n\\nIndividual plant size (1 study): One replicated, randomized, paired, controlled study in a created wetland in the USA\\u00a0found that birch Betula saplings were larger, three years after planting seedlings, in plots amended with large amounts of compost than in unamended plots.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions can be taken to increase soil organic matter on agricultural land?\",\"action_ids\":[\"900\",\"3311\",\"3310\"],\"summary\":\"A study in Denmark on sandy-loam soil found that including leys in crop rotations and reducing the amount of grass pasture in them led to a decrease in nitrogen uptake by the grasses. This reduction in nitrogen uptake subsequently lowered the fertilizer requirements for the crops that followed (900). In a different setting, a study conducted in a coastal swamp in Brazil observed that the addition of manure to plots where tree seedlings were planted had varied effects on the seedlings' survival and growth over a three-year period. The outcomes depended on the specific tree species and the amount of manure applied (3311). Furthermore, a study in a created wetland in the USA that involved planting tree seedlings found that amending the plots with large quantities of compost led to a plant community characteristic of drier conditions and resulted in lower plant species richness and diversity after three years when compared to plots that were not amended. However, the study also noted that birch saplings grew larger in the compost-amended plots. There was no significant difference in the overall vegetation biomass between the amended and unamended plots (3310).\"}",
+            "return_val": "{\n  \"query\": \"What actions can be taken to increase soil organic matter on agricultural land?\",\n  \"relevant_summary\": \"A study in Denmark on sandy-loam soil found that including leys in crop rotations and reducing the amount of grass pasture in them led to a decrease in nitrogen uptake by the grasses. This reduction in nitrogen uptake subsequently lowered the fertilizer requirements for the crops that followed (900). In a different setting, a study conducted in a coastal swamp in Brazil observed that the addition of manure to plots where tree seedlings were planted had varied effects on the seedlings' survival and growth over a three-year period. The outcomes depended on the specific tree species and the amount of manure applied (3311). Furthermore, a study in a created wetland in the USA that involved planting tree seedlings found that amending the plots with large quantities of compost led to a plant community characteristic of drier conditions and resulted in lower plant species richness and diversity after three years when compared to plots that were not amended. However, the study also noted that birch saplings grew larger in the compost-amended plots. There was no significant difference in the overall vegetation biomass between the amended and unamended plots (3310).\",\n  \"action_ids\": [\n    \"900\",\n    \"3311\",\n    \"3310\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "744",
+      "857",
+      "887",
+      "888",
+      "889",
+      "895",
+      "897",
+      "898",
+      "906",
+      "907",
+      "909",
+      "910",
+      "911"
+    ],
+    "regenerated_ids": [
+      "744",
+      "857",
+      "887",
+      "888",
+      "889",
+      "895",
+      "897",
+      "898",
+      "902",
+      "906",
+      "907",
+      "909",
+      "911"
+    ]
+  },
+  {
+    "query": "Which actions are most beneficial for increasing the diversity of soil organisms?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Three actions were found to be beneficial for increasing the diversity of soil organisms. One site comparison study found that reducing the use of fertilizer, pesticide or herbicide led to a higher diversity of soil invertebrates and microorganisms (904). Another trial showed that adding mulch to crops increased soil animal and fungal numbers, diversity and activity (887). Finally, a further study found that converting to organic farming resulted in higher numbers, diversity and functional diversity of soil organisms (895).",
+    "summary_action_ids": [
+      "904",
+      "887",
+      "895"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"increasing the diversity of soil organisms\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"904\",\n    \"action_title\": \"Reduce fertilizer, pesticide or herbicide use generally\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"887\",\n    \"action_title\": \"Add mulch to crops\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"895\",\n    \"action_title\": \"Convert to organic farming\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"904\"}",
+            "return_val": "{\n  \"action_id\": \"904\",\n  \"action_title\": \"Reduce fertilizer, pesticide or herbicide use generally\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Two site comparison studies from Italy and Pakistan (one also replicated) found a higher diversity of soil invertebrates and microorganisms in low-input systems.\\nNutrient loss: One study from Canada found lower nutrient levels and yields in low-input systems.\\n \\nSOIL TYPES COVERED: coarse sandy, loam, sandy-loam, and silt.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"887\"}",
+            "return_val": "{\n  \"action_id\": \"887\",\n  \"action_title\": \"Add mulch to crops\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Three replicated trials from Canada, Poland and Spain (including one also controlled, one also randomized and one also controlled and randomized) showed that adding mulch to crops (whether shredded paper, municipal compost or straw) increased soil animal and fungal numbers, diversity and activity. Of these, one trial also showed that mulch improved soil structure and increased soil organic matter.\\nNutrient loss: One replicated study from Nigeria found higher nutrient levels in continually cropped soil. \\nErosion: Five studies from India, France, Nigeria and the UK (including one controlled, randomized, replicated trial, one randomized, replicated trial, two replicated (one also controlled), and one controlled trial) found that mulches increased soil stability, and reduced soil erosion and runoff. One trial found that some mulches are more effective than others.\\nDrought: Two replicated trials from India found that adding mulch to crops increased soil moisture.\\nYield: Two replicated trials from India found that yields increased when either a live mulch or vegetation barrier combined with mulch was used.\\n \\nSOIL TYPES COVERED: clay, fine loam, gravelly sandy loam, sandy, sandy-clay, sandy loam,\\u00a0sandy silt-loam, silty, silty loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"895\"}",
+            "return_val": "{\n  \"action_id\": \"895\",\n  \"action_title\": \"Convert to organic farming\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Four studies in Asia, Europe, and the USA (including two site comparison studies and three replicated trials) found higher numbers, diversity, functional diversity (see background) or activity of soil organisms under organic management.\\nSoil organic carbon: Two replicated trials in Italy and the USA showed that organically managed orchards had higher soil carbon levels compared to conventionally managed orchards. One randomized, replicated trial in the USA found soil carbon was lower under organic management compared to alley cropping.  \\nSoil organic matter: One replicated trial in Canada found that soil nutrients were lower in organically managed soils.\\nYields: One replicated trial in Canada found lower yields in organically managed soils. Two replicated trials in the USA (one also randomized) found that fruit was of a higher quality and more resistant to disease, though smaller or that organic management had mixed effects on yield.\\nSOIL TYPES COVERED: clay, clay loam, fine sandy-loam, loam, sandy loam, sandy-clay loam, silt, silty-clay, silt-loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"Which actions are most beneficial for increasing the diversity of soil organisms?\",\"action_ids\":[\"904\",\"887\",\"895\"],\"summary\":\"Three actions were found to be beneficial for increasing the diversity of soil organisms. One site comparison study found that reducing the use of fertilizer, pesticide or herbicide led to a higher diversity of soil invertebrates and microorganisms (904). Another trial showed that adding mulch to crops increased soil animal and fungal numbers, diversity and activity (887). Finally, a further study found that converting to organic farming resulted in higher numbers, diversity and functional diversity of soil organisms (895).\"}",
+            "return_val": "{\n  \"query\": \"Which actions are most beneficial for increasing the diversity of soil organisms?\",\n  \"relevant_summary\": \"Three actions were found to be beneficial for increasing the diversity of soil organisms. One site comparison study found that reducing the use of fertilizer, pesticide or herbicide led to a higher diversity of soil invertebrates and microorganisms (904). Another trial showed that adding mulch to crops increased soil animal and fungal numbers, diversity and activity (887). Finally, a further study found that converting to organic farming resulted in higher numbers, diversity and functional diversity of soil organisms (895).\",\n  \"action_ids\": [\n    \"904\",\n    \"887\",\n    \"895\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "857",
+      "887",
+      "888",
+      "895",
+      "897",
+      "898",
+      "899",
+      "902",
+      "903",
+      "904",
+      "905",
+      "906",
+      "907",
+      "910",
+      "911"
+    ],
+    "regenerated_ids": [
+      "744",
+      "857",
+      "887",
+      "888",
+      "895",
+      "897",
+      "898",
+      "899",
+      "902",
+      "903",
+      "904",
+      "905",
+      "906",
+      "907",
+      "910",
+      "911"
+    ]
+  },
+  {
+    "query": "What are the effects of amending soil with different types of organic materials?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Amending soil with a mix of manure and inorganic fertilizers has been found to increase microbial biomass and activity in the soil [902]. Manure alone has also been shown to increase microbial biomass [902]. Additionally, the use of mixed manure and inorganic fertilizer amendments has been linked to increased soil organic carbon and reduced soil cracking [902]. In terms of crop yield, studies have shown an increase in maize Zea mays yield in soils amended with a mix of manure and inorganic fertilizers [902].\n\nIn a salt marsh environment, the addition of alginate as a soil amendment led to a greater density and height of smooth cordgrass Spartina alterniflora [3244]. However, the biomass of the cordgrass was similar to that in unamended plots [3244].\n\nIn a freshwater wetland, the addition of large amounts of compost to plots planted with tree seedlings resulted in a plant community characteristic of drier conditions and lower plant species richness and diversity three years later [3310]. However, the same study found that birch Betula saplings were larger in plots amended with large amounts of compost [3310]. Lower doses of compost had no significant effect on these outcomes [3310].",
+    "summary_action_ids": [
+      "902",
+      "3244",
+      "3310"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"organic soil amendment\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3244\",\n    \"action_title\": \"Add below-ground organic matter: brackish/salt marshes\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3310\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: freshwater wetlands\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"902\"}",
+            "return_val": "{\n  \"action_id\": \"902\",\n  \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Five controlled trials from China and India (four also randomized and replicated), and one study from Japan found higher microbial biomass and activity in soils with a mix of manure and inorganic fertilizers. Manure alone also increased microbial biomass. One trial found increased microbial diversity.\\nErosion: One controlled, replicated trial from India found that mixed amendments were more effective at reducing the size of cracks in dry soil than inorganic fertilizers alone or no fertilizer.\\nSOC loss: Four controlled, randomized, replicated trials and one controlled trial from China and India found more organic carbon in soils with mixed fertilizers. Manure alone also increased organic carbon. One trial also found more carbon in soil amended with inorganic fertilizers and lime.\\nSOM loss: Two controlled, randomized, replicated trials from China and India found more nutrients in soils with manure and inorganic fertilizers. One controlled, randomized, replicated trial from China found inconsistent effects of using mixed manure and inorganic fertilizers.\\nYield: Two controlled, randomized, replicated trials from China found increased maize Zea mays yield in soils with mixed manure and inorganic fertilizer amendments.\\nSOIL TYPES COVERED: clay, clay loam, sandy-loam, silt clay loam, silty-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3244\"}",
+            "return_val": "{\n  \"action_id\": \"3244\",\n  \"action_title\": \"Add below-ground organic matter: brackish/salt marshes\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of adding below-ground organic matter to restore or create brackish/salt marshes. The study was in the USA.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\nIndividual species abundance (1 study): One replicated, randomized, controlled, before-and-after study in a salt marsh in the USA\\u00a0found that plots amended with alginate contained a greater density of smooth cordgrass Spartina alterniflora than unamended plots after 6\\u201352 weeks. However, amended and unamended plots contained similar smooth cordgrass biomass when it was sampled after 52 weeks.\\n\\nVEGETATION STRUCTURE\\n\\nHeight (1 study): One replicated, randomized, controlled, before-and-after study in a salt marsh in the USA\\u00a0found that amending plots with alginate had no significant effect on smooth cordgrass height in the first 16 weeks after intervention, but that amended plots contained taller smooth cordgrass than unamended plots after 28\\u201352 weeks.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3310\"}",
+            "return_val": "{\n  \"action_id\": \"3310\",\n  \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: freshwater wetlands\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of adding below-ground organic matter to freshwater wetlands planted with trees/shrubs. The study was in the USA.\\n\\nVEGETATION COMMUNITY\\n\\nCommunity composition (1 study): One replicated, randomized, paired, controlled study in a created wetland in the USA\\u00a0found that amongst plots planted with tree\\u00a0seedlings, those amended with large amounts compost contained a plant community characteristic of drier conditions, three years later, than the community in unamended plots. The lowest compost dose had no significant effect on this outcome.\\nOverall richness/diversity (1 study): The same study\\u00a0found that amongst plots planted with tree\\u00a0seedlings, those amended with a large amount of compost had lower plant species richness and diversity, three years later, than unamended plots. Lower compost doses had no significant effect on either outcome.\\n\\nVEGETATION ABUNDANCE\\n\\nOverall abundance (1 study): One replicated, randomized, paired, controlled study in a created wetland in the USA\\u00a0found that amongst plots planted with tree\\u00a0seedlings, those amended with compost supported a similar overall vegetation biomass, three years later, to unamended plots.\\n\\nVEGETATION STRUCTURE\\n\\nIndividual plant size (1 study): One replicated, randomized, paired, controlled study in a created wetland in the USA\\u00a0found that birch Betula saplings were larger, three years after planting seedlings, in plots amended with large amounts of compost than in unamended plots.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Amending soil with a mix of manure and inorganic fertilizers has been found to increase microbial biomass and activity in the soil [902]. Manure alone has also been shown to increase microbial biomass [902]. Additionally, the use of mixed manure and inorganic fertilizer amendments has been linked to increased soil organic carbon and reduced soil cracking [902]. In terms of crop yield, studies have shown an increase in maize Zea mays yield in soils amended with a mix of manure and inorganic fertilizers [902].\\n\\nIn a salt marsh environment, the addition of alginate as a soil amendment led to a greater density and height of smooth cordgrass Spartina alterniflora [3244]. However, the biomass of the cordgrass was similar to that in unamended plots [3244].\\n\\nIn a freshwater wetland, the addition of large amounts of compost to plots planted with tree seedlings resulted in a plant community characteristic of drier conditions and lower plant species richness and diversity three years later [3310]. However, the same study found that birch Betula saplings were larger in plots amended with large amounts of compost [3310]. Lower doses of compost had no significant effect on these outcomes [3310].\",\"query\":\"What are the effects of amending soil with different types of organic materials?\",\"action_ids\":[\"902\",\"3244\",\"3310\"]}",
+            "return_val": "{\n  \"query\": \"What are the effects of amending soil with different types of organic materials?\",\n  \"relevant_summary\": \"Amending soil with a mix of manure and inorganic fertilizers has been found to increase microbial biomass and activity in the soil [902]. Manure alone has also been shown to increase microbial biomass [902]. Additionally, the use of mixed manure and inorganic fertilizer amendments has been linked to increased soil organic carbon and reduced soil cracking [902]. In terms of crop yield, studies have shown an increase in maize Zea mays yield in soils amended with a mix of manure and inorganic fertilizers [902].\\n\\nIn a salt marsh environment, the addition of alginate as a soil amendment led to a greater density and height of smooth cordgrass Spartina alterniflora [3244]. However, the biomass of the cordgrass was similar to that in unamended plots [3244].\\n\\nIn a freshwater wetland, the addition of large amounts of compost to plots planted with tree seedlings resulted in a plant community characteristic of drier conditions and lower plant species richness and diversity three years later [3310]. However, the same study found that birch Betula saplings were larger in plots amended with large amounts of compost [3310]. Lower doses of compost had no significant effect on these outcomes [3310].\",\n  \"action_ids\": [\n    \"902\",\n    \"3244\",\n    \"3310\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "887",
+      "889",
+      "890",
+      "891",
+      "908",
+      "910",
+      "911"
+    ],
+    "regenerated_ids": [
+      "887",
+      "888",
+      "889",
+      "890",
+      "891",
+      "892",
+      "902",
+      "908",
+      "910",
+      "911"
+    ]
+  },
+  {
+    "query": "Besides retaining crop residues, what other actions can reduce soil erosion on agricultural land with clay soils?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "On clay soils, tillage practices can be changed to reduce soil erosion (906). Seven trials found that reduced tillage resulted in less soil loss and runoff compared to conventional ploughing (906). One trial showed that across-slope cultivation reduced soil loss compared to up-and-downslope cultivation (906). Conversely, two trials showed that no-tillage increased soil loss if there was no crop cover (906). One trial found less sediment erosion when grazing time was reduced in forage crops (901). Additionally, a trial in India found that using a mix of organic and inorganic soil amendments was more effective at reducing the size of cracks in dry soil than inorganic fertilizers alone or no fertilizer (902).",
+    "summary_action_ids": [
+      "901",
+      "902",
+      "906"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"reduce soil erosion on agricultural land with clay soils\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"901\",\n    \"action_title\": \"Reduce grazing intensity\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"906\",\n    \"action_title\": \"Change tillage practices\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"901\"}",
+            "return_val": "{\n  \"action_id\": \"901\",\n  \"action_title\": \"Reduce grazing intensity\",\n  \"key_messages\": \"Key Messages:\\nCompaction: One replicated study from Australia found compacted soils recovered when sheep were excluded for 2.5 years. \\nErosion: Two replicated studies from New Zealand and Syria (one also controlled) measured the effect of grazing animals on soil nutrient and sediment loss. Of these, one trial found increased soil carbon and nitrogen when grazing animals were excluded. One trial found higher soil phosphate levels, and less sediment erosion when grazing time in forage crops was reduced.\\n \\nSOIL TYPES COVERED: clay, clay-loamy, loamy, silt loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"902\"}",
+            "return_val": "{\n  \"action_id\": \"902\",\n  \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Five controlled trials from China and India (four also randomized and replicated), and one study from Japan found higher microbial biomass and activity in soils with a mix of manure and inorganic fertilizers. Manure alone also increased microbial biomass. One trial found increased microbial diversity.\\nErosion: One controlled, replicated trial from India found that mixed amendments were more effective at reducing the size of cracks in dry soil than inorganic fertilizers alone or no fertilizer.\\nSOC loss: Four controlled, randomized, replicated trials and one controlled trial from China and India found more organic carbon in soils with mixed fertilizers. Manure alone also increased organic carbon. One trial also found more carbon in soil amended with inorganic fertilizers and lime.\\nSOM loss: Two controlled, randomized, replicated trials from China and India found more nutrients in soils with manure and inorganic fertilizers. One controlled, randomized, replicated trial from China found inconsistent effects of using mixed manure and inorganic fertilizers.\\nYield: Two controlled, randomized, replicated trials from China found increased maize Zea mays yield in soils with mixed manure and inorganic fertilizer amendments.\\nSOIL TYPES COVERED: clay, clay loam, sandy-loam, silt clay loam, silty-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"906\"}",
+            "return_val": "{\n  \"action_id\": \"906\",\n  \"action_title\": \"Change tillage practices\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity loss: Eleven studies from Canada, Europe, Mexico, or the USA measured effects of reduced tillage on soil animals or microbes. Of these, four (including three replicated trials (three also randomized and one also controlled)) found more microbes, more species of earthworm, or higher microbe activity under reduced tillage. One replicated trial found increased numbers of soil animals and earthworms under reduced tillage. One controlled, replicated trial found mixed effects on microbe diversity depending on time of sampling. Two, (including one controlled, replicated trial) found no effect of reduced tillage on earthworm activity or microbe activity.\\nCompaction: Five studies from Australia, Canada, and Europe measured the effect of controlled traffic and reduced tillage on compacted soils. Of these, two (including one before-and-after trial and one replicated trial) found reduced compaction and subsequent effects (reduced water runoff, for example) under controlled traffic, and one also found that crop yields increased under no-tillage. Three replicated trials, including one site comparison study, found higher compaction under reduced tillage. \\nDrought: Three replicated trials from Europe and India (one also randomized) found the size of soil cracks decreased, and ability of soil to absorb water and soil water content increased with conventional ploughing and sub-soiling. \\nErosion: Nine replicated trials from Brazil, Europe, India, Nigeria and the USA, and one review showed mixed results of tillage on soil erosion. Seven trials (one also controlled and randomized) showed reduced soil loss and runoff under reduced tillage compared to conventional ploughing. One trial showed no differences between tillage systems, but demonstrated that across-slope cultivation reduced soil loss compared to up-and-downslope cultivation. Two trials showed that no-tillage increased soil loss in the absence of crop cover.\\nSoil organic carbon: Twelve studies from Australia, Canada, China, Europe, Japan and the USA compared the effect of no-tillage and conventionally tilled systems on soil organic carbon. All (including two randomized, five replicated, two randomized, replicated, and one controlled, randomized, replicated) found higher soil organic carbon in soils under a no-tillage or reduced tillage system compared to conventionally tilled soil. One review showed that no-tillage with cover cropping and manure application increases soil organic carbon. One randomized, replicated trial from Spain found greater soil organic carbon in conventionally tilled soil. One replicated trial from Canada found no effect of tillage on soil carbon.\\nSoil organic matter: Fifteen studies from Canada, China, Europe, Morocco, and the USA measured effects of reduced tillage on soil organic matter content and nutrient retention. Of these, eight studies (including four replicated (two also randomized), two site comparisons (one also replicated) and one controlled) found maintained or increased soil organic matter and improved soil structure under reduced tillage. Four trials (including two replicated and two site comparison studies) found higher nutrient retention under reduced tillage. One controlled, replicated trial found less carbon and nitrate in no-till compared to conventionally tilled soil, but conventionally tilled soil lost more carbon and nitrate. One controlled, randomized, replicated trial and one replicated trial found mixed effects of reduced tillage on soil nitrogen levels.\\nYield: One replicated study from Canada found lower yields under minimum or no-tillage compared to conventional tillage, and one controlled, randomized, replicated study from the USA found higher yields when subsoiling was done. One randomized, replicated study from Portugal found no effect of tillage treatment on yield.\\n\\u00a0\\nSOIL TYPES COVERED: anthrosol, calcareous silt loam, chalky, clay, clay loam, fine sandy loam, loam, loamy-clay, loam - sandy loam, loam \\u2013 silt-loam, loamy sand, loamy silt, non-chalky clay, sandy, sandy clay loam, sandy loam, sandy silt-loam, silt loam, silty, silty-clay, silty clay loam, silty loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"Besides retaining crop residues, what other actions can reduce soil erosion on agricultural land with clay soils?\",\"action_ids\":[\"901\",\"902\",\"906\"],\"summary\":\"On clay soils, tillage practices can be changed to reduce soil erosion (906). Seven trials found that reduced tillage resulted in less soil loss and runoff compared to conventional ploughing (906). One trial showed that across-slope cultivation reduced soil loss compared to up-and-downslope cultivation (906). Conversely, two trials showed that no-tillage increased soil loss if there was no crop cover (906). One trial found less sediment erosion when grazing time was reduced in forage crops (901). Additionally, a trial in India found that using a mix of organic and inorganic soil amendments was more effective at reducing the size of cracks in dry soil than inorganic fertilizers alone or no fertilizer (902).\"}",
+            "return_val": "{\n  \"query\": \"Besides retaining crop residues, what other actions can reduce soil erosion on agricultural land with clay soils?\",\n  \"relevant_summary\": \"On clay soils, tillage practices can be changed to reduce soil erosion (906). Seven trials found that reduced tillage resulted in less soil loss and runoff compared to conventional ploughing (906). One trial showed that across-slope cultivation reduced soil loss compared to up-and-downslope cultivation (906). Conversely, two trials showed that no-tillage increased soil loss if there was no crop cover (906). One trial found less sediment erosion when grazing time was reduced in forage crops (901). Additionally, a trial in India found that using a mix of organic and inorganic soil amendments was more effective at reducing the size of cracks in dry soil than inorganic fertilizers alone or no fertilizer (902).\",\n  \"action_ids\": [\n    \"901\",\n    \"902\",\n    \"906\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "744",
+      "857",
+      "887",
+      "901",
+      "906",
+      "907",
+      "910"
+    ],
+    "regenerated_ids": [
+      "744",
+      "857",
+      "887",
+      "891",
+      "892",
+      "899",
+      "901",
+      "902",
+      "906",
+      "910",
+      "911"
+    ]
+  },
+  {
+    "query": "What does the evidence say about the effectiveness of different soil amendments for improving crop yields on farms in Asia?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Two controlled, randomized, replicated studies from India and Pakistan found that growing green manures led to increased grain yields (908). In China, two controlled, randomized, replicated trials demonstrated that a mix of manure and inorganic fertilizer increased maize yields (902). This combination also resulted in higher microbial biomass and activity in soils, according to five controlled trials in China and India (902). Additionally, four trials in the same countries found that mixed fertilizers, as well as manure alone, increased soil organic carbon (902).\n\nThree randomized, replicated, controlled studies in Asia, Europe, and North America produced varied results when examining the effect of incorporating plant remains with weed-controlling chemicals on crop yields compared to weeded controls, showing positive, negative, and mixed outcomes (728). However, when compared to unweeded controls, two studies found positive effects on yield, while one reported mixed results depending on the crop (728). Two studies also indicated that these plant remains could inhibit crop growth, although this could be minimized by changing the application timing (728).",
+    "summary_action_ids": [
+      "728",
+      "902",
+      "908"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"soil amendments crop yields Asia\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"728\",\n    \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"908\",\n    \"action_title\": \"Amend the soil with crops grown as green manures\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"728\"}",
+            "return_val": "{\n  \"action_id\": \"728\",\n  \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n  \"key_messages\": \"Key Messages:\\nWeeds: Six studies (including six randomised, replicated, controlled tests) from Asia, Europe and North America examined the effect of allelopathic plant remains on weeds by comparing amended soils with weeded controls. Three studies found a reduction in weed growth, and three found effects varied between years, weed groups, or the type of weeding method in controls.Four studies from Asia \\u00a0and North America examined the effect on weeds by comparing amended soils with unweeded controls. Two studies found a reduction in weed growth, but one found that residues applied too far in advance of crop planting had the reverse effect. Two studies found that effects varied between trials, weed species or the type of residue used.Two studies, including one randomised, replicated, controlled laboratory study, found that the decrease in weeds did not last beyond a few days or weeks after residue incorporation. Pests: One randomised, replicated, controlled study in the Philippines found mixed effects on pests. Crop growth: Two of three studies found crop growth was inhibited by allelopathic plant remains, but this could be minimised by changing the timing of application. One study found effects varied between years. Yield: Three\\u00a0randomised, replicated, controlled studies compared yields in amended plots with weeded controls and found positive, negative and\\u00a0mixed effects. Three studies compared amended plots with unweeded controls, two found positive effects on yield and one found mixed effects (depending on the crop). Profit: One study found that amending soils increased profit compared to unweeded controls, but not compared to weeded controls.\\n\\u00a0\\nCrops studied were beans, cotton, maize, rice and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"908\"}",
+            "return_val": "{\n  \"action_id\": \"908\",\n  \"action_title\": \"Amend the soil with crops grown as green manures\",\n  \"key_messages\": \"Key Messages:\\nTwo controlled, randomized, replicated studies from India and Pakistan found higher soil organic carbon, or increased grain yields when green manures were grown.\\nSOIL TYPES COVERED: Clay loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"902\"}",
+            "return_val": "{\n  \"action_id\": \"902\",\n  \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Five controlled trials from China and India (four also randomized and replicated), and one study from Japan found higher microbial biomass and activity in soils with a mix of manure and inorganic fertilizers. Manure alone also increased microbial biomass. One trial found increased microbial diversity.\\nErosion: One controlled, replicated trial from India found that mixed amendments were more effective at reducing the size of cracks in dry soil than inorganic fertilizers alone or no fertilizer.\\nSOC loss: Four controlled, randomized, replicated trials and one controlled trial from China and India found more organic carbon in soils with mixed fertilizers. Manure alone also increased organic carbon. One trial also found more carbon in soil amended with inorganic fertilizers and lime.\\nSOM loss: Two controlled, randomized, replicated trials from China and India found more nutrients in soils with manure and inorganic fertilizers. One controlled, randomized, replicated trial from China found inconsistent effects of using mixed manure and inorganic fertilizers.\\nYield: Two controlled, randomized, replicated trials from China found increased maize Zea mays yield in soils with mixed manure and inorganic fertilizer amendments.\\nSOIL TYPES COVERED: clay, clay loam, sandy-loam, silt clay loam, silty-loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What does the evidence say about the effectiveness of different soil amendments for improving crop yields on farms in Asia?\",\"action_ids\":[\"728\",\"902\",\"908\"],\"summary\":\"Two controlled, randomized, replicated studies from India and Pakistan found that growing green manures led to increased grain yields (908). In China, two controlled, randomized, replicated trials demonstrated that a mix of manure and inorganic fertilizer increased maize yields (902). This combination also resulted in higher microbial biomass and activity in soils, according to five controlled trials in China and India (902). Additionally, four trials in the same countries found that mixed fertilizers, as well as manure alone, increased soil organic carbon (902).\\n\\nThree randomized, replicated, controlled studies in Asia, Europe, and North America produced varied results when examining the effect of incorporating plant remains with weed-controlling chemicals on crop yields compared to weeded controls, showing positive, negative, and mixed outcomes (728). However, when compared to unweeded controls, two studies found positive effects on yield, while one reported mixed results depending on the crop (728). Two studies also indicated that these plant remains could inhibit crop growth, although this could be minimized by changing the application timing (728).\"}",
+            "return_val": "{\n  \"query\": \"What does the evidence say about the effectiveness of different soil amendments for improving crop yields on farms in Asia?\",\n  \"relevant_summary\": \"Two controlled, randomized, replicated studies from India and Pakistan found that growing green manures led to increased grain yields (908). In China, two controlled, randomized, replicated trials demonstrated that a mix of manure and inorganic fertilizer increased maize yields (902). This combination also resulted in higher microbial biomass and activity in soils, according to five controlled trials in China and India (902). Additionally, four trials in the same countries found that mixed fertilizers, as well as manure alone, increased soil organic carbon (902).\\n\\nThree randomized, replicated, controlled studies in Asia, Europe, and North America produced varied results when examining the effect of incorporating plant remains with weed-controlling chemicals on crop yields compared to weeded controls, showing positive, negative, and mixed outcomes (728). However, when compared to unweeded controls, two studies found positive effects on yield, while one reported mixed results depending on the crop (728). Two studies also indicated that these plant remains could inhibit crop growth, although this could be minimized by changing the application timing (728).\",\n  \"action_ids\": [\n    \"728\",\n    \"902\",\n    \"908\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "888",
+      "902",
+      "908",
+      "909",
+      "910",
+      "911"
+    ],
+    "regenerated_ids": [
+      "887",
+      "888",
+      "902",
+      "908",
+      "909",
+      "910",
+      "911"
+    ]
+  },
+  {
+    "query": "What actions can be taken to reduce nutrient loss, specifically nitrates, from agricultural soils?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Three of five replicated trials in New Zealand and the UK found that applying nitrification inhibitors to the soil reduced nitrate losses and nitrous oxide emissions [909]. One trial showed that applying aluminium sulphate to the soil reduced nutrient and soil loss [909]. Two replicated site comparison studies in Denmark and Norway indicated that delaying ploughing until spring reduced soil loss and nitrate leaching [712]. Additionally, three of four studies in Canada, Spain, the UK, and the USA found that applying farmyard or poultry manure resulted in reduced nutrient loss and higher nitrogen levels [911]. One of these studies also found lower nutrient loss when farmyard manure was applied in winter instead of autumn [911]. However, one controlled replicated study showed higher nitrate leaching with manure application [911].",
+    "summary_action_ids": [
+      "909",
+      "712",
+      "911"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"reduce nitrate loss from agricultural soils\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"909\",\n    \"action_title\": \"Amend the soil with formulated chemical compounds\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"712\",\n    \"action_title\": \"Change the timing of ploughing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"911\",\n    \"action_title\": \"Amend the soil with manures and agricultural composts\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"909\"}",
+            "return_val": "{\n  \"action_id\": \"909\",\n  \"action_title\": \"Amend the soil with formulated chemical compounds\",\n  \"key_messages\": \"Key Messages:\\nNutrient loss: Three of five replicated trials from New Zealand and the UK measured the effect of applying nitrification inhibitors to the soil and three found reduced nitrate losses and nitrous oxide emissions, although one of these found that the method of application influenced its effect [Thompson]. One trial found no effect on nitrate loss. One trial found reduced nutrient and soil loss when aluminium sulphate was applied to the soil.\\nSoil organic matter: Five of six studies (including three controlled, randomized and replicated and one randomized and replicated) from Australia, China, India, Syria and the UK testing the effects of adding chemical compounds to the soil showed an increase in soil organic matter or carbon when nitrogen or phosphorus fertilizer was applied. One site comparison study showed that a slow-release fertilizer resulted in higher nutrient retention. One study found higher carbon levels when NPK fertilizers were applied with straw, than when applied alone, and one replicated study from France found higher soil carbon when manure rather than chemical compounds were applied.\\nYield: One replicated trial from India and a trial from the Philippines showed that maize, wheat and rice yield increased with increased fertilizer application.\\nSoil types covered: clay, fine loamy, gravelly-sandy loam, loam, loamy sand, sandy loam, silty, silty-clay, silt-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"712\"}",
+            "return_val": "{\n  \"action_id\": \"712\",\n  \"action_title\": \"Change the timing of ploughing\",\n  \"key_messages\": \"Key Messages:\\nTwo replicated site comparison studies from Denmark and Norway (one also randomized) found reduced soil loss and nitrate leaching when ploughing was delayed until spring.\\nSOIL TYPES COVERED: sandy, sandy-loam, silty-clay loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"911\"}",
+            "return_val": "{\n  \"action_id\": \"911\",\n  \"action_title\": \"Amend the soil with manures and agricultural composts\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity loss: Three controlled, replicated studies from the UK and USA found higher microbial biomass when manure or compost was applied, and higher microbial respiration when poultry manure was applied.\\nErosion: One controlled, randomized, replicated study from India found lower soil loss and water runoff with manure application in combination with other treatments.\\nNutrient management: Four studies from Canada, Spain, the UK and the USA measured the effect of a variety of manure types on soil nutrient levels. Of these, three randomized, replicated studies (two also controlled) found reduced nutrient loss and higher nitrogen levels when farmyard or poultry manure was applied. One also found lower nutrient loss when farmyard manure (rather than poultry manure or slurry) was applied in winter rather than autumn. One controlled replicated study found higher nitrate leaching.\\nSoil organic carbon: Four studies (including three controlled, replicated studies (one also randomized) and a review) from India, Japan and the UK found higher carbon levels when manures were applied.\\nSoil organic matter: One controlled, randomized, replicated study from Turkey found higher organic matter, larger soil aggregations and a positive effect on soil physical properties when manure and compost were applied. Two studies from Denmark and Germany found no effect of manure on organic matter levels.\\nYield: Four controlled, replicated studies (including three also randomized) from India, Spain and Turkey found higher crop yields when manures or compost were applied. One study found higher yields when manure were applied in combination with cover crops.\\nSoil types covered: Clay loam, fine sandy-silty loam, loam, loamy, sandy loam, sandy clay loam, silty loam, and sandy silt loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What actions can be taken to reduce nutrient loss, specifically nitrates, from agricultural soils?\",\"action_ids\":[\"909\",\"712\",\"911\"],\"summary\":\"Three of five replicated trials in New Zealand and the UK found that applying nitrification inhibitors to the soil reduced nitrate losses and nitrous oxide emissions [909]. One trial showed that applying aluminium sulphate to the soil reduced nutrient and soil loss [909]. Two replicated site comparison studies in Denmark and Norway indicated that delaying ploughing until spring reduced soil loss and nitrate leaching [712]. Additionally, three of four studies in Canada, Spain, the UK, and the USA found that applying farmyard or poultry manure resulted in reduced nutrient loss and higher nitrogen levels [911]. One of these studies also found lower nutrient loss when farmyard manure was applied in winter instead of autumn [911]. However, one controlled replicated study showed higher nitrate leaching with manure application [911].\"}",
+            "return_val": "{\n  \"query\": \"What actions can be taken to reduce nutrient loss, specifically nitrates, from agricultural soils?\",\n  \"relevant_summary\": \"Three of five replicated trials in New Zealand and the UK found that applying nitrification inhibitors to the soil reduced nitrate losses and nitrous oxide emissions [909]. One trial showed that applying aluminium sulphate to the soil reduced nutrient and soil loss [909]. Two replicated site comparison studies in Denmark and Norway indicated that delaying ploughing until spring reduced soil loss and nitrate leaching [712]. Additionally, three of four studies in Canada, Spain, the UK, and the USA found that applying farmyard or poultry manure resulted in reduced nutrient loss and higher nitrogen levels [911]. One of these studies also found lower nutrient loss when farmyard manure was applied in winter instead of autumn [911]. However, one controlled replicated study showed higher nitrate leaching with manure application [911].\",\n  \"action_ids\": [\n    \"909\",\n    \"712\",\n    \"911\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "712",
+      "891",
+      "892",
+      "893",
+      "898",
+      "909",
+      "910",
+      "911"
+    ],
+    "regenerated_ids": [
+      "712",
+      "887",
+      "891",
+      "892",
+      "893",
+      "898",
+      "904",
+      "906",
+      "909",
+      "910",
+      "911"
+    ]
+  },
+  {
+    "query": "Which actions are most consistently beneficial for both increasing soil organic carbon and improving biodiversity?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Multiple actions were found to be beneficial for both soil organic carbon and biodiversity. Converting to organic farming was found to support a higher diversity of soil organisms and result in higher soil carbon levels (895). Similarly, growing cover crops when a field is empty can lead to more diverse nematode communities, greater microbial biomass, and increased soil carbon (898). Amending the soil with fresh plant material or crop remains was shown to increase microbial biomass and result in higher carbon levels (910). Changes in tillage practices, specifically reduced or no-tillage systems, were found to support more microbes and earthworm species, and lead to higher soil organic carbon (906). Amending the soil with bacteria or fungi was also found to increase microbial diversity and soil organic matter (888).",
+    "summary_action_ids": [
+      "895",
+      "898",
+      "910",
+      "906",
+      "888"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"actions beneficial for both increasing soil organic carbon and improving biodiversity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"895\",\n    \"action_title\": \"Convert to organic farming\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"898\",\n    \"action_title\": \"Grow cover crops when the field is empty\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"910\",\n    \"action_title\": \"Amend the soil with fresh plant material or crop remains\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"895\"}",
+            "return_val": "{\n  \"action_id\": \"895\",\n  \"action_title\": \"Convert to organic farming\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Four studies in Asia, Europe, and the USA (including two site comparison studies and three replicated trials) found higher numbers, diversity, functional diversity (see background) or activity of soil organisms under organic management.\\nSoil organic carbon: Two replicated trials in Italy and the USA showed that organically managed orchards had higher soil carbon levels compared to conventionally managed orchards. One randomized, replicated trial in the USA found soil carbon was lower under organic management compared to alley cropping.  \\nSoil organic matter: One replicated trial in Canada found that soil nutrients were lower in organically managed soils.\\nYields: One replicated trial in Canada found lower yields in organically managed soils. Two replicated trials in the USA (one also randomized) found that fruit was of a higher quality and more resistant to disease, though smaller or that organic management had mixed effects on yield.\\nSOIL TYPES COVERED: clay, clay loam, fine sandy-loam, loam, sandy loam, sandy-clay loam, silt, silty-clay, silt-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"898\"}",
+            "return_val": "{\n  \"action_id\": \"898\",\n  \"action_title\": \"Grow cover crops when the field is empty\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: One controlled, randomized, replicated experiment in Martinique found that growing cover crops resulted in more diverse nematode communities. One replicated trial from the USA found greater microbial biomass under ryegrass compared to a ryegrass/vetch cover crop mix.\\nSoil structure: Three randomized, replicated studies from Denmark, Turkey and the UK found that growing cover crops improved soil structure and nutrient retention. One trial found higher soil porosity, interconnectivity and lower resistance in soil under cover crops, and one found reduced nitrate leaching.\\nSoil organic carbon: One replicated study from Denmark and one review based mainly in Japan found increased soil carbon levels under cover crops. One study also found soil carbon levels increased further when legumes were included in cover crops.\\nSoil organic matter: One replicated study from Denmark and three controlled, randomized, replicated studies from Australia and the USA measured the effect of growing cover crops. Three found increased nitrogen levels under cover crops, three found increased carbon, and one found increased nitrates. One trial showed that they increased regardless of whether those crops were legumes or not. Two studies from Europe (including one controlled, replicated trial) found no marked effect on soil organic matter levels.\\nYield: One replicated trial from the USA found higher tomato yield from soils which had been under a ryegrass cover crop.\\n \\nSOIL TYPES COVERED: clay, loam, sandy clay, sandy-loam, silty-clay, silty-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"910\"}",
+            "return_val": "{\n  \"action_id\": \"910\",\n  \"action_title\": \"Amend the soil with fresh plant material or crop remains\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: One randomized, replicated experiment from Belgium found increased microbial biomass when crop remains and straw were added.\\nCompaction: One study from India found improved soil structure when straw was incorporated. One before-and-after trial from the UK found that incorporating straw residues by discing (reduced tillage) did not improve anaerobic soils (low oxygen levels) in compacted soils.\\nErosion: Two randomized, replicated studies from Canada and India measured the effect of incorporating straw on erosion. One found straw addition reduced soil loss, and one found mixed effects depending on soil type.\\nNutrient loss: Four replicated studies from Belgium, the UK and the USA (one also controlled, one also randomized, and two also controlled and randomized) reported higher soil nitrogen levels when compost or straw was applied, but mixed results when processed wastes were added. One also found reduced nitrate leaching when straw was incorporated. One replicated study from China and the Philippines found mixed results depending on site.\\nSoil organic carbon: Six studies from China, Denmark and India measured the effect of incorporating plant material into the soil. All (including one replicated, two randomized, replicated studies, one controlled, randomized, replicated studies and one controlled before-and-after site comparison) found higher carbon levels when plant material was added. One found higher carbon levels when straw was applied along with NPK fertilizers. One also found larger soil aggregates. One replicated study from China and the Philippines found mixed results depending on site.\\nYield: One replicated trial from Denmark found higher barley yield when straw was incorporated. One trial from the Philippines found higher grain yields when crop remains were incorporated earlier in the season.\\n \\nSoil types covered: clay, clay loam, fine loam, loam/sandy loam,\\u00a0loamy sand, sandy, sandy clay loam, sandy loam, sandy-silt, silt loam, silty, silty-clay.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"actions beneficial for both increasing soil organic carbon and improving biodiversity\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"906\",\n    \"action_title\": \"Change tillage practices\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"910\",\n    \"action_title\": \"Amend the soil with fresh plant material or crop remains\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"888\",\n    \"action_title\": \"Amend the soil with bacteria or fungi\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"906\"}",
+            "return_val": "{\n  \"action_id\": \"906\",\n  \"action_title\": \"Change tillage practices\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity loss: Eleven studies from Canada, Europe, Mexico, or the USA measured effects of reduced tillage on soil animals or microbes. Of these, four (including three replicated trials (three also randomized and one also controlled)) found more microbes, more species of earthworm, or higher microbe activity under reduced tillage. One replicated trial found increased numbers of soil animals and earthworms under reduced tillage. One controlled, replicated trial found mixed effects on microbe diversity depending on time of sampling. Two, (including one controlled, replicated trial) found no effect of reduced tillage on earthworm activity or microbe activity.\\nCompaction: Five studies from Australia, Canada, and Europe measured the effect of controlled traffic and reduced tillage on compacted soils. Of these, two (including one before-and-after trial and one replicated trial) found reduced compaction and subsequent effects (reduced water runoff, for example) under controlled traffic, and one also found that crop yields increased under no-tillage. Three replicated trials, including one site comparison study, found higher compaction under reduced tillage. \\nDrought: Three replicated trials from Europe and India (one also randomized) found the size of soil cracks decreased, and ability of soil to absorb water and soil water content increased with conventional ploughing and sub-soiling. \\nErosion: Nine replicated trials from Brazil, Europe, India, Nigeria and the USA, and one review showed mixed results of tillage on soil erosion. Seven trials (one also controlled and randomized) showed reduced soil loss and runoff under reduced tillage compared to conventional ploughing. One trial showed no differences between tillage systems, but demonstrated that across-slope cultivation reduced soil loss compared to up-and-downslope cultivation. Two trials showed that no-tillage increased soil loss in the absence of crop cover.\\nSoil organic carbon: Twelve studies from Australia, Canada, China, Europe, Japan and the USA compared the effect of no-tillage and conventionally tilled systems on soil organic carbon. All (including two randomized, five replicated, two randomized, replicated, and one controlled, randomized, replicated) found higher soil organic carbon in soils under a no-tillage or reduced tillage system compared to conventionally tilled soil. One review showed that no-tillage with cover cropping and manure application increases soil organic carbon. One randomized, replicated trial from Spain found greater soil organic carbon in conventionally tilled soil. One replicated trial from Canada found no effect of tillage on soil carbon.\\nSoil organic matter: Fifteen studies from Canada, China, Europe, Morocco, and the USA measured effects of reduced tillage on soil organic matter content and nutrient retention. Of these, eight studies (including four replicated (two also randomized), two site comparisons (one also replicated) and one controlled) found maintained or increased soil organic matter and improved soil structure under reduced tillage. Four trials (including two replicated and two site comparison studies) found higher nutrient retention under reduced tillage. One controlled, replicated trial found less carbon and nitrate in no-till compared to conventionally tilled soil, but conventionally tilled soil lost more carbon and nitrate. One controlled, randomized, replicated trial and one replicated trial found mixed effects of reduced tillage on soil nitrogen levels.\\nYield: One replicated study from Canada found lower yields under minimum or no-tillage compared to conventional tillage, and one controlled, randomized, replicated study from the USA found higher yields when subsoiling was done. One randomized, replicated study from Portugal found no effect of tillage treatment on yield.\\n\\u00a0\\nSOIL TYPES COVERED: anthrosol, calcareous silt loam, chalky, clay, clay loam, fine sandy loam, loam, loamy-clay, loam - sandy loam, loam \\u2013 silt-loam, loamy sand, loamy silt, non-chalky clay, sandy, sandy clay loam, sandy loam, sandy silt-loam, silt loam, silty, silty-clay, silty clay loam, silty loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"888\"}",
+            "return_val": "{\n  \"action_id\": \"888\",\n  \"action_title\": \"Amend the soil with bacteria or fungi\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: One randomized, replicated trial from India showed that adding soil bacteria and arbuscular mycorrhizal fungi resulted in higher microbial diversity.\\nSoil organic matter: One controlled, randomized, replicated trial from Turkey found increased soil organic matter content in soil under mycorrhizal-inoculated compost applications\\nYield: Two randomized, replicated trials (including one also controlled) from India and Turkey found higher crop yields.\\nSOIL TYPES COVERED: clay-loam, sandy-loam.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Multiple actions were found to be beneficial for both soil organic carbon and biodiversity. Converting to organic farming was found to support a higher diversity of soil organisms and result in higher soil carbon levels (895). Similarly, growing cover crops when a field is empty can lead to more diverse nematode communities, greater microbial biomass, and increased soil carbon (898). Amending the soil with fresh plant material or crop remains was shown to increase microbial biomass and result in higher carbon levels (910). Changes in tillage practices, specifically reduced or no-tillage systems, were found to support more microbes and earthworm species, and lead to higher soil organic carbon (906). Amending the soil with bacteria or fungi was also found to increase microbial diversity and soil organic matter (888).\",\"query\":\"Which actions are most consistently beneficial for both increasing soil organic carbon and improving biodiversity?\",\"action_ids\":[\"895\",\"898\",\"910\",\"906\",\"888\"]}",
+            "return_val": "{\n  \"query\": \"Which actions are most consistently beneficial for both increasing soil organic carbon and improving biodiversity?\",\n  \"relevant_summary\": \"Multiple actions were found to be beneficial for both soil organic carbon and biodiversity. Converting to organic farming was found to support a higher diversity of soil organisms and result in higher soil carbon levels (895). Similarly, growing cover crops when a field is empty can lead to more diverse nematode communities, greater microbial biomass, and increased soil carbon (898). Amending the soil with fresh plant material or crop remains was shown to increase microbial biomass and result in higher carbon levels (910). Changes in tillage practices, specifically reduced or no-tillage systems, were found to support more microbes and earthworm species, and lead to higher soil organic carbon (906). Amending the soil with bacteria or fungi was also found to increase microbial diversity and soil organic matter (888).\",\n  \"action_ids\": [\n    \"895\",\n    \"898\",\n    \"910\",\n    \"906\",\n    \"888\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "857",
+      "895",
+      "898",
+      "902",
+      "906",
+      "907",
+      "911"
+    ],
+    "regenerated_ids": [
+      "857",
+      "895",
+      "898",
+      "902",
+      "906",
+      "910"
+    ]
+  }
+]
