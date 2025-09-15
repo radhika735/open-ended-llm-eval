@@ -476,7 +476,7 @@ def write_to_json_file(data_list, filename):
     try:
         with open(filename, "w", encoding="utf-8") as file:
             json.dump(data_list, file, indent=2)
-    except json.JSONDecodeError as e:
+    except TypeError as e:
         logging.error(f"Error writing to JSON file {filename}: {e}")
 
 
@@ -604,18 +604,17 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
         qus_filenames = [name for name in sorted(os.listdir(qus_dir)) if name.endswith(".json")]
 
         for qus_filename in qus_filenames[offset_to_first_qu_file : offset_to_first_qu_file + max_qu_files]:
-            if qus_filename.endswith(".json"):
-                filename_list = os.path.splitext(qus_filename)[0].split("_")
-                filename_list[-1] = "summaries"
-                summary_filename = "_".join(filename_list) + ".json"
+            filename_list = os.path.splitext(qus_filename)[0].split("_")
+            filename_list[-1] = "summaries"
+            summary_filename = "_".join(filename_list) + ".json"
 
-                run_summary_gen_for_qu_file(
-                    queries_filepath = os.path.join(qus_dir, qus_filename),
-                    max_qus = max_qus_per_file,
-                    summary_out_base_dirs = summary_out_base_dirs, 
-                    summary_filename = summary_filename, 
-                    model_provider_list = model_provider_list
-                )
+            run_summary_gen_for_qu_file(
+                queries_filepath = os.path.join(qus_dir, qus_filename),
+                max_qus = max_qus_per_file,
+                summary_out_base_dirs = summary_out_base_dirs, 
+                summary_filename = summary_filename, 
+                model_provider_list = model_provider_list
+            )
             
 
 

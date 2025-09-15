@@ -428,7 +428,7 @@ def write_to_json_file(data_list, filename):
     try:
         with open(filename, "w", encoding="utf-8") as file:
             json.dump(data_list, file, indent=2)
-    except json.JSONDecodeError as e:
+    except TypeError as e:
         logging.error(f"Error writing to JSON file {filename}: {e}")
 
 
