@@ -5,6 +5,7 @@ import logging
 from utils.exceptions import RetrievalError
 
 
+
 class Counter():
     def __init__(self):
         self.count = 0
@@ -14,6 +15,7 @@ class Counter():
 
     def get_count(self):
         return self.count
+
 
 
 def parse_model_name(model):
@@ -28,6 +30,7 @@ def parse_model_name(model):
     return cleaned_name
 
 
+
 def parse_provider_name(provider):
     if provider is not None:
         provider_split = provider.split("/")
@@ -37,6 +40,7 @@ def parse_provider_name(provider):
         return ""
     
 
+
 def read_json_file(filepath):
     try:
         with open(filepath, "r", encoding="utf-8") as file:
@@ -44,7 +48,6 @@ def read_json_file(filepath):
             if not isinstance(data, list):
                 raise RetrievalError(f"Expected JSON file {filepath} to contain a list, but contained {type(data)} instead.")
             else:
-                logging.debug(f"Loaded data from {filepath}")
                 return data 
     except json.JSONDecodeError as e:
         raise RetrievalError(f"Error reading json from file {filepath}: {str(e)}.")
@@ -52,13 +55,14 @@ def read_json_file(filepath):
         raise RetrievalError(f"File {filepath} not found.")
     
 
-def write_json_file(data_list, filename):
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+def write_json_file(data_list, filepath):
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
     try:
-        with open(filename, "w", encoding="utf-8") as file:
+        with open(filepath, "w", encoding="utf-8") as file:
             json.dump(data_list, file, indent=2)
     except TypeError as e:
-        logging.error(f"Error writing to JSON file {filename}: {e}")
+        logging.error(f"Error writing to JSON file {filepath}: {e}")
     
         
 
@@ -66,6 +70,9 @@ def sort_qus_file_for_model(qus_filepath, summaries_filepath, model, provider, c
     qus_dicts = read_json_file(qus_filepath)
     summaries_data = read_json_file(summaries_filepath)
     summaries_file_queries = [su["query"] for su in summaries_data]
+
+    start_count = counter.get_count()
+
     for question in qus_dicts:
         query = question["question"]
         if query in summaries_file_queries:
@@ -75,7 +82,13 @@ def sort_qus_file_for_model(qus_filepath, summaries_filepath, model, provider, c
                 logging.debug(f"Query '{query}' used by {model}, {provider} but not recorded.")
                 used_by.append([model, provider])
                 question["used_by_models"] = used_by
-        
+
+    changed_count = counter.get_count() - start_count
+    if changed_count > 0:
+        logging.info(f"Total queries needing updates for {model}, {provider}, {os.path.basename(qus_filepath)}: {counter.get_count()}")
+        write_json_file(data_list=qus_dicts, filepath=qus_filepath)
+
+
 
 def sort_qus_dir_for_model(model, provider, qu_type, filter_stage, counter : Counter):
     qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/usage_annotated"
@@ -96,7 +109,7 @@ def sort_qus_dir_for_model(model, provider, qu_type, filter_stage, counter : Cou
 
 
 def main():
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
     MODEL_PROVIDER_LIST = [
         ("openai/gpt-5", None),
@@ -105,12 +118,13 @@ def main():
         ("moonshotai/kimi-k2-0905", "fireworks/fp8")
     ]
 
-    model, provider = MODEL_PROVIDER_LIST[1]
     qu_type = "answerable"
     filter_stage = "failed"
-    counter = Counter()
-    sort_qus_dir_for_model(model, provider, qu_type=qu_type, filter_stage=filter_stage, counter=counter)
-    logging.info(f"Total queries needing updates for {model}, {provider}, {qu_type}, {filter_stage}: {counter.get_count()}")
+
+    for model, provider in MODEL_PROVIDER_LIST:
+        counter = Counter()
+        sort_qus_dir_for_model(model, provider, qu_type=qu_type, filter_stage=filter_stage, counter=counter)
+
 
 if __name__ == "__main__":
     main()
