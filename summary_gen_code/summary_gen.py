@@ -481,7 +481,7 @@ def write_to_json_file(data_list, filename):
 
 
 
-def append_new_summary(summary, out_filepaths, reset_file = False):
+def append_new_summary(summary, out_filepaths : list, reset_file = False):
     out_data = []
     for filepath in out_filepaths:
         all_summaries = []
@@ -558,39 +558,47 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dirs
         return
 
     qu_dicts = copy.deepcopy(file_qu_dicts)
-    qu_count = 0
-    current_qu_idx = -1
+    new_summaries_and_outfiles = []
 
-    while qu_count < max_qus:
-        current_qu_idx += 1
-        if current_qu_idx >= len(qu_dicts):
-            logging.info(f"Reached end of questions in file {queries_filepath}. Stopping summary generation for this file.")
-            break
-        qu_dict = qu_dicts[current_qu_idx]
-        query = qu_dict["question"]
+    try:
+        qu_count = 0
+        current_qu_idx = -1
 
-        used_by_models = qu_dict.get("used_by_models", [])
-        unused_by_models = [mp for mp in model_provider_list if list(mp) not in used_by_models]
-        if unused_by_models:
-            logging.info(f"Generating summaries for query: {query}")
-            model_summaries = run_models(query=query, model_provider_list=unused_by_models)
+        while qu_count < max_qus:
+            current_qu_idx += 1
+            if current_qu_idx >= len(qu_dicts):
+                logging.info(f"Reached end of questions in file {queries_filepath}. Stopping summary generation for this file.")
+                break
+            qu_dict = qu_dicts[current_qu_idx]
+            query = qu_dict["question"]
 
-            for model, provider, response, tool_calls in model_summaries:
-                cleaned_model_name = parse_model_name(model)
-                cleaned_provider_name = parse_provider_name(provider)
+            used_by_models = qu_dict.get("used_by_models", [])
+            unused_by_models = [mp for mp in model_provider_list if list(mp) not in used_by_models]
+            if unused_by_models:
+                logging.info(f"Generating summaries for query: {query}")
+                model_summaries = run_models(query=query, model_provider_list=unused_by_models)
 
-                summary_out_filepaths = []
-                for dir in summary_out_base_dirs:
-                    summary_out_filepaths.append(os.path.join(dir, f"{cleaned_provider_name}_{cleaned_model_name}", summary_filename))
+                qu_dict["used_by_models"] = used_by_models
 
-                assembled_summary = assemble_summary_details(qu_details=qu_dict, llm_response=response, tool_use_track=tool_calls, model=model, provider=provider)
-                append_new_summary(summary=assembled_summary, out_filepaths=summary_out_filepaths)
+                for model, provider, response, tool_calls in model_summaries:
+                    cleaned_model_name = parse_model_name(model)
+                    cleaned_provider_name = parse_provider_name(provider)
+                    summary_out_filepaths = []
+                    for dir in summary_out_base_dirs:
+                        summary_out_filepaths.append(os.path.join(dir, f"{cleaned_provider_name}_{cleaned_model_name}", summary_filename))
+                    
+                    assembled_summary = assemble_summary_details(qu_details=qu_dict, llm_response=response, tool_use_track=tool_calls, model=model, provider=provider)
+                    
+                    new_summaries_and_outfiles.append((assembled_summary, summary_out_filepaths))
+                    qu_dict["used_by_models"].append([model, provider])
 
-            qu_dict["used_by_models"] = used_by_models + unused_by_models
-            qu_count += 1
-
-    # overwrite the question file (it will contain the updated used_by_models field)
-    write_to_json_file(data_list=qu_dicts, filename=queries_filepath)
+                qu_count += 1
+    finally:
+        # write the new summaries to all output files
+        for summary, summary_out_filepaths in new_summaries_and_outfiles:
+            append_new_summary(summary=summary, out_filepaths=summary_out_filepaths)
+        # overwrite the question file (it will contain the updated used_by_models field)
+        write_to_json_file(data_list=qu_dicts, filename=queries_filepath)
 
 
 

@@ -66,45 +66,45 @@ def write_json_file(data_list, filepath):
     
         
 
-def sort_qus_file_for_model(qus_filepath, summaries_filepath, model, provider, counter: Counter):
-    qus_dicts = read_json_file(qus_filepath)
-    summaries_data = read_json_file(summaries_filepath)
-    summaries_file_queries = [su["query"] for su in summaries_data]
+# def sort_qus_file_for_model(qus_filepath, summaries_filepath, model, provider, counter: Counter):
+#     qus_dicts = read_json_file(qus_filepath)
+#     summaries_data = read_json_file(summaries_filepath)
+#     summaries_file_queries = [su["query"] for su in summaries_data]
 
-    start_count = counter.get_count()
+#     start_count = counter.get_count()
 
-    for question in qus_dicts:
-        query = question["question"]
-        if query in summaries_file_queries:
-            used_by = question.get("used_by_models", [])
-            if [model, provider] not in used_by:
-                counter.increment()
-                logging.debug(f"Query '{query}' used by {model}, {provider} but not recorded.")
-                used_by.append([model, provider])
-                question["used_by_models"] = used_by
+#     for question in qus_dicts:
+#         query = question["question"]
+#         if query in summaries_file_queries:
+#             used_by = question.get("used_by_models", [])
+#             if [model, provider] not in used_by:
+#                 counter.increment()
+#                 logging.debug(f"Query '{query}' used by {model}, {provider} but not recorded.")
+#                 used_by.append([model, provider])
+#                 question["used_by_models"] = used_by
 
-    changed_count = counter.get_count() - start_count
-    if changed_count > 0:
-        logging.info(f"Total queries needing updates for {model}, {provider}, {os.path.basename(qus_filepath)}: {counter.get_count()}")
-        write_json_file(data_list=qus_dicts, filepath=qus_filepath)
+#     changed_count = counter.get_count() - start_count
+#     if changed_count > 0:
+#         logging.info(f"Total queries needing updates for {model}, {provider}, {os.path.basename(qus_filepath)}: {counter.get_count()}")
+#         write_json_file(data_list=qus_dicts, filepath=qus_filepath)
 
 
 
-def sort_qus_dir_for_model(model, provider, qu_type, filter_stage, counter : Counter):
-    qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/usage_annotated"
-    cleaned_model_name = parse_model_name(model)
-    cleaned_provider_name = parse_provider_name(provider)
-    cleaned_name = f"{cleaned_provider_name}_{cleaned_model_name}"
-    summaries_dir = f"live_summaries/{qu_type}_{filter_stage}_qus_summaries/hybrid_cross-encoder/all_eval_stages/{cleaned_name}"
+# def sort_qus_dir_for_model(model, provider, qu_type, filter_stage, counter : Counter):
+#     qus_dir = f"live_questions/bg_km_qus/{qu_type}/{filter_stage}/usage_annotated"
+#     cleaned_model_name = parse_model_name(model)
+#     cleaned_provider_name = parse_provider_name(provider)
+#     cleaned_name = f"{cleaned_provider_name}_{cleaned_model_name}"
+#     summaries_dir = f"live_summaries/{qu_type}_{filter_stage}_qus_summaries/hybrid_cross-encoder/all_eval_stages/{cleaned_name}"
 
-    for qus_filename in sorted(os.listdir(qus_dir)):
-        filename_list = os.path.splitext(qus_filename)[0].split("_")
-        filename_list[-1] = "summaries"
-        summary_filename = "_".join(filename_list) + ".json"
-        qus_filepath = os.path.join(qus_dir, qus_filename)
-        summaries_filepath = os.path.join(summaries_dir, summary_filename)
-        if os.path.exists(summaries_filepath):
-            sort_qus_file_for_model(qus_filepath, summaries_filepath, model, provider, counter=counter)
+#     for qus_filename in sorted(os.listdir(qus_dir)):
+#         filename_list = os.path.splitext(qus_filename)[0].split("_")
+#         filename_list[-1] = "summaries"
+#         summary_filename = "_".join(filename_list) + ".json"
+#         qus_filepath = os.path.join(qus_dir, qus_filename)
+#         summaries_filepath = os.path.join(summaries_dir, summary_filename)
+#         if os.path.exists(summaries_filepath):
+#             sort_qus_file_for_model(qus_filepath, summaries_filepath, model, provider, counter=counter)
 
 
 
@@ -120,10 +120,6 @@ def main():
 
     qu_type = "answerable"
     filter_stage = "failed"
-
-    for model, provider in MODEL_PROVIDER_LIST:
-        counter = Counter()
-        sort_qus_dir_for_model(model, provider, qu_type=qu_type, filter_stage=filter_stage, counter=counter)
 
 
 if __name__ == "__main__":
