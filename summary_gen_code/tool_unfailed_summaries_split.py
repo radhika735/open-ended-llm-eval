@@ -33,6 +33,9 @@ def get_num_duplicate_questions_in_qu_file(qu_filepath):
     questions = [el["question"] for el in qu_data]
     unique_questions = set(questions)
     num_duplicates = len(questions) - len(unique_questions)
+    for qu in questions:
+        if questions.count(qu) > 1:
+            print(f"Duplicate question in {os.path.basename(qu_filepath)}: {qu}")
     return num_duplicates
 
 
@@ -44,27 +47,30 @@ def get_num_duplicate_questions_in_summary_file(summaries_filepath):
     questions = [el["query"] for el in summaries_data]
     unique_questions = set(questions)
     num_duplicates = len(questions) - len(unique_questions)
+    for qu in questions:
+        if questions.count(qu) > 1:
+            print(f"Duplicate question in {os.path.basename(summaries_filepath)}: {qu}")
     return num_duplicates
 
 
-def get_num_duplicate_questions(question_type, filter_stage, retrieval_type, eval_stage, model, provider):
+def get_num_duplicate_questions(question_type, filter_stage, retrieval_type, usage_stage, eval_stage, model, provider):
     cleaned_model_name = parse_model_name(model)
     cleaned_provider_name = parse_provider_name(provider)
     cleaned_name = f"{cleaned_provider_name}_{cleaned_model_name}"
     summaries_dir = f"live_summaries/{question_type}_{filter_stage}_qus_summaries/{retrieval_type}/{eval_stage}/{cleaned_name}"
-    qu_dir = os.path.join("live_questions", common_dir)
+    qus_dir = f"live_questions/bg_km_qus/{question_type}/{filter_stage}/{usage_stage}"
 
-    for qu_filename in sorted(os.listdir(qu_dir)):
-        print(qu_filename)
-        qu_filepath = os.path.join(qu_dir, qu_filename)
-        num_qu_duplicates = get_num_duplicate_questions_in_qu_file(qu_filepath)
-        print(f"Number of duplicate questions in {qu_filename}: {num_qu_duplicates}")
+    qu_dir_duplicates = 0
+    for qu_filename in sorted(os.listdir(qus_dir)):
+        qu_filepath = os.path.join(qus_dir, qu_filename)
+        qu_dir_duplicates += get_num_duplicate_questions_in_qu_file(qu_filepath)
+    print(f"Number of duplicate questions in {qus_dir}: {qu_dir_duplicates}")
 
+    summary_dir_duplicates = 0
     for summaries_filename in sorted(os.listdir(summaries_dir)):
-        print(summaries_filename)
         summaries_filepath = os.path.join(summaries_dir, summaries_filename)
-        num_summary_duplicates = get_num_duplicate_questions_in_summary_file(summaries_filepath)
-        print(f"Number of duplicate questions in {summaries_filename}: {num_summary_duplicates}")
+        summary_dir_duplicates += get_num_duplicate_questions_in_summary_file(summaries_filepath)
+    print(f"Number of duplicate questions in {summaries_dir}: {summary_dir_duplicates}")
 
 
 
@@ -124,14 +130,31 @@ def main():
 
     model, provider = MODEL_PROVIDER_LIST[0]
 
-    split(
-        question_type="answerable",
-        filter_stage="failed",
-        retrieval_type="hybrid_cross-encoder",
-        eval_stage="all_eval_stages",
+    question_type = "answerable"
+    filter_stage = "failed"
+    retrieval_type = "hybrid_cross-encoder"
+    usage_stage = "usage_annotated"
+    eval_stage = "all_eval_stages"
+
+    get_num_duplicate_questions(
+        question_type=question_type,
+        filter_stage=filter_stage,
+        retrieval_type=retrieval_type,
+        usage_stage=usage_stage,
+        eval_stage=eval_stage,
         model=model,
         provider=provider
     )
+
+
+    # split(
+    #     question_type=question_type,
+    #     filter_stage=filter_stage,
+    #     retrieval_type=retrieval_type,
+    #     eval_stage=eval_stage,
+    #     model=model,
+    #     provider=provider
+    # )
 
 
 

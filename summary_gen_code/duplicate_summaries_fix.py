@@ -207,7 +207,7 @@ def main():
     ]
 
     qu_types = ["answerable", "unanswerable"]
-    filter_stages = ["passed", "failed"]
+    filter_stages = ["passed","failed"]
     # unanswerable passed and answerable passed both have duplicates.
 
     for m, p in MODEL_PROVIDER_LIST:
@@ -215,6 +215,7 @@ def main():
             for filter_stage in filter_stages:
                 num = get_num_overlapping_summaries_for_dir(model=m, provider=p, qu_type=qu_type, filter_stage=filter_stage)
                 print(f"Num questions found for {qu_type}, {filter_stage}, {m}, {p}: {num}")
+                # handle_overlapping_summaries_for_dir(model=m, provider=p, qu_type=qu_type, filter_stage=filter_stage)
 
     # model, provider = MODEL_PROVIDER_LIST[0]
 
