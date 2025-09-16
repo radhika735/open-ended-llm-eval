@@ -197,7 +197,7 @@ def get_num_overlapping_summaries_for_dir(model, provider, qu_type, filter_stage
 
 
 def main():
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
     MODEL_PROVIDER_LIST = [
         ("openai/gpt-5", None),
@@ -213,8 +213,8 @@ def main():
     for m, p in MODEL_PROVIDER_LIST:
         for qu_type in qu_types:
             for filter_stage in filter_stages:
-                get_num_overlapping_summaries_for_dir(model=m, provider=p, qu_type=qu_type, filter_stage=filter_stage)
-
+                num = get_num_overlapping_summaries_for_dir(model=m, provider=p, qu_type=qu_type, filter_stage=filter_stage)
+                print(f"Num questions found for {qu_type}, {filter_stage}, {m}, {p}: {num}")
 
     # model, provider = MODEL_PROVIDER_LIST[0]
 
