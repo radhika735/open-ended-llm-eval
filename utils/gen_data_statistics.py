@@ -213,8 +213,6 @@ def print_viable_summaries_split(joined_model_provider_list):
     
 
 
-
-
 def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     
