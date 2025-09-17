@@ -168,11 +168,11 @@ def get_summary_gen_qus_usage_separate(model, provider, qu_base_dir="live_questi
     return usage
 
 
-def get_summary_gen_qus_usage_combined(model, provider, qu_types=["answerable", "unanswerable"], filter_stage=["passed", "failed"]):
+def get_summary_gen_qus_usage_combined(model, provider, qu_base_dir="live_questions", qu_types=["answerable", "unanswerable"], filter_stage=["passed", "failed"]):
     total_used = 0
     total_unused = 0
 
-    usage = get_summary_gen_qus_usage_separate(model=model, provider=provider, qu_types=qu_types, filter_stages=filter_stage)
+    usage = get_summary_gen_qus_usage_separate(model=model, provider=provider, qu_base_dir=qu_base_dir, qu_types=qu_types, filter_stages=filter_stage)
     for u in usage:
         total_used += u["used"]
         total_unused += u["unused"]
