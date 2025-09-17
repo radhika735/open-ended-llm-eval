@@ -1,0 +1,590 @@
+[
+  {
+    "query": "What are the most beneficial actions for creating field margins to support wildlife on arable farms?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Leaving cultivated, uncropped margins or plots on arable farms has been found to benefit wildlife, including plants, invertebrates, and birds (562). Specifically, these margins have been associated with an increased species richness of plants and bumblebees, as well as an increased abundance of spiders and ground beetles (562). They have also been linked to increased breeding success for bird species such as stone curlews, northern lapwings, and Eurasian skylarks (562). However, two studies found no effect on 11 out of 12 farmland bird species or ground beetles (562), and another study found a higher incidence of pernicious weeds on uncropped cultivated margins (562). In contrast, one UK study on retaining unmown field margins found no difference in the activity of pipistrelle bats between these margins and conventional field margins (1940). Additionally, studies have shown that reducing field size can also be beneficial, with smaller fields supporting a higher species richness and abundance of butterflies and moths (3974).",
+    "summary_action_ids": [
+      "562",
+      "1940",
+      "3974"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"creating field margins for wildlife on arable farms\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1940\",\n    \"action_title\": \"Retain unmown field margins\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"562\",\n    \"action_title\": \"Leave cultivated, uncropped margins or plots (includes 'lapwing plots')\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3974\",\n    \"action_title\": \"Reduce field size (or maintain small fields)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1940\"}",
+            "return_val": "{\n  \"action_id\": \"1940\",\n  \"action_title\": \"Retain unmown field margins\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of retaining unmown field margins on bats populations. The study was in the UK.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): One replicated, paired sites study in the UK\\u00a0found that pipistrelle activity (relative abundance) did not differ between unmown field margins managed for wildlife on agri-environment scheme farms and field margins on conventional farms.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"562\"}",
+            "return_val": "{\n  \"action_id\": \"562\",\n  \"action_title\": \"Leave cultivated, uncropped margins or plots (includes 'lapwing plots')\",\n  \"key_messages\": \"Key Messages:\\n\\nNineteen individual studies looked at the effect of uncropped, cultivated margins or plots on wildlife. Seventeen studies from the UK and northwest Europe (six reviews and seven replicated studies of which two were site comparisons, one a before-and-after trial and one was controlled and randomized) found that leaving uncropped, cultivated margins or plots on farmland provides benefits to some or all target farmland bird species, plants, invertebrates, and mammals. These wildlife benefits included increased species richness of plants, bumblebees, species richness and abundance of spiders, abundance of ground-dwelling invertebrates and ground beetles, increased stone curlew breeding population size,\\u00a0northern lapwing hatching success, Eurasian skylark nesting success and the establishment, abundance or species richness of rare arable plant species. A replicated study found northern lapwing, Eurasian skylark, grey partridge and yellow wagtail bred in lapwing plots.\\nTwo studies (a replicated study and a review) from the UK found that leaving uncropped, cultivated margins or plots on farmland had no effect on 11 out of 12 farmland bird species or ground beetles. A replicated site comparison study in the UK found fewer seed-eating birds on fallow plots for ground-nesting birds in two out of three regions. One review from the UK found evidence that pernicious weeds were more commonly found on uncropped cultivated margins than conservation or conventional headlands. A replicated site comparison from the UK found the proportion of young grey partridges in the population was lower in areas with a high proportion of uncropped cultivated margins and plots.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3974\"}",
+            "return_val": "{\n  \"action_id\": \"3974\",\n  \"action_title\": \"Reduce field size (or maintain small fields)\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects of reducing field size on butterflies and moths. Two studies were in Switzerland, and one was in each of Germany, Sweden and the Czech Republic and Poland.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nRichness/diversity (5 studies): Two of four replicated, site comparison studies in Sweden, the Czech Republic and Poland and Switzerland found that arable farms (in more diverse landscapes) and landscapes with smaller fields had a higher species richness of butterflies and burnet moths than areas with larger fields. The other two studies found that mixed farms and landscapes with smaller fields had a similar species richness of butterflies to areas with larger fields. One before-and-after study in Germany found that after reducing field size by increasing the length of field edges on a farm, along with increasing the area of meadows and field margins, the species richness of butterflies and burnet moths increased.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): Four replicated, site comparison studies in Sweden, the Czech Republic and Poland and Switzerland found that arable and mixed farms and landscapes with smaller fields had a higher abundance of butterflies and burnet moths than areas with larger fields.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"562\",\"1940\",\"3974\"],\"summary\":\"Leaving cultivated, uncropped margins or plots on arable farms has been found to benefit wildlife, including plants, invertebrates, and birds (562). Specifically, these margins have been associated with an increased species richness of plants and bumblebees, as well as an increased abundance of spiders and ground beetles (562). They have also been linked to increased breeding success for bird species such as stone curlews, northern lapwings, and Eurasian skylarks (562). However, two studies found no effect on 11 out of 12 farmland bird species or ground beetles (562), and another study found a higher incidence of pernicious weeds on uncropped cultivated margins (562). In contrast, one UK study on retaining unmown field margins found no difference in the activity of pipistrelle bats between these margins and conventional field margins (1940). Additionally, studies have shown that reducing field size can also be beneficial, with smaller fields supporting a higher species richness and abundance of butterflies and moths (3974).\",\"query\":\"What are the most beneficial actions for creating field margins to support wildlife on arable farms?\"}",
+            "return_val": "{\n  \"query\": \"What are the most beneficial actions for creating field margins to support wildlife on arable farms?\",\n  \"relevant_summary\": \"Leaving cultivated, uncropped margins or plots on arable farms has been found to benefit wildlife, including plants, invertebrates, and birds (562). Specifically, these margins have been associated with an increased species richness of plants and bumblebees, as well as an increased abundance of spiders and ground beetles (562). They have also been linked to increased breeding success for bird species such as stone curlews, northern lapwings, and Eurasian skylarks (562). However, two studies found no effect on 11 out of 12 farmland bird species or ground beetles (562), and another study found a higher incidence of pernicious weeds on uncropped cultivated margins (562). In contrast, one UK study on retaining unmown field margins found no difference in the activity of pipistrelle bats between these margins and conventional field margins (1940). Additionally, studies have shown that reducing field size can also be beneficial, with smaller fields supporting a higher species richness and abundance of butterflies and moths (3974).\",\n  \"action_ids\": [\n    \"562\",\n    \"1940\",\n    \"3974\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "63",
+      "246",
+      "442",
+      "652",
+      "562",
+      "120"
+    ],
+    "regenerated_ids": [
+      "63",
+      "118",
+      "120",
+      "128",
+      "246",
+      "442",
+      "562",
+      "651",
+      "652"
+    ]
+  },
+  {
+    "query": "What does the evidence say about the effectiveness of providing supplementary food versus cover for farmland birds during winter?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Leaving overwinter stubbles provides benefits to farmland birds, with thirteen studies finding evidence for this, including higher densities of farmland birds in winter [695]. Sowing crops in spring rather than autumn also resulted in higher numbers of farmland birds [137, 207]. One study found several species bred in the study site for the first time after the start of spring sowing [207]. A replicated, controlled, paired sites study from Sweden found more bird species on areas with spring sown cereals, compared with winter cereals [207]. However, one UK study found that leaving overwinter stubbles had inconsistent or no effects on farmland bird numbers [695]. Three studies found only certain bird species showed positive associations with overwinter stubbles [695]. A replicated, controlled study in Sweden, found that northern lapwings nested on spring-sown crops more than expected based on their availability, but hatching success on spring crops was lower than on autumn crops [137].",
+    "summary_action_ids": [
+      "137",
+      "207",
+      "695"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"farmland birds winter\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"137\",\n    \"action_title\": \"Plant crops in spring rather than autumn\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"695\",\n    \"action_title\": \"Leave overwinter stubbles\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"207\",\n    \"action_title\": \"Sow crops in spring rather than autumn\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"137\"}",
+            "return_val": "{\n  \"action_id\": \"137\",\n  \"action_title\": \"Plant crops in spring rather than autumn\",\n  \"key_messages\": \"Key Messages:\\n\\nA total of nine studies from Denmark, Sweden and the UK looked at the effects of sowing crops in spring or autumn on farmland wildlife. Five studies (including one replicated controlled trial, and a review) found that planting crops in spring rather than autumn resulted in higher numbers of farmland birds, weed diversity or weed density and one arable weed species produced more fruit on spring-sown crops.\\nA review found one study from the UK showing that four out of five species of arable weed produced more fruits on autumn-sown crops. A second review found one study showing that there were more invertebrates in winter wheat than spring wheat.\\nA replicated study from the UK found that winter and spring sown crops were used for different broods by Eurasian skylarks. A replicated site comparison found arthropod abundance was higher in autumn barley in early summer and spring barley in late summer. A replicated, controlled study in Sweden, found that northern lapwings nested on spring-sown crops more than expected based on their availability, but hatching success on spring crops was lower than on autumn crops.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"695\"}",
+            "return_val": "{\n  \"action_id\": \"695\",\n  \"action_title\": \"Leave overwinter stubbles\",\n  \"key_messages\": \"Key Messages:\\n\\nEighteen studies (including four reviews and one systematic review) investigated the effects of overwinter stubbles on farmland wildlife. Thirteen studies from Finland, Switzerland and the UK (six replicated trials, including two site comparisons, four reviews and a systematic review) found evidence that leaving overwinter stubbles provides some benefits to plants, insects, spiders, mammals and farmland birds. These benefits include higher densities of farmland birds in winter, increased grey partridge productivity, and increased cirl bunting population size (in combination with several other conservation measures) and territory density. \\nOne replicated site comparison study from the UK found evidence that leaving overwinter stubbles had inconsistent or no effects on farmland bird numbers. Three studies found only certain bird species showed positive associations with overwinter stubbles. Two replicated studies (of which one also randomized and controlled) found that only Eurasian skylark or both Eurasian skylark and Eurasian linnet benefited, out of a total 23 and 12 farmland bird species tested respectively. One study found that only grey partridge and tree sparrow showed positive population responses to areas with overwinter stubbles.\\nTwo studies from the UK (one randomized, one replicated and controlled) found that different farmland bird species benefited from different stubble heights. One replicated site comparison found mixed effects between different stubble management options on seed-eating bird abundance.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"207\"}",
+            "return_val": "{\n  \"action_id\": \"207\",\n  \"action_title\": \"Sow crops in spring rather than autumn\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled, paired sites study from Sweden found more bird species on areas with spring sown cereals, compared with winter cereals. A before-and-after study from the UK found that several species bred in the study site for the first time after the start of spring sowing.\\nThree studies from Sweden and the UK, two replicated and controlled, found population increases after the start of spring sowing, or higher populations on sites with spring-sown cereals, compared to sites with winter cereals. A before-and-after study from the UK found that ten species did not increase after spring sowing began. No species decreased. A replicated, controlled paired sites study from Sweden found that the benefits of spring-sowing decreased with the proportion of autumn-sown crops in the surrounding area.\\nA replicated, controlled study from Sweden found that hatching success was lower on spring-sown crops than autumn sown.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"137\",\"207\",\"695\"],\"summary\":\"Leaving overwinter stubbles provides benefits to farmland birds, with thirteen studies finding evidence for this, including higher densities of farmland birds in winter [695]. Sowing crops in spring rather than autumn also resulted in higher numbers of farmland birds [137, 207]. One study found several species bred in the study site for the first time after the start of spring sowing [207]. A replicated, controlled, paired sites study from Sweden found more bird species on areas with spring sown cereals, compared with winter cereals [207]. However, one UK study found that leaving overwinter stubbles had inconsistent or no effects on farmland bird numbers [695]. Three studies found only certain bird species showed positive associations with overwinter stubbles [695]. A replicated, controlled study in Sweden, found that northern lapwings nested on spring-sown crops more than expected based on their availability, but hatching success on spring crops was lower than on autumn crops [137].\",\"query\":\"What does the evidence say about the effectiveness of providing supplementary food versus cover for farmland birds during winter?\"}",
+            "return_val": "{\n  \"query\": \"What does the evidence say about the effectiveness of providing supplementary food versus cover for farmland birds during winter?\",\n  \"relevant_summary\": \"Leaving overwinter stubbles provides benefits to farmland birds, with thirteen studies finding evidence for this, including higher densities of farmland birds in winter [695]. Sowing crops in spring rather than autumn also resulted in higher numbers of farmland birds [137, 207]. One study found several species bred in the study site for the first time after the start of spring sowing [207]. A replicated, controlled, paired sites study from Sweden found more bird species on areas with spring sown cereals, compared with winter cereals [207]. However, one UK study found that leaving overwinter stubbles had inconsistent or no effects on farmland bird numbers [695]. Three studies found only certain bird species showed positive associations with overwinter stubbles [695]. A replicated, controlled study in Sweden, found that northern lapwings nested on spring-sown crops more than expected based on their availability, but hatching success on spring crops was lower than on autumn crops [137].\",\n  \"action_ids\": [\n    \"137\",\n    \"207\",\n    \"695\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "648",
+      "594",
+      "695",
+      "149",
+      "646"
+    ],
+    "regenerated_ids": [
+      "87",
+      "594",
+      "648",
+      "695"
+    ]
+  },
+  {
+    "query": "What actions can be taken on farmland to support invertebrate populations like bees and beetles?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One replicated, paired, site comparison study in the UK found that beetle banks and field margins managed under agri-environment schemes had a higher species richness and abundance of micro-moths than conventionally managed field margins [3927]. The same study found that the species richness of butterflies on beetle banks was lower than along hedgerows, and the abundance of adult butterflies was also lower on beetle banks than along hedgerows [3927]. Another replicated trial in the UK found that more invertebrates were found in wheat, barley and grass silage fields compared to maize [149].",
+    "summary_action_ids": [
+      "3927",
+      "149"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"farmland invertebrate support\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"141\",\n    \"action_title\": \"Support or maintain low intensity agricultural systems\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3927\",\n    \"action_title\": \"Create beetle banks\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"149\",\n    \"action_title\": \"Plant cereals for whole crop silage\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"141\"}",
+            "return_val": "{\n  \"action_id\": \"141\",\n  \"action_title\": \"Support or maintain low intensity agricultural systems\",\n  \"key_messages\": \"Key Messages:\\n\\n\\nWe have captured no evidence for the effects of supporting or maintaining low intensity agricultural systems on farmland wildlife.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3927\"}",
+            "return_val": "{\n  \"action_id\": \"3927\",\n  \"action_title\": \"Create beetle banks\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects on butterflies and moths of creating raised beetle banks in arable fields. All four were in the UK.\\n\\nCOMMUNITY RESPONSE (2 STUDIES)\\n\\nRichness/diversity (2 studies): One replicated, paired, site comparison study in the UK\\u00a0found that beetle banks and field margins managed under agri-environment schemes had a higher species richness of micro-moths, and a similar species richness of macro-moths, than conventionally managed field margins. One replicated, paired, site comparison study in the UK\\u00a0found that the species richness of butterflies on beetle banks was lower than along hedgerows.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): Three replicated, site comparison studies (including one paired study) in the UK\\u00a0found that beetle banks had a similar abundance of caterpillars to field margins, crop fields\\u00a0and a range of other field-edge farmland habitats. One of these studies also found that the abundance of adult butterflies was lower on beetle banks than along hedgerows. One replicated, paired, site comparison study in the UK\\u00a0found that beetle banks and field margins managed under agri-environment schemes had a higher abundance of micro-moths, and a similar abundance of macro-moths, than conventionally managed field margins.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"149\"}",
+            "return_val": "{\n  \"action_id\": \"149\",\n  \"action_title\": \"Plant cereals for whole crop silage\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (one review, one replicated trial) from the UK investigated the effects of cereal-based whole crop silage. One replicated study found that cereal-based whole crop silage fields were used more by farmland birds and supported a higher abundance of seed-eating songbirds, swallows and martins than other crop types. The same study also found that important bird food plants were more abundant in cereals than other crop types and more invertebrates were found in wheat, barley and grass silage fields compared to maize.\\nA review found one study in which cereal-based whole crop silage fields were avoided by seed-eating birds during winter, but used as much as a control during summer.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"3927\",\"149\"],\"summary\":\"One replicated, paired, site comparison study in the UK found that beetle banks and field margins managed under agri-environment schemes had a higher species richness and abundance of micro-moths than conventionally managed field margins [3927]. The same study found that the species richness of butterflies on beetle banks was lower than along hedgerows, and the abundance of adult butterflies was also lower on beetle banks than along hedgerows [3927]. Another replicated trial in the UK found that more invertebrates were found in wheat, barley and grass silage fields compared to maize [149].\",\"query\":\"What actions can be taken on farmland to support invertebrate populations like bees and beetles?\"}",
+            "return_val": "{\n  \"query\": \"What actions can be taken on farmland to support invertebrate populations like bees and beetles?\",\n  \"relevant_summary\": \"One replicated, paired, site comparison study in the UK found that beetle banks and field margins managed under agri-environment schemes had a higher species richness and abundance of micro-moths than conventionally managed field margins [3927]. The same study found that the species richness of butterflies on beetle banks was lower than along hedgerows, and the abundance of adult butterflies was also lower on beetle banks than along hedgerows [3927]. Another replicated trial in the UK found that more invertebrates were found in wheat, barley and grass silage fields compared to maize [149].\",\n  \"action_ids\": [\n    \"3927\",\n    \"149\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "63",
+      "80",
+      "118",
+      "124",
+      "132",
+      "134",
+      "135",
+      "136",
+      "246",
+      "442",
+      "538",
+      "562",
+      "594",
+      "651",
+      "652",
+      "69",
+      "704"
+    ],
+    "regenerated_ids": [
+      "63",
+      "80",
+      "81",
+      "118",
+      "124",
+      "126",
+      "134",
+      "136",
+      "139",
+      "156",
+      "246",
+      "362",
+      "442",
+      "651",
+      "652"
+    ]
+  },
+  {
+    "query": "To benefit native farmland wildlife, what are the most effective methods for controlling invasive or problematic species?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "No studies were found that evaluated the effects of controlling non-native or problematic plants to restore habitat on mammals (2530). There were also no studies found that assessed the effects of using biological control (2852) or biocides or other chemicals (2937) to manage invasive or problematic species on marine and freshwater mammal populations.",
+    "summary_action_ids": [
+      "2530",
+      "2852",
+      "2937"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"controlling invasive or problematic species for farmland wildlife\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2530\",\n    \"action_title\": \"Control non-native/problematic plants to restore habitat\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2852\",\n    \"action_title\": \"Use biological control to manage invasive or problematic species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2937\",\n    \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2530\"}",
+            "return_val": "{\n  \"action_id\": \"2530\",\n  \"action_title\": \"Control non-native/problematic plants to restore habitat\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on mammals of controlling invasive or problematic plants to restore habitat.\\n\\n'We found no studies' means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2852\"}",
+            "return_val": "{\n  \"action_id\": \"2852\",\n  \"action_title\": \"Use biological control to manage invasive or problematic species\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using biological control to manage invasive or problematic species on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2937\"}",
+            "return_val": "{\n  \"action_id\": \"2937\",\n  \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using biocides or other chemicals to control invasive or problematic species on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"To benefit native farmland wildlife, what are the most effective methods for controlling invasive or problematic species?\",\"action_ids\":[\"2530\",\"2852\",\"2937\"],\"summary\":\"No studies were found that evaluated the effects of controlling non-native or problematic plants to restore habitat on mammals (2530). There were also no studies found that assessed the effects of using biological control (2852) or biocides or other chemicals (2937) to manage invasive or problematic species on marine and freshwater mammal populations.\"}",
+            "return_val": "{\n  \"query\": \"To benefit native farmland wildlife, what are the most effective methods for controlling invasive or problematic species?\",\n  \"relevant_summary\": \"No studies were found that evaluated the effects of controlling non-native or problematic plants to restore habitat on mammals (2530). There were also no studies found that assessed the effects of using biological control (2852) or biocides or other chemicals (2937) to manage invasive or problematic species on marine and freshwater mammal populations.\",\n  \"action_ids\": [\n    \"2530\",\n    \"2852\",\n    \"2937\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "104",
+      "105",
+      "106",
+      "107",
+      "123",
+      "699"
+    ],
+    "regenerated_ids": [
+      "104",
+      "105",
+      "106",
+      "107",
+      "110",
+      "111",
+      "123",
+      "127",
+      "699"
+    ]
+  },
+  {
+    "query": "What are the benefits and drawbacks of managing water levels and features like ditches and ponds on farmland to enhance biodiversity?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Seven studies found that raising water levels in ditches or grassland was associated with increased bird numbers, breeding bird numbers, plant species that favour wet conditions, and invertebrate numbers or biomass in agricultural landscapes (121). A review of agri-environment schemes in the UK found that controlling water levels was more effective at providing good habitat for wading birds than easier-to-implement options (121). Four before-and-after studies found that the use of sites, or the breeding population of birds on sites, increased following the creation of ponds and scrapes or was higher in areas with ditch-fed ponds (359). A study in the USA found that dabbling ducks used newly-created ponds in large numbers (359). A replicated study in the UK found that northern lapwing chicks foraged in newly created wet features and that chick condition was higher in sites with a large number of footdrains (359).\n\nTwo replicated studies found that raising water levels resulted in a net loss of plant species and did not affect lapwing foraging rate (121). A review found that re-wetting soils on old arable fields is not an effective method of reducing nutrient levels and restoring species-rich grassland (121). One study found that unflooded pastures contained a high biomass of soil macroinvertebrates of importance to breeding wading birds (121). A study in the USA found that while dabbling ducks used newly-created ponds, other species preferred older ponds, and songbirds did not appear to be affected by pond-creation (359). There were no studies found that evaluated the effects of managing ditches on farmland on reptile populations (3530).",
+    "summary_action_ids": [
+      "3530",
+      "121",
+      "359"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"managing water levels and features like ditches and ponds on farmland to enhance biodiversity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3530\",\n    \"action_title\": \"Manage ditches on farmland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"121\",\n    \"action_title\": \"Raise water levels in ditches or grassland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"359\",\n    \"action_title\": \"Create scrapes and pools in wetlands and wet grasslands\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3530\"}",
+            "return_val": "{\n  \"action_id\": \"3530\",\n  \"action_title\": \"Manage ditches on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of managing ditches on farmland on reptile populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"121\"}",
+            "return_val": "{\n  \"action_id\": \"121\",\n  \"action_title\": \"Raise water levels in ditches or grassland\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies from Denmark, the Netherlands and the UK (two replicated controlled studies and two before-and-after studies) found that raising water levels in ditches or grassland was associated with increased bird numbers, breeding bird numbers, plant species that favour wet conditions, and invertebrate numbers or biomass in agricultural landscapes.\\nTwo replicated studies from the Netherlands and the UK found that raising water levels resulted in a net loss of plant species and did not affect lapwing foraging rate. A review found three studies reporting that re-wetting soils on old arable fields is not an effective method of reducing nutrient levels and restoring species-rich grassland. A replicated study from the UK found that unflooded pastures contained a high biomass of soil macroinvertebrates of importance to breeding wading birds.\\nA controlled, randomized study from the Netherlands found that raising the water level resulted in a more rapid establishment of species typical of wet grassland, than vegetation management. A review of agri-environment schemes from the UK found studies that suggested more expensive agri-environment scheme options for wetland habitats, such as controlling water levels, were more effective at providing good habitat for wading birds than easier-to-implement options.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"359\"}",
+            "return_val": "{\n  \"action_id\": \"359\",\n  \"action_title\": \"Create scrapes and pools in wetlands and wet grasslands\",\n  \"key_messages\": \"Key Messages:\\n\\nOf six studies captured, four before-and after studies from the UK and North America found that the use of sites, or the breeding population of birds on sites, increased following the creation of ponds and scrapes or was higher in areas with ditch-fed ponds.\\nA study from the USA found that dabbling ducks used newly-created ponds in large numbers, although other species preferred older ponds. Songbirds did not appear to be affected by pond-creation. \\nA replicated site from the UK found that northern lapwing chicks foraged in newly created wet features and that chick condition was higher in sites with a large number of footdrains.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Seven studies found that raising water levels in ditches or grassland was associated with increased bird numbers, breeding bird numbers, plant species that favour wet conditions, and invertebrate numbers or biomass in agricultural landscapes (121). A review of agri-environment schemes in the UK found that controlling water levels was more effective at providing good habitat for wading birds than easier-to-implement options (121). Four before-and-after studies found that the use of sites, or the breeding population of birds on sites, increased following the creation of ponds and scrapes or was higher in areas with ditch-fed ponds (359). A study in the USA found that dabbling ducks used newly-created ponds in large numbers (359). A replicated study in the UK found that northern lapwing chicks foraged in newly created wet features and that chick condition was higher in sites with a large number of footdrains (359).\\n\\nTwo replicated studies found that raising water levels resulted in a net loss of plant species and did not affect lapwing foraging rate (121). A review found that re-wetting soils on old arable fields is not an effective method of reducing nutrient levels and restoring species-rich grassland (121). One study found that unflooded pastures contained a high biomass of soil macroinvertebrates of importance to breeding wading birds (121). A study in the USA found that while dabbling ducks used newly-created ponds, other species preferred older ponds, and songbirds did not appear to be affected by pond-creation (359). There were no studies found that evaluated the effects of managing ditches on farmland on reptile populations (3530).\",\"action_ids\":[\"3530\",\"121\",\"359\"],\"query\":\"What are the benefits and drawbacks of managing water levels and features like ditches and ponds on farmland to enhance biodiversity?\"}",
+            "return_val": "{\n  \"query\": \"What are the benefits and drawbacks of managing water levels and features like ditches and ponds on farmland to enhance biodiversity?\",\n  \"relevant_summary\": \"Seven studies found that raising water levels in ditches or grassland was associated with increased bird numbers, breeding bird numbers, plant species that favour wet conditions, and invertebrate numbers or biomass in agricultural landscapes (121). A review of agri-environment schemes in the UK found that controlling water levels was more effective at providing good habitat for wading birds than easier-to-implement options (121). Four before-and-after studies found that the use of sites, or the breeding population of birds on sites, increased following the creation of ponds and scrapes or was higher in areas with ditch-fed ponds (359). A study in the USA found that dabbling ducks used newly-created ponds in large numbers (359). A replicated study in the UK found that northern lapwing chicks foraged in newly created wet features and that chick condition was higher in sites with a large number of footdrains (359).\\n\\nTwo replicated studies found that raising water levels resulted in a net loss of plant species and did not affect lapwing foraging rate (121). A review found that re-wetting soils on old arable fields is not an effective method of reducing nutrient levels and restoring species-rich grassland (121). One study found that unflooded pastures contained a high biomass of soil macroinvertebrates of importance to breeding wading birds (121). A study in the USA found that while dabbling ducks used newly-created ponds, other species preferred older ponds, and songbirds did not appear to be affected by pond-creation (359). There were no studies found that evaluated the effects of managing ditches on farmland on reptile populations (3530).\",\n  \"action_ids\": [\n    \"3530\",\n    \"121\",\n    \"359\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "103",
+      "110",
+      "119",
+      "121",
+      "122",
+      "135",
+      "153",
+      "696"
+    ],
+    "regenerated_ids": [
+      "97",
+      "103",
+      "119",
+      "120",
+      "121",
+      "122",
+      "135",
+      "153",
+      "696"
+    ]
+  },
+  {
+    "query": "What conservation actions are available to support small mammal populations on European farmland?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Three replicated site comparison studies in Switzerland, the UK and Germany found that sown wildflower areas supported a higher abundance of wood mice, small mammals and common hamsters compared to grass and clover set-aside, grasslands, crop and uncultivated margins, agricultural areas and crop fields [2359]. Two replicated studies in the UK found that farm woodland also supported a higher abundance of small mammals than arable land, or a similar abundance when compared to uncultivated field margins and set-aside [2386]. A study in Italy found that European hares used tree stands more than the wider farmed landscape [2386]. Three replicated studies in the UK and Switzerland found that set-aside did not enhance small mammal numbers relative to cropland, uncultivated field margins or farm woodland [2377]. However, a before-and-after study in the UK found that wood mice used uncut set-aside areas more after crop harvesting [2377].",
+    "summary_action_ids": [
+      "2359",
+      "2386",
+      "2377"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"small mammal conservation on European farmland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2386\",\n    \"action_title\": \"Plant trees on farmland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2377\",\n    \"action_title\": \"Provide or retain set-aside areas on farmland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2359\",\n    \"action_title\": \"Establish wild flower areas on farmland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2386\"}",
+            "return_val": "{\n  \"action_id\": \"2386\",\n  \"action_title\": \"Plant trees on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects on mammals of planting trees on farmland. Two studies were in the UK, one was in Italy and one was in Australia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): Two replicated studies (including one controlled, and one site comparison study), in the UK, found that farm woodland supported a higher small mammal abundance than on arable land or similar abundance compared to uncultivated field margins and set-aside.\\n\\nBEHAVIOUR (2 STUDIES)\\n\\nUse (2 studies): A study in Italy found that tree stands were used more by European hares compared to the wider farmed landscape. A replicated study in Australia found that trees planted on farmland were used by koalas.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2377\"}",
+            "return_val": "{\n  \"action_id\": \"2377\",\n  \"action_title\": \"Provide or retain set-aside areas on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects on mammals of providing or retaining set-aside areas on farmland. Three studies were in the UK and one was in Switzerland.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): Three replicated studies (including two site comparison studies), in the UK and Switzerland, found that set-aside did not enhance small mammal numbers relative to cropland or to uncultivated field margins and farm woodland, or brown hare numbers relative to numbers on farms without set-aside areas.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): A before-and-after study in the UK found that use of uncut set-aside areas by wood mice increased after crop harvesting.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2359\"}",
+            "return_val": "{\n  \"action_id\": \"2359\",\n  \"action_title\": \"Establish wild flower areas on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of establishing wild flower areas on farmland on small mammals. Two studies were in Switzerland, one in the UK and one in Germany.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): Three of four site comparison studies (including three replicated studies), in Switzerland, the UK and Germany, found that sown wildflower areas contained more wood mice, small mammals and common hamsters compared to grass and clover set-aside, grasslands, crop and uncultivated margins, agricultural areas and crop fields.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"2359\",\"2386\",\"2377\"],\"summary\":\"Three replicated site comparison studies in Switzerland, the UK and Germany found that sown wildflower areas supported a higher abundance of wood mice, small mammals and common hamsters compared to grass and clover set-aside, grasslands, crop and uncultivated margins, agricultural areas and crop fields [2359]. Two replicated studies in the UK found that farm woodland also supported a higher abundance of small mammals than arable land, or a similar abundance when compared to uncultivated field margins and set-aside [2386]. A study in Italy found that European hares used tree stands more than the wider farmed landscape [2386]. Three replicated studies in the UK and Switzerland found that set-aside did not enhance small mammal numbers relative to cropland, uncultivated field margins or farm woodland [2377]. However, a before-and-after study in the UK found that wood mice used uncut set-aside areas more after crop harvesting [2377].\",\"query\":\"What conservation actions are available to support small mammal populations on European farmland?\"}",
+            "return_val": "{\n  \"query\": \"What conservation actions are available to support small mammal populations on European farmland?\",\n  \"relevant_summary\": \"Three replicated site comparison studies in Switzerland, the UK and Germany found that sown wildflower areas supported a higher abundance of wood mice, small mammals and common hamsters compared to grass and clover set-aside, grasslands, crop and uncultivated margins, agricultural areas and crop fields [2359]. Two replicated studies in the UK found that farm woodland also supported a higher abundance of small mammals than arable land, or a similar abundance when compared to uncultivated field margins and set-aside [2386]. A study in Italy found that European hares used tree stands more than the wider farmed landscape [2386]. Three replicated studies in the UK and Switzerland found that set-aside did not enhance small mammal numbers relative to cropland, uncultivated field margins or farm woodland [2377]. However, a before-and-after study in the UK found that wood mice used uncut set-aside areas more after crop harvesting [2377].\",\n  \"action_ids\": [\n    \"2359\",\n    \"2386\",\n    \"2377\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "246",
+      "442",
+      "594",
+      "651",
+      "156",
+      "579",
+      "698",
+      "704"
+    ],
+    "regenerated_ids": [
+      "126",
+      "156",
+      "246",
+      "442",
+      "579",
+      "594",
+      "648",
+      "651"
+    ]
+  },
+  {
+    "query": "What actions are available to protect ground-nesting birds like lapwings and skylarks on farmland?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Leaving uncropped, cultivated margins or plots on farmland has been found to benefit some farmland bird species, including increasing the hatching success of northern lapwing and the nesting success of Eurasian skylark [562]. Lapwing plots have been found to be used for breeding by northern lapwing, Eurasian skylark, grey partridge and yellow wagtail [562]. However, two studies found no effect on 11 out of 12 farmland bird species [562]. In addition to cultivated margins, providing nest exclosures has been found to offer some benefits to ground-nesting birds, with one study showing higher average daily survival rates for northern lapwing nests [108]. However, this study also reported higher predation of adult redshank on protected nests [108]. Another study found that for the southern dunlin, protected nests had a higher average hatching rate but there was no difference in the number of fledglings, breeding adults or new recruits [108].",
+    "summary_action_ids": [
+      "108",
+      "562"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"protect ground-nesting birds on farmland\",\"offset\":0,\"k\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"108\",\n    \"action_title\": \"Protect individual nests of ground-nesting birds\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"562\",\n    \"action_title\": \"Leave cultivated, uncropped margins or plots (includes 'lapwing plots')\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"316\",\n    \"action_title\": \"Use nest covers to reduce the impact of research on predation of ground-nesting seabirds\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"108\"}",
+            "return_val": "{\n  \"action_id\": \"108\",\n  \"action_title\": \"Protect individual nests of ground-nesting birds\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated,      randomized, controlled studies from Sweden found providing nest exclosures      offered some benefits to ground-nesting birds. One study found that      protected nests had higher average daily survival rates than unprotected      nests for both common redshank and northern lapwing, however, this study      also reported higher predation of adult redshank on protected nests. One study found that the average hatching rate for      southern dunlin was higher for protected rather than unprotected nests. This      study also found no difference in the      number of fledglings, breeding adults or new recruits      during two periods with and without nest protection.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"562\"}",
+            "return_val": "{\n  \"action_id\": \"562\",\n  \"action_title\": \"Leave cultivated, uncropped margins or plots (includes 'lapwing plots')\",\n  \"key_messages\": \"Key Messages:\\n\\nNineteen individual studies looked at the effect of uncropped, cultivated margins or plots on wildlife. Seventeen studies from the UK and northwest Europe (six reviews and seven replicated studies of which two were site comparisons, one a before-and-after trial and one was controlled and randomized) found that leaving uncropped, cultivated margins or plots on farmland provides benefits to some or all target farmland bird species, plants, invertebrates, and mammals. These wildlife benefits included increased species richness of plants, bumblebees, species richness and abundance of spiders, abundance of ground-dwelling invertebrates and ground beetles, increased stone curlew breeding population size,\\u00a0northern lapwing hatching success, Eurasian skylark nesting success and the establishment, abundance or species richness of rare arable plant species. A replicated study found northern lapwing, Eurasian skylark, grey partridge and yellow wagtail bred in lapwing plots.\\nTwo studies (a replicated study and a review) from the UK found that leaving uncropped, cultivated margins or plots on farmland had no effect on 11 out of 12 farmland bird species or ground beetles. A replicated site comparison study in the UK found fewer seed-eating birds on fallow plots for ground-nesting birds in two out of three regions. One review from the UK found evidence that pernicious weeds were more commonly found on uncropped cultivated margins than conservation or conventional headlands. A replicated site comparison from the UK found the proportion of young grey partridges in the population was lower in areas with a high proportion of uncropped cultivated margins and plots.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"108\",\"562\"],\"summary\":\"Leaving uncropped, cultivated margins or plots on farmland has been found to benefit some farmland bird species, including increasing the hatching success of northern lapwing and the nesting success of Eurasian skylark [562]. Lapwing plots have been found to be used for breeding by northern lapwing, Eurasian skylark, grey partridge and yellow wagtail [562]. However, two studies found no effect on 11 out of 12 farmland bird species [562]. In addition to cultivated margins, providing nest exclosures has been found to offer some benefits to ground-nesting birds, with one study showing higher average daily survival rates for northern lapwing nests [108]. However, this study also reported higher predation of adult redshank on protected nests [108]. Another study found that for the southern dunlin, protected nests had a higher average hatching rate but there was no difference in the number of fledglings, breeding adults or new recruits [108].\",\"query\":\"What actions are available to protect ground-nesting birds like lapwings and skylarks on farmland?\"}",
+            "return_val": "{\n  \"query\": \"What actions are available to protect ground-nesting birds like lapwings and skylarks on farmland?\",\n  \"relevant_summary\": \"Leaving uncropped, cultivated margins or plots on farmland has been found to benefit some farmland bird species, including increasing the hatching success of northern lapwing and the nesting success of Eurasian skylark [562]. Lapwing plots have been found to be used for breeding by northern lapwing, Eurasian skylark, grey partridge and yellow wagtail [562]. However, two studies found no effect on 11 out of 12 farmland bird species [562]. In addition to cultivated margins, providing nest exclosures has been found to offer some benefits to ground-nesting birds, with one study showing higher average daily survival rates for northern lapwing nests [108]. However, this study also reported higher predation of adult redshank on protected nests [108]. Another study found that for the southern dunlin, protected nests had a higher average hatching rate but there was no difference in the number of fledglings, breeding adults or new recruits [108].\",\n  \"action_ids\": [\n    \"108\",\n    \"562\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "108",
+      "109",
+      "130",
+      "147",
+      "148",
+      "540",
+      "562",
+      "563"
+    ],
+    "regenerated_ids": [
+      "108",
+      "109",
+      "126",
+      "130",
+      "137",
+      "138",
+      "146",
+      "147",
+      "148",
+      "540",
+      "562",
+      "563",
+      "698",
+      "699"
+    ]
+  },
+  {
+    "query": "What is the evidence for the effectiveness of creating or managing linear features like hedges and beetle banks for farmland wildlife?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in Madagascar investigated the impact of providing or maintaining linear features on reptile populations [3519]. The study discovered that cultivated areas with hedges had reptile communities that were more similar to those in forests than cultivated areas without hedges [3519]. Additionally, more reptile species were exclusively found in areas with hedges compared to those without [3519]. No studies were found that assessed the effects of creating new unlit commuting routes for bats through planting [2034], or on restoring or creating linear habitat features/green corridors for bat populations [2035].",
+    "summary_action_ids": [
+      "3519",
+      "2034",
+      "2035"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":0,\"k\":3,\"query_string\":\"linear features for farmland wildlife\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3519\",\n    \"action_title\": \"Provide or maintain hedgerows on farmland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2034\",\n    \"action_title\": \"Create new unlit commuting routes using planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2035\",\n    \"action_title\": \"Restore or create linear habitat features/green corridors\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3519\"}",
+            "return_val": "{\n  \"action_id\": \"3519\",\n  \"action_title\": \"Provide or maintain hedgerows on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of providing or maintaining linear features on reptile populations. This study was in Madagascar.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nCommunity composition (1 study): One site comparison study in Madagascar\\u00a0found that reptile communities in cultivated areas with hedges were more similar to those found in forests than were communities from cultivated areas without hedges. The study\\u00a0also found that more reptile species were found only areas with hedges than only in areas without hedges.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2034\"}",
+            "return_val": "{\n  \"action_id\": \"2034\",\n  \"action_title\": \"Create new unlit commuting routes using planting\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of creating new unlit bat commuting routes using planting on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2035\"}",
+            "return_val": "{\n  \"action_id\": \"2035\",\n  \"action_title\": \"Restore or create linear habitat features/green corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of restoring or creating linear habitat features/green corridors on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One study in Madagascar investigated the impact of providing or maintaining linear features on reptile populations [3519]. The study discovered that cultivated areas with hedges had reptile communities that were more similar to those in forests than cultivated areas without hedges [3519]. Additionally, more reptile species were exclusively found in areas with hedges compared to those without [3519]. No studies were found that assessed the effects of creating new unlit commuting routes for bats through planting [2034], or on restoring or creating linear habitat features/green corridors for bat populations [2035].\",\"query\":\"What is the evidence for the effectiveness of creating or managing linear features like hedges and beetle banks for farmland wildlife?\",\"action_ids\":[\"3519\",\"2034\",\"2035\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence for the effectiveness of creating or managing linear features like hedges and beetle banks for farmland wildlife?\",\n  \"relevant_summary\": \"One study in Madagascar investigated the impact of providing or maintaining linear features on reptile populations [3519]. The study discovered that cultivated areas with hedges had reptile communities that were more similar to those in forests than cultivated areas without hedges [3519]. Additionally, more reptile species were exclusively found in areas with hedges compared to those without [3519]. No studies were found that assessed the effects of creating new unlit commuting routes for bats through planting [2034], or on restoring or creating linear habitat features/green corridors for bat populations [2035].\",\n  \"action_ids\": [\n    \"3519\",\n    \"2034\",\n    \"2035\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "116",
+      "538",
+      "651"
+    ],
+    "regenerated_ids": [
+      "63",
+      "73",
+      "116",
+      "120",
+      "135",
+      "246",
+      "442",
+      "538",
+      "651",
+      "652"
+    ]
+  }
+]
