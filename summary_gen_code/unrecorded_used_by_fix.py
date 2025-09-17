@@ -98,9 +98,7 @@ def sort_qus_dir_for_model(model, provider, qu_type, filter_stage, counter : Cou
     summaries_dir = f"summary_gen_data/{qu_type}_{filter_stage}_qus_summaries/hybrid_cross-encoder/all_eval_stages/{cleaned_name}"
 
     for qus_filename in sorted(os.listdir(qus_dir)):
-        filename_list = os.path.splitext(qus_filename)[0].split("_")
-        filename_list[-1] = "summaries"
-        summary_filename = "_".join(filename_list) + ".json"
+        summary_filename = qus_filename.replace("qus","summaries")
         qus_filepath = os.path.join(qus_dir, qus_filename)
         summaries_filepath = os.path.join(summaries_dir, summary_filename)
         if os.path.exists(summaries_filepath):

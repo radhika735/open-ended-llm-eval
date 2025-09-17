@@ -614,9 +614,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
         qus_filenames = [name for name in sorted(os.listdir(qus_dir)) if name.endswith(".json")]
 
         for qus_filename in qus_filenames[offset_to_first_qu_file : offset_to_first_qu_file + max_qu_files]:
-            filename_list = os.path.splitext(qus_filename)[0].split("_")
-            filename_list[-1] = "summaries"
-            summary_filename = "_".join(filename_list) + ".json"
+            summary_filename = qus_filename.replace("qus","summaries")
 
             run_summary_gen_for_qu_file(
                 queries_filepath = os.path.join(qus_dir, qus_filename),

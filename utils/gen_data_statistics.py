@@ -141,12 +141,12 @@ def write_distribution_file(id_dist, filepath):
             file.write(synopsis + "," + ids + "\n")
 
 
-def get_summary_gen_qus_usage_separate(model, provider, qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"]):
+def get_summary_gen_qus_usage_separate(model, provider, qu_base_dir="live_questions", qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"]):
     usage = []
 
     for qu_type in qu_types:
         for stage in filter_stages:
-            dir = f"live_questions/bg_km_qus/{qu_type}/{stage}/usage_annotated"
+            dir = f"{qu_base_dir}/bg_km_qus/{qu_type}/{stage}/usage_annotated"
             num_qus_used = 0
             num_qus_unused = 0
             for filename in os.listdir(dir):

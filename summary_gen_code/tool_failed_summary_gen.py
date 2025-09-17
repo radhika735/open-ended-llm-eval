@@ -614,9 +614,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
         qus_filenames = [name for name in sorted(os.listdir(qus_dir)) if name.endswith(".json")]
 
         for qus_filename in qus_filenames[offset_to_first_qu_file : offset_to_first_qu_file + max_qu_files]:
-            filename_list = os.path.splitext(qus_filename)[0].split("_")
-            filename_list[-1] = "summaries"
-            summary_filename = "_".join(filename_list) + ".json"
+            summary_filename = qus_filename.replace("qus","summaries")
 
             run_summary_gen_for_qu_file(
                 queries_filepath = os.path.join(qus_dir, qus_filename),
@@ -643,27 +641,26 @@ def main():
     ]
 
     QU_TYPE = "answerable" # options: "answerable", "unanswerable"
-    FILTER_STAGE = "failed" # options: "passed", "failed"
-    OFFSET_TO_FIRST_QU_FILE = 17
+    FILTER_STAGE = "passed" # options: "passed", "failed"
+    OFFSET_TO_FIRST_QU_FILE = 0
     MAX_QU_FILES = 2
-    MAX_QUS_PER_FILE = 100
+    MAX_QUS_PER_FILE = 1
 
 
     ## SUMMARY GENERATION PROCESS
-    qus_dir = f"live_questions/bg_km_qus/{QU_TYPE}/{FILTER_STAGE}/usage_annotated"
+    qus_dir = f"tool_failed_questions/bg_km_qus/{QU_TYPE}/{FILTER_STAGE}/usage_annotated"
 
-    outer_summaries_dir = f"live_summaries/{QU_TYPE}_{FILTER_STAGE}_qus_summaries"
+    outer_summaries_dir = f"tool_failed_summaries_regenerated/{QU_TYPE}_{FILTER_STAGE}_qus_summaries"
     retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
     summary_out_base_dirs = [
         os.path.join(outer_summaries_dir, retrieval_subdir, "all_eval_stages"),
         os.path.join(outer_summaries_dir, retrieval_subdir, "eval_annotated"),
-        os.path.join(f"summary_gen_data/{QU_TYPE}_{FILTER_STAGE}_qus_summaries", retrieval_subdir)
     ]
 
     logging.info("STARTING summary generation process.")
     start_usage = {}
     for m,p in MODEL_PROVIDER_LIST:
-        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
+        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, qu_base_dir="tool_failed_questions", qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
         cleaned_m = parse_model_name(m)
         cleaned_p = parse_provider_name(p)
         start_usage[f"{cleaned_p}_{cleaned_m}"] = usage_stats[0]
@@ -684,7 +681,7 @@ def main():
 
     end_usage = {}
     for m,p in MODEL_PROVIDER_LIST:
-        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
+        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, qu_base_dir="tool_failed_questions", qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
         cleaned_m = parse_model_name(m)
         cleaned_p = parse_provider_name(p)
         end_usage[f"{cleaned_p}_{cleaned_m}"] = usage_stats[0]
