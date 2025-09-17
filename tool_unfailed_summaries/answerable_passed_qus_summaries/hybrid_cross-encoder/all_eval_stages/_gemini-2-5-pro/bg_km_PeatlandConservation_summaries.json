@@ -1,0 +1,569 @@
+[
+  {
+    "query": "What are the documented benefits and trade-offs of using traditional management practices like mowing or grazing to maintain biodiversity in fen meadows?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Grazing to maintain or restore disturbance in fens and fen meadows has been found to have varying effects on biodiversity (1762). In Germany, one study found that grazed fen meadows had fewer plant species and characteristic fen plant species than mown meadows, and the overall plant community differed between the two management types (1762). However, studies in the UK showed that grazing could increase plant species richness and the cover of some herb groups, while reducing the cover of purple moor grass and shrubs (1762). Conversely, some UK studies also reported that grazing had no effect on species richness, shrub cover, or the cover of fen-characteristic mosses, and that it could reduce Sphagnum moss cover (1762). Mowing has been shown to alter the plant community composition in fens and fen meadows (1759). Multiple studies found that mowing increased plant species richness and the cover of fen- or wet meadow-characteristic plants and mosses (1759). Mowing also generally reduced the cover of herbs like reeds and purple moor grass, though one study found it had no effect on overall herb cover (1759). The effect of mowing on vegetation structure and biomass has shown mixed results (1759). A single mow was found, in some cases, to have no effect on plant richness or the cover of characteristic plants and mosses (1759). The removal of plant litter, another management practice, was reported in one study to increase plant species richness and diversity in a fen meadow, while other studies found it had no effect on plant community composition, bryophyte cover, or vascular plant diversity (1760).",
+    "summary_action_ids": [
+      "1759",
+      "1762",
+      "1760"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"traditional management in fen meadows\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1761\",\n    \"action_title\": \"Cut large trees/shrubs to maintain or restore disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1760\",\n    \"action_title\": \"Remove plant litter to maintain or restore disturbance\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1762\",\n    \"action_title\": \"Use grazing to maintain or restore disturbance\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1760\"}",
+            "return_val": "{\n  \"action_id\": \"1760\",\n  \"action_title\": \"Remove plant litter to maintain or restore disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on peatland vegetation of removing plant litter to maintain or restore disturbance. One study was in fen meadow\\u00a0and one was in a fen.\\nPlant community composition (2 studies): Two replicated, controlled studies (one randomized, one paired, before-and-after) in a fen meadow in Germany\\u00a0and a fen in Czech Republic\\u00a0found that removing plant litter did not affect plant community composition.\\nVegetation cover (1 study): One replicated, paired, controlled, before-and-after study in a fen in the Czech Republic\\u00a0found that removing plant litter did not affect bryophyte or tall moor grass cover.\\nOverall plant richness/diversity (2 studies): One replicated, randomized, controlled study in a fen meadow in Germany\\u00a0reported that removing plant litter increased plant species richness and diversity. However, one replicated, paired, controlled, before-and-after study in a fen in the Czech Republic\\u00a0found that removing litter did not affect vascular plant diversity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1762\"}",
+            "return_val": "{\n  \"action_id\": \"1762\",\n  \"action_title\": \"Use grazing to maintain or restore disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects, on peatland vegetation, of using grazing to maintain or restore disturbance. All four studies were in fens or fen meadows.\\u00a0N.B. Grazing in peatlands with no history of disturbance is considered as a separate action.\\nPlant community composition (1 study): One replicated, paired, site comparison study in Germany\\u00a0found that the overall plant community composition differed between grazed and mown fen meadows.\\nCharacteristic plants (3 studies): One replicated, paired, controlled study in Germany\\u00a0reported that the abundance of bog/fen-characteristic plants was similar in grazed and ungrazed fen meadows. One replicated before-and-after study in a fen in the UK\\u00a0reported that cover of fen-characteristic mosses did not change after grazers were introduced.\\u00a0One replicated, paired, site comparison study, also in Germany,\\u00a0found that grazed fen meadows contained fewer fen-characteristic plant species than mown meadows.\\nHerb cover (2 studies): Two before-and-after studies in fens in the UK reported that grazing increased cover of some herb groups (cottongrasses,\\u00a0sedges\\u00a0or\\u00a0all grass-like plants). One of the studies\\u00a0found that grazing reduced purple moor grass cover, but the other found that grazing typically had no effect.\\nMoss cover (2 studies): One replicated before-and-after study in a fen in the UK\\u00a0reported that cover of fen-characteristic mosses did not change after grazers were introduced. One controlled, before-and-after study in a fen in the UK\\u00a0found that grazing reduced Sphagnum moss cover.\\nTree/shrub cover (2 studies):\\u00a0Of two before-and-after studies in fens in the UK, one found that grazing reduced shrub cover but the other found that grazing typically had no effect on shrub cover.\\nOverall plant richness/diversity (3 studies): Of two before-and-after studies in fens in the UK, one found that plant species richness increased after grazing was reinstated but the other\\u00a0reported that there was typically no effect.\\u00a0One replicated, paired, site comparison study in Germany\\u00a0found that grazed fen meadows contained fewer plant species than mown meadows.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mowing in fen meadows\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1759\",\n    \"action_title\": \"Cut/mow herbaceous plants to maintain or restore disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1770\",\n    \"action_title\": \"Use cutting/mowing to control problematic herbaceous plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1771\",\n    \"action_title\": \"Change season/timing of cutting/mowing\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1759\"}",
+            "return_val": "{\n  \"action_id\": \"1759\",\n  \"action_title\": \"Cut/mow herbaceous plants to maintain or restore disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nFourteen studies evaluated the effects on peatland vegetation of cutting/mowing to maintain or restore disturbance. All 14 studies were in fens or fen meadows. Most studies examined the effect of annual mowing regimes, but three\\u00a0examined the effect of single cuts.\\u00a0N.B. Cutting/mowing in peatlands with no history of disturbance is considered as a separate action.\\nPlant community composition (7 studies): Six replicated studies in fens and fen meadows in the UK, Belgium, Germany\\u00a0and the Czech Republic\\u00a0reported that mowing altered the overall plant community composition (compared to no mowing, before mowing\\u00a0or grazing). One site comparison study in Poland\\u00a0reported that mowing a degraded fen (along with other interventions) made the plant community more similar to a target fen meadow.\\nCharacteristic plants (5 studies):\\u00a0Four\\u00a0studies (including one replicated, paired, controlled, before-and-after) in fens and fen meadows in Switzerland,\\u00a0Germany, the Czech Republic and Poland found that cutting/mowing\\u00a0increased cover of fen- or wet meadow-characteristic plants.\\u00a0One replicated before-and-after study in fens in the UK\\u00a0found that a single mow typically had no effect on cover of fen-characteristic plants. In Poland\\u00a0and the UK, the effect of mowing was not separated from the effects of other interventions.\\nMoss cover (6 studies): Of six studies (five replicated, paired, controlled) in fens or fen meadows, four in Belgium, Switzerland\\u00a0and the Czech Republic\\u00a0found that mowing increased total moss or bryophyte cover. Two studies in Poland\\u00a0and the UK found that a single mow typically had no effect on bryophyte cover (total\\u00a0or hollow-adapted mosses).\\nHerb cover (8 studies): Six replicated studies (three also randomized and controlled) in fens and fen meadows in Belgium, Germany, Poland\\u00a0and the UK found that mowing reduced cover or abundance of at least one group of herbs (including bindweed, reeds, sedges,\\u00a0purple moor grass and grass-like plants overall). One before-and-after study in a fen in Poland\\u00a0found that mowing (along with other interventions) increased sedge cover. One replicated, randomized, paired, controlled study in fen meadows in Switzerland\\u00a0found that mowing had no effect on overall herb cover.\\nTree/shrub cover (3 studies): Of three replicated studies in fens, two in the UK\\u00a0found that a single mow (sometimes along with other interventions) reduced shrub cover. However, one study in Poland\\u00a0found that a single mow had no effect on shrub cover.\\nVegetation structure (7 studies):\\u00a0In the following studies, vegetation structure was measured 6\\u201312 months after the most recent cut/mow. Three replicated studies in fens in Poland\\u00a0and the UK\\u00a0reported that a single mow (sometimes along with other interventions) had no, or no consistent, effect on vegetation height. One replicated, paired, site comparison study in fen meadows in Switzerland\\u00a0found that mowing reduced vegetation height. Three studies (including two replicated, paired, site comparisons) in fen meadows in Switzerland, Poland\\u00a0and Italy\\u00a0found mixed effects of mowing on vegetation biomass (total, sedge/rush, moss\\u00a0or common reed). One replicated, paired, site comparison study in Germany\\u00a0reported that mown fen meadows had similar vegetation structure to grazed meadows.\\nOverall plant richness/diversity (11 studies): Eight studies in fens and fen meadows in the UK, Belgium, Switzerland, Germany, the Czech Republic\\u00a0and Poland\\u00a0found that mowing/cutting increased plant species richness (compared to no mowing, before mowing\\u00a0or grazing). Three studies (including two replicated, randomized, paired, controlled) in fens in Poland\\u00a0and the UK\\u00a0found that a single mow (sometimes\\u00a0along with other interventions) typically had no effect on plant species richness and/or diversity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Grazing to maintain or restore disturbance in fens and fen meadows has been found to have varying effects on biodiversity (1762). In Germany, one study found that grazed fen meadows had fewer plant species and characteristic fen plant species than mown meadows, and the overall plant community differed between the two management types (1762). However, studies in the UK showed that grazing could increase plant species richness and the cover of some herb groups, while reducing the cover of purple moor grass and shrubs (1762). Conversely, some UK studies also reported that grazing had no effect on species richness, shrub cover, or the cover of fen-characteristic mosses, and that it could reduce Sphagnum moss cover (1762). Mowing has been shown to alter the plant community composition in fens and fen meadows (1759). Multiple studies found that mowing increased plant species richness and the cover of fen- or wet meadow-characteristic plants and mosses (1759). Mowing also generally reduced the cover of herbs like reeds and purple moor grass, though one study found it had no effect on overall herb cover (1759). The effect of mowing on vegetation structure and biomass has shown mixed results (1759). A single mow was found, in some cases, to have no effect on plant richness or the cover of characteristic plants and mosses (1759). The removal of plant litter, another management practice, was reported in one study to increase plant species richness and diversity in a fen meadow, while other studies found it had no effect on plant community composition, bryophyte cover, or vascular plant diversity (1760).\",\"action_ids\":[\"1759\",\"1762\",\"1760\"],\"query\":\"What are the documented benefits and trade-offs of using traditional management practices like mowing or grazing to maintain biodiversity in fen meadows?\"}",
+            "return_val": "{\n  \"query\": \"What are the documented benefits and trade-offs of using traditional management practices like mowing or grazing to maintain biodiversity in fen meadows?\",\n  \"relevant_summary\": \"Grazing to maintain or restore disturbance in fens and fen meadows has been found to have varying effects on biodiversity (1762). In Germany, one study found that grazed fen meadows had fewer plant species and characteristic fen plant species than mown meadows, and the overall plant community differed between the two management types (1762). However, studies in the UK showed that grazing could increase plant species richness and the cover of some herb groups, while reducing the cover of purple moor grass and shrubs (1762). Conversely, some UK studies also reported that grazing had no effect on species richness, shrub cover, or the cover of fen-characteristic mosses, and that it could reduce Sphagnum moss cover (1762). Mowing has been shown to alter the plant community composition in fens and fen meadows (1759). Multiple studies found that mowing increased plant species richness and the cover of fen- or wet meadow-characteristic plants and mosses (1759). Mowing also generally reduced the cover of herbs like reeds and purple moor grass, though one study found it had no effect on overall herb cover (1759). The effect of mowing on vegetation structure and biomass has shown mixed results (1759). A single mow was found, in some cases, to have no effect on plant richness or the cover of characteristic plants and mosses (1759). The removal of plant litter, another management practice, was reported in one study to increase plant species richness and diversity in a fen meadow, while other studies found it had no effect on plant community composition, bryophyte cover, or vascular plant diversity (1760).\",\n  \"action_ids\": [\n    \"1759\",\n    \"1762\",\n    \"1760\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1759",
+      "1760",
+      "1761",
+      "1762",
+      "1763"
+    ],
+    "regenerated_ids": [
+      "1759",
+      "1760",
+      "1761",
+      "1762",
+      "1763"
+    ]
+  },
+  {
+    "query": "What are the typical outcomes for vegetation when the upper layer of degraded peatland soil is removed or disturbed without subsequent planting?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Two studies in fens in Germany and Sweden found that disturbing the peat surface affected the development of the plant community over 2\u20133 years (1811). In the German study, disturbed plots developed a greater cover of weedy species from the seed bank compared to undisturbed plots, and peat-forming species did not colonize the fen (1811). However, in both studies, wetland- or fen-characteristic plant species colonized the disturbed plots (1811). A study in Canada on degraded bogs reported that after five years, reprofiled and rewetted areas had a different plant community and lower vegetation cover (including Sphagnum moss, other mosses, and vascular plants) than nearby natural fens (1807). Additionally, two studies in Portugal and France found that combining vegetation removal with mechanical soil disturbance increased the cover and diversity of understory plants and decreased understory shrub cover (1274). One of these studies also noted an increased density of young trees (1274).",
+    "summary_action_ids": [
+      "1811",
+      "1807",
+      "1274"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"outcomes for vegetation on degraded peatland soil after disturbance\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1811\",\n    \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1807\",\n    \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1811\"}",
+            "return_val": "{\n  \"action_id\": \"1811\",\n  \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of disturbing the peat surface (without planting) on peatland vegetation. Both studies were in fens.\\nPlant community composition (2 studies): Two replicated, paired, controlled, before-and-after studies (one also randomized) in fens in Germany\\u00a0and Sweden\\u00a0reported that soil disturbance affected development of the plant community over 2\\u20133 years.\\u00a0In Germany, disturbed plots developed greater cover of weedy species from the seed bank than undisturbed plots. In Sweden, the community in disturbed and undisturbed plots became less similar over time.\\u00a0\\nCharacteristic plants (2 studies): The same two\\u00a0studies reported that wetland- or fen-characteristic plant species colonized plots that had been disrturbed (along with other interventions). The study in Germany noted that peat-forming species did not colonize the fen.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1274\"}",
+            "return_val": "{\n  \"action_id\": \"1274\",\n  \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, randomized, controlled study) in Portugal\\u00a0and France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the cover and diversity of understory plants. One of the studies found it also decreased understory shrub cover.\\nOne replicated, randomized, controlled study in France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the density of young trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1807\"}",
+            "return_val": "{\n  \"action_id\": \"1807\",\n  \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of reprofiling/relandscaping peatlands (without planting) on peatland vegetation. The study was in degraded bogs (being restored as fens).\\nPlant community composition (1 study): One site comparison study in Canada\\u00a0reported that after five years, reprofiled (and rewetted) bogs contained a different plant community to nearby natural fens.\\nVegetation cover (1 study): The same study reported that after five years, reprofiled (and rewetted) bogs had lower vegetation cover (Sphagnum moss, other moss and vascular plants) than nearby natural fens.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1811\",\"1807\",\"1274\"],\"summary\":\"Two studies in fens in Germany and Sweden found that disturbing the peat surface affected the development of the plant community over 2\u20133 years (1811). In the German study, disturbed plots developed a greater cover of weedy species from the seed bank compared to undisturbed plots, and peat-forming species did not colonize the fen (1811). However, in both studies, wetland- or fen-characteristic plant species colonized the disturbed plots (1811). A study in Canada on degraded bogs reported that after five years, reprofiled and rewetted areas had a different plant community and lower vegetation cover (including Sphagnum moss, other mosses, and vascular plants) than nearby natural fens (1807). Additionally, two studies in Portugal and France found that combining vegetation removal with mechanical soil disturbance increased the cover and diversity of understory plants and decreased understory shrub cover (1274). One of these studies also noted an increased density of young trees (1274).\",\"query\":\"What are the typical outcomes for vegetation when the upper layer of degraded peatland soil is removed or disturbed without subsequent planting?\"}",
+            "return_val": "{\n  \"query\": \"What are the typical outcomes for vegetation when the upper layer of degraded peatland soil is removed or disturbed without subsequent planting?\",\n  \"relevant_summary\": \"Two studies in fens in Germany and Sweden found that disturbing the peat surface affected the development of the plant community over 2\\u20133 years (1811). In the German study, disturbed plots developed a greater cover of weedy species from the seed bank compared to undisturbed plots, and peat-forming species did not colonize the fen (1811). However, in both studies, wetland- or fen-characteristic plant species colonized the disturbed plots (1811). A study in Canada on degraded bogs reported that after five years, reprofiled and rewetted areas had a different plant community and lower vegetation cover (including Sphagnum moss, other mosses, and vascular plants) than nearby natural fens (1807). Additionally, two studies in Portugal and France found that combining vegetation removal with mechanical soil disturbance increased the cover and diversity of understory plants and decreased understory shrub cover (1274). One of these studies also noted an increased density of young trees (1274).\",\n  \"action_ids\": [\n    \"1811\",\n    \"1807\",\n    \"1274\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1768",
+      "1809",
+      "1810",
+      "1811",
+      "1835",
+      "1836"
+    ],
+    "regenerated_ids": [
+      "1809",
+      "1810",
+      "1811"
+    ]
+  },
+  {
+    "query": "Besides direct legal protection, what alternative policy or financial incentives can be used to encourage peatland conservation?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study on paying landowners to protect peatlands reported that agri-environment schemes in the UK had mixed effects on bogs, protecting the area of bog habitat in three of six cases [1799].",
+    "summary_action_ids": [
+      "1799"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"peatland conservation incentives\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1755\",\n    \"action_title\": \"Adopt ecotourism principles/create an ecotourism site\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1799\",\n    \"action_title\": \"Pay landowners to protect peatlands\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1807\",\n    \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1755\"}",
+            "return_val": "{\n  \"action_id\": \"1755\",\n  \"action_title\": \"Adopt ecotourism principles/create an ecotourism site\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of adopting ecotourism principles or creating an ecotourism site.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1799\"}",
+            "return_val": "{\n  \"action_id\": \"1799\",\n  \"action_title\": \"Pay landowners to protect peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on peatland habitats of paying landowners to protect them. The study was of bogs.\\nPeatland habitat (1 study): One review from reported that agri-environment schemes in the UK had mixed effects on bogs, protecting the area of bog habitat in three of six cases.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"peatland conservation incentives\",\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1784\",\n    \"action_title\": \"Manage fertilizer or herbicide application near peatlands\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1811\",\n    \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1807\",\n    \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1784\"}",
+            "return_val": "{\n  \"action_id\": \"1784\",\n  \"action_title\": \"Manage fertilizer or herbicide application near peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of managing fertilizer or herbicide use in adjacent areas.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":6,\"query_string\":\"peatland conservation incentives\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1811\",\n    \"action_title\": \"Disturb peatland surface to encourage growth of desirable plants (without planting)\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1840\",\n    \"action_title\": \"Remove vegetation that could compete with planted peatland vegetation\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1807\",\n    \"action_title\": \"Reprofile/relandscape peatland (without planting)\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"One study on paying landowners to protect peatlands reported that agri-environment schemes in the UK had mixed effects on bogs, protecting the area of bog habitat in three of six cases [1799].\",\"action_ids\":[\"1799\"],\"query\":\"Besides direct legal protection, what alternative policy or financial incentives can be used to encourage peatland conservation?\"}",
+            "return_val": "{\n  \"query\": \"Besides direct legal protection, what alternative policy or financial incentives can be used to encourage peatland conservation?\",\n  \"relevant_summary\": \"One study on paying landowners to protect peatlands reported that agri-environment schemes in the UK had mixed effects on bogs, protecting the area of bog habitat in three of six cases [1799].\",\n  \"action_ids\": [\n    \"1799\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1796",
+      "1797",
+      "1798",
+      "1799",
+      "1800",
+      "1801",
+      "1849"
+    ],
+    "regenerated_ids": [
+      "1797",
+      "1798",
+      "1799",
+      "1801",
+      "1849"
+    ]
+  },
+  {
+    "query": "What is the state of the evidence for creating habitat corridors to connect peatlands fragmented by different types of development?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors in areas of energy production or mining (1739), in developed areas (1720), or across service corridors (1742).",
+    "summary_action_ids": [
+      "1739",
+      "1720",
+      "1742"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"habitat corridors for peatlands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1739\",\n    \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1720\",\n    \"action_title\": \"Retain/create habitat corridors in developed areas\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1742\",\n    \"action_title\": \"Retain/create habitat corridors across service corridors\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1739\"}",
+            "return_val": "{\n  \"action_id\": \"1739\",\n  \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining/creating habitat corridors in areas of energy production or mining.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1720\"}",
+            "return_val": "{\n  \"action_id\": \"1720\",\n  \"action_title\": \"Retain/create habitat corridors in developed areas\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of maintaining or creating habitat corridors in developed areas.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1742\"}",
+            "return_val": "{\n  \"action_id\": \"1742\",\n  \"action_title\": \"Retain/create habitat corridors across service corridors\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on peatland vegetation, in habitat patches or within corridors, of retaining/creating habitat corridors across service corridors.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the state of the evidence for creating habitat corridors to connect peatlands fragmented by different types of development?\",\"summary\":\"No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors in areas of energy production or mining (1739), in developed areas (1720), or across service corridors (1742).\",\"action_ids\":[\"1739\",\"1720\",\"1742\"]}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence for creating habitat corridors to connect peatlands fragmented by different types of development?\",\n  \"relevant_summary\": \"No studies were found that evaluated the effects on peatland vegetation of retaining or creating habitat corridors in areas of energy production or mining (1739), in developed areas (1720), or across service corridors (1742).\",\n  \"action_ids\": [\n    \"1739\",\n    \"1720\",\n    \"1742\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1720",
+      "1730",
+      "1739",
+      "1742"
+    ],
+    "regenerated_ids": [
+      "1720",
+      "1730",
+      "1739",
+      "1742"
+    ]
+  },
+  {
+    "query": "What are the documented effects of using different physical interventions like mowing, cutting, or complete removal to manage unwanted vegetation in fens?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "The effects of cutting and mowing on unwanted vegetation in fens vary depending on the specific goals and context. For controlling problematic herbaceous plants, mowing has shown mixed results on plant community composition, with some studies finding no significant effect and others noting the development of different plant communities (1770). One study found that mown plots contained more fen-characteristic plant species (1770). The impact on vegetation cover also varies, with one study reporting no effect on vascular plant or bryophyte cover, while another observed an increase in Sphagnum moss cover and a reduction in purple moor grass (1770).\n\nThe timing of mowing can also be a factor. While one study in a UK fen meadow found similar changes in plant community composition regardless of the season, a study in the Netherlands reported that summer and winter mowing resulted in different plant community types (1771). In terms of species richness, summer-mown plots showed a greater increase compared to those mown in spring or autumn in one UK study (1771).\n\nWhen used to maintain or restore disturbance in fens with a history of such practices, mowing has been found to alter the plant community composition in six studies (1759). It has also been shown to increase the cover of fen- or wet meadow-characteristic plants in four studies and increase moss or bryophyte cover in another four studies (1759). Mowing has been effective in reducing the cover of certain herbs like reeds and sedges in six studies, and a single mow was found to reduce shrub cover in two studies (1759). Furthermore, eight studies found that mowing or cutting increased plant species richness (1759).",
+    "summary_action_ids": [
+      "1770",
+      "1771",
+      "1759"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"physical interventions to manage unwanted vegetation in fens\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1750\",\n    \"action_title\": \"Physically exclude vehicles from peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1767\",\n    \"action_title\": \"Implement biosecurity measures to prevent introductions of problematic species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1779\",\n    \"action_title\": \"Divert/replace polluted water source(s)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"mowing cutting or removal of vegetation in fens\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1770\",\n    \"action_title\": \"Use cutting/mowing to control problematic herbaceous plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1771\",\n    \"action_title\": \"Change season/timing of cutting/mowing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1759\",\n    \"action_title\": \"Cut/mow herbaceous plants to maintain or restore disturbance\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1770\"}",
+            "return_val": "{\n  \"action_id\": \"1770\",\n  \"action_title\": \"Use cutting/mowing to control problematic herbaceous plants\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects on peatland vegetation of cutting/mowing problematic herbaceous plants. Three studies were in fens or fen meadows and one was in a bog.\\u00a0N.B. Cutting/mowing in historically disturbed peatlands is considered as a separate action.\\nPlant community composition (3 studies): Two replicated, randomized, paired, controlled, before-and-after studies in rich fens in Sweden\\u00a0found that mowing typically had no significant effect on the overall plant community composition. One controlled study in a fen meadow in the UK\\u00a0reported that mown plots developed different plant communities to unmown plots.\\nCharacteristic plants (1 study): One\\u00a0replicated, randomized, paired, controlled, before-and-after study in a fen in Sweden\\u00a0found that mown plots contained more fen-characteristic plant species than unmown plots, although their cover did not differ significantly between treatments.\\nVegetation cover (2 studies): Of two replicated, randomized, paired, controlled, before-and-after studies in rich fens in Sweden, one\\u00a0found that mowing had no effect on vascular plant or bryophyte cover over five years. The other\\u00a0reported that mowing typically increased Sphagnum moss cover and reduced purple moor grass cover, but had mixed effects on cover of other plant species.\\nGrowth (1 study): One replicated, controlled, before-and-after study in a bog in Estonia\\u00a0found that clipping competing vegetation did not affect Sphagnum moss growth.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1771\"}",
+            "return_val": "{\n  \"action_id\": \"1771\",\n  \"action_title\": \"Change season/timing of cutting/mowing\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on peatland vegetation of mowing or cutting in different seasons. One study was in a fen meadow\\u00a0and one was in a peatland with mixed vegetation.\\nPlant community composition (2 studies): One replicated, randomized, paired, before-and after study in a fen meadow in the UK reported that changes in plant community composition were typically similar in spring-, summer- and autumn-mown plots. However, one study in a peatland in the Netherlands\\u00a0reported that summer- and winter-mown areas developed cover of different plant community types.\\nOverall plant richness/diversity (1 study): One replicated, randomized, paired, before-and after study in a fen meadow in the UK\\u00a0found that plant species richness increased more, over two years, in summer-mown plots than spring- or autumn-mown plots.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1759\"}",
+            "return_val": "{\n  \"action_id\": \"1759\",\n  \"action_title\": \"Cut/mow herbaceous plants to maintain or restore disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nFourteen studies evaluated the effects on peatland vegetation of cutting/mowing to maintain or restore disturbance. All 14 studies were in fens or fen meadows. Most studies examined the effect of annual mowing regimes, but three\\u00a0examined the effect of single cuts.\\u00a0N.B. Cutting/mowing in peatlands with no history of disturbance is considered as a separate action.\\nPlant community composition (7 studies): Six replicated studies in fens and fen meadows in the UK, Belgium, Germany\\u00a0and the Czech Republic\\u00a0reported that mowing altered the overall plant community composition (compared to no mowing, before mowing\\u00a0or grazing). One site comparison study in Poland\\u00a0reported that mowing a degraded fen (along with other interventions) made the plant community more similar to a target fen meadow.\\nCharacteristic plants (5 studies):\\u00a0Four\\u00a0studies (including one replicated, paired, controlled, before-and-after) in fens and fen meadows in Switzerland,\\u00a0Germany, the Czech Republic and Poland found that cutting/mowing\\u00a0increased cover of fen- or wet meadow-characteristic plants.\\u00a0One replicated before-and-after study in fens in the UK\\u00a0found that a single mow typically had no effect on cover of fen-characteristic plants. In Poland\\u00a0and the UK, the effect of mowing was not separated from the effects of other interventions.\\nMoss cover (6 studies): Of six studies (five replicated, paired, controlled) in fens or fen meadows, four in Belgium, Switzerland\\u00a0and the Czech Republic\\u00a0found that mowing increased total moss or bryophyte cover. Two studies in Poland\\u00a0and the UK found that a single mow typically had no effect on bryophyte cover (total\\u00a0or hollow-adapted mosses).\\nHerb cover (8 studies): Six replicated studies (three also randomized and controlled) in fens and fen meadows in Belgium, Germany, Poland\\u00a0and the UK found that mowing reduced cover or abundance of at least one group of herbs (including bindweed, reeds, sedges,\\u00a0purple moor grass and grass-like plants overall). One before-and-after study in a fen in Poland\\u00a0found that mowing (along with other interventions) increased sedge cover. One replicated, randomized, paired, controlled study in fen meadows in Switzerland\\u00a0found that mowing had no effect on overall herb cover.\\nTree/shrub cover (3 studies): Of three replicated studies in fens, two in the UK\\u00a0found that a single mow (sometimes along with other interventions) reduced shrub cover. However, one study in Poland\\u00a0found that a single mow had no effect on shrub cover.\\nVegetation structure (7 studies):\\u00a0In the following studies, vegetation structure was measured 6\\u201312 months after the most recent cut/mow. Three replicated studies in fens in Poland\\u00a0and the UK\\u00a0reported that a single mow (sometimes along with other interventions) had no, or no consistent, effect on vegetation height. One replicated, paired, site comparison study in fen meadows in Switzerland\\u00a0found that mowing reduced vegetation height. Three studies (including two replicated, paired, site comparisons) in fen meadows in Switzerland, Poland\\u00a0and Italy\\u00a0found mixed effects of mowing on vegetation biomass (total, sedge/rush, moss\\u00a0or common reed). One replicated, paired, site comparison study in Germany\\u00a0reported that mown fen meadows had similar vegetation structure to grazed meadows.\\nOverall plant richness/diversity (11 studies): Eight studies in fens and fen meadows in the UK, Belgium, Switzerland, Germany, the Czech Republic\\u00a0and Poland\\u00a0found that mowing/cutting increased plant species richness (compared to no mowing, before mowing\\u00a0or grazing). Three studies (including two replicated, randomized, paired, controlled) in fens in Poland\\u00a0and the UK\\u00a0found that a single mow (sometimes\\u00a0along with other interventions) typically had no effect on plant species richness and/or diversity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"The effects of cutting and mowing on unwanted vegetation in fens vary depending on the specific goals and context. For controlling problematic herbaceous plants, mowing has shown mixed results on plant community composition, with some studies finding no significant effect and others noting the development of different plant communities (1770). One study found that mown plots contained more fen-characteristic plant species (1770). The impact on vegetation cover also varies, with one study reporting no effect on vascular plant or bryophyte cover, while another observed an increase in Sphagnum moss cover and a reduction in purple moor grass (1770).\\n\\nThe timing of mowing can also be a factor. While one study in a UK fen meadow found similar changes in plant community composition regardless of the season, a study in the Netherlands reported that summer and winter mowing resulted in different plant community types (1771). In terms of species richness, summer-mown plots showed a greater increase compared to those mown in spring or autumn in one UK study (1771).\\n\\nWhen used to maintain or restore disturbance in fens with a history of such practices, mowing has been found to alter the plant community composition in six studies (1759). It has also been shown to increase the cover of fen- or wet meadow-characteristic plants in four studies and increase moss or bryophyte cover in another four studies (1759). Mowing has been effective in reducing the cover of certain herbs like reeds and sedges in six studies, and a single mow was found to reduce shrub cover in two studies (1759). Furthermore, eight studies found that mowing or cutting increased plant species richness (1759).\",\"query\":\"What are the documented effects of using different physical interventions like mowing, cutting, or complete removal to manage unwanted vegetation in fens?\",\"action_ids\":[\"1770\",\"1771\",\"1759\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of using different physical interventions like mowing, cutting, or complete removal to manage unwanted vegetation in fens?\",\n  \"relevant_summary\": \"The effects of cutting and mowing on unwanted vegetation in fens vary depending on the specific goals and context. For controlling problematic herbaceous plants, mowing has shown mixed results on plant community composition, with some studies finding no significant effect and others noting the development of different plant communities (1770). One study found that mown plots contained more fen-characteristic plant species (1770). The impact on vegetation cover also varies, with one study reporting no effect on vascular plant or bryophyte cover, while another observed an increase in Sphagnum moss cover and a reduction in purple moor grass (1770).\\n\\nThe timing of mowing can also be a factor. While one study in a UK fen meadow found similar changes in plant community composition regardless of the season, a study in the Netherlands reported that summer and winter mowing resulted in different plant community types (1771). In terms of species richness, summer-mown plots showed a greater increase compared to those mown in spring or autumn in one UK study (1771).\\n\\nWhen used to maintain or restore disturbance in fens with a history of such practices, mowing has been found to alter the plant community composition in six studies (1759). It has also been shown to increase the cover of fen- or wet meadow-characteristic plants in four studies and increase moss or bryophyte cover in another four studies (1759). Mowing has been effective in reducing the cover of certain herbs like reeds and sedges in six studies, and a single mow was found to reduce shrub cover in two studies (1759). Furthermore, eight studies found that mowing or cutting increased plant species richness (1759).\",\n  \"action_ids\": [\n    \"1770\",\n    \"1771\",\n    \"1759\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1759",
+      "1770",
+      "1761",
+      "1772",
+      "1768"
+    ],
+    "regenerated_ids": [
+      "1759",
+      "1761",
+      "1768",
+      "1770",
+      "1772"
+    ]
+  },
+  {
+    "query": "What are the alternatives to completely removing livestock from degraded agricultural peatlands, and how do their effects compare?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One alternative to removing livestock from degraded agricultural peatlands is to limit their density on nearby farmland, but no studies were found to evaluate the effects of this approach (1786). Similarly, no studies were found on the effects of using barriers to keep livestock off ungrazed peatlands (1733). Studies on completely excluding or removing livestock from degraded peatlands have shown varied effects. For instance, excluding sheep had no effect on plant community development in one study, while another found that it favored dry moorland plants in drier areas (1734). While seven studies found that excluding or removing livestock had no effect on the cover of key herb groups, one study reported an increase in rush cover after cattle were excluded (1734). Five studies found no effect on Sphagnum moss cover from excluding livestock, but one study noted that Sphagnum moss appeared after cattle were excluded and the area was rewetted (1734). The effect on shrub cover is also varied, with four studies finding no effect, while three others reported an increase in shrub cover (1734). In one study, excluding sheep led to an increase in total vegetation, shrub, and bryophyte biomass but had no effect on the biomass of grass-like herbs (1734).",
+    "summary_action_ids": [
+      "1734",
+      "1733",
+      "1786"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\":3,\"query_string\":\"alternatives to removing livestock from degraded agricultural peatlands\",\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1734\",\n    \"action_title\": \"Exclude or remove livestock from degraded peatlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1733\",\n    \"action_title\": \"Use barriers to keep livestock off ungrazed peatlands\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1786\",\n    \"action_title\": \"Limit the density of livestock on farmland near peatlands\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1734\"}",
+            "return_val": "{\n  \"action_id\": \"1734\",\n  \"action_title\": \"Exclude or remove livestock from degraded peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies evaluated the effects on peatland vegetation of excluding or removing livestock from degraded peatlands. Seven studies were in bogs, two in fens and one in an unspecified peatland. Three studies\\u00a0were based on the same experimental set-up in the UK.\\nPlant community composition (2 studies): Of two replicated, paired, controlled studies in bogs in the UK, one\\u00a0found that excluding sheep had no effect on the development of the plant community. The other\\u00a0found no effect in wetter areas of the bog,\\u00a0but that in drier areas excluding sheep favoured dry moorland plants.\\nHerb cover (9 studies): Seven studies \\u00ad(including six replicated, paired, controlled) in bogs in the UK\\u00a0and Australia\\u00a0and fens in the USA\\u00a0found that excluding or removing livestock typically\\u00a0had no effect on cover of key herb groups. Five of five studies\\u00a0found that excluding livestock typically had no effect on cottongrass cover. Two of two\\u00a0studies reported no effect on sedge cover. However, one\\u00a0before-and-after study in a poor fen in Spain\\u00a0reported that rush cover increased after cattle were excluded (along with other interventions). One site comparison study in Chile\\u00a0found that excluding livestock (along with other interventions) increased overall herb cover, but one replicated, paired, controlled study in bogs in Australia\\u00a0found that excluding livestock had no effect on overall herb cover.\\nMoss cover (6 studies): Five replicated, paired, controlled studies in bogs in the UK\\u00a0and Australia\\u00a0found that excluding livestock typically had no effect on\\u00a0Sphagnum\\u00a0moss cover. Responses sometimes varied between species and sites. Three of the studies in the UK also found no effect on cover of other mosses.\\u00a0One before-and-after study in a poor fen in Spain\\u00a0reported that Sphagnum moss appeared after excluding cattle (and rewetting).\\nTree/shrub cover (8 studies): Four replicated, paired, controlled studies in bogs in the UK\\u00a0and Australia\\u00a0found that excluding livestock had no effect on shrub cover (specifically heather\\u00a0or a heathland community). One replicated, paired, controlled study in a bog in the UK\\u00a0found that excluding sheep had no effect on heather cover in wetter areas, but increased heather cover in drier areas. Three studies (including two site comparisons) in bogs in the UK, fens in the USA\\u00a0and a peatland in Chile\\u00a0found that excluding or removing livestock increased shrub cover.\\nVegetation structure (1 study): One replicated, paired, controlled study in a bog in the UK\\u00a0found that excluding sheep increased total vegetation, shrub and bryophyte biomass but had no effect on biomass of grass-like herbs.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1733\"}",
+            "return_val": "{\n  \"action_id\": \"1733\",\n  \"action_title\": \"Use barriers to keep livestock off ungrazed peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of using barriers to keep livestock off peatlands that have never (or not recently) been grazed.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1786\"}",
+            "return_val": "{\n  \"action_id\": \"1786\",\n  \"action_title\": \"Limit the density of livestock on farmland near peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe\\u00a0found no studies that evaluated the effects, on peatland vegetation, of limiting the density of livestock on farmland near peatlands.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the alternatives to completely removing livestock from degraded agricultural peatlands, and how do their effects compare?\",\"action_ids\":[\"1734\",\"1733\",\"1786\"],\"summary\":\"One alternative to removing livestock from degraded agricultural peatlands is to limit their density on nearby farmland, but no studies were found to evaluate the effects of this approach (1786). Similarly, no studies were found on the effects of using barriers to keep livestock off ungrazed peatlands (1733). Studies on completely excluding or removing livestock from degraded peatlands have shown varied effects. For instance, excluding sheep had no effect on plant community development in one study, while another found that it favored dry moorland plants in drier areas (1734). While seven studies found that excluding or removing livestock had no effect on the cover of key herb groups, one study reported an increase in rush cover after cattle were excluded (1734). Five studies found no effect on Sphagnum moss cover from excluding livestock, but one study noted that Sphagnum moss appeared after cattle were excluded and the area was rewetted (1734). The effect on shrub cover is also varied, with four studies finding no effect, while three others reported an increase in shrub cover (1734). In one study, excluding sheep led to an increase in total vegetation, shrub, and bryophyte biomass but had no effect on the biomass of grass-like herbs (1734).\"}",
+            "return_val": "{\n  \"query\": \"What are the alternatives to completely removing livestock from degraded agricultural peatlands, and how do their effects compare?\",\n  \"relevant_summary\": \"One alternative to removing livestock from degraded agricultural peatlands is to limit their density on nearby farmland, but no studies were found to evaluate the effects of this approach (1786). Similarly, no studies were found on the effects of using barriers to keep livestock off ungrazed peatlands (1733). Studies on completely excluding or removing livestock from degraded peatlands have shown varied effects. For instance, excluding sheep had no effect on plant community development in one study, while another found that it favored dry moorland plants in drier areas (1734). While seven studies found that excluding or removing livestock had no effect on the cover of key herb groups, one study reported an increase in rush cover after cattle were excluded (1734). Five studies found no effect on Sphagnum moss cover from excluding livestock, but one study noted that Sphagnum moss appeared after cattle were excluded and the area was rewetted (1734). The effect on shrub cover is also varied, with four studies finding no effect, while three others reported an increase in shrub cover (1734). In one study, excluding sheep led to an increase in total vegetation, shrub, and bryophyte biomass but had no effect on the biomass of grass-like herbs (1734).\",\n  \"action_ids\": [\n    \"1734\",\n    \"1733\",\n    \"1786\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1733",
+      "1734",
+      "1735",
+      "1736",
+      "1737"
+    ],
+    "regenerated_ids": [
+      "1734",
+      "1735",
+      "1736",
+      "1737"
+    ]
+  },
+  {
+    "query": "When harvesting wild biological resources from peatlands, how do different strategies for reducing impact compare in their evidence base?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "For reducing harvest frequency of wild biological resources, no studies were found that evaluated the effects on peatland vegetation (1743). In the case of using low impact harvesting techniques for wild biological resources, no studies were found that evaluated the effects on peatland vegetation (1745). For reducing the intensity of harvest of wild biological resources, one replicated, controlled study in a bog in New Zealand reported that Sphagnum moss cover was higher, three years after harvesting, when some Sphagnum was left in plots than when it was completely harvested (1744).",
+    "summary_action_ids": [
+      "1743",
+      "1745",
+      "1744"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"reducing impact of harvesting wild biological resources from peatlands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1743\",\n    \"action_title\": \"Reduce frequency of harvest (of wild biological resources)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1744\",\n    \"action_title\": \"Reduce intensity of harvest (of wild biological resources)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1745\",\n    \"action_title\": \"Use low impact harvesting techniques (for wild biological resources)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1743\"}",
+            "return_val": "{\n  \"action_id\": \"1743\",\n  \"action_title\": \"Reduce frequency of harvest (of wild biological resources)\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of reducing harvest frequency (of wild biological resources).\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1744\"}",
+            "return_val": "{\n  \"action_id\": \"1744\",\n  \"action_title\": \"Reduce intensity of harvest (of wild biological resources)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on peatland vegetation of reducing harvest intensity (of wild biological resources). The study was in a bog.\\nMoss cover (1 study): One\\u00a0replicated, controlled study in a bog in New Zealand\\u00a0reported that Sphagnum moss cover was higher, three years after harvesting, when some Sphagnum was left in plots than when it was completely harvested.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1745\"}",
+            "return_val": "{\n  \"action_id\": \"1745\",\n  \"action_title\": \"Use low impact harvesting techniques (for wild biological resources)\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of using low impact harvesting techniques (for wild biological resources).\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"When harvesting wild biological resources from peatlands, how do different strategies for reducing impact compare in their evidence base?\",\"action_ids\":[\"1743\",\"1745\",\"1744\"],\"summary\":\"For reducing harvest frequency of wild biological resources, no studies were found that evaluated the effects on peatland vegetation (1743). In the case of using low impact harvesting techniques for wild biological resources, no studies were found that evaluated the effects on peatland vegetation (1745). For reducing the intensity of harvest of wild biological resources, one replicated, controlled study in a bog in New Zealand reported that Sphagnum moss cover was higher, three years after harvesting, when some Sphagnum was left in plots than when it was completely harvested (1744).\"}",
+            "return_val": "{\n  \"query\": \"When harvesting wild biological resources from peatlands, how do different strategies for reducing impact compare in their evidence base?\",\n  \"relevant_summary\": \"For reducing harvest frequency of wild biological resources, no studies were found that evaluated the effects on peatland vegetation (1743). In the case of using low impact harvesting techniques for wild biological resources, no studies were found that evaluated the effects on peatland vegetation (1745). For reducing the intensity of harvest of wild biological resources, one replicated, controlled study in a bog in New Zealand reported that Sphagnum moss cover was higher, three years after harvesting, when some Sphagnum was left in plots than when it was completely harvested (1744).\",\n  \"action_ids\": [\n    \"1743\",\n    \"1745\",\n    \"1744\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1743",
+      "1744",
+      "1745",
+      "1746",
+      "1747"
+    ],
+    "regenerated_ids": [
+      "1743",
+      "1744",
+      "1745",
+      "1746",
+      "1747"
+    ]
+  },
+  {
+    "query": "To restore a bog after peat extraction, which vegetation introduction techniques are most effective at establishing Sphagnum moss cover?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Eleven studies conducted in bogs across the UK, Canada, Finland, and Germany have shown that Sphagnum moss can be successfully established by adding mosses or moss fragments to the peatland surface. In some cases, the Sphagnum cover reached over 90% after 1-4 growing seasons (1821). Six of these studies, which were controlled, demonstrated that the cover or abundance of Sphagnum was greater in areas that had been sown with moss compared to those that were not (1821). For sown Sphagnum to survive, mulching may be necessary, as indicated by one study where survival was only observed in mulched plots (1821). Another study found that mulching after planting increased Sphagnum moss cover (1828). \n\nCovering sown plots with plastic mesh has been shown to increase the number of Sphagnum moss shoots (1829). In a greenhouse setting, the growth of planted Sphagnum mosses was increased by covering them with either transparent plastic sheets or shading mesh (1829). Furthermore, shading plots with plastic mesh was found to increase the cover of planted mosses (1829). One study reported that shading with plastic mesh enhanced the survival of planted mosses (1829). In contrast, another study in a Canadian bog found that shading sown plots with plastic mesh did not affect the cover of Sphagnum moss (1829). Similarly, three studies in degraded Canadian bogs reported that mulching after planting had no impact on Sphagnum moss cover (1828).",
+    "summary_action_ids": [
+      "1821",
+      "1828",
+      "1829"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Sphagnum moss cover establishment after peat extraction\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1821\",\n    \"action_title\": \"Add mosses to peatland surface\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1828\",\n    \"action_title\": \"Cover peatland with organic mulch (after planting)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1829\",\n    \"action_title\": \"Cover peatland with something other than mulch (after planting)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1821\"}",
+            "return_val": "{\n  \"action_id\": \"1821\",\n  \"action_title\": \"Add mosses to peatland surface\",\n  \"key_messages\": \"Key Messages:\\n\\nThirteen studies evaluated the effects of adding mosses or moss fragments onto peatland surfaces. Eleven were in bogs\\u00a0and two in were in fens. One study\\u00a0was a continuation of an earlier study. Three of the studies\\u00a0involved sowing moss\\u00a0in gel beads.\\nSphagnum moss cover (12 studies): Eleven studies in bogs in the UK, Canada, Finland\\u00a0and Germany\\u00a0and fens the USA\\u00a0reported that Sphagnum moss was present, after 1\\u20134 growing seasons, in at least some plots sown with Sphagnum. Cover ranged from negligible to &gt;90%. Six of these studies\\u00a0were controlled and found that Sphagnum cover or abundance was higher in sown than unsown plots. One of the studies\\u00a0reported that Sphagnum only survived in one of three sites, and only when plots were mulched. One additional study in Canada\\u00a0found that adding Sphagnum to bog pools did not affect Sphagnum\\nOther moss cover (4 studies): Four studies (including one replicated, randomized, paired, controlled, before-and-after) in bogs in Canada\\u00a0and fens in Sweden\\u00a0and the USA\\u00a0reported that mosses or bryophytes other than Sphagnum were present, after 2\\u20133 growing seasons, in at least some plots sown with moss fragments. Cover ranged from negligible to 76%. In the fens in Sweden\\u00a0and the USA, moss cover was low (&lt;1%) unless the plots were mulched, shaded or limed.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1828\"}",
+            "return_val": "{\n  \"action_id\": \"1828\",\n  \"action_title\": \"Cover peatland with organic mulch (after planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwelve studies evaluated the effects, on peatland vegetation, of adding organic mulch after planting peatland plants. Nine studies were in bogs\\u00a0(one being restored as a fen). Two studies were in fens. One was in a tropical peat swamp.\\nGermination (1 study): One replicated, controlled, before-and-after study in a bog in Germany\\u00a0found that mulching after sowing seeds increased germination rates for two species (a grass and a shrub), but had no effect on three other herb species.\\nSurvival (3 studies): Two replicated, paired, controlled studies in a fen in Sweden\\u00a0and a bog in the USA\\u00a0reported that mulching increased survival of planted vegetation (mosses\\u00a0or sedges). One replicated, paired, controlled study in Indonesia\\u00a0reported that mulching with oil palm fruits reduced survival of planted peat swamp tree seedlings.\\nGrowth (1 study): One replicated, randomized, paired, controlled, before-and-after study in a fen in the USA\\u00a0reported that mulching increased growth of transplanted sedges.\\nCover (9 studies): Six studies (including four replicated, randomized, paired, controlled, before-and-after) in bogs in Canada and\\u00a0the USA\\u00a0and a fen in Sweden\\u00a0found that mulching after planting increased vegetation cover (specifically total vegetation, total mosses/bryophytes, Sphagnum mosses\\u00a0or vascular plants after 1\\u20133 growing seasons). Three replicated, randomized, paired, controlled, before-and-after studies in degraded bogs in Canada\\u00a0found that mulching after planting had no effect on vegetation cover (Sphagnum mosses or fen-characteristic plants).\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1829\"}",
+            "return_val": "{\n  \"action_id\": \"1829\",\n  \"action_title\": \"Cover peatland with something other than mulch (after planting)\",\n  \"key_messages\": \"Key Messages:\\n\\nEight studies evaluated the effects, on peatland vegetation, of adding covers (other than mulch) after planting peatland plants. Five studies involved bog plants, two involved fen plants\\u00a0and one involved peat swamp plants.\\u00a0Two of the studies were in greenhouses or nurseries.\\nGermination (1 study): One replicated, controlled, before-and-after study in a bog in Germany\\u00a0reported mixed effects of fleece and fibre mats on germination of sown herb and shrub seeds (positive or no effect, depending on species).\\nSurvival (2 studies): Two replicated, randomized, controlled studies examined the effect, on plant survival, of covering planted areas. One study in a fen in Sweden\\u00a0reported that shading with plastic mesh increased survival of planted mosses. One study in a nursery in Indonesia\\u00a0reported that shading with plastic mesh typically had no effect on survival of peat swamp tree species, but increased survival of some.\\nGrowth (3 studies): Three\\u00a0replicated, randomized, controlled, before-and-after studies examined the effect, on plant growth, of covering planted areas.\\u00a0One study in a greenhouse in Switzerland\\u00a0found that covering planted Sphagnum mosses with transparent plastic sheets or shading mesh increased their growth. One study in a fen in Sweden\\u00a0found that shading with plastic mesh reduced growth of planted fen mosses. One study in a nursery in Indonesia\\u00a0reported that seedlings shaded with plastic mesh grew taller and thinner than unshaded seedlings.\\nCover (4 studies): Two replicated, paired studies in a fen in Sweden\\u00a0and a bog in Australia\\u00a0reported that shading plots with plastic mesh increased cover of planted mosses. One study in a bog in Canada\\u00a0found that covering sown plots with plastic mesh, not transparent plastic sheets, increased the number of Sphagnum moss shoots. Another study in a bog in Canada\\u00a0reported that shading sown plots with plastic mesh had no effect on\\u00a0cover of vegetation overall, vascular plants, Sphagnum or other moss.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Eleven studies conducted in bogs across the UK, Canada, Finland, and Germany have shown that Sphagnum moss can be successfully established by adding mosses or moss fragments to the peatland surface. In some cases, the Sphagnum cover reached over 90% after 1-4 growing seasons (1821). Six of these studies, which were controlled, demonstrated that the cover or abundance of Sphagnum was greater in areas that had been sown with moss compared to those that were not (1821). For sown Sphagnum to survive, mulching may be necessary, as indicated by one study where survival was only observed in mulched plots (1821). Another study found that mulching after planting increased Sphagnum moss cover (1828). \\n\\nCovering sown plots with plastic mesh has been shown to increase the number of Sphagnum moss shoots (1829). In a greenhouse setting, the growth of planted Sphagnum mosses was increased by covering them with either transparent plastic sheets or shading mesh (1829). Furthermore, shading plots with plastic mesh was found to increase the cover of planted mosses (1829). One study reported that shading with plastic mesh enhanced the survival of planted mosses (1829). In contrast, another study in a Canadian bog found that shading sown plots with plastic mesh did not affect the cover of Sphagnum moss (1829). Similarly, three studies in degraded Canadian bogs reported that mulching after planting had no impact on Sphagnum moss cover (1828).\",\"action_ids\":[\"1821\",\"1828\",\"1829\"],\"query\":\"To restore a bog after peat extraction, which vegetation introduction techniques are most effective at establishing Sphagnum moss cover?\"}",
+            "return_val": "{\n  \"query\": \"To restore a bog after peat extraction, which vegetation introduction techniques are most effective at establishing Sphagnum moss cover?\",\n  \"relevant_summary\": \"Eleven studies conducted in bogs across the UK, Canada, Finland, and Germany have shown that Sphagnum moss can be successfully established by adding mosses or moss fragments to the peatland surface. In some cases, the Sphagnum cover reached over 90% after 1-4 growing seasons (1821). Six of these studies, which were controlled, demonstrated that the cover or abundance of Sphagnum was greater in areas that had been sown with moss compared to those that were not (1821). For sown Sphagnum to survive, mulching may be necessary, as indicated by one study where survival was only observed in mulched plots (1821). Another study found that mulching after planting increased Sphagnum moss cover (1828). \\n\\nCovering sown plots with plastic mesh has been shown to increase the number of Sphagnum moss shoots (1829). In a greenhouse setting, the growth of planted Sphagnum mosses was increased by covering them with either transparent plastic sheets or shading mesh (1829). Furthermore, shading plots with plastic mesh was found to increase the cover of planted mosses (1829). One study reported that shading with plastic mesh enhanced the survival of planted mosses (1829). In contrast, another study in a Canadian bog found that shading sown plots with plastic mesh did not affect the cover of Sphagnum moss (1829). Similarly, three studies in degraded Canadian bogs reported that mulching after planting had no impact on Sphagnum moss cover (1828).\",\n  \"action_ids\": [\n    \"1821\",\n    \"1828\",\n    \"1829\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1738",
+      "1804",
+      "1818",
+      "1821",
+      "1822"
+    ],
+    "regenerated_ids": [
+      "1738",
+      "1804",
+      "1818",
+      "1821",
+      "1822"
+    ]
+  }
+]
