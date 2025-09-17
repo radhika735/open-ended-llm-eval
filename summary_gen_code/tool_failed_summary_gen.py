@@ -660,7 +660,7 @@ def main():
     logging.info("STARTING summary generation process.")
     start_usage = {}
     for m,p in MODEL_PROVIDER_LIST:
-        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, qu_base_dir="tool_failed_questions", qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
+        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, base_qu_dir="tool_failed_questions", qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
         cleaned_m = parse_model_name(m)
         cleaned_p = parse_provider_name(p)
         start_usage[f"{cleaned_p}_{cleaned_m}"] = usage_stats[0]
@@ -681,7 +681,7 @@ def main():
 
     end_usage = {}
     for m,p in MODEL_PROVIDER_LIST:
-        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, qu_base_dir="tool_failed_questions", qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
+        usage_stats = get_summary_gen_qus_usage_separate(model=m, provider=p, base_qu_dir="tool_failed_questions", qu_types=[QU_TYPE], filter_stages=[FILTER_STAGE])
         cleaned_m = parse_model_name(m)
         cleaned_p = parse_provider_name(p)
         end_usage[f"{cleaned_p}_{cleaned_m}"] = usage_stats[0]
