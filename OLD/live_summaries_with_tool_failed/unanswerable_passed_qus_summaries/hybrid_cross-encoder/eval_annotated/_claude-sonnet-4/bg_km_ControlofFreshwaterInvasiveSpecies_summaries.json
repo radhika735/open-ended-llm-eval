@@ -1,0 +1,859 @@
+[
+  {
+    "query": "What is the most cost-effective method for controlling American bullfrogs in small ponds?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available evidence, double fyke nets appear to be an effective method for controlling American bullfrogs in small ponds, particularly for targeting juveniles and tadpoles. Action 1046 indicates that double fyke nets were effective in catching bullfrog tadpoles in small shallow ponds in Belgium. For adult removal, Action 1045 shows that while catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 hours was very low in Belgium, bullfrog adults can be captured overnight in a single trap floating on the water surface in the USA. However, Action 1045 also found that bullfrog populations rapidly rebounded following intensive removal of adults, suggesting that adult removal alone may not be sustainable. Combination treatments appear more effective, with Action 1045 and 1046 both noting significant reductions in bullfrog numbers when shooting of metamorphosed individuals and juvenile removal by trapping were carried out as part of combination treatments in France. Chemical control is also possible, with Action 1048 identifying several biocides that killed American bullfrogs, including caffeine (10% solution), chloroxylenol (5% solution), and combined Permethrin (4.6% solution) and Rotenone (1% solution). However, no direct evidence was found for pond draining or pond destruction methods (Actions 1042 and 1043).",
+    "summary_action_ids": [
+      "1045",
+      "1046",
+      "1042",
+      "1043",
+      "1048",
+      "825"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"American bullfrog control management small ponds\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1045\",\n    \"action_title\": \"American bullfrog control: Direct removal of adults\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1046\",\n    \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1042\",\n    \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bullfrog removal cost effective pond drainage\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1046\",\n    \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1042\",\n    \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1043\",\n    \"action_title\": \"American bullfrog control: Pond destruction\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bullfrog control methods effectiveness pond management\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"1046\",\n    \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1042\",\n    \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1043\",\n    \"action_title\": \"American bullfrog control: Pond destruction\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1045\",\n    \"action_title\": \"American bullfrog control: Direct removal of adults\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1045\"}",
+            "return_val": "{\n  \"action_id\": \"1045\",\n  \"action_title\": \"American bullfrog control: Direct removal of adults\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in Belgium\\u00a0found catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 h to be very low. \\nOne small study in the USA\\u00a0found that bullfrog adults can be captured overnight in a single trap floating on the water surface. \\nOne replicated, controlled study in the USA\\u00a0found that bullfrog populations rapidly rebounded following intensive removal of the adults.\\nOne before-and-after\\u00a0study in France\\u00a0found a significant reduction in the number of recorded adults and juveniles following the shooting of metamorphosed individuals before reproduction, when carried out as part of a combination treatment.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1046\"}",
+            "return_val": "{\n  \"action_id\": \"1046\",\n  \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in Belgium found double fyke nets were effective in catching bullfrog tadpoles in small shallow ponds. \\nOne before-and-after\\u00a0study in France\\u00a0found a significant reduction in the number of recorded adults and juveniles following the removal of juveniles by trapping, when carried out as part of a combination treatment.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1042\"}",
+            "return_val": "{\n  \"action_id\": \"1042\",\n  \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of draining ponds or altering the length of time for which ponds contain water on the control of American bullfrogs.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1043\"}",
+            "return_val": "{\n  \"action_id\": \"1043\",\n  \"action_title\": \"American bullfrog control: Pond destruction\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of pond destruction on the control of American bullfrogs.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"825\"}",
+            "return_val": "{\n  \"action_id\": \"825\",\n  \"action_title\": \"Remove or control invasive bullfrogs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the USA\\u00a0found that removing American bullfrogs significantly increased a population of California red-legged frogs. \\nOne before-and-after study in the USA and Mexico found that eradicating bullfrogs from the area increased the range of leopard frogs. One replicated, before-and-after study in the USA found that once bullfrogs had been removed, California red-legged frogs were found out in the open twice as frequently.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"fyke nets trapping bullfrog effectiveness small ponds\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1046\",\n    \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1045\",\n    \"action_title\": \"American bullfrog control: Direct removal of adults\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1055\",\n    \"action_title\": \"Red-eared terrapin:  Direct removal of adults\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bullfrog shooting trapping combination methods\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1045\",\n    \"action_title\": \"American bullfrog control: Direct removal of adults\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1046\",\n    \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1048\",\n    \"action_title\": \"American bullfrog control: Application of a biocide\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1048\"}",
+            "return_val": "{\n  \"action_id\": \"1048\",\n  \"action_title\": \"American bullfrog control: Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in the USA\\u00a0found a number of chemicals killed American bullfrogs, including caffeine (10% solution), chloroxylenol (5% solution), and a combined treatment of Permethrin (4.6% solution) and Rotenone (1% solution).\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the most cost-effective method for controlling American bullfrogs in small ponds?\", \"summary\": \"Based on the available evidence, double fyke nets appear to be an effective method for controlling American bullfrogs in small ponds, particularly for targeting juveniles and tadpoles. Action 1046 indicates that double fyke nets were effective in catching bullfrog tadpoles in small shallow ponds in Belgium. For adult removal, Action 1045 shows that while catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 hours was very low in Belgium, bullfrog adults can be captured overnight in a single trap floating on the water surface in the USA. However, Action 1045 also found that bullfrog populations rapidly rebounded following intensive removal of adults, suggesting that adult removal alone may not be sustainable. Combination treatments appear more effective, with Action 1045 and 1046 both noting significant reductions in bullfrog numbers when shooting of metamorphosed individuals and juvenile removal by trapping were carried out as part of combination treatments in France. Chemical control is also possible, with Action 1048 identifying several biocides that killed American bullfrogs, including caffeine (10% solution), chloroxylenol (5% solution), and combined Permethrin (4.6% solution) and Rotenone (1% solution). However, no direct evidence was found for pond draining or pond destruction methods (Actions 1042 and 1043).\", \"action_ids\": [\"1045\",\"1046\",\"1042\",\"1043\",\"1048\",\"825\"]}",
+            "return_val": "{\n  \"query\": \"What is the most cost-effective method for controlling American bullfrogs in small ponds?\",\n  \"relevant_summary\": \"Based on the available evidence, double fyke nets appear to be an effective method for controlling American bullfrogs in small ponds, particularly for targeting juveniles and tadpoles. Action 1046 indicates that double fyke nets were effective in catching bullfrog tadpoles in small shallow ponds in Belgium. For adult removal, Action 1045 shows that while catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 hours was very low in Belgium, bullfrog adults can be captured overnight in a single trap floating on the water surface in the USA. However, Action 1045 also found that bullfrog populations rapidly rebounded following intensive removal of adults, suggesting that adult removal alone may not be sustainable. Combination treatments appear more effective, with Action 1045 and 1046 both noting significant reductions in bullfrog numbers when shooting of metamorphosed individuals and juvenile removal by trapping were carried out as part of combination treatments in France. Chemical control is also possible, with Action 1048 identifying several biocides that killed American bullfrogs, including caffeine (10% solution), chloroxylenol (5% solution), and combined Permethrin (4.6% solution) and Rotenone (1% solution). However, no direct evidence was found for pond draining or pond destruction methods (Actions 1042 and 1043).\",\n  \"action_ids\": [\n    \"1045\",\n    \"1046\",\n    \"1042\",\n    \"1043\",\n    \"1048\",\n    \"825\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1039",
+      "1040",
+      "1041",
+      "1042",
+      "1043",
+      "1044",
+      "1045",
+      "1046",
+      "1047",
+      "1048",
+      "1049"
+    ],
+    "regenerated_ids": [
+      "1039",
+      "1040",
+      "1041",
+      "1042",
+      "1043",
+      "1044",
+      "1045",
+      "1046",
+      "1047",
+      "1048",
+      "1049"
+    ]
+  },
+  {
+    "query": "Which is more effective for controlling Procambarus crayfish: removing their food source or draining the waterway?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available action documents, there is no evidence available to determine which method is more effective for controlling Procambarus crayfish. According to action 1033, no evidence was captured on the effect of removing food sources as a control tool for Procambarus crayfish. Similarly, according to action 1034, no evidence was captured on the effect of draining the waterway as a control tool for Procambarus crayfish. Both actions note that no studies were found that directly and quantitatively tested these control methods during systematic journal and report searches, meaning the effectiveness of neither approach has been assessed.",
+    "summary_action_ids": [
+      "1033",
+      "1034"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Procambarus crayfish control methods food source draining waterway\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1034\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Draining the waterway\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1033\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Removal of food source\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1035\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Remove the crayfish by electrofishing\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1034\"}",
+            "return_val": "{\n  \"action_id\": \"1034\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Draining the waterway\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effect of draining the waterway as a control tool for Procambarus crayfish. \\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1033\"}",
+            "return_val": "{\n  \"action_id\": \"1033\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Removal of food source\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effect of removing food sources as a control tool for Procambarus crayfish.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"crayfish control effectiveness studies comparative\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1036\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Add chemicals to the water\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1037\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Create barriers\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1029\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Trapping and removal\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Procambarus crayfish management effectiveness comparison\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1038\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1034\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Draining the waterway\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"797\"}",
+            "return_val": "{\n  \"action_id\": \"797\",\n  \"action_title\": \"Remove or control non-native crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing or controlling non-native crayfish on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"Which is more effective for controlling Procambarus crayfish: removing their food source or draining the waterway?\", \"summary\": \"Based on the available action documents, there is no evidence available to determine which method is more effective for controlling Procambarus crayfish. According to action 1033, no evidence was captured on the effect of removing food sources as a control tool for Procambarus crayfish. Similarly, according to action 1034, no evidence was captured on the effect of draining the waterway as a control tool for Procambarus crayfish. Both actions note that no studies were found that directly and quantitatively tested these control methods during systematic journal and report searches, meaning the effectiveness of neither approach has been assessed.\", \"action_ids\": [\"1033\",\"1034\"]}",
+            "return_val": "{\n  \"query\": \"Which is more effective for controlling Procambarus crayfish: removing their food source or draining the waterway?\",\n  \"relevant_summary\": \"Based on the available action documents, there is no evidence available to determine which method is more effective for controlling Procambarus crayfish. According to action 1033, no evidence was captured on the effect of removing food sources as a control tool for Procambarus crayfish. Similarly, according to action 1034, no evidence was captured on the effect of draining the waterway as a control tool for Procambarus crayfish. Both actions note that no studies were found that directly and quantitatively tested these control methods during systematic journal and report searches, meaning the effectiveness of neither approach has been assessed.\",\n  \"action_ids\": [\n    \"1033\",\n    \"1034\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1033",
+      "1034"
+    ],
+    "regenerated_ids": [
+      "1033",
+      "1034"
+    ]
+  },
+  {
+    "query": "What is the effectiveness of using chemical biocides to control invasive zebra mussel populations?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available action documents, there is no evidence available regarding the effectiveness of using chemical biocides to control invasive zebra mussel populations specifically. Action 2171 found no studies that evaluated the effects of using biocides or other chemicals to control non-native, invasive or other problematic species on subtidal benthic invertebrate populations. Action 2937 similarly found no studies that evaluated the effects of using biocides or other chemicals to control invasive or problematic species on marine and freshwater mammal populations. While there is some evidence of chemical control effectiveness for other aquatic invasive species - such as action 1036 showing that red swamp crayfish could be killed using natural pyrethrum Pyblast at a concentration of 0.05 mg/l, and action 1095 finding that iodine solution, acetic acid, Virkon S and sodium hypochlorite killed invasive killer shrimp in laboratory conditions but were considered impractical for field application - no specific studies were found that directly evaluated chemical biocide effectiveness against zebra mussels.",
+    "summary_action_ids": [
+      "2171",
+      "2937",
+      "1036",
+      "1095"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"zebra mussel chemical biocides control invasive\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2171\",\n    \"action_title\": \"Use biocides or other chemicals to control non-native, invasive or other problematic species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2937\",\n    \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"430\",\n    \"action_title\": \"Reduce adverse habitat alterations by excluding problematic aquatic species\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"zebra mussel invasive species\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"430\",\n    \"action_title\": \"Reduce adverse habitat alterations by excluding problematic aquatic species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2247\",\n    \"action_title\": \"Restore biogenic habitats (other methods) - Restore mussel beds\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2122\",\n    \"action_title\": \"Use alternative means of getting mussel seeds rather than dredging from natural mussel beds\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"chemical control biocides invasive aquatic species\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2937\",\n    \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2171\",\n    \"action_title\": \"Use biocides or other chemicals to control non-native, invasive or other problematic species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1036\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Add chemicals to the water\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2171\"}",
+            "return_val": "{\n  \"action_id\": \"2171\",\n  \"action_title\": \"Use biocides or other chemicals to control non-native, invasive or other problematic species\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using biocides or other chemicals to control non-native, invasive or other problematic species on subtidal benthic invertebrate populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2937\"}",
+            "return_val": "{\n  \"action_id\": \"2937\",\n  \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using biocides or other chemicals to control invasive or problematic species on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"430\"}",
+            "return_val": "{\n  \"action_id\": \"430\",\n  \"action_title\": \"Reduce adverse habitat alterations by excluding problematic aquatic species\",\n  \"key_messages\": \"Key Messages:\\nA replicated paired study in the USA found that waterbirds preferentially used wetland plots from which grass carp Ctenopharyngodon idella were excluded but moved as these became depleted over the winter.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"aquatic invasive species control chemical\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2937\",\n    \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"823\",\n    \"action_title\": \"Control invasive plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1036\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Add chemicals to the water\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1036\"}",
+            "return_val": "{\n  \"action_id\": \"1036\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Add chemicals to the water\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Italy\\u00a0found that red swamp crayfish could be killed using the natural pyrethrum Pyblast at a concentration of 0.05 mg/l, but that application to drained crayfish burrows was not effective.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"mollusk mussel control chemical invasive\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2937\",\n    \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1095\",\n    \"action_title\": \"Ponto-Caspian gammarids: Add chemicals to the water\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"250\",\n    \"action_title\": \"Use \\u2018mussel socks\\u2019 to prevent birds from attacking shellfish\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1095\"}",
+            "return_val": "{\n  \"action_id\": \"1095\",\n  \"action_title\": \"Ponto-Caspian gammarids: Add chemicals to the water\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled laboratory study in the UK\\u00a0found that iodine solution, acetic acid, Virkon S and sodium hypochlorite added to freshwater killed invasive killer shrimp, but were considered impractical for field application. Methanol, citric acid, urea, hydrogen peroxide and sucrose did not kill invasive killer shrimp when added to freshwater.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the effectiveness of using chemical biocides to control invasive zebra mussel populations?\", \"summary\": \"Based on the available action documents, there is no evidence available regarding the effectiveness of using chemical biocides to control invasive zebra mussel populations specifically. Action 2171 found no studies that evaluated the effects of using biocides or other chemicals to control non-native, invasive or other problematic species on subtidal benthic invertebrate populations. Action 2937 similarly found no studies that evaluated the effects of using biocides or other chemicals to control invasive or problematic species on marine and freshwater mammal populations. While there is some evidence of chemical control effectiveness for other aquatic invasive species - such as action 1036 showing that red swamp crayfish could be killed using natural pyrethrum Pyblast at a concentration of 0.05 mg/l, and action 1095 finding that iodine solution, acetic acid, Virkon S and sodium hypochlorite killed invasive killer shrimp in laboratory conditions but were considered impractical for field application - no specific studies were found that directly evaluated chemical biocide effectiveness against zebra mussels.\", \"action_ids\": [\"2171\",\"2937\",\"1036\",\"1095\"]}",
+            "return_val": "{\n  \"query\": \"What is the effectiveness of using chemical biocides to control invasive zebra mussel populations?\",\n  \"relevant_summary\": \"Based on the available action documents, there is no evidence available regarding the effectiveness of using chemical biocides to control invasive zebra mussel populations specifically. Action 2171 found no studies that evaluated the effects of using biocides or other chemicals to control non-native, invasive or other problematic species on subtidal benthic invertebrate populations. Action 2937 similarly found no studies that evaluated the effects of using biocides or other chemicals to control invasive or problematic species on marine and freshwater mammal populations. While there is some evidence of chemical control effectiveness for other aquatic invasive species - such as action 1036 showing that red swamp crayfish could be killed using natural pyrethrum Pyblast at a concentration of 0.05 mg/l, and action 1095 finding that iodine solution, acetic acid, Virkon S and sodium hypochlorite killed invasive killer shrimp in laboratory conditions but were considered impractical for field application - no specific studies were found that directly evaluated chemical biocide effectiveness against zebra mussels.\",\n  \"action_ids\": [\n    \"2171\",\n    \"2937\",\n    \"1036\",\n    \"1095\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [],
+    "regenerated_ids": []
+  },
+  {
+    "query": "What are the long-term impacts on native invertebrate communities after eradicating black bullheads using rotenone?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available action documents, no specific evidence was found regarding the long-term impacts on native invertebrate communities after eradicating black bullheads using rotenone. The action documents reviewed focus on the effectiveness of rotenone as a biocide for black bullhead eradication (action 1050) and its effects on amphibian populations (action 828), but do not contain information about impacts on invertebrate communities. Action 1050 reports that rotenone successfully achieved eradication of black bullhead in studies from the UK and USA. Action 828 discusses rotenone's effects on amphibians, finding both positive effects (increased amphibian species numbers and abundance) and negative effects (mortality in frogs and adverse symptoms in newts), but provides no data on invertebrate community responses or long-term ecological recovery patterns.",
+    "summary_action_ids": [
+      "1050",
+      "828"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"rotenone black bullhead eradication invertebrate\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1085\",\n    \"action_title\": \"Brown and black bullheads: Changing pH\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1084\",\n    \"action_title\": \"Brown and black bullheads: Changing salinity\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1050\"}",
+            "return_val": "{\n  \"action_id\": \"1050\",\n  \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in the UK reported that use of a piscicide containing rotenone achieved eradication of black bullhead.\\nA study in the USA found that rotenone successfully eradicated black bullhead, but one of two ponds required two separate doses.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"rotenone invertebrate community impacts\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2079\",\n    \"action_title\": \"Co-locate aquaculture systems with other activities and other infrastructures (such as wind farms) to maximise use of marine space\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"828\"}",
+            "return_val": "{\n  \"action_id\": \"828\",\n  \"action_title\": \"Remove or control fish using rotenone\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated study) in Sweden, the UK and USA found that eliminating fish using rotenone increased numbers of amphibian species, abundance and recruitment or newt populations.\\nOne review in Australia, the UK and USA found that fish control, which included using rotenone, increased breeding success for four amphibian species.\\nTwo replicated studies in Pakistan and the UK found when rotenone was applied, many frogs died and a small number of newts showed symptoms of negative effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invertebrate community long-term effects rotenone fish removal\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2655\",\n    \"action_title\": \"Establish long-term fishery closures\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"native invertebrate bullhead eradication impact\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1084\",\n    \"action_title\": \"Brown and black bullheads: Changing salinity\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1078\",\n    \"action_title\": \"Brown and black bullheads: Draining invaded waterbodies\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"rotenone aquatic ecosystem community effects non-target species\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1063\",\n    \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1063\"}",
+            "return_val": "{\n  \"action_id\": \"1063\",\n  \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the use of biocide to control populations of the round goby or the tubenose goby.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"rotenone side effects ecological recovery benthic macroinvertebrates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"828\",\n    \"action_title\": \"Remove or control fish using rotenone\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2130\",\n    \"action_title\": \"Limit the maximum weight and/or size of bobbins on the footrope\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What are the long-term impacts on native invertebrate communities after eradicating black bullheads using rotenone?\", \"summary\": \"Based on the available action documents, no specific evidence was found regarding the long-term impacts on native invertebrate communities after eradicating black bullheads using rotenone. The action documents reviewed focus on the effectiveness of rotenone as a biocide for black bullhead eradication (action 1050) and its effects on amphibian populations (action 828), but do not contain information about impacts on invertebrate communities. Action 1050 reports that rotenone successfully achieved eradication of black bullhead in studies from the UK and USA. Action 828 discusses rotenone's effects on amphibians, finding both positive effects (increased amphibian species numbers and abundance) and negative effects (mortality in frogs and adverse symptoms in newts), but provides no data on invertebrate community responses or long-term ecological recovery patterns.\", \"action_ids\": [\"1050\",\"828\"]}",
+            "return_val": "{\n  \"query\": \"What are the long-term impacts on native invertebrate communities after eradicating black bullheads using rotenone?\",\n  \"relevant_summary\": \"Based on the available action documents, no specific evidence was found regarding the long-term impacts on native invertebrate communities after eradicating black bullheads using rotenone. The action documents reviewed focus on the effectiveness of rotenone as a biocide for black bullhead eradication (action 1050) and its effects on amphibian populations (action 828), but do not contain information about impacts on invertebrate communities. Action 1050 reports that rotenone successfully achieved eradication of black bullhead in studies from the UK and USA. Action 828 discusses rotenone's effects on amphibians, finding both positive effects (increased amphibian species numbers and abundance) and negative effects (mortality in frogs and adverse symptoms in newts), but provides no data on invertebrate community responses or long-term ecological recovery patterns.\",\n  \"action_ids\": [\n    \"1050\",\n    \"828\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1050"
+    ],
+    "regenerated_ids": [
+      "1050"
+    ]
+  },
+  {
+    "query": "What is the most cost-effective method for controlling American bullfrog populations: introducing northern pike or the direct removal of adults?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the evidence found in the action documents, there is limited information comparing the cost-effectiveness of introducing northern pike versus direct removal of adults for controlling American bullfrog populations. Regarding biological control using northern pike, one replicated, controlled study conducted in Belgium found the introduction of the northern pike led to a strong decline in bullfrog tadpole numbers (Action 1039). For direct removal of adults, the evidence shows mixed results: one replicated study in Belgium found catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 h to be very low, one small study in the USA found that bullfrog adults can be captured overnight in a single trap floating on the water surface, and one replicated, controlled study in the USA found that bullfrog populations rapidly rebounded following intensive removal of the adults (Action 1045). One before-and-after study in France found a significant reduction in the number of recorded adults and juveniles following the shooting of metamorphosed individuals before reproduction, when carried out as part of a combination treatment (Action 1045). The documents do not provide specific cost-effectiveness comparisons between these two methods.",
+    "summary_action_ids": [
+      "1039",
+      "1045"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"American bullfrog population control removal northern pike\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1039\",\n    \"action_title\": \"American bullfrog control: Biological control using native predators\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1040\",\n    \"action_title\": \"American bullfrog control: Biological control of co-occurring beneficial species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bullfrog control cost-effective direct removal adults\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1045\",\n    \"action_title\": \"American bullfrog control: Direct removal of adults\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1046\",\n    \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1039\"}",
+            "return_val": "{\n  \"action_id\": \"1039\",\n  \"action_title\": \"American bullfrog control: Biological control using native predators\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study conducted in Belgium\\u00a0found the introduction of the northern pike led to a strong decline in bullfrog tadpole numbers.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1045\"}",
+            "return_val": "{\n  \"action_id\": \"1045\",\n  \"action_title\": \"American bullfrog control: Direct removal of adults\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in Belgium\\u00a0found catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 h to be very low. \\nOne small study in the USA\\u00a0found that bullfrog adults can be captured overnight in a single trap floating on the water surface. \\nOne replicated, controlled study in the USA\\u00a0found that bullfrog populations rapidly rebounded following intensive removal of the adults.\\nOne before-and-after\\u00a0study in France\\u00a0found a significant reduction in the number of recorded adults and juveniles following the shooting of metamorphosed individuals before reproduction, when carried out as part of a combination treatment.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1040\"}",
+            "return_val": "{\n  \"action_id\": \"1040\",\n  \"action_title\": \"American bullfrog control: Biological control of co-occurring beneficial species\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of removing co-occurring beneficial species on the control of American bullfrogs.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1046\"}",
+            "return_val": "{\n  \"action_id\": \"1046\",\n  \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in Belgium found double fyke nets were effective in catching bullfrog tadpoles in small shallow ponds. \\nOne before-and-after\\u00a0study in France\\u00a0found a significant reduction in the number of recorded adults and juveniles following the removal of juveniles by trapping, when carried out as part of a combination treatment.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"825\"}",
+            "return_val": "{\n  \"action_id\": \"825\",\n  \"action_title\": \"Remove or control invasive bullfrogs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the USA\\u00a0found that removing American bullfrogs significantly increased a population of California red-legged frogs. \\nOne before-and-after study in the USA and Mexico found that eradicating bullfrogs from the area increased the range of leopard frogs. One replicated, before-and-after study in the USA found that once bullfrogs had been removed, California red-legged frogs were found out in the open twice as frequently.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"cost-effective bullfrog control methods comparison\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1046\",\n    \"action_title\": \"American bullfrog control: Direct removal of juveniles\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1047\",\n    \"action_title\": \"American bullfrog control: Collection of egg clutches\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1047\"}",
+            "return_val": "{\n  \"action_id\": \"1047\",\n  \"action_title\": \"American bullfrog control: Collection of egg clutches\",\n  \"key_messages\": \"Key Messages:\\n\\nDespite reference to removal of egg clutches in some studies using bilge pumps or nets, no evidence was captured on the effects of egg collection on American bullfrogs.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"biological control predator bullfrog effectiveness\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1039\",\n    \"action_title\": \"American bullfrog control: Biological control using native predators\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1042\",\n    \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the most cost-effective method for controlling American bullfrog populations: introducing northern pike or the direct removal of adults?\", \"summary\": \"Based on the evidence found in the action documents, there is limited information comparing the cost-effectiveness of introducing northern pike versus direct removal of adults for controlling American bullfrog populations. Regarding biological control using northern pike, one replicated, controlled study conducted in Belgium found the introduction of the northern pike led to a strong decline in bullfrog tadpole numbers (Action 1039). For direct removal of adults, the evidence shows mixed results: one replicated study in Belgium found catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 h to be very low, one small study in the USA found that bullfrog adults can be captured overnight in a single trap floating on the water surface, and one replicated, controlled study in the USA found that bullfrog populations rapidly rebounded following intensive removal of the adults (Action 1045). One before-and-after study in France found a significant reduction in the number of recorded adults and juveniles following the shooting of metamorphosed individuals before reproduction, when carried out as part of a combination treatment (Action 1045). The documents do not provide specific cost-effectiveness comparisons between these two methods.\", \"action_ids\": [\"1039\",\"1045\"]}",
+            "return_val": "{\n  \"query\": \"What is the most cost-effective method for controlling American bullfrog populations: introducing northern pike or the direct removal of adults?\",\n  \"relevant_summary\": \"Based on the evidence found in the action documents, there is limited information comparing the cost-effectiveness of introducing northern pike versus direct removal of adults for controlling American bullfrog populations. Regarding biological control using northern pike, one replicated, controlled study conducted in Belgium found the introduction of the northern pike led to a strong decline in bullfrog tadpole numbers (Action 1039). For direct removal of adults, the evidence shows mixed results: one replicated study in Belgium found catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 h to be very low, one small study in the USA found that bullfrog adults can be captured overnight in a single trap floating on the water surface, and one replicated, controlled study in the USA found that bullfrog populations rapidly rebounded following intensive removal of the adults (Action 1045). One before-and-after study in France found a significant reduction in the number of recorded adults and juveniles following the shooting of metamorphosed individuals before reproduction, when carried out as part of a combination treatment (Action 1045). The documents do not provide specific cost-effectiveness comparisons between these two methods.\",\n  \"action_ids\": [\n    \"1039\",\n    \"1045\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1039",
+      "1045"
+    ],
+    "regenerated_ids": [
+      "1039",
+      "1045"
+    ]
+  },
+  {
+    "query": "How effective is electrofishing as a method for reducing populations of invasive Ponto-Caspian gobies?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "No evidence was captured for use of electrofishing to reduce the population size of invasive Ponto-Caspian gobies (Action 1067). Similarly, no evidence was captured on the use of a combination of electrofishing and gill netting to control goby populations (Action 1068). The documentation indicates that no studies have been found that directly and quantitatively tested electrofishing as an action for controlling Ponto-Caspian goby populations during systematic journal and report searches.",
+    "summary_action_ids": [
+      "1067",
+      "1068"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"electrofishing Ponto-Caspian gobies invasive species\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1067\",\n    \"action_title\": \"Ponto-Caspian gobies: Electrofishing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1068\",\n    \"action_title\": \"Ponto-Caspian gobies: Using a combination of netting and electrofishing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1065\",\n    \"action_title\": \"Ponto-Caspian gobies:  Draining invaded waterbodies\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1067\"}",
+            "return_val": "{\n  \"action_id\": \"1067\",\n  \"action_title\": \"Ponto-Caspian gobies: Electrofishing\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for use of electrofishing to reduce the population size of invasive gobies.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1068\"}",
+            "return_val": "{\n  \"action_id\": \"1068\",\n  \"action_title\": \"Ponto-Caspian gobies: Using a combination of netting and electrofishing\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the use of a combination of electrofishing and gill netting to control goby populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"electrofishing invasive fish population control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1068\",\n    \"action_title\": \"Ponto-Caspian gobies: Using a combination of netting and electrofishing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1080\",\n    \"action_title\": \"Brown and black bullheads: Using a combination of netting and electrofishing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1035\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Remove the crayfish by electrofishing\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"goby invasive species control management\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1061\",\n    \"action_title\": \"Ponto-Caspian gobies:  Biological control using native predators\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1063\",\n    \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1071\",\n    \"action_title\": \"Ponto-Caspian gobies: UV radiation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"Ponto-Caspian\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"1090\",\n    \"action_title\": \"Ponto-Caspian gammarids: Exposure to disease-causing organisms\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1087\",\n    \"action_title\": \"Ponto-Caspian gammarids: Biological control using predatory fish\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1096\",\n    \"action_title\": \"Ponto-Caspian gammarids: Cleaning equipment\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1094\",\n    \"action_title\": \"Ponto-Caspian gammarids: Dewater (dry out) the habitat\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1072\",\n    \"action_title\": \"Ponto-Caspian gobies: Changing salinity\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1093\",\n    \"action_title\": \"Ponto-Caspian gammarids: Change water pH\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1097\",\n    \"action_title\": \"Ponto-Caspian gammarids: Exchanging ballast water\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1091\",\n    \"action_title\": \"Ponto-Caspian gammarids: Change salinity of the water\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1092\",\n    \"action_title\": \"Ponto-Caspian gammarids: Change water temperature\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1070\",\n    \"action_title\": \"Ponto-Caspian gobies: Increasing carbon dioxide concentrations\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"How effective is electrofishing as a method for reducing populations of invasive Ponto-Caspian gobies?\", \"summary\": \"No evidence was captured for use of electrofishing to reduce the population size of invasive Ponto-Caspian gobies (Action 1067). Similarly, no evidence was captured on the use of a combination of electrofishing and gill netting to control goby populations (Action 1068). The documentation indicates that no studies have been found that directly and quantitatively tested electrofishing as an action for controlling Ponto-Caspian goby populations during systematic journal and report searches.\", \"action_ids\": [\"1067\",\"1068\"]}",
+            "return_val": "{\n  \"query\": \"How effective is electrofishing as a method for reducing populations of invasive Ponto-Caspian gobies?\",\n  \"relevant_summary\": \"No evidence was captured for use of electrofishing to reduce the population size of invasive Ponto-Caspian gobies (Action 1067). Similarly, no evidence was captured on the use of a combination of electrofishing and gill netting to control goby populations (Action 1068). The documentation indicates that no studies have been found that directly and quantitatively tested electrofishing as an action for controlling Ponto-Caspian goby populations during systematic journal and report searches.\",\n  \"action_ids\": [\n    \"1067\",\n    \"1068\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1067"
+    ],
+    "regenerated_ids": [
+      "1067"
+    ]
+  },
+  {
+    "query": "Which is more effective for controlling brown and black bullheads: draining invaded waterbodies or using electrofishing?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "No evidence was found for the effectiveness of either draining invaded waterbodies or electrofishing for controlling brown and black bullheads. Action 1078 reports that no evidence was found for use of draining invaded waterbodies to reduce the population size of invasive bullheads. Action 1079 similarly reports that no evidence was found for use of electrofishing to reduce the population size of invasive bullheads. Action 1080 indicates that no evidence was captured on the impact of electrofishing and gill netting combined on bullhead populations. For all three actions, \"no evidence\" means that no studies have been found that directly and quantitatively tested these actions during systematic journal and report searches, therefore it has been unable to assess whether these actions are effective or have harmful impacts.",
+    "summary_action_ids": [
+      "1078",
+      "1079",
+      "1080"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bullhead control draining electrofishing brown black\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1080\",\n    \"action_title\": \"Brown and black bullheads: Using a combination of netting and electrofishing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1078\",\n    \"action_title\": \"Brown and black bullheads: Draining invaded waterbodies\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1079\",\n    \"action_title\": \"Brown and black bullheads: Electrofishing\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1078\"}",
+            "return_val": "{\n  \"action_id\": \"1078\",\n  \"action_title\": \"Brown and black bullheads: Draining invaded waterbodies\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was found for use of draining invaded waterbodies to reduce the population size of invasive bullheads.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1079\"}",
+            "return_val": "{\n  \"action_id\": \"1079\",\n  \"action_title\": \"Brown and black bullheads: Electrofishing\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was found for use of electrofishing to reduce the population size of invasive bullheads.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1080\"}",
+            "return_val": "{\n  \"action_id\": \"1080\",\n  \"action_title\": \"Brown and black bullheads: Using a combination of netting and electrofishing\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of electrofishing and gill netting combined on bullhead populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"bullhead management invasive control methods effectiveness\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1053\",\n    \"action_title\": \"Brown and black bullheads: Biological control using native predators\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1047\",\n    \"action_title\": \"American bullfrog control: Collection of egg clutches\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"invasive fish removal drain pond electrofishing effectiveness comparison\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1078\",\n    \"action_title\": \"Brown and black bullheads: Draining invaded waterbodies\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1065\",\n    \"action_title\": \"Ponto-Caspian gobies:  Draining invaded waterbodies\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1068\",\n    \"action_title\": \"Ponto-Caspian gobies: Using a combination of netting and electrofishing\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"brown black bullhead invasive species management\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"1053\",\n    \"action_title\": \"Brown and black bullheads: Biological control using native predators\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1051\",\n    \"action_title\": \"Brown and black bullheads: Netting\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"1086\",\n    \"action_title\": \"Brown and black bullheads: Public education\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1083\",\n    \"action_title\": \"Brown and black bullheads: UV radiation\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"Which is more effective for controlling brown and black bullheads: draining invaded waterbodies or using electrofishing?\", \"summary\": \"No evidence was found for the effectiveness of either draining invaded waterbodies or electrofishing for controlling brown and black bullheads. Action 1078 reports that no evidence was found for use of draining invaded waterbodies to reduce the population size of invasive bullheads. Action 1079 similarly reports that no evidence was found for use of electrofishing to reduce the population size of invasive bullheads. Action 1080 indicates that no evidence was captured on the impact of electrofishing and gill netting combined on bullhead populations. For all three actions, \\\"no evidence\\\" means that no studies have been found that directly and quantitatively tested these actions during systematic journal and report searches, therefore it has been unable to assess whether these actions are effective or have harmful impacts.\", \"action_ids\": [\"1078\",\"1079\",\"1080\"]}",
+            "return_val": "{\n  \"query\": \"Which is more effective for controlling brown and black bullheads: draining invaded waterbodies or using electrofishing?\",\n  \"relevant_summary\": \"No evidence was found for the effectiveness of either draining invaded waterbodies or electrofishing for controlling brown and black bullheads. Action 1078 reports that no evidence was found for use of draining invaded waterbodies to reduce the population size of invasive bullheads. Action 1079 similarly reports that no evidence was found for use of electrofishing to reduce the population size of invasive bullheads. Action 1080 indicates that no evidence was captured on the impact of electrofishing and gill netting combined on bullhead populations. For all three actions, \\\"no evidence\\\" means that no studies have been found that directly and quantitatively tested these actions during systematic journal and report searches, therefore it has been unable to assess whether these actions are effective or have harmful impacts.\",\n  \"action_ids\": [\n    \"1078\",\n    \"1079\",\n    \"1080\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1078",
+      "1079"
+    ],
+    "regenerated_ids": [
+      "1078",
+      "1079"
+    ]
+  },
+  {
+    "query": "What is the public perception regarding the use of sniffer dogs to control red-eared terrapin populations?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "No evidence was captured regarding public perception of using sniffer dogs to control red-eared terrapin populations (Action 1058). The available action document on \"Red-eared terrapin: Search and removal using sniffer dogs\" indicates that no evidence was found on the success of use of sniffer dogs in removing red-eared terrapins, but it does not contain any information about public perception, opinions, or social acceptance of this control method (Action 1058).",
+    "summary_action_ids": [
+      "1058"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"sniffer dogs red-eared terrapin population control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1058\",\n    \"action_title\": \"Red-eared terrapin:  Search and removal using sniffer dogs\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1057\",\n    \"action_title\": \"Red-eared terrapin:  Draining invaded waterbodies\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1059\",\n    \"action_title\": \"Red-eared terrapin:  Application of a biocide\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1058\"}",
+            "return_val": "{\n  \"action_id\": \"1058\",\n  \"action_title\": \"Red-eared terrapin:  Search and removal using sniffer dogs\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the success of use of sniffer dogs in removing red-eared terrapins.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1057\"}",
+            "return_val": "{\n  \"action_id\": \"1057\",\n  \"action_title\": \"Red-eared terrapin:  Draining invaded waterbodies\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of draining invaded waterbodies on reduction of red-eared terrapin populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1059\"}",
+            "return_val": "{\n  \"action_id\": \"1059\",\n  \"action_title\": \"Red-eared terrapin:  Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled laboratory study in the USA, found that application of glyphosate to the eggs of red-eared terrapins reduced hatching success to 73%, but only at the highest experimental concentration of glyphosate and a surface active agent.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"red-eared terrapin public perception opinion social acceptance\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1060\",\n    \"action_title\": \"Red-eared terrapin:  Public education\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1055\",\n    \"action_title\": \"Red-eared terrapin:  Direct removal of adults\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1057\",\n    \"action_title\": \"Red-eared terrapin:  Draining invaded waterbodies\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1060\"}",
+            "return_val": "{\n  \"action_id\": \"1060\",\n  \"action_title\": \"Red-eared terrapin:  Public education\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of education programmes on reduction of red-eared terrapin populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"terrapin control methods public attitude social\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1060\",\n    \"action_title\": \"Red-eared terrapin:  Public education\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1055\",\n    \"action_title\": \"Red-eared terrapin:  Direct removal of adults\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3389\",\n    \"action_title\": \"Raise public awareness about marshes or swamps\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"dog detection animal control public perception\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2433\",\n    \"action_title\": \"Use guardian animals (e.g. dogs, llamas, donkeys) bonded to livestock to deter predators to reduce human-wildlife conflict\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1000\",\n    \"action_title\": \"Educate the public to improve perception of bats to improve behaviour towards bats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2520\",\n    \"action_title\": \"Train captive-bred mammals to avoid predators\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2433\"}",
+            "return_val": "{\n  \"action_id\": \"2433\",\n  \"action_title\": \"Use guardian animals (e.g. dogs, llamas, donkeys) bonded to livestock to deter predators to reduce human-wildlife conflict\",\n  \"key_messages\": \"Key Messages:\\n\\nTwelve studies evaluated the effects of using guardian animals (e.g. dogs, llamas, donkeys) bonded to livestock to deter mammals from predating these livestock to reduce human-wildlife conflict. Four studies were in the USA, two were in Kenya and one each was in Solvakia, Argentina, Australia, Cameroon, South Africa, and Namibia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (12 STUDIES)\\n\\nHuman-wildlife conflict (12 studies): Four of seven studies, (including four site comparison studies), in the USA, Kenya, Solvakia, Australia and Cameroon, found that guardian animals reduced attacks on livestock by predators. The other three studies reported mixed results with reductions in attacks on some but not all age groups or livestock species and reductions for nomadic but not resident pastoralists. Two studies, (including one site comparison study and one before-and-after study), in Argentina and Namibia, found that using dogs to guard livestock reduced the killing of predators by farmers but the number of black-backed jackals killed by farmers and dogs combined increased. A replicated, controlled study in the USA found that fewer sheep guarded by llamas were predated by carnivores in one of two summers whilst a replicated, before-and-after study in South Africa found that using dogs or alpacas to guard livestock reduced attacks by predators. A randomized, replicated, controlled study in USA found that dogs bonded with livestock reduced contact between white-tailed deer and domestic cattle.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1000\"}",
+            "return_val": "{\n  \"action_id\": \"1000\",\n  \"action_title\": \"Educate the public to improve perception of bats to improve behaviour towards bats\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of educating the public to improve the perception of bats to improve behaviour towards bats.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the public perception regarding the use of sniffer dogs to control red-eared terrapin populations?\", \"summary\": \"No evidence was captured regarding public perception of using sniffer dogs to control red-eared terrapin populations (Action 1058). The available action document on \\\"Red-eared terrapin: Search and removal using sniffer dogs\\\" indicates that no evidence was found on the success of use of sniffer dogs in removing red-eared terrapins, but it does not contain any information about public perception, opinions, or social acceptance of this control method (Action 1058).\", \"action_ids\": [\"1058\"]}",
+            "return_val": "{\n  \"query\": \"What is the public perception regarding the use of sniffer dogs to control red-eared terrapin populations?\",\n  \"relevant_summary\": \"No evidence was captured regarding public perception of using sniffer dogs to control red-eared terrapin populations (Action 1058). The available action document on \\\"Red-eared terrapin: Search and removal using sniffer dogs\\\" indicates that no evidence was found on the success of use of sniffer dogs in removing red-eared terrapins, but it does not contain any information about public perception, opinions, or social acceptance of this control method (Action 1058).\",\n  \"action_ids\": [\n    \"1058\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1058"
+    ],
+    "regenerated_ids": [
+      "1058"
+    ]
+  }
+]

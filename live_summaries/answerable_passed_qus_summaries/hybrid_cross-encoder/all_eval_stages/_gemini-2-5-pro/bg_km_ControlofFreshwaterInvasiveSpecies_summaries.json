@@ -3,11 +3,9 @@
     "query": "To control Crassula helmsii, how do chemical methods like herbicides compare in effectiveness to physical methods like using lightproof barriers or salt water?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A study in the UK found that using a combination of covering Crassula helmsii with carpet and then treating it with the herbicide glyphosate resulted in killing 80% of the plant (1313). In contrast, two replicated, controlled container trials and two before-and-after field trials in the UK found that the use of salt water eradicated Crassula helmsii (1288). Five before-and-after studies in the UK that used lightproof barriers, such as black sheeting or carpet strips, found that this method eradicated or severely reduced the cover of the plant. However, at two of the sites where the plant was reported as eradicated, it progressively recolonized (1294). There was no evidence found for the effects of physical control using manual or mechanical control or dredging on Crassula helmsii (1278).",
+    "relevant_summary": "One before-and-after study at a single pond in the UK found that covering Crassula helmsii with carpet, followed by treatment with the herbicide glyphosate, killed 80% of the plant [1313]. No evidence was found for the effects of physical control using manual or mechanical control or dredging [1278].",
     "summary_action_ids": [
       "1313",
-      "1288",
-      "1294",
       "1278"
     ],
     "tool_call_details": [
@@ -40,44 +38,9 @@
         "iteration_num": 3,
         "tools_called": [
           {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Crassula helmsii salt water\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1288\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use salt water to kill plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1308\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Decontamination to prevent further spread\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1275\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use hot water to control plants\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 4,
-        "tools_called": [
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1288\"}",
-            "return_val": "{\n  \"action_id\": \"1288\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Use salt water to kill plants\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled container trials and two before-and-after field trials\\u00a0in the UK found that seawater eradicated Crassula helmsii.\"\n}"
-          },
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Crassula helmsii lightproof barriers\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1294\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use lightproof barriers to control plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1305\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Bury plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1293\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use dyes to reduce light levels\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 5,
-        "tools_called": [
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1294\"}",
-            "return_val": "{\n  \"action_id\": \"1294\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Use lightproof barriers to control plants\",\n  \"key_messages\": \"Key Messages:\\n\\nFive before-and-after studies in the UK\\u00a0found that covering Crassula helmsii with black sheeting or carpet strips eradicated or severely reduced the cover of the plant. However, C. helmsii was reported to have progressively recolonized two of the sites where it had been had initially been reported as eradicated.\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 6,
-        "tools_called": [
-          {
             "function_name": "get_formatted_result",
-            "args": "{\"action_ids\":[\"1313\",\"1288\",\"1294\",\"1278\"],\"summary\":\"A study in the UK found that using a combination of covering Crassula helmsii with carpet and then treating it with the herbicide glyphosate resulted in killing 80% of the plant (1313). In contrast, two replicated, controlled container trials and two before-and-after field trials in the UK found that the use of salt water eradicated Crassula helmsii (1288). Five before-and-after studies in the UK that used lightproof barriers, such as black sheeting or carpet strips, found that this method eradicated or severely reduced the cover of the plant. However, at two of the sites where the plant was reported as eradicated, it progressively recolonized (1294). There was no evidence found for the effects of physical control using manual or mechanical control or dredging on Crassula helmsii (1278).\",\"query\":\"To control Crassula helmsii, how do chemical methods like herbicides compare in effectiveness to physical methods like using lightproof barriers or salt water?\"}",
-            "return_val": "{\n  \"query\": \"To control Crassula helmsii, how do chemical methods like herbicides compare in effectiveness to physical methods like using lightproof barriers or salt water?\",\n  \"relevant_summary\": \"A study in the UK found that using a combination of covering Crassula helmsii with carpet and then treating it with the herbicide glyphosate resulted in killing 80% of the plant (1313). In contrast, two replicated, controlled container trials and two before-and-after field trials in the UK found that the use of salt water eradicated Crassula helmsii (1288). Five before-and-after studies in the UK that used lightproof barriers, such as black sheeting or carpet strips, found that this method eradicated or severely reduced the cover of the plant. However, at two of the sites where the plant was reported as eradicated, it progressively recolonized (1294). There was no evidence found for the effects of physical control using manual or mechanical control or dredging on Crassula helmsii (1278).\",\n  \"action_ids\": [\n    \"1313\",\n    \"1288\",\n    \"1294\",\n    \"1278\"\n  ]\n}"
+            "args": "{\"action_ids\":[\"1313\",\"1278\"],\"summary\":\"One before-and-after study at a single pond in the UK found that covering Crassula helmsii with carpet, followed by treatment with the herbicide glyphosate, killed 80% of the plant [1313]. No evidence was found for the effects of physical control using manual or mechanical control or dredging [1278].\",\"query\":\"To control Crassula helmsii, how do chemical methods like herbicides compare in effectiveness to physical methods like using lightproof barriers or salt water?\"}",
+            "return_val": "{\n  \"query\": \"To control Crassula helmsii, how do chemical methods like herbicides compare in effectiveness to physical methods like using lightproof barriers or salt water?\",\n  \"relevant_summary\": \"One before-and-after study at a single pond in the UK found that covering Crassula helmsii with carpet, followed by treatment with the herbicide glyphosate, killed 80% of the plant [1313]. No evidence was found for the effects of physical control using manual or mechanical control or dredging [1278].\",\n  \"action_ids\": [\n    \"1313\",\n    \"1278\"\n  ]\n}"
           }
         ]
       }
@@ -102,11 +65,11 @@
     "query": "What are the most beneficial actions for controlling American bullfrog populations in small ponds?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "For controlling American bullfrog populations, one replicated study in Belgium indicated that the catchability of adult bullfrogs in small shallow ponds using a double fyke net for 24 hours was very low [1045]. A small study in the USA, however, found that adult bullfrogs can be captured overnight in a single trap floating on the water's surface [1045]. In contrast, a replicated, controlled study in the USA revealed that bullfrog populations rapidly rebounded after the intensive removal of adults [1045]. Additionally, a before-and-after study in France reported a significant reduction in the number of recorded adults and juveniles after shooting metamorphosed individuals before reproduction, as part of a combination treatment [1045]. There was no evidence captured on the effects of draining ponds, altering the duration of water in ponds, or pond destruction on the control of American bullfrogs [1042, 1043].",
+    "relevant_summary": "One replicated, controlled study in the USA found that a number of chemicals, including a 10% caffeine solution, a 5% chloroxylenol solution, and a combined treatment of a 4.6% Permethrin and 1% Rotenone solution, were found to kill American bullfrogs [1048]. One replicated, before-and-after study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs, and another study in the USA and Mexico showed that eradicating bullfrogs increased the range of leopard frogs [825]. A replicated, before-and-after study in the USA also found that after bullfrog removal, California red-legged frogs were observed in the open twice as frequently [825]. No evidence was found regarding the effects of fencing on American bullfrog control [1044].",
     "summary_action_ids": [
-      "1045",
-      "1042",
-      "1043"
+      "1048",
+      "825",
+      "1044"
     ],
     "tool_call_details": [
       {
@@ -114,8 +77,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"controlling American bullfrog populations in small ponds\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1045\",\n    \"action_title\": \"American bullfrog control: Direct removal of adults\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1042\",\n    \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1043\",\n    \"action_title\": \"American bullfrog control: Pond destruction\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"controlling American bullfrog populations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1044\",\n    \"action_title\": \"American bullfrog control: Fencing\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1048\",\n    \"action_title\": \"American bullfrog control: Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -124,18 +87,18 @@
         "tools_called": [
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1045\"}",
-            "return_val": "{\n  \"action_id\": \"1045\",\n  \"action_title\": \"American bullfrog control: Direct removal of adults\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in Belgium\\u00a0found catchability of adult bullfrogs in small shallow ponds using one double fyke net for 24 h to be very low. \\nOne small study in the USA\\u00a0found that bullfrog adults can be captured overnight in a single trap floating on the water surface. \\nOne replicated, controlled study in the USA\\u00a0found that bullfrog populations rapidly rebounded following intensive removal of the adults.\\nOne before-and-after\\u00a0study in France\\u00a0found a significant reduction in the number of recorded adults and juveniles following the shooting of metamorphosed individuals before reproduction, when carried out as part of a combination treatment.\"\n}"
+            "args": "{\"action_id\":\"1044\"}",
+            "return_val": "{\n  \"action_id\": \"1044\",\n  \"action_title\": \"American bullfrog control: Fencing\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of fencing on the control of American bullfrogs.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1042\"}",
-            "return_val": "{\n  \"action_id\": \"1042\",\n  \"action_title\": \"American bullfrog control: Draining ponds and altering the length of time for which the pond contains water\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of draining ponds or altering the length of time for which ponds contain water on the control of American bullfrogs.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "args": "{\"action_id\":\"1048\"}",
+            "return_val": "{\n  \"action_id\": \"1048\",\n  \"action_title\": \"American bullfrog control: Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in the USA\\u00a0found a number of chemicals killed American bullfrogs, including caffeine (10% solution), chloroxylenol (5% solution), and a combined treatment of Permethrin (4.6% solution) and Rotenone (1% solution).\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1043\"}",
-            "return_val": "{\n  \"action_id\": \"1043\",\n  \"action_title\": \"American bullfrog control: Pond destruction\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of pond destruction on the control of American bullfrogs.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "args": "{\"action_id\":\"825\"}",
+            "return_val": "{\n  \"action_id\": \"825\",\n  \"action_title\": \"Remove or control invasive bullfrogs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, before-and-after study in the USA\\u00a0found that removing American bullfrogs significantly increased a population of California red-legged frogs. \\nOne before-and-after study in the USA and Mexico found that eradicating bullfrogs from the area increased the range of leopard frogs. One replicated, before-and-after study in the USA found that once bullfrogs had been removed, California red-legged frogs were found out in the open twice as frequently.\"\n}"
           }
         ]
       },
@@ -144,8 +107,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What are the most beneficial actions for controlling American bullfrog populations in small ponds?\",\"action_ids\":[\"1045\",\"1042\",\"1043\"],\"summary\":\"For controlling American bullfrog populations, one replicated study in Belgium indicated that the catchability of adult bullfrogs in small shallow ponds using a double fyke net for 24 hours was very low [1045]. A small study in the USA, however, found that adult bullfrogs can be captured overnight in a single trap floating on the water's surface [1045]. In contrast, a replicated, controlled study in the USA revealed that bullfrog populations rapidly rebounded after the intensive removal of adults [1045]. Additionally, a before-and-after study in France reported a significant reduction in the number of recorded adults and juveniles after shooting metamorphosed individuals before reproduction, as part of a combination treatment [1045]. There was no evidence captured on the effects of draining ponds, altering the duration of water in ponds, or pond destruction on the control of American bullfrogs [1042, 1043].\"}",
-            "return_val": "{\n  \"query\": \"What are the most beneficial actions for controlling American bullfrog populations in small ponds?\",\n  \"relevant_summary\": \"For controlling American bullfrog populations, one replicated study in Belgium indicated that the catchability of adult bullfrogs in small shallow ponds using a double fyke net for 24 hours was very low [1045]. A small study in the USA, however, found that adult bullfrogs can be captured overnight in a single trap floating on the water's surface [1045]. In contrast, a replicated, controlled study in the USA revealed that bullfrog populations rapidly rebounded after the intensive removal of adults [1045]. Additionally, a before-and-after study in France reported a significant reduction in the number of recorded adults and juveniles after shooting metamorphosed individuals before reproduction, as part of a combination treatment [1045]. There was no evidence captured on the effects of draining ponds, altering the duration of water in ponds, or pond destruction on the control of American bullfrogs [1042, 1043].\",\n  \"action_ids\": [\n    \"1045\",\n    \"1042\",\n    \"1043\"\n  ]\n}"
+            "args": "{\"action_ids\":[\"1048\",\"825\",\"1044\"],\"query\":\"What are the most beneficial actions for controlling American bullfrog populations in small ponds?\",\"summary\":\"One replicated, controlled study in the USA found that a number of chemicals, including a 10% caffeine solution, a 5% chloroxylenol solution, and a combined treatment of a 4.6% Permethrin and 1% Rotenone solution, were found to kill American bullfrogs [1048]. One replicated, before-and-after study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs, and another study in the USA and Mexico showed that eradicating bullfrogs increased the range of leopard frogs [825]. A replicated, before-and-after study in the USA also found that after bullfrog removal, California red-legged frogs were observed in the open twice as frequently [825]. No evidence was found regarding the effects of fencing on American bullfrog control [1044].\"}",
+            "return_val": "{\n  \"query\": \"What are the most beneficial actions for controlling American bullfrog populations in small ponds?\",\n  \"relevant_summary\": \"One replicated, controlled study in the USA found that a number of chemicals, including a 10% caffeine solution, a 5% chloroxylenol solution, and a combined treatment of a 4.6% Permethrin and 1% Rotenone solution, were found to kill American bullfrogs [1048]. One replicated, before-and-after study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs, and another study in the USA and Mexico showed that eradicating bullfrogs increased the range of leopard frogs [825]. A replicated, before-and-after study in the USA also found that after bullfrog removal, California red-legged frogs were observed in the open twice as frequently [825]. No evidence was found regarding the effects of fencing on American bullfrog control [1044].\",\n  \"action_ids\": [\n    \"1048\",\n    \"825\",\n    \"1044\"\n  ]\n}"
           }
         ]
       }
@@ -173,11 +136,11 @@
     "query": "What are the observed outcomes of using herbivores as a biological control for invasive aquatic plants like floating pennywort, water primrose, and parrot's feather?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A replicated laboratory and field study in South America on floating pennywort found that a South American weevil did not reduce its biomass, despite causing feeding lesions (1123). For water primrose, a controlled, replicated field study in China found that a flea beetle caused heavy feeding destruction on seedlings (1135). In the USA, a replicated, before-and-after field study found that introducing flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow (1135). For parrot's feather, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce its biomass or cover. However, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp did reduce its biomass or abundance. Additionally, a field study in South Africa reported reduced growth of parrot's feather following the release of a South American leaf-feeding Lysathia (1599).",
+    "relevant_summary": "For parrot's feather, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of the plant, and one field study in South Africa reported reduced growth following the release of a South American leaf-feeding Lysathia [1599]. However, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce biomass or cover of parrot's feather [1599]. For floating pennywort, a replicated laboratory and field study in South America found that the South American weevil did not reduce floating pennywort biomass [1123]. For water primrose, a controlled, replicated field study in China found a flea beetle caused heavy feeding destruction on prostrate water primrose seedlings, and a replicated, before-and-after field study in the USA found that the introduction of flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow [1135].",
     "summary_action_ids": [
+      "1599",
       "1123",
-      "1135",
-      "1599"
+      "1135"
     ],
     "tool_call_details": [
       {
@@ -185,8 +148,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"biological control of invasive aquatic plants\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1598\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using fungal-based herbicides\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"823\",\n    \"action_title\": \"Control invasive plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1277\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using herbivores\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"herbivores as biological control for invasive aquatic plants\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1277\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using herbivores\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1276\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using fungal-based herbicides\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1599\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -195,23 +158,33 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"floating pennywort biological control\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1125\",\n    \"action_title\": \"Floating pennywort: Biological control using fungal-based herbicides\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1123\",\n    \"action_title\": \"Floating pennywort: Biological control using co-evolved, host specific herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1133\",\n    \"action_title\": \"Floating pennywort: Environmental control (e.g. shading, reduced flow, reduction of rooting depth, or dredging)\",\n    \"rank\": 3\n  }\n]"
-          },
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"water primrose biological control\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1137\",\n    \"action_title\": \"Water primrose: Biological control using fungal-based herbicides\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1135\",\n    \"action_title\": \"Water primrose: Biological control using co-evolved, host specific herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1147\",\n    \"action_title\": \"Water primrose: Environmental control (e.g shading, altered flow, altered rooting depth, or dredging)\",\n    \"rank\": 3\n  }\n]"
-          },
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"parrot's feather biological control\"}",
+            "args": "{\"query_string\":\"herbivores as biological control for floating pennywort, water primrose, and parrot's feather\"}",
             "return_val": "[\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1599\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1606\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1599\"}",
+            "return_val": "{\n  \"action_id\": \"1599\",\n  \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled laboratory study in Portugal\\u00a0found that grass carp did not reduce biomass or cover of parrot\\u2019s feather.\\nTwo replicated, randomized field studies in Argentina\\u00a0and the USA\\u00a0found that stocking with grass carp reduced the biomass\\u00a0or abundance\\u00a0of parrot\\u2019s feather.\\nOne field study in South Africa\\u00a0reported reduced growth of parrot\\u2019s feather following the release a South American leaf-feeding Lysathia.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":0,\"k\":3,\"query_string\":\"floating pennywort biological control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1125\",\n    \"action_title\": \"Floating pennywort: Biological control using fungal-based herbicides\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1123\",\n    \"action_title\": \"Floating pennywort: Biological control using co-evolved, host specific herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1133\",\n    \"action_title\": \"Floating pennywort: Environmental control (e.g. shading, reduced flow, reduction of rooting depth, or dredging)\",\n    \"rank\": 3\n  }\n]"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\":3,\"query_string\":\"water primrose biological control\",\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1137\",\n    \"action_title\": \"Water primrose: Biological control using fungal-based herbicides\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1135\",\n    \"action_title\": \"Water primrose: Biological control using co-evolved, host specific herbivores\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1147\",\n    \"action_title\": \"Water primrose: Environmental control (e.g shading, altered flow, altered rooting depth, or dredging)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -222,21 +195,16 @@
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"1135\"}",
             "return_val": "{\n  \"action_id\": \"1135\",\n  \"action_title\": \"Water primrose: Biological control using co-evolved, host specific herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled, replicated field study in China, found a flea beetle caused heavy feeding destruction when added to field cages containing prostrate water primrose seedlings, and was specific to the prostrate water primrose and Indian toothcup.\\nA replicated, before-and-after field study in the USA\\u00a0found that introduction of flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1599\"}",
-            "return_val": "{\n  \"action_id\": \"1599\",\n  \"action_title\": \"Parrot\\u2019s feather: Biological control using herbivores\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled laboratory study in Portugal\\u00a0found that grass carp did not reduce biomass or cover of parrot\\u2019s feather.\\nTwo replicated, randomized field studies in Argentina\\u00a0and the USA\\u00a0found that stocking with grass carp reduced the biomass\\u00a0or abundance\\u00a0of parrot\\u2019s feather.\\nOne field study in South Africa\\u00a0reported reduced growth of parrot\\u2019s feather following the release a South American leaf-feeding Lysathia.\"\n}"
           }
         ]
       },
       {
-        "iteration_num": 4,
+        "iteration_num": 5,
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"action_ids\":[\"1123\",\"1135\",\"1599\"],\"query\":\"What are the observed outcomes of using herbivores as a biological control for invasive aquatic plants like floating pennywort, water primrose, and parrot's feather?\",\"summary\":\"A replicated laboratory and field study in South America on floating pennywort found that a South American weevil did not reduce its biomass, despite causing feeding lesions (1123). For water primrose, a controlled, replicated field study in China found that a flea beetle caused heavy feeding destruction on seedlings (1135). In the USA, a replicated, before-and-after field study found that introducing flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow (1135). For parrot's feather, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce its biomass or cover. However, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp did reduce its biomass or abundance. Additionally, a field study in South Africa reported reduced growth of parrot's feather following the release of a South American leaf-feeding Lysathia (1599).\"}",
-            "return_val": "{\n  \"query\": \"What are the observed outcomes of using herbivores as a biological control for invasive aquatic plants like floating pennywort, water primrose, and parrot's feather?\",\n  \"relevant_summary\": \"A replicated laboratory and field study in South America on floating pennywort found that a South American weevil did not reduce its biomass, despite causing feeding lesions (1123). For water primrose, a controlled, replicated field study in China found that a flea beetle caused heavy feeding destruction on seedlings (1135). In the USA, a replicated, before-and-after field study found that introducing flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow (1135). For parrot's feather, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce its biomass or cover. However, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp did reduce its biomass or abundance. Additionally, a field study in South Africa reported reduced growth of parrot's feather following the release of a South American leaf-feeding Lysathia (1599).\",\n  \"action_ids\": [\n    \"1123\",\n    \"1135\",\n    \"1599\"\n  ]\n}"
+            "args": "{\"action_ids\":[\"1599\",\"1123\",\"1135\"],\"summary\":\"For parrot's feather, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of the plant, and one field study in South Africa reported reduced growth following the release of a South American leaf-feeding Lysathia [1599]. However, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce biomass or cover of parrot's feather [1599]. For floating pennywort, a replicated laboratory and field study in South America found that the South American weevil did not reduce floating pennywort biomass [1123]. For water primrose, a controlled, replicated field study in China found a flea beetle caused heavy feeding destruction on prostrate water primrose seedlings, and a replicated, before-and-after field study in the USA found that the introduction of flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow [1135].\",\"query\":\"What are the observed outcomes of using herbivores as a biological control for invasive aquatic plants like floating pennywort, water primrose, and parrot's feather?\"}",
+            "return_val": "{\n  \"query\": \"What are the observed outcomes of using herbivores as a biological control for invasive aquatic plants like floating pennywort, water primrose, and parrot's feather?\",\n  \"relevant_summary\": \"For parrot's feather, two replicated, randomized field studies in Argentina and the USA found that stocking with grass carp reduced the biomass or abundance of the plant, and one field study in South Africa reported reduced growth following the release of a South American leaf-feeding Lysathia [1599]. However, one replicated, controlled laboratory study in Portugal found that grass carp did not reduce biomass or cover of parrot's feather [1599]. For floating pennywort, a replicated laboratory and field study in South America found that the South American weevil did not reduce floating pennywort biomass [1123]. For water primrose, a controlled, replicated field study in China found a flea beetle caused heavy feeding destruction on prostrate water primrose seedlings, and a replicated, before-and-after field study in the USA found that the introduction of flea beetles to a pond significantly reduced the abundance of large-flower primrose-willow [1135].\",\n  \"action_ids\": [\n    \"1599\",\n    \"1123\",\n    \"1135\"\n  ]\n}"
           }
         ]
       }
@@ -269,12 +237,11 @@
     "query": "What is the evidence for effective control methods for Ponto-Caspian gobies in North American and European waterways?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A replicated, controlled laboratory study in Canada found that exposure to water with a salinity of 30% resulted in 100% mortality of round gobies within 48 hours (1072). No evidence was found on the impact of education programmes (1075), electrofishing (1067), or increasing carbon dioxide concentrations (1070) for controlling Ponto-Caspian goby populations.",
+    "relevant_summary": "A replicated, controlled laboratory study in Canada found that there was 100% mortality of round gobies within 48 hours of exposure to water of 30% salinity (1072). No evidence was captured for the use of electrofishing (1067) or public education programmes (1075) to control Ponto-Caspian goby populations.",
     "summary_action_ids": [
       "1072",
-      "1075",
       "1067",
-      "1070"
+      "1075"
     ],
     "tool_call_details": [
       {
@@ -282,8 +249,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"Ponto-Caspian gobies\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1075\",\n    \"action_title\": \"Ponto-Caspian gobies: Public education\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1072\",\n    \"action_title\": \"Ponto-Caspian gobies: Changing salinity\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1067\",\n    \"action_title\": \"Ponto-Caspian gobies: Electrofishing\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"control methods for Ponto-Caspian gobies\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1072\",\n    \"action_title\": \"Ponto-Caspian gobies: Changing salinity\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1075\",\n    \"action_title\": \"Ponto-Caspian gobies: Public education\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1067\",\n    \"action_title\": \"Ponto-Caspian gobies: Electrofishing\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -292,13 +259,13 @@
         "tools_called": [
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1075\"}",
-            "return_val": "{\n  \"action_id\": \"1075\",\n  \"action_title\": \"Ponto-Caspian gobies: Public education\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of education programmes on control of goby populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "args": "{\"action_id\":\"1072\"}",
+            "return_val": "{\n  \"action_id\": \"1072\",\n  \"action_title\": \"Ponto-Caspian gobies: Changing salinity\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled laboratory study in Canada\\u00a0found 100% mortality of round gobies within 48 hours of exposure to water of 30% salinity.\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1072\"}",
-            "return_val": "{\n  \"action_id\": \"1072\",\n  \"action_title\": \"Ponto-Caspian gobies: Changing salinity\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled laboratory study in Canada\\u00a0found 100% mortality of round gobies within 48 hours of exposure to water of 30% salinity.\"\n}"
+            "args": "{\"action_id\":\"1075\"}",
+            "return_val": "{\n  \"action_id\": \"1075\",\n  \"action_title\": \"Ponto-Caspian gobies: Public education\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of education programmes on control of goby populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
           },
           {
             "function_name": "get_action_details",
@@ -311,29 +278,9 @@
         "iteration_num": 3,
         "tools_called": [
           {
-            "function_name": "search_actions",
-            "args": "{\"offset\":3,\"query_string\":\"Ponto-Caspian gobies\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1070\",\n    \"action_title\": \"Ponto-Caspian gobies: Increasing carbon dioxide concentrations\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"106\",\n    \"action_title\": \"Control grey squirrels\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1079\",\n    \"action_title\": \"Brown and black bullheads: Electrofishing\",\n    \"rank\": 6\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 4,
-        "tools_called": [
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1070\"}",
-            "return_val": "{\n  \"action_id\": \"1070\",\n  \"action_title\": \"Ponto-Caspian gobies: Increasing carbon dioxide concentrations\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the use of carbon dioxide for management of invasive Ponto-Caspian gobies.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 5,
-        "tools_called": [
-          {
             "function_name": "get_formatted_result",
-            "args": "{\"action_ids\":[\"1072\",\"1075\",\"1067\",\"1070\"],\"summary\":\"A replicated, controlled laboratory study in Canada found that exposure to water with a salinity of 30% resulted in 100% mortality of round gobies within 48 hours (1072). No evidence was found on the impact of education programmes (1075), electrofishing (1067), or increasing carbon dioxide concentrations (1070) for controlling Ponto-Caspian goby populations.\",\"query\":\"What is the evidence for effective control methods for Ponto-Caspian gobies in North American and European waterways?\"}",
-            "return_val": "{\n  \"query\": \"What is the evidence for effective control methods for Ponto-Caspian gobies in North American and European waterways?\",\n  \"relevant_summary\": \"A replicated, controlled laboratory study in Canada found that exposure to water with a salinity of 30% resulted in 100% mortality of round gobies within 48 hours (1072). No evidence was found on the impact of education programmes (1075), electrofishing (1067), or increasing carbon dioxide concentrations (1070) for controlling Ponto-Caspian goby populations.\",\n  \"action_ids\": [\n    \"1072\",\n    \"1075\",\n    \"1067\",\n    \"1070\"\n  ]\n}"
+            "args": "{\"query\":\"What is the evidence for effective control methods for Ponto-Caspian gobies in North American and European waterways?\",\"summary\":\"A replicated, controlled laboratory study in Canada found that there was 100% mortality of round gobies within 48 hours of exposure to water of 30% salinity (1072). No evidence was captured for the use of electrofishing (1067) or public education programmes (1075) to control Ponto-Caspian goby populations.\",\"action_ids\":[\"1072\",\"1067\",\"1075\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence for effective control methods for Ponto-Caspian gobies in North American and European waterways?\",\n  \"relevant_summary\": \"A replicated, controlled laboratory study in Canada found that there was 100% mortality of round gobies within 48 hours of exposure to water of 30% salinity (1072). No evidence was captured for the use of electrofishing (1067) or public education programmes (1075) to control Ponto-Caspian goby populations.\",\n  \"action_ids\": [\n    \"1072\",\n    \"1067\",\n    \"1075\"\n  ]\n}"
           }
         ]
       }
@@ -364,11 +311,11 @@
     "query": "What actions are available to control or contain invasive Procambarus crayfish populations?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A study conducted in Spain from 2007 to 2010 found that using concrete dams with features to prevent red swamp crayfish from crawling over them was effective at containing the upstream spread of the population [1037]. No evidence was found for the effect of relocating native species as a management tool against Procambarus crayfish [1038]. Additionally, no evidence was found for the effects of removing or controlling non-native crayfish on amphibian populations [797].",
+    "relevant_summary": "A study conducted in Spain from 2007 to 2010 revealed that concrete dams with specific designs to prevent red swamp crayfish from surmounting them successfully contained the upstream spread of the population [1037]. There is no evidence regarding the effects of removing or controlling non-native crayfish on amphibian populations [797]. Additionally, no evidence was found concerning the effectiveness of draining waterways as a control method for Procambarus crayfish [1034].",
     "summary_action_ids": [
+      "797",
       "1037",
-      "1038",
-      "797"
+      "1034"
     ],
     "tool_call_details": [
       {
@@ -376,8 +323,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"invasive Procambarus crayfish control and containment\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1037\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Create barriers\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1038\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"control invasive Procambarus crayfish populations\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1037\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Create barriers\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1034\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Draining the waterway\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -386,18 +333,18 @@
         "tools_called": [
           {
             "function_name": "get_action_details",
+            "args": "{\"action_id\":\"797\"}",
+            "return_val": "{\n  \"action_id\": \"797\",\n  \"action_title\": \"Remove or control non-native crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing or controlling non-native crayfish on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
             "args": "{\"action_id\":\"1037\"}",
             "return_val": "{\n  \"action_id\": \"1037\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Create barriers\",\n  \"key_messages\": \"Key Messages:\\n\\nA before-and-after study conducted between 2007 and 2010 in Spain\\u00a0found that the use of concrete dams across a stream, specifically designed with features to prevent red swamp crayfish from crawling over them, were effective at containing spread of the population upstream.\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1038\"}",
-            "return_val": "{\n  \"action_id\": \"1038\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"797\"}",
-            "return_val": "{\n  \"action_id\": \"797\",\n  \"action_title\": \"Remove or control non-native crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing or controlling non-native crayfish on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "args": "{\"action_id\":\"1034\"}",
+            "return_val": "{\n  \"action_id\": \"1034\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Draining the waterway\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effect of draining the waterway as a control tool for Procambarus crayfish. \\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
           }
         ]
       },
@@ -406,8 +353,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What actions are available to control or contain invasive Procambarus crayfish populations?\",\"action_ids\":[\"1037\",\"1038\",\"797\"],\"summary\":\"A study conducted in Spain from 2007 to 2010 found that using concrete dams with features to prevent red swamp crayfish from crawling over them was effective at containing the upstream spread of the population [1037]. No evidence was found for the effect of relocating native species as a management tool against Procambarus crayfish [1038]. Additionally, no evidence was found for the effects of removing or controlling non-native crayfish on amphibian populations [797].\"}",
-            "return_val": "{\n  \"query\": \"What actions are available to control or contain invasive Procambarus crayfish populations?\",\n  \"relevant_summary\": \"A study conducted in Spain from 2007 to 2010 found that using concrete dams with features to prevent red swamp crayfish from crawling over them was effective at containing the upstream spread of the population [1037]. No evidence was found for the effect of relocating native species as a management tool against Procambarus crayfish [1038]. Additionally, no evidence was found for the effects of removing or controlling non-native crayfish on amphibian populations [797].\",\n  \"action_ids\": [\n    \"1037\",\n    \"1038\",\n    \"797\"\n  ]\n}"
+            "args": "{\"action_ids\":[\"797\",\"1037\",\"1034\"],\"summary\":\"A study conducted in Spain from 2007 to 2010 revealed that concrete dams with specific designs to prevent red swamp crayfish from surmounting them successfully contained the upstream spread of the population [1037]. There is no evidence regarding the effects of removing or controlling non-native crayfish on amphibian populations [797]. Additionally, no evidence was found concerning the effectiveness of draining waterways as a control method for Procambarus crayfish [1034].\",\"query\":\"What actions are available to control or contain invasive Procambarus crayfish populations?\"}",
+            "return_val": "{\n  \"query\": \"What actions are available to control or contain invasive Procambarus crayfish populations?\",\n  \"relevant_summary\": \"A study conducted in Spain from 2007 to 2010 revealed that concrete dams with specific designs to prevent red swamp crayfish from surmounting them successfully contained the upstream spread of the population [1037]. There is no evidence regarding the effects of removing or controlling non-native crayfish on amphibian populations [797]. Additionally, no evidence was found concerning the effectiveness of draining waterways as a control method for Procambarus crayfish [1034].\",\n  \"action_ids\": [\n    \"797\",\n    \"1037\",\n    \"1034\"\n  ]\n}"
           }
         ]
       }
@@ -441,7 +388,7 @@
     "query": "Besides adding chemicals, what are some effective, alternative methods for managing invasive Asian clam populations in industrial water systems?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A controlled laboratory study in the USA found that raising water temperatures to 36\u00b0C or higher resulted in the death of Asian clams within or after a period of four days (1116). There was no evidence found to support the use of dewatering as a management tool for Asian clams (1110).",
+    "relevant_summary": "A controlled laboratory study in the USA found that temperatures of 36\u00b0C or higher killed Asian clams within or after four days (1116). No evidence was captured for the use of dewatering as a management tool for Asian clams (1110).",
     "summary_action_ids": [
       "1116",
       "1110"
@@ -477,8 +424,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"summary\":\"A controlled laboratory study in the USA found that raising water temperatures to 36\u00b0C or higher resulted in the death of Asian clams within or after a period of four days (1116). There was no evidence found to support the use of dewatering as a management tool for Asian clams (1110).\",\"query\":\"Besides adding chemicals, what are some effective, alternative methods for managing invasive Asian clam populations in industrial water systems?\",\"action_ids\":[\"1116\",\"1110\"]}",
-            "return_val": "{\n  \"query\": \"Besides adding chemicals, what are some effective, alternative methods for managing invasive Asian clam populations in industrial water systems?\",\n  \"relevant_summary\": \"A controlled laboratory study in the USA found that raising water temperatures to 36\\u00b0C or higher resulted in the death of Asian clams within or after a period of four days (1116). There was no evidence found to support the use of dewatering as a management tool for Asian clams (1110).\",\n  \"action_ids\": [\n    \"1116\",\n    \"1110\"\n  ]\n}"
+            "args": "{\"query\":\"Besides adding chemicals, what are some effective, alternative methods for managing invasive Asian clam populations in industrial water systems?\",\"summary\":\"A controlled laboratory study in the USA found that temperatures of 36\u00b0C or higher killed Asian clams within or after four days (1116). No evidence was captured for the use of dewatering as a management tool for Asian clams (1110).\",\"action_ids\":[\"1116\",\"1110\"]}",
+            "return_val": "{\n  \"query\": \"Besides adding chemicals, what are some effective, alternative methods for managing invasive Asian clam populations in industrial water systems?\",\n  \"relevant_summary\": \"A controlled laboratory study in the USA found that temperatures of 36\\u00b0C or higher killed Asian clams within or after four days (1116). No evidence was captured for the use of dewatering as a management tool for Asian clams (1110).\",\n  \"action_ids\": [\n    \"1116\",\n    \"1110\"\n  ]\n}"
           }
         ]
       }
@@ -507,11 +454,12 @@
     "query": "What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock [1101]. A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant [1101]. A study in Germany reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year [1101]. No evidence was found for use of combination treatment using herbicides and physical removal to control skunk cabbage [1103]. No evidence was captured on the effects of excavation of banks using a sod-cutter or \u2018turf-cutter\u2019 to remove water primrose [1146].",
+    "relevant_summary": "One study found that for water primrose, hand pulling and raking failed to reduce its abundance, while hand-pulling from the margins of a pond eradicated a smaller population (1138). For floating pennywort, another invasive species, the rate of growth exceeded the rate of removal in one study (1126). In a different study, removal using a mechanical digger and monthly hand-picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it (1126). In freshwater marshes, physically removing all vegetation from a cattail-invaded marsh altered the overall plant community composition and increased overall plant species richness 1\u20132 years later (3091). However, in loosestrife-invaded wet meadows, physically removing vegetation had no significant effect on overall plant species richness or diversity after three years (3091). In pepperweed-invaded marshes, physically removing pepperweed from plots sprayed with herbicide increased the cover of native plants over the following two years when compared to only spraying with herbicide (3092).",
     "summary_action_ids": [
-      "1101",
-      "1103",
-      "1146"
+      "1138",
+      "1126",
+      "3091",
+      "3092"
     ],
     "tool_call_details": [
       {
@@ -519,8 +467,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"factors influencing success of physical removal of invasive plants skunk cabbage and water primrose\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1101\",\n    \"action_title\": \"Skunk cabbage:  Physical removal\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1103\",\n    \"action_title\": \"Skunk cabbage: Combination treatment using herbicides and physical removal\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1146\",\n    \"action_title\": \"Water primrose: Excavation of banks\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"physical removal of invasive plants\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3091\",\n    \"action_title\": \"Physically remove problematic plants: freshwater marshes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3092\",\n    \"action_title\": \"Physically remove problematic plants: brackish/salt marshes\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2851\",\n    \"action_title\": \"Physically remove invasive or problematic species\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -529,18 +477,18 @@
         "tools_called": [
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1101\"}",
-            "return_val": "{\n  \"action_id\": \"1101\",\n  \"action_title\": \"Skunk cabbage:  Physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in Switzerland\\u00a0found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock. \\nA study in the Netherlands\\u00a0found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant.\\nA study in Germany\\u00a0reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year.\"\n}"
+            "args": "{\"action_id\":\"3091\"}",
+            "return_val": "{\n  \"action_id\": \"3091\",\n  \"action_title\": \"Physically remove problematic plants: freshwater marshes\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects, on vegetation, of physically removing problematic plants from freshwater marshes. Three studies were in the USA, one was in India\\u00a0and one was in France. Two of the studies in the USA\\u00a0were in the same site and shared some plots.\\n\\nVEGETATION COMMUNITY\\n\\nCommunity composition (1 study): One replicated, randomized, paired, controlled, before-and-after study in the USA\\u00a0found that physically removing all vegetation from a cattail-invaded marsh altered the overall plant community composition, over the following two years.\\nOverall richness/diversity (3 studies):\\u00a0One replicated, randomized, paired, controlled, before-and-after study in the USA\\u00a0found that removing all vegetation from a cattail-invaded marsh increased overall plant species richness 1\\u20132 years later. Two replicated, randomized, paired, controlled, before-and-after studies in wet meadows in the USA\\u00a0found that physically removing vegetation had no significant effect on overall plant species richness or diversity three years later. One of the studies\\u00a0removed all vegetation, whilst the other\\u00a0controlled regrowth of the invasive species (by physical removal along with herbicide application).\\nCharacteristic plant richness/diversity (1 study): One controlled, before-and-after study in a temporary marsh in France\\u00a0reported that stripping all vegetation increased the number of habitat-characteristic plant species present in the following two years.\\n\\nVEGETATION ABUNDANCE\\n\\nOverall abundance (3 studies): Three before-and-after studies (two also replicated, randomized, paired, controlled) in freshwater marshes/wet meadows in India\\u00a0and the USA\\u00a0found that physically removing vegetation had no clear or significant effect on overall vegetation cover, nine months or three years later. Two of the studies removed all vegetation, whilst one\\u00a0controlled regrowth of the invasive species (by physical removal along with herbicide application).\\nHerb abundance (2 studies): Of two replicated, randomized, paired, controlled, before-and-after studies in loosestrife-invaded wet meadows in the USA, one\\u00a0reported that removing all vegetation increased the cover of grass-like plants, and reduced the cover of forbs, three years later. The other study\\u00a0found that controlling regrowth of the invasive species \\u2013 by physical removal and applying herbicide \\u2013 had no significant effect on cover of grass-like plants or forbs after three years.\\nAlgae/phytoplankton abundance (1 study): One before-and-after, site comparison study in India\\u00a0reported that removing all vegetation from a knotgrass-invaded marsh increased the cover of algae nine months later.\\nIndividual species abundance (3 studies): Three studies\\u00a0quantified the effect of this action on the abundance of individual plant species, other than the target problematic species. For example, one before-and-after, site comparison study in India\\u00a0reported that removing all vegetation from a knotgrass-invaded marsh increased the cover of some other common herb species nine months later.\\n\\nVEGETATION STRUCTURE\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1103\"}",
-            "return_val": "{\n  \"action_id\": \"1103\",\n  \"action_title\": \"Skunk cabbage: Combination treatment using herbicides and physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was found for use of combination treatment using herbicides and physical removal to control skunk cabbage.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "args": "{\"action_id\":\"3092\"}",
+            "return_val": "{\n  \"action_id\": \"3092\",\n  \"action_title\": \"Physically remove problematic plants: brackish/salt marshes\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of physically removing problematic plants from brackish/salt marshes. The study was in the USA.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\nNative/non-target abundance (1 study): One replicated, randomized, paired, controlled, before-and-after study in pepperweed invaded marshes in the USA\\u00a0found that physically removing pepperweed from plots sprayed with herbicide increased cover of native plants, over the following two years, compared to spraying with herbicide only.\\nIndividual species abundance (1 study): The same study\\u00a0quantified the effect of this action on the cover of individual plant species, other than the target of control (see original paper for data).\\n\\nVEGETATION STRUCTURE\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1146\"}",
-            "return_val": "{\n  \"action_id\": \"1146\",\n  \"action_title\": \"Water primrose: Excavation of banks\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the effects of excavation of banks using a sod-cutter or \\u2018turf-cutter\\u2019 to remove water primrose.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "args": "{\"action_id\":\"2851\"}",
+            "return_val": "{\n  \"action_id\": \"2851\",\n  \"action_title\": \"Physically remove invasive or problematic species\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of physically removing invasive or other problematic species on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
           }
         ]
       },
@@ -548,9 +496,39 @@
         "iteration_num": 3,
         "tools_called": [
           {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"factors influencing success of physical removal of invasive plants that regenerate from fragments\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1138\",\n    \"action_title\": \"Water primrose: Physical removal\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1278\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Physical control using manual/mechanical control or dredging\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1126\",\n    \"action_title\": \"Floating pennywort: Physical removal\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1138\"}",
+            "return_val": "{\n  \"action_id\": \"1138\",\n  \"action_title\": \"Water primrose: Physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in the USA\\u00a0found that hand pulling and raking water primrose failed to reduce its abundance, whereas hand-pulling from the margins of a pond eradicated a smaller population of water primrose.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1278\"}",
+            "return_val": "{\n  \"action_id\": \"1278\",\n  \"action_title\": \"<i>Crassula helmsii</i>: Physical control using manual/mechanical control or dredging\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of physical control, using manual or mechanical control or dredging, on Crassula helmsii.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1126\"}",
+            "return_val": "{\n  \"action_id\": \"1126\",\n  \"action_title\": \"Floating pennywort: Physical removal\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in Western Australia\\u00a0found that following a two-week program of physical removal of floating pennywort, the rate of growth exceeded the rate of removal.\\nA study in the UK, found that removal using a mechanical digger and monthly picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?\",\"action_ids\":[\"1101\",\"1103\",\"1146\"],\"summary\":\"A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock [1101]. A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant [1101]. A study in Germany reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year [1101]. No evidence was found for use of combination treatment using herbicides and physical removal to control skunk cabbage [1103]. No evidence was captured on the effects of excavation of banks using a sod-cutter or \u2018turf-cutter\u2019 to remove water primrose [1146].\"}",
-            "return_val": "{\n  \"query\": \"What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?\",\n  \"relevant_summary\": \"A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock [1101]. A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant [1101]. A study in Germany reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year [1101]. No evidence was found for use of combination treatment using herbicides and physical removal to control skunk cabbage [1103]. No evidence was captured on the effects of excavation of banks using a sod-cutter or \\u2018turf-cutter\\u2019 to remove water primrose [1146].\",\n  \"action_ids\": [\n    \"1101\",\n    \"1103\",\n    \"1146\"\n  ]\n}"
+            "args": "{\"query\":\"What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?\",\"action_ids\":[\"1138\",\"1126\",\"3091\",\"3092\"],\"summary\":\"One study found that for water primrose, hand pulling and raking failed to reduce its abundance, while hand-pulling from the margins of a pond eradicated a smaller population (1138). For floating pennywort, another invasive species, the rate of growth exceeded the rate of removal in one study (1126). In a different study, removal using a mechanical digger and monthly hand-picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it (1126). In freshwater marshes, physically removing all vegetation from a cattail-invaded marsh altered the overall plant community composition and increased overall plant species richness 1\u20132 years later (3091). However, in loosestrife-invaded wet meadows, physically removing vegetation had no significant effect on overall plant species richness or diversity after three years (3091). In pepperweed-invaded marshes, physically removing pepperweed from plots sprayed with herbicide increased the cover of native plants over the following two years when compared to only spraying with herbicide (3092).\"}",
+            "return_val": "{\n  \"query\": \"What factors influence the success of physical removal for invasive plants like skunk cabbage and water primrose, which can regenerate from fragments?\",\n  \"relevant_summary\": \"One study found that for water primrose, hand pulling and raking failed to reduce its abundance, while hand-pulling from the margins of a pond eradicated a smaller population (1138). For floating pennywort, another invasive species, the rate of growth exceeded the rate of removal in one study (1126). In a different study, removal using a mechanical digger and monthly hand-picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it (1126). In freshwater marshes, physically removing all vegetation from a cattail-invaded marsh altered the overall plant community composition and increased overall plant species richness 1\\u20132 years later (3091). However, in loosestrife-invaded wet meadows, physically removing vegetation had no significant effect on overall plant species richness or diversity after three years (3091). In pepperweed-invaded marshes, physically removing pepperweed from plots sprayed with herbicide increased the cover of native plants over the following two years when compared to only spraying with herbicide (3092).\",\n  \"action_ids\": [\n    \"1138\",\n    \"1126\",\n    \"3091\",\n    \"3092\"\n  ]\n}"
           }
         ]
       }
@@ -575,7 +553,7 @@
     "query": "What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A replicated, controlled laboratory study in the USA found that the movements of invasive freshwater shrimp slowed down or stopped when they were placed in water that had been exposed to different species of predatory fish, compared to those not exposed to fish (1088). A replicated laboratory study in the UK found that carbonating the water stunned invasive killer shrimp (1088). No evidence was captured for the use of predatory fish to control Ponto-Caspian gammarids (1087) or for exchanging ballast water to control Ponto-Caspian gammarids (1097).",
+    "relevant_summary": "A replicated, controlled laboratory study in the USA found that the movements of invasive freshwater shrimp slowed down or stopped when they were placed in water that had been exposed to different species of predatory fish, compared to those not exposed to fish (1088). A replicated laboratory study in the UK found that carbonating the water stunned invasive killer shrimp (1088). No evidence was captured for the use of predatory fish to control Ponto-Caspian gammarids or for exchanging ballast water to control Ponto-Caspian gammarids (1087, 1097).",
     "summary_action_ids": [
       "1088",
       "1087",
@@ -617,8 +595,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"summary\":\"A replicated, controlled laboratory study in the USA found that the movements of invasive freshwater shrimp slowed down or stopped when they were placed in water that had been exposed to different species of predatory fish, compared to those not exposed to fish (1088). A replicated laboratory study in the UK found that carbonating the water stunned invasive killer shrimp (1088). No evidence was captured for the use of predatory fish to control Ponto-Caspian gammarids (1087) or for exchanging ballast water to control Ponto-Caspian gammarids (1097).\",\"action_ids\":[\"1088\",\"1087\",\"1097\"],\"query\":\"What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?\"}",
-            "return_val": "{\n  \"query\": \"What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?\",\n  \"relevant_summary\": \"A replicated, controlled laboratory study in the USA found that the movements of invasive freshwater shrimp slowed down or stopped when they were placed in water that had been exposed to different species of predatory fish, compared to those not exposed to fish (1088). A replicated laboratory study in the UK found that carbonating the water stunned invasive killer shrimp (1088). No evidence was captured for the use of predatory fish to control Ponto-Caspian gammarids (1087) or for exchanging ballast water to control Ponto-Caspian gammarids (1097).\",\n  \"action_ids\": [\n    \"1088\",\n    \"1087\",\n    \"1097\"\n  ]\n}"
+            "args": "{\"action_ids\":[\"1088\",\"1087\",\"1097\"],\"summary\":\"A replicated, controlled laboratory study in the USA found that the movements of invasive freshwater shrimp slowed down or stopped when they were placed in water that had been exposed to different species of predatory fish, compared to those not exposed to fish (1088). A replicated laboratory study in the UK found that carbonating the water stunned invasive killer shrimp (1088). No evidence was captured for the use of predatory fish to control Ponto-Caspian gammarids or for exchanging ballast water to control Ponto-Caspian gammarids (1087, 1097).\",\"query\":\"What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?\"}",
+            "return_val": "{\n  \"query\": \"What are the most and least effective actions for controlling invasive Ponto-Caspian gammarids?\",\n  \"relevant_summary\": \"A replicated, controlled laboratory study in the USA found that the movements of invasive freshwater shrimp slowed down or stopped when they were placed in water that had been exposed to different species of predatory fish, compared to those not exposed to fish (1088). A replicated laboratory study in the UK found that carbonating the water stunned invasive killer shrimp (1088). No evidence was captured for the use of predatory fish to control Ponto-Caspian gammarids or for exchanging ballast water to control Ponto-Caspian gammarids (1087, 1097).\",\n  \"action_ids\": [\n    \"1088\",\n    \"1087\",\n    \"1097\"\n  ]\n}"
           }
         ]
       }
@@ -650,7 +628,7 @@
     "query": "How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A replicated, controlled laboratory study in Brazil found that the herbicide 2,4-D resulted in a greater reduction in the growth of parrot's feather compared to the herbicides diquat, glyphosate, or imazapyr (1606). Additionally, three laboratory studies in the USA and Brazil found that 2,4-D reduced the growth of parrot's feather (1606). One replicated, randomized, controlled field study in Portugal also found that 2,4-D amine reduced the biomass of parrot's feather (1606). In contrast, two other studies reported that glyphosate treatment reduced parrot's feather biomass (1699). Another study found that a combined application of 2,4-D and MCPA completely eliminated parrot's feather (1606). Several other herbicides have also been studied for their effects on parrot's feather. For instance, the application of dichlobenil was found to reduce the growth of parrot's feather in one study, while two other studies showed mixed results (1699). Additionally, herbicides such as imazamox, imazapyr, gluphosinate-ammonium, flumioxazin, and florpyrauxifen-benzyl have been reported to reduce the growth or biomass of parrot's feather (1699). However, treatments with fluridone, clopyralid, and copper chelate were found to be ineffective in reducing the growth of parrot's feather (1699).",
+    "relevant_summary": "A replicated, controlled laboratory study in Brazil determined that 2,4-D resulted in a more significant reduction in parrot's feather growth compared to diquat, glyphosate, or imazapyr (1606). Additionally, three laboratory studies in the USA and Brazil indicated that 2,4-D reduced the growth of parrot's feather (1606). In a replicated, randomized, controlled field study in Portugal, it was observed that 2,4-D amine diminished the biomass of parrot's feather (1606). For glyphosate, a replicated, randomized, controlled field study in Portugal and a replicated, controlled laboratory study in the USA both reported a decrease in parrot's feather biomass after its application (1699). In another randomized, controlled field study in Portugal, the combined use of 2,4-D and MCPA was found to completely eradicate parrot's feather (1606).",
     "summary_action_ids": [
       "1606",
       "1699"
@@ -661,8 +639,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"parrot's feather control\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1601\",\n    \"action_title\": \"Parrot\\u2019s feather: Biological control using plant pathogens\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1606\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1699\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"parrot's feather control herbicide\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1606\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - 2,4-D\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1681\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - endohall\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1699\",\n    \"action_title\": \"Parrot\\u2019s feather: Use of herbicides - other herbicides\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -686,8 +664,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"summary\":\"A replicated, controlled laboratory study in Brazil found that the herbicide 2,4-D resulted in a greater reduction in the growth of parrot's feather compared to the herbicides diquat, glyphosate, or imazapyr (1606). Additionally, three laboratory studies in the USA and Brazil found that 2,4-D reduced the growth of parrot's feather (1606). One replicated, randomized, controlled field study in Portugal also found that 2,4-D amine reduced the biomass of parrot's feather (1606). In contrast, two other studies reported that glyphosate treatment reduced parrot's feather biomass (1699). Another study found that a combined application of 2,4-D and MCPA completely eliminated parrot's feather (1606). Several other herbicides have also been studied for their effects on parrot's feather. For instance, the application of dichlobenil was found to reduce the growth of parrot's feather in one study, while two other studies showed mixed results (1699). Additionally, herbicides such as imazamox, imazapyr, gluphosinate-ammonium, flumioxazin, and florpyrauxifen-benzyl have been reported to reduce the growth or biomass of parrot's feather (1699). However, treatments with fluridone, clopyralid, and copper chelate were found to be ineffective in reducing the growth of parrot's feather (1699).\",\"action_ids\":[\"1606\",\"1699\"],\"query\":\"How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?\"}",
-            "return_val": "{\n  \"query\": \"How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?\",\n  \"relevant_summary\": \"A replicated, controlled laboratory study in Brazil found that the herbicide 2,4-D resulted in a greater reduction in the growth of parrot's feather compared to the herbicides diquat, glyphosate, or imazapyr (1606). Additionally, three laboratory studies in the USA and Brazil found that 2,4-D reduced the growth of parrot's feather (1606). One replicated, randomized, controlled field study in Portugal also found that 2,4-D amine reduced the biomass of parrot's feather (1606). In contrast, two other studies reported that glyphosate treatment reduced parrot's feather biomass (1699). Another study found that a combined application of 2,4-D and MCPA completely eliminated parrot's feather (1606). Several other herbicides have also been studied for their effects on parrot's feather. For instance, the application of dichlobenil was found to reduce the growth of parrot's feather in one study, while two other studies showed mixed results (1699). Additionally, herbicides such as imazamox, imazapyr, gluphosinate-ammonium, flumioxazin, and florpyrauxifen-benzyl have been reported to reduce the growth or biomass of parrot's feather (1699). However, treatments with fluridone, clopyralid, and copper chelate were found to be ineffective in reducing the growth of parrot's feather (1699).\",\n  \"action_ids\": [\n    \"1606\",\n    \"1699\"\n  ]\n}"
+            "args": "{\"query\":\"How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?\",\"action_ids\":[\"1606\",\"1699\"],\"summary\":\"A replicated, controlled laboratory study in Brazil determined that 2,4-D resulted in a more significant reduction in parrot's feather growth compared to diquat, glyphosate, or imazapyr (1606). Additionally, three laboratory studies in the USA and Brazil indicated that 2,4-D reduced the growth of parrot's feather (1606). In a replicated, randomized, controlled field study in Portugal, it was observed that 2,4-D amine diminished the biomass of parrot's feather (1606). For glyphosate, a replicated, randomized, controlled field study in Portugal and a replicated, controlled laboratory study in the USA both reported a decrease in parrot's feather biomass after its application (1699). In another randomized, controlled field study in Portugal, the combined use of 2,4-D and MCPA was found to completely eradicate parrot's feather (1606).\"}",
+            "return_val": "{\n  \"query\": \"How does the herbicide 2,4-D compare to other herbicides like diquat or glyphosate for controlling parrot's feather?\",\n  \"relevant_summary\": \"A replicated, controlled laboratory study in Brazil determined that 2,4-D resulted in a more significant reduction in parrot's feather growth compared to diquat, glyphosate, or imazapyr (1606). Additionally, three laboratory studies in the USA and Brazil indicated that 2,4-D reduced the growth of parrot's feather (1606). In a replicated, randomized, controlled field study in Portugal, it was observed that 2,4-D amine diminished the biomass of parrot's feather (1606). For glyphosate, a replicated, randomized, controlled field study in Portugal and a replicated, controlled laboratory study in the USA both reported a decrease in parrot's feather biomass after its application (1699). In another randomized, controlled field study in Portugal, the combined use of 2,4-D and MCPA was found to completely eradicate parrot's feather (1606).\",\n  \"action_ids\": [\n    \"1606\",\n    \"1699\"\n  ]\n}"
           }
         ]
       }
@@ -710,7 +688,7 @@
     "query": "What are the documented effects of introducing native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "There is no evidence for the effects of removing or controlling non-native crayfish on amphibian populations [797]. No evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish [1038]. One replicated, before-and-after study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs [825]. One before-and-after study in the USA and Mexico found that eradicating bullfrogs from the area increased the range of leopard frogs [825]. One replicated, before-and-after study in the USA found that once bullfrogs had been removed, California red-legged frogs were found out in the open twice as frequently [825].",
+    "relevant_summary": "No evidence was found for the effects of removing or controlling non-native crayfish (797). Additionally, no evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish (1038). However, one study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs (825). Another study in the USA and Mexico found that eradicating bullfrogs increased the range of leopard frogs, and a replicated US study found that after bullfrog removal, California red-legged frogs were observed in the open twice as often (825).",
     "summary_action_ids": [
       "797",
       "1038",
@@ -722,7 +700,7 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems\"}",
+            "args": "{\"query_string\":\"native predators to control invasive American bullfrogs and Procambarus crayfish\"}",
             "return_val": "[\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1038\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"825\",\n    \"action_title\": \"Remove or control invasive bullfrogs\",\n    \"rank\": 3\n  }\n]"
           }
         ]
@@ -752,8 +730,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"summary\":\"There is no evidence for the effects of removing or controlling non-native crayfish on amphibian populations [797]. No evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish [1038]. One replicated, before-and-after study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs [825]. One before-and-after study in the USA and Mexico found that eradicating bullfrogs from the area increased the range of leopard frogs [825]. One replicated, before-and-after study in the USA found that once bullfrogs had been removed, California red-legged frogs were found out in the open twice as frequently [825].\",\"query\":\"What are the documented effects of introducing native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems?\",\"action_ids\":[\"797\",\"1038\",\"825\"]}",
-            "return_val": "{\n  \"query\": \"What are the documented effects of introducing native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems?\",\n  \"relevant_summary\": \"There is no evidence for the effects of removing or controlling non-native crayfish on amphibian populations [797]. No evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish [1038]. One replicated, before-and-after study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs [825]. One before-and-after study in the USA and Mexico found that eradicating bullfrogs from the area increased the range of leopard frogs [825]. One replicated, before-and-after study in the USA found that once bullfrogs had been removed, California red-legged frogs were found out in the open twice as frequently [825].\",\n  \"action_ids\": [\n    \"797\",\n    \"1038\",\n    \"825\"\n  ]\n}"
+            "args": "{\"summary\":\"No evidence was found for the effects of removing or controlling non-native crayfish (797). Additionally, no evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish (1038). However, one study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs (825). Another study in the USA and Mexico found that eradicating bullfrogs increased the range of leopard frogs, and a replicated US study found that after bullfrog removal, California red-legged frogs were observed in the open twice as often (825).\",\"query\":\"What are the documented effects of introducing native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems?\",\"action_ids\":[\"797\",\"1038\",\"825\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of introducing native predators to control invasive American bullfrogs and Procambarus crayfish in North American freshwater systems?\",\n  \"relevant_summary\": \"No evidence was found for the effects of removing or controlling non-native crayfish (797). Additionally, no evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish (1038). However, one study in the USA found that removing American bullfrogs significantly increased a population of California red-legged frogs (825). Another study in the USA and Mexico found that eradicating bullfrogs increased the range of leopard frogs, and a replicated US study found that after bullfrog removal, California red-legged frogs were observed in the open twice as often (825).\",\n  \"action_ids\": [\n    \"797\",\n    \"1038\",\n    \"825\"\n  ]\n}"
           }
         ]
       }
@@ -773,11 +751,11 @@
     "query": "What management actions are available for red-eared terrapins in the UK, and what is their likely effectiveness?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "One replicated, controlled laboratory study in the USA found that the application of glyphosate to red-eared terrapin eggs reduced hatching success to 73% at the highest concentration (1059). No evidence was found on the use of predators to control invasive terrapin populations (1056) or on the impact of draining invaded waterbodies on the reduction of red-eared terrapin populations (1057).",
+    "relevant_summary": "No evidence was captured on the impact of draining invaded waterbodies on reduction of red-eared terrapin populations (1057) or on the use of predators to control invasive terrapin populations (1056). One replicated, controlled laboratory study in the USA found that application of glyphosate to the eggs of red-eared terrapins reduced hatching success to 73%, but only at the highest experimental concentration of glyphosate and a surface active agent (1059).",
     "summary_action_ids": [
-      "1059",
+      "1057",
       "1056",
-      "1057"
+      "1059"
     ],
     "tool_call_details": [
       {
@@ -785,7 +763,7 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"management of red-eared terrapins in the UK\"}",
+            "args": "{\"query_string\":\"red-eared terrapin management in UK\"}",
             "return_val": "[\n  {\n    \"action_id\": \"1056\",\n    \"action_title\": \"Red-eared terrapin:  Biological control using native predators\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1057\",\n    \"action_title\": \"Red-eared terrapin:  Draining invaded waterbodies\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1059\",\n    \"action_title\": \"Red-eared terrapin:  Application of a biocide\",\n    \"rank\": 3\n  }\n]"
           }
         ]
@@ -815,8 +793,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"summary\":\"One replicated, controlled laboratory study in the USA found that the application of glyphosate to red-eared terrapin eggs reduced hatching success to 73% at the highest concentration (1059). No evidence was found on the use of predators to control invasive terrapin populations (1056) or on the impact of draining invaded waterbodies on the reduction of red-eared terrapin populations (1057).\",\"action_ids\":[\"1059\",\"1056\",\"1057\"],\"query\":\"What management actions are available for red-eared terrapins in the UK, and what is their likely effectiveness?\"}",
-            "return_val": "{\n  \"query\": \"What management actions are available for red-eared terrapins in the UK, and what is their likely effectiveness?\",\n  \"relevant_summary\": \"One replicated, controlled laboratory study in the USA found that the application of glyphosate to red-eared terrapin eggs reduced hatching success to 73% at the highest concentration (1059). No evidence was found on the use of predators to control invasive terrapin populations (1056) or on the impact of draining invaded waterbodies on the reduction of red-eared terrapin populations (1057).\",\n  \"action_ids\": [\n    \"1059\",\n    \"1056\",\n    \"1057\"\n  ]\n}"
+            "args": "{\"summary\":\"No evidence was captured on the impact of draining invaded waterbodies on reduction of red-eared terrapin populations (1057) or on the use of predators to control invasive terrapin populations (1056). One replicated, controlled laboratory study in the USA found that application of glyphosate to the eggs of red-eared terrapins reduced hatching success to 73%, but only at the highest experimental concentration of glyphosate and a surface active agent (1059).\",\"query\":\"What management actions are available for red-eared terrapins in the UK, and what is their likely effectiveness?\",\"action_ids\":[\"1057\",\"1056\",\"1059\"]}",
+            "return_val": "{\n  \"query\": \"What management actions are available for red-eared terrapins in the UK, and what is their likely effectiveness?\",\n  \"relevant_summary\": \"No evidence was captured on the impact of draining invaded waterbodies on reduction of red-eared terrapin populations (1057) or on the use of predators to control invasive terrapin populations (1056). One replicated, controlled laboratory study in the USA found that application of glyphosate to the eggs of red-eared terrapins reduced hatching success to 73%, but only at the highest experimental concentration of glyphosate and a surface active agent (1059).\",\n  \"action_ids\": [\n    \"1057\",\n    \"1056\",\n    \"1059\"\n  ]\n}"
           }
         ]
       }
@@ -842,17 +820,13 @@
     "query": "What are the benefits and potential trade-offs of using biocides for the control of invasive species like Procambarus crayfish and black bullheads in freshwater ponds?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A piscicide containing rotenone has been used to successfully eradicate black bullheads in both the UK and the USA; however, in one instance, two doses were required (1050). An alternative control method for brown bullheads is netting, which has been shown to significantly reduce their population (1051). There is no evidence on the use of biocides to control Procambarus crayfish. However, studies have shown that encouraging predators like eels and pike can reduce red swamp crayfish populations (1030). Creating physical barriers, such as concrete dams, can also effectively contain their spread (1037). No evidence was found to support the relocation of vulnerable crayfish as a control method for Procambarus crayfish (1038), or the use of native predators to control invasive bullhead populations (1053). Furthermore, no studies were found on the effects of biocides on non-target species such as subtidal benthic invertebrates (2171) or marine and freshwater mammals (2937), or for the control of other invasive species like Ponto-Caspian gobies (1063).",
+    "relevant_summary": "One replicated, controlled study in Italy found that red swamp crayfish could be killed using the natural pyrethrum Pyblast at a concentration of 0.05 mg/l, but that application to drained crayfish burrows was not effective (1036). For black bullheads, a study in the UK reported that use of a piscicide containing rotenone achieved eradication of the species (1050). A study in the USA also found that rotenone successfully eradicated black bullhead, although one of two ponds required two separate doses (1050). No studies were found that evaluated the effects of using biocides or other chemicals to control invasive or problematic species on marine, freshwater mammal, or subtidal benthic invertebrate populations, so no information on trade-offs is available in the retrieved documents (2937, 2171, 797).",
     "summary_action_ids": [
+      "1036",
       "1050",
-      "1051",
-      "1030",
-      "1037",
-      "1038",
-      "1053",
-      "2171",
       "2937",
-      "1063"
+      "2171",
+      "797"
     ],
     "tool_call_details": [
       {
@@ -860,8 +834,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"biocides for invasive species control\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"2937\",\n    \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2171\",\n    \"action_title\": \"Use biocides or other chemicals to control non-native, invasive or other problematic species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1063\",\n    \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"biocides for invasive species control in freshwater ponds\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2937\",\n    \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1063\",\n    \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2171\",\n    \"action_title\": \"Use biocides or other chemicals to control non-native, invasive or other problematic species\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -875,13 +849,13 @@
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"2171\"}",
-            "return_val": "{\n  \"action_id\": \"2171\",\n  \"action_title\": \"Use biocides or other chemicals to control non-native, invasive or other problematic species\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using biocides or other chemicals to control non-native, invasive or other problematic species on subtidal benthic invertebrate populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+            "args": "{\"action_id\":\"1063\"}",
+            "return_val": "{\n  \"action_id\": \"1063\",\n  \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the use of biocide to control populations of the round goby or the tubenose goby.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1063\"}",
-            "return_val": "{\n  \"action_id\": \"1063\",\n  \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the use of biocide to control populations of the round goby or the tubenose goby.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "args": "{\"action_id\":\"2171\"}",
+            "return_val": "{\n  \"action_id\": \"2171\",\n  \"action_title\": \"Use biocides or other chemicals to control non-native, invasive or other problematic species\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using biocides or other chemicals to control non-native, invasive or other problematic species on subtidal benthic invertebrate populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
           }
         ]
       },
@@ -890,13 +864,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"Procambarus crayfish control\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1038\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1030\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Encouraging predators\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1037\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Create barriers\",\n    \"rank\": 3\n  }\n]"
-          },
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"black bullhead control\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1053\",\n    \"action_title\": \"Brown and black bullheads: Biological control using native predators\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1051\",\n    \"action_title\": \"Brown and black bullheads: Netting\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"biocides for invasive species control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2937\",\n    \"action_title\": \"Use biocides or other chemicals to control invasive or problematic species\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2171\",\n    \"action_title\": \"Use biocides or other chemicals to control non-native, invasive or other problematic species\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1063\",\n    \"action_title\": \"Ponto-Caspian gobies:  Application of a biocide\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -904,29 +873,24 @@
         "iteration_num": 4,
         "tools_called": [
           {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"biocides for Procambarus crayfish control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1036\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Add chemicals to the water\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1037\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Create barriers\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"797\",\n    \"action_title\": \"Remove or control non-native crayfish\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1050\"}",
-            "return_val": "{\n  \"action_id\": \"1050\",\n  \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in the UK reported that use of a piscicide containing rotenone achieved eradication of black bullhead.\\nA study in the USA found that rotenone successfully eradicated black bullhead, but one of two ponds required two separate doses.\"\n}"
+            "args": "{\"action_id\":\"1036\"}",
+            "return_val": "{\n  \"action_id\": \"1036\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Add chemicals to the water\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Italy\\u00a0found that red swamp crayfish could be killed using the natural pyrethrum Pyblast at a concentration of 0.05 mg/l, but that application to drained crayfish burrows was not effective.\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1053\"}",
-            "return_val": "{\n  \"action_id\": \"1053\",\n  \"action_title\": \"Brown and black bullheads: Biological control using native predators\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was found on the impact of native predators on invasive bullhead populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1051\"}",
-            "return_val": "{\n  \"action_id\": \"1051\",\n  \"action_title\": \"Brown and black bullheads: Netting\",\n  \"key_messages\": \"Key Messages:\\n\\n\\nA replicated study from 1999-2000 in shallow interconnected ponds in a nature reserve in Belgium1 found that double fyke nets could be used to significantly reduce the population of brown bullhead measuring over 8cm\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1038\"}",
-            "return_val": "{\n  \"action_id\": \"1038\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Relocate vulnerable crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the effect of relocating native species as a management tool against the effects of Procambarus crayfish.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1030\"}",
-            "return_val": "{\n  \"action_id\": \"1030\",\n  \"action_title\": \"<i>Procambarus</i> crayfish control: Encouraging predators\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled studies\\u00a0in Italy found that eels fed on the red swamp crayfish and reduced population size. \\nOne replicated, controlled study from France in 2001 found that pike predated red swamp crayfish.\"\n}"
+            "args": "{\"action_id\":\"797\"}",
+            "return_val": "{\n  \"action_id\": \"797\",\n  \"action_title\": \"Remove or control non-native crayfish\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of removing or controlling non-native crayfish on amphibian populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
           },
           {
             "function_name": "get_action_details",
@@ -936,12 +900,32 @@
         ]
       },
       {
-        "iteration_num": 5,
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"biocides for black bullhead control\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1050\",\n    \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1053\",\n    \"action_title\": \"Brown and black bullheads: Biological control using native predators\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1051\",\n    \"action_title\": \"Brown and black bullheads: Netting\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1050\"}",
+            "return_val": "{\n  \"action_id\": \"1050\",\n  \"action_title\": \"Brown and black bullheads: Application of a biocide\",\n  \"key_messages\": \"Key Messages:\\n\\nA study in the UK reported that use of a piscicide containing rotenone achieved eradication of black bullhead.\\nA study in the USA found that rotenone successfully eradicated black bullhead, but one of two ponds required two separate doses.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"summary\":\"A piscicide containing rotenone has been used to successfully eradicate black bullheads in both the UK and the USA; however, in one instance, two doses were required (1050). An alternative control method for brown bullheads is netting, which has been shown to significantly reduce their population (1051). There is no evidence on the use of biocides to control Procambarus crayfish. However, studies have shown that encouraging predators like eels and pike can reduce red swamp crayfish populations (1030). Creating physical barriers, such as concrete dams, can also effectively contain their spread (1037). No evidence was found to support the relocation of vulnerable crayfish as a control method for Procambarus crayfish (1038), or the use of native predators to control invasive bullhead populations (1053). Furthermore, no studies were found on the effects of biocides on non-target species such as subtidal benthic invertebrates (2171) or marine and freshwater mammals (2937), or for the control of other invasive species like Ponto-Caspian gobies (1063).\",\"query\":\"What are the benefits and potential trade-offs of using biocides for the control of invasive species like Procambarus crayfish and black bullheads in freshwater ponds?\",\"action_ids\":[\"1050\",\"1051\",\"1030\",\"1037\",\"1038\",\"1053\",\"2171\",\"2937\",\"1063\"]}",
-            "return_val": "{\n  \"query\": \"What are the benefits and potential trade-offs of using biocides for the control of invasive species like Procambarus crayfish and black bullheads in freshwater ponds?\",\n  \"relevant_summary\": \"A piscicide containing rotenone has been used to successfully eradicate black bullheads in both the UK and the USA; however, in one instance, two doses were required (1050). An alternative control method for brown bullheads is netting, which has been shown to significantly reduce their population (1051). There is no evidence on the use of biocides to control Procambarus crayfish. However, studies have shown that encouraging predators like eels and pike can reduce red swamp crayfish populations (1030). Creating physical barriers, such as concrete dams, can also effectively contain their spread (1037). No evidence was found to support the relocation of vulnerable crayfish as a control method for Procambarus crayfish (1038), or the use of native predators to control invasive bullhead populations (1053). Furthermore, no studies were found on the effects of biocides on non-target species such as subtidal benthic invertebrates (2171) or marine and freshwater mammals (2937), or for the control of other invasive species like Ponto-Caspian gobies (1063).\",\n  \"action_ids\": [\n    \"1050\",\n    \"1051\",\n    \"1030\",\n    \"1037\",\n    \"1038\",\n    \"1053\",\n    \"2171\",\n    \"2937\",\n    \"1063\"\n  ]\n}"
+            "args": "{\"action_ids\":[\"1036\",\"1050\",\"2937\",\"2171\",\"797\"],\"summary\":\"One replicated, controlled study in Italy found that red swamp crayfish could be killed using the natural pyrethrum Pyblast at a concentration of 0.05 mg/l, but that application to drained crayfish burrows was not effective (1036). For black bullheads, a study in the UK reported that use of a piscicide containing rotenone achieved eradication of the species (1050). A study in the USA also found that rotenone successfully eradicated black bullhead, although one of two ponds required two separate doses (1050). No studies were found that evaluated the effects of using biocides or other chemicals to control invasive or problematic species on marine, freshwater mammal, or subtidal benthic invertebrate populations, so no information on trade-offs is available in the retrieved documents (2937, 2171, 797).\",\"query\":\"What are the benefits and potential trade-offs of using biocides for the control of invasive species like Procambarus crayfish and black bullheads in freshwater ponds?\"}",
+            "return_val": "{\n  \"query\": \"What are the benefits and potential trade-offs of using biocides for the control of invasive species like Procambarus crayfish and black bullheads in freshwater ponds?\",\n  \"relevant_summary\": \"One replicated, controlled study in Italy found that red swamp crayfish could be killed using the natural pyrethrum Pyblast at a concentration of 0.05 mg/l, but that application to drained crayfish burrows was not effective (1036). For black bullheads, a study in the UK reported that use of a piscicide containing rotenone achieved eradication of the species (1050). A study in the USA also found that rotenone successfully eradicated black bullhead, although one of two ponds required two separate doses (1050). No studies were found that evaluated the effects of using biocides or other chemicals to control invasive or problematic species on marine, freshwater mammal, or subtidal benthic invertebrate populations, so no information on trade-offs is available in the retrieved documents (2937, 2171, 797).\",\n  \"action_ids\": [\n    \"1036\",\n    \"1050\",\n    \"2937\",\n    \"2171\",\n    \"797\"\n  ]\n}"
           }
         ]
       }
@@ -966,7 +950,7 @@
     "query": "What are the different outcomes of physical removal for controlling invasive skunk cabbage versus floating pennywort?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock (1101). A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant (1101). A study in Germany reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year (1101). A study in Western Australia found that following a two-week program of physical removal of floating pennywort, the rate of growth exceeded the rate of removal (1126). A study in the UK, found that removal using a mechanical digger and monthly picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it (1126).",
+    "relevant_summary": "A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock [1101]. A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant [1101]. However, a study in Germany reported that after the first four years of a twice-yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year [1101]. In contrast, a study in Western Australia found that following a two-week program of physical removal of floating pennywort, the rate of growth exceeded the rate of removal [1126]. A study in the UK, found that removal using a mechanical digger and monthly picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it [1126].",
     "summary_action_ids": [
       "1101",
       "1126"
@@ -1007,8 +991,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What are the different outcomes of physical removal for controlling invasive skunk cabbage versus floating pennywort?\",\"action_ids\":[\"1101\",\"1126\"],\"summary\":\"A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock (1101). A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant (1101). A study in Germany reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year (1101). A study in Western Australia found that following a two-week program of physical removal of floating pennywort, the rate of growth exceeded the rate of removal (1126). A study in the UK, found that removal using a mechanical digger and monthly picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it (1126).\"}",
-            "return_val": "{\n  \"query\": \"What are the different outcomes of physical removal for controlling invasive skunk cabbage versus floating pennywort?\",\n  \"relevant_summary\": \"A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock (1101). A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant (1101). A study in Germany reported that after the first four years of a twice yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year (1101). A study in Western Australia found that following a two-week program of physical removal of floating pennywort, the rate of growth exceeded the rate of removal (1126). A study in the UK, found that removal using a mechanical digger and monthly picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it (1126).\",\n  \"action_ids\": [\n    \"1101\",\n    \"1126\"\n  ]\n}"
+            "args": "{\"query\":\"What are the different outcomes of physical removal for controlling invasive skunk cabbage versus floating pennywort?\",\"action_ids\":[\"1101\",\"1126\"],\"summary\":\"A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock [1101]. A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant [1101]. However, a study in Germany reported that after the first four years of a twice-yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year [1101]. In contrast, a study in Western Australia found that following a two-week program of physical removal of floating pennywort, the rate of growth exceeded the rate of removal [1126]. A study in the UK, found that removal using a mechanical digger and monthly picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it [1126].\"}",
+            "return_val": "{\n  \"query\": \"What are the different outcomes of physical removal for controlling invasive skunk cabbage versus floating pennywort?\",\n  \"relevant_summary\": \"A study in Switzerland found that annual physical removal of recently established skunk cabbage plants over five years removed the entire stock [1101]. A study in the Netherlands found that manual removal of mature skunk cabbage plants was effective for a small outbreak of a small-growing plant [1101]. However, a study in Germany reported that after the first four years of a twice-yearly full removal programme of skunk cabbage, a large number of plants still needed to be removed each year [1101]. In contrast, a study in Western Australia found that following a two-week program of physical removal of floating pennywort, the rate of growth exceeded the rate of removal [1126]. A study in the UK, found that removal using a mechanical digger and monthly picking by hand greatly reduced the cover of floating pennywort but did not completely eradicate it [1126].\",\n  \"action_ids\": [\n    \"1101\",\n    \"1126\"\n  ]\n}"
           }
         ]
       }
@@ -1027,10 +1011,11 @@
     "query": "What are the documented effects of draining waterways as a control method for different invasive species like Procambarus crayfish and Asian clams?",
     "model": "google/gemini-2.5-pro",
     "provider": null,
-    "relevant_summary": "There is no evidence for the effectiveness of draining waterways as a control method for Procambarus crayfish (1034) or Asian clams (1110). In both cases, the action documents state that no studies were found that directly and quantitatively tested this action, and therefore it is not known if the action is effective or has any harmful impacts (1034, 1110).",
+    "relevant_summary": "There is no evidence for the effect of draining waterways as a control method for Procambarus crayfish (1034). Additionally, no evidence was found regarding the impact of draining waterbodies on Crassula helmsii (1303) or for the reduction of red-eared terrapin populations (1057). The search did not provide any information on the effects of draining waterways on Asian clams.",
     "summary_action_ids": [
       "1034",
-      "1110"
+      "1303",
+      "1057"
     ],
     "tool_call_details": [
       {
@@ -1038,7 +1023,7 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"Draining waterways as a control method for invasive species\"}",
+            "args": "{\"query_string\":\"draining waterways as a control method for invasive species\"}",
             "return_val": "[\n  {\n    \"action_id\": \"1034\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Draining the waterway\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1303\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Dry out waterbodies to control plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1057\",\n    \"action_title\": \"Red-eared terrapin:  Draining invaded waterbodies\",\n    \"rank\": 3\n  }\n]"
           }
         ]
@@ -1060,11 +1045,6 @@
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"1057\"}",
             "return_val": "{\n  \"action_id\": \"1057\",\n  \"action_title\": \"Red-eared terrapin:  Draining invaded waterbodies\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured on the impact of draining invaded waterbodies on reduction of red-eared terrapin populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          },
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Asian clams control\"}",
-            "return_val": "[\n  {\n    \"action_id\": \"1118\",\n    \"action_title\": \"Asian clams: Add chemicals to the water\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1120\",\n    \"action_title\": \"Asian clams: Mechanical removal\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1110\",\n    \"action_title\": \"Asian clams: Drain the invaded water body\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -1072,19 +1052,9 @@
         "iteration_num": 3,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1110\"}",
-            "return_val": "{\n  \"action_id\": \"1110\",\n  \"action_title\": \"Asian clams: Drain the invaded water body\",\n  \"key_messages\": \"Key Messages:\\n\\nNo evidence was captured for the use of dewatering as a management tool for Asian clams.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 4,
-        "tools_called": [
-          {
             "function_name": "get_formatted_result",
-            "args": "{\"action_ids\":[\"1034\",\"1110\"],\"summary\":\"There is no evidence for the effectiveness of draining waterways as a control method for Procambarus crayfish (1034) or Asian clams (1110). In both cases, the action documents state that no studies were found that directly and quantitatively tested this action, and therefore it is not known if the action is effective or has any harmful impacts (1034, 1110).\",\"query\":\"What are the documented effects of draining waterways as a control method for different invasive species like Procambarus crayfish and Asian clams?\"}",
-            "return_val": "{\n  \"query\": \"What are the documented effects of draining waterways as a control method for different invasive species like Procambarus crayfish and Asian clams?\",\n  \"relevant_summary\": \"There is no evidence for the effectiveness of draining waterways as a control method for Procambarus crayfish (1034) or Asian clams (1110). In both cases, the action documents state that no studies were found that directly and quantitatively tested this action, and therefore it is not known if the action is effective or has any harmful impacts (1034, 1110).\",\n  \"action_ids\": [\n    \"1034\",\n    \"1110\"\n  ]\n}"
+            "args": "{\"query\":\"What are the documented effects of draining waterways as a control method for different invasive species like Procambarus crayfish and Asian clams?\",\"summary\":\"There is no evidence for the effect of draining waterways as a control method for Procambarus crayfish (1034). Additionally, no evidence was found regarding the impact of draining waterbodies on Crassula helmsii (1303) or for the reduction of red-eared terrapin populations (1057). The search did not provide any information on the effects of draining waterways on Asian clams.\",\"action_ids\":[\"1034\",\"1303\",\"1057\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of draining waterways as a control method for different invasive species like Procambarus crayfish and Asian clams?\",\n  \"relevant_summary\": \"There is no evidence for the effect of draining waterways as a control method for Procambarus crayfish (1034). Additionally, no evidence was found regarding the impact of draining waterbodies on Crassula helmsii (1303) or for the reduction of red-eared terrapin populations (1057). The search did not provide any information on the effects of draining waterways on Asian clams.\",\n  \"action_ids\": [\n    \"1034\",\n    \"1303\",\n    \"1057\"\n  ]\n}"
           }
         ]
       }

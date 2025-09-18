@@ -168,11 +168,11 @@ def get_summary_gen_qus_usage_separate(model, provider, base_qu_dir="live_questi
     return usage
 
 
-def get_summary_gen_qus_usage_combined(model, provider, base_qu_dir="live_questions", qu_types=["answerable", "unanswerable"], filter_stage=["passed", "failed"]):
+def get_summary_gen_qus_usage_combined(model, provider, base_qu_dir="live_questions", qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"]):
     total_used = 0
     total_unused = 0
 
-    usage = get_summary_gen_qus_usage_separate(model=model, provider=provider, base_qu_dir=base_qu_dir, qu_types=qu_types, filter_stages=filter_stage)
+    usage = get_summary_gen_qus_usage_separate(model=model, provider=provider, base_qu_dir=base_qu_dir, qu_types=qu_types, filter_stages=filter_stages)
     for u in usage:
         total_used += u["used"]
         total_unused += u["unused"]
@@ -257,7 +257,7 @@ def main():
     ]
 
     for model, provider in model_provider_list:
-        usage = get_summary_gen_qus_usage_separate(model, provider, qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"])
+        usage = get_summary_gen_qus_usage_separate(model, provider, base_qu_dir="tool_failed_questions", qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"])
         print(f"\n\nModel: {model}, Provider: {provider}, Usage: {usage}")
 
     # for mp in cleaned_mp_list:

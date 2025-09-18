@@ -3,13 +3,12 @@
     "query": "To protect newly planted trees from herbivores, what is the evidence for the effectiveness of fencing compared to using individual tree guards or shelters?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "\u2022 Freshwater wetlands planted with trees/shrubs: Across five studies, exclusion fencing sometimes increased survival of planted tree seedlings but sometimes had no clear or significant effect, depending on factors such as season of planting, elevation and site; one Australian study reported much higher one\u2011year survival of fenced swamp gum seedlings than in open plots; seedling height was taller in fenced, seed\u2011sown plots after three years in one USA study, while white cedar sapling height increased by a similar amount in fenced and unfenced plots in another; total seedling density was not significantly affected by fencing in one seeded swamp study; planted baldcypress seedlings grew more over one season when protected, with plastic guards increasing height and diameter growth, and sticky oil increasing height growth only [3330].\n\u2022 Brackish/saline wetlands planted with trees/shrubs: Full\u2011length plastic shelters increased survival of planted red mangrove over 4\u20138 months, while full\u2011length bamboo shelters and below\u2011ground plastic shelters had no clear effect; plastic shelters led to taller propagules in three of four comparisons over 22\u2013129 days [3331].\n\u2022 General tree guards/shelters (non\u2011wetland contexts): One replicated, randomized, controlled USA study found light\u2011coloured plastic tree shelters increased planted seedling survival, whereas dark\u2011coloured shelters did not; one replicated, controlled Hong Kong study found tree guards increased tree height after 37 months but not after 44 months [1268].\n\u2022 Evidence gaps: No studies were found that evaluated using fences or barriers to protect planted peatland vegetation [1839], and no studies were found that evaluated the effects of tree tubes, small fences or cages to protect individual trees from mammals [2630].",
+    "relevant_summary": "Evidence for individual guards/shelters: One replicated, randomized, controlled study in the USA found that light-coloured plastic tree shelters increased survival of planted tree seedlings, whereas dark-coloured shelters did not [1268]. One replicated, controlled study in Hong Kong found that tree guards increased tree height after 37 months but not after 44 months [1268]. In exposed coastal sites in the USA, full-length plastic shelters for red mangrove increased survival over 4\u20138 months, while full-length bamboo shelters and below-ground plastic shelters had no clear effect; plastic shelters also produced taller propagules in three of four comparisons over 22\u2013129 days [3331]. In a nutria-invaded freshwater wetland in the USA, plastic guards on planted baldcypress increased height and diameter growth over one growing season [3330]. Evidence for fencing/exclosure: In a USA floodplain swamp clearing, fencing to exclude deer did not change total tree seedling density after three years in plots sown with tree seeds, but fenced plots contained taller seedlings after three years than unfenced plots [3330]. In created freshwater wetlands in the USA, white cedar sapling height typically increased by a similar amount in fenced and unfenced plots over two to five years [3330]. In Australian floodplain swamps, plots fenced to exclude mammals had much higher one-year survival of planted swamp gum seedlings than open plots [3330]. Two USA freshwater wetland studies reported that exclusion fencing sometimes increased survival of planted tree seedlings and sometimes had no clear or significant effect, depending on planting season, elevation, and site [3330]. Gaps: No studies were found that evaluated fences or barriers to protect planted peatland vegetation [1839].",
     "summary_action_ids": [
+      "1268",
       "3330",
       "3331",
-      "1268",
-      "1839",
-      "2630"
+      "1839"
     ],
     "tool_call_details": [
       {
@@ -17,8 +16,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"effectiveness of fencing vs individual tree guards shelters protecting newly planted trees herbivores\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1839\",\n    \"action_title\": \"Use fences or barriers to protect planted vegetation\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3319\",\n    \"action_title\": \"Add cover other than mulch before/after planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3316\",\n    \"action_title\": \"Add cover other than mulch before/after planting non-woody plants: freshwater wetlands\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"effectiveness of fencing compared to individual tree guards or shelters for protecting newly planted trees from herbivores\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3331\",\n    \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1839\",\n    \"action_title\": \"Use fences or barriers to protect planted vegetation\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -26,9 +25,19 @@
         "iteration_num": 2,
         "tools_called": [
           {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"tree guards shelters browse protection individual tree shelters tubes compared to fences herbivores deer rabbits survival growth study\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"2630\",\n    \"action_title\": \"Use tree tubes/small fences/cages to protect individual trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3331\",\n    \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n    \"rank\": 3\n  }\n]"
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1268\"}",
+            "return_val": "{\n  \"action_id\": \"1268\",\n  \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found that using light but not dark coloured plastic tree shelters increased the survival rate of planted tree seedlings. One replicated, controlled study in Hong Kong\\u00a0found that tree guards increased tree height after 37 but not 44 months.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3331\"}",
+            "return_val": "{\n  \"action_id\": \"3331\",\n  \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of using fences or barriers to protect brackish/saline wetlands planted with trees/shrubs. The study was in the USA.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\u00a0\\nVEGETATION STRUCTURE\\n\\nHeight (1 study): One replicated, paired, controlled study in exposed coastal sites in the USA\\u00a0found that red mangrove Rhizophora mangle propagules planted within full-length plastic shelters had grown taller than propagules planted without shelter in three of four comparisons, made 22\\u2013129 days after planting.\\n\\nOTHER\\n\\nSurvival (1 study): One replicated, paired, controlled study in exposed coastal sites in the USA\\u00a0reported that full-length plastic shelters increased the survival rate of planted red mangrove Rhizophora mangle propagules over 4\\u20138 months, but that full-length bamboo shelters and below-ground plastic shelters had no clear effect on survival.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1839\"}",
+            "return_val": "{\n  \"action_id\": \"1839\",\n  \"action_title\": \"Use fences or barriers to protect planted vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using fences or barriers to protect planted peatland vegetation.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
           }
         ]
       },
@@ -36,19 +45,9 @@
         "iteration_num": 3,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1839\"}",
-            "return_val": "{\n  \"action_id\": \"1839\",\n  \"action_title\": \"Use fences or barriers to protect planted vegetation\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using fences or barriers to protect planted peatland vegetation.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"2630\"}",
-            "return_val": "{\n  \"action_id\": \"2630\",\n  \"action_title\": \"Use tree tubes/small fences/cages to protect individual trees\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using tree tubes, small fences or cages to protect individual trees from mammals.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1268\"}",
-            "return_val": "{\n  \"action_id\": \"1268\",\n  \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study in the USA\\u00a0found that using light but not dark coloured plastic tree shelters increased the survival rate of planted tree seedlings. One replicated, controlled study in Hong Kong\\u00a0found that tree guards increased tree height after 37 but not 44 months.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"fencing to protect planted trees from herbivores effectiveness compared to tree shelters guards\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1839\",\n    \"action_title\": \"Use fences or barriers to protect planted vegetation\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3331\",\n    \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -57,23 +56,13 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"fencing protect planted trees forest restoration deer exclosures browsing effect survival compared to individual guards shelters\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"3331\",\n    \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"deer fencing planted trees survival study tree guards shelters comparison\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3331\",\n    \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 5,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"forest restoration plantings protect seedlings fence barrier mammals deer rabbits fencing study survival planted trees action\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3331\",\n    \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1839\",\n    \"action_title\": \"Use fences or barriers to protect planted vegetation\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 6,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -83,22 +72,22 @@
         ]
       },
       {
-        "iteration_num": 7,
+        "iteration_num": 6,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"3331\"}",
-            "return_val": "{\n  \"action_id\": \"3331\",\n  \"action_title\": \"Use fences or barriers to protect planted brackish/saline wetlands planted with trees/shrubs\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects, on vegetation, of using fences or barriers to protect brackish/saline wetlands planted with trees/shrubs. The study was in the USA.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\u00a0\\nVEGETATION STRUCTURE\\n\\nHeight (1 study): One replicated, paired, controlled study in exposed coastal sites in the USA\\u00a0found that red mangrove Rhizophora mangle propagules planted within full-length plastic shelters had grown taller than propagules planted without shelter in three of four comparisons, made 22\\u2013129 days after planting.\\n\\nOTHER\\n\\nSurvival (1 study): One replicated, paired, controlled study in exposed coastal sites in the USA\\u00a0reported that full-length plastic shelters increased the survival rate of planted red mangrove Rhizophora mangle propagules over 4\\u20138 months, but that full-length bamboo shelters and below-ground plastic shelters had no clear effect on survival.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"tree guards shelters protect planted trees herbivores effectiveness study survival growth height\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1839\",\n    \"action_title\": \"Use fences or barriers to protect planted vegetation\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3318\",\n    \"action_title\": \"Add cover other than mulch before/after planting trees/shrubs: freshwater wetlands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3319\",\n    \"action_title\": \"Add cover other than mulch before/after planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
       {
-        "iteration_num": 8,
+        "iteration_num": 7,
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"To protect newly planted trees from herbivores, what is the evidence for the effectiveness of fencing compared to using individual tree guards or shelters?\",\"summary\":\"\u2022 Freshwater wetlands planted with trees/shrubs: Across five studies, exclusion fencing sometimes increased survival of planted tree seedlings but sometimes had no clear or significant effect, depending on factors such as season of planting, elevation and site; one Australian study reported much higher one\u2011year survival of fenced swamp gum seedlings than in open plots; seedling height was taller in fenced, seed\u2011sown plots after three years in one USA study, while white cedar sapling height increased by a similar amount in fenced and unfenced plots in another; total seedling density was not significantly affected by fencing in one seeded swamp study; planted baldcypress seedlings grew more over one season when protected, with plastic guards increasing height and diameter growth, and sticky oil increasing height growth only [3330].\\n\u2022 Brackish/saline wetlands planted with trees/shrubs: Full\u2011length plastic shelters increased survival of planted red mangrove over 4\u20138 months, while full\u2011length bamboo shelters and below\u2011ground plastic shelters had no clear effect; plastic shelters led to taller propagules in three of four comparisons over 22\u2013129 days [3331].\\n\u2022 General tree guards/shelters (non\u2011wetland contexts): One replicated, randomized, controlled USA study found light\u2011coloured plastic tree shelters increased planted seedling survival, whereas dark\u2011coloured shelters did not; one replicated, controlled Hong Kong study found tree guards increased tree height after 37 months but not after 44 months [1268].\\n\u2022 Evidence gaps: No studies were found that evaluated using fences or barriers to protect planted peatland vegetation [1839], and no studies were found that evaluated the effects of tree tubes, small fences or cages to protect individual trees from mammals [2630].\",\"action_ids\":[\"3330\",\"3331\",\"1268\",\"1839\",\"2630\"]}",
-            "return_val": "{\n  \"query\": \"To protect newly planted trees from herbivores, what is the evidence for the effectiveness of fencing compared to using individual tree guards or shelters?\",\n  \"relevant_summary\": \"\\u2022 Freshwater wetlands planted with trees/shrubs: Across five studies, exclusion fencing sometimes increased survival of planted tree seedlings but sometimes had no clear or significant effect, depending on factors such as season of planting, elevation and site; one Australian study reported much higher one\\u2011year survival of fenced swamp gum seedlings than in open plots; seedling height was taller in fenced, seed\\u2011sown plots after three years in one USA study, while white cedar sapling height increased by a similar amount in fenced and unfenced plots in another; total seedling density was not significantly affected by fencing in one seeded swamp study; planted baldcypress seedlings grew more over one season when protected, with plastic guards increasing height and diameter growth, and sticky oil increasing height growth only [3330].\\n\\u2022 Brackish/saline wetlands planted with trees/shrubs: Full\\u2011length plastic shelters increased survival of planted red mangrove over 4\\u20138 months, while full\\u2011length bamboo shelters and below\\u2011ground plastic shelters had no clear effect; plastic shelters led to taller propagules in three of four comparisons over 22\\u2013129 days [3331].\\n\\u2022 General tree guards/shelters (non\\u2011wetland contexts): One replicated, randomized, controlled USA study found light\\u2011coloured plastic tree shelters increased planted seedling survival, whereas dark\\u2011coloured shelters did not; one replicated, controlled Hong Kong study found tree guards increased tree height after 37 months but not after 44 months [1268].\\n\\u2022 Evidence gaps: No studies were found that evaluated using fences or barriers to protect planted peatland vegetation [1839], and no studies were found that evaluated the effects of tree tubes, small fences or cages to protect individual trees from mammals [2630].\",\n  \"action_ids\": [\n    \"3330\",\n    \"3331\",\n    \"1268\",\n    \"1839\",\n    \"2630\"\n  ]\n}"
+            "args": "{\"query\":\"To protect newly planted trees from herbivores, what is the evidence for the effectiveness of fencing compared to using individual tree guards or shelters?\",\"summary\":\"Evidence for individual guards/shelters: One replicated, randomized, controlled study in the USA found that light-coloured plastic tree shelters increased survival of planted tree seedlings, whereas dark-coloured shelters did not [1268]. One replicated, controlled study in Hong Kong found that tree guards increased tree height after 37 months but not after 44 months [1268]. In exposed coastal sites in the USA, full-length plastic shelters for red mangrove increased survival over 4\u20138 months, while full-length bamboo shelters and below-ground plastic shelters had no clear effect; plastic shelters also produced taller propagules in three of four comparisons over 22\u2013129 days [3331]. In a nutria-invaded freshwater wetland in the USA, plastic guards on planted baldcypress increased height and diameter growth over one growing season [3330]. Evidence for fencing/exclosure: In a USA floodplain swamp clearing, fencing to exclude deer did not change total tree seedling density after three years in plots sown with tree seeds, but fenced plots contained taller seedlings after three years than unfenced plots [3330]. In created freshwater wetlands in the USA, white cedar sapling height typically increased by a similar amount in fenced and unfenced plots over two to five years [3330]. In Australian floodplain swamps, plots fenced to exclude mammals had much higher one-year survival of planted swamp gum seedlings than open plots [3330]. Two USA freshwater wetland studies reported that exclusion fencing sometimes increased survival of planted tree seedlings and sometimes had no clear or significant effect, depending on planting season, elevation, and site [3330]. Gaps: No studies were found that evaluated fences or barriers to protect planted peatland vegetation [1839].\",\"action_ids\":[\"1268\",\"3330\",\"3331\",\"1839\"]}",
+            "return_val": "{\n  \"query\": \"To protect newly planted trees from herbivores, what is the evidence for the effectiveness of fencing compared to using individual tree guards or shelters?\",\n  \"relevant_summary\": \"Evidence for individual guards/shelters: One replicated, randomized, controlled study in the USA found that light-coloured plastic tree shelters increased survival of planted tree seedlings, whereas dark-coloured shelters did not [1268]. One replicated, controlled study in Hong Kong found that tree guards increased tree height after 37 months but not after 44 months [1268]. In exposed coastal sites in the USA, full-length plastic shelters for red mangrove increased survival over 4\\u20138 months, while full-length bamboo shelters and below-ground plastic shelters had no clear effect; plastic shelters also produced taller propagules in three of four comparisons over 22\\u2013129 days [3331]. In a nutria-invaded freshwater wetland in the USA, plastic guards on planted baldcypress increased height and diameter growth over one growing season [3330]. Evidence for fencing/exclosure: In a USA floodplain swamp clearing, fencing to exclude deer did not change total tree seedling density after three years in plots sown with tree seeds, but fenced plots contained taller seedlings after three years than unfenced plots [3330]. In created freshwater wetlands in the USA, white cedar sapling height typically increased by a similar amount in fenced and unfenced plots over two to five years [3330]. In Australian floodplain swamps, plots fenced to exclude mammals had much higher one-year survival of planted swamp gum seedlings than open plots [3330]. Two USA freshwater wetland studies reported that exclusion fencing sometimes increased survival of planted tree seedlings and sometimes had no clear or significant effect, depending on planting season, elevation, and site [3330]. Gaps: No studies were found that evaluated fences or barriers to protect planted peatland vegetation [1839].\",\n  \"action_ids\": [\n    \"1268\",\n    \"3330\",\n    \"3331\",\n    \"1839\"\n  ]\n}"
           }
         ]
       }
@@ -120,20 +109,16 @@
     "query": "What are the documented effects of removing competing understory vegetation on planted trees and overall forest biodiversity?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Across studies, removing competing understory vegetation after planting showed mixed effects on planted trees and variable outcomes for biodiversity. Mechanical removal after planting had no effect on emergence, survival, growth rate, or frost damage in most studies, though one study reported increased seedling biomass, and another found that removing sheep laurel shrubs increased the growth rate and height of planted black spruce seedlings [1256]. Using herbicides after planting increased the size of planted trees in two of three studies, while one study found no effect on size; a replicated study found no effect on frost damage to Norway spruce seedlings [1262]. When vegetation removal was combined with mechanical soil disturbance, studies reported increased cover and diversity of understory plants, decreased understory shrub cover, and increased density of young trees [1274].",
-    "summary_action_ids": [
-      "1256",
-      "1262",
-      "1274"
-    ],
+    "relevant_summary": null,
+    "summary_action_ids": null,
     "tool_call_details": [
       {
         "iteration_num": 1,
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"removing competing understory vegetation effects on planted trees and forest biodiversity\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"effects of removing understory vegetation on planted trees and forest biodiversity\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1211\",\n    \"action_title\": \"Thin trees within forests: effects on understory plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -142,8 +127,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"removing competing understory vegetation effects on planted trees and forest biodiversity\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"1230\",\n    \"action_title\": \"Use wire fencing to exclude large native herbivores\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1220\",\n    \"action_title\": \"Use prescribed fire: effects on young trees\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2966\",\n    \"action_title\": \"Exclude or remove livestock from historically grazed freshwater marshes\",\n    \"rank\": 6\n  }\n]"
+            "args": "{\"query_string\":\"remove competing understory vegetation planted trees survival growth biodiversity\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1213\",\n    \"action_title\": \"Remove woody debris after timber harvest\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -151,19 +136,9 @@
         "iteration_num": 3,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1256\"}",
-            "return_val": "{\n  \"action_id\": \"1256\",\n  \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies (including three replicated, randomized, controlled studies) in Canada, the USA, France, Panama\\u00a0and Sweden\\u00a0found no effect of controlling understory vegetation on the emergence, survival,  growth rate or frost damage in planted seedlings. However, one found removing competing herbs increased seedling biomass.\\nOne replicated, controlled study in Canada\\u00a0found that removal of sheep laurel shrubs increased the growth rate and height of planted black spruce seedlings.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1273\"}",
-            "return_val": "{\n  \"action_id\": \"1273\",\n  \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n  \"key_messages\": \"Key Messages:\\n\\nFive of ten studies (including four replicated, randomized, controlled studies) in Bolivia, Canada, India and the USA found that logging trees in forests increased the density and cover of understory plants. Five studies found no effect or mixed effects.\\nFour of seven studies (including one replicated, randomized, controlled study) in Australia, Canada\\u00a0and the USA found that logging trees in forests increased species richness and diversity of understory plants. Three studies found no effect.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1274\"}",
-            "return_val": "{\n  \"action_id\": \"1274\",\n  \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, randomized, controlled study) in Portugal\\u00a0and France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the cover and diversity of understory plants. One of the studies found it also decreased understory shrub cover.\\nOne replicated, randomized, controlled study in France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the density of young trees.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"understory vegetation removal planted trees survival growth herbicide weeding effect biodiversity\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1213\",\n    \"action_title\": \"Remove woody debris after timber harvest\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1267\",\n    \"action_title\": \"Use weed mats to protect planted trees\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -172,8 +147,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"control competing vegetation after planting biodiversity understory removal effects\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1262\",\n    \"action_title\": \"Use herbicides after tree planting\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"control competing vegetation around planted trees remove understory biodiversity effects\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1262\",\n    \"action_title\": \"Use herbicides after tree planting\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2644\",\n    \"action_title\": \"Remove competing vegetation to allow tree establishment in clearcut areas\",\n    \"rank\": 9\n  }\n]"
           }
         ]
       },
@@ -181,9 +156,9 @@
         "iteration_num": 5,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1262\"}",
-            "return_val": "{\n  \"action_id\": \"1262\",\n  \"action_title\": \"Use herbicides after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo of three studies (including two replicated, randomized, controlled studies) in Sweden and the USA found that using herbicide increased the size of planted trees. One study\\u00a0found no effect on tree size.\\nOne replicated, randomized, controlled study in Sweden found no effect of using herbicide on frost damage caused to planted Norway spruce seedlings.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"remove competing vegetation planted trees survival growth biodiversity understory forest\", \"k\": 3, \"offset\": 9}",
+            "return_val": "[\n  {\n    \"action_id\": \"1223\",\n    \"action_title\": \"Use shelterwood harvesting\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"1246\",\n    \"action_title\": \"Remove or disturb leaf litter to enhance germination\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"1248\",\n    \"action_title\": \"Use fertilizer\",\n    \"rank\": 12\n  }\n]"
           }
         ]
       },
@@ -191,9 +166,64 @@
         "iteration_num": 6,
         "tools_called": [
           {
-            "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What are the documented effects of removing competing understory vegetation on planted trees and overall forest biodiversity?\",\"summary\":\"Across studies, removing competing understory vegetation after planting showed mixed effects on planted trees and variable outcomes for biodiversity. Mechanical removal after planting had no effect on emergence, survival, growth rate, or frost damage in most studies, though one study reported increased seedling biomass, and another found that removing sheep laurel shrubs increased the growth rate and height of planted black spruce seedlings [1256]. Using herbicides after planting increased the size of planted trees in two of three studies, while one study found no effect on size; a replicated study found no effect on frost damage to Norway spruce seedlings [1262]. When vegetation removal was combined with mechanical soil disturbance, studies reported increased cover and diversity of understory plants, decreased understory shrub cover, and increased density of young trees [1274].\",\"action_ids\":[\"1256\",\"1262\",\"1274\"]}",
-            "return_val": "{\n  \"query\": \"What are the documented effects of removing competing understory vegetation on planted trees and overall forest biodiversity?\",\n  \"relevant_summary\": \"Across studies, removing competing understory vegetation after planting showed mixed effects on planted trees and variable outcomes for biodiversity. Mechanical removal after planting had no effect on emergence, survival, growth rate, or frost damage in most studies, though one study reported increased seedling biomass, and another found that removing sheep laurel shrubs increased the growth rate and height of planted black spruce seedlings [1256]. Using herbicides after planting increased the size of planted trees in two of three studies, while one study found no effect on size; a replicated study found no effect on frost damage to Norway spruce seedlings [1262]. When vegetation removal was combined with mechanical soil disturbance, studies reported increased cover and diversity of understory plants, decreased understory shrub cover, and increased density of young trees [1274].\",\n  \"action_ids\": [\n    \"1256\",\n    \"1262\",\n    \"1274\"\n  ]\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"weeding around seedlings remove shrubs competing vegetation effects planted tree survival growth biodiversity\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3334\",\n    \"action_title\": \"Remove vegetation that could compete with planted trees/shrubs: freshwater wetlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1256\"}",
+            "return_val": "{\n  \"action_id\": \"1256\",\n  \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies (including three replicated, randomized, controlled studies) in Canada, the USA, France, Panama\\u00a0and Sweden\\u00a0found no effect of controlling understory vegetation on the emergence, survival,  growth rate or frost damage in planted seedlings. However, one found removing competing herbs increased seedling biomass.\\nOne replicated, controlled study in Canada\\u00a0found that removal of sheep laurel shrubs increased the growth rate and height of planted black spruce seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1267\"}",
+            "return_val": "{\n  \"action_id\": \"1267\",\n  \"action_title\": \"Use weed mats to protect planted trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Hong Kong\\u00a0found no effect of using weed mats on thick-leaved oak seedling height.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1262\"}",
+            "return_val": "{\n  \"action_id\": \"1262\",\n  \"action_title\": \"Use herbicides after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo of three studies (including two replicated, randomized, controlled studies) in Sweden and the USA found that using herbicide increased the size of planted trees. One study\\u00a0found no effect on tree size.\\nOne replicated, randomized, controlled study in Sweden found no effect of using herbicide on frost damage caused to planted Norway spruce seedlings.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2644\"}",
+            "return_val": "{\n  \"action_id\": \"2644\",\n  \"action_title\": \"Remove competing vegetation to allow tree establishment in clearcut areas\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of removing competing vegetation to allow tree establishment in clearcut areas. Two studies were in Canada\\u00a0and one was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (3 STUDIES)\\n\\nUse (3 studies): One of three studies (including two controlled studies and one site comparison study), in the USA\\u00a0and Canada, found that where competing vegetation was removed to allow tree establishment in clearcut areas, American martens used the areas more. One study found mixed results for moose\\u00a0and one found no increase in site use by snowshoe hares.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"remove competing vegetation effects birds mammals biodiversity planted forests understory removal\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2644\",\n    \"action_title\": \"Remove competing vegetation to allow tree establishment in clearcut areas\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1274\"}",
+            "return_val": "{\n  \"action_id\": \"1274\",\n  \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, randomized, controlled study) in Portugal\\u00a0and France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the cover and diversity of understory plants. One of the studies found it also decreased understory shrub cover.\\nOne replicated, randomized, controlled study in France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the density of young trees.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"understory vegetation removal biodiversity understory plants diversity effects\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1221\",\n    \"action_title\": \"Use prescribed fire: effect on understory plants\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1206\",\n    \"action_title\": \"Prevent livestock grazing in forests\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       }
@@ -230,43 +260,13 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"degraded forest areas improve soil conditions enhance tree growth interventions\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1153\",\n    \"action_title\": \"Improve soil quality after tree planting (excluding applying fertilizer)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1248\",\n    \"action_title\": \"Use fertilizer\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1252\",\n    \"action_title\": \"Use soil disturbance to enhance germination (excluding scarification or ploughing)\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"degraded forest soil improvement interventions enhance tree growth\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1153\",\n    \"action_title\": \"Improve soil quality after tree planting (excluding applying fertilizer)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1252\",\n    \"action_title\": \"Use soil disturbance to enhance germination (excluding scarification or ploughing)\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1248\",\n    \"action_title\": \"Use fertilizer\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 2,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\": \"degraded forest areas improve soil conditions enhance tree growth interventions\", \"k\": 3, \"offset\": 3}",
-            "return_val": "NONE - ERRONEOUS TOOL CALL"
-          }
-        ]
-      },
-      {
-        "iteration_num": 3,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"degraded forest areas improve soil conditions enhance tree growth interventions\",\"k\":3,\"offset\":3}",
-            "return_val": "NONE - ERRONEOUS TOOL CALL"
-          }
-        ]
-      },
-      {
-        "iteration_num": 4,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\": \"degraded forest areas improve soil conditions enhance tree growth interventions\", \"k\": 3, \"offset\": 3}",
-            "return_val": "NONE - ERRONEOUS TOOL CALL"
-          }
-        ]
-      },
-      {
-        "iteration_num": 5,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -275,13 +275,43 @@
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1248\"}",
-            "return_val": "{\n  \"action_id\": \"1248\",\n  \"action_title\": \"Use fertilizer\",\n  \"key_messages\": \"Key Messages:\\n\\nSix of eight studies (including five replicated, randomized, controlled) in the USA, Finland, Brazil, Australia\\u00a0and Switzerland\\u00a0found that applying fertilizer increased total plant cover, understory plant biomass , size of young trees, relative \\u00a0biomass of grasses (out of total biomass of all plants)\\u00a0and cover of plant species that were seeded artificially. Five of the studies found no effect of applying fertilizer on plant biomass, plant cover, seedling abundance, tree growth and tree seedling diversity.\"\n}"
+            "args": "{\"action_id\":\"1252\"}",
+            "return_val": "{\n  \"action_id\": \"1252\",\n  \"action_title\": \"Use soil disturbance to enhance germination (excluding scarification or ploughing)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled studies from Canada\\u00a0and Finland found that disturbance of the forest floor decreased understory vegetation cover.\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1252\"}",
-            "return_val": "{\n  \"action_id\": \"1252\",\n  \"action_title\": \"Use soil disturbance to enhance germination (excluding scarification or ploughing)\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled studies from Canada\\u00a0and Finland found that disturbance of the forest floor decreased understory vegetation cover.\"\n}"
+            "args": "{\"action_id\":\"1248\"}",
+            "return_val": "{\n  \"action_id\": \"1248\",\n  \"action_title\": \"Use fertilizer\",\n  \"key_messages\": \"Key Messages:\\n\\nSix of eight studies (including five replicated, randomized, controlled) in the USA, Finland, Brazil, Australia\\u00a0and Switzerland\\u00a0found that applying fertilizer increased total plant cover, understory plant biomass , size of young trees, relative \\u00a0biomass of grasses (out of total biomass of all plants)\\u00a0and cover of plant species that were seeded artificially. Five of the studies found no effect of applying fertilizer on plant biomass, plant cover, seedling abundance, tree growth and tree seedling diversity.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"degraded forest soil improvement interventions enhance tree growth\", \"k\":3, \"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1274\",\n    \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1251\",\n    \"action_title\": \"Use soil scarification or ploughing to enhance germination\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2649\",\n    \"action_title\": \"Apply fertilizer to trees\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1274\"}",
+            "return_val": "{\n  \"action_id\": \"1274\",\n  \"action_title\": \"Use vegetation removal together with mechanical disturbance to the soil\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, randomized, controlled study) in Portugal\\u00a0and France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the cover and diversity of understory plants. One of the studies found it also decreased understory shrub cover.\\nOne replicated, randomized, controlled study in France\\u00a0found that vegetation removal together with mechanical disturbance of the soil increased the density of young trees.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1251\"}",
+            "return_val": "{\n  \"action_id\": \"1251\",\n  \"action_title\": \"Use soil scarification or ploughing to enhance germination\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies (including one replicated, randomized, controlled study) in Portugal\\u00a0and the USA\\u00a0found that ploughing increased the cover and diversity of understory plants.\\nTwo of three studies (including two replicated, randomized, controlled) in Canada\\u00a0and Brazil\\u00a0found that ploughing increased,\\u00a0 and one found it decreased\\u00a0the density of young trees. Two replicated, controlled studies in Ethiopia\\u00a0and Sweden\\u00a0found mixed effects of tilling on different tree species.\\nOne replicated, before-and-after trial in Finland\\u00a0found that ploughing decreased the cover of plants living on wood surface.\\nOne replicated, controlled study in the USA\\u00a0found that ploughing did not decrease the spreading distance and density of invasive grass seedlings.\"\n}"
           }
         ]
       },
@@ -289,9 +319,9 @@
         "iteration_num": 6,
         "tools_called": [
           {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"degraded forest areas improve soil conditions enhance tree growth interventions\", \"k\": 3, \"offset\": 3}",
-            "return_val": "NONE - ERRONEOUS TOOL CALL"
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2649\"}",
+            "return_val": "{\n  \"action_id\": \"2649\",\n  \"action_title\": \"Apply fertilizer to trees\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of applying fertilizer to trees. All three studies were in Canada.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (3 STUDIES)\\n\\nUse (3 studies): One of three replicated studies (including one controlled study and two site comparison studies), in Canada, found that thinned forest stands to which fertilizer was applied were used more by snowshoe hares in winter but not in summer over the short-term. The other studies found that forest stands to which fertilizer was applied were not more used by snowshoe hares in the longer term or by mule deer or moose.\"\n}"
           }
         ]
       },
@@ -300,8 +330,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"degraded forest soil improve soil conditions enhance tree growth interventions mulch compost biochar mycorrhiza lime amendment degraded forest\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1153\",\n    \"action_title\": \"Improve soil quality after tree planting (excluding applying fertilizer)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1249\",\n    \"action_title\": \"Add lime to the soil to increase fertility\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"898\",\n    \"action_title\": \"Grow cover crops when the field is empty\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"degraded forest soil improvement interventions enhance tree growth\", \"k\":3, \"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"1272\",\n    \"action_title\": \"Log/remove trees within forests: effects on young trees\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1260\",\n    \"action_title\": \"Use fertilizer after tree planting\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2649\",\n    \"action_title\": \"Apply fertilizer to trees\",\n    \"rank\": 9\n  }\n]"
           }
         ]
       },
@@ -310,8 +340,8 @@
         "tools_called": [
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1249\"}",
-            "return_val": "{\n  \"action_id\": \"1249\",\n  \"action_title\": \"Add lime to the soil to increase fertility\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized controlled study in the USA\\u00a0found that adding lime increased vegetation cover.\"\n}"
+            "args": "{\"action_id\":\"1260\"}",
+            "return_val": "{\n  \"action_id\": \"1260\",\n  \"action_title\": \"Use fertilizer after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated, controlled studies in Canada\\u00a0and Portugal found that applying fertilizer after planting increased the size of the planted trees. One randomized, replicated, controlled study in Australia found that soil enhancers including fertilizer had a mixed effect on seedling survival and height.\\nThree studies (including two randomized, replicated, controlled study) in France\\u00a0and Australia found no effect of applying fertilizer on the size and survival rate or health of planted trees.\"\n}"
           }
         ]
       },
@@ -319,9 +349,9 @@
         "iteration_num": 9,
         "tools_called": [
           {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"forest restoration soil amendment mulch biochar compost inoculation mycorrhiza tree growth degraded forest intervention\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"1246\",\n    \"action_title\": \"Remove or disturb leaf litter to enhance germination\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3438\",\n    \"action_title\": \"Create large adjoining cavities or \\u2018swimthrough\\u2019 habitats (>100 mm) on intertidal artificial structures\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"899\",\n    \"action_title\": \"Control traffic and traffic timing\",\n    \"rank\": 6\n  }\n]"
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1272\"}",
+            "return_val": "{\n  \"action_id\": \"1272\",\n  \"action_title\": \"Log/remove trees within forests: effects on young trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated controlled study in Canada\\u00a0found that logging trees in forests increased the density of young trees. One replicated controlled study in Costa Rica\\u00a0found mixed effects on the density of young trees.\"\n}"
           }
         ]
       },
@@ -329,9 +359,9 @@
         "iteration_num": 10,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1246\"}",
-            "return_val": "{\n  \"action_id\": \"1246\",\n  \"action_title\": \"Remove or disturb leaf litter to enhance germination\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled study in Costa Rica\\u00a0found that leaf litter removal decreased the density of new tree seedlings. One replicated, controlled study in Poland\\u00a0found leaf litter removal increased understory plant species richness but decreased their cover.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"degraded forest soil improvement interventions enhance tree growth\", \"k\": 3, \"offset\": 9}",
+            "return_val": "[\n  {\n    \"action_id\": \"1260\",\n    \"action_title\": \"Use fertilizer after tree planting\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"1245\",\n    \"action_title\": \"Build bird-perches to enhance natural seed dispersal\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"2649\",\n    \"action_title\": \"Apply fertilizer to trees\",\n    \"rank\": 12\n  }\n]"
           }
         ]
       }
@@ -366,16 +396,23 @@
     "query": "What is the state of the evidence regarding the effectiveness of managing public access and tourism to mitigate human disturbance in forests?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": null,
-    "summary_action_ids": null,
+    "relevant_summary": "Evidence on managing public access to reduce wildlife disturbance includes: a replicated, paired sites, site comparison study in the USA reporting that removing or closing roads increased use of those areas by black bears [2325]; six studies from multiple regions reporting increased numbers of breeders, higher reproductive success, or lower disturbance in waders and terns following access restrictions or signage near nesting areas, with one USA before-and-after study successfully relocating a heron colony to an area with no public access, though one European study on eagles and one replicated, controlled Antarctic study on penguins found no effect [309]. Evidence gaps include: no studies found on the effects of restricting pedestrian access on vegetation in marshes or swamps [3022]; no studies found on using voluntary agreements with locals to reduce disturbance for mammals [2339]; and no evidence on the effects of prohibiting food consumption where primates can view people [1508]. Tourism-related evidence includes two studies on reptile-focused eco-tourism reporting self-reported human behaviour changes (participants indicating they would have searched for nesting turtles without supervised tours, or increased conscientiousness about behaviours affecting sea turtles) [3680].",
+    "summary_action_ids": [
+      "2325",
+      "309",
+      "3022",
+      "2339",
+      "1508",
+      "3680"
+    ],
     "tool_call_details": [
       {
         "iteration_num": 1,
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"managing public access and tourism to mitigate human disturbance in forests effectiveness evidence\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1170\",\n    \"action_title\": \"Create managed paths/signs to contain disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1439\",\n    \"action_title\": \"Change of crop (i.e. to a crop less palatable to primates)\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"managing public access and tourism to mitigate human disturbance in forests\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"309\",\n    \"action_title\": \"Use signs and access restrictions to reduce disturbance at nest sites\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3680\",\n    \"action_title\": \"Offer reptile-related eco-tourism to improve behaviour towards reptiles\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -383,14 +420,9 @@
         "iteration_num": 2,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1170\"}",
-            "return_val": "{\n  \"action_id\": \"1170\",\n  \"action_title\": \"Create managed paths/signs to contain disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of creating managed paths/signs to contain disturbance on forests.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1508\"}",
-            "return_val": "{\n  \"action_id\": \"1508\",\n  \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of not allowing people to consume food within natural areas where primates can view them on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"managing public access and tourism to mitigate human disturbance in forests\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1963\",\n    \"action_title\": \"Install and maintain gates at mine entrances to restrict public access\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1439\",\n    \"action_title\": \"Change of crop (i.e. to a crop less palatable to primates)\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -399,8 +431,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"public access tourism manage disturbance forests effectiveness evidence signage paths visitor management tourism restriction forest\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"2852\",\n    \"action_title\": \"Use biological control to manage invasive or problematic species\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1183\",\n    \"action_title\": \"Provide fuel efficient stoves\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2334\",\n    \"action_title\": \"Keep dogs indoors or in outside enclosures to reduce threats to wild mammals\",\n    \"rank\": 6\n  }\n]"
+            "args": "{\"query_string\":\"forests public access tourism human disturbance\",\"k\":3,\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2339\",\n    \"action_title\": \"Use voluntary agreements with locals to reduce disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3680\",\n    \"action_title\": \"Offer reptile-related eco-tourism to improve behaviour towards reptiles\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"309\",\n    \"action_title\": \"Use signs and access restrictions to reduce disturbance at nest sites\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -409,8 +441,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"tourism management forests human disturbance visitor education signage boardwalks restrict access evidence\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"3022\",\n    \"action_title\": \"Restrict pedestrian access\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2325\",\n    \"action_title\": \"Use signs or access restrictions to reduce disturbance to mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1751\",\n    \"action_title\": \"Restrict pedestrian access to peatlands\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"forests public access tourism human disturbance\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1963\",\n    \"action_title\": \"Install and maintain gates at mine entrances to restrict public access\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"309\",\n    \"action_title\": \"Use signs and access restrictions to reduce disturbance at nest sites\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1508\",\n    \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -418,9 +450,9 @@
         "iteration_num": 5,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"3022\"}",
-            "return_val": "{\n  \"action_id\": \"3022\",\n  \"action_title\": \"Restrict pedestrian access\",\n  \"key_messages\": \"Key Messages:\\nWe found no studies that evaluated the effects, on vegetation, of restricting pedestrian access to marshes or swamps.\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"access management trails signage buffer zones forest visitors disturbance\",\"k\":3,\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2325\",\n    \"action_title\": \"Use signs or access restrictions to reduce disturbance to mammals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3022\",\n    \"action_title\": \"Restrict pedestrian access\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"850\",\n    \"action_title\": \"Retain buffer zones around core habitat\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -431,6 +463,36 @@
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"2325\"}",
             "return_val": "{\n  \"action_id\": \"2325\",\n  \"action_title\": \"Use signs or access restrictions to reduce disturbance to mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of using signs or access restrictions to reduce disturbance to mammals. This study was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): A replicated, paired sites, site comparison study in the USA\\u00a0found that removing or closing roads increased use of those areas by black bears.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3022\"}",
+            "return_val": "{\n  \"action_id\": \"3022\",\n  \"action_title\": \"Restrict pedestrian access\",\n  \"key_messages\": \"Key Messages:\\nWe found no studies that evaluated the effects, on vegetation, of restricting pedestrian access to marshes or swamps.\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"850\"}",
+            "return_val": "{\n  \"action_id\": \"850\",\n  \"action_title\": \"Retain buffer zones around core habitat\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study in Australia found that grassland restoration that included leaving unmown buffers around ponds increased numbers of frog species.\\nOne replicated, site comparison study in the USA found that retaining buffers along ridge tops within harvested forest increased Red Hills salamander abundance, body condition and genetic diversity. One replicated, controlled study in the USA found that retaining unmown buffers around ponds had mixed effects on tadpole survival and mass depending on species and site.\\nOne replicated study in the USA\\u00a0found that 30 m buffer zones around wetlands were not sufficient to protect marbled salamanders.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"309\"}",
+            "return_val": "{\n  \"action_id\": \"309\",\n  \"action_title\": \"Use signs and access restrictions to reduce disturbance at nest sites\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies (two replicated and controlled, two before-and-after and two small studies) from across the world found increased numbers of breeders, higher reproductive success or lower levels of disturbance in waders and terns following the start of access restrictions or the erection of signs near nesting areas. One Canadian study involved the use of multiple interventions.\\nA before-and-after study from the USA found that a colony of black-crowned night herons Nycticorax nycticorax was successfully relocated to an area with no public access.\\nOne small study from Europe and one replicated and controlled study from Antarctica found no effect of access restrictions on the reproductive success of eagles or penguins, respectively.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2339\"}",
+            "return_val": "{\n  \"action_id\": \"2339\",\n  \"action_title\": \"Use voluntary agreements with locals to reduce disturbance\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on mammals of using voluntary agreements with locals to reduce disturbance.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1508\"}",
+            "return_val": "{\n  \"action_id\": \"1508\",\n  \"action_title\": \"Do not allow people to consume food within natural areas where primates can view them\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effects of not allowing people to consume food within natural areas where primates can view them on primate populations.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3680\"}",
+            "return_val": "{\n  \"action_id\": \"3680\",\n  \"action_title\": \"Offer reptile-related eco-tourism to improve behaviour towards reptiles\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on reptile populations of offering reptile-related eco-tourism to improve behaviour towards reptiles. One study was in the USA\\u00a0and one was in St Kitts and Nevis.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (1 STUDY)\\n\\nHuman behaviour change (1 study): One study in the USA\\u00a0reported that 32% of respondents to a survey said they would have gone to look for a nesting turtle if they had not been able to join a supervised turtle watch. One study in St Kitts and Nevis\\u00a0found that people who attended a leatherback turtle tour reported that they would be more conscientious of how their behaviours on the beach affected sea turtles.\"\n}"
           }
         ]
       },
@@ -438,39 +500,9 @@
         "iteration_num": 7,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1751\"}",
-            "return_val": "{\n  \"action_id\": \"1751\",\n  \"action_title\": \"Restrict pedestrian access to peatlands\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of restricting pedestrian access to peatlands.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 8,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"tourism forest disturbance management tourism education zoning boardwalks limit visitors evidence forest\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"312\",\n    \"action_title\": \"Reduce visitor group size\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3680\",\n    \"action_title\": \"Offer reptile-related eco-tourism to improve behaviour towards reptiles\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1761\",\n    \"action_title\": \"Cut large trees/shrubs to maintain or restore disturbance\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 9,
-        "tools_called": [
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"312\"}",
-            "return_val": "{\n  \"action_id\": \"312\",\n  \"action_title\": \"Reduce visitor group size\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no intervention-based studies examining the effects of reducing visitor numbers on bird populations. However, a single, replicated study in forests in Spain in 2004 (Remacha et al. 2011) found that fewer birds, but not fewer species, were observed as visitor number increased. This effect was largely due to decreases in collared dove Streptopelia decaocto presence and serin Serinus serinus abundance.\\nRemacha, C., Perez-Tris, J. & Antonio Delgado, J. (2011) Reducing visitors\\u2019 group size increases the number of birds during educational activities: Implications for management of nature-based recreation,Journal of Environmental Management, 92, 1564\\u20131568.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 10,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"visitor management signage paths boardwalks forest birds mammals disturbance education signs tourism evidence\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1170\",\n    \"action_title\": \"Create managed paths/signs to contain disturbance\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1171\",\n    \"action_title\": \"Re-route paths, control access or close paths\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3022\",\n    \"action_title\": \"Restrict pedestrian access\",\n    \"rank\": 3\n  }\n]"
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What is the state of the evidence regarding the effectiveness of managing public access and tourism to mitigate human disturbance in forests?\",\"summary\":\"Evidence on managing public access to reduce wildlife disturbance includes: a replicated, paired sites, site comparison study in the USA reporting that removing or closing roads increased use of those areas by black bears [2325]; six studies from multiple regions reporting increased numbers of breeders, higher reproductive success, or lower disturbance in waders and terns following access restrictions or signage near nesting areas, with one USA before-and-after study successfully relocating a heron colony to an area with no public access, though one European study on eagles and one replicated, controlled Antarctic study on penguins found no effect [309]. Evidence gaps include: no studies found on the effects of restricting pedestrian access on vegetation in marshes or swamps [3022]; no studies found on using voluntary agreements with locals to reduce disturbance for mammals [2339]; and no evidence on the effects of prohibiting food consumption where primates can view people [1508]. Tourism-related evidence includes two studies on reptile-focused eco-tourism reporting self-reported human behaviour changes (participants indicating they would have searched for nesting turtles without supervised tours, or increased conscientiousness about behaviours affecting sea turtles) [3680].\",\"action_ids\":[\"2325\",\"309\",\"3022\",\"2339\",\"1508\",\"3680\"]}",
+            "return_val": "{\n  \"query\": \"What is the state of the evidence regarding the effectiveness of managing public access and tourism to mitigate human disturbance in forests?\",\n  \"relevant_summary\": \"Evidence on managing public access to reduce wildlife disturbance includes: a replicated, paired sites, site comparison study in the USA reporting that removing or closing roads increased use of those areas by black bears [2325]; six studies from multiple regions reporting increased numbers of breeders, higher reproductive success, or lower disturbance in waders and terns following access restrictions or signage near nesting areas, with one USA before-and-after study successfully relocating a heron colony to an area with no public access, though one European study on eagles and one replicated, controlled Antarctic study on penguins found no effect [309]. Evidence gaps include: no studies found on the effects of restricting pedestrian access on vegetation in marshes or swamps [3022]; no studies found on using voluntary agreements with locals to reduce disturbance for mammals [2339]; and no evidence on the effects of prohibiting food consumption where primates can view people [1508]. Tourism-related evidence includes two studies on reptile-focused eco-tourism reporting self-reported human behaviour changes (participants indicating they would have searched for nesting turtles without supervised tours, or increased conscientiousness about behaviours affecting sea turtles) [3680].\",\n  \"action_ids\": [\n    \"2325\",\n    \"309\",\n    \"3022\",\n    \"2339\",\n    \"1508\",\n    \"3680\"\n  ]\n}"
           }
         ]
       }
@@ -494,10 +526,12 @@
     "query": "How does the effectiveness of managing livestock grazing to protect forests vary across different geographical locations mentioned in the evidence?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Across locations, preventing livestock grazing increased survival, species richness and diversity of understory plants in two of three studies conducted in Brazil, the UK and Costa Rica, while one study reported mixed effects, and in Israel preventing cattle grazing increased the density of oak seedlings and saplings [1206]. Shortening the livestock grazing period increased the abundance and size of regenerating oak trees in Spain, had no effect on native plant species richness in Australia, and in the UK the number of tree seedlings was higher following summer compared to winter grazing [1208].",
+    "relevant_summary": "Across locations, effects vary: Preventing livestock grazing increased survival, species richness and diversity of understory plants in Brazil, the UK and Costa Rica, with one study reporting mixed effects; in Israel, preventing cattle grazing increased oak seedling and sapling density (1206). Excluding livestock with wire fences increased understory biomass, species richness, density and cover in some studies from Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA, while other studies in these regions found mixed or no effects; in Mexico, Kenya, Israel and Panama, fencing increased the size, density and number of regenerating trees, though one study reported decreased tree density without a change in tree size (1205). Shortening the grazing period increased abundance and size of regenerating oak in Spain, had no effect on native plant species richness in Australia, and in the UK resulted in higher numbers of tree seedlings after summer than winter grazing (1208). Reducing grazing intensity increased tree saplings in the UK and increased understory biomass in Greece (1207).",
     "summary_action_ids": [
       "1206",
-      "1208"
+      "1205",
+      "1208",
+      "1207"
     ],
     "tool_call_details": [
       {
@@ -505,8 +539,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"manage livestock grazing protect forests effectiveness geography locations evidence\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1206\",\n    \"action_title\": \"Prevent livestock grazing in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3711\",\n    \"action_title\": \"Manage vegetation using livestock grazing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1208\",\n    \"action_title\": \"Shorten livestock grazing period or control grazing season in forests\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"livestock grazing protect forests effectiveness geography locations\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1206\",\n    \"action_title\": \"Prevent livestock grazing in forests\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1205\",\n    \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1208\",\n    \"action_title\": \"Shorten livestock grazing period or control grazing season in forests\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -520,8 +554,8 @@
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"3711\"}",
-            "return_val": "{\n  \"action_id\": \"3711\",\n  \"action_title\": \"Manage vegetation using livestock grazing\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of managing vegetation using livestock grazing on reptile populations. One study was in France\\u00a0and one was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (1 study): One site comparison study in France\\u00a0found that one reptile species was more abundant in areas grazed by sheep than in areas managed by burning, whereas the abundance of five other species was similar in all areas.\\nReproductive success (1 study): One before-and-after study in the USA\\u00a0found that after grazing cattle to restore bog turtle habitat, along with providing artificial nest covers, more bog turtle eggs were laid and hatching success was higher than before.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One before-and-after study in the USA\\u00a0found that bog turtle nests were laid only in areas that had been grazed in the current or previous growing season.\"\n}"
+            "args": "{\"action_id\":\"1205\"}",
+            "return_val": "{\n  \"action_id\": \"1205\",\n  \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of eight studies (including two replicated, randomized, controlled studies) in Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA found that excluding livestock using wire fences increased  biomass , species richness, density and cover of understory plants. The other four studies\\u00a0found mixed effects or no effect of livestock exclusion on understory plants.\\nThree of four studies (including one replicated, randomized, controlled study) in Mexico, Kenya, Israel and Panama found that excluding livestock using wire fences increased the size and density of regenerating trees and the number of regenerating trees. One study\\u00a0found livestock exclusion decreased tree density but not tree size.\"\n}"
           },
           {
             "function_name": "get_action_details",
@@ -535,8 +569,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"livestock grazing forests effectiveness location study site comparison prevent exclude reduce control grazing forest regeneration seedlings understory\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"1213\",\n    \"action_title\": \"Remove woody debris after timber harvest\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1743\",\n    \"action_title\": \"Reduce frequency of harvest (of wild biological resources)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2554\",\n    \"action_title\": \"Provide dams/water holes during drought\",\n    \"rank\": 6\n  }\n]"
+            "args": "{\"query_string\":\"livestock grazing forests effectiveness geography locations\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1208\",\n    \"action_title\": \"Shorten livestock grazing period or control grazing season in forests\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1207\",\n    \"action_title\": \"Reduce the intensity of livestock grazing in forests\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1628\",\n    \"action_title\": \"Increase number of livestock\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -544,9 +578,29 @@
         "iteration_num": 4,
         "tools_called": [
           {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1207\"}",
+            "return_val": "{\n  \"action_id\": \"1207\",\n  \"action_title\": \"Reduce the intensity of livestock grazing in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated study in the UK\\u00a0found that reducing grazing intensity increased the number of tree saplings.\\nOne replicated, randomized, controlled study in Greece\\u00a0found that reducing grazing intensity increased understory biomass.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"forest livestock grazing effectiveness geography\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"1205\",\n    \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3512\",\n    \"action_title\": \"Cease livestock grazing: Wetland\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1628\",\n    \"action_title\": \"Increase number of livestock\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"How does the effectiveness of managing livestock grazing to protect forests vary across different geographical locations mentioned in the evidence?\",\"summary\":\"Across locations, preventing livestock grazing increased survival, species richness and diversity of understory plants in two of three studies conducted in Brazil, the UK and Costa Rica, while one study reported mixed effects, and in Israel preventing cattle grazing increased the density of oak seedlings and saplings [1206]. Shortening the livestock grazing period increased the abundance and size of regenerating oak trees in Spain, had no effect on native plant species richness in Australia, and in the UK the number of tree seedlings was higher following summer compared to winter grazing [1208].\",\"action_ids\":[\"1206\",\"1208\"]}",
-            "return_val": "{\n  \"query\": \"How does the effectiveness of managing livestock grazing to protect forests vary across different geographical locations mentioned in the evidence?\",\n  \"relevant_summary\": \"Across locations, preventing livestock grazing increased survival, species richness and diversity of understory plants in two of three studies conducted in Brazil, the UK and Costa Rica, while one study reported mixed effects, and in Israel preventing cattle grazing increased the density of oak seedlings and saplings [1206]. Shortening the livestock grazing period increased the abundance and size of regenerating oak trees in Spain, had no effect on native plant species richness in Australia, and in the UK the number of tree seedlings was higher following summer compared to winter grazing [1208].\",\n  \"action_ids\": [\n    \"1206\",\n    \"1208\"\n  ]\n}"
+            "args": "{\"query\":\"How does the effectiveness of managing livestock grazing to protect forests vary across different geographical locations mentioned in the evidence?\",\"summary\":\"Across locations, effects vary: Preventing livestock grazing increased survival, species richness and diversity of understory plants in Brazil, the UK and Costa Rica, with one study reporting mixed effects; in Israel, preventing cattle grazing increased oak seedling and sapling density (1206). Excluding livestock with wire fences increased understory biomass, species richness, density and cover in some studies from Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA, while other studies in these regions found mixed or no effects; in Mexico, Kenya, Israel and Panama, fencing increased the size, density and number of regenerating trees, though one study reported decreased tree density without a change in tree size (1205). Shortening the grazing period increased abundance and size of regenerating oak in Spain, had no effect on native plant species richness in Australia, and in the UK resulted in higher numbers of tree seedlings after summer than winter grazing (1208). Reducing grazing intensity increased tree saplings in the UK and increased understory biomass in Greece (1207).\",\"action_ids\":[\"1206\",\"1205\",\"1208\",\"1207\"]}",
+            "return_val": "{\n  \"query\": \"How does the effectiveness of managing livestock grazing to protect forests vary across different geographical locations mentioned in the evidence?\",\n  \"relevant_summary\": \"Across locations, effects vary: Preventing livestock grazing increased survival, species richness and diversity of understory plants in Brazil, the UK and Costa Rica, with one study reporting mixed effects; in Israel, preventing cattle grazing increased oak seedling and sapling density (1206). Excluding livestock with wire fences increased understory biomass, species richness, density and cover in some studies from Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA, while other studies in these regions found mixed or no effects; in Mexico, Kenya, Israel and Panama, fencing increased the size, density and number of regenerating trees, though one study reported decreased tree density without a change in tree size (1205). Shortening the grazing period increased abundance and size of regenerating oak in Spain, had no effect on native plant species richness in Australia, and in the UK resulted in higher numbers of tree seedlings after summer than winter grazing (1208). Reducing grazing intensity increased tree saplings in the UK and increased understory biomass in Greece (1207).\",\n  \"action_ids\": [\n    \"1206\",\n    \"1205\",\n    \"1208\",\n    \"1207\"\n  ]\n}"
           }
         ]
       }
@@ -573,16 +627,24 @@
     "query": "What management techniques involving tree removal can be used to increase forest structural diversity and what are their effects?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": null,
-    "summary_action_ids": null,
+    "relevant_summary": "Evidence-based, tree-removal techniques include: group-selection harvesting, general logging/removal, partial retention harvesting, and clearcutting. Group-selection harvesting increased understory plant cover and diversity and the density of young trees in multiple studies, though some studies reported decreases or no effects on understory metrics and tree density/growth-rate [1224]. General logging/removal increased understory plant density and cover in about half of studies and increased understory species richness/diversity in several studies, while other studies found no or mixed effects [1273]; it increased young tree density in one replicated controlled study and showed mixed effects in another [1272]; for mature trees, logging decreased tree density/cover in some studies, increased density in others, had mixed effects on tree size (increases in several studies; decreases or no effect in others), and showed mixed effects on tree species richness/diversity, with decreases in some studies and increases or no effect in others [1271]; among non-vascular plants, logging decreased epiphyte abundance and fern fertility in two of three studies, with species-specific mixed effects reported elsewhere [1270]. Partial retention harvesting (vs clearcutting) decreased the density of young trees in three Canadian studies [1215]. Clearcutting increased understory plant cover and species richness in most of the studies reviewed, but reduced density, species richness, and diversity of mature trees in some studies; effects on young tree density/species richness were mixed across studies [1222].",
+    "summary_action_ids": [
+      "1224",
+      "1273",
+      "1272",
+      "1271",
+      "1270",
+      "1215",
+      "1222"
+    ],
     "tool_call_details": [
       {
         "iteration_num": 1,
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"forest structural diversity tree removal management techniques increase structural diversity effects\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1223\",\n    \"action_title\": \"Use shelterwood harvesting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1214\",\n    \"action_title\": \"Use shelterwood harvest instead of clearcutting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3636\",\n    \"action_title\": \"Use shelterwood harvesting\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"forest structural diversity tree removal techniques effects increase structural diversity management techniques thinning gap creation retention harvest variable density thinning overstory removal\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1224\",\n    \"action_title\": \"Use group-selection harvesting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3871\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -591,8 +653,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"increase forest structural diversity variable retention harvest thinning gap creation selection harvest tree removal structural diversity effects\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1224\",\n    \"action_title\": \"Use group-selection harvesting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3871\",\n    \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"forest structural diversity tree removal techniques effects increase structural diversity create gaps thinning variable retention harvest deadwood create snags remove trees effects biodiversity structure\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1270\",\n    \"action_title\": \"Log/remove trees within forests: effects on non-vascular plants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1272\",\n    \"action_title\": \"Log/remove trees within forests: effects on young trees\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -601,8 +663,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"increase forest structural diversity variable retention harvest thinning gap creation selection harvest tree removal structural diversity effects\",\"k\":3,\"offset\":3}",
-            "return_val": "[\n  {\n    \"action_id\": \"1272\",\n    \"action_title\": \"Log/remove trees within forests: effects on young trees\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1246\",\n    \"action_title\": \"Remove or disturb leaf litter to enhance germination\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2966\",\n    \"action_title\": \"Exclude or remove livestock from historically grazed freshwater marshes\",\n    \"rank\": 6\n  }\n]"
+            "args": "{\"query_string\":\"forest structural diversity tree removal thinning variable density overstory removal gap creation retention harvest biodiversity structure effects wildlife understory deadwood\",\"k\":3,\"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"1272\",\n    \"action_title\": \"Log/remove trees within forests: effects on young trees\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1270\",\n    \"action_title\": \"Log/remove trees within forests: effects on non-vascular plants\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1215\",\n    \"action_title\": \"Use partial retention harvesting instead of clearcutting\",\n    \"rank\": 9\n  }\n]"
           }
         ]
       },
@@ -611,8 +673,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"increase forest structural diversity variable retention harvest thinning gap creation selection harvest tree removal structural diversity effects\",\"k\":3,\"offset\":6}",
-            "return_val": "NONE - ERRONEOUS TOOL CALL"
+            "args": "{\"query_string\":\"increase forest structural diversity remove trees management technique variable density thinning gap-based harvesting group selection retention harvest thinning effects structure canopy deadwood wildlife\",\"k\":3,\"offset\":9}",
+            "return_val": "[\n  {\n    \"action_id\": \"1271\",\n    \"action_title\": \"Log/remove trees within forests: effects on mature trees\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"3940\",\n    \"action_title\": \"Thin trees within forests\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 12\n  }\n]"
           }
         ]
       },
@@ -621,8 +683,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"thinning to increase structural diversity forest management effects understory diversity gap creation retention harvest variable retention\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1224\",\n    \"action_title\": \"Use group-selection harvesting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1222\",\n    \"action_title\": \"Use clearcutting to increase understory diversity\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"forest management structural diversity variable retention harvest aggregated retention dispersed retention effects biodiversity structure create gaps selective logging group selection shelterwood regeneration structural complexity\",\"k\":3,\"offset\":12}",
+            "return_val": "[\n  {\n    \"action_id\": \"1222\",\n    \"action_title\": \"Use clearcutting to increase understory diversity\",\n    \"rank\": 13\n  },\n  {\n    \"action_id\": \"3870\",\n    \"action_title\": \"Use leave-tree harvesting instead of clearcutting\",\n    \"rank\": 14\n  },\n  {\n    \"action_id\": \"3872\",\n    \"action_title\": \"Retain riparian buffer strips during timber harvest\",\n    \"rank\": 15\n  }\n]"
           }
         ]
       },
@@ -631,8 +693,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"variable retention harvesting retain trees aggregates dispersed retention structural complexity effects biodiversity\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1215\",\n    \"action_title\": \"Use partial retention harvesting instead of clearcutting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"332\",\n    \"action_title\": \"Use variable retention management during forestry operations\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"330\",\n    \"action_title\": \"Use patch retention harvesting instead of clearcutting\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"thinning increase structural diversity variable density thinning multi-cohort uneven-aged management single-tree selection group selection shelterwood with reserves effects structure understory wildlife deadwood\",\"k\":3,\"offset\":15}",
+            "return_val": "[\n  {\n    \"action_id\": \"3637\",\n    \"action_title\": \"Use selective logging\",\n    \"rank\": 16\n  },\n  {\n    \"action_id\": \"1217\",\n    \"action_title\": \"Use prescribed fire: effects on mature trees\",\n    \"rank\": 17\n  },\n  {\n    \"action_id\": \"1220\",\n    \"action_title\": \"Use prescribed fire: effects on young trees\",\n    \"rank\": 18\n  }\n]"
           }
         ]
       },
@@ -641,33 +703,13 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"create canopy gaps gap creation small openings harvest group selection effects structural diversity\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1224\",\n    \"action_title\": \"Use group-selection harvesting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2641\",\n    \"action_title\": \"Clear or open patches in forests\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"990\",\n    \"action_title\": \"Use shelterwood cutting instead of clearcutting\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"forest structure diversity management harvest methods thinning selection system group selection shelterwood partial retention variable retention single-tree selection effects structure heterogeneous habitats\",\"k\":3,\"offset\":18}",
+            "return_val": "[\n  {\n    \"action_id\": \"990\",\n    \"action_title\": \"Use shelterwood cutting instead of clearcutting\",\n    \"rank\": 19\n  },\n  {\n    \"action_id\": \"3872\",\n    \"action_title\": \"Retain riparian buffer strips during timber harvest\",\n    \"rank\": 20\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 21\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 8,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"thin trees thinning to increase structural diversity effects understory response forest thinning management technique\",\"k\":3,\"offset\":0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1226\",\n    \"action_title\": \"Thin trees by girdling (cutting rings around tree trunks)\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1227\",\n    \"action_title\": \"Use thinning followed by prescribed fire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1211\",\n    \"action_title\": \"Thin trees within forests: effects on understory plants\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 9,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"selective logging remove selected trees structural diversity effects biodiversity\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1490\",\n    \"action_title\": \"Clear open patches in the forest\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3637\",\n    \"action_title\": \"Use selective logging\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"989\",\n    \"action_title\": \"Use selective or reduced impact logging instead of conventional logging\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 10,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -676,53 +718,8 @@
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1223\"}",
-            "return_val": "{\n  \"action_id\": \"1223\",\n  \"action_title\": \"Use shelterwood harvesting\",\n  \"key_messages\": \"Key Messages:\\n\\nSix of seven studies (including five replicated, controlled studies) in Australia, Iran, Nepal\\u00a0and the USA\\u00a0found that shelterwood harvesting increased abundance, species richness and diversity of understory plants, as well as the growth and survival rate of young trees. One study found shelterwood harvesting decreased plant species richness and abundance. One study found no effect of shelterwood harvest on tree abundance.\\nOne replicated, controlled study in Canada\\u00a0found no effect of shelterwood harvest on red oak acorn production.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1215\"}",
-            "return_val": "{\n  \"action_id\": \"1215\",\n  \"action_title\": \"Use partial retention harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated, randomized, controlled study) in Canada\\u00a0found that using partial retention harvesting instead of clearcutting decreased the density of young trees.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"332\"}",
-            "return_val": "{\n  \"action_id\": \"332\",\n  \"action_title\": \"Use variable retention management during forestry operations\",\n  \"key_messages\": \"Key Messages:\\nA replicated, controlled study from the USA found that nine bird species occurred at higher densities in stands under variable retention management, compared to control stands. Five were found at lower densities.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"330\"}",
-            "return_val": "{\n  \"action_id\": \"330\",\n  \"action_title\": \"Use patch retention harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after study of two from the USA found that areas under patch retention harvesting contained more birds of more species than clearcut areas, retaining similar numbers to unharvested areas.\\nTwo studies from the USA found that forest specialist species were found with greater frequency in patch retention plots than other management types. One found that habitat generalists increased on other management types, relative to patch retention areas.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1211\"}",
-            "return_val": "{\n  \"action_id\": \"1211\",\n  \"action_title\": \"Thin trees within forests: effects on understory plants\",\n  \"key_messages\": \"Key Messages:\\n\\nSeventeen of 25 studies (including four replicated, randomized, controlled studies) in Argentina, Brazil, Canada, Japan, Spain\\u00a0and the USA\\u00a0found that thinning trees in forests increased the density and cover of understory plants. Seven studies found no effect or mixed effects. One study\\u00a0found a decrease in the abundance of herbaceous species.\\nThirteen of 19 studies (including 10 replicated, randomized, controlled studies) in Argentina, Canada, Sweden, the USA\\u00a0and West Africa\\u00a0found that thinning trees in forests increased species richness and diversity of understory plants. Seven studies found no effect.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1226\"}",
-            "return_val": "{\n  \"action_id\": \"1226\",\n  \"action_title\": \"Thin trees by girdling (cutting rings around tree trunks)\",\n  \"key_messages\": \"Key Messages:\\n\\nOne before-and-after trial in Canada\\u00a0found that thinning trees by girdling (cutting rings around tree trunks) increased understory plant species richness, diversity and cover.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1222\"}",
-            "return_val": "{\n  \"action_id\": \"1222\",\n  \"action_title\": \"Use clearcutting to increase understory diversity\",\n  \"key_messages\": \"Key Messages:\\n\\nEight of 12 studies (including three replicated, randomized, controlled studies) in Belgium, Brazil, Canada, China, Germany, Israel, spain\\u00a0and the USA\\u00a0found that clearcutting increased the cover and  species richness of understory plants. Two found it decreased the density and species richness, and two found no effect or mixed effects.\\nThree of six studies (including five replicated, randomized, controlled studies) in Brazil, Canada and Spain\\u00a0found that clearcutting increased the density and species richness of young trees. One found it decreased new tree density and two found no effect or mixed effects depending on the tree species.\\nThree of nine studies (including four replicated, randomized, controlled studies) in Australia, Brazil4, Canada, Japan\\u00a0and the USA found that clearcutting decreased density, species richness and diversity of mature trees. One study found it increased trees species richness .Six studies found no effect or mixed effects on tree density, size and species richness and diversity.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"2641\"}",
-            "return_val": "{\n  \"action_id\": \"2641\",\n  \"action_title\": \"Clear or open patches in forests\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects on mammals of clearing or opening patches in forests. Two studies were in the USA, one was in Bolivia and one was in Canada.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): Two of four replicated studies (including three controlled studies and a site comparison study), in Bolivia, the USA and Canada, found that creating gaps or open patches within forests did not increase small mammal abundance relative to uncut forest. One study found that it did increase small mammal abundance and one found increased abundance for one of four small mammal species.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"3637\"}",
-            "return_val": "{\n  \"action_id\": \"3637\",\n  \"action_title\": \"Use selective logging\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects of using selective logging in forests on reptile populations. One study was in each of Brazil, the USA and Mexico.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Mexico found that areas with low intensity selective logging tended to have similar reptile species richness compared to areas with high intensity selective logging.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): One of two replicated, randomized, controlled studies (including one before-and-after study) in Brazil and the USA found that selective logging intensity had mixed effects on the abundance of three lizard species. The other study found that areas with selective logging had similar reptile abundance compared to areas with combined clearcutting and thinning.\\nBEHAVIOUR (0 STUDIES)\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"989\"}",
-            "return_val": "{\n  \"action_id\": \"989\",\n  \"action_title\": \"Use selective or reduced impact logging instead of conventional logging\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of using selective or reduced impact logging instead of conventional logging on bat populations. Two studies were in the Neotropics,\\u00a0one study was in Italy\\u00a0and one in Germany.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nCommunity composition (1 study): One replicated, controlled, site comparison study in Trinidad\\u00a0found that the composition of bat species differed between selectively logged and conventionally logged forest.\\nRichness/diversity (1 study): One replicated, site comparison study in Germany\\u00a0found similar bat diversity in selectively logged and conventionally logged forest.\\n\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): One replicated, site comparison study in Germany\\u00a0found similar overall bat activity (relative abundance) in selectively logged and conventionally logged forest. One review of 41 studies in the Neotropics\\u00a0found that reduced impact logging had a smaller effect on bat abundance than conventional logging. One replicated, site comparison study in Italy\\u00a0found greater bat activity at two of three sites that used selective logging techniques to open up the forest canopy rather than leaving the canopy intact.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+            "args": "{\"action_id\":\"3871\"}",
+            "return_val": "{\n  \"action_id\": \"3871\",\n  \"action_title\": \"Use shelterwood harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on butterflies and moths of using shelterwood harvesting instead of clearcutting. All three studies were in the USA.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): One controlled, before-and-after study in the USA found that the species richness of macro-moths was higher after a forest was managed by shelterwood harvesting, than after harvest by patch-cutting or clearcutting, and the richness in the shelterwood harvested forest was similar to a thinned forest and an unharvested forest. One replicated, controlled, before-and-after study in the USA\\u00a0found that forests managed by shelterwood harvesting had a similar species richness of moths to forests managed by single tree harvesting, group selection harvesting or clearcutting, but a lower species richness than unharvested forest. One replicated, controlled, before-and-after study in the USA\\u00a0found that moth species richness recovered faster after shelterwood harvesting than after group selection harvesting or clearcutting.\\n\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\"\n}"
           },
           {
             "function_name": "get_action_details",
@@ -731,8 +728,58 @@
           },
           {
             "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1270\"}",
+            "return_val": "{\n  \"action_id\": \"1270\",\n  \"action_title\": \"Log/remove trees within forests: effects on non-vascular plants\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo of three studies (including one replicated, paired sites study) in Australia, Norway\\u00a0and Sweden found logging trees in forests decreased epiphytic plant abundance and fern fertility. One found mixed effects depending on species.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
             "args": "{\"action_id\":\"1272\"}",
             "return_val": "{\n  \"action_id\": \"1272\",\n  \"action_title\": \"Log/remove trees within forests: effects on young trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated controlled study in Canada\\u00a0found that logging trees in forests increased the density of young trees. One replicated controlled study in Costa Rica\\u00a0found mixed effects on the density of young trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1215\"}",
+            "return_val": "{\n  \"action_id\": \"1215\",\n  \"action_title\": \"Use partial retention harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies (including one replicated, randomized, controlled study) in Canada\\u00a0found that using partial retention harvesting instead of clearcutting decreased the density of young trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1271\"}",
+            "return_val": "{\n  \"action_id\": \"1271\",\n  \"action_title\": \"Log/remove trees within forests: effects on mature trees\",\n  \"key_messages\": \"Key Messages:\\n\\nThree of seven studies (including two replicated, controlled studies) in Bolivia, Central African Republic, China, Finland, Malaysia, Uganda and the USA\\u00a0found that logging trees in forests decreased the density and cover of trees. Two found it increased tree density\\u00a0and two found no effect of logging on tree density.\\nThree of six studies (including one replicated, randomized, controlled study) in Bolivia, Canada, China, Kenya, Malaysia\\u00a0and the USA found that logging trees in forests increased tree size. Two found it decreased tree size and one found no effect\\u00a0of\\u00a0 logging on tree size.\\nTwo of four studies (including one paired site study) in Bolivia, China, Mexico\\u00a0and Papua New Guinea found that logging trees in forests decreased tree species richness and diversity. One study found it increased diversity\\u00a0and one found no effect\\u00a0of logging on tree species diversity.\\nOne replicated, controlled study in Canada\\u00a0found that logging trees in forests increased tree mortality rate.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3940\"}",
+            "return_val": "{\n  \"action_id\": \"3940\",\n  \"action_title\": \"Thin trees within forests\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on butterflies and moths of thinning trees within forests and woodland. Three studies were in the USA\\u00a0and one was in each of C\\u00f4te d\\u2019Ivoire, Finland\\u00a0and the Czech Republic.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nCommunity composition (1 study): One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that rarer species of fruit-feeding butterfly were less frequently caught in a forest managed by thinning than in an unmanaged, naturally regenerating forest.\\n\\n\\nRichness/diversity (6 studies): Four studies (including two replicated, paired, controlled, before-and-after studies) in the USA\\u00a0and Finland\\u00a0found that one, two\\u00a0or four\\u00a0years after management, coniferous woodland which had been thinned, along with either prescribed burning, mulching\\u00a0or nearby felling, had a greater species richness of butterflies, or butterflies, diurnal moths and bumblebees combined, than either unmanaged woodland\\u00a0or before management. One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that a forest managed by thinning had a similar species richness and diversity of fruit-feeding butterflies to an unmanaged, naturally regenerating forest. One replicated, paired sites, controlled study in the Czech Republic\\u00a0found that partially-cleared forest plots had higher butterfly but lower moth species richness than plots of closed-canopy forest.\\n\\nPOPULATION RESPONSE (5 STUDIES)\\n\\nAbundance (5 studies): Four studies (including two replicated, paired, controlled, before-and-after studies) in the USA\\u00a0and Finland\\u00a0found that one, two\\u00a0or four\\u00a0years after management, coniferous woodland which had been thinned, along with either prescribed burning, mulching\\u00a0or nearby felling, had a higher abundance of all butterflies, or specialist butterflies, than either unmanaged woodland\\u00a0or before management. One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that a forest managed by thinning had a similar abundance of fruit-feeding butterflies to an unmanaged, naturally regenerating forest.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1222\"}",
+            "return_val": "{\n  \"action_id\": \"1222\",\n  \"action_title\": \"Use clearcutting to increase understory diversity\",\n  \"key_messages\": \"Key Messages:\\n\\nEight of 12 studies (including three replicated, randomized, controlled studies) in Belgium, Brazil, Canada, China, Germany, Israel, spain\\u00a0and the USA\\u00a0found that clearcutting increased the cover and  species richness of understory plants. Two found it decreased the density and species richness, and two found no effect or mixed effects.\\nThree of six studies (including five replicated, randomized, controlled studies) in Brazil, Canada and Spain\\u00a0found that clearcutting increased the density and species richness of young trees. One found it decreased new tree density and two found no effect or mixed effects depending on the tree species.\\nThree of nine studies (including four replicated, randomized, controlled studies) in Australia, Brazil4, Canada, Japan\\u00a0and the USA found that clearcutting decreased density, species richness and diversity of mature trees. One study found it increased trees species richness .Six studies found no effect or mixed effects on tree density, size and species richness and diversity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3870\"}",
+            "return_val": "{\n  \"action_id\": \"3870\",\n  \"action_title\": \"Use leave-tree harvesting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on butterflies and moths of using leave-tree harvesting instead of clearcutting.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3637\"}",
+            "return_val": "{\n  \"action_id\": \"3637\",\n  \"action_title\": \"Use selective logging\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects of using selective logging in forests on reptile populations. One study was in each of Brazil, the USA and Mexico.\\n\\nCOMMUNITY RESPONSE (1 STUDY)\\n\\nRichness/diversity (1 study): One replicated, site comparison study in Mexico found that areas with low intensity selective logging tended to have similar reptile species richness compared to areas with high intensity selective logging.\\n\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): One of two replicated, randomized, controlled studies (including one before-and-after study) in Brazil and the USA found that selective logging intensity had mixed effects on the abundance of three lizard species. The other study found that areas with selective logging had similar reptile abundance compared to areas with combined clearcutting and thinning.\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"990\"}",
+            "return_val": "{\n  \"action_id\": \"990\",\n  \"action_title\": \"Use shelterwood cutting instead of clearcutting\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of using shelterwood cutting instead of \\u2018gap release\\u2019 cutting on bat populations. The study was in Australia. We found no studies that evaluated the effects of shelterwood cutting instead of clearcutting.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (1 STUDY)\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0 \\n\\nUse (1 study): One site comparison study in Australia\\u00a0found more Gould\\u2019s long-eared bats roosting in remnant trees within forests that had been shelterwood harvested than in forests harvested using gap release methods. Comparisons were not made with clearcutting.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What management techniques involving tree removal can be used to increase forest structural diversity and what are their effects?\",\"summary\":\"Evidence-based, tree-removal techniques include: group-selection harvesting, general logging/removal, partial retention harvesting, and clearcutting. Group-selection harvesting increased understory plant cover and diversity and the density of young trees in multiple studies, though some studies reported decreases or no effects on understory metrics and tree density/growth-rate [1224]. General logging/removal increased understory plant density and cover in about half of studies and increased understory species richness/diversity in several studies, while other studies found no or mixed effects [1273]; it increased young tree density in one replicated controlled study and showed mixed effects in another [1272]; for mature trees, logging decreased tree density/cover in some studies, increased density in others, had mixed effects on tree size (increases in several studies; decreases or no effect in others), and showed mixed effects on tree species richness/diversity, with decreases in some studies and increases or no effect in others [1271]; among non-vascular plants, logging decreased epiphyte abundance and fern fertility in two of three studies, with species-specific mixed effects reported elsewhere [1270]. Partial retention harvesting (vs clearcutting) decreased the density of young trees in three Canadian studies [1215]. Clearcutting increased understory plant cover and species richness in most of the studies reviewed, but reduced density, species richness, and diversity of mature trees in some studies; effects on young tree density/species richness were mixed across studies [1222].\",\"action_ids\":[\"1224\",\"1273\",\"1272\",\"1271\",\"1270\",\"1215\",\"1222\"]}",
+            "return_val": "{\n  \"query\": \"What management techniques involving tree removal can be used to increase forest structural diversity and what are their effects?\",\n  \"relevant_summary\": \"Evidence-based, tree-removal techniques include: group-selection harvesting, general logging/removal, partial retention harvesting, and clearcutting. Group-selection harvesting increased understory plant cover and diversity and the density of young trees in multiple studies, though some studies reported decreases or no effects on understory metrics and tree density/growth-rate [1224]. General logging/removal increased understory plant density and cover in about half of studies and increased understory species richness/diversity in several studies, while other studies found no or mixed effects [1273]; it increased young tree density in one replicated controlled study and showed mixed effects in another [1272]; for mature trees, logging decreased tree density/cover in some studies, increased density in others, had mixed effects on tree size (increases in several studies; decreases or no effect in others), and showed mixed effects on tree species richness/diversity, with decreases in some studies and increases or no effect in others [1271]; among non-vascular plants, logging decreased epiphyte abundance and fern fertility in two of three studies, with species-specific mixed effects reported elsewhere [1270]. Partial retention harvesting (vs clearcutting) decreased the density of young trees in three Canadian studies [1215]. Clearcutting increased understory plant cover and species richness in most of the studies reviewed, but reduced density, species richness, and diversity of mature trees in some studies; effects on young tree density/species richness were mixed across studies [1222].\",\n  \"action_ids\": [\n    \"1224\",\n    \"1273\",\n    \"1272\",\n    \"1271\",\n    \"1270\",\n    \"1215\",\n    \"1222\"\n  ]\n}"
           }
         ]
       }
@@ -782,7 +829,7 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"thinning trees effects on forest ecosystem mature trees young trees understory plants documented effects\", \"k\": 3, \"offset\": 0}",
+            "args": "{\"query_string\": \"effects of thinning trees on forest ecosystem components mature trees young trees understory plants\", \"k\": 3, \"offset\": 0}",
             "return_val": "[\n  {\n    \"action_id\": \"1227\",\n    \"action_title\": \"Use thinning followed by prescribed fire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1224\",\n    \"action_title\": \"Use group-selection harvesting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1222\",\n    \"action_title\": \"Use clearcutting to increase understory diversity\",\n    \"rank\": 3\n  }\n]"
           }
         ]
@@ -792,8 +839,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"thinning trees effects forest ecosystem understory plants seedlings saplings mature trees\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"1217\",\n    \"action_title\": \"Use prescribed fire: effects on mature trees\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1242\",\n    \"action_title\": \"Water plants to preserve dry tropical forest species\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1282\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Use liquid nitrogen to kill plants\",\n    \"rank\": 6\n  }\n]"
+            "args": "{\"query_string\":\"thinning effects on understory plants seedlings saplings overstory basal area growth mortality light availability forest management thinning\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1227\",\n    \"action_title\": \"Use thinning followed by prescribed fire\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1246\",\n    \"action_title\": \"Remove or disturb leaf litter to enhance germination\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -802,8 +849,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"mechanical thinning effects understory diversity regeneration seedling sapling growth basal area crown fuel load forest management thinning only\",\"k\":3,\"offset\":0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1227\",\n    \"action_title\": \"Use thinning followed by prescribed fire\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2477\",\n    \"action_title\": \"Thin trees to reduce wildfire risk\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"thinning forest thinning effects mature trees growth mortality young trees saplings seedlings understory herbaceous shrubs fuel loads light canopy gaps thinning study\",\"k\":3,\"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"2477\",\n    \"action_title\": \"Thin trees to reduce wildfire risk\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3940\",\n    \"action_title\": \"Thin trees within forests\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1272\",\n    \"action_title\": \"Log/remove trees within forests: effects on young trees\",\n    \"rank\": 9\n  }\n]"
           }
         ]
       },
@@ -812,8 +859,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"mechanical thinning effects understory diversity regeneration seedling sapling growth basal area crown fuel load forest management thinning only\",\"k\":3,\"offset\":3}",
-            "return_val": "[\n  {\n    \"action_id\": \"3940\",\n    \"action_title\": \"Thin trees within forests\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"121\",\n    \"action_title\": \"Raise water levels in ditches or grassland\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1266\",\n    \"action_title\": \"Cover the ground with straw after tree planting\",\n    \"rank\": 6\n  }\n]"
+            "args": "{\"query_string\":\"thin trees effects forest ecosystems understory diversity herbs shrubs regeneration saplings overstory canopy cover basal area growth survival seedlings\",\"k\":3,\"offset\":9}",
+            "return_val": "[\n  {\n    \"action_id\": \"3258\",\n    \"action_title\": \"Directly plant trees/shrubs: freshwater wetlands\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"1248\",\n    \"action_title\": \"Use fertilizer\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"1246\",\n    \"action_title\": \"Remove or disturb leaf litter to enhance germination\",\n    \"rank\": 12\n  }\n]"
           }
         ]
       },
@@ -822,23 +869,28 @@
         "tools_called": [
           {
             "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3940\"}",
+            "return_val": "{\n  \"action_id\": \"3940\",\n  \"action_title\": \"Thin trees within forests\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on butterflies and moths of thinning trees within forests and woodland. Three studies were in the USA\\u00a0and one was in each of C\\u00f4te d\\u2019Ivoire, Finland\\u00a0and the Czech Republic.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nCommunity composition (1 study): One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that rarer species of fruit-feeding butterfly were less frequently caught in a forest managed by thinning than in an unmanaged, naturally regenerating forest.\\n\\n\\nRichness/diversity (6 studies): Four studies (including two replicated, paired, controlled, before-and-after studies) in the USA\\u00a0and Finland\\u00a0found that one, two\\u00a0or four\\u00a0years after management, coniferous woodland which had been thinned, along with either prescribed burning, mulching\\u00a0or nearby felling, had a greater species richness of butterflies, or butterflies, diurnal moths and bumblebees combined, than either unmanaged woodland\\u00a0or before management. One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that a forest managed by thinning had a similar species richness and diversity of fruit-feeding butterflies to an unmanaged, naturally regenerating forest. One replicated, paired sites, controlled study in the Czech Republic\\u00a0found that partially-cleared forest plots had higher butterfly but lower moth species richness than plots of closed-canopy forest.\\n\\nPOPULATION RESPONSE (5 STUDIES)\\n\\nAbundance (5 studies): Four studies (including two replicated, paired, controlled, before-and-after studies) in the USA\\u00a0and Finland\\u00a0found that one, two\\u00a0or four\\u00a0years after management, coniferous woodland which had been thinned, along with either prescribed burning, mulching\\u00a0or nearby felling, had a higher abundance of all butterflies, or specialist butterflies, than either unmanaged woodland\\u00a0or before management. One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that a forest managed by thinning had a similar abundance of fruit-feeding butterflies to an unmanaged, naturally regenerating forest.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1273\"}",
+            "return_val": "{\n  \"action_id\": \"1273\",\n  \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n  \"key_messages\": \"Key Messages:\\n\\nFive of ten studies (including four replicated, randomized, controlled studies) in Bolivia, Canada, India and the USA found that logging trees in forests increased the density and cover of understory plants. Five studies found no effect or mixed effects.\\nFour of seven studies (including one replicated, randomized, controlled study) in Australia, Canada\\u00a0and the USA found that logging trees in forests increased species richness and diversity of understory plants. Three studies found no effect.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1272\"}",
+            "return_val": "{\n  \"action_id\": \"1272\",\n  \"action_title\": \"Log/remove trees within forests: effects on young trees\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated controlled study in Canada\\u00a0found that logging trees in forests increased the density of young trees. One replicated controlled study in Costa Rica\\u00a0found mixed effects on the density of young trees.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
             "args": "{\"action_id\":\"1227\"}",
             "return_val": "{\n  \"action_id\": \"1227\",\n  \"action_title\": \"Use thinning followed by prescribed fire\",\n  \"key_messages\": \"Key Messages:\\n\\nThree of six studies (including one replicated, randomized, controlled study) in the USA found that thinning followed by prescribed burning increased cover and abundance1 of understory plants as well as the density of deciduous trees. One study found that thinning then burning decreased trees density and species richness.\\u00a0 Three studies found no effect or mixed effects of thinning followed by burning on tree growth rate and density of young trees.\\nOne replicated, controlled study Australia\\u00a0found no effect of thinning followed by burning on the genetic diversity of black ash.\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1234\"}",
-            "return_val": "{\n  \"action_id\": \"1234\",\n  \"action_title\": \"Thin trees after wildfire\",\n  \"key_messages\": \"Key Messages:\\n\\nFive replicated, controlled studies examined the effects of thinning trees in burnt forest areas. Two studies in Spain\\u00a0found that thinning increased plant species richness. One in Canada\\u00a0found that it increased the cover of aspen saplings. One study in the USA\\u00a0found thinning decreased plant biomass and one in Israel\\u00a0found it decreased mortality of pine seedlings.\\nOne paired-site study in Canada\\u00a0found that logging after wildfire decreased species richness and diversity of mosses.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
             "args": "{\"action_id\":\"2477\"}",
             "return_val": "{\n  \"action_id\": \"2477\",\n  \"action_title\": \"Thin trees to reduce wildfire risk\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of thinning trees to reduce wildfire risk. All three studies were in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nAbundance (2 studies): A replicated, controlled, before-and-after study in the USA found that reducing tree density increased abundances of two of four small mammal species. A systematic review in the USA\\u00a0found that, in thinned forests, two mammal species were recorded in higher densities compared to in unmanaged forests, while three species showed no effect.\\n\\nBEHAVIOUR (1 STUDY)\\n\\n(1 study): A replicated, controlled study in the USA\\u00a0found that thinning followed by prescribed burning did not increase use of forest areas by North American elk in most season, stand age and sex comparisons.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"3940\"}",
-            "return_val": "{\n  \"action_id\": \"3940\",\n  \"action_title\": \"Thin trees within forests\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects on butterflies and moths of thinning trees within forests and woodland. Three studies were in the USA\\u00a0and one was in each of C\\u00f4te d\\u2019Ivoire, Finland\\u00a0and the Czech Republic.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nCommunity composition (1 study): One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that rarer species of fruit-feeding butterfly were less frequently caught in a forest managed by thinning than in an unmanaged, naturally regenerating forest.\\n\\n\\nRichness/diversity (6 studies): Four studies (including two replicated, paired, controlled, before-and-after studies) in the USA\\u00a0and Finland\\u00a0found that one, two\\u00a0or four\\u00a0years after management, coniferous woodland which had been thinned, along with either prescribed burning, mulching\\u00a0or nearby felling, had a greater species richness of butterflies, or butterflies, diurnal moths and bumblebees combined, than either unmanaged woodland\\u00a0or before management. One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that a forest managed by thinning had a similar species richness and diversity of fruit-feeding butterflies to an unmanaged, naturally regenerating forest. One replicated, paired sites, controlled study in the Czech Republic\\u00a0found that partially-cleared forest plots had higher butterfly but lower moth species richness than plots of closed-canopy forest.\\n\\nPOPULATION RESPONSE (5 STUDIES)\\n\\nAbundance (5 studies): Four studies (including two replicated, paired, controlled, before-and-after studies) in the USA\\u00a0and Finland\\u00a0found that one, two\\u00a0or four\\u00a0years after management, coniferous woodland which had been thinned, along with either prescribed burning, mulching\\u00a0or nearby felling, had a higher abundance of all butterflies, or specialist butterflies, than either unmanaged woodland\\u00a0or before management. One site comparison study in C\\u00f4te d\\u2019Ivoire\\u00a0found that a forest managed by thinning had a similar abundance of fruit-feeding butterflies to an unmanaged, naturally regenerating forest.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
           }
         ]
       },
@@ -847,13 +899,33 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"thinning effects on mature trees growth mortality basal area diameter dbh survival forest thinning study\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1209\",\n    \"action_title\": \"Thin trees within forests: effects on mature trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3627\",\n    \"action_title\": \"Thin trees within forests\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"thin trees within forests effects on mature trees overstory growth survival basal area timber growth forest stand structure thinning effects trees growth\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1210\",\n    \"action_title\": \"Thin trees within forests: effects on young trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2477\",\n    \"action_title\": \"Thin trees to reduce wildfire risk\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2640\",\n    \"action_title\": \"Retain undisturbed patches during thinning operations\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1210\"}",
+            "return_val": "{\n  \"action_id\": \"1210\",\n  \"action_title\": \"Thin trees within forests: effects on young trees\",\n  \"key_messages\": \"Key Messages:\\n\\nSix of twelve studies (including two replicated, randomized, controlled studies) in Japan and the USA found that thinning trees in forests increased the density of young trees. One study found that thinning decreased the density of young trees. Five found no effect or mixed effects on the density of young trees. One replicated, controlled study in the USA\\u00a0found no effect of thinning on the density of oak acorns.\\nOne controlled study in Peru\\u00a0found that thinning increased the growth rate of young trees.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"thinning effects on mature trees growth diameter basal area survival mortality 'Thin trees within forests: effects on trees' overstory\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1209\",\n    \"action_title\": \"Thin trees within forests: effects on mature trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1210\",\n    \"action_title\": \"Thin trees within forests: effects on young trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3627\",\n    \"action_title\": \"Thin trees within forests\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -863,32 +935,12 @@
         ]
       },
       {
-        "iteration_num": 8,
-        "tools_called": [
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"3627\"}",
-            "return_val": "{\n  \"action_id\": \"3627\",\n  \"action_title\": \"Thin trees within forests\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects of thinning trees within forests on reptile populations. Three studies were in the USA and one was in each of Brazil, Spain and Australia.\\n\\nCOMMUNITY RESPONSE (3 STUDIES)\\n\\nRichness/diversity (3 studies): Two replicated, controlled studies (including one randomized study) in the USA and Spain found that areas of thinned forest had similar reptile species richness compared to areas with no thinning. One study also found that thinned areas had lower species richness than areas of open habitat. One replicated, controlled study in Australia found that areas of forest thinned 8\\u201320 years previously had higher diversity of reptiles than areas thinned less than eight or more than 20 years previously, or than areas with no thinning.\\n\\nPOPULATION RESPONSE (6 STUDIES)\\n\\nAbundance (6 studies): Two of four replicated, controlled studies (including two randomized studies) in Brazil, the USA, and Spain found that areas of thinned forest had a similar abundance of reptiles compared to areas with no thinning. One study found mixed effects of thinning trees on the abundance of three lizard species. The other study found that areas of thinned forest had a higher abundance of reptiles than areas with no thinning. That study also found that areas with the most thinning had a similar abundance of reptiles compared to areas of open habitat. One replicated, controlled study in Australia found that areas of forest thinned 8\\u201320 years previously had a higher abundance of reptiles than areas thinned at other times or areas with no thinning. One replicated, randomized, controlled study in the USA found that areas of thinned forest had a higher abundance of snakes than clearcut forest.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 9,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"thinning effects on seedlings saplings regeneration young trees understory vegetation thinning within forests effects on seedlings\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1210\",\n    \"action_title\": \"Thin trees within forests: effects on young trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1234\",\n    \"action_title\": \"Thin trees after wildfire\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2650\",\n    \"action_title\": \"Thin trees within forest\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
         "iteration_num": 10,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1210\"}",
-            "return_val": "{\n  \"action_id\": \"1210\",\n  \"action_title\": \"Thin trees within forests: effects on young trees\",\n  \"key_messages\": \"Key Messages:\\n\\nSix of twelve studies (including two replicated, randomized, controlled studies) in Japan and the USA found that thinning trees in forests increased the density of young trees. One study found that thinning decreased the density of young trees. Five found no effect or mixed effects on the density of young trees. One replicated, controlled study in the USA\\u00a0found no effect of thinning on the density of oak acorns.\\nOne controlled study in Peru\\u00a0found that thinning increased the growth rate of young trees.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Thin trees within forests: effects on understory plants herbs shrubs ground flora thinning understory\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1211\",\n    \"action_title\": \"Thin trees within forests: effects on understory plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1273\",\n    \"action_title\": \"Log/remove trees within forests: effects on understory plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1224\",\n    \"action_title\": \"Use group-selection harvesting\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       }
@@ -920,20 +972,16 @@
     "query": "Based on studies from the USA, what is the effectiveness of applying different chemical treatments to protect tree seedlings?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "One randomized, replicated, controlled study in the USA found that applying insecticide increased tree seedling emergence and survival (1149). We found no studies testing the effects of applying fungicides to planted trees (1156). Two replicated, controlled laboratory studies in the USA on baldcypress seeds reported that soaking in weak sodium hydroxide increased germination rate, soaking in ethyl alcohol and/or hydrochloric acid reduced germination rate, stronger sodium hydroxide or hydrogen peroxide plus ethyl alcohol had no significant effect on germination, and seedling height 30 days after germination was typically unaffected except that ethyl alcohol reduced height (3382).",
-    "summary_action_ids": [
-      "1149",
-      "1156",
-      "3382"
-    ],
+    "relevant_summary": null,
+    "summary_action_ids": null,
     "tool_call_details": [
       {
         "iteration_num": 1,
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"USA studies effectiveness chemical treatments protect tree seedlings\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1263\",\n    \"action_title\": \"Prepare the ground before tree planting\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"USA studies effectiveness of chemical treatments protect tree seedlings effectiveness seedlings chemical treatments USA\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1248\",\n    \"action_title\": \"Use fertilizer\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1263\",\n    \"action_title\": \"Prepare the ground before tree planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1140\",\n    \"action_title\": \"Water primrose: Combination treatment using herbicides and physical removal\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -942,43 +990,13 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"USA study chemical treatments protect tree seedlings insecticide fungicide repellents seedling survival\",\"k\":3,\"offset\":0}",
+            "args": "{\"query_string\":\"USA study effectiveness chemical treatments protect tree seedlings repellent insecticide fungicide seedling survival United States\", \"k\": 3, \"offset\": 0}",
             "return_val": "[\n  {\n    \"action_id\": \"1149\",\n    \"action_title\": \"Apply insecticide to protect seedlings from invertebrates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1156\",\n    \"action_title\": \"Apply fungicides to protect seedlings from fungal diseases\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 3,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"USA study chemical treatments protect tree seedlings repellents deer browse seedling survival United States\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2615\",\n    \"action_title\": \"Use chemical repellents along roads or railways\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 4,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"seed coating chemical protect tree seedlings USA study survival coating pesticide herbicide United States\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"3378\",\n    \"action_title\": \"Physically damage tree/shrub seeds before sowing: freshwater wetlands\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3382\",\n    \"action_title\": \"Treat tree/shrub seeds with chemicals before sowing: freshwater wetlands\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3376\",\n    \"action_title\": \"Physically damage seeds of non-woody plants before sowing: freshwater wetlands\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 5,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"USA study chemical treatments protect tree seedlings insecticide fungicide repellents survival growth United States forest\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"1276\",\n    \"action_title\": \"<i>Crassula helmsii</i>: Biological control using fungal-based herbicides\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1271\",\n    \"action_title\": \"Log/remove trees within forests: effects on mature trees\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3478\",\n    \"action_title\": \"Protect brownfield or ex-industrial sites in urban areas\",\n    \"rank\": 6\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 6,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -989,11 +1007,36 @@
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"1156\"}",
             "return_val": "{\n  \"action_id\": \"1156\",\n  \"action_title\": \"Apply fungicides to protect seedlings from fungal diseases\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no evidence for the effect of applying fungicides to planted trees.\\n\\n'No evidence' for an action means we have not yet found any studies that directly and quantitatively tested this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
-          },
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"3382\"}",
-            "return_val": "{\n  \"action_id\": \"3382\",\n  \"action_title\": \"Treat tree/shrub seeds with chemicals before sowing: freshwater wetlands\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects \\u2013 on trees/shrubs typical of freshwater wetlands \\u2013 of treating their seeds with chemicals before sowing. Both studies were in one laboratory in the USA.\\n\\nVEGETATION COMMUNITY\\n\\u00a0\\nVEGETATION ABUNDANCE\\n\\u00a0\\nVEGETATION STRUCTURE\\u00a0\\n\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\nOTHER\\n\\nGermination/emergence (2 studies): Two replicated, controlled studies in a laboratory in the USA\\u00a0found that soaking baldcypress Taxodium distichum seeds in weak sodium hydroxide increased their germination rate. One of the studies\\u00a0found that soaking in ethyl alcohol and/or hydrochloric acid reduced the germination rate. One of the studies\\u00a0found that soaking in stronger sodium hydroxide, or hydrogen peroxide and ethyl alcohol, had no significant effect on the germination rate.\\nGrowth (1 study): One replicated, controlled study in a laboratory in the USA\\u00a0found that soaking baldcypress Taxodium distichum seeds in chemicals before sowing typically had no significant effect on the height of surviving seedlings, 30 days after germination. Soaking in ethyl alcohol, however, reduced seedling height.\"\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"USA study chemical repellent protect tree seedlings deer browsing repellent seedlings United States\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2509\",\n    \"action_title\": \"Use repellents that taste bad (\\u2018contact repellents\\u2019) to deter crop or property damage by mammals to reduce human-wildlife conflict\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2615\",\n    \"action_title\": \"Use chemical repellents along roads or railways\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"United States seedlings chemical protect herbivory browsing repellent conifer seedlings USA study effectiveness\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2509\",\n    \"action_title\": \"Use repellents that taste bad (\\u2018contact repellents\\u2019) to deter crop or property damage by mammals to reduce human-wildlife conflict\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2615\",\n    \"action_title\": \"Use chemical repellents along roads or railways\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Apply repellents to protect planted trees seedlings USA study planted trees repellents browsing\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2509\",\n    \"action_title\": \"Use repellents that taste bad (\\u2018contact repellents\\u2019) to deter crop or property damage by mammals to reduce human-wildlife conflict\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -1001,9 +1044,39 @@
         "iteration_num": 7,
         "tools_called": [
           {
-            "function_name": "get_formatted_result",
-            "args": "{\"query\":\"Based on studies from the USA, what is the effectiveness of applying different chemical treatments to protect tree seedlings?\",\"summary\":\"One randomized, replicated, controlled study in the USA found that applying insecticide increased tree seedling emergence and survival (1149). We found no studies testing the effects of applying fungicides to planted trees (1156). Two replicated, controlled laboratory studies in the USA on baldcypress seeds reported that soaking in weak sodium hydroxide increased germination rate, soaking in ethyl alcohol and/or hydrochloric acid reduced germination rate, stronger sodium hydroxide or hydrogen peroxide plus ethyl alcohol had no significant effect on germination, and seedling height 30 days after germination was typically unaffected except that ethyl alcohol reduced height (3382).\",\"action_ids\":[\"1149\",\"1156\",\"3382\"]}",
-            "return_val": "{\n  \"query\": \"Based on studies from the USA, what is the effectiveness of applying different chemical treatments to protect tree seedlings?\",\n  \"relevant_summary\": \"One randomized, replicated, controlled study in the USA found that applying insecticide increased tree seedling emergence and survival (1149). We found no studies testing the effects of applying fungicides to planted trees (1156). Two replicated, controlled laboratory studies in the USA on baldcypress seeds reported that soaking in weak sodium hydroxide increased germination rate, soaking in ethyl alcohol and/or hydrochloric acid reduced germination rate, stronger sodium hydroxide or hydrogen peroxide plus ethyl alcohol had no significant effect on germination, and seedling height 30 days after germination was typically unaffected except that ethyl alcohol reduced height (3382).\",\n  \"action_ids\": [\n    \"1149\",\n    \"1156\",\n    \"3382\"\n  ]\n}"
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Apply herbicide around planted trees seedlings control competing vegetation USA study survival growth\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1256\",\n    \"action_title\": \"Mechanically remove understory vegetation after tree planting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1262\",\n    \"action_title\": \"Use herbicides after tree planting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3334\",\n    \"action_title\": \"Remove vegetation that could compete with planted trees/shrubs: freshwater wetlands\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1262\"}",
+            "return_val": "{\n  \"action_id\": \"1262\",\n  \"action_title\": \"Use herbicides after tree planting\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo of three studies (including two replicated, randomized, controlled studies) in Sweden and the USA found that using herbicide increased the size of planted trees. One study\\u00a0found no effect on tree size.\\nOne replicated, randomized, controlled study in Sweden found no effect of using herbicide on frost damage caused to planted Norway spruce seedlings.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"USA study applied insecticide seedling conifer seed coating protect seedlings United States randomized\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1149\",\n    \"action_title\": \"Apply insecticide to protect seedlings from invertebrates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1644\",\n    \"action_title\": \"Apply herbicide and sow seeds of shrubland plants to control grass\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1842\",\n    \"action_title\": \"Protect or prepare vegetation before planting (other interventions)\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 10,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"planted trees seedlings USA study repellents deer browsing chemical planted conifer seedlings protection United States\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3330\",\n    \"action_title\": \"Use fences or barriers to protect freshwater wetlands planted with trees/shrubs\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1268\",\n    \"action_title\": \"Use tree guards or shelters to protect planted trees\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"644\",\n    \"action_title\": \"Restore or create wood pasture\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       }

@@ -3,15 +3,14 @@
     "query": "What methods are available to control disease and sea lice in Atlantic salmon farms?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Evidence from action documents indicates several methods: Fallowing between production cycles has been associated with lower sea lice numbers on Atlantic salmon in Scotland, though one Australian study found no difference in Amoebic Gill Disease (AGD) mortality (1026). Using cleaner wrasse as natural control agents showed mixed results: corkwing and goldsinny wrasse matched chemical treatments in controlling lice in one controlled study, while rockcook wrasse were ineffective in a replicated, controlled study (738). Freshwater bathing for AGD produced mixed outcomes in Australia: one study found reduced amoebae on gills lasting up to 10 days, while a replicated, controlled study found no difference from untreated fish (739). Altering lighting reduced lice loads in a replicated, controlled Norway study, with lower lice under low-intensity artificial or natural light and higher lice under more intense artificial light (741). Dietary approaches including probiotics, plant-based protein inclusion, and immunostimulants showed benefits: in Scotland, probiotics increased survival after bacterial challenges; in Norway, a diet with 28% plant protein reduced lice infection by 28% and adding beta-glucans reduced lice a further 28%; mannan oligosaccharides improved gut function and prevented soybean-induced enteritis (732). Vaccinations increased survival against multiple pathogens in controlled studies from Iceland, Norway, Australia, and Canada, including Aeromonas salmonicida spp. achromogenes, Yersinia ruckeri, marine flexibacteriosis, bacterial kidney disease, and infectious salmon anaemia (733). Selective breeding for resistance improved survival under infectious pancreatic necrosis exposure in a replicated, controlled Norway study (735).",
+    "relevant_summary": "Evidence from action documents identifies several methods: using natural control agents such as cleaner wrasse shows mixed effects on sea lice; corkwing and goldsinny wrasse were as effective as chemical treatments in one controlled study, while rockcook wrasse were ineffective in a replicated, controlled study (738). Dietary and immune-based approaches include probiotics that increased survival after exposure to four bacterial pathogens, and diets with 28% plant protein that reduced lice infections by 28% with an additional 28% reduction when beta-glucans were added; mannan oligosaccharides improved gut function by preventing soybean-induced enteritis (732). Operational fallowing reduced lice numbers in one Scottish study, though an Australian study found no difference in Amoebic Gill Disease mortality (1026). Selective breeding for disease resistance increased survival against infectious pancreatic necrosis (735). Aerobic training increased survival against infectious pancreatic necrosis, with interval training outperforming continuous training (740). Freshwater bathing to manage amoebic gill disease showed mixed results, with one study reporting reduced amoebae for up to 10 days and another finding no difference (739).",
     "summary_action_ids": [
-      "1026",
       "738",
-      "739",
-      "741",
       "732",
-      "733",
-      "735"
+      "1026",
+      "735",
+      "740",
+      "739"
     ],
     "tool_call_details": [
       {
@@ -19,8 +18,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"control disease and sea lice in Atlantic salmon farms methods\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"738\",\n    \"action_title\": \"Use natural control agents: cleaner wrasse\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"control disease and sea lice in Atlantic salmon farms\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"738\",\n    \"action_title\": \"Use natural control agents: cleaner wrasse\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -28,74 +27,9 @@
         "iteration_num": 2,
         "tools_called": [
           {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"control disease and sea lice in Atlantic salmon farms methods\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"753\",\n    \"action_title\": \"Combine trap and repellent crops in a push-pull system\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1097\",\n    \"action_title\": \"Ponto-Caspian gammarids: Exchanging ballast water\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"744\",\n    \"action_title\": \"Plant new hedges\",\n    \"rank\": 6\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 3,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Atlantic salmon sea lice control methods thermal mechanical freshwater bath medicinal hydrogen peroxide\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"738\",\n    \"action_title\": \"Use natural control agents: cleaner wrasse\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"739\",\n    \"action_title\": \"Bathe in freshwater\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 4,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Atlantic salmon sea lice control methods thermal mechanical freshwater bath medicinal hydrogen peroxide\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"1104\",\n    \"action_title\": \"Skunk cabbage: Use of hydrogen peroxide\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"131\",\n    \"action_title\": \"Delay mowing or first grazing date on pasture or grassland\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1102\",\n    \"action_title\": \"Skunk cabbage:  Chemical control using herbicides\",\n    \"rank\": 6\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 5,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Atlantic salmon disease control vaccination probiotics antibiotics biosecurity\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"735\",\n    \"action_title\": \"Breed for resistance traits\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 6,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Atlantic salmon disease control vaccination probiotics antibiotics biosecurity\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"939\",\n    \"action_title\": \"Domestication: sterility/triploidy\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"747\",\n    \"action_title\": \"Retain riparian buffer strips during timber harvest\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"945\",\n    \"action_title\": \"Use exclusion nets\",\n    \"rank\": 6\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 7,
-        "tools_called": [
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1026\"}",
-            "return_val": "{\n  \"action_id\": \"1026\",\n  \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n  \"key_messages\": \"Key Messages:\\nA study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system. Another study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used.\"\n}"
-          },
-          {
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"738\"}",
             "return_val": "{\n  \"action_id\": \"738\",\n  \"action_title\": \"Use natural control agents: cleaner wrasse\",\n  \"key_messages\": \"Key Messages:\\n\\n\\n\\nTwo studies in Ireland found mixed effects of cleaner wrasse on sea lice numbers infesting salmon. One controlled\\u00a0study found corkwing and goldskinny cleaner wrasse were as effective at controlling lice infestation as chemical treatments. One replicated, controlled study found rockcook cleaner wrasse were ineffective at preventing lice outbreaks.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"739\"}",
-            "return_val": "{\n  \"action_id\": \"739\",\n  \"action_title\": \"Bathe in freshwater\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nTwo studies in Australia\\u00a0provide mixed evidence of the effect of freshwater bathing to reducing amoebic gill disease.\\u00a0One study found a reduction in numbers of amoebae on salmon gills persisting for up to 10 days after bathing. One replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon.\"\n}"
-          },
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"741\"}",
-            "return_val": "{\n  \"action_id\": \"741\",\n  \"action_title\": \"Alter lighting\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled study in Norway reported lower numbers of lice on salmon kept in low intensity artificial light or natural lighting. The more intense the artificial light was, the higher the number of lice found on fish.\"\n}"
           },
           {
             "function_name": "get_action_details",
@@ -104,18 +38,58 @@
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"733\"}",
-            "return_val": "{\n  \"action_id\": \"733\",\n  \"action_title\": \"Use vaccinations\",\n  \"key_messages\": \"Key Messages:\\n \\n\\nTwo controlled studies from Iceland and Norway found higher survival rates in vaccinated salmon compared to unvaccinated control groups. This was post exposure to the disease-causing bacteria, Aeromonas salmonicida spp.achromogenes and Yersinia ruckeri, respectively.\\nTwo controlled studies in\\u00a0Australia and Canadia reported higher survival in salmon infected with marine flexibacteriosis and bacterial kidney disease, post vaccination.\\nTwo controlled studies in Norway reported similar results for salmon vaccinated against infectious salmon anaemia.\"\n}"
-          },
+            "args": "{\"action_id\":\"1026\"}",
+            "return_val": "{\n  \"action_id\": \"1026\",\n  \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n  \"key_messages\": \"Key Messages:\\nA study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system. Another study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"control disease and sea lice in Atlantic salmon farms\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"735\",\n    \"action_title\": \"Breed for resistance traits\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
           {
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"735\"}",
             "return_val": "{\n  \"action_id\": \"735\",\n  \"action_title\": \"Breed for resistance traits\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nA replicated, controlled study in\\u00a0Norway\\u00a0found increased survival levels in salmon exposed to infectious pancreatic necrosis when the family was bred for high resistance to the disease compared to a family bred for low resistance to the disease.\"\n}"
-          },
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"control disease and sea lice in Atlantic salmon farms\",\"k\":3,\"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"740\",\n    \"action_title\": \"Aerobic training\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"739\",\n    \"action_title\": \"Bathe in freshwater\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"945\"}",
-            "return_val": "{\n  \"action_id\": \"945\",\n  \"action_title\": \"Use exclusion nets\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled trial in Australia found higher levels of sediment carbon at stocked cages with exclusion nets compared to cages without exclusion nets.\"\n}"
+            "args": "{\"action_id\":\"740\"}",
+            "return_val": "{\n  \"action_id\": \"740\",\n  \"action_title\": \"Aerobic training\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nA randomised, replicated, controlled study in Norway found higher survival rates in salmon exposed to infectious pancreatic necrosis if they had undergone aerobic training. Interval training was more effective than continuous training.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"739\"}",
+            "return_val": "{\n  \"action_id\": \"739\",\n  \"action_title\": \"Bathe in freshwater\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nTwo studies in Australia\\u00a0provide mixed evidence of the effect of freshwater bathing to reducing amoebic gill disease.\\u00a0One study found a reduction in numbers of amoebae on salmon gills persisting for up to 10 days after bathing. One replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon.\"\n}"
           }
         ]
       },
@@ -123,9 +97,19 @@
         "iteration_num": 8,
         "tools_called": [
           {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"control disease and sea lice in Atlantic salmon farms\",\"k\":3,\"offset\":9}",
+            "return_val": "[\n  {\n    \"action_id\": \"739\",\n    \"action_title\": \"Bathe in freshwater\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"2775\",\n    \"action_title\": \"Use acoustic devices at aquaculture systems\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"437\",\n    \"action_title\": \"Remove ectoparasites from feathers to increase survival or reproductive success\",\n    \"rank\": 12\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 9,
+        "tools_called": [
+          {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What methods are available to control disease and sea lice in Atlantic salmon farms?\",\"summary\":\"Evidence from action documents indicates several methods: Fallowing between production cycles has been associated with lower sea lice numbers on Atlantic salmon in Scotland, though one Australian study found no difference in Amoebic Gill Disease (AGD) mortality (1026). Using cleaner wrasse as natural control agents showed mixed results: corkwing and goldsinny wrasse matched chemical treatments in controlling lice in one controlled study, while rockcook wrasse were ineffective in a replicated, controlled study (738). Freshwater bathing for AGD produced mixed outcomes in Australia: one study found reduced amoebae on gills lasting up to 10 days, while a replicated, controlled study found no difference from untreated fish (739). Altering lighting reduced lice loads in a replicated, controlled Norway study, with lower lice under low-intensity artificial or natural light and higher lice under more intense artificial light (741). Dietary approaches including probiotics, plant-based protein inclusion, and immunostimulants showed benefits: in Scotland, probiotics increased survival after bacterial challenges; in Norway, a diet with 28% plant protein reduced lice infection by 28% and adding beta-glucans reduced lice a further 28%; mannan oligosaccharides improved gut function and prevented soybean-induced enteritis (732). Vaccinations increased survival against multiple pathogens in controlled studies from Iceland, Norway, Australia, and Canada, including Aeromonas salmonicida spp. achromogenes, Yersinia ruckeri, marine flexibacteriosis, bacterial kidney disease, and infectious salmon anaemia (733). Selective breeding for resistance improved survival under infectious pancreatic necrosis exposure in a replicated, controlled Norway study (735).\",\"action_ids\":[\"1026\",\"738\",\"739\",\"741\",\"732\",\"733\",\"735\"]}",
-            "return_val": "{\n  \"query\": \"What methods are available to control disease and sea lice in Atlantic salmon farms?\",\n  \"relevant_summary\": \"Evidence from action documents indicates several methods: Fallowing between production cycles has been associated with lower sea lice numbers on Atlantic salmon in Scotland, though one Australian study found no difference in Amoebic Gill Disease (AGD) mortality (1026). Using cleaner wrasse as natural control agents showed mixed results: corkwing and goldsinny wrasse matched chemical treatments in controlling lice in one controlled study, while rockcook wrasse were ineffective in a replicated, controlled study (738). Freshwater bathing for AGD produced mixed outcomes in Australia: one study found reduced amoebae on gills lasting up to 10 days, while a replicated, controlled study found no difference from untreated fish (739). Altering lighting reduced lice loads in a replicated, controlled Norway study, with lower lice under low-intensity artificial or natural light and higher lice under more intense artificial light (741). Dietary approaches including probiotics, plant-based protein inclusion, and immunostimulants showed benefits: in Scotland, probiotics increased survival after bacterial challenges; in Norway, a diet with 28% plant protein reduced lice infection by 28% and adding beta-glucans reduced lice a further 28%; mannan oligosaccharides improved gut function and prevented soybean-induced enteritis (732). Vaccinations increased survival against multiple pathogens in controlled studies from Iceland, Norway, Australia, and Canada, including Aeromonas salmonicida spp. achromogenes, Yersinia ruckeri, marine flexibacteriosis, bacterial kidney disease, and infectious salmon anaemia (733). Selective breeding for resistance improved survival under infectious pancreatic necrosis exposure in a replicated, controlled Norway study (735).\",\n  \"action_ids\": [\n    \"1026\",\n    \"738\",\n    \"739\",\n    \"741\",\n    \"732\",\n    \"733\",\n    \"735\"\n  ]\n}"
+            "args": "{\"query\":\"What methods are available to control disease and sea lice in Atlantic salmon farms?\",\"summary\":\"Evidence from action documents identifies several methods: using natural control agents such as cleaner wrasse shows mixed effects on sea lice; corkwing and goldsinny wrasse were as effective as chemical treatments in one controlled study, while rockcook wrasse were ineffective in a replicated, controlled study (738). Dietary and immune-based approaches include probiotics that increased survival after exposure to four bacterial pathogens, and diets with 28% plant protein that reduced lice infections by 28% with an additional 28% reduction when beta-glucans were added; mannan oligosaccharides improved gut function by preventing soybean-induced enteritis (732). Operational fallowing reduced lice numbers in one Scottish study, though an Australian study found no difference in Amoebic Gill Disease mortality (1026). Selective breeding for disease resistance increased survival against infectious pancreatic necrosis (735). Aerobic training increased survival against infectious pancreatic necrosis, with interval training outperforming continuous training (740). Freshwater bathing to manage amoebic gill disease showed mixed results, with one study reporting reduced amoebae for up to 10 days and another finding no difference (739).\",\"action_ids\":[\"738\",\"732\",\"1026\",\"735\",\"740\",\"739\"]}",
+            "return_val": "{\n  \"query\": \"What methods are available to control disease and sea lice in Atlantic salmon farms?\",\n  \"relevant_summary\": \"Evidence from action documents identifies several methods: using natural control agents such as cleaner wrasse shows mixed effects on sea lice; corkwing and goldsinny wrasse were as effective as chemical treatments in one controlled study, while rockcook wrasse were ineffective in a replicated, controlled study (738). Dietary and immune-based approaches include probiotics that increased survival after exposure to four bacterial pathogens, and diets with 28% plant protein that reduced lice infections by 28% with an additional 28% reduction when beta-glucans were added; mannan oligosaccharides improved gut function by preventing soybean-induced enteritis (732). Operational fallowing reduced lice numbers in one Scottish study, though an Australian study found no difference in Amoebic Gill Disease mortality (1026). Selective breeding for disease resistance increased survival against infectious pancreatic necrosis (735). Aerobic training increased survival against infectious pancreatic necrosis, with interval training outperforming continuous training (740). Freshwater bathing to manage amoebic gill disease showed mixed results, with one study reporting reduced amoebae for up to 10 days and another finding no difference (739).\",\n  \"action_ids\": [\n    \"738\",\n    \"732\",\n    \"1026\",\n    \"735\",\n    \"740\",\n    \"739\"\n  ]\n}"
           }
         ]
       }
@@ -157,7 +141,7 @@
     "query": "How do plant-based and bacterial protein alternatives to fish meal compare in terms of their effect on Atlantic salmon growth rates in Norway?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "In Norway, replicated controlled studies on bacterial protein reported similar growth rates to 100% fish meal when up to 25% of fish meal was replaced, lower growth at 50% replacement, and higher growth at 18% and 36% bacterial protein compared to the control or a 4.5% bacterial protein diet [918]. For plant-based proteins, studies including those from Norway reported decreased growth rates with plant-protein inclusion, while other Norwegian studies reported similar growth rates compared to fish meal; additional Norwegian evidence reported both reduced and similar final body weights relative to fish meal diets [924].",
+    "relevant_summary": "Bacterial protein: In Norway, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced with bacterial protein, while a 50% replacement reduced growth; another replicated, controlled study in Norway reported higher growth at 18% and 36% bacterial protein compared to the control or a 4.5% inclusion (918). Plant-based protein: Across studies that included Norway, several replicated/controlled studies found decreased growth rates with plant-based protein, while other replicated/controlled studies from Norway reported similar growth rates to fish meal diets (924).",
     "summary_action_ids": [
       "918",
       "924"
@@ -168,23 +152,13 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"plant-based protein alternatives to fish meal effect on Atlantic salmon growth rates Norway bacterial protein salmon feed\", \"k\": 3, \"offset\": 0}",
+            "args": "{\"query_string\": \"Atlantic salmon Norway growth rates plant-based bacterial protein alternatives to fish meal\", \"k\": 3, \"offset\": 0}",
             "return_val": "[\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 2,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"plant-based protein alternatives to fish meal effect on Atlantic salmon growth rates Norway bacterial protein salmon feed\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"939\",\n    \"action_title\": \"Domestication: sterility/triploidy\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"937\",\n    \"action_title\": \"Eco friendly biofouling prevention\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"945\",\n    \"action_title\": \"Use exclusion nets\",\n    \"rank\": 6\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 3,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -199,12 +173,22 @@
         ]
       },
       {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Atlantic salmon Norway plant-based protein growth rates fish meal\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"926\",\n    \"action_title\": \"Use an alternative oil source: plant-based\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"915\",\n    \"action_title\": \"Reduce fish meal in diet\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
         "iteration_num": 4,
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"How do plant-based and bacterial protein alternatives to fish meal compare in terms of their effect on Atlantic salmon growth rates in Norway?\",\"summary\":\"In Norway, replicated controlled studies on bacterial protein reported similar growth rates to 100% fish meal when up to 25% of fish meal was replaced, lower growth at 50% replacement, and higher growth at 18% and 36% bacterial protein compared to the control or a 4.5% bacterial protein diet [918]. For plant-based proteins, studies including those from Norway reported decreased growth rates with plant-protein inclusion, while other Norwegian studies reported similar growth rates compared to fish meal; additional Norwegian evidence reported both reduced and similar final body weights relative to fish meal diets [924].\",\"action_ids\":[\"918\",\"924\"]}",
-            "return_val": "{\n  \"query\": \"How do plant-based and bacterial protein alternatives to fish meal compare in terms of their effect on Atlantic salmon growth rates in Norway?\",\n  \"relevant_summary\": \"In Norway, replicated controlled studies on bacterial protein reported similar growth rates to 100% fish meal when up to 25% of fish meal was replaced, lower growth at 50% replacement, and higher growth at 18% and 36% bacterial protein compared to the control or a 4.5% bacterial protein diet [918]. For plant-based proteins, studies including those from Norway reported decreased growth rates with plant-protein inclusion, while other Norwegian studies reported similar growth rates compared to fish meal; additional Norwegian evidence reported both reduced and similar final body weights relative to fish meal diets [924].\",\n  \"action_ids\": [\n    \"918\",\n    \"924\"\n  ]\n}"
+            "args": "{\"query\":\"How do plant-based and bacterial protein alternatives to fish meal compare in terms of their effect on Atlantic salmon growth rates in Norway?\",\"summary\":\"Bacterial protein: In Norway, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced with bacterial protein, while a 50% replacement reduced growth; another replicated, controlled study in Norway reported higher growth at 18% and 36% bacterial protein compared to the control or a 4.5% inclusion (918). Plant-based protein: Across studies that included Norway, several replicated/controlled studies found decreased growth rates with plant-based protein, while other replicated/controlled studies from Norway reported similar growth rates to fish meal diets (924).\",\"action_ids\":[\"918\",\"924\"]}",
+            "return_val": "{\n  \"query\": \"How do plant-based and bacterial protein alternatives to fish meal compare in terms of their effect on Atlantic salmon growth rates in Norway?\",\n  \"relevant_summary\": \"Bacterial protein: In Norway, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced with bacterial protein, while a 50% replacement reduced growth; another replicated, controlled study in Norway reported higher growth at 18% and 36% bacterial protein compared to the control or a 4.5% inclusion (918). Plant-based protein: Across studies that included Norway, several replicated/controlled studies found decreased growth rates with plant-based protein, while other replicated/controlled studies from Norway reported similar growth rates to fish meal diets (924).\",\n  \"action_ids\": [\n    \"918\",\n    \"924\"\n  ]\n}"
           }
         ]
       }
@@ -226,11 +210,13 @@
     "query": "Which interventions appear most effective for increasing the survival rates of farmed salmon exposed to disease?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Evidence from action documents indicates: Vaccinations increased survival rates in multiple controlled studies after exposure to Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri (Iceland, Norway), marine flexibacteriosis and bacterial kidney disease (Australia, Canada), and infectious salmon anaemia (Norway) [733]. Aerobic training increased survival following exposure to infectious pancreatic necrosis in a randomised, replicated, controlled study in Norway, with interval training more effective than continuous training [740]. Breeding for resistance traits increased survival in salmon families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families in a replicated, controlled study in Norway [735].",
+    "relevant_summary": "Evidence indicates higher survival of farmed salmon after disease exposure with: (1) vaccination, which increased survival in controlled studies against Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri in Iceland and Norway, marine flexibacteriosis and bacterial kidney disease in Australia and Canada, and infectious salmon anaemia in Norway [733]; (2) aerobic training, where a randomized, replicated, controlled study in Norway found higher survival after exposure to infectious pancreatic necrosis, with interval training outperforming continuous training [740]; and (3) selective breeding for resistance, where a replicated, controlled study in Norway showed higher survival in families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families [735]. Additional management shows limited or mixed links to survival: fallowing reduced lice in Scotland but did not change mortality from Amoebic Gill Disease in Australia [1026]; freshwater bathing showed mixed effects on amoebae levels on gills in Australian studies, without demonstrated survival benefits [739].",
     "summary_action_ids": [
       "733",
       "740",
-      "735"
+      "735",
+      "1026",
+      "739"
     ],
     "tool_call_details": [
       {
@@ -238,33 +224,13 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"farmed salmon disease survival interventions increase survival rates\", \"k\": 3, \"offset\": 0}",
+            "args": "{\"query_string\":\"farmed salmon disease survival intervention effective increase survival rates\", \"k\": 3, \"offset\": 0}",
             "return_val": "[\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"740\",\n    \"action_title\": \"Aerobic training\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"735\",\n    \"action_title\": \"Breed for resistance traits\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 2,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\": \"farmed salmon disease survival interventions increase survival rates\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"753\",\n    \"action_title\": \"Combine trap and repellent crops in a push-pull system\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"92\",\n    \"action_title\": \"Plant brassica fodder crops (grazed in situ)\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"93\",\n    \"action_title\": \"Use mixed stocking\",\n    \"rank\": 6\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 3,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"farmed salmon disease survival interventions increase survival rates\",\"k\":3,\"offset\":6}",
-            "return_val": "NONE - ERRONEOUS TOOL CALL"
-          }
-        ]
-      },
-      {
-        "iteration_num": 4,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -284,12 +250,62 @@
         ]
       },
       {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"salmon disease survival intervention farmed salmon survival rates disease exposure\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"735\",\n    \"action_title\": \"Breed for resistance traits\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1026\"}",
+            "return_val": "{\n  \"action_id\": \"1026\",\n  \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n  \"key_messages\": \"Key Messages:\\nA study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system. Another study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used.\"\n}"
+          }
+        ]
+      },
+      {
         "iteration_num": 5,
         "tools_called": [
           {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"salmon disease survival intervention mortality farmed salmon disease management survival increase\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"739\",\n    \"action_title\": \"Bathe in freshwater\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"739\"}",
+            "return_val": "{\n  \"action_id\": \"739\",\n  \"action_title\": \"Bathe in freshwater\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nTwo studies in Australia\\u00a0provide mixed evidence of the effect of freshwater bathing to reducing amoebic gill disease.\\u00a0One study found a reduction in numbers of amoebae on salmon gills persisting for up to 10 days after bathing. One replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"salmon vaccination survival infectious diseases survival rate effectiveness controlled study farmed\", \"k\": 3, \"offset\": 9}",
+            "return_val": "[\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"939\",\n    \"action_title\": \"Domestication: sterility/triploidy\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"750\",\n    \"action_title\": \"Use pesticides only when pests or crop damage reach threshold levels\",\n    \"rank\": 12\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"Which interventions appear most effective for increasing the survival rates of farmed salmon exposed to disease?\",\"summary\":\"Evidence from action documents indicates: Vaccinations increased survival rates in multiple controlled studies after exposure to Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri (Iceland, Norway), marine flexibacteriosis and bacterial kidney disease (Australia, Canada), and infectious salmon anaemia (Norway) [733]. Aerobic training increased survival following exposure to infectious pancreatic necrosis in a randomised, replicated, controlled study in Norway, with interval training more effective than continuous training [740]. Breeding for resistance traits increased survival in salmon families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families in a replicated, controlled study in Norway [735].\",\"action_ids\":[\"733\",\"740\",\"735\"]}",
-            "return_val": "{\n  \"query\": \"Which interventions appear most effective for increasing the survival rates of farmed salmon exposed to disease?\",\n  \"relevant_summary\": \"Evidence from action documents indicates: Vaccinations increased survival rates in multiple controlled studies after exposure to Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri (Iceland, Norway), marine flexibacteriosis and bacterial kidney disease (Australia, Canada), and infectious salmon anaemia (Norway) [733]. Aerobic training increased survival following exposure to infectious pancreatic necrosis in a randomised, replicated, controlled study in Norway, with interval training more effective than continuous training [740]. Breeding for resistance traits increased survival in salmon families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families in a replicated, controlled study in Norway [735].\",\n  \"action_ids\": [\n    \"733\",\n    \"740\",\n    \"735\"\n  ]\n}"
+            "args": "{\"query\":\"Which interventions appear most effective for increasing the survival rates of farmed salmon exposed to disease?\",\"summary\":\"Evidence indicates higher survival of farmed salmon after disease exposure with: (1) vaccination, which increased survival in controlled studies against Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri in Iceland and Norway, marine flexibacteriosis and bacterial kidney disease in Australia and Canada, and infectious salmon anaemia in Norway [733]; (2) aerobic training, where a randomized, replicated, controlled study in Norway found higher survival after exposure to infectious pancreatic necrosis, with interval training outperforming continuous training [740]; and (3) selective breeding for resistance, where a replicated, controlled study in Norway showed higher survival in families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families [735]. Additional management shows limited or mixed links to survival: fallowing reduced lice in Scotland but did not change mortality from Amoebic Gill Disease in Australia [1026]; freshwater bathing showed mixed effects on amoebae levels on gills in Australian studies, without demonstrated survival benefits [739].\",\"action_ids\":[\"733\",\"740\",\"735\",\"1026\",\"739\"]}",
+            "return_val": "{\n  \"query\": \"Which interventions appear most effective for increasing the survival rates of farmed salmon exposed to disease?\",\n  \"relevant_summary\": \"Evidence indicates higher survival of farmed salmon after disease exposure with: (1) vaccination, which increased survival in controlled studies against Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri in Iceland and Norway, marine flexibacteriosis and bacterial kidney disease in Australia and Canada, and infectious salmon anaemia in Norway [733]; (2) aerobic training, where a randomized, replicated, controlled study in Norway found higher survival after exposure to infectious pancreatic necrosis, with interval training outperforming continuous training [740]; and (3) selective breeding for resistance, where a replicated, controlled study in Norway showed higher survival in families bred for high resistance to infectious pancreatic necrosis compared to low-resistance families [735]. Additional management shows limited or mixed links to survival: fallowing reduced lice in Scotland but did not change mortality from Amoebic Gill Disease in Australia [1026]; freshwater bathing showed mixed effects on amoebae levels on gills in Australian studies, without demonstrated survival benefits [739].\",\n  \"action_ids\": [\n    \"733\",\n    \"740\",\n    \"735\",\n    \"1026\",\n    \"739\"\n  ]\n}"
           }
         ]
       }
@@ -313,7 +329,7 @@
     "query": "What are the documented effects of using plant-based proteins in salmon feed in aquaculture operations in Norway and Scotland?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Across replicated and controlled studies in Norway and Scotland, inclusion of plant-based proteins in salmon feeds has been associated with: decreased growth rates in several studies, though some studies reported similar growth to fish meal-based diets [924]; reduced final body weights in multiple studies, while other studies found no difference from fish meal-based diets [924]; mixed effects on feed efficiency, with some studies showing lower efficiency, one showing higher efficiency, and others showing no difference compared to fish meal diets [924]; mixed results for digestibility, with some studies finding lower digestibility of feed components and others reporting similar digestibility to fish meal diets [924]; no detected effects on survival rates or appetite in two studies [924]; altered distal intestinal morphology in two studies [924]; and mixed effects on fish condition, with one study reporting increased condition and two reporting reduced condition on plant-based protein diets [924].",
+    "relevant_summary": "Across studies conducted in Norway and Scotland, plant-based protein inclusion in salmon feed has been associated with decreased growth rates in some trials, while other trials reported similar growth rates to fish-meal diets [924]. Several replicated, controlled studies in Norway and Scotland reported reduced final body weights with plant-based protein diets, though some Norway-based studies found similar final weights to fish-meal diets [924]. Feeding efficiency outcomes were mixed: some Norway studies found lowered efficiency, one Norway study found increased efficiency, and studies including Scotland reported similar efficiency between plant-based and fish-meal diets [924]. Randomised, replicated, controlled studies in Scotland and Norway reported similar digestibility between plant-based and fish-meal protein diets [924].",
     "summary_action_ids": [
       "924"
     ],
@@ -343,8 +359,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"Norway Scotland salmon plant protein feed effects growth digestibility intestine morphology\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"926\",\n    \"action_title\": \"Use an alternative oil source: plant-based\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"plant-based proteins salmon feed Norway Scotland aquaculture\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"922\",\n    \"action_title\": \"Use an alternative protein source: animal\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -352,39 +368,9 @@
         "iteration_num": 4,
         "tools_called": [
           {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Scotland plant-based protein salmon feed study\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"922\",\n    \"action_title\": \"Use an alternative protein source: animal\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 5,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"plant-based protein salmon feed Norway Scotland\", \"k\": 10, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"926\",\n    \"action_title\": \"Use an alternative oil source: plant-based\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"920\",\n    \"action_title\": \"Use an alternative protein source: yeast\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"922\",\n    \"action_title\": \"Use an alternative protein source: animal\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1903\",\n    \"action_title\": \"Carnivores: Feed a plant-derived protein diet\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"930\",\n    \"action_title\": \"Use supplements\",\n    \"rank\": 10\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 6,
-        "tools_called": [
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"1903\"}",
-            "return_val": "{\n  \"action_id\": \"1903\",\n  \"action_title\": \"Carnivores: Feed a plant-derived protein diet\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, randomized, controlled study\\u00a0and one replicated, controlled study\\u00a0in the USA found that a plant-derived protein diet increased digestible energy and dry matter digestibility\\u00a0but decreased mineral retention\\u00a0and plasma taurine levels\\u00a0in maned wolves compared to a (supplemented) animal-based protein diet.\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 7,
-        "tools_called": [
-          {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What are the documented effects of using plant-based proteins in salmon feed in aquaculture operations in Norway and Scotland?\",\"summary\":\"Across replicated and controlled studies in Norway and Scotland, inclusion of plant-based proteins in salmon feeds has been associated with: decreased growth rates in several studies, though some studies reported similar growth to fish meal-based diets [924]; reduced final body weights in multiple studies, while other studies found no difference from fish meal-based diets [924]; mixed effects on feed efficiency, with some studies showing lower efficiency, one showing higher efficiency, and others showing no difference compared to fish meal diets [924]; mixed results for digestibility, with some studies finding lower digestibility of feed components and others reporting similar digestibility to fish meal diets [924]; no detected effects on survival rates or appetite in two studies [924]; altered distal intestinal morphology in two studies [924]; and mixed effects on fish condition, with one study reporting increased condition and two reporting reduced condition on plant-based protein diets [924].\",\"action_ids\":[\"924\"]}",
-            "return_val": "{\n  \"query\": \"What are the documented effects of using plant-based proteins in salmon feed in aquaculture operations in Norway and Scotland?\",\n  \"relevant_summary\": \"Across replicated and controlled studies in Norway and Scotland, inclusion of plant-based proteins in salmon feeds has been associated with: decreased growth rates in several studies, though some studies reported similar growth to fish meal-based diets [924]; reduced final body weights in multiple studies, while other studies found no difference from fish meal-based diets [924]; mixed effects on feed efficiency, with some studies showing lower efficiency, one showing higher efficiency, and others showing no difference compared to fish meal diets [924]; mixed results for digestibility, with some studies finding lower digestibility of feed components and others reporting similar digestibility to fish meal diets [924]; no detected effects on survival rates or appetite in two studies [924]; altered distal intestinal morphology in two studies [924]; and mixed effects on fish condition, with one study reporting increased condition and two reporting reduced condition on plant-based protein diets [924].\",\n  \"action_ids\": [\n    \"924\"\n  ]\n}"
+            "args": "{\"query\":\"What are the documented effects of using plant-based proteins in salmon feed in aquaculture operations in Norway and Scotland?\",\"summary\":\"Across studies conducted in Norway and Scotland, plant-based protein inclusion in salmon feed has been associated with decreased growth rates in some trials, while other trials reported similar growth rates to fish-meal diets [924]. Several replicated, controlled studies in Norway and Scotland reported reduced final body weights with plant-based protein diets, though some Norway-based studies found similar final weights to fish-meal diets [924]. Feeding efficiency outcomes were mixed: some Norway studies found lowered efficiency, one Norway study found increased efficiency, and studies including Scotland reported similar efficiency between plant-based and fish-meal diets [924]. Randomised, replicated, controlled studies in Scotland and Norway reported similar digestibility between plant-based and fish-meal protein diets [924].\",\"action_ids\":[\"924\"]}",
+            "return_val": "{\n  \"query\": \"What are the documented effects of using plant-based proteins in salmon feed in aquaculture operations in Norway and Scotland?\",\n  \"relevant_summary\": \"Across studies conducted in Norway and Scotland, plant-based protein inclusion in salmon feed has been associated with decreased growth rates in some trials, while other trials reported similar growth rates to fish-meal diets [924]. Several replicated, controlled studies in Norway and Scotland reported reduced final body weights with plant-based protein diets, though some Norway-based studies found similar final weights to fish-meal diets [924]. Feeding efficiency outcomes were mixed: some Norway studies found lowered efficiency, one Norway study found increased efficiency, and studies including Scotland reported similar efficiency between plant-based and fish-meal diets [924]. Randomised, replicated, controlled studies in Scotland and Norway reported similar digestibility between plant-based and fish-meal protein diets [924].\",\n  \"action_ids\": [\n    \"924\"\n  ]\n}"
           }
         ]
       }
@@ -402,7 +388,7 @@
     "query": "What are the non-chemical alternatives for controlling sea lice on salmon farms?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Evidence from action documents identifies several non-chemical approaches: using cleaner wrasse as natural control agents, with mixed outcomes\u2014one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments, while another replicated, controlled study found rockcook cleaner wrasse ineffective at preventing outbreaks [738]. Altering lighting, with a replicated, controlled study in Norway reporting lower lice numbers under low-intensity artificial light or natural lighting, and higher lice numbers under more intense artificial light [741]. Implementing fallowing, with a study in Scotland recording lower lice numbers on Atlantic salmon in cages using a fallowing system, though another study in Australia found no difference in mortality from Amoebic Gill Disease when fallowing was used [1026].",
+    "relevant_summary": "- Use natural control agents (cleaner wrasse): Two studies in Ireland reported mixed effects; one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments at controlling lice infestation, while one replicated, controlled study found rockcook cleaner wrasse were ineffective at preventing lice outbreaks [738].\n- Alter lighting: A replicated, controlled study in Norway reported lower numbers of lice on salmon kept in low intensity artificial light or natural lighting, with more intense artificial light associated with higher lice numbers [741].\n- Establish fallowing: A study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system [1026].",
     "summary_action_ids": [
       "738",
       "741",
@@ -425,7 +411,7 @@
           {
             "function_name": "search_actions",
             "args": "{\"query_string\":\"non-chemical alternatives for controlling sea lice on salmon farms\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"1102\",\n    \"action_title\": \"Skunk cabbage:  Chemical control using herbicides\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"937\",\n    \"action_title\": \"Eco friendly biofouling prevention\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"744\",\n    \"action_title\": \"Plant new hedges\",\n    \"rank\": 6\n  }\n]"
+            "return_val": "[\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2877\",\n    \"action_title\": \"Reduce the amount of pesticides used in aquaculture systems\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -434,8 +420,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"sea lice mechanical control salmon farms non-chemical\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"738\",\n    \"action_title\": \"Use natural control agents: cleaner wrasse\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"non-chemical alternatives for controlling sea lice on salmon farms\", \"k\": 3, \"offset\": 6}",
+            "return_val": "[\n  {\n    \"action_id\": \"2193\",\n    \"action_title\": \"Reduce the amount of pesticides used in aquaculture systems\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2877\",\n    \"action_title\": \"Reduce the amount of pesticides used in aquaculture systems\",\n    \"rank\": 9\n  }\n]"
           }
         ]
       },
@@ -464,8 +450,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What are the non-chemical alternatives for controlling sea lice on salmon farms?\",\"summary\":\"Evidence from action documents identifies several non-chemical approaches: using cleaner wrasse as natural control agents, with mixed outcomes\u2014one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments, while another replicated, controlled study found rockcook cleaner wrasse ineffective at preventing outbreaks [738]. Altering lighting, with a replicated, controlled study in Norway reporting lower lice numbers under low-intensity artificial light or natural lighting, and higher lice numbers under more intense artificial light [741]. Implementing fallowing, with a study in Scotland recording lower lice numbers on Atlantic salmon in cages using a fallowing system, though another study in Australia found no difference in mortality from Amoebic Gill Disease when fallowing was used [1026].\",\"action_ids\":[\"738\",\"741\",\"1026\"]}",
-            "return_val": "{\n  \"query\": \"What are the non-chemical alternatives for controlling sea lice on salmon farms?\",\n  \"relevant_summary\": \"Evidence from action documents identifies several non-chemical approaches: using cleaner wrasse as natural control agents, with mixed outcomes\\u2014one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments, while another replicated, controlled study found rockcook cleaner wrasse ineffective at preventing outbreaks [738]. Altering lighting, with a replicated, controlled study in Norway reporting lower lice numbers under low-intensity artificial light or natural lighting, and higher lice numbers under more intense artificial light [741]. Implementing fallowing, with a study in Scotland recording lower lice numbers on Atlantic salmon in cages using a fallowing system, though another study in Australia found no difference in mortality from Amoebic Gill Disease when fallowing was used [1026].\",\n  \"action_ids\": [\n    \"738\",\n    \"741\",\n    \"1026\"\n  ]\n}"
+            "args": "{\"query\":\"What are the non-chemical alternatives for controlling sea lice on salmon farms?\",\"summary\":\"- Use natural control agents (cleaner wrasse): Two studies in Ireland reported mixed effects; one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments at controlling lice infestation, while one replicated, controlled study found rockcook cleaner wrasse were ineffective at preventing lice outbreaks [738].\\n- Alter lighting: A replicated, controlled study in Norway reported lower numbers of lice on salmon kept in low intensity artificial light or natural lighting, with more intense artificial light associated with higher lice numbers [741].\\n- Establish fallowing: A study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system [1026].\",\"action_ids\":[\"738\",\"741\",\"1026\"]}",
+            "return_val": "{\n  \"query\": \"What are the non-chemical alternatives for controlling sea lice on salmon farms?\",\n  \"relevant_summary\": \"- Use natural control agents (cleaner wrasse): Two studies in Ireland reported mixed effects; one controlled study found corkwing and goldskinny cleaner wrasse were as effective as chemical treatments at controlling lice infestation, while one replicated, controlled study found rockcook cleaner wrasse were ineffective at preventing lice outbreaks [738].\\n- Alter lighting: A replicated, controlled study in Norway reported lower numbers of lice on salmon kept in low intensity artificial light or natural lighting, with more intense artificial light associated with higher lice numbers [741].\\n- Establish fallowing: A study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system [1026].\",\n  \"action_ids\": [\n    \"738\",\n    \"741\",\n    \"1026\"\n  ]\n}"
           }
         ]
       }
@@ -487,7 +473,7 @@
     "query": "How does the effectiveness of fallowing salmon farm cages for disease control vary between studies in Scotland and Australia?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "A study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system [1026]. In contrast, a study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used [1026].",
+    "relevant_summary": "A Scotland study recorded lower lice numbers on Atlantic salmon in cages using a fallowing system, whereas an Australia study found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used [1026].",
     "summary_action_ids": [
       "1026"
     ],
@@ -497,13 +483,23 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"effectiveness of fallowing salmon farm cages disease control Scotland Australia studies\", \"k\": 3, \"offset\": 0}",
+            "args": "{\"query_string\": \"fallowing salmon farm cages disease control Scotland Australia effectiveness\", \"k\": 3, \"offset\": 0}",
             "return_val": "[\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"742\",\n    \"action_title\": \"Alter cage size\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"fallowing salmon farm cages disease control Scotland Australia effectiveness\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"739\",\n    \"action_title\": \"Bathe in freshwater\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -513,12 +509,12 @@
         ]
       },
       {
-        "iteration_num": 3,
+        "iteration_num": 4,
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"How does the effectiveness of fallowing salmon farm cages for disease control vary between studies in Scotland and Australia?\",\"summary\":\"A study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system [1026]. In contrast, a study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used [1026].\",\"action_ids\":[\"1026\"]}",
-            "return_val": "{\n  \"query\": \"How does the effectiveness of fallowing salmon farm cages for disease control vary between studies in Scotland and Australia?\",\n  \"relevant_summary\": \"A study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system [1026]. In contrast, a study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used [1026].\",\n  \"action_ids\": [\n    \"1026\"\n  ]\n}"
+            "args": "{\"query\":\"How does the effectiveness of fallowing salmon farm cages for disease control vary between studies in Scotland and Australia?\",\"summary\":\"A Scotland study recorded lower lice numbers on Atlantic salmon in cages using a fallowing system, whereas an Australia study found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used [1026].\",\"action_ids\":[\"1026\"]}",
+            "return_val": "{\n  \"query\": \"How does the effectiveness of fallowing salmon farm cages for disease control vary between studies in Scotland and Australia?\",\n  \"relevant_summary\": \"A Scotland study recorded lower lice numbers on Atlantic salmon in cages using a fallowing system, whereas an Australia study found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used [1026].\",\n  \"action_ids\": [\n    \"1026\"\n  ]\n}"
           }
         ]
       }
@@ -534,7 +530,7 @@
     "query": "How do krill, yeast, and animal protein alternatives to fishmeal compare in their effect on Atlantic salmon growth?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Two replicated studies in Norway reported similar final weight gain between Atlantic salmon fed fishmeal or krill meal; when krill were de-shelled, growth rates were closer to fishmeal than with whole krill, and feed conversion ratios were similar between fishmeal and krill meal [916]. One replicated, controlled experiment in Norway found no differences in weight between salmon fed the yeast Yarrowia lipolytica and a fishmeal control [920]. One controlled, randomised, replicated study from Scotland showed fish fed a fishmeal diet weighed more than fish fed diets with alternative proteins [922].",
+    "relevant_summary": "- Krill meal: Two replicated studies in Norway found similar final weight gain between salmon fed fishmeal and those fed a krill meal substitute; when krill were de-shelled, growth rates were closer to salmon fed fishmeal than when krill were left whole (Action 916).\n- Yeast: One replicated, controlled experiment in Norway found no differences in weight between Atlantic salmon fed diets containing the yeast Yarrowia lipolytica and a control diet containing fishmeal (Action 920).\n- Animal protein alternatives: One controlled, randomised, replicated study in Scotland showed that fish fed a fishmeal diet weighed more than fish fed diets with alternative proteins (Action 922).",
     "summary_action_ids": [
       "916",
       "920",
@@ -546,19 +542,14 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"krill yeast animal protein alternatives fishmeal Atlantic salmon growth comparison\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"920\",\n    \"action_title\": \"Use an alternative protein source: yeast\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"922\",\n    \"action_title\": \"Use an alternative protein source: animal\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\":\"krill yeast animal protein alternatives to fishmeal effect on Atlantic salmon growth\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"920\",\n    \"action_title\": \"Use an alternative protein source: yeast\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"922\",\n    \"action_title\": \"Use an alternative protein source: animal\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 2,
         "tools_called": [
-          {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"916\"}",
-            "return_val": "{\n  \"action_id\": \"916\",\n  \"action_title\": \"Use an alternative protein source: krill\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in Norway found similar final weight gain between salmon that were fed diets containing fish meal only or a krill meal substitute. When the krill were de-shelled, growth rates were closer to salmon fed fish meal, compared to leaving the krill whole.\\nFeed conversion ratios were found to be similar in both the fish meal and krill meal diets.\\nThe number of aerobic bacteria in the hindgut of salmon fed fish meal and krill meal were higher and composition of the bacterial flora was different.\"\n}"
-          },
           {
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"920\"}",
@@ -568,6 +559,11 @@
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"922\"}",
             "return_val": "{\n  \"action_id\": \"922\",\n  \"action_title\": \"Use an alternative protein source: animal\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, replicated\\u00a0study in Canada found no difference in oxygen consumption or swimming speed of Atlantic salmon      that were fed diets containing anchovy oil or alternative lipid sources. \\nOne controlled, randomised, replicated\\u00a0study from Scotland showed that fish fed a fishmeal diet weighed more than fish fed diets with      alternative proteins.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"916\"}",
+            "return_val": "{\n  \"action_id\": \"916\",\n  \"action_title\": \"Use an alternative protein source: krill\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in Norway found similar final weight gain between salmon that were fed diets containing fish meal only or a krill meal substitute. When the krill were de-shelled, growth rates were closer to salmon fed fish meal, compared to leaving the krill whole.\\nFeed conversion ratios were found to be similar in both the fish meal and krill meal diets.\\nThe number of aerobic bacteria in the hindgut of salmon fed fish meal and krill meal were higher and composition of the bacterial flora was different.\"\n}"
           }
         ]
       },
@@ -576,8 +572,8 @@
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"How do krill, yeast, and animal protein alternatives to fishmeal compare in their effect on Atlantic salmon growth?\",\"summary\":\"Two replicated studies in Norway reported similar final weight gain between Atlantic salmon fed fishmeal or krill meal; when krill were de-shelled, growth rates were closer to fishmeal than with whole krill, and feed conversion ratios were similar between fishmeal and krill meal [916]. One replicated, controlled experiment in Norway found no differences in weight between salmon fed the yeast Yarrowia lipolytica and a fishmeal control [920]. One controlled, randomised, replicated study from Scotland showed fish fed a fishmeal diet weighed more than fish fed diets with alternative proteins [922].\",\"action_ids\":[\"916\",\"920\",\"922\"]}",
-            "return_val": "{\n  \"query\": \"How do krill, yeast, and animal protein alternatives to fishmeal compare in their effect on Atlantic salmon growth?\",\n  \"relevant_summary\": \"Two replicated studies in Norway reported similar final weight gain between Atlantic salmon fed fishmeal or krill meal; when krill were de-shelled, growth rates were closer to fishmeal than with whole krill, and feed conversion ratios were similar between fishmeal and krill meal [916]. One replicated, controlled experiment in Norway found no differences in weight between salmon fed the yeast Yarrowia lipolytica and a fishmeal control [920]. One controlled, randomised, replicated study from Scotland showed fish fed a fishmeal diet weighed more than fish fed diets with alternative proteins [922].\",\n  \"action_ids\": [\n    \"916\",\n    \"920\",\n    \"922\"\n  ]\n}"
+            "args": "{\"query\":\"How do krill, yeast, and animal protein alternatives to fishmeal compare in their effect on Atlantic salmon growth?\",\"summary\":\"- Krill meal: Two replicated studies in Norway found similar final weight gain between salmon fed fishmeal and those fed a krill meal substitute; when krill were de-shelled, growth rates were closer to salmon fed fishmeal than when krill were left whole (Action 916).\\n- Yeast: One replicated, controlled experiment in Norway found no differences in weight between Atlantic salmon fed diets containing the yeast Yarrowia lipolytica and a control diet containing fishmeal (Action 920).\\n- Animal protein alternatives: One controlled, randomised, replicated study in Scotland showed that fish fed a fishmeal diet weighed more than fish fed diets with alternative proteins (Action 922).\",\"action_ids\":[\"916\",\"920\",\"922\"]}",
+            "return_val": "{\n  \"query\": \"How do krill, yeast, and animal protein alternatives to fishmeal compare in their effect on Atlantic salmon growth?\",\n  \"relevant_summary\": \"- Krill meal: Two replicated studies in Norway found similar final weight gain between salmon fed fishmeal and those fed a krill meal substitute; when krill were de-shelled, growth rates were closer to salmon fed fishmeal than when krill were left whole (Action 916).\\n- Yeast: One replicated, controlled experiment in Norway found no differences in weight between Atlantic salmon fed diets containing the yeast Yarrowia lipolytica and a control diet containing fishmeal (Action 920).\\n- Animal protein alternatives: One controlled, randomised, replicated study in Scotland showed that fish fed a fishmeal diet weighed more than fish fed diets with alternative proteins (Action 922).\",\n  \"action_ids\": [\n    \"916\",\n    \"920\",\n    \"922\"\n  ]\n}"
           }
         ]
       }
@@ -597,11 +593,15 @@
     "query": "What is the evidence from studies in Norway for using alternative feed components in Atlantic salmon diets?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "In Norway, three controlled, replicated (two randomised) studies found no difference in growth rate of Atlantic salmon fed diets containing either genetically modified (GM) or non-GM soybeans, and one randomised, replicated, controlled study found no differences in histology between fish fed GM vs non-GM soybean diets [928]. For plant-based protein sources, studies from Norway reported mixed growth outcomes: some studies found decreased growth rates with plant-based proteins, while other studies found similar growth rates to fish meal diets [924]. Four replicated, controlled studies (three randomised) from Norway and Scotland found reduced final body weights with plant-based protein diets, while two controlled studies (one replicated) from Norway found similar final body weights to fish meal [924]. In Norway, two replicated, controlled studies (one randomised) found lowered feeding efficiency with plant-based protein diets, whereas one replicated study found increased feeding efficiency [924]. Two randomised, replicated, controlled studies in Scotland and Norway reported similar digestibility between plant and fish meal diets [924]. One replicated, controlled experiment in Norway using the yeast Yarrowia lipolytica reported no differences in weight compared to a fishmeal control [920].",
+    "relevant_summary": "In Norway, a replicated, controlled experiment found no difference in weight when Atlantic salmon were fed Yarrowia lipolytica yeast compared to a fishmeal control [920]. For plant-based proteins, studies from Norway and Scotland reported reduced final body weights in some trials, while two controlled studies from Norway found similar final body weights; feeding efficiency in Norway was lower in two replicated, controlled studies (one randomised) but higher in one replicated study; digestibility was similar in randomised, replicated, controlled studies conducted in Scotland and Norway [924]. For plant-based oils, replicated studies in Norway found similar growth rates to fish oil, with one Norwegian study reporting higher growth on vegetable oil; two Norwegian studies found similar final body weights; Norwegian work also reported that broodstock fecundity, egg weights, fertility, and fry development were unaffected by oil source, that vegetable oil diets produced higher liver lipid and lower plasma lipoprotein than fish oil, and that flesh quality metrics (gaping, texture, liquid holding) were similar though pigment concentration was lower; studies in Norway and Scotland found fillet fatty acid profiles reflected dietary oil source [926]. Two replicated studies in Norway substituting krill meal for fish meal found similar final weight gain; de-shelled krill produced growth closer to fish meal, feed conversion ratios were similar, and hindgut aerobic bacterial numbers were higher with different flora composition [916]. Two replicated Norwegian studies reducing fish meal levels (low, medium, high) reported similar final weights [915]. Three controlled, replicated (two randomised) studies in Norway found no difference in growth rate when salmon were fed GM vs. non-GM soybeans, and one randomised, replicated, controlled Norwegian study found no histological differences [928]. A controlled, replicated study in Norway reported no difference in weight gain with taurine supplementation [930].",
     "summary_action_ids": [
-      "928",
+      "920",
       "924",
-      "920"
+      "926",
+      "916",
+      "915",
+      "928",
+      "930"
     ],
     "tool_call_details": [
       {
@@ -609,8 +609,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"Norway Atlantic salmon alternative feed components studies evidence\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"928\",\n    \"action_title\": \"Use genetically modified alternatives\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"920\",\n    \"action_title\": \"Use an alternative protein source: yeast\",\n    \"rank\": 3\n  }\n]"
+            "args": "{\"query_string\": \"Norway studies alternative feed components Atlantic salmon diets evidence\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"928\",\n    \"action_title\": \"Use genetically modified alternatives\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"920\",\n    \"action_title\": \"Use an alternative protein source: yeast\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -619,8 +619,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"Norway Atlantic salmon alternative feed components studies evidence\",\"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"932\",\n    \"action_title\": \"Integrated aquaculture systems\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"92\",\n    \"action_title\": \"Plant brassica fodder crops (grazed in situ)\",\n    \"rank\": 6\n  }\n]"
+            "args": "{\"query_string\":\"Norway studies alternative feed components Atlantic salmon diets evidence\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"926\",\n    \"action_title\": \"Use an alternative oil source: plant-based\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 6\n  }\n]"
           }
         ]
       },
@@ -628,9 +628,29 @@
         "iteration_num": 3,
         "tools_called": [
           {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Norway studies alternative feed components Atlantic salmon diets evidence\",\"k\":3,\"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"922\",\n    \"action_title\": \"Use an alternative protein source: animal\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"930\",\n    \"action_title\": \"Use supplements\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Norway studies alternative feed components Atlantic salmon diets evidence\",\"k\":3,\"offset\":9}",
+            "return_val": "[\n  {\n    \"action_id\": \"915\",\n    \"action_title\": \"Reduce fish meal in diet\",\n    \"rank\": 10\n  },\n  {\n    \"action_id\": \"733\",\n    \"action_title\": \"Use vaccinations\",\n    \"rank\": 11\n  },\n  {\n    \"action_id\": \"735\",\n    \"action_title\": \"Breed for resistance traits\",\n    \"rank\": 12\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"928\"}",
-            "return_val": "{\n  \"action_id\": \"928\",\n  \"action_title\": \"Use genetically modified alternatives\",\n  \"key_messages\": \"Key Messages:\\n\\nThree controlled, replicated (two randomised)\\u00a0studies in Norway found      no difference in growth rate of Atlantic salmon that were fed diets      containing either GM or non-GM soybeans. One randomised, replicated, controlled study in Norway found      no differences in fish fed diets containing either GM or non- GM soybeans      on the histology of the fish.\"\n}"
+            "args": "{\"action_id\":\"920\"}",
+            "return_val": "{\n  \"action_id\": \"920\",\n  \"action_title\": \"Use an alternative protein source: yeast\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled      experiment in Norway found no differences in weight between      Atlantic salmon that were fed diets containing the yeast Yarrowia lipolytica compared to a      control diet containing fishmeal.\"\n}"
           },
           {
             "function_name": "get_action_details",
@@ -639,18 +659,43 @@
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"920\"}",
-            "return_val": "{\n  \"action_id\": \"920\",\n  \"action_title\": \"Use an alternative protein source: yeast\",\n  \"key_messages\": \"Key Messages:\\n\\nOne replicated, controlled      experiment in Norway found no differences in weight between      Atlantic salmon that were fed diets containing the yeast Yarrowia lipolytica compared to a      control diet containing fishmeal.\"\n}"
+            "args": "{\"action_id\":\"926\"}",
+            "return_val": "{\n  \"action_id\": \"926\",\n  \"action_title\": \"Use an alternative oil source: plant-based\",\n  \"key_messages\": \"Key Messages:\\n \\n\\nThree replicated studies (two controlled) in Norway found growth rates were similar in salmon that were fed diets containing fish oil and vegetable oil. One replicated study in\\u00a0Norway found growth rates were higher in fish fed diets containing vegetable oil.\\u00a0 One replicated, controlled\\u00a0study found salmon growth rates were both lower and higher in vegetable oil diets compared to fish oil diets, dependant on family genetics.\\nTwo replicated studies (one controlled) in Norway found similar average final body weights between groups of salmon fed both fish oil and vegetable oil diets.\\nThree studies (two replicated, one controlled) in Norway and Scotland found that the fatty acid profile of salmon flesh reflected oil source within diets.\\nA study in Norway found that oil source in diets did not affect salmon broodstock fecundity levels, egg weights, fertility rates, as well as the weights and development of resultant fry.\\nOne replicated Norwegian study found that salmon fed vegetable oil diets had high liver lipid and low plasma lipoprotein compared to the fish oil diet. One replicated, controlled study found high levels of n-3 highly unsaturated fatty acids compared to diets containing rapeseed oil.\\nA replicated, controlled study in\\u00a0Scotland\\u00a0found salmon fed vegetable oil-based diets had lower concentrations of dioxin and polychlorinated biphenyls within flesh, compared with diets containing fish oil.\\nA replicated study in Norway found that fresh, frozen and smoked salmon flesh from fish fed vegetable oil- and fish oil-based diets had similar levels of gaping, texture and liquid holding capacity. Pigment concentration was lower in vegetable oil diets.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"916\"}",
+            "return_val": "{\n  \"action_id\": \"916\",\n  \"action_title\": \"Use an alternative protein source: krill\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in Norway found similar final weight gain between salmon that were fed diets containing fish meal only or a krill meal substitute. When the krill were de-shelled, growth rates were closer to salmon fed fish meal, compared to leaving the krill whole.\\nFeed conversion ratios were found to be similar in both the fish meal and krill meal diets.\\nThe number of aerobic bacteria in the hindgut of salmon fed fish meal and krill meal were higher and composition of the bacterial flora was different.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"922\"}",
+            "return_val": "{\n  \"action_id\": \"922\",\n  \"action_title\": \"Use an alternative protein source: animal\",\n  \"key_messages\": \"Key Messages:\\n\\nOne controlled, replicated\\u00a0study in Canada found no difference in oxygen consumption or swimming speed of Atlantic salmon      that were fed diets containing anchovy oil or alternative lipid sources. \\nOne controlled, randomised, replicated\\u00a0study from Scotland showed that fish fed a fishmeal diet weighed more than fish fed diets with      alternative proteins.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"915\"}",
+            "return_val": "{\n  \"action_id\": \"915\",\n  \"action_title\": \"Reduce fish meal in diet\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in Norway found similar final weights in salmon that were fed diets containing low, medium or high levels of fish meal.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"928\"}",
+            "return_val": "{\n  \"action_id\": \"928\",\n  \"action_title\": \"Use genetically modified alternatives\",\n  \"key_messages\": \"Key Messages:\\n\\nThree controlled, replicated (two randomised)\\u00a0studies in Norway found      no difference in growth rate of Atlantic salmon that were fed diets      containing either GM or non-GM soybeans. One randomised, replicated, controlled study in Norway found      no differences in fish fed diets containing either GM or non- GM soybeans      on the histology of the fish.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"930\"}",
+            "return_val": "{\n  \"action_id\": \"930\",\n  \"action_title\": \"Use supplements\",\n  \"key_messages\": \"Key Messages:\\n\\nA controlled, replicated\\u00a0study in Australia found no difference in weight gain of Atlantic salmon with and without dietary supplementation of phytase and phosphate. \\nOne controlled, replicated study in\\u00a0Australia\\u00a0fish fed diets supplemented with phytase had greater final weights than those given no supplement. \\nA controlled, replicated\\u00a0study in Norway found no difference in weight gain of salmon that were fed diets with or without taurine supplementation.\"\n}"
           }
         ]
       },
       {
-        "iteration_num": 4,
+        "iteration_num": 6,
         "tools_called": [
           {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What is the evidence from studies in Norway for using alternative feed components in Atlantic salmon diets?\",\"summary\":\"In Norway, three controlled, replicated (two randomised) studies found no difference in growth rate of Atlantic salmon fed diets containing either genetically modified (GM) or non-GM soybeans, and one randomised, replicated, controlled study found no differences in histology between fish fed GM vs non-GM soybean diets [928]. For plant-based protein sources, studies from Norway reported mixed growth outcomes: some studies found decreased growth rates with plant-based proteins, while other studies found similar growth rates to fish meal diets [924]. Four replicated, controlled studies (three randomised) from Norway and Scotland found reduced final body weights with plant-based protein diets, while two controlled studies (one replicated) from Norway found similar final body weights to fish meal [924]. In Norway, two replicated, controlled studies (one randomised) found lowered feeding efficiency with plant-based protein diets, whereas one replicated study found increased feeding efficiency [924]. Two randomised, replicated, controlled studies in Scotland and Norway reported similar digestibility between plant and fish meal diets [924]. One replicated, controlled experiment in Norway using the yeast Yarrowia lipolytica reported no differences in weight compared to a fishmeal control [920].\",\"action_ids\":[\"928\",\"924\",\"920\"]}",
-            "return_val": "{\n  \"query\": \"What is the evidence from studies in Norway for using alternative feed components in Atlantic salmon diets?\",\n  \"relevant_summary\": \"In Norway, three controlled, replicated (two randomised) studies found no difference in growth rate of Atlantic salmon fed diets containing either genetically modified (GM) or non-GM soybeans, and one randomised, replicated, controlled study found no differences in histology between fish fed GM vs non-GM soybean diets [928]. For plant-based protein sources, studies from Norway reported mixed growth outcomes: some studies found decreased growth rates with plant-based proteins, while other studies found similar growth rates to fish meal diets [924]. Four replicated, controlled studies (three randomised) from Norway and Scotland found reduced final body weights with plant-based protein diets, while two controlled studies (one replicated) from Norway found similar final body weights to fish meal [924]. In Norway, two replicated, controlled studies (one randomised) found lowered feeding efficiency with plant-based protein diets, whereas one replicated study found increased feeding efficiency [924]. Two randomised, replicated, controlled studies in Scotland and Norway reported similar digestibility between plant and fish meal diets [924]. One replicated, controlled experiment in Norway using the yeast Yarrowia lipolytica reported no differences in weight compared to a fishmeal control [920].\",\n  \"action_ids\": [\n    \"928\",\n    \"924\",\n    \"920\"\n  ]\n}"
+            "args": "{\"query\":\"What is the evidence from studies in Norway for using alternative feed components in Atlantic salmon diets?\",\"summary\":\"In Norway, a replicated, controlled experiment found no difference in weight when Atlantic salmon were fed Yarrowia lipolytica yeast compared to a fishmeal control [920]. For plant-based proteins, studies from Norway and Scotland reported reduced final body weights in some trials, while two controlled studies from Norway found similar final body weights; feeding efficiency in Norway was lower in two replicated, controlled studies (one randomised) but higher in one replicated study; digestibility was similar in randomised, replicated, controlled studies conducted in Scotland and Norway [924]. For plant-based oils, replicated studies in Norway found similar growth rates to fish oil, with one Norwegian study reporting higher growth on vegetable oil; two Norwegian studies found similar final body weights; Norwegian work also reported that broodstock fecundity, egg weights, fertility, and fry development were unaffected by oil source, that vegetable oil diets produced higher liver lipid and lower plasma lipoprotein than fish oil, and that flesh quality metrics (gaping, texture, liquid holding) were similar though pigment concentration was lower; studies in Norway and Scotland found fillet fatty acid profiles reflected dietary oil source [926]. Two replicated studies in Norway substituting krill meal for fish meal found similar final weight gain; de-shelled krill produced growth closer to fish meal, feed conversion ratios were similar, and hindgut aerobic bacterial numbers were higher with different flora composition [916]. Two replicated Norwegian studies reducing fish meal levels (low, medium, high) reported similar final weights [915]. Three controlled, replicated (two randomised) studies in Norway found no difference in growth rate when salmon were fed GM vs. non-GM soybeans, and one randomised, replicated, controlled Norwegian study found no histological differences [928]. A controlled, replicated study in Norway reported no difference in weight gain with taurine supplementation [930].\",\"action_ids\":[\"920\",\"924\",\"926\",\"916\",\"915\",\"928\",\"930\"]}",
+            "return_val": "{\n  \"query\": \"What is the evidence from studies in Norway for using alternative feed components in Atlantic salmon diets?\",\n  \"relevant_summary\": \"In Norway, a replicated, controlled experiment found no difference in weight when Atlantic salmon were fed Yarrowia lipolytica yeast compared to a fishmeal control [920]. For plant-based proteins, studies from Norway and Scotland reported reduced final body weights in some trials, while two controlled studies from Norway found similar final body weights; feeding efficiency in Norway was lower in two replicated, controlled studies (one randomised) but higher in one replicated study; digestibility was similar in randomised, replicated, controlled studies conducted in Scotland and Norway [924]. For plant-based oils, replicated studies in Norway found similar growth rates to fish oil, with one Norwegian study reporting higher growth on vegetable oil; two Norwegian studies found similar final body weights; Norwegian work also reported that broodstock fecundity, egg weights, fertility, and fry development were unaffected by oil source, that vegetable oil diets produced higher liver lipid and lower plasma lipoprotein than fish oil, and that flesh quality metrics (gaping, texture, liquid holding) were similar though pigment concentration was lower; studies in Norway and Scotland found fillet fatty acid profiles reflected dietary oil source [926]. Two replicated studies in Norway substituting krill meal for fish meal found similar final weight gain; de-shelled krill produced growth closer to fish meal, feed conversion ratios were similar, and hindgut aerobic bacterial numbers were higher with different flora composition [916]. Two replicated Norwegian studies reducing fish meal levels (low, medium, high) reported similar final weights [915]. Three controlled, replicated (two randomised) studies in Norway found no difference in growth rate when salmon were fed GM vs. non-GM soybeans, and one randomised, replicated, controlled Norwegian study found no histological differences [928]. A controlled, replicated study in Norway reported no difference in weight gain with taurine supplementation [930].\",\n  \"action_ids\": [\n    \"920\",\n    \"924\",\n    \"926\",\n    \"916\",\n    \"915\",\n    \"928\",\n    \"930\"\n  ]\n}"
           }
         ]
       }
@@ -682,10 +727,10 @@
     "query": "What are the effects of altering the physical environment of salmon cages, such as their size or lighting, on salmon health in aquaculture?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "A replicated, controlled study in Norway reported that salmon kept under low-intensity artificial light or natural lighting had fewer lice, and lice numbers increased with higher artificial light intensity [741]. A replicated study in Australia recorded lower levels of amoebic gill disease in salmon held in larger cages compared to smaller cages [742].",
+    "relevant_summary": "A replicated study in Australia found that larger cages were associated with lower levels of amoebic gill disease in farmed salmon (742). A replicated, controlled study in Norway reported fewer sea lice on salmon kept under low-intensity artificial lighting or natural light, and that higher-intensity artificial lighting was associated with higher lice numbers (741).",
     "summary_action_ids": [
-      "741",
-      "742"
+      "742",
+      "741"
     ],
     "tool_call_details": [
       {
@@ -693,7 +738,7 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"salmon aquaculture cage size lighting health effects altering physical environment salmon cages\", \"k\": 3, \"offset\": 0}",
+            "args": "{\"query_string\": \"salmon aquaculture cage size lighting effects on health physical environment cages size light welfare disease\", \"k\": 3, \"offset\": 0}",
             "return_val": "[\n  {\n    \"action_id\": \"742\",\n    \"action_title\": \"Alter cage size\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 3\n  }\n]"
           }
         ]
@@ -703,8 +748,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"salmon aquaculture lighting cages light environment effect health welfare growth\",\"k\":3,\"offset\":3}",
-            "return_val": "[\n  {\n    \"action_id\": \"2702\",\n    \"action_title\": \"Modify fishing trap/pot configuration\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2833\",\n    \"action_title\": \"Involve fishers in designing and trialling new fishing gear types to encourage uptake of gear that reduces unwanted catch of mammals\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"949\",\n    \"action_title\": \"Create alternative bat roosts within developments\",\n    \"rank\": 6\n  }\n]"
+            "args": "{\"query_string\":\"salmon aquaculture lighting effects on health cages light spectrum photoperiod welfare\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3596\",\n    \"action_title\": \"Regulate artificial lighting during vulnerable periods\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2776\",\n    \"action_title\": \"Translocate mammals away from aquaculture systems to reduce human-wildlife conflict\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -713,8 +758,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"salmon cage lighting artificial light photoperiod aquaculture cages health welfare parasites injury\",\"k\":10,\"offset\":0}",
-            "return_val": "[\n  {\n    \"action_id\": \"2825\",\n    \"action_title\": \"Switch off artificial lighting at wild fisheries\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3596\",\n    \"action_title\": \"Regulate artificial lighting during vulnerable periods\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"742\",\n    \"action_title\": \"Alter cage size\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2774\",\n    \"action_title\": \"Replace or repair damaged anti-predator nets around aquaculture systems\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2260\",\n    \"action_title\": \"Locate artificial reefs near aquaculture systems to benefit from nutrient run-offs\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2008\",\n    \"action_title\": \"Treat bats for infection with white-nose syndrome\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3537\",\n    \"action_title\": \"Modify vessels to reduce or prevent injuries to reptiles from collisions\",\n    \"rank\": 10\n  }\n]"
+            "args": "{\"query_string\":\"salmon cage design depth mesh shelter structural enrichment aquaculture health\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2774\",\n    \"action_title\": \"Replace or repair damaged anti-predator nets around aquaculture systems\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -723,13 +768,18 @@
         "tools_called": [
           {
             "function_name": "get_action_details",
+            "args": "{\"action_id\":\"742\"}",
+            "return_val": "{\n  \"action_id\": \"742\",\n  \"action_title\": \"Alter cage size\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nA replicated study in Australia recorded lower levels of amoebic gill disease in salmon kept within larger compared to smaller cages.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
             "args": "{\"action_id\":\"741\"}",
             "return_val": "{\n  \"action_id\": \"741\",\n  \"action_title\": \"Alter lighting\",\n  \"key_messages\": \"Key Messages:\\n\\nA replicated, controlled study in Norway reported lower numbers of lice on salmon kept in low intensity artificial light or natural lighting. The more intense the artificial light was, the higher the number of lice found on fish.\"\n}"
           },
           {
             "function_name": "get_action_details",
-            "args": "{\"action_id\":\"742\"}",
-            "return_val": "{\n  \"action_id\": \"742\",\n  \"action_title\": \"Alter cage size\",\n  \"key_messages\": \"Key Messages:\\n  \\n\\nA replicated study in Australia recorded lower levels of amoebic gill disease in salmon kept within larger compared to smaller cages.\"\n}"
+            "args": "{\"action_id\":\"3596\"}",
+            "return_val": "{\n  \"action_id\": \"3596\",\n  \"action_title\": \"Regulate artificial lighting during vulnerable periods\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on reptile populations of regulating artificial lighting during vulnerable periods.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
           }
         ]
       },
@@ -738,8 +788,8 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\":\"salmon aquaculture cage depth environment health lighting shade net color structural modifications\",\"k\":5,\"offset\":0}",
-            "return_val": "[\n  {\n    \"action_id\": \"3532\",\n    \"action_title\": \"Install and maintain anti-predator systems around aquaculture that prevent entanglement of reptiles\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2774\",\n    \"action_title\": \"Replace or repair damaged anti-predator nets around aquaculture systems\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2260\",\n    \"action_title\": \"Locate artificial reefs near aquaculture systems to benefit from nutrient run-offs\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2194\",\n    \"action_title\": \"Reduce the amount of antibiotics used in aquaculture systems\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 5\n  }\n]"
+            "args": "{\"query_string\":\"salmon sea lice lighting intensity artificial light cages study\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3623\",\n    \"action_title\": \"Use low intensity lighting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3596\",\n    \"action_title\": \"Regulate artificial lighting during vulnerable periods\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
@@ -747,9 +797,29 @@
         "iteration_num": 6,
         "tools_called": [
           {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3623\"}",
+            "return_val": "{\n  \"action_id\": \"3623\",\n  \"action_title\": \"Use low intensity lighting\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of using low intensity lighting on reptile populations. Three studies were in the USA1-3 and one was in Malaysia4.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (4 STUDIES)\\n\\nBehaviour change (4 studies): One replicated, controlled study in the USA1 found that reducing the intensity of light sources did not improve loggerhead turtle hatchling seaward orientation. One replicated, site comparison study in Malaysia4 found that green turtle hatchlings in low and moderate ambient artificial light took more direct crawl routes to the sea than hatchlings released in high ambient artificial light. One replicated, controlled study in the USA3 found that in laboratory trials, loggerhead and green turtle hatchlings showed reduced preference for lower intensity light sources. One replicated, site comparison study in the USA2 found mixed effects of embedding streetlights in the road on seaward orientation of loggerhead turtle hatchlings compared to overhead lighting depending on shading by shrubs and weather and lunar phase.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"salmon aquaculture cage depth environmental modification health welfare disease lighting depth cage structure\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"742\",\n    \"action_title\": \"Alter cage size\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1027\",\n    \"action_title\": \"Establish fallowing to reduce pollution\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"What are the effects of altering the physical environment of salmon cages, such as their size or lighting, on salmon health in aquaculture?\",\"summary\":\"A replicated, controlled study in Norway reported that salmon kept under low-intensity artificial light or natural lighting had fewer lice, and lice numbers increased with higher artificial light intensity [741]. A replicated study in Australia recorded lower levels of amoebic gill disease in salmon held in larger cages compared to smaller cages [742].\",\"action_ids\":[\"741\",\"742\"]}",
-            "return_val": "{\n  \"query\": \"What are the effects of altering the physical environment of salmon cages, such as their size or lighting, on salmon health in aquaculture?\",\n  \"relevant_summary\": \"A replicated, controlled study in Norway reported that salmon kept under low-intensity artificial light or natural lighting had fewer lice, and lice numbers increased with higher artificial light intensity [741]. A replicated study in Australia recorded lower levels of amoebic gill disease in salmon held in larger cages compared to smaller cages [742].\",\n  \"action_ids\": [\n    \"741\",\n    \"742\"\n  ]\n}"
+            "args": "{\"query\":\"What are the effects of altering the physical environment of salmon cages, such as their size or lighting, on salmon health in aquaculture?\",\"summary\":\"A replicated study in Australia found that larger cages were associated with lower levels of amoebic gill disease in farmed salmon (742). A replicated, controlled study in Norway reported fewer sea lice on salmon kept under low-intensity artificial lighting or natural light, and that higher-intensity artificial lighting was associated with higher lice numbers (741).\",\"action_ids\":[\"742\",\"741\"]}",
+            "return_val": "{\n  \"query\": \"What are the effects of altering the physical environment of salmon cages, such as their size or lighting, on salmon health in aquaculture?\",\n  \"relevant_summary\": \"A replicated study in Australia found that larger cages were associated with lower levels of amoebic gill disease in farmed salmon (742). A replicated, controlled study in Norway reported fewer sea lice on salmon kept under low-intensity artificial lighting or natural light, and that higher-intensity artificial lighting was associated with higher lice numbers (741).\",\n  \"action_ids\": [\n    \"742\",\n    \"741\"\n  ]\n}"
           }
         ]
       }
@@ -767,7 +837,7 @@
     "query": "How do different non-chemical water-based treatments, such as fallowing and freshwater bathing, compare in their reported effectiveness for specific diseases in salmon?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Freshwater bathing showed mixed effectiveness against amoebic gill disease (AGD): one study reported reduced amoebae on gills lasting up to 10 days after treatment, while a replicated, controlled study found no difference between treated and untreated salmon (739). Fallowing showed reduced parasite loads for sea lice in Scotland, but an Australian study reported no difference in mortality from AGD in cages where fallowing had been used (1026).",
+    "relevant_summary": "For amoebic gill disease, freshwater bathing showed mixed results: one study reported reduced numbers of amoebae on salmon gills lasting up to 10 days after treatment [739], while a replicated, controlled study found similar amoebae levels between treated and untreated salmon [739]. For fallowing, one study in Scotland recorded lower sea lice numbers on Atlantic salmon in cages using a fallowing system [1026], whereas another study in Australia reported no difference in mortality from amoebic gill disease in cages where a fallowing system had been used [1026].",
     "summary_action_ids": [
       "739",
       "1026"
@@ -807,9 +877,39 @@
         "iteration_num": 3,
         "tools_called": [
           {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"salmon non-chemical water-based treatments lice freshwater bath hydrolicer thermal delousing skirts\", \"k\": 3, \"offset\": 3}",
+            "return_val": "[\n  {\n    \"action_id\": \"2193\",\n    \"action_title\": \"Reduce the amount of pesticides used in aquaculture systems\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1035\",\n    \"action_title\": \"<i>Procambarus</i> crayfish control: Remove the crayfish by electrofishing\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"freshwater bath amoebic gill disease salmon action\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"739\",\n    \"action_title\": \"Bathe in freshwater\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"742\",\n    \"action_title\": \"Alter cage size\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1026\",\n    \"action_title\": \"Establish fallowing to reduce parasites/disease\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"salmon lice water treatment freshwater bath mechanical delousing water jet hydrolicer action\", \"k\": 3, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1572\",\n    \"action_title\": \"Parrot\\u2019s feather: Removal using water jets\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"741\",\n    \"action_title\": \"Alter lighting\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"738\",\n    \"action_title\": \"Use natural control agents: cleaner wrasse\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"How do different non-chemical water-based treatments, such as fallowing and freshwater bathing, compare in their reported effectiveness for specific diseases in salmon?\",\"summary\":\"Freshwater bathing showed mixed effectiveness against amoebic gill disease (AGD): one study reported reduced amoebae on gills lasting up to 10 days after treatment, while a replicated, controlled study found no difference between treated and untreated salmon (739). Fallowing showed reduced parasite loads for sea lice in Scotland, but an Australian study reported no difference in mortality from AGD in cages where fallowing had been used (1026).\",\"action_ids\":[\"739\",\"1026\"]}",
-            "return_val": "{\n  \"query\": \"How do different non-chemical water-based treatments, such as fallowing and freshwater bathing, compare in their reported effectiveness for specific diseases in salmon?\",\n  \"relevant_summary\": \"Freshwater bathing showed mixed effectiveness against amoebic gill disease (AGD): one study reported reduced amoebae on gills lasting up to 10 days after treatment, while a replicated, controlled study found no difference between treated and untreated salmon (739). Fallowing showed reduced parasite loads for sea lice in Scotland, but an Australian study reported no difference in mortality from AGD in cages where fallowing had been used (1026).\",\n  \"action_ids\": [\n    \"739\",\n    \"1026\"\n  ]\n}"
+            "args": "{\"query\":\"How do different non-chemical water-based treatments, such as fallowing and freshwater bathing, compare in their reported effectiveness for specific diseases in salmon?\",\"summary\":\"For amoebic gill disease, freshwater bathing showed mixed results: one study reported reduced numbers of amoebae on salmon gills lasting up to 10 days after treatment [739], while a replicated, controlled study found similar amoebae levels between treated and untreated salmon [739]. For fallowing, one study in Scotland recorded lower sea lice numbers on Atlantic salmon in cages using a fallowing system [1026], whereas another study in Australia reported no difference in mortality from amoebic gill disease in cages where a fallowing system had been used [1026].\",\"action_ids\":[\"739\",\"1026\"]}",
+            "return_val": "{\n  \"query\": \"How do different non-chemical water-based treatments, such as fallowing and freshwater bathing, compare in their reported effectiveness for specific diseases in salmon?\",\n  \"relevant_summary\": \"For amoebic gill disease, freshwater bathing showed mixed results: one study reported reduced numbers of amoebae on salmon gills lasting up to 10 days after treatment [739], while a replicated, controlled study found similar amoebae levels between treated and untreated salmon [739]. For fallowing, one study in Scotland recorded lower sea lice numbers on Atlantic salmon in cages using a fallowing system [1026], whereas another study in Australia reported no difference in mortality from amoebic gill disease in cages where a fallowing system had been used [1026].\",\n  \"action_ids\": [\n    \"739\",\n    \"1026\"\n  ]\n}"
           }
         ]
       }
@@ -827,12 +927,13 @@
     "query": "Which dietary alternatives or supplements to traditional fish meal have been shown to have no negative impact on Atlantic salmon growth or weight?",
     "model": "openai/gpt-5",
     "provider": null,
-    "relevant_summary": "Replicated and controlled studies report no negative impact on Atlantic salmon growth or weight for several options: dietary supplementation with phytase and phosphate resulted in no difference in weight gain compared to no supplementation, with one study finding greater final weights with phytase, and taurine supplementation showed no difference in weight gain [930]. Two replicated studies found similar final weight gain when fish meal was replaced with a krill meal substitute, with de-shelled krill producing growth rates closer to fish meal than whole krill [916]. For plant-based proteins, multiple replicated/controlled studies reported similar growth rates and similar final body weights to fish meal diets, although other studies reported reductions [924]. For bacterial protein, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced, while another study reported higher growth at 18% and 36% bacterial protein; however, a 50% replacement reduced growth [918].",
+    "relevant_summary": "- Dietary supplements: A controlled, replicated study in Australia found no difference in weight gain with phytase and phosphate supplementation, and a controlled, replicated study in Norway found no difference in weight gain with taurine supplementation; another Australian study reported greater final weights with phytase supplementation [930].\n- Krill meal as an alternative protein: Two replicated studies in Norway found similar final weight gain between salmon fed fish meal only and those fed a krill meal substitute; de-shelling krill brought growth rates closer to fish-meal-fed fish [916].\n- Plant-based protein as an alternative: Three replicated and/or controlled studies from Norway, Canada and Scotland found similar growth rates in salmon fed plant-based and fish meal diets, and two controlled studies from Norway found similar final body weights between plant-based and fish meal diets [924].\n- Bacterial protein as an alternative: Two replicated, controlled studies in Norway found similar growth rates when up to 25% of fish meal was replaced with bacterial protein; another replicated, controlled study reported higher growth at 18% and 36% bacterial protein inclusion [918].\n- Reduced fish meal inclusion: Two replicated studies in Norway found similar final weights among salmon fed diets with low, medium, or high levels of fish meal [915].",
     "summary_action_ids": [
       "930",
       "916",
       "924",
-      "918"
+      "918",
+      "915"
     ],
     "tool_call_details": [
       {
@@ -840,13 +941,33 @@
         "tools_called": [
           {
             "function_name": "search_actions",
-            "args": "{\"query_string\": \"Atlantic salmon fish meal alternatives no negative impact on growth or weight supplement diet study\", \"k\": 3, \"offset\": 0}",
+            "args": "{\"query_string\": \"Atlantic salmon fish meal alternatives supplements no negative impact on growth or weight\", \"k\": 3, \"offset\": 0}",
             "return_val": "[\n  {\n    \"action_id\": \"930\",\n    \"action_title\": \"Use supplements\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
           }
         ]
       },
       {
         "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Atlantic salmon fish meal alternatives supplements no negative impact on growth or weight\",\"k\":3,\"offset\":3}",
+            "return_val": "[\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"926\",\n    \"action_title\": \"Use an alternative oil source: plant-based\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"915\",\n    \"action_title\": \"Reduce fish meal in diet\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"Atlantic salmon fish meal alternatives supplements no negative impact on growth or weight\",\"k\":3,\"offset\":6}",
+            "return_val": "[\n  {\n    \"action_id\": \"926\",\n    \"action_title\": \"Use an alternative oil source: plant-based\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"732\",\n    \"action_title\": \"Use of probiotics and immunostimulants\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"915\",\n    \"action_title\": \"Reduce fish meal in diet\",\n    \"rank\": 9\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
         "tools_called": [
           {
             "function_name": "get_action_details",
@@ -862,26 +983,26 @@
             "function_name": "get_action_details",
             "args": "{\"action_id\":\"924\"}",
             "return_val": "{\n  \"action_id\": \"924\",\n  \"action_title\": \"Use an alternative protein source: plant-based\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies (four replicated, controlled) in\\u00a0Norway, Scotland and the USA found that inclusion of plant-based proteins within feed led to decreased growth rates in salmon. Three replicated and/or controlled studies from Norway, Canada and Scotland found similar growth rates in salmon fed either plant-based or fish meal diets.\\nFour replicated, controlled\\u00a0studies (three randomised) from Norway and Scotland found reduced final body weights in salmon fed plant-based protein diets compared to fish meal-based diets. Two controlled studies (one replicated) from Norway found similar final body weights in salmon fed either plant-based or fish meal diets.\\nTwo replicated, controlled studies (one randomised)\\u00a0from Norway found lowered levels of feeding efficiency, whereas a replicated study in Norway found increased levels of feeding efficiency in salmon fed plant-based protein diets compared to fish meal diets. Two replicated studies (one controlled) in\\u00a0Canada and Scotland\\u00a0study found similar levels of feeding efficiency across both diet types.\\nDigestibility of feed components by salmon was found to be lower in two replicated, controlled studies when the diets contained plant proteins compared to fish meal. Similar levels of digestibility across both diet types were identified by two randomised, replicated, controlled studies in Scotland\\u00a0and Norway. \\nTwo of the studies found that survival rates and appetite were not affected by plant- or fish meal-based protein diets. However morphology of the distal intestine was altered in two randomised, replicated, controlled studies where salmon were fed diets containing plant-based proteins. Condition of the salmon was increased in plant-based protein diets in one randomised, replicated, controlled study but reduced in two other replicated studies.\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 3,
-        "tools_called": [
+          },
           {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Atlantic salmon fish meal alternative insect meal growth no difference weight\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"930\",\n    \"action_title\": \"Use supplements\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 4,
-        "tools_called": [
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"918\"}",
+            "return_val": "{\n  \"action_id\": \"918\",\n  \"action_title\": \"Use an alternative protein source: bacteria\",\n  \"key_messages\": \"Key Messages:\\n\\nEvidence for the effects of replacing fish meal with bacterial protein is mixed.\\nTwo replicated, controlled studies in Norway found similar growth rates in salmon fed either a 100% fish meal (control) diet or experimental diets containing up to 25% bacterial protein to replace fish meal. In the diet containing 50% bacterial protein, growth rates were lower compared to the control. \\nAnother replicated, controlled study in Norway reported higher growth rates in salmon that were fed diets containing 18% and 36% bacterial protein compared to the control or a diet containing 4.5% bacterial protein.\"\n}"
+          },
           {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Atlantic salmon alternative protein source algae yeast single cell bacterial meal growth weight similar to fish meal\", \"k\": 3, \"offset\": 0}",
-            "return_val": "[\n  {\n    \"action_id\": \"918\",\n    \"action_title\": \"Use an alternative protein source: bacteria\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"916\",\n    \"action_title\": \"Use an alternative protein source: krill\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"924\",\n    \"action_title\": \"Use an alternative protein source: plant-based\",\n    \"rank\": 3\n  }\n]"
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"915\"}",
+            "return_val": "{\n  \"action_id\": \"915\",\n  \"action_title\": \"Reduce fish meal in diet\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo replicated studies in Norway found similar final weights in salmon that were fed diets containing low, medium or high levels of fish meal.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"732\"}",
+            "return_val": "{\n  \"action_id\": \"732\",\n  \"action_title\": \"Use of probiotics and immunostimulants\",\n  \"key_messages\": \"Key Messages:\\n \\n\\nOne replicated study in\\u00a0Scotland\\u00a0found\\u00a0increased survival in salmon fed a probiotic before exposure to four different disease-causing bacteria over a 28 day period compared with controls.\\nA replicated, controlled study in Norway found the number of salmon infected with lice was reduced by 28% when fed a diet composed of fish meal and 28% plant-based protein. Adding beta-glucans to the diet decreased lice infection levels by a further 28% compared with controls.\\nThe same study\\u00a0found the addition of mannan oligosaccharides improved gut function by preventing the development of soybean-induced enteritis compared with controls.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"926\"}",
+            "return_val": "{\n  \"action_id\": \"926\",\n  \"action_title\": \"Use an alternative oil source: plant-based\",\n  \"key_messages\": \"Key Messages:\\n \\n\\nThree replicated studies (two controlled) in Norway found growth rates were similar in salmon that were fed diets containing fish oil and vegetable oil. One replicated study in\\u00a0Norway found growth rates were higher in fish fed diets containing vegetable oil.\\u00a0 One replicated, controlled\\u00a0study found salmon growth rates were both lower and higher in vegetable oil diets compared to fish oil diets, dependant on family genetics.\\nTwo replicated studies (one controlled) in Norway found similar average final body weights between groups of salmon fed both fish oil and vegetable oil diets.\\nThree studies (two replicated, one controlled) in Norway and Scotland found that the fatty acid profile of salmon flesh reflected oil source within diets.\\nA study in Norway found that oil source in diets did not affect salmon broodstock fecundity levels, egg weights, fertility rates, as well as the weights and development of resultant fry.\\nOne replicated Norwegian study found that salmon fed vegetable oil diets had high liver lipid and low plasma lipoprotein compared to the fish oil diet. One replicated, controlled study found high levels of n-3 highly unsaturated fatty acids compared to diets containing rapeseed oil.\\nA replicated, controlled study in\\u00a0Scotland\\u00a0found salmon fed vegetable oil-based diets had lower concentrations of dioxin and polychlorinated biphenyls within flesh, compared with diets containing fish oil.\\nA replicated study in Norway found that fresh, frozen and smoked salmon flesh from fish fed vegetable oil- and fish oil-based diets had similar levels of gaping, texture and liquid holding capacity. Pigment concentration was lower in vegetable oil diets.\"\n}"
           }
         ]
       },
@@ -889,29 +1010,9 @@
         "iteration_num": 5,
         "tools_called": [
           {
-            "function_name": "get_action_details",
-            "args": "{\"action_id\":\"918\"}",
-            "return_val": "{\n  \"action_id\": \"918\",\n  \"action_title\": \"Use an alternative protein source: bacteria\",\n  \"key_messages\": \"Key Messages:\\n\\nEvidence for the effects of replacing fish meal with bacterial protein is mixed.\\nTwo replicated, controlled studies in Norway found similar growth rates in salmon fed either a 100% fish meal (control) diet or experimental diets containing up to 25% bacterial protein to replace fish meal. In the diet containing 50% bacterial protein, growth rates were lower compared to the control. \\nAnother replicated, controlled study in Norway reported higher growth rates in salmon that were fed diets containing 18% and 36% bacterial protein compared to the control or a diet containing 4.5% bacterial protein.\"\n}"
-          }
-        ]
-      },
-      {
-        "iteration_num": 6,
-        "tools_called": [
-          {
-            "function_name": "search_actions",
-            "args": "{\"query_string\":\"Atlantic salmon alternative protein source insect meal growth study\", \"k\": 3, \"offset\": 3}",
-            "return_val": "[\n  {\n    \"action_id\": \"937\",\n    \"action_title\": \"Eco friendly biofouling prevention\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"945\",\n    \"action_title\": \"Use exclusion nets\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"93\",\n    \"action_title\": \"Use mixed stocking\",\n    \"rank\": 6\n  }\n]"
-          }
-        ]
-      },
-      {
-        "iteration_num": 7,
-        "tools_called": [
-          {
             "function_name": "get_formatted_result",
-            "args": "{\"query\":\"Which dietary alternatives or supplements to traditional fish meal have been shown to have no negative impact on Atlantic salmon growth or weight?\",\"summary\":\"Replicated and controlled studies report no negative impact on Atlantic salmon growth or weight for several options: dietary supplementation with phytase and phosphate resulted in no difference in weight gain compared to no supplementation, with one study finding greater final weights with phytase, and taurine supplementation showed no difference in weight gain [930]. Two replicated studies found similar final weight gain when fish meal was replaced with a krill meal substitute, with de-shelled krill producing growth rates closer to fish meal than whole krill [916]. For plant-based proteins, multiple replicated/controlled studies reported similar growth rates and similar final body weights to fish meal diets, although other studies reported reductions [924]. For bacterial protein, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced, while another study reported higher growth at 18% and 36% bacterial protein; however, a 50% replacement reduced growth [918].\",\"action_ids\":[\"930\",\"916\",\"924\",\"918\"]}",
-            "return_val": "{\n  \"query\": \"Which dietary alternatives or supplements to traditional fish meal have been shown to have no negative impact on Atlantic salmon growth or weight?\",\n  \"relevant_summary\": \"Replicated and controlled studies report no negative impact on Atlantic salmon growth or weight for several options: dietary supplementation with phytase and phosphate resulted in no difference in weight gain compared to no supplementation, with one study finding greater final weights with phytase, and taurine supplementation showed no difference in weight gain [930]. Two replicated studies found similar final weight gain when fish meal was replaced with a krill meal substitute, with de-shelled krill producing growth rates closer to fish meal than whole krill [916]. For plant-based proteins, multiple replicated/controlled studies reported similar growth rates and similar final body weights to fish meal diets, although other studies reported reductions [924]. For bacterial protein, two replicated, controlled studies found similar growth rates when up to 25% of fish meal was replaced, while another study reported higher growth at 18% and 36% bacterial protein; however, a 50% replacement reduced growth [918].\",\n  \"action_ids\": [\n    \"930\",\n    \"916\",\n    \"924\",\n    \"918\"\n  ]\n}"
+            "args": "{\"query\":\"Which dietary alternatives or supplements to traditional fish meal have been shown to have no negative impact on Atlantic salmon growth or weight?\",\"summary\":\"- Dietary supplements: A controlled, replicated study in Australia found no difference in weight gain with phytase and phosphate supplementation, and a controlled, replicated study in Norway found no difference in weight gain with taurine supplementation; another Australian study reported greater final weights with phytase supplementation [930].\\n- Krill meal as an alternative protein: Two replicated studies in Norway found similar final weight gain between salmon fed fish meal only and those fed a krill meal substitute; de-shelling krill brought growth rates closer to fish-meal-fed fish [916].\\n- Plant-based protein as an alternative: Three replicated and/or controlled studies from Norway, Canada and Scotland found similar growth rates in salmon fed plant-based and fish meal diets, and two controlled studies from Norway found similar final body weights between plant-based and fish meal diets [924].\\n- Bacterial protein as an alternative: Two replicated, controlled studies in Norway found similar growth rates when up to 25% of fish meal was replaced with bacterial protein; another replicated, controlled study reported higher growth at 18% and 36% bacterial protein inclusion [918].\\n- Reduced fish meal inclusion: Two replicated studies in Norway found similar final weights among salmon fed diets with low, medium, or high levels of fish meal [915].\",\"action_ids\":[\"930\",\"916\",\"924\",\"918\",\"915\"]}",
+            "return_val": "{\n  \"query\": \"Which dietary alternatives or supplements to traditional fish meal have been shown to have no negative impact on Atlantic salmon growth or weight?\",\n  \"relevant_summary\": \"- Dietary supplements: A controlled, replicated study in Australia found no difference in weight gain with phytase and phosphate supplementation, and a controlled, replicated study in Norway found no difference in weight gain with taurine supplementation; another Australian study reported greater final weights with phytase supplementation [930].\\n- Krill meal as an alternative protein: Two replicated studies in Norway found similar final weight gain between salmon fed fish meal only and those fed a krill meal substitute; de-shelling krill brought growth rates closer to fish-meal-fed fish [916].\\n- Plant-based protein as an alternative: Three replicated and/or controlled studies from Norway, Canada and Scotland found similar growth rates in salmon fed plant-based and fish meal diets, and two controlled studies from Norway found similar final body weights between plant-based and fish meal diets [924].\\n- Bacterial protein as an alternative: Two replicated, controlled studies in Norway found similar growth rates when up to 25% of fish meal was replaced with bacterial protein; another replicated, controlled study reported higher growth at 18% and 36% bacterial protein inclusion [918].\\n- Reduced fish meal inclusion: Two replicated studies in Norway found similar final weights among salmon fed diets with low, medium, or high levels of fish meal [915].\",\n  \"action_ids\": [\n    \"930\",\n    \"916\",\n    \"924\",\n    \"918\",\n    \"915\"\n  ]\n}"
           }
         ]
       }
