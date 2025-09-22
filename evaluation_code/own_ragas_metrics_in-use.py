@@ -3,10 +3,12 @@ import os
 import json
 import logging
 import re
+import time
 from dotenv import load_dotenv
 from openai import OpenAI
 from google import genai
 from google.genai import types
+import copy
 
 import nltk
 for resource in ["punkt", "punkt_tab"]:
@@ -15,7 +17,8 @@ from nltk.tokenize import sent_tokenize
 import numpy as np
 from pydantic import BaseModel, Field
 
-from utils import action_parsing
+from utils.action_parsing import ActionParsingContext, get_parsed_action_by_id, get_parsed_action_as_str
+from utils.exceptions import RetrievalError
 
 load_dotenv()
 
@@ -91,7 +94,10 @@ def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", max_toke
                 }
             )
         response = client.models.generate_content(**request_params)
-            
+
+    # Usage details for logging purposes:
+    usage_details = response.usage
+    print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
     
     return response
 
@@ -171,10 +177,9 @@ class StatementVerdict(BaseModel):
     reasoning: str = Field(description="The reasoning behind the verdict.")
     verdict: str = Field(description="The verdict for the statement (i.e., 'Yes' or 'No').")
 
+
 ## Existing RAGAS faithfulness metric:
-def faithfulness(question, summary, docs, statements=None):
-    if statements is None:
-        statements = get_statements(question=question, answer=summary)
+def _faithfulness(docs, statements):
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
 
     ## True RAGAS prompt:
@@ -205,10 +210,6 @@ Consider the given context and following statements, then determine whether they
     }
     raw_response = call_llm(messages=messages, response_format=verdicts_response_format)
 
-    # Usage details for logging purposes:
-    usage_details = raw_response.usage
-    print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
-    
     response = raw_response.choices[0].message.content
     response = json.loads(response)
 
@@ -228,7 +229,7 @@ Consider the given context and following statements, then determine whether they
 
     return {
         "score":score,
-        "judgements":judgements
+        "statement_judgements":judgements
     }
 
 
@@ -244,9 +245,7 @@ class CitedStatementVerdict(BaseModel):
 #   Judges the "accuracy" of the citations themeselves for each statement, i.e. whether the citations given for each statement actually support the statement.
 #   Statements with no citations are consequently judges as not supported by default, meaning unsupported statements are automatically penalised.
 #   A high score is indicative of most facts being cited and those cited documents actually supporting the facts.
-def citation_correctness(question, summary, docs, statements=None):
-    if statements is None:
-        statements = get_statements(question=question, answer=summary)
+def _citation_correctness(summary, docs, statements):
     cited_statements = get_citations_from_statements(summary=summary, statements=statements)
     statements_joined_citations = [{"statement":obj["statement"], "citations": ", ".join(obj["citations"])} for obj in cited_statements]
     cited_statements_str = "\n".join([f"[Statement {i+1}: {obj["statement"]}\nCitations for statement {i+1}: {obj["citations"]}]" for i, obj in enumerate(statements_joined_citations)])
@@ -283,10 +282,6 @@ Consider the given context and following statements, then determine whether they
 
     raw_response = call_llm(messages=messages, response_format=verdicts_response_format)
 
-    # Usage details for logging purposes:
-    usage_details = raw_response.usage
-    print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
-
     response = raw_response.choices[0].message.content
     response = json.loads(response)
 
@@ -306,7 +301,7 @@ Consider the given context and following statements, then determine whether they
 
     return {
         "score":score,
-        "judgements":judgements
+        "statement_judgements":judgements
     }
 
 
@@ -315,9 +310,7 @@ Consider the given context and following statements, then determine whether they
 #   This and a completeness metric would be a substitute to answer_relevance which takes into account both relevance of answer and completeness of it.
 #   The metric works by splitting the summary into statements, and giving a verdict on each one as to whether it is relevant to answering the question (similar to RAGAS faithfulness procedure).
 #   A high score is indicative of many statements in the summary being relevant to answering the question.
-def relevance(question, summary, statements=None):
-    if statements is None:
-        statements = get_statements(question=question, answer=summary)
+def _relevance(question, statements):
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
     prompt = f"""
 Given a question and a list of statements, determine whether each statement is relevant to answering the question. Provide a thorough and rigorous explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the statements, the list of citations for each statement, reasonings and verdicts as a valid list of JSON objects.\nQuestion: {question}\nStatements: {statements_str}\nResponse:\n
@@ -340,10 +333,6 @@ Given a question and a list of statements, determine whether each statement is r
     }
     raw_response = call_llm(messages=messages, response_format=verdicts_response_format)
 
-    # Usage details for logging purposes:
-    usage_details = raw_response.usage
-    print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
-    
     response = raw_response.choices[0].message.content
     response = json.loads(response)
 
@@ -351,7 +340,6 @@ Given a question and a list of statements, determine whether each statement is r
     for obj in response:
         judgements.append({
             "statement": obj["statement"],
-            "citations": obj["citations"],
             "reasoning": obj["reasoning"],
             "verdict": True if "yes" in obj["verdict"].lower() else False
         })
@@ -363,88 +351,295 @@ Given a question and a list of statements, determine whether each statement is r
 
     return {
         "score":score,
-        "judgements":judgements
+        "statement_judgements":judgements
     }
+
 
 
 
 ### ACTION DOCS PARSING AND RETRIEVAL
 
-def get_oracle_actions(id_list, context : action_parsing.ActionParsingContext):
-    doc_type = context.get_doc_type()
-    if doc_type == "km":
-        base_dir = "action_data/key_messages/km_all"
-    elif doc_type == "bg_km":
-        base_dir = "action_data/background_key_messages/bg_km_all"
-    else:# invalid doc_type, return empty action list.
-        return []
-
+def get_oracle_actions(id_list, context : ActionParsingContext):
     parsed_actions = []
     for id in id_list:
-        filename = f"action_{id}_clean.txt"
-        filepath = os.path.join(base_dir, filename)
-        with open(filepath, "r", encoding="utf-8") as f:
-            content = f.read()
-        parsed_actions.append(action_parsing.parse_action(action_string=content, context=context))
+        parsed_actions.append(get_parsed_action_by_id(id=id, context=context))
 
     return parsed_actions
-
-
-def get_oracle_actions_as_str(id_list, context : action_parsing.ActionParsingContext):
-    actions = get_oracle_actions(id_list=id_list, context=context)
-    action_strings = []
-    for action in actions:
-        action_str = action_parsing.get_parsed_action_as_str(action=action)
-        action_strings.append(action_str)
-    full_str = "\n\n".join(action_strings)
-    return full_str
 
 
 
 ### FULL METRIC EVALUATION PIPELINE
 
-def evaluate_metric(metric_name, question, summary, summary_statements, action_ids_in_summary, oracle_ids, context : action_parsing.ActionParsingContext):
+def evaluate_metric(metric_name : str, question, summary, summary_statements, action_ids_in_summary, oracle_ids, context : ActionParsingContext):
     # Getting the oracle actions
     oracle_actions = get_oracle_actions(id_list=oracle_ids, context=context)
-    oracle_actions_str = "\n\n".join([action_parsing.get_parsed_action_as_str(action=action) for action in oracle_actions])
 
     # Getting the actions cited in the summary
     cited_actions = get_oracle_actions(id_list=action_ids_in_summary, context=context)
-    cited_actions_str = "\n\n".join([action_parsing.get_parsed_action_as_str(action=action) for action in cited_actions])
 
     all_docs = oracle_actions + cited_actions
-    all_docs_str = oracle_actions_str + "\n\n" + cited_actions_str
+    all_docs_str = "\n\n".join([get_parsed_action_as_str(action=action) for action in all_docs])
 
+ 
     if metric_name == "faithfulness":
-        result = faithfulness(question=question, summary=summary, docs=all_docs_str, statements=summary_statements)
+        result = _faithfulness(docs=all_docs_str, statements=summary_statements)
     elif metric_name == "citation_correctness":
-        result = citation_correctness(question=question, summary=summary, docs=all_docs_str, statements=summary_statements)
+        result = _citation_correctness(summary=summary, docs=all_docs_str, statements=summary_statements)
     elif metric_name == "relevance":
-        result = relevance(question=question, summary=summary, statements=summary_statements)
+        result = _relevance(question=question, statements=summary_statements)
     else:
-        metric_name = None
-        result = None
+        raise ValueError(f"Unknown metric name: {metric_name}")
     
-    full_result = {
+    return {
         "metric": metric_name,
-        "qu_summary": {
-            "question": question,
-            "all_relevant_action_ids": oracle_ids,
-            "summary": summary,
-            "action_ids_in_summary": action_ids_in_summary
-        },
         "evaluation": result
     }
 
-    return full_result
+
+def assemble_evaluations(summary_obj, statements, evaluations, judge_model, judge_provider):
+    question_details = {
+        "query": summary_obj["query"],
+        "all_relevant_qu_ids" : summary_obj["all_relevant_action_ids"],
+        "regenerated_qu_ids": summary_obj["regenerated_ids"]
+    }
+    summary_details = {
+        "summary_model": summary_obj["model"],
+        "summary_provider": summary_obj["provider"],
+        "relevant_summary": summary_obj["relevant_summary"],
+        "summary_action_ids": summary_obj["summary_action_ids"]
+    }
+    evaluation_details = {
+        "judge_model": judge_model,
+        "judge_provider": judge_provider,
+        "summary_statements": statements,
+        "evaluations": evaluations
+    }
+    return {
+        "question_details": question_details,
+        "summary_details": summary_details,
+        "evaluation_details": evaluation_details
+    }
 
 
+def read_json_file(filepath):
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            summary_dicts = json.load(f)
+        if not isinstance(summary_dicts, list):
+            raise RetrievalError(f"Expected JSON file {filepath} to contain a list, but contained {type(summary_dicts)} instead.")
+        else:
+            logging.info(f"Loaded json from {filepath}, found {len(summary_dicts)} objects.")
+            return summary_dicts
+    except json.JSONDecodeError as e:
+        raise RetrievalError(f"Error decoding JSON from file {filepath}: {str(e)}.")
+    except FileNotFoundError:
+        raise RetrievalError(f"File {filepath} not found.")
+
+
+def parse_model_name(model):
+    model_split = model.split("/")
+    model_name = model_split[-1]
+    cleaned_name = ""
+    for char in model_name:
+        if char.isalnum():
+            cleaned_name += char
+        else:
+            cleaned_name += "-"
+    return cleaned_name
+
+
+def parse_provider_name(provider):
+    if provider is not None:
+        provider_split = provider.split("/")
+        provider_name = provider_split[0]
+        return provider_name
+    else:
+        return ""
+
+
+def write_to_json_file(data_list, filepath):
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    try:
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(data_list, f, indent=2, ensure_ascii=False)
+    except TypeError as e:
+        logging.error(f"Error writing to JSON file {filepath}: {str(e)}.")
+
+
+def get_metrics_not_done(eval_already_done, judge_model, judge_provider, judging_metrics):
+    found = False
+    for i, judge_model_metrics in enumerate(eval_already_done):
+        prev_model = judge_model_metrics["judge_model"]
+        prev_provider = judge_model_metrics["judge_provider"]
+        if judge_model == prev_model and judge_provider == prev_provider:
+            found = True
+            # If the judge model/provider combo has already been done, check if all required metrics are done
+            existing_metrics = judge_model_metrics["metrics"]
+            missing_metrics = [m for m in judging_metrics if m not in existing_metrics]
+            
+    if not found:# If the judge model/provider has not been done before, all required metrics need to be done for this judge
+        missing_metrics = judging_metrics.copy()
+
+    return missing_metrics
+
+
+def update_done_metrics(eval_already_done, judge_model, judge_provider, new_metrics):
+    found = False
+    for i, judge_model_metrics in enumerate(eval_already_done):
+        prev_model = judge_model_metrics["judge_model"]
+        prev_provider = judge_model_metrics["judge_provider"]
+        if judge_model == prev_model and judge_provider == prev_provider:
+            found = True
+            # If the judge model/provider combo has already been done, update the metrics list
+            existing_metrics = judge_model_metrics["metrics"]
+            existing_metrics.extend(new_metrics)
+            break
+    if not found:# If the judge model/provider has not been done before, add a new entry
+        eval_already_done.append({
+            "judge_model": judge_model,
+            "judge_provider": judge_provider,
+            "metrics": new_metrics
+        })
+
+
+def run_eval_for_summaries_file(summaries_filepath, max_summaries, eval_filepath, judge_model, judge_provider, judging_metrics, context : ActionParsingContext):
+    try:
+        file_summary_dicts = read_json_file(summaries_filepath)
+    except RetrievalError as e:
+        logging.error(f"Unable to load summaries for evaluation from file {summaries_filepath}: {e}")
+        return
+    try:
+        file_eval_dicts = read_json_file(eval_filepath)
+    except RetrievalError as e:
+        logging.error(f"Unable to load existing evals from file {eval_filepath}: {e}. Starting fresh evaluation for this file.")
+        file_eval_dicts = []
 
     
-def main():
+    summary_dicts = copy.deepcopy(file_summary_dicts)
+    try:
+        summary_count = 0
+        current_summary_idx = -1
+
+        while summary_count < max_summaries:
+            current_summary_idx += 1
+            if current_summary_idx >= len(summary_dicts):
+                logging.info(f"Reached end of summaries in file {summaries_filepath}. Stopping evaluation for this file.")
+                break
+            summary_dict = summary_dicts[current_summary_idx]
+            if summary_dict["relevant_summary"] is None:
+                logging.warning(f"Skipping summary to query {summary_dict['query']} in file {summaries_filepath} as it has None summary.")
+                continue
+
+            eval_dict_found = False
+            current_eval_idx = None
+            for i, eval_dict in enumerate(file_eval_dicts):
+                if (eval_dict["question_details"]["query"] == summary_dict["query"] and
+                    eval_dict["summary_details"]["relevant_summary"] == summary_dict["relevant_summary"]):
+                    eval_dict_found = True
+                    current_eval_idx = i
+                    break
+            if not eval_dict_found:
+                query = summary_dict["query"]
+                all_relevant_qu_ids = summary_dict["all_relevant_action_ids"]
+                summary_model = summary_dict["model"]
+                summary_provider = summary_dict["provider"]
+                relevant_summary = summary_dict["relevant_summary"]
+                summary_action_ids = summary_dict["summary_action_ids"]
+            else:
+                eval_dict = file_eval_dicts[current_eval_idx]
+                query = eval_dict["question_details"]["query"]
+                all_relevant_qu_ids = eval_dict["question_details"]["all_relevant_qu_ids"]
+                summary_model = eval_dict["summary_details"]["summary_model"]
+                summary_provider = eval_dict["summary_details"]["summary_provider"]
+                relevant_summary = eval_dict["summary_details"]["relevant_summary"]
+                summary_action_ids = eval_dict["summary_details"]["summary_action_ids"]
+
+            eval_by_models = summary_dict.get("eval_by_models", [])
+            unevaluated_metrics = get_metrics_not_done(
+                eval_already_done=eval_by_models, 
+                judge_model=judge_model, 
+                judge_provider=judge_provider, 
+                judging_metrics=judging_metrics
+            )
+
+            if unevaluated_metrics:
+                logging.info(f"Evaluating {unevaluated_metrics} for summary generated by model: {summary_model} and provider: {summary_provider} to query: {query}")
+                if eval_dict_found:
+                    summary_statements = eval_dict["evaluation_details"]["summary_statements"]
+                else:
+                    summary_statements = get_statements(question=query, answer=relevant_summary)
+                evaluations = []
+                for metric in unevaluated_metrics:
+                    evaluations.append(
+                        evaluate_metric(
+                            metric_name=metric,
+                            question=query,
+                            summary=relevant_summary,
+                            summary_statements=summary_statements,
+                            action_ids_in_summary=summary_action_ids,
+                            oracle_ids=all_relevant_qu_ids,
+                            context=context
+                        )
+                    )
+                if eval_dict_found:
+                    file_eval_dicts[current_eval_idx]["evaluation_details"]["evaluations"].extend(evaluations)
+                else:
+                    assembled_evaluation = assemble_evaluations(
+                        summary_obj = summary_dict,
+                        statements = summary_statements,
+                        evaluations = evaluations,
+                        judge_model = judge_model,
+                        judge_provider = judge_provider
+                    )
+                    file_eval_dicts.append(assembled_evaluation)
+
+                update_done_metrics(
+                    eval_already_done=eval_by_models,
+                    judge_model=judge_model,
+                    judge_provider=judge_provider,
+                    new_metrics=unevaluated_metrics
+                )
+                summary_dicts[current_summary_idx]["eval_by_models"] = eval_by_models
+                summary_count += 1
+    
+    finally:
+        if summary_count > 0:
+            # write the new evals to eval output file
+            write_to_json_file(data_list=file_eval_dicts, filepath=eval_filepath)
+            logging.info(f"Wrote evaluation for {summary_count} summaries to eval file {eval_filepath}.")
+            # overwrite the summaries file (it will contain the updated eval_by_models field)
+            write_to_json_file(data_list=summary_dicts, filepath=summaries_filepath)
+            logging.info(f"Updated summaries file {summaries_filepath} eval_by_models fields.")
+        else:
+            logging.info(f"No new evaluations done for file {summaries_filepath}.")
+
+
+
+def run_eval_for_summaries_dir(summaries_dir, eval_out_dir, judge_model, judge_provider, judging_metrics, context : ActionParsingContext, offset_to_first_summary_file=0, max_summary_files=1, max_summaries_per_file=1):
+    if not os.path.exists(summaries_dir):
+        logging.error(f"Summaries directory {summaries_dir} does not exist.")
+        return
+    else:
+        logging.info(f"Starting evaluation of summaries in directory: {summaries_dir}")
+        summaries_filenames = [name for name in sorted(os.listdir(summaries_dir)) if name.endswith(".json")]
+        
+        for summaries_filename in summaries_filenames[offset_to_first_summary_file:offset_to_first_summary_file+max_summary_files]:
+            eval_filename = summaries_filename.replace("summaries", "eval")
+            run_eval_for_summaries_file(
+                summaries_filepath = os.path.join(summaries_dir, summaries_filename),
+                eval_filepath = os.path.join(eval_out_dir, eval_filename),
+                judge_model = judge_model,
+                judge_provider = judge_provider,
+                judging_metrics = judging_metrics,
+                max_summaries = max_summaries_per_file,
+                context = context
+            )
+
+    
+def test():
     logging.basicConfig(level=logging.INFO, filename="logfiles/own_ragas_metrics.log", format='%(asctime)s - %(levelname)s - %(message)s')
 
-    context = action_parsing.ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
+    context = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
 
     ## Loamy soils good answer
     # question = "What are the most effective ways to increase soil organic carbon on loamy soils?"
@@ -549,6 +744,67 @@ def main():
     # print(f"'score':{result['score']}")
     # for q in result["questions"]:
     #     print(f'"{q}"')
+
+
+def main():
+    logging.basicConfig(level=logging.INFO, filename="logfiles/own_ragas_metrics_in-use.log", format='%(asctime)s - %(levelname)s - %(message)s')
+    # disable httpx logging
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+    
+    # judge_model = "google/gemini-2.5-pro"
+    # judge_provider = None
+
+    judge_model_provider_list = [
+        # ("google/gemini-2.5-pro", None),
+        ("google/gemini-2.5-flash", None),
+        ("openai/gpt-5", None),
+        ("openai/gpt-5-mini", None)
+    ]
+
+    CONTEXT = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
+
+    QU_TYPE = "answerable"
+    FILTER_STAGE = "passed"
+    OFFSET_TO_FIRST_SUMMARY_FILE = 0
+    MAX_SUMMARY_FILES = 1
+    MAX_SUMMARIES_PER_FILE = 1
+
+    try:
+        overall_start = time.monotonic()
+        for judge_model, judge_provider in judge_model_provider_list:
+            cleaned_judge_model = parse_model_name(judge_model)
+            cleaned_judge_provider = parse_provider_name(judge_provider)
+            cleaned_judge_name = f"{cleaned_judge_provider}_{cleaned_judge_model}"
+
+            summaries_dir = f"live_summaries/{QU_TYPE}_{FILTER_STAGE}_qus_summaries/hybrid_cross-encoder/eval_annotated/_gpt-5"
+            eval_dir = f"live_evaluations/{QU_TYPE}_{FILTER_STAGE}_evals/judge_{cleaned_judge_name}/summaries_gpt-5"
+
+            logging.info("STARTING evaluation process.")
+            internal_start = time.monotonic()
+            try:
+                run_eval_for_summaries_dir(
+                    summaries_dir = summaries_dir,
+                    eval_out_dir = eval_dir,
+                    judge_model = judge_model,
+                    judge_provider = judge_provider,
+                    judging_metrics = ["faithfulness", "citation_correctness", "relevance"],
+                    context = CONTEXT,
+                    offset_to_first_summary_file=OFFSET_TO_FIRST_SUMMARY_FILE,
+                    max_summary_files=MAX_SUMMARY_FILES,
+                    max_summaries_per_file=MAX_SUMMARIES_PER_FILE
+                )
+            finally:
+                internal_time_taken = time.monotonic() - internal_start
+                print(f"Time taken for judge model: {judge_model} pinned to provider: {judge_provider} was: {internal_time_taken} seconds")
+
+    except KeyboardInterrupt as e:
+        logging.info(f"Keyboard interrupt: {e}")
+    
+    overall_time_taken = time.monotonic() - overall_start
+    print(f"Time taken overall: {overall_time_taken} seconds")
+
+
+
 
 
 if __name__ == "__main__":
