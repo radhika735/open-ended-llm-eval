@@ -1,0 +1,94 @@
+[
+  {
+    "question_details": {
+      "query": "What is the success rate of reintroducing captive-bred bats into areas affected by white-nose syndrome?",
+      "all_relevant_qu_ids": [
+        "2009",
+        "2053",
+        "2039"
+      ],
+      "regenerated_qu_ids": [
+        "2009",
+        "2039"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "openai/gpt-5",
+      "summary_provider": null,
+      "relevant_summary": "No studies have evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome, so no success rates of reintroduction are reported [2009].",
+      "summary_action_ids": [
+        "2009"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-flash",
+      "judge_provider": null,
+      "summary_statements": [
+        "No studies have evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome.",
+        "No success rates of reintroduction are reported."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "No studies have evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome.",
+                "reasoning": "The context explicitly states under the section for '2009: Breed bats in captivity to supplement wild populations affected by white-nose syndrome': 'We found no studies that evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome.' This directly confirms the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No success rates of reintroduction are reported.",
+                "reasoning": "The context includes a section '2039: Release captive-bred bats' which states: 'We found no studies that evaluated the effects of releasing captive-bred bats on bat populations.' Furthermore, it clarifies: 'Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts.' If no studies evaluated the effects of releasing captive-bred bats, it logically follows that no success rates for their reintroduction (which is a form of release) could be reported from such studies. The other sections discuss breeding and survival *in captivity*, not reintroduction success.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 0.5,
+            "statement_judgements": [
+              {
+                "statement": "No studies have evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome.",
+                "citations": [
+                  "2009"
+                ],
+                "reasoning": "The cited context from 2009 explicitly states: \"We found no studies that evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome.\" This directly supports the statement that no such studies have been found or evaluated, aligning perfectly with all parts of the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No success rates of reintroduction are reported.",
+                "citations": [
+                  "2009"
+                ],
+                "reasoning": "The cited context from 2009 concerns 'Breed bats in captivity to supplement wild populations affected by white-nose syndrome' and indicates that 'no studies that evaluated the effects' of this specific action were found. This citation does not discuss 'reintroduction' or any 'success rates of reintroduction'. While another section (2039) mentions the lack of studies on 'releasing captive-bred bats', statement 2 solely cites 2009, which does not contain information about reintroduction success rates. Therefore, the statement is not supported by the provided citation.",
+                "verdict": false
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "No studies have evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome.",
+                "reasoning": "The question asks for the 'success rate of reintroducing captive-bred bats into areas affected by white-nose syndrome'. This statement indicates that no studies have evaluated the broader 'effects' of using captive-bred bats to 'supplement wild populations affected by white-nose syndrome'. Reintroduction is a specific method for supplementation, and 'success rate' is a measure of 'effects'. If no studies have even looked at the general effects of such strategies, it strongly suggests that specific success rates for reintroduction would be unavailable or not yet determined. Therefore, this statement is highly relevant as it addresses the underlying research and data availability pertinent to answering the question.",
+                "verdict": true
+              },
+              {
+                "statement": "No success rates of reintroduction are reported.",
+                "reasoning": "The question directly asks 'What is the success rate of reintroducing captive-bred bats into areas affected by white-nose syndrome?'. This statement provides a direct answer to the core component of the question, indicating that the requested information (success rates of reintroduction) is not available or has not been reported. Even though it's a negative answer, it directly addresses the inquiry, making it highly relevant.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

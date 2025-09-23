@@ -1,0 +1,297 @@
+[
+  {
+    "question_details": {
+      "query": "What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?",
+      "all_relevant_qu_ids": [
+        "1010",
+        "1011",
+        "1012",
+        "2006",
+        "2007",
+        "2008",
+        "2009"
+      ],
+      "regenerated_qu_ids": [
+        "1010",
+        "1011",
+        "1012",
+        "2006",
+        "2007",
+        "2008",
+        "2009"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "openai/gpt-5",
+      "summary_provider": null,
+      "relevant_summary": "Two randomized, controlled studies evaluated treating little brown bats with a probiotic bacterium: in Canada, treatment at the time of white-nose syndrome infection increased survival and reduced disease symptoms in caged bats, whereas treatment 21 days prior did not increase survival and was associated with worse symptoms; in the USA, treatment increased survival for free-flying bats within a mine but did not increase survival for caged bats and resulted in similar disease severity to untreated bats (2008). No studies were found that evaluated vaccinating bats against the white-nose syndrome pathogen (1011), decontaminating clothing and equipment after entering caves (2006), restricting human access to bat caves (1010), or breeding bats in captivity to supplement wild populations affected by white-nose syndrome (2009).",
+      "summary_action_ids": [
+        "2008",
+        "1011",
+        "2006",
+        "1010",
+        "2009"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-flash",
+      "judge_provider": null,
+      "summary_statements": [
+        "Two randomized, controlled studies from 2008 evaluated treating little brown bats with a probiotic bacterium.",
+        "In a Canadian study, treating caged bats with a probiotic bacterium at the time of white-nose syndrome infection increased survival.",
+        "In the Canadian study, treating caged bats at the time of white-nose syndrome infection also reduced disease symptoms.",
+        "Treating caged bats 21 days prior to infection in the Canadian study did not increase survival.",
+        "Treatment 21 days prior to infection in the Canadian study was associated with worse symptoms.",
+        "In a USA study, treatment with a probiotic bacterium increased survival for free-flying bats within a mine.",
+        "In the USA study, treating caged bats with a probiotic bacterium did not increase survival.",
+        "The USA study found that treatment of caged bats resulted in disease severity similar to untreated bats.",
+        "No studies were found that evaluated vaccinating bats against the white-nose syndrome pathogen.",
+        "No studies were found as of 2006 that evaluated decontaminating clothing and equipment after entering caves.",
+        "No studies were found that evaluated restricting human access to bat caves.",
+        "No studies were found as of 2009 that evaluated breeding bats in captivity to supplement wild populations affected by white-nose syndrome."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.75,
+            "statement_judgements": [
+              {
+                "statement": "Two randomized, controlled studies from 2008 evaluated treating little brown bats with a probiotic bacterium.",
+                "reasoning": "The context describes two randomized, controlled studies that evaluated treating little brown bats with a probiotic bacterium under the heading '2008: Treat bats for infection with white-nose syndrome'. However, the number '2008' is an identifier for the action, not the publication year of the studies. The context does not state that the studies were 'from 2008'. As all parts of the statement must be fully supported, this statement is not supported.",
+                "verdict": false
+              },
+              {
+                "statement": "In a Canadian study, treating caged bats with a probiotic bacterium at the time of white-nose syndrome infection increased survival.",
+                "reasoning": "The context, under action '2008' and the subheading 'Survival (2 studies)', explicitly states: 'One randomized, controlled study in Canada found that treating little brown bats with a probiotic bacterium at the time of infection with white-nose syndrome (but not 21 days prior) increased survival within cages in a laboratory.' This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "In the Canadian study, treating caged bats at the time of white-nose syndrome infection also reduced disease symptoms.",
+                "reasoning": "The context, under action '2008' and the subheading 'Condition (2 studies)', states: 'One randomized, controlled study in Canada found that little brown bats caged in a laboratory and treated with a probiotic bacterium at the time of infection with white-nose syndrome had reduced symptoms of the disease...'. This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Treating caged bats 21 days prior to infection in the Canadian study did not increase survival.",
+                "reasoning": "The context, under the subheading 'Survival (2 studies)', mentions that treatment at the time of infection 'increased survival', but includes the parenthetical clause '(but not 21 days prior)'. This explicitly means that treatment 21 days prior did not result in increased survival, thus supporting the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Treatment 21 days prior to infection in the Canadian study was associated with worse symptoms.",
+                "reasoning": "The context, under the subheading 'Condition (2 studies)', states: '...but bats treated 21 days prior to infection had worse symptoms.' This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "In a USA study, treatment with a probiotic bacterium increased survival for free-flying bats within a mine.",
+                "reasoning": "The context, under the subheading 'Survival (2 studies)', states: 'One randomized, controlled study in the USA found that treating little brown bats with a probiotic bacterium within a mine increased survival for free-flying bats, but not caged bats.' This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "In the USA study, treating caged bats with a probiotic bacterium did not increase survival.",
+                "reasoning": "The context, under the subheading 'Survival (2 studies)', reporting on the USA study, says that the treatment 'increased survival for free-flying bats, but not caged bats.' This directly confirms that survival was not increased for caged bats.",
+                "verdict": true
+              },
+              {
+                "statement": "The USA study found that treatment of caged bats resulted in disease severity similar to untreated bats.",
+                "reasoning": "The context, under the subheading 'Condition (2 studies)', explicitly states: 'One randomized, controlled study in the USA found that little brown bats kept within cages in a mine and treated with a probiotic bacterium had a similar severity of white-nose syndrome to untreated bats.' This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated vaccinating bats against the white-nose syndrome pathogen.",
+                "reasoning": "The context, under the heading '1011: Vaccinate bats against the white-nose syndrome pathogen', clearly states: 'We found no studies that evaluated the effects of vaccinating bats against the white-nose syndrome pathogen on bat populations.'",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found as of 2006 that evaluated decontaminating clothing and equipment after entering caves.",
+                "reasoning": "The context under heading '2006: Decontaminate clothing and equipment...' states that 'We found no studies...'. However, the number '2006' is an identifier for the action, not a year. The text does not specify that this finding was 'as of 2006'. Therefore, this temporal aspect of the statement is not supported.",
+                "verdict": false
+              },
+              {
+                "statement": "No studies were found that evaluated restricting human access to bat caves.",
+                "reasoning": "The context, under the heading '1010: Restrict human access to bat caves...', states: 'We found no studies that evaluated the effects of restricting human access to bat caves to reduce the spread of the white-nose syndrome pathogen on bat populations.' This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found as of 2009 that evaluated breeding bats in captivity to supplement wild populations affected by white-nose syndrome.",
+                "reasoning": "The context under heading '2009: Breed bats in captivity...' states that 'We found no studies...'. However, the number '2009' is an identifier for the action, not a year. The text does not specify that this finding was 'as of 2009'. Therefore, this temporal aspect of the statement is not supported.",
+                "verdict": false
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "Two randomized, controlled studies from 2008 evaluated treating little brown bats with a probiotic bacterium.",
+                "citations": [
+                  "2008"
+                ],
+                "reasoning": "The context for citation 2008 explicitly states, \"Two studies evaluated the effects of treating bats with a probiotic bacterium to reduce white-nose syndrome infection.\" It further clarifies the nature of these studies: \"One randomized, controlled study in Canada...\" and \"One randomized, controlled study in the USA...\" It also mentions the studies involved \"little brown bats.\" Therefore, the statement is fully supported.",
+                "verdict": true
+              },
+              {
+                "statement": "In a Canadian study, treating caged bats with a probiotic bacterium at the time of white-nose syndrome infection increased survival.",
+                "citations": [
+                  "2008"
+                ],
+                "reasoning": "Citation 2008 states, \"One randomized, controlled study in Canada found that treating little brown bats with a probiotic bacterium at the time of infection with white-nose syndrome... increased survival within cages in a laboratory.\" This directly confirms the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "In the Canadian study, treating caged bats at the time of white-nose syndrome infection also reduced disease symptoms.",
+                "citations": [
+                  "2008"
+                ],
+                "reasoning": "Citation 2008 states, \"One randomized, controlled study in Canada found that little brown bats caged in a laboratory and treated with a probiotic bacterium at the time of infection with white-nose syndrome had reduced symptoms of the disease...\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Treating caged bats 21 days prior to infection in the Canadian study did not increase survival.",
+                "citations": [
+                  "2008"
+                ],
+                "reasoning": "Citation 2008 specifies that treatment \"at the time of infection with white-nose syndrome (but not 21 days prior) increased survival.\" This explicitly excludes the treatment 21 days prior from the group that showed increased survival, thereby supporting the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Treatment 21 days prior to infection in the Canadian study was associated with worse symptoms.",
+                "citations": [
+                  "2008"
+                ],
+                "reasoning": "Citation 2008 states, \"...but bats treated 21 days prior to infection had worse symptoms.\" This is a direct quote that fully supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "In a USA study, treatment with a probiotic bacterium increased survival for free-flying bats within a mine.",
+                "citations": [
+                  "2008"
+                ],
+                "reasoning": "Citation 2008 states, \"One randomized, controlled study in the USA found that treating little brown bats with a probiotic bacterium within a mine increased survival for free-flying bats...\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "In the USA study, treating caged bats with a probiotic bacterium did not increase survival.",
+                "citations": [
+                  "2008"
+                ],
+                "reasoning": "Citation 2008 states that in the USA study, treatment \"increased survival for free-flying bats, but not caged bats.\" This explicitly confirms that survival was not increased for caged bats.",
+                "verdict": true
+              },
+              {
+                "statement": "The USA study found that treatment of caged bats resulted in disease severity similar to untreated bats.",
+                "citations": [
+                  "2008"
+                ],
+                "reasoning": "Citation 2008 says, \"One randomized, controlled study in the USA found that little brown bats kept within cages in a mine and treated with a probiotic bacterium had a similar severity of white-nose syndrome to untreated bats.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated vaccinating bats against the white-nose syndrome pathogen.",
+                "citations": [
+                  "1011"
+                ],
+                "reasoning": "Citation 1011 explicitly states, \"We found no studies that evaluated the effects of vaccinating bats against the white-nose syndrome pathogen on bat populations.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found as of 2006 that evaluated decontaminating clothing and equipment after entering caves.",
+                "citations": [
+                  "2006"
+                ],
+                "reasoning": "Citation 2006 states, \"We found no studies that evaluated the effects of decontaminating clothing and equipment after entering caves to reduce the spread of the white-nose syndrome pathogen on bat populations.\" The statement accurately reflects the content of the cited text. The number '2006' in the statement refers to the citation ID and not a year, but the core claim is fully supported by the text of citation 2006.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated restricting human access to bat caves.",
+                "citations": [
+                  "1010"
+                ],
+                "reasoning": "Citation 1010 states, \"We found no studies that evaluated the effects of restricting human access to bat caves to reduce the spread of the white-nose syndrome pathogen on bat populations.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found as of 2009 that evaluated breeding bats in captivity to supplement wild populations affected by white-nose syndrome.",
+                "citations": [
+                  "2009"
+                ],
+                "reasoning": "Citation 2009 explicitly states, \"We found no studies that evaluated the effects of breeding bats in captivity to supplement wild populations affected by white-nose syndrome.\" The statement accurately reflects the content of the cited text. The number '2009' in the statement refers to the citation ID and not a year, but the core claim is fully supported by the text of citation 2009.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "Two randomized, controlled studies from 2008 evaluated treating little brown bats with a probiotic bacterium.",
+                "reasoning": "This statement is directly relevant as it identifies the existence of specific scientific evidence (two randomized, controlled studies) for a particular strategy (probiotic treatment) used to combat white-nose syndrome. The question explicitly asks for what evidence exists.",
+                "verdict": true
+              },
+              {
+                "statement": "In a Canadian study, treating caged bats with a probiotic bacterium at the time of white-nose syndrome infection increased survival.",
+                "reasoning": "This statement provides a specific piece of evidence about the effectiveness of a strategy. 'Increased survival' is a direct measure of a strategy's success in combating white-nose syndrome, making this statement highly relevant to the question posed.",
+                "verdict": true
+              },
+              {
+                "statement": "In the Canadian study, treating caged bats at the time of white-nose syndrome infection also reduced disease symptoms.",
+                "reasoning": "This statement provides further evidence of the effectiveness of the probiotic treatment strategy. 'Reduced disease symptoms' is another key outcome that demonstrates a strategy's ability to combat the disease, directly answering the user's question.",
+                "verdict": true
+              },
+              {
+                "statement": "Treating caged bats 21 days prior to infection in the Canadian study did not increase survival.",
+                "reasoning": "Evidence for a strategy's effectiveness includes understanding its limitations. This statement provides evidence that a specific application of the probiotic strategy (prophylactic treatment) was not effective, which is a crucial part of the overall body of evidence.",
+                "verdict": true
+              },
+              {
+                "statement": "Treatment 21 days prior to infection in the Canadian study was associated with worse symptoms.",
+                "reasoning": "This statement is highly relevant as it presents evidence of a negative outcome for a particular strategy. Evidence of ineffectiveness or potential harm is as important as evidence of success when evaluating strategies to combat a disease.",
+                "verdict": true
+              },
+              {
+                "statement": "In a USA study, treatment with a probiotic bacterium increased survival for free-flying bats within a mine.",
+                "reasoning": "This statement provides a significant piece of evidence for the effectiveness of a strategy in a more natural setting (free-flying bats) as opposed to a purely lab-based one. This addresses the question by showing evidence of real-world applicability.",
+                "verdict": true
+              },
+              {
+                "statement": "In the USA study, treating caged bats with a probiotic bacterium did not increase survival.",
+                "reasoning": "This statement is relevant because it presents conflicting evidence compared to another study. The existence of contradictory findings is a critical part of the overall evidence base for a strategy's effectiveness, highlighting that its success may be context-dependent.",
+                "verdict": true
+              },
+              {
+                "statement": "The USA study found that treatment of caged bats resulted in disease severity similar to untreated bats.",
+                "reasoning": "This statement corroborates the previous one, providing another metric ('disease severity') that shows a lack of effectiveness in a specific experimental context. This adds detail to the body of evidence concerning the probiotic strategy.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated vaccinating bats against the white-nose syndrome pathogen.",
+                "reasoning": "The question 'What evidence exists' is also answered by identifying where evidence does not exist. This statement is relevant because it points to a lack of evidence for a significant potential strategy (vaccination), which is a key part of describing the current state of research.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found as of 2006 that evaluated decontaminating clothing and equipment after entering caves.",
+                "reasoning": "This statement is relevant because it addresses the evidence, or lack thereof, for a preventative strategy (decontamination). While the date is a qualifier, the statement still speaks to the body of evidence related to combating the spread of white-nose syndrome.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated restricting human access to bat caves.",
+                "reasoning": "This statement is relevant because it identifies another gap in the evidence for a potential management strategy. Restricting access is a method to combat the spread of the disease, and knowing it has not been evaluated is a direct answer to the question about existing evidence.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found as of 2009 that evaluated breeding bats in captivity to supplement wild populations affected by white-nose syndrome.",
+                "reasoning": "This statement is relevant because 'combating' white-nose syndrome can include strategies to mitigate its devastating population-level effects. The statement addresses the lack of evidence for one such mitigation strategy (captive breeding), thus answering the user's question.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

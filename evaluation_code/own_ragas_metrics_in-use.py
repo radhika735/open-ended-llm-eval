@@ -23,104 +23,110 @@ from utils.exceptions import RetrievalError
 load_dotenv()
 
 
+class LlmAttemptsContext():
+    def __init__(self, max_attempts):
+        self.__max_attempts = max_attempts
+        self.__current_attempts = 0
+    
+    def get_max_attempts(self):
+        return self.__max_attempts
+
+    def get_current_attempts(self):
+        return self.__current_attempts
+    
+    def inc_current_attempts(self):
+        self.__current_attempts += 1
+
 
 ### API CALLING.
 
-def get_client(api="openrouter"):
+def get_client():
     """
-    Get an OpenAI client configured for Openrouter or a GenAI client configured for the Gemini API.
+    Get an OpenAI client configured for Openrouter.
 
     """
-    if api.lower() == "openrouter":# default to openai sdk, ignoring value passed to sdk parameter
-        api_key = os.getenv("OPENROUTER_API_KEY")
-        if not api_key:
-            raise ValueError("OPENROUTER_API_KEY environment variable is required for OpenRouter")
-        base_url = "https://openrouter.ai/api/v1"
-        return OpenAI(
-            base_url=base_url,
-            api_key=api_key,
-        )
-
-    elif api.lower() == "gemini":
-        return genai.Client()
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key:
+        raise ValueError("OPENROUTER_API_KEY environment variable is required for OpenRouter")
+    base_url = "https://openrouter.ai/api/v1"
+    return OpenAI(
+        base_url=base_url,
+        api_key=api_key,
+    )
 
 
-def call_llm(messages, api="openrouter", model="google/gemini-2.5-pro", max_tokens=15000, reasoning_effort=None, tools=None, response_format=None):
-    if api.lower() == "openrouter":
-        client = get_client(api="openrouter")
-        request_params = {
-            "model":model,
-            "messages": messages,
-            "max_tokens": max_tokens,
-            "extra_body": {
-                "require_parameters": True,
-                "reasoning":{
-                    "enabled": True,
-                    "effort": reasoning_effort if reasoning_effort is not None else "high"
-                },
+def call_llm(messages, model, provider, attempts_context = LlmAttemptsContext(max_attempts=3), max_tokens=15000, reasoning_effort=None, tools=None, response_format=None):
+    logging.info(f"Calling LLM with model: {model}, provider pinned to: {provider}.")
+    client = get_client()
+    request_params = {
+        "model":model,
+        "messages": messages,
+        "max_tokens": max_tokens,
+        "extra_body": {
+            "require_parameters": True,
+            "reasoning":{
+                "enabled": True,
+                "effort": reasoning_effort if reasoning_effort is not None else "high"
+            },
+        }
+    }
+
+    if tools is not None:
+        request_params.update({"tools": tools})
+    elif response_format is not None:
+        request_params.update({"response_format": response_format})
+    
+    if provider is not None:
+        request_params["extra_body"].update({
+            "provider": {
+                "order": [f"{provider}"], # Specify the single provider you want to pin
+                "allow_fallbacks": False     # Set fallback to None to prevent routing elsewhere
             }
-        }
+        })
 
-        if tools is not None:
-            request_params.update({"tools": tools})
-        elif response_format is not None:
-            request_params.update({"response_format": response_format})
+    try:
+        attempts_context.inc_current_attempts()
         response = client.chat.completions.create(**request_params)
-    
-    elif api.lower() == "gemini":
-        client = get_client(api="gemini")
-        thinking_tokens = 1024 if reasoning_effort == "low" else 2048 if reasoning_effort == "medium" else 4096
-        request_params = {
-            "model": model,
-            "contents": messages,
-        }
-        if tools is not None:
-            request_params.update(
-                {
-                    "config": types.GenerateContentConfig(
-                        thinking_config=types.ThinkingConfig(thinking_budget=thinking_tokens),
-                        tools=tools,
-                    )
-                }
-            )
-        elif response_format is not None:
-            request_params.update(
-                {
-                    "config": types.GenerateContentConfig(
-                        thinking_config=types.ThinkingConfig(thinking_budget=thinking_tokens),
-                        response_mime_type= "application/json",
-                        response_schema = response_format
-                    )
-                }
-            )
-        response = client.models.generate_content(**request_params)
 
-    # Usage details for logging purposes:
-    usage_details = response.usage
-    print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
-    
+        # Usage details for logging purposes:
+        usage_details = response.usage
+        print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
+    except Exception as e:
+        if attempts_context.get_current_attempts() < attempts_context.get_max_attempts():
+            return call_llm(
+                messages=messages,
+                model=model,
+                provider=provider,
+                attempts_context=attempts_context,
+                max_tokens=max_tokens,
+                reasoning_effort=reasoning_effort,
+                tools=tools,
+                response_format=response_format
+            )
+
+
     return response
 
 
 
 ### STATEMENT EXTRACTION.
 
-def get_statements(question, answer):
+def _get_statements(question, answer, model, provider):
     ## RAGAS statement splitting prompt:
-    prompt = f"""
-        Given a question and answer, create one or more statements from each sentence in the given answer. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
-    """.strip()
+    # prompt = f"""
+    #     Given a question and answer, create one or more statements from each sentence in the given answer. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
+    # """.strip()
 
     ## Own prompt:
     prompt = f"""
-Given a question and answer, create one or more statements from each sentence in the given answer. Each statement should be fully understandable by itself, which means it needs to be self-contained. This means there should be no pronouns in the statements. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
+Given a question and answer, create one or more statements from each sentence in the given answer. The answer will likely have references of numerical document ids especially at the end of sentences - YOU MUST NOT MENTION THESE REFERENCES OR NUMERICAL IDS IN ANY OF THE STATEMENTS YOU EXTRACT. Each statement should be fully understandable by itself, which means it needs to be self-contained. This means there should be no pronouns in the statements. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
     """.strip()
 
     messages=[
         {"role": "user", "content": prompt}
     ]
 
-    response = call_llm(messages=messages).choices[0].message.content
+    response = call_llm(messages=messages, model=model, provider=provider).choices[0].message.content
 
     # Splitting statements
     response = re.sub(
@@ -135,7 +141,7 @@ class CitedStatement(BaseModel):
     citations : list[str]
 
 
-def get_citations_from_statements(summary, statements):
+def _get_citations_from_statements(summary, statements, model, provider):
     prompt = f"""
 Given a summary of information and a list of statements extracted from this summary, you must extract the document IDs cited in the summary for each statement. There may be zero or more cited IDs per statement.
 Output the statements with their extracted citations as a list of JSON objects.
@@ -161,9 +167,13 @@ Statements: {statements}
         }
     }
 
-    llm_response = call_llm(messages=messages, response_format=cited_statements_response_format)
+    llm_response = call_llm(messages=messages, response_format=cited_statements_response_format, model=model, provider=provider)
     response_content = llm_response.choices[0].message.content
-    cited_statements = json.loads(response_content)
+    try:
+        cited_statements = json.loads(response_content)
+    except json.JSONDecodeError as e:
+        logging.error(f"During citation extraction from statements, error decoding JSON response from model {model} with provider {provider}: {str(e)}. Response was: {response_content}")
+        raise e
     return cited_statements
 
 
@@ -179,7 +189,7 @@ class StatementVerdict(BaseModel):
 
 
 ## Existing RAGAS faithfulness metric:
-def _faithfulness(docs, statements):
+def _faithfulness(docs, statements, judge_model, judge_provider):
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
 
     ## True RAGAS prompt:
@@ -208,10 +218,14 @@ Consider the given context and following statements, then determine whether they
             }
         }
     }
-    raw_response = call_llm(messages=messages, response_format=verdicts_response_format)
+    raw_response = call_llm(messages=messages, response_format=verdicts_response_format, model=judge_model, provider=judge_provider)
 
     response = raw_response.choices[0].message.content
-    response = json.loads(response)
+    try:
+        response = json.loads(response)
+    except json.JSONDecodeError as e:
+        logging.error(f"During faithfulness eval, error decoding JSON response from judge model {judge_model} with provider {judge_provider}: {str(e)}. Response was: {response}")
+        raise e
 
     ## Extracting output when using JSON Schema wrapping individual judgements:
     judgements = []
@@ -245,8 +259,8 @@ class CitedStatementVerdict(BaseModel):
 #   Judges the "accuracy" of the citations themeselves for each statement, i.e. whether the citations given for each statement actually support the statement.
 #   Statements with no citations are consequently judges as not supported by default, meaning unsupported statements are automatically penalised.
 #   A high score is indicative of most facts being cited and those cited documents actually supporting the facts.
-def _citation_correctness(summary, docs, statements):
-    cited_statements = get_citations_from_statements(summary=summary, statements=statements)
+def _citation_correctness(summary, docs, statements, judge_model, judge_provider):
+    cited_statements = _get_citations_from_statements(summary=summary, statements=statements, model=judge_model, provider=judge_provider)
     statements_joined_citations = [{"statement":obj["statement"], "citations": ", ".join(obj["citations"])} for obj in cited_statements]
     cited_statements_str = "\n".join([f"[Statement {i+1}: {obj["statement"]}\nCitations for statement {i+1}: {obj["citations"]}]" for i, obj in enumerate(statements_joined_citations)])
 
@@ -280,10 +294,14 @@ Consider the given context and following statements, then determine whether they
         }
     }
 
-    raw_response = call_llm(messages=messages, response_format=verdicts_response_format)
+    raw_response = call_llm(messages=messages, response_format=verdicts_response_format, model=judge_model, provider=judge_provider)
 
     response = raw_response.choices[0].message.content
-    response = json.loads(response)
+    try:
+        response = json.loads(response)
+    except json.JSONDecodeError as e:
+        logging.error(f"During citation correctness eval, error decoding JSON response from judge model {judge_model} with provider {judge_provider}: {str(e)}. Response was: {response}")
+        raise e
 
     judgements = []
     for obj in response:
@@ -310,7 +328,7 @@ Consider the given context and following statements, then determine whether they
 #   This and a completeness metric would be a substitute to answer_relevance which takes into account both relevance of answer and completeness of it.
 #   The metric works by splitting the summary into statements, and giving a verdict on each one as to whether it is relevant to answering the question (similar to RAGAS faithfulness procedure).
 #   A high score is indicative of many statements in the summary being relevant to answering the question.
-def _relevance(question, statements):
+def _relevance(question, statements, judge_model, judge_provider):
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
     prompt = f"""
 Given a question and a list of statements, determine whether each statement is relevant to answering the question. Provide a thorough and rigorous explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the statements, the list of citations for each statement, reasonings and verdicts as a valid list of JSON objects.\nQuestion: {question}\nStatements: {statements_str}\nResponse:\n
@@ -331,10 +349,14 @@ Given a question and a list of statements, determine whether each statement is r
             }
         }
     }
-    raw_response = call_llm(messages=messages, response_format=verdicts_response_format)
+    raw_response = call_llm(messages=messages, response_format=verdicts_response_format, model=judge_model, provider=judge_provider)
 
     response = raw_response.choices[0].message.content
-    response = json.loads(response)
+    try:
+        response = json.loads(response)
+    except json.JSONDecodeError as e:
+        logging.error(f"During relevance eval, error decoding JSON response from judge model {judge_model} with provider {judge_provider}: {str(e)}. Response was: {response}")
+        raise e
 
     judgements = []
     for obj in response:
@@ -370,7 +392,8 @@ def get_oracle_actions(id_list, context : ActionParsingContext):
 
 ### FULL METRIC EVALUATION PIPELINE
 
-def evaluate_metric(metric_name : str, question, summary, summary_statements, action_ids_in_summary, oracle_ids, context : ActionParsingContext):
+
+def evaluate_metric(metric_name : str, question, summary, summary_statements, action_ids_in_summary, oracle_ids, context : ActionParsingContext, judge_model, judge_provider):
     # Getting the oracle actions
     oracle_actions = get_oracle_actions(id_list=oracle_ids, context=context)
 
@@ -380,15 +403,21 @@ def evaluate_metric(metric_name : str, question, summary, summary_statements, ac
     all_docs = oracle_actions + cited_actions
     all_docs_str = "\n\n".join([get_parsed_action_as_str(action=action) for action in all_docs])
 
- 
-    if metric_name == "faithfulness":
-        result = _faithfulness(docs=all_docs_str, statements=summary_statements)
-    elif metric_name == "citation_correctness":
-        result = _citation_correctness(summary=summary, docs=all_docs_str, statements=summary_statements)
-    elif metric_name == "relevance":
-        result = _relevance(question=question, statements=summary_statements)
-    else:
-        raise ValueError(f"Unknown metric name: {metric_name}")
+    try:
+        if metric_name == "faithfulness":
+            result = _faithfulness(docs=all_docs_str, statements=summary_statements, judge_model=judge_model, judge_provider=judge_provider)
+        elif metric_name == "citation_correctness":
+            result = _citation_correctness(summary=summary, docs=all_docs_str, statements=summary_statements, judge_model=judge_model, judge_provider=judge_provider)
+        elif metric_name == "relevance":
+            result = _relevance(question=question, statements=summary_statements, judge_model=judge_model, judge_provider=judge_provider)
+        else:
+            raise ValueError(f"Unknown metric name: {metric_name}")
+    except json.JSONDecodeError as e:
+        logging.error(f"Skipping metric {metric_name} evaluation for question '{question}' due to JSON decoding error: {str(e)}.")
+        return {
+            "metric": metric_name,
+            "evaluation": None
+        }
     
     return {
         "metric": metric_name,
@@ -567,11 +596,12 @@ def run_eval_for_summaries_file(summaries_filepath, max_summaries, eval_filepath
                 if eval_dict_found:
                     summary_statements = eval_dict["evaluation_details"]["summary_statements"]
                 else:
-                    summary_statements = get_statements(question=query, answer=relevant_summary)
+                    summary_statements = _get_statements(question=query, answer=relevant_summary, model=judge_model, provider=judge_provider)
                 evaluations = []
                 for metric in unevaluated_metrics:
-                    evaluations.append(
-                        evaluate_metric(
+                    evaluation = evaluate_metric(
+                            judge_model=judge_model,
+                            judge_provider=judge_provider,
                             metric_name=metric,
                             question=query,
                             summary=relevant_summary,
@@ -580,27 +610,30 @@ def run_eval_for_summaries_file(summaries_filepath, max_summaries, eval_filepath
                             oracle_ids=all_relevant_qu_ids,
                             context=context
                         )
-                    )
-                if eval_dict_found:
-                    file_eval_dicts[current_eval_idx]["evaluation_details"]["evaluations"].extend(evaluations)
-                else:
-                    assembled_evaluation = assemble_evaluations(
-                        summary_obj = summary_dict,
-                        statements = summary_statements,
-                        evaluations = evaluations,
-                        judge_model = judge_model,
-                        judge_provider = judge_provider
-                    )
-                    file_eval_dicts.append(assembled_evaluation)
+                    if evaluation is not None:
+                        evaluations.append(evaluation)
+                
+                if evaluations != []:
+                    if eval_dict_found:
+                        file_eval_dicts[current_eval_idx]["evaluation_details"]["evaluations"].extend(evaluations)
+                    else:
+                        assembled_evaluation = assemble_evaluations(
+                            summary_obj = summary_dict,
+                            statements = summary_statements,
+                            evaluations = evaluations,
+                            judge_model = judge_model,
+                            judge_provider = judge_provider
+                        )
+                        file_eval_dicts.append(assembled_evaluation)
 
-                update_done_metrics(
-                    eval_already_done=eval_by_models,
-                    judge_model=judge_model,
-                    judge_provider=judge_provider,
-                    new_metrics=unevaluated_metrics
-                )
-                summary_dicts[current_summary_idx]["eval_by_models"] = eval_by_models
-                summary_count += 1
+                    update_done_metrics(
+                        eval_already_done=eval_by_models,
+                        judge_model=judge_model,
+                        judge_provider=judge_provider,
+                        new_metrics=unevaluated_metrics
+                    )
+                    summary_dicts[current_summary_idx]["eval_by_models"] = eval_by_models
+                    summary_count += 1
     
     finally:
         if summary_count > 0:
@@ -637,8 +670,6 @@ def run_eval_for_summaries_dir(summaries_dir, eval_out_dir, judge_model, judge_p
 
     
 def test():
-    logging.basicConfig(level=logging.INFO, filename="logfiles/own_ragas_metrics.log", format='%(asctime)s - %(levelname)s - %(message)s')
-
     context = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
 
     ## Loamy soils good answer
@@ -708,12 +739,16 @@ def test():
     # docs_str = get_oracle_actions_as_str(id_list=all_ids, context=context)
     # docs = get_oracle_actions(id_list=all_ids, context=context)
     # print(faithfulness(question=question, summary=answer, docs=docs_str))
+    model = "google/gemini-2.5-pro"
+    provider = None
 
     print("getting statements")
-    statements = get_statements(question=question, answer=answer)
+    statements = _get_statements(question=question, answer=answer, model=model, provider=provider)
     for metric in ["faithfulness", "citation_correctness"]:
         print("evaluating",metric)
         result = evaluate_metric(
+            judge_model=model,
+            judge_provider=provider,
             metric_name=metric, 
             question=question, 
             summary=answer, 
@@ -746,56 +781,66 @@ def test():
     #     print(f'"{q}"')
 
 
+def test_statements():
+    question =  "What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?"
+    summary = "Two randomized, controlled studies evaluated treating little brown bats with a probiotic bacterium: in Canada, treatment at the time of white-nose syndrome infection increased survival and reduced disease symptoms in caged bats, whereas treatment 21 days prior did not increase survival and was associated with worse symptoms; in the USA, treatment increased survival for free-flying bats within a mine but did not increase survival for caged bats and resulted in similar disease severity to untreated bats (2008). No studies were found that evaluated vaccinating bats against the white-nose syndrome pathogen (1011), decontaminating clothing and equipment after entering caves (2006), restricting human access to bat caves (1010), or breeding bats in captivity to supplement wild populations affected by white-nose syndrome (2009).",
+    model = "google/gemini-2.5-flash"
+    provider = None
+    statements = _get_statements(question=question, answer=summary, model=model, provider=provider)
+    for s in statements:
+        print(f'"{s}"')
+
+
 def main():
     logging.basicConfig(level=logging.INFO, filename="logfiles/own_ragas_metrics_in-use.log", format='%(asctime)s - %(levelname)s - %(message)s')
     # disable httpx logging
     logging.getLogger("httpx").setLevel(logging.WARNING)
-    
-    # judge_model = "google/gemini-2.5-pro"
-    # judge_provider = None
 
     judge_model_provider_list = [
         # ("google/gemini-2.5-pro", None),
         ("google/gemini-2.5-flash", None),
-        ("openai/gpt-5", None),
-        ("openai/gpt-5-mini", None)
+        # ("openai/gpt-5", None),
+        # ("openai/gpt-5-mini", None)
     ]
 
     CONTEXT = ActionParsingContext(required_fields=["action_id", "action_title", "key_messages"])
 
-    QU_TYPE = "answerable"
-    FILTER_STAGE = "passed"
-    OFFSET_TO_FIRST_SUMMARY_FILE = 0
-    MAX_SUMMARY_FILES = 1
-    MAX_SUMMARIES_PER_FILE = 1
+    QU_TYPES = ["answerable"]#, "unanswerable"]
+    FILTER_STAGES = ["passed"]
 
     try:
         overall_start = time.monotonic()
-        for judge_model, judge_provider in judge_model_provider_list:
-            cleaned_judge_model = parse_model_name(judge_model)
-            cleaned_judge_provider = parse_provider_name(judge_provider)
-            cleaned_judge_name = f"{cleaned_judge_provider}_{cleaned_judge_model}"
+        for qu_type in QU_TYPES:
+            for filter_stage in FILTER_STAGES:
+                for judge_model, judge_provider in judge_model_provider_list:
+                    OFFSET_TO_FIRST_SUMMARY_FILE = 0
+                    MAX_SUMMARY_FILES = 30
+                    MAX_SUMMARIES_PER_FILE = 1
 
-            summaries_dir = f"live_summaries/{QU_TYPE}_{FILTER_STAGE}_qus_summaries/hybrid_cross-encoder/eval_annotated/_gpt-5"
-            eval_dir = f"live_evaluations/{QU_TYPE}_{FILTER_STAGE}_evals/judge_{cleaned_judge_name}/summaries_gpt-5"
+                    cleaned_judge_model = parse_model_name(judge_model)
+                    cleaned_judge_provider = parse_provider_name(judge_provider)
+                    cleaned_judge_name = f"{cleaned_judge_provider}_{cleaned_judge_model}"
 
-            logging.info("STARTING evaluation process.")
-            internal_start = time.monotonic()
-            try:
-                run_eval_for_summaries_dir(
-                    summaries_dir = summaries_dir,
-                    eval_out_dir = eval_dir,
-                    judge_model = judge_model,
-                    judge_provider = judge_provider,
-                    judging_metrics = ["faithfulness", "citation_correctness", "relevance"],
-                    context = CONTEXT,
-                    offset_to_first_summary_file=OFFSET_TO_FIRST_SUMMARY_FILE,
-                    max_summary_files=MAX_SUMMARY_FILES,
-                    max_summaries_per_file=MAX_SUMMARIES_PER_FILE
-                )
-            finally:
-                internal_time_taken = time.monotonic() - internal_start
-                print(f"Time taken for judge model: {judge_model} pinned to provider: {judge_provider} was: {internal_time_taken} seconds")
+                    summaries_dir = f"live_summaries/{qu_type}_{filter_stage}_qus_summaries/hybrid_cross-encoder/eval_annotated/_gpt-5"
+                    eval_dir = f"live_evaluations/{qu_type}_{filter_stage}_evals/judge_{cleaned_judge_name}/summaries_gpt-5"
+
+                    logging.info("STARTING evaluation process.")
+                    internal_start = time.monotonic()
+                    try:
+                        run_eval_for_summaries_dir(
+                            summaries_dir = summaries_dir,
+                            eval_out_dir = eval_dir,
+                            judge_model = judge_model,
+                            judge_provider = judge_provider,
+                            judging_metrics = ["faithfulness", "citation_correctness", "relevance"],
+                            context = CONTEXT,
+                            offset_to_first_summary_file=OFFSET_TO_FIRST_SUMMARY_FILE,
+                            max_summary_files=MAX_SUMMARY_FILES,
+                            max_summaries_per_file=MAX_SUMMARIES_PER_FILE
+                        )
+                    finally:
+                        internal_time_taken = time.monotonic() - internal_start
+                        print(f"Time taken for judge model: {judge_model} pinned to provider: {judge_provider} evaluating unanswerable {filter_stage} questions was: {internal_time_taken} seconds")
 
     except KeyboardInterrupt as e:
         logging.info(f"Keyboard interrupt: {e}")

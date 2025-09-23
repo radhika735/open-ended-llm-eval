@@ -1,0 +1,113 @@
+[
+  {
+    "question_details": {
+      "query": "To mitigate primate crop-raiding, what is the relative effectiveness of chasing primates with loud noises versus using bright lights?",
+      "all_relevant_qu_ids": [
+        "1449",
+        "1450"
+      ],
+      "regenerated_qu_ids": [
+        "1449",
+        "1450"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "openai/gpt-5",
+      "summary_provider": null,
+      "relevant_summary": "One controlled, replicated, before-and-after study in Indonesia found that using noise deterrents along with tree nets reduced crop raiding by orangutans, and one study in the Democratic Republic of Congo found that chasing gorillas and using random noise resulted in their return from plantations to areas close to protected forest [1449]. No evidence was found on the effects of humans chasing primates using bright light to deter crop-raiding [1450].",
+      "summary_action_ids": [
+        "1450",
+        "1449"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "A study in Indonesia found that using noise deterrents along with tree nets reduced crop raiding by orangutans.",
+        "A study in the Democratic Republic of Congo found that chasing gorillas and using random noise resulted in the gorillas' return from plantations to areas close to protected forest.",
+        "No evidence was found on the effects of humans chasing primates using bright light to deter crop-raiding."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "A study in Indonesia found that using noise deterrents along with tree nets reduced crop raiding by orangutans.",
+                "reasoning": "The context, under the heading '1449: Humans chase primates using random loud noise', explicitly states: 'One controlled, replicated, before-and-after study in Indonesia found that in areas where noise deterrents were used, along with tree nets, crop raiding by orangutans was reduced.' This directly supports every part of the given statement.",
+                "verdict": true
+              },
+              {
+                "statement": "A study in the Democratic Republic of Congo found that chasing gorillas and using random noise resulted in the gorillas' return from plantations to areas close to protected forest.",
+                "reasoning": "The context, under the heading '1449: Humans chase primates using random loud noise', contains the key message: 'One study in the Democratic Republic Congo found that chasing gorillas and using random noise resulted in the return of gorillas from plantations to areas close to protected forest.' This sentence from the provided text directly and fully validates the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No evidence was found on the effects of humans chasing primates using bright light to deter crop-raiding.",
+                "reasoning": "The context, under the heading '1450: Humans chase primates using bright light', states in its key messages: 'We found no evidence for the effects of humans chasing primates using bright light to deter crop-raiding on primate populations.' This directly confirms the statement.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "A study in Indonesia found that using noise deterrents along with tree nets reduced crop raiding by orangutans.",
+                "citations": [
+                  "1449"
+                ],
+                "reasoning": "The cited text explicitly states, \"One controlled, replicated, before-and-after study in Indonesia found that in areas where noise deterrents were used, along with tree nets, crop raiding by orangutans was reduced.\" This directly supports all parts of the statement, including the location (Indonesia), the methods (noise deterrents and tree nets), the primate (orangutans), and the outcome (reduced crop raiding).",
+                "verdict": true
+              },
+              {
+                "statement": "A study in the Democratic Republic of Congo found that chasing gorillas and using random noise resulted in the gorillas' return from plantations to areas close to protected forest.",
+                "citations": [
+                  "1449"
+                ],
+                "reasoning": "The cited text states, \"One study in the Democratic Republic Congo found that chasing gorillas and using random noise resulted in the return of gorillas from plantations to areas close to protected forest.\" This quotation fully supports the statement, confirming the location (Democratic Republic of Congo), the method (chasing and random noise), the primate (gorillas), and the result (return from plantations to protected forest areas).",
+                "verdict": true
+              },
+              {
+                "statement": "No evidence was found on the effects of humans chasing primates using bright light to deter crop-raiding.",
+                "citations": [
+                  "1450"
+                ],
+                "reasoning": "The cited text directly supports this statement. It says, \"We found no evidence for the effects of humans chasing primates using bright light to deter crop-raiding on primate populations.\" The statement is a direct reflection of this finding.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "A study in Indonesia found that using noise deterrents along with tree nets reduced crop raiding by orangutans.",
+                "reasoning": "The question asks for the relative effectiveness of using loud noises versus bright lights to mitigate primate crop-raiding. This statement provides evidence on the effectiveness of \"noise deterrents,\" which is directly related to the \"loud noises\" component of the question. Although it describes noise being used in conjunction with another method (tree nets) and doesn't offer a direct comparison to bright lights, it still provides relevant information about the efficacy of one of the two methods under consideration. This information is a necessary component for building an answer about relative effectiveness.",
+                "verdict": true
+              },
+              {
+                "statement": "A study in the Democratic Republic of Congo found that chasing gorillas and using random noise resulted in the gorillas' return from plantations to areas close to protected forest.",
+                "reasoning": "The question seeks to compare the effectiveness of \"chasing primates with loud noises\" against using bright lights. This statement is highly relevant as it directly addresses the effectiveness of the first method specified in the question: \"chasing\" combined with \"random noise.\" It describes a successful outcome (gorillas returning from plantations), which is a measure of effectiveness. While it does not provide the comparative data against bright lights, it provides crucial evidence for one side of the required comparison.",
+                "verdict": true
+              },
+              {
+                "statement": "No evidence was found on the effects of humans chasing primates using bright light to deter crop-raiding.",
+                "reasoning": "The question asks for the \"relative effectiveness\" of chasing with loud noises versus using bright lights. This statement is critically relevant because it directly addresses the \"bright light\" component of the question. By stating a lack of evidence for the effectiveness of a bright light-based method, it provides the necessary information to make a comparative assessment. The comparison of effectiveness between two methods depends on the evidence available for both. A finding of \"no evidence\" for one method is as important to the comparison as a finding of effectiveness for the other. Therefore, this statement is essential for answering the question.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -212,7 +212,7 @@ def call_llm(messages, model, provider):
     except ValueError as e:
         raise FatalAPIError(f"Error initializing OpenAI client: {e}")
     
-    try:
+    try:model
         if provider is not None:
             response = client.chat.completions.create(
                 model=model,

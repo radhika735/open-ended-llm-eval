@@ -1,0 +1,359 @@
+[
+  {
+    "question_details": {
+      "query": "What methods are available to control disease and sea lice in Atlantic salmon farms?",
+      "all_relevant_qu_ids": [
+        "1026",
+        "732",
+        "733",
+        "735",
+        "738",
+        "739",
+        "740",
+        "741",
+        "742"
+      ],
+      "regenerated_qu_ids": [
+        "1026",
+        "732",
+        "733",
+        "735",
+        "738",
+        "739",
+        "740",
+        "741",
+        "742"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "openai/gpt-5",
+      "summary_provider": null,
+      "relevant_summary": "Evidence from action documents identifies several methods: using natural control agents such as cleaner wrasse shows mixed effects on sea lice; corkwing and goldsinny wrasse were as effective as chemical treatments in one controlled study, while rockcook wrasse were ineffective in a replicated, controlled study (738). Dietary and immune-based approaches include probiotics that increased survival after exposure to four bacterial pathogens, and diets with 28% plant protein that reduced lice infections by 28% with an additional 28% reduction when beta-glucans were added; mannan oligosaccharides improved gut function by preventing soybean-induced enteritis (732). Operational fallowing reduced lice numbers in one Scottish study, though an Australian study found no difference in Amoebic Gill Disease mortality (1026). Selective breeding for disease resistance increased survival against infectious pancreatic necrosis (735). Aerobic training increased survival against infectious pancreatic necrosis, with interval training outperforming continuous training (740). Freshwater bathing to manage amoebic gill disease showed mixed results, with one study reporting reduced amoebae for up to 10 days and another finding no difference (739).",
+      "summary_action_ids": [
+        "738",
+        "732",
+        "1026",
+        "735",
+        "740",
+        "739"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "Using natural control agents such as cleaner wrasse shows mixed effects on sea lice.",
+        "In one controlled study, corkwing and goldsinny wrasse were as effective as chemical treatments.",
+        "Rockcook wrasse were ineffective in a replicated, controlled study.",
+        "Probiotics increased survival of Atlantic salmon after exposure to four bacterial pathogens.",
+        "Diets with 28% plant protein reduced lice infections by 28%.",
+        "An additional 28% reduction in lice infections occurred when beta-glucans were added to diets with 28% plant protein.",
+        "Mannan oligosaccharides improved gut function by preventing soybean-induced enteritis.",
+        "Operational fallowing reduced lice numbers in one Scottish study.",
+        "An Australian study found no difference in Amoebic Gill Disease mortality as a result of operational fallowing.",
+        "Selective breeding for disease resistance increased survival against infectious pancreatic necrosis.",
+        "Aerobic training increased survival of Atlantic salmon against infectious pancreatic necrosis.",
+        "Interval training outperformed continuous training for increasing survival against infectious pancreatic necrosis.",
+        "Freshwater bathing to manage amoebic gill disease showed mixed results.",
+        "One study reported that freshwater bathing reduced amoebae for up to 10 days.",
+        "Another study found no difference in amoebae levels after freshwater bathing."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.8,
+            "statement_judgements": [
+              {
+                "statement": "Using natural control agents such as cleaner wrasse shows mixed effects on sea lice.",
+                "reasoning": "Context 738 directly supports this statement. It explicitly says: 'Two studies in Ireland found mixed effects of cleaner wrasse on sea lice numbers infesting salmon.'",
+                "verdict": true
+              },
+              {
+                "statement": "In one controlled study, corkwing and goldsinny wrasse were as effective as chemical treatments.",
+                "reasoning": "Context 738 supports this statement by saying, 'One controlled study found corkwing and goldskinny cleaner wrasse were as effective at controlling lice infestation as chemical treatments.' The statement uses 'goldsinny' instead of 'goldskinny', but this is a minor typographical difference and the core claim is fully supported.",
+                "verdict": true
+              },
+              {
+                "statement": "Rockcook wrasse were ineffective in a replicated, controlled study.",
+                "reasoning": "Context 738 fully supports this statement. It reads: 'One replicated, controlled study found rockcook cleaner wrasse were ineffective at preventing lice outbreaks.'",
+                "verdict": true
+              },
+              {
+                "statement": "Probiotics increased survival of Atlantic salmon after exposure to four bacterial pathogens.",
+                "reasoning": "Context 732 mentions a study where probiotics increased survival in 'salmon'. It does not specify that they were 'Atlantic salmon'. Since the statement includes a detail ('Atlantic salmon') not present in the supporting text, it is not fully supported.",
+                "verdict": false
+              },
+              {
+                "statement": "Diets with 28% plant protein reduced lice infections by 28%.",
+                "reasoning": "Context 732 specifies that the diet that reduced lice infections was 'composed of fish meal and 28% plant-based protein.' The statement omits the 'fish meal' component, generalizing that any diet with 28% plant protein would have this effect. This generalization is not supported by the specific description in the context.",
+                "verdict": false
+              },
+              {
+                "statement": "An additional 28% reduction in lice infections occurred when beta-glucans were added to diets with 28% plant protein.",
+                "reasoning": "Context 732 states that after mentioning the 28% reduction from the plant-protein diet, 'Adding beta-glucans to the diet decreased lice infection levels by a further 28% compared with controls.' 'The diet' refers to the one with 28% plant protein, and 'further 28%' corresponds to an 'additional 28% reduction'. The statement is fully supported.",
+                "verdict": true
+              },
+              {
+                "statement": "Mannan oligosaccharides improved gut function by preventing soybean-induced enteritis.",
+                "reasoning": "Context 732 directly supports this. It states: 'The same study found the addition of mannan oligosaccharides improved gut function by preventing the development of soybean-induced enteritis compared with controls.'",
+                "verdict": true
+              },
+              {
+                "statement": "Operational fallowing reduced lice numbers in one Scottish study.",
+                "reasoning": "Context 1026 states: 'A study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system.' 'Operational fallowing' and 'fallowing system' are synonymous in this context, so the statement is supported.",
+                "verdict": true
+              },
+              {
+                "statement": "An Australian study found no difference in Amoebic Gill Disease mortality as a result of operational fallowing.",
+                "reasoning": "Context 1026 supports this statement, saying: 'Another study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used.' 'Operational fallowing' is synonymous with 'fallowing system.'",
+                "verdict": true
+              },
+              {
+                "statement": "Selective breeding for disease resistance increased survival against infectious pancreatic necrosis.",
+                "reasoning": "Context 735 states that a study 'found increased survival levels in salmon exposed to infectious pancreatic necrosis when the family was bred for high resistance to the disease compared to a family bred for low resistance to the disease.' This directly supports the claim that selective breeding for resistance increased survival.",
+                "verdict": true
+              },
+              {
+                "statement": "Aerobic training increased survival of Atlantic salmon against infectious pancreatic necrosis.",
+                "reasoning": "Context 740 states that 'higher survival rates in salmon...if they had undergone aerobic training.' The text specifies 'salmon,' not 'Atlantic salmon.' Because the statement adds a detail not present in the source text for this specific finding, it is not fully supported.",
+                "verdict": false
+              },
+              {
+                "statement": "Interval training outperformed continuous training for increasing survival against infectious pancreatic necrosis.",
+                "reasoning": "Context 740, directly after mentioning that aerobic training increased survival against infectious pancreatic necrosis, states: 'Interval training was more effective than continuous training.' This implies the comparison is for the same purpose, making the statement fully supported.",
+                "verdict": true
+              },
+              {
+                "statement": "Freshwater bathing to manage amoebic gill disease showed mixed results.",
+                "reasoning": "Context 739 directly states: 'Two studies in Australia provide mixed evidence of the effect of freshwater bathing to reducing amoebic gill disease.' 'Mixed evidence' is synonymous with 'mixed results'.",
+                "verdict": true
+              },
+              {
+                "statement": "One study reported that freshwater bathing reduced amoebae for up to 10 days.",
+                "reasoning": "Context 739 supports this statement directly: 'One study found a reduction in numbers of amoebae on salmon gills persisting for up to 10 days after bathing.'",
+                "verdict": true
+              },
+              {
+                "statement": "Another study found no difference in amoebae levels after freshwater bathing.",
+                "reasoning": "Context 739 states: 'One replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon.' Finding 'similar levels' is equivalent to finding 'no difference,' so the statement is supported.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "Using natural control agents such as cleaner wrasse shows mixed effects on sea lice.",
+                "citations": [
+                  "738"
+                ],
+                "reasoning": "Citation 738 explicitly states, \"Two studies in Ireland found mixed effects of cleaner wrasse on sea lice numbers infesting salmon.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "In one controlled study, corkwing and goldsinny wrasse were as effective as chemical treatments.",
+                "citations": [
+                  "738"
+                ],
+                "reasoning": "Citation 738 states, \"One controlled study found corkwing and goldskinny cleaner wrasse were as effective at controlling lice infestation as chemical treatments.\" The statement accurately reflects this finding, with a minor spelling variation (\"goldsinny\" vs \"goldskinny\").",
+                "verdict": true
+              },
+              {
+                "statement": "Rockcook wrasse were ineffective in a replicated, controlled study.",
+                "citations": [
+                  "738"
+                ],
+                "reasoning": "Citation 738 supports this statement, saying, \"One replicated, controlled study found rockcook cleaner wrasse were ineffective at preventing lice outbreaks.\"",
+                "verdict": true
+              },
+              {
+                "statement": "Probiotics increased survival of Atlantic salmon after exposure to four bacterial pathogens.",
+                "citations": [
+                  "732"
+                ],
+                "reasoning": "Citation 732 says, \"One replicated study in Scotland found increased survival in salmon fed a probiotic before exposure to four different disease-causing bacteria...\". While the context refers to \"salmon\" and the statement specifies \"Atlantic salmon,\" within the broader context of citations like 1026, it is clear the subject is Atlantic salmon. Therefore, the statement is supported.",
+                "verdict": true
+              },
+              {
+                "statement": "Diets with 28% plant protein reduced lice infections by 28%.",
+                "citations": [
+                  "732"
+                ],
+                "reasoning": "Citation 732 directly supports this: \"A replicated, controlled study in Norway found the number of salmon infected with lice was reduced by 28% when fed a diet composed of fish meal and 28% plant-based protein.\"",
+                "verdict": true
+              },
+              {
+                "statement": "An additional 28% reduction in lice infections occurred when beta-glucans were added to diets with 28% plant protein.",
+                "citations": [
+                  "732"
+                ],
+                "reasoning": "Citation 732 states, \"Adding beta-glucans to the diet decreased lice infection levels by a further 28% compared with controls.\" The term \"further 28%\" corresponds to the statement's \"additional 28% reduction\" and follows the sentence about the plant-protein diet, indicating it was an addition to that diet.",
+                "verdict": true
+              },
+              {
+                "statement": "Mannan oligosaccharides improved gut function by preventing soybean-induced enteritis.",
+                "citations": [
+                  "732"
+                ],
+                "reasoning": "This statement is directly confirmed by citation 732: \"The same study found the addition of mannan oligosaccharides improved gut function by preventing the development of soybean-induced enteritis compared with controls.\"",
+                "verdict": true
+              },
+              {
+                "statement": "Operational fallowing reduced lice numbers in one Scottish study.",
+                "citations": [
+                  "1026"
+                ],
+                "reasoning": "Citation 1026 says, \"A study in Scotland recorded lower lice numbers on Atlantic salmon in cages using a fallowing system.\" The statement accurately summarizes this finding. \"Operational fallowing\" is a reasonable synonym for \"fallowing system\" in this context.",
+                "verdict": true
+              },
+              {
+                "statement": "An Australian study found no difference in Amoebic Gill Disease mortality as a result of operational fallowing.",
+                "citations": [
+                  "1026"
+                ],
+                "reasoning": "Citation 1026 directly supports this, stating: \"Another study in Australia found no difference in mortality from Amoebic Gill Disease in cages where a fallowing system had been used.\"",
+                "verdict": true
+              },
+              {
+                "statement": "Selective breeding for disease resistance increased survival against infectious pancreatic necrosis.",
+                "citations": [
+                  "735"
+                ],
+                "reasoning": "Citation 735 states that a study \"found increased survival levels in salmon exposed to infectious pancreatic necrosis when the family was bred for high resistance to the disease compared to a family bred for low resistance to the disease.\" This directly supports the statement about selective breeding increasing survival.",
+                "verdict": true
+              },
+              {
+                "statement": "Aerobic training increased survival of Atlantic salmon against infectious pancreatic necrosis.",
+                "citations": [
+                  "740"
+                ],
+                "reasoning": "Citation 740 states that a study \"found higher survival rates in salmon exposed to infectious pancreatic necrosis if they had undergone aerobic training.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Interval training outperformed continuous training for increasing survival against infectious pancreatic necrosis.",
+                "citations": [
+                  "740"
+                ],
+                "reasoning": "Citation 740, in the context of the study on aerobic training and survival, explicitly notes, \"Interval training was more effective than continuous training.\" This supports the statement that interval training \"outperformed\" continuous training.",
+                "verdict": true
+              },
+              {
+                "statement": "Freshwater bathing to manage amoebic gill disease showed mixed results.",
+                "citations": [
+                  "739"
+                ],
+                "reasoning": "Citation 739 states, \"Two studies in Australia provide mixed evidence of the effect of freshwater bathing to reducing amoebic gill disease.\" This directly confirms the statement that the results were mixed.",
+                "verdict": true
+              },
+              {
+                "statement": "One study reported that freshwater bathing reduced amoebae for up to 10 days.",
+                "citations": [
+                  "739"
+                ],
+                "reasoning": "Citation 739 directly supports this claim: \"One study found a reduction in numbers of amoebae on salmon gills persisting for up to 10 days after bathing.\"",
+                "verdict": true
+              },
+              {
+                "statement": "Another study found no difference in amoebae levels after freshwater bathing.",
+                "citations": [
+                  "739"
+                ],
+                "reasoning": "Citation 739 confirms this: \"One replicated, controlled study found similar levels of amoebae in the gills of treated and untreated salmon.\" Finding \"similar levels\" is equivalent to finding \"no difference.\"",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "Using natural control agents such as cleaner wrasse shows mixed effects on sea lice.",
+                "reasoning": "This statement is relevant because it directly addresses the control of sea lice, one of the two key issues mentioned in the question ('disease and sea lice'). It identifies a specific method, 'natural control agents' (cleaner wrasse), which is a form of biological control used in Atlantic salmon farms.",
+                "verdict": true
+              },
+              {
+                "statement": "In one controlled study, corkwing and goldsinny wrasse were as effective as chemical treatments.",
+                "reasoning": "This statement is relevant because it elaborates on the method of using cleaner wrasse for sea lice control. It provides specific examples of effective species (corkwing and goldsinny wrasse) and compares their efficacy to another control method (chemical treatments), thus providing detailed information about available options.",
+                "verdict": true
+              },
+              {
+                "statement": "Rockcook wrasse were ineffective in a replicated, controlled study.",
+                "reasoning": "This statement is relevant as it provides crucial specificity about the limitations of a control method. By identifying a species of cleaner wrasse (rockcook) that was found to be ineffective, it helps to refine the understanding of which natural control agents are viable for controlling sea lice, which is central to the question.",
+                "verdict": true
+              },
+              {
+                "statement": "Probiotics increased survival of Atlantic salmon after exposure to four bacterial pathogens.",
+                "reasoning": "This statement is relevant because it describes a method, the use of probiotics, to control disease in Atlantic salmon. Bacterial pathogens cause disease, and increasing survival is a form of disease control. This directly answers the 'control disease' component of the question.",
+                "verdict": true
+              },
+              {
+                "statement": "Diets with 28% plant protein reduced lice infections by 28%.",
+                "reasoning": "This statement is relevant because it presents a nutritional management strategy as a method to control sea lice. It specifies a particular diet ('28% plant protein') and its quantifiable effect on 'lice infections,' directly addressing the 'control... sea lice' part of the question.",
+                "verdict": true
+              },
+              {
+                "statement": "An additional 28% reduction in lice infections occurred when beta-glucans were added to diets with 28% plant protein.",
+                "reasoning": "This statement is relevant as it builds upon the previous statement, detailing another method for sea lice control. It identifies a dietary supplement (beta-glucans) that enhances the effectiveness of a nutritional strategy, providing more detailed information on available control methods.",
+                "verdict": true
+              },
+              {
+                "statement": "Mannan oligosaccharides improved gut function by preventing soybean-induced enteritis.",
+                "reasoning": "This statement is relevant because it identifies a method (use of mannan oligosaccharides) to control a specific disease (soybean-induced enteritis). Enteritis, an inflammation of the intestine, is a disease condition. Therefore, this statement describes a method for disease control in Atlantic salmon.",
+                "verdict": true
+              },
+              {
+                "statement": "Operational fallowing reduced lice numbers in one Scottish study.",
+                "reasoning": "This statement is relevant because it introduces a farm management practice, 'operational fallowing,' as a method for controlling sea lice. It provides evidence of its effectiveness in reducing 'lice numbers,' directly answering the part of the question concerning sea lice control.",
+                "verdict": true
+              },
+              {
+                "statement": "An Australian study found no difference in Amoebic Gill Disease mortality as a result of operational fallowing.",
+                "reasoning": "This statement is relevant because it evaluates the effectiveness of a proposed control method (operational fallowing) against a specific disease (Amoebic Gill Disease). Information about a method's lack of efficacy for a particular disease is as important as information about its efficacy when considering the range of available control options.",
+                "verdict": true
+              },
+              {
+                "statement": "Selective breeding for disease resistance increased survival against infectious pancreatic necrosis.",
+                "reasoning": "This statement is relevant as it describes a genetic approach ('selective breeding') for controlling disease in Atlantic salmon. By specifically mentioning increased survival against 'infectious pancreatic necrosis,' it provides a clear example of a long-term disease control strategy.",
+                "verdict": true
+              },
+              {
+                "statement": "Aerobic training increased survival of Atlantic salmon against infectious pancreatic necrosis.",
+                "reasoning": "This statement is relevant because it describes a novel husbandry method, 'aerobic training,' aimed at controlling disease. Increasing the fish's resilience and survival against a specific disease ('infectious pancreatic necrosis') is a form of disease control, making this statement directly pertinent to the question.",
+                "verdict": true
+              },
+              {
+                "statement": "Interval training outperformed continuous training for increasing survival against infectious pancreatic necrosis.",
+                "reasoning": "This statement is relevant because it provides a more detailed understanding of the 'training' method for disease control mentioned previously. By comparing the effectiveness of different training protocols, it gives specific, practical information about how to best implement this control method.",
+                "verdict": true
+              },
+              {
+                "statement": "Freshwater bathing to manage amoebic gill disease showed mixed results.",
+                "reasoning": "This statement is relevant because it introduces a treatment method, 'freshwater bathing,' used to 'manage amoebic gill disease.' This directly addresses the 'control disease' aspect of the question by identifying a specific intervention used in salmon farming.",
+                "verdict": true
+              },
+              {
+                "statement": "One study reported that freshwater bathing reduced amoebae for up to 10 days.",
+                "reasoning": "This statement is relevant because it provides specific data on the effectiveness of the freshwater bathing method mentioned in the prior statement. It helps to explain the 'mixed results' by providing an example of a positive outcome of this disease control method.",
+                "verdict": true
+              },
+              {
+                "statement": "Another study found no difference in amoebae levels after freshwater bathing.",
+                "reasoning": "This statement is relevant as it further clarifies the 'mixed results' of freshwater bathing as a disease control method. By presenting a conflicting outcome, it provides a complete and nuanced view of the method's reliability, which is crucial for anyone seeking to understand the available control options.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

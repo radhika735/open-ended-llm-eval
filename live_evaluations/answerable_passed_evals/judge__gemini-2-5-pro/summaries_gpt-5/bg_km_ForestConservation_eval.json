@@ -1,0 +1,241 @@
+[
+  {
+    "question_details": {
+      "query": "Considering different timber harvesting methods, which are most effective for increasing understory plant diversity?",
+      "all_relevant_qu_ids": [
+        "1214",
+        "1223",
+        "1222",
+        "1215",
+        "1224",
+        "1209",
+        "1210",
+        "1211",
+        "1271",
+        "1273"
+      ],
+      "regenerated_qu_ids": [
+        "1214",
+        "1215",
+        "1222",
+        "1223",
+        "1224",
+        "1211",
+        "1273"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "openai/gpt-5",
+      "summary_provider": null,
+      "relevant_summary": "- Shelterwood harvesting: Six of seven studies (including five replicated, controlled) found increases in understory plant abundance, species richness and diversity; one study found decreases (and one study reported no effect on tree abundance) [1223].\n- Clearcutting: Eight of 12 studies (including three replicated, randomized, controlled) found increases in understory plant cover and species richness; two studies found decreases, and two reported no or mixed effects [1222].\n- Group-selection harvesting: Four of eight studies (including one replicated, controlled) found increases in understory plant cover and diversity; two found decreases in species richness and biomass, and two found no effect on understory richness/diversity [1224].",
+      "summary_action_ids": [
+        "1223",
+        "1222",
+        "1224"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "Six of seven studies on shelterwood harvesting found increases in understory plant abundance, species richness, and diversity.",
+        "One study on shelterwood harvesting found decreases in understory plant diversity.",
+        "One study reported that shelterwood harvesting had no effect on tree abundance.",
+        "Eight of twelve studies on clearcutting found increases in understory plant cover and species richness.",
+        "Two studies on clearcutting found decreases in understory plant cover and species richness.",
+        "Two studies on clearcutting reported no or mixed effects on understory plants.",
+        "Four of eight studies on group-selection harvesting found increases in understory plant cover and diversity.",
+        "Two studies on group-selection harvesting found decreases in understory species richness and biomass.",
+        "Two studies on group-selection harvesting found no effect on understory richness or diversity."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.7777777777777778,
+            "statement_judgements": [
+              {
+                "statement": "Six of seven studies on shelterwood harvesting found increases in understory plant abundance, species richness, and diversity.",
+                "reasoning": "The context under section '1223: Use shelterwood harvesting' explicitly states: 'Six of seven studies... found that shelterwood harvesting increased abundance, species richness and diversity of understory plants...'. The statement is a direct and accurate reflection of this information.",
+                "verdict": true
+              },
+              {
+                "statement": "One study on shelterwood harvesting found decreases in understory plant diversity.",
+                "reasoning": "The context under section '1223: Use shelterwood harvesting' states: 'One study found shelterwood harvesting decreased plant species richness and abundance.' The statement claims a decrease in 'diversity,' but the text only supports a decrease in 'species richness and abundance.' While richness is a component of diversity, the term 'diversity' itself is not used for this negative finding, making the statement not fully supported.",
+                "verdict": false
+              },
+              {
+                "statement": "One study reported that shelterwood harvesting had no effect on tree abundance.",
+                "reasoning": "The context under section '1223: Use shelterwood harvesting' contains the sentence: 'One study found no effect of shelterwood harvest on tree abundance.' This directly and completely supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Eight of twelve studies on clearcutting found increases in understory plant cover and species richness.",
+                "reasoning": "The context under section '1222: Use clearcutting to increase understory diversity' states: 'Eight of 12 studies... found that clearcutting increased the cover and species richness of understory plants.' This is an exact match to the information presented in the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on clearcutting found decreases in understory plant cover and species richness.",
+                "reasoning": "The context under section '1222: Use clearcutting to increase understory diversity' states that two studies 'found it decreased the density and species richness'. The statement claims a decrease in 'cover and species richness'. Because the context specifies 'density' rather than 'cover' for the negative findings, the statement is not fully supported.",
+                "verdict": false
+              },
+              {
+                "statement": "Two studies on clearcutting reported no or mixed effects on understory plants.",
+                "reasoning": "The context under section '1222: Use clearcutting to increase understory diversity' presents the findings for 12 studies on understory plants. After describing the 8 studies with increases and the 2 studies with decreases, it concludes, '...and two found no effect or mixed effects.' This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Four of eight studies on group-selection harvesting found increases in understory plant cover and diversity.",
+                "reasoning": "The context under section '1224: Use group-selection harvesting' states: 'Four of eight studies... found that group-selection harvesting increased cover and diversity of understory plants...'. The statement accurately reflects this part of the finding.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on group-selection harvesting found decreases in understory species richness and biomass.",
+                "reasoning": "The context under section '1224: Use group-selection harvesting' directly states: 'Two studies found it decreased understory species richness2 and biomass.' This is an exact match with the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on group-selection harvesting found no effect on understory richness or diversity.",
+                "reasoning": "The context under section '1224: Use group-selection harvesting' includes the sentence: 'Two studies found no effect on understory species richness and diversity...'. The statement accurately reports this finding.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 0.7777777777777778,
+            "statement_judgements": [
+              {
+                "statement": "Six of seven studies on shelterwood harvesting found increases in understory plant abundance, species richness, and diversity.",
+                "citations": [
+                  "1223"
+                ],
+                "reasoning": "Citation 1223 states: \"Six of seven studies...found that shelterwood harvesting increased abundance, species richness and diversity of understory plants\". This directly and fully supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "One study on shelterwood harvesting found decreases in understory plant diversity.",
+                "citations": [
+                  "1223"
+                ],
+                "reasoning": "Citation 1223 states that \"One study found shelterwood harvesting decreased plant species richness and abundance.\" The statement claims a decrease in \"understory plant diversity.\" While species richness is a component of diversity, the context does not explicitly state that \"diversity\" decreased for this particular study; in fact, the context distinguishes between \"richness and diversity\" in the preceding sentence, suggesting they are treated as separate concepts. Therefore, the statement is not fully supported.",
+                "verdict": false
+              },
+              {
+                "statement": "One study reported that shelterwood harvesting had no effect on tree abundance.",
+                "citations": [
+                  "1223"
+                ],
+                "reasoning": "Citation 1223 explicitly states, \"One study found no effect of shelterwood harvest on tree abundance.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Eight of twelve studies on clearcutting found increases in understory plant cover and species richness.",
+                "citations": [
+                  "1222"
+                ],
+                "reasoning": "Citation 1222 states that \"Eight of 12 studies...found that clearcutting increased the cover and species richness of understory plants.\" This is a direct and complete match for the information presented in the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on clearcutting found decreases in understory plant cover and species richness.",
+                "citations": [
+                  "1222"
+                ],
+                "reasoning": "Citation 1222 reports that two studies found clearcutting \"decreased the density and species richness\" of understory plants. The statement claims the studies found decreases in \"cover and species richness.\" Since \"density\" and \"cover\" are different ecological metrics, the statement is not an accurate representation of the information in the context.",
+                "verdict": false
+              },
+              {
+                "statement": "Two studies on clearcutting reported no or mixed effects on understory plants.",
+                "citations": [
+                  "1222"
+                ],
+                "reasoning": "After detailing the studies that found increases (eight) and decreases (two), Citation 1222 concludes the summary of 12 studies by stating, \"and two found no effect or mixed effects.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Four of eight studies on group-selection harvesting found increases in understory plant cover and diversity.",
+                "citations": [
+                  "1224"
+                ],
+                "reasoning": "Citation 1224 states that \"Four of eight studies...found that group-selection harvesting increased cover and diversity of understory plants\". This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on group-selection harvesting found decreases in understory species richness and biomass.",
+                "citations": [
+                  "1224"
+                ],
+                "reasoning": "Citation 1224 explicitly states, \"Two studies found it decreased understory species richness2 and biomass.\" This is a direct match to the claim made in the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on group-selection harvesting found no effect on understory richness or diversity.",
+                "citations": [
+                  "1224"
+                ],
+                "reasoning": "Citation 1224 states, \"Two studies found no effect on understory species richness and diversity\". The statement accurately reflects this finding.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 0.8888888888888888,
+            "statement_judgements": [
+              {
+                "statement": "Six of seven studies on shelterwood harvesting found increases in understory plant abundance, species richness, and diversity.",
+                "reasoning": "The statement is directly relevant to the question. It specifies a timber harvesting method ('shelterwood harvesting') and details its effect on the key variables mentioned in the question: 'understory plant abundance, species richness, and diversity'. The quantitative nature of the evidence ('six of seven studies') helps in evaluating the effectiveness of this method.",
+                "verdict": true
+              },
+              {
+                "statement": "One study on shelterwood harvesting found decreases in understory plant diversity.",
+                "reasoning": "The statement is relevant because it provides a contrasting finding for the same timber harvesting method ('shelterwood harvesting'). By reporting a decrease in 'understory plant diversity', it offers crucial information for a balanced assessment of the method's overall effectiveness and consistency. To determine which method is 'most effective,' it is necessary to consider both positive and negative outcomes.",
+                "verdict": true
+              },
+              {
+                "statement": "One study reported that shelterwood harvesting had no effect on tree abundance.",
+                "reasoning": "The statement is not relevant to the question. While it discusses a timber harvesting method ('shelterwood harvesting'), its focus is on 'tree abundance,' which typically refers to the overstory canopy. The question is specifically about the effect on 'understory plant diversity'. The statement does not provide any information about the understory, making it irrelevant to answering the question.",
+                "verdict": false
+              },
+              {
+                "statement": "Eight of twelve studies on clearcutting found increases in understory plant cover and species richness.",
+                "reasoning": "The statement is relevant as it introduces another timber harvesting method ('clearcutting') and assesses its impact on metrics directly related to understory plant diversity. 'Species richness' is a core component of diversity, and 'plant cover' is related to abundance. This information is essential for comparing the effectiveness of clearcutting with other methods.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on clearcutting found decreases in understory plant cover and species richness.",
+                "reasoning": "This statement is relevant because it presents countervailing evidence for the 'clearcutting' method. Reporting on studies that found decreases in 'understory plant cover and species richness' is vital for understanding the range of possible outcomes and the overall reliability of this harvesting technique for achieving the goal of increasing diversity.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on clearcutting reported no or mixed effects on understory plants.",
+                "reasoning": "The statement is relevant. It provides a complete picture of the effects of 'clearcutting' by including studies with 'no or mixed effects'. This information adds nuance to the evaluation, indicating that the impact of clearcutting on 'understory plants' is not always straightforwardly positive or negative. This is a critical piece of information when comparing its effectiveness to other methods.",
+                "verdict": true
+              },
+              {
+                "statement": "Four of eight studies on group-selection harvesting found increases in understory plant cover and diversity.",
+                "reasoning": "The statement is relevant because it introduces a third timber harvesting method ('group-selection harvesting') and directly reports its effect on 'understory plant cover and diversity'. This allows for a direct comparison with the other methods (shelterwood, clearcutting) to determine which is most effective at increasing understory diversity.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on group-selection harvesting found decreases in understory species richness and biomass.",
+                "reasoning": "The statement is relevant. It provides evidence of negative outcomes for 'group-selection harvesting', specifically a decrease in 'understory species richness', which is a component of diversity. Like the other statements reporting negative or mixed effects, this is necessary for a comprehensive and rigorous evaluation of the method's overall effectiveness.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies on group-selection harvesting found no effect on understory richness or diversity.",
+                "reasoning": "This statement is relevant as it completes the evidence for 'group-selection harvesting'. Reporting that some studies found 'no effect on understory richness or diversity' is important for assessing the consistency and reliability of this method's impact. This information is crucial for comparing its overall effectiveness against other harvesting techniques.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
