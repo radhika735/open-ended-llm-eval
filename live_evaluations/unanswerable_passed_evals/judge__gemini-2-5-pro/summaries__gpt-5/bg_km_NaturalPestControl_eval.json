@@ -1,0 +1,106 @@
+[
+  {
+    "question_details": {
+      "query": "What is the effectiveness of using genetically modified crops for natural pest control?",
+      "all_relevant_qu_ids": [],
+      "regenerated_qu_ids": []
+    },
+    "summary_details": {
+      "summary_model": "openai/gpt-5",
+      "summary_provider": null,
+      "relevant_summary": "One laboratory controlled study on genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin evaluated effects on butterflies and moths and reported that pollen from the genetically modified maize did not reduce survival of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to pollen from non-genetically modified maize (3895). The same study found that pollen from the genetically modified maize did not reduce growth of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to non-genetically modified maize (3895). No community response or behavior studies were reported in this evidence base (3895).",
+      "summary_action_ids": [
+        "3895"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "A laboratory controlled study on genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin reported that pollen from the genetically modified maize did not reduce survival of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to pollen from non-genetically modified maize.",
+        "A laboratory controlled study found that pollen from genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to non-genetically modified maize.",
+        "No community response or behavior studies were reported in the evidence base regarding the effects of genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "A laboratory controlled study on genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin reported that pollen from the genetically modified maize did not reduce survival of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to pollen from non-genetically modified maize.",
+                "reasoning": "The context, under the heading 'Survival (1 study)', states: 'One controlled study in a laboratory found that pollen from genetically modified maize expressing the Bacillus thuringiensis kurstaki (Btk) toxin against European corn borer did not reduce the survival of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.' This directly and completely supports all parts of the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "A laboratory controlled study found that pollen from genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to non-genetically modified maize.",
+                "reasoning": "The context, under the heading 'Condition (1 study)', states: 'One controlled study in a laboratory found that pollen from genetically modified maize expressing the Bacillus thuringiensis kurstaki (Btk) toxin against European corn borer did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.' This statement is a direct and accurate reflection of the information provided in the text.",
+                "verdict": true
+              },
+              {
+                "statement": "No community response or behavior studies were reported in the evidence base regarding the effects of genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin.",
+                "reasoning": "The context explicitly lists 'COMMUNITY RESPONSE (0 STUDIES)' and 'BEHAVIOUR (0 STUDIES)'. This confirms that no studies for these categories were included in the provided information, fully supporting the statement.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "A laboratory controlled study on genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin reported that pollen from the genetically modified maize did not reduce survival of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to pollen from non-genetically modified maize.",
+                "citations": [
+                  "3895"
+                ],
+                "reasoning": "The provided context, under the heading \"Survival (1 study)\", explicitly states: \"One controlled study in a laboratory found that pollen from genetically modified maize expressing the Bacillus thuringiensis kurstaki (Btk) toxin against European corn borer did not reduce the survival of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.\" This directly supports every part of the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "A laboratory controlled study found that pollen from genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to non-genetically modified maize.",
+                "citations": [
+                  "3895"
+                ],
+                "reasoning": "The provided context, under the heading \"Condition (1 study)\", states: \"One controlled study in a laboratory found that pollen from genetically modified maize expressing the Bacillus thuringiensis kurstaki (Btk) toxin against European corn borer did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.\" This sentence fully supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No community response or behavior studies were reported in the evidence base regarding the effects of genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin.",
+                "citations": [
+                  "3895"
+                ],
+                "reasoning": "The context explicitly lists sections for \"COMMUNITY RESPONSE (0 STUDIES)\" and \"BEHAVIOUR (0 STUDIES)\". The \"(0 STUDIES)\" notation indicates that no studies were found for these categories within the scope of the evidence presented, which is about the effects of genetically modified maize expressing Btk toxin. Therefore, the statement is fully supported.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "A laboratory controlled study on genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin reported that pollen from the genetically modified maize did not reduce survival of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to pollen from non-genetically modified maize.",
+                "reasoning": "The question asks about the effectiveness of GM crops for natural pest control. This statement describes the effect of a specific pest-control GM crop (Btk maize) on non-target species (swallowtail caterpillars). The effectiveness of a pest control method is not solely determined by its ability to eliminate the target pest, but also by its specificity and lack of harm to non-target, potentially beneficial, organisms. Evidence showing that the GM crop does not harm certain non-target insects is directly relevant to assessing its overall ecological safety and, therefore, its suitability and effectiveness as a pest control strategy. This finding supports the idea that the technology can be specific, which is a key attribute of an effective method.",
+                "verdict": true
+              },
+              {
+                "statement": "A laboratory controlled study found that pollen from genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars compared to non-genetically modified maize.",
+                "reasoning": "This statement is relevant for the same reasons as the first. It provides data on the effects of a pest-control GM crop on non-target species. Measuring sub-lethal effects like growth, in addition to survival, gives a more complete picture of the GM crop's impact on the ecosystem. Finding no negative impact on the growth of non-target caterpillars is important information when evaluating the overall effectiveness and environmental safety of this technology for natural pest control. It reinforces the crop's specificity, a crucial factor in its effectiveness.",
+                "verdict": true
+              },
+              {
+                "statement": "No community response or behavior studies were reported in the evidence base regarding the effects of genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin.",
+                "reasoning": "The question asks about the effectiveness of GM crops for natural pest control. This statement is relevant because it identifies a significant gap in the knowledge required to fully assess that effectiveness. A comprehensive evaluation of a pest control method must consider its broader ecological impacts, such as its effects on entire communities of organisms and on animal behavior. By highlighting the absence of such studies, the statement indicates that a complete picture of the GM crop's effectiveness in a real-world, 'natural' setting is not yet available. Knowing what is not known is crucial to accurately answer the question.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

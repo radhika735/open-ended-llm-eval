@@ -1,0 +1,165 @@
+[
+  {
+    "question_details": {
+      "query": "To restore peatlands afforested for commercial forestry, how does simply cutting the trees compare to cutting trees and also rewetting the peat?",
+      "all_relevant_qu_ids": [
+        "1731",
+        "1732"
+      ],
+      "regenerated_qu_ids": [
+        "1731",
+        "1732"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "google/gemini-2.5-pro",
+      "summary_provider": null,
+      "relevant_summary": "Three replicated studies on cutting/removing forest plantations in UK bogs and Swedish fens found an increase in the cover of some herb species, such as cottongrasses and sedges (1731). Similarly, seven studies in bogs and fens in the UK, Finland, and Sweden reported that cutting trees and rewetting the peat increased the cover of at least one group of herbs, including cottongrasses and sedges (1732). Two replicated, paired, controlled studies in rich fens in Sweden noted that simply cutting trees increased total plant species richness (1731). In comparison, two replicated, paired, controlled studies in the same area found that cutting trees and rewetting also increased plant species richness, while two other replicated studies in Finnish fens showed no effect on total plant species richness or diversity (1732).\n\nWhen it comes to moss cover, one study on simply cutting trees in UK bogs reported a reduction in forest-characteristic mosses (1731). Another study in a Swedish fen found a decrease in Sphagnum moss cover after tree removal, while a different study in partly rewetted rich fens showed an increase in Sphagnum cover (1731). For cutting trees and rewetting, two studies in Sweden and Finland found that this intervention increased Sphagnum cover (1732). Three studies in the UK and Finland observed that this combination of actions reduced the cover of non-Sphagnum or forest-characteristic mosses (1732). Two before-and-after studies in Finland and Sweden indicated that cutting trees and rewetting increased the abundance of wetland-characteristic plants (1732).",
+      "summary_action_ids": [
+        "1731",
+        "1732"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.3333333333333333,
+            "statement_judgements": [
+              {
+                "statement": "Tree removal in bogs always leads to a reduction in forest-characteristic mosses and an increase in Sphagnum moss cover.",
+                "reasoning": "The context discusses tree removal alone under section 1731. It mentions, \"One replicated, paired, controlled study in bogs in the UK reported that tree removal reduced cover of forest-characteristic mosses.\" This supports the first part of the statement. However, the context does not mention the effect of tree removal alone on Sphagnum moss cover in bogs; the studies that did report on Sphagnum moss cover were conducted in fens, with conflicting results. Furthermore, the word \"always\" is an absolute claim that cannot be supported by the findings of a single study. Since not all parts of the statement are fully supported, the verdict is 'No'.",
+                "verdict": false
+              },
+              {
+                "statement": "In fens located in Finland, removing trees and rewetting the peat had no impact on either the overall plant community composition or the total plant species richness.",
+                "reasoning": "The context under section 1732, \"Cut/remove/thin forest plantations and rewet peat,\" directly supports this statement. Under \"Plant community composition,\" it states, \"...two in Finland found that removing trees/rewetting had no effect on the overall plant community composition...\". Under \"Overall plant richness/diversity,\" it states, \"...two replicated studies in fens in Finland found that removing trees/rewetting had no effect on total plant species richness or diversity.\" Since both parts of the statement are explicitly supported by the text, the verdict is 'Yes'.",
+                "verdict": true
+              },
+              {
+                "statement": "Across all studies in bogs and fens, the combined action of removing trees and rewetting peat consistently increased the cover of cottongrasses and sedges.",
+                "reasoning": "This statement claims a consistent increase. Section 1732, under \"Herb cover,\" states that seven studies reported an increased cover of herbs like cottongrasses and sedges after tree removal and rewetting. However, it explicitly qualifies this by stating: \"However, one of these studies reported loss of cottongrass from a fen where it was rare before intervention...\". This exception means the effect was not \"consistently\" positive across all studies. Therefore, the statement is not fully supported.",
+                "verdict": false
+              },
+              {
+                "statement": "Tree removal by itself, without rewetting, was found to increase total plant species richness in two studies conducted in rich fens in Sweden.",
+                "reasoning": "Section 1731, which deals with tree removal alone, states under \"Overall plant richness/diversity\": \"Two replicated, paired, controlled studies in rich fens in Sweden reported that tree removal increased total plant species richness.\" This directly corresponds to all parts of the statement: the action (tree removal by itself), the outcome (increased total plant species richness), the number of studies (two), and the peatland type and location (rich fens in Sweden).",
+                "verdict": true
+              },
+              {
+                "statement": "Combining tree thinning with rewetting in Finnish bogs and fens successfully reduced the number of tall trees to the level of natural peatlands within three years.",
+                "reasoning": "Section 1732 discusses combined tree removal and rewetting. Under \"Vegetation structure,\" the text notes that studies in Finland found that the intervention \"reduced the number of tall trees present for 1–3 years.\" However, it includes a critical parenthetical clarification: \"(although not to the level of natural peatlands).\" This directly contradicts the statement's claim that the reduction was \"to the level of natural peatlands.\"",
+                "verdict": false
+              },
+              {
+                "statement": "Studies evaluating the effect of tree removal alone were conducted in bogs in Sweden and fens in the UK.",
+                "reasoning": "Section 1731 details the studies on tree removal alone. Under 'Herb cover,' the text specifies '...studies in bogs in the UK and fens in Sweden...'. The statement incorrectly swaps the locations and peatland types, claiming studies were conducted in 'bogs in Sweden and fens in the UK.' As this is factually incorrect according to the provided context, the statement is not supported.",
+                "verdict": false
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "Three replicated studies on cutting/removing forest plantations in UK bogs and Swedish fens found an increase in the cover of some herb species, such as cottongrasses and sedges.",
+                "citations": [
+                  "1731"
+                ],
+                "reasoning": "Citation 1731 under \"Herb cover\" directly supports this statement. It says: \"Three replicated studies (two also paired and controlled) in bogs in the UK and fens in Sweden reported that tree removal increased cover of some herb species including cottongrasses and sedges.\" The statement accurately reflects the number of studies, locations, action, and outcome described in the text.",
+                "verdict": true
+              },
+              {
+                "statement": "Seven studies in bogs and fens in the UK, Finland, and Sweden reported that cutting trees and rewetting the peat increased the cover of at least one group of herbs, including cottongrasses and sedges.",
+                "citations": [
+                  "1732"
+                ],
+                "reasoning": "Citation 1732 under \"Herb cover\" provides direct support for this statement. The text reads: \"Seven studies (including two replicated, paired, controlled) in bogs and fens in the UK, Finland and Sweden reported that removing trees/rewetting increased cover of at least one group of herbs, including cottongrasses and sedges.\" The statement correctly identifies the number of studies, locations, action, and the specific outcome.",
+                "verdict": true
+              },
+              {
+                "statement": "Two replicated, paired, controlled studies in rich fens in Sweden noted that simply cutting trees increased total plant species richness.",
+                "citations": [
+                  "1731"
+                ],
+                "reasoning": "Citation 1731 under \"Overall plant richness/diversity\" fully supports this statement. The context states: \"Two replicated, paired, controlled studies in rich fens in Sweden reported that tree removal increased total plant species richness.\" The statement accurately conveys the number and type of studies, the location, the action (tree removal or \"simply cutting trees\"), and the result.",
+                "verdict": true
+              },
+              {
+                "statement": "Two replicated, paired, controlled studies found that cutting trees and rewetting also increased plant species richness.",
+                "citations": [
+                  "1732"
+                ],
+                "reasoning": "Citation 1732 under \"Overall plant richness/diversity\" directly supports this statement. The text states: \"Two replicated, paired, controlled studies in rich fens in Sweden reported that removing trees/rewetting increased plant species richness.\" Although the statement omits the location (Sweden), it accurately reports the findings of the two specified studies regarding the action and outcome.",
+                "verdict": true
+              },
+              {
+                "statement": "Two other replicated studies in Finnish fens showed no effect on total plant species richness or diversity from cutting trees and rewetting.",
+                "citations": [
+                  "1732"
+                ],
+                "reasoning": "Citation 1732 under \"Overall plant richness/diversity\" validates this statement. The context says: \"However, two replicated studies in fens in Finland found that removing trees/rewetting had no effect on total plant species richness or diversity.\" The statement accurately reports the number of studies, location, action, and the finding of no effect.",
+                "verdict": true
+              },
+              {
+                "statement": "One study on simply cutting trees in UK bogs reported a reduction in forest-characteristic mosses.",
+                "citations": [
+                  "1731"
+                ],
+                "reasoning": "Citation 1731 under \"Moss cover\" directly supports this statement. It reads: \"One replicated, paired, controlled study in bogs in the UK reported that tree removal reduced cover of forest-characteristic mosses.\" The statement correctly identifies the number of studies, location, action (\"tree removal\" is equivalent to \"simply cutting trees\"), and outcome.",
+                "verdict": true
+              },
+              {
+                "statement": "A study in a Swedish fen found a decrease in Sphagnum moss cover after tree removal.",
+                "citations": [
+                  "1731"
+                ],
+                "reasoning": "Citation 1731 under \"Moss cover\" confirms this statement. The context says: \"One replicated before-and-after study in a drained rich fen in Sweden reported that Sphagnum moss cover decreased over three years following tree removal.\" The statement accurately summarizes this finding.",
+                "verdict": true
+              },
+              {
+                "statement": "A study in partly rewetted rich fens showed an increase in Sphagnum cover.",
+                "citations": [
+                  "1731"
+                ],
+                "reasoning": "Citation 1731 under \"Moss cover\" supports this statement. The context reports: \"However, one replicated, paired, controlled study in partly rewetted rich fens reported that Sphagnum cover increased over eight years following tree removal.\" The statement correctly captures the location and the outcome reported in the study.",
+                "verdict": true
+              },
+              {
+                "statement": "Two studies in Sweden and Finland found that the intervention of cutting trees and rewetting increased Sphagnum cover.",
+                "citations": [
+                  "1732"
+                ],
+                "reasoning": "Citation 1732 under \"Moss cover\" directly supports this statement. The text says: \"Of five studies that examined the effect of removing trees/rewetting on Sphagnum moss, two replicated, paired studies in bogs and fens in Sweden and Finland found that the intervention increased Sphagnum cover.\" The statement accurately reflects the number of studies, locations, action, and outcome.",
+                "verdict": true
+              },
+              {
+                "statement": "Three studies in the UK and Finland observed that cutting trees and rewetting reduced the cover of non-Sphagnum or forest-characteristic mosses.",
+                "citations": [
+                  "1732"
+                ],
+                "reasoning": "Citation 1732 under \"Moss cover\" directly validates this statement. The context states: \"Additionally, three studies (two replicated and paired) in peatlands in the UK and Finland found that removing trees/rewetting reduced cover of non-Sphagnum or forest-characteristic mosses.\" The statement correctly identifies the number of studies, locations, action, and result.",
+                "verdict": true
+              },
+              {
+                "statement": "Two before-and-after studies in Finland and Sweden indicated that cutting trees and rewetting increased the abundance of wetland-characteristic plants.",
+                "citations": [
+                  "1732"
+                ],
+                "reasoning": "Citation 1732 under \"Characteristic plants\" fully supports this statement. The text says: \"Two before-and-after studies (one site comparison, one controlled) in bogs and fens in Finland and Sweden reported that removing trees/rewetting increased the abundance of wetland-characteristic plants.\" The statement accurately reflects the study type, number, locations, action, and outcome.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

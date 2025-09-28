@@ -1,0 +1,171 @@
+[
+  {
+    "question_details": {
+      "query": "What is the combined effect on peatland vegetation of changing both the type of livestock and the season of grazing?",
+      "all_relevant_qu_ids": [
+        "1733",
+        "1734",
+        "1735",
+        "1736",
+        "1737"
+      ],
+      "regenerated_qu_ids": [
+        "1736",
+        "1737"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "anthropic/claude-sonnet-4",
+      "summary_provider": null,
+      "relevant_summary": "Based on the available action documents, no studies have been found that evaluated the combined effects on peatland vegetation of changing both the type of livestock and the season of grazing. Action 1737 states that no studies were found that evaluated the effects on peatland vegetation of changing the season or timing of livestock grazing. Action 1736 states that no studies were found that evaluated the effects on peatland vegetation of changing livestock type. While there is some evidence from individual interventions - such as Action 1735 showing that reducing grazing intensity increased total vegetation and shrub cover in bogs, and Action 1734 demonstrating various effects of excluding livestock entirely from degraded peatlands - there is no research examining the specific combined effects of simultaneously changing both livestock type and grazing season.",
+      "summary_action_ids": [
+        "1737",
+        "1736",
+        "1735",
+        "1734"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-flash",
+      "judge_provider": null,
+      "summary_statements": [
+        "No studies have been found that evaluated the combined effects on peatland vegetation of changing both the type of livestock and the season of grazing.",
+        "No studies were found that evaluated the effects on peatland vegetation of changing the season or timing of livestock grazing.",
+        "No studies were found that evaluated the effects on peatland vegetation of changing livestock type.",
+        "Reducing grazing intensity increased total vegetation and shrub cover in bogs.",
+        "Excluding livestock entirely from degraded peatlands demonstrated various effects on peatland vegetation.",
+        "There is no research examining the specific combined effects of simultaneously changing both livestock type and grazing season."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "No studies have been found that evaluated the combined effects on peatland vegetation of changing both the type of livestock and the season of grazing.",
+                "reasoning": "The context explicitly states under '1736: Change type of livestock' that 'We found no studies that evaluated the effects, on peatland vegetation, of changing livestock type.' Similarly, under '1737: Change season/timing of livestock grazing', it states 'We found no studies that evaluated the effects, on peatland vegetation, of changing the season or timing of livestock grazing.' Since no studies were found for either isolated action, it logically follows that no studies would have been found for the combined effects of these two actions. Therefore, this statement is fully supported.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on peatland vegetation of changing the season or timing of livestock grazing.",
+                "reasoning": "The context directly states this under '1737: Change season/timing of livestock grazing'. The key message reads: 'We found no studies that evaluated the effects, on peatland vegetation, of changing the season or timing of livestock grazing.' This is a direct match.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on peatland vegetation of changing livestock type.",
+                "reasoning": "The context directly states this under '1736: Change type of livestock'. The key message reads: 'We found no studies that evaluated the effects, on peatland vegetation, of changing livestock type.' This is a direct match.",
+                "verdict": true
+              },
+              {
+                "statement": "Reducing grazing intensity increased total vegetation and shrub cover in bogs.",
+                "reasoning": "The context for '1735: Reduce intensity of livestock grazing' states under 'Vegetation cover (1 study)': 'One replicated, paired, controlled study in bogs in the UK found that total vegetation and shrub cover were greater where grazing intensity was lower.' 'Greater where grazing intensity was lower' directly supports the idea that reducing grazing intensity increased these covers. The statement also correctly specifies 'in bogs', matching the context.",
+                "verdict": true
+              },
+              {
+                "statement": "Excluding livestock entirely from degraded peatlands demonstrated various effects on peatland vegetation.",
+                "reasoning": "The context for '1734: Exclude or remove livestock from degraded peatlands' details numerous and often varied effects across different vegetation categories: plant community composition (no effect in some cases, favoured dry moorland plants in others), herb cover (typically no effect, but increased rush cover in one study and increased overall herb cover in another), moss cover (typically no effect on Sphagnum, but Sphagnum appeared in one study), tree/shrub cover (no effect in some cases, but increased heather cover in drier areas in one study, and increased shrub cover in three studies), and vegetation structure (increased total vegetation, shrub and bryophyte biomass). The multitude of different outcomes, sometimes contradictory between studies or areas, clearly indicates 'various effects'. The action is 'excluding or removing livestock from degraded peatlands'.",
+                "verdict": true
+              },
+              {
+                "statement": "There is no research examining the specific combined effects of simultaneously changing both livestock type and grazing season.",
+                "reasoning": "This statement is essentially equivalent to Statement 1. As established previously, the context explicitly states that 'no studies' were found for changing livestock type (1736) and 'no studies' were found for changing the season or timing of livestock grazing (1737). If no studies exist for the individual actions, then no 'research examining the specific combined effects' of simultaneously changing both would exist either. The phrasing 'no research' aligns with 'we found no studies'.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 0.6666666666666666,
+            "statement_judgements": [
+              {
+                "statement": "No studies have been found that evaluated the combined effects on peatland vegetation of changing both the type of livestock and the season of grazing.",
+                "citations": [],
+                "reasoning": "The statement claims an absence of studies on combined effects. However, the prompt clearly states: \"If a statement has no citations then it is not supported by default.\" Since this statement has no associated citations, it cannot be supported by the provided context.",
+                "verdict": false
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on peatland vegetation of changing the season or timing of livestock grazing.",
+                "citations": [
+                  "Action 1737"
+                ],
+                "reasoning": "Action 1737 explicitly states: 'We found no studies that evaluated the effects, on peatland vegetation, of changing the season or timing of livestock grazing.' This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on peatland vegetation of changing livestock type.",
+                "citations": [
+                  "Action 1736"
+                ],
+                "reasoning": "Action 1736 explicitly states: 'We found no studies that evaluated the effects, on peatland vegetation, of changing livestock type.' This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Reducing grazing intensity increased total vegetation and shrub cover in bogs.",
+                "citations": [
+                  "Action 1735"
+                ],
+                "reasoning": "Action 1735, under 'Vegetation cover (1 study)', states: 'One replicated, paired, controlled study in bogs in the UK found that total vegetation and shrub cover were greater where grazing intensity was lower.' This directly supports that reducing grazing intensity increased total vegetation and shrub cover.",
+                "verdict": true
+              },
+              {
+                "statement": "Excluding livestock entirely from degraded peatlands demonstrated various effects on peatland vegetation.",
+                "citations": [
+                  "Action 1734"
+                ],
+                "reasoning": "Action 1734 details numerous effects of excluding or removing livestock from degraded peatlands across different categories: Plant community composition, Herb cover, Moss cover, Tree/shrub cover, and Vegetation structure. These effects include increases, no effects, and varied responses, thus demonstrating 'various effects'. For example, it notes increases in rush cover, overall herb cover, Sphagnum moss appearance, and shrub cover, as well as no effects in other instances.",
+                "verdict": true
+              },
+              {
+                "statement": "There is no research examining the specific combined effects of simultaneously changing both livestock type and grazing season.",
+                "citations": [],
+                "reasoning": "The statement claims an absence of research on combined effects. However, the prompt clearly states: \"If a statement has no citations then it is not supported by default.\" Since this statement has no associated citations, it cannot be supported by the provided context.",
+                "verdict": false
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 0.6666666666666666,
+            "statement_judgements": [
+              {
+                "statement": "No studies have been found that evaluated the combined effects on peatland vegetation of changing both the type of livestock and the season of grazing.",
+                "reasoning": "The question asks for the combined effect on peatland vegetation of changing both the type of livestock and the season of grazing. This statement directly addresses the question by explicitly stating that no studies have been found evaluating these specific combined effects. Therefore, it is highly relevant as it provides a direct answer regarding the availability of information.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on peatland vegetation of changing the season or timing of livestock grazing.",
+                "reasoning": "The question asks about the combined effect of changing livestock type and grazing season. This statement indicates a complete lack of research on one of the two key variables (changing the season or timing of grazing) in isolation. If individual components have not been studied, it is highly improbable that their combined effect would have been studied. Thus, this statement provides critical contextual information that contributes to understanding the overall scientific knowledge, or lack thereof, regarding the question.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on peatland vegetation of changing livestock type.",
+                "reasoning": "Similar to the previous statement, this statement highlights a lack of research on the other key variable mentioned in the question (changing livestock type) in isolation. The absence of studies on individual factors strongly implies the absence of studies on their combined effects. Therefore, this information is highly relevant to establishing the knowledge base pertaining to the question.",
+                "verdict": true
+              },
+              {
+                "statement": "Reducing grazing intensity increased total vegetation and shrub cover in bogs.",
+                "reasoning": "The question specifically asks about the combined effect of 'changing the type of livestock' and 'changing the season of grazing'. This statement, however, discusses 'reducing grazing intensity', which is a different aspect of grazing management. While 'bogs' are a type of peatland and 'vegetation' is relevant, the variables of interest (livestock type and grazing season) are not addressed by this statement.",
+                "verdict": false
+              },
+              {
+                "statement": "Excluding livestock entirely from degraded peatlands demonstrated various effects on peatland vegetation.",
+                "reasoning": "The question specifically focuses on the combined effect of 'changing the type of livestock' and 'changing the season of grazing'. This statement is about 'excluding livestock entirely', which represents a complete cessation of grazing, not a change in livestock type or grazing season. While it relates to peatland vegetation and livestock, it does not address the specific variations outlined in the question.",
+                "verdict": false
+              },
+              {
+                "statement": "There is no research examining the specific combined effects of simultaneously changing both livestock type and grazing season.",
+                "reasoning": "This statement directly and explicitly answers the core of the question by stating that no research exists for the 'specific combined effects of simultaneously changing both livestock type and grazing season'. This provides a definitive conclusion regarding the availability of information pertinent to the question.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

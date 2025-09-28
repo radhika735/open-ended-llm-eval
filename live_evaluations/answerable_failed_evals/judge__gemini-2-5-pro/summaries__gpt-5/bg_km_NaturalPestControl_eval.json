@@ -1,0 +1,236 @@
+[
+  {
+    "question_details": {
+      "query": "For a farmer focused on profitability in North America, what are the potential negative economic impacts of actions designed to improve natural pest control?",
+      "all_relevant_qu_ids": [
+        "717",
+        "718",
+        "719",
+        "728"
+      ],
+      "regenerated_qu_ids": [
+        "717",
+        "718",
+        "719",
+        "721",
+        "728",
+        "729",
+        "750"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "openai/gpt-5",
+      "summary_provider": null,
+      "relevant_summary": "Across actions intended to enhance natural pest control, studies report several potential negative economic outcomes: Converting to organic farming decreased profit without a price premium in one study, and another study found negative or no effect on profit [717]. Incorporating allelopathic plant residues can inhibit crop growth, and yields were sometimes lower; profit increased versus unweeded controls but not compared to weeded controls [728]. Alley cropping in the USA was associated with lower profit despite lower costs, and lower yields were reported in the USA (and elsewhere) [718]. Delaying herbicide use led to lower yields in one study, with another finding no yield effect [774].",
+      "summary_action_ids": [
+        "717",
+        "728",
+        "718",
+        "774"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "Converting to organic farming decreased profit without a price premium.",
+        "Some studies found that converting to organic farming had a negative or no effect on profit.",
+        "Incorporating allelopathic plant residues can inhibit crop growth.",
+        "The use of allelopathic plant residues sometimes resulted in lower yields.",
+        "When using allelopathic plant residues, profit increased compared to unweeded controls but not when compared to weeded controls.",
+        "Alley cropping in the USA was associated with lower profit despite having lower costs.",
+        "Lower yields from alley cropping were reported in the USA and elsewhere.",
+        "Delaying the use of herbicides led to lower yields in one study.",
+        "Another study found that delaying herbicide use had no effect on yield."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "Converting to organic farming decreased profit without a price premium.",
+                "reasoning": "The context for '717: Convert to organic farming' states under 'Yield and profit': 'One study found net profit increased if produce received a premium, but otherwise profit decreased.' This directly supports the statement that profit decreased without a premium.",
+                "verdict": true
+              },
+              {
+                "statement": "Some studies found that converting to organic farming had a negative or no effect on profit.",
+                "reasoning": "The context for '717: Convert to organic farming' under the 'Yield and profit' section says, 'Another study found a negative or no effect on profit.' This explicitly confirms that at least one study (which qualifies as 'some') found a negative or no effect on profit.",
+                "verdict": true
+              },
+              {
+                "statement": "Incorporating allelopathic plant residues can inhibit crop growth.",
+                "reasoning": "The context for '728: Incorporate plant remains into the soil...' discusses 'Crop growth'. It states: 'Two of three studies found crop growth was inhibited by allelopathic plant remains...'. This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "The use of allelopathic plant residues sometimes resulted in lower yields.",
+                "reasoning": "The context for '728: Incorporate plant remains into the soil...' mentions yield outcomes. Specifically, it says, 'Three randomised, replicated, controlled studies compared yields in amended plots with weeded controls and found positive, negative and mixed effects.' A 'negative' effect on yield means a lower yield. Therefore, the use of these residues did sometimes result in lower yields.",
+                "verdict": true
+              },
+              {
+                "statement": "When using allelopathic plant residues, profit increased compared to unweeded controls but not when compared to weeded controls.",
+                "reasoning": "The context for '728: Incorporate plant remains into the soil...' has a section on 'Profit'. It states: 'One study found that amending soils increased profit compared to unweeded controls, but not compared to weeded controls.' This is a direct match with the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Alley cropping in the USA was associated with lower profit despite having lower costs.",
+                "reasoning": "The context for '718: Use alley cropping' under 'Costs and profit' states: 'One study from the USA found lower costs but also lower profit in alley cropped plots.' This statement is a direct reflection of the information provided in the context.",
+                "verdict": true
+              },
+              {
+                "statement": "Lower yields from alley cropping were reported in the USA and elsewhere.",
+                "reasoning": "The context for '718: Use alley cropping' under the 'Yield' section states: 'One controlled study from the USA found lower yield and one study from the Philippines reported similar or lower yields.' The Philippines qualifies as 'elsewhere', and both findings support the claim of lower yields.",
+                "verdict": true
+              },
+              {
+                "statement": "Delaying the use of herbicides led to lower yields in one study.",
+                "reasoning": "The context for '774: Delay herbicide use' includes a section on 'Yield'. It states, 'One randomised, replicated, controlled study found lower yields...'. This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Another study found that delaying herbicide use had no effect on yield.",
+                "reasoning": "The context for '774: Delay herbicide use' under the 'Yield' section states, 'One randomised, replicated, controlled study found lower yields and one study found no effect.' This confirms that a different study ('another study') found no effect on yield.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "Converting to organic farming decreased profit without a price premium.",
+                "citations": [
+                  "717"
+                ],
+                "reasoning": "Citation 717, under the subheading 'Yield and profit', explicitly states: 'One study found net profit increased if produce received a premium, but otherwise profit decreased.' This directly supports the statement that profit decreased without a premium.",
+                "verdict": true
+              },
+              {
+                "statement": "Some studies found that converting to organic farming had a negative or no effect on profit.",
+                "citations": [
+                  "717"
+                ],
+                "reasoning": "Citation 717, under 'Yield and profit', mentions two studies on profit. The first found profit decreased without a premium. The text then states: 'Another study found a negative or no effect on profit.' This directly corroborates the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Incorporating allelopathic plant residues can inhibit crop growth.",
+                "citations": [
+                  "728"
+                ],
+                "reasoning": "Citation 728, in the 'Crop growth' section, says: 'Two of three studies found crop growth was inhibited by allelopathic plant remains, but this could be minimised by changing the timing of application.' This confirms that the inhibition of crop growth is a possible effect.",
+                "verdict": true
+              },
+              {
+                "statement": "The use of allelopathic plant residues sometimes resulted in lower yields.",
+                "citations": [
+                  "728"
+                ],
+                "reasoning": "Citation 728, under the 'Yield' key message, states: 'Three randomised, replicated, controlled studies compared yields in amended plots with weeded controls and found positive, negative and mixed effects.' The finding of 'negative' effects directly supports the statement that yields were sometimes lower.",
+                "verdict": true
+              },
+              {
+                "statement": "When using allelopathic plant residues, profit increased compared to unweeded controls but not when compared to weeded controls.",
+                "citations": [
+                  "728"
+                ],
+                "reasoning": "Citation 728 contains a 'Profit' section which states: 'One study found that amending soils increased profit compared to unweeded controls, but not compared to weeded controls.' The statement is a direct and accurate reflection of this finding.",
+                "verdict": true
+              },
+              {
+                "statement": "Alley cropping in the USA was associated with lower profit despite having lower costs.",
+                "citations": [
+                  "718"
+                ],
+                "reasoning": "Citation 718, under the subheading 'Costs and profit', states: 'One study from the USA found lower costs but also lower profit in alley cropped plots.' The statement accurately summarizes this specific finding, including the location and the relationship between costs and profit.",
+                "verdict": true
+              },
+              {
+                "statement": "Lower yields from alley cropping were reported in the USA and elsewhere.",
+                "citations": [
+                  "718"
+                ],
+                "reasoning": "Under the 'Yield' section of Citation 718, the text says: 'One controlled study from the USA found lower yield and one study from the Philippines reported similar or lower yields.' This supports the statement's claim of lower yields being found in the USA and 'elsewhere' (the Philippines).",
+                "verdict": true
+              },
+              {
+                "statement": "Delaying the use of herbicides led to lower yields in one study.",
+                "citations": [
+                  "774"
+                ],
+                "reasoning": "Citation 774, in the 'Yield' section, states: 'One randomised, replicated, controlled study found lower yields and one study found no effect.' This directly confirms that one study found lower yields.",
+                "verdict": true
+              },
+              {
+                "statement": "Another study found that delaying herbicide use had no effect on yield.",
+                "citations": [
+                  "774"
+                ],
+                "reasoning": "The 'Yield' section of Citation 774 states: 'One randomised, replicated, controlled study found lower yields and one study found no effect.' The second part of this sentence directly supports the statement that another study found no effect on yield.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 0.8888888888888888,
+            "statement_judgements": [
+              {
+                "statement": "Converting to organic farming decreased profit without a price premium.",
+                "reasoning": "This statement is relevant. Organic farming is a system that fundamentally relies on actions to improve natural pest control, such as avoiding synthetic pesticides. The statement directly addresses a 'negative economic impact' by stating that 'profit decreased.' This scenario is highly pertinent to a 'farmer focused on profitability in North America,' as the availability and size of organic price premiums are critical factors in the decision to convert to organic farming in the region.",
+                "verdict": true
+              },
+              {
+                "statement": "Some studies found that converting to organic farming had a negative or no effect on profit.",
+                "reasoning": "This statement is relevant. It addresses organic farming, a production system that promotes natural pest control. It explicitly mentions a 'negative... effect on profit,' which directly answers the question about potential negative economic impacts. The inclusion of 'or no effect' still points to the economic risk that the significant effort of conversion may not yield a positive financial return, which is a negative outcome from a profitability perspective. This is a crucial consideration for any farmer, including those in North America.",
+                "verdict": true
+              },
+              {
+                "statement": "Incorporating allelopathic plant residues can inhibit crop growth.",
+                "reasoning": "This statement is relevant. The use of allelopathic plant residues is an action designed to improve natural pest control, specifically by suppressing weeds. The statement points to a potential negative consequence: 'inhibit crop growth.' Inhibited crop growth directly translates to lower yields, which is a primary driver of negative economic impacts for a farmer. This biological risk is applicable to any farmer using this technique, including one in North America.",
+                "verdict": true
+              },
+              {
+                "statement": "The use of allelopathic plant residues sometimes resulted in lower yields.",
+                "reasoning": "This statement is relevant. It concerns a specific natural pest control method, which is the 'use of allelopathic plant residues' for weed suppression. It identifies a direct negative economic impact: 'lower yields.' Lower yield is a key component of reduced profitability. The fact that this 'sometimes' occurs highlights a potential risk, which is central to the question. This risk is relevant to a North American farmer considering this method.",
+                "verdict": true
+              },
+              {
+                "statement": "When using allelopathic plant residues, profit increased compared to unweeded controls but not when compared to weeded controls.",
+                "reasoning": "This statement is relevant. It analyzes the profitability of a natural pest control method (allelopathic residues). The key insight is the comparison to 'weeded controls' (e.g., fields using conventional herbicides or mechanical weeding). The fact that profit did not increase relative to this standard practice represents a negative economic impact in the form of an opportunity cost. A profit-focused farmer must compare new methods to their best current alternative, not just to doing nothing. If a natural method is less profitable than a conventional one, it represents a negative economic outcome for a farmer who switches. This is a sophisticated but critical point for a farmer in North America.",
+                "verdict": true
+              },
+              {
+                "statement": "Alley cropping in the USA was associated with lower profit despite having lower costs.",
+                "reasoning": "This statement is highly relevant. Alley cropping is a practice that can enhance natural pest control by creating habitat for beneficial insects. The statement explicitly identifies a negative economic impact ('lower profit') and is geographically specific to North America ('in the USA'). It directly connects an action that improves natural pest control to a negative profitability outcome for a farmer in the target region.",
+                "verdict": true
+              },
+              {
+                "statement": "Lower yields from alley cropping were reported in the USA and elsewhere.",
+                "reasoning": "This statement is highly relevant. It discusses alley cropping, a practice that improves natural pest control. It identifies 'lower yields' as a consequence, which is a primary cause of negative economic impacts. Furthermore, it explicitly states this has been observed 'in the USA,' making it directly applicable to the farmer in the question. This statement provides a mechanism for the lower profit mentioned in the previous statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Delaying the use of herbicides led to lower yields in one study.",
+                "reasoning": "This statement is relevant. Delaying herbicide application is a tactic within Integrated Pest Management (IPM) that allows more time for natural enemies to control pests, thus it is an 'action designed to improve natural pest control.' The statement identifies a clear negative economic impact: 'lower yields.' This risk is a significant consideration for a profit-focused farmer in North America who might be implementing an IPM program.",
+                "verdict": true
+              },
+              {
+                "statement": "Another study found that delaying herbicide use had no effect on yield.",
+                "reasoning": "This statement is not relevant. The question specifically asks for 'potential negative economic impacts.' A finding of 'no effect on yield' describes a neutral outcome, not a negative one. While this information might be useful to a farmer for other reasons, it does not provide an example of a negative economic impact as requested by the question.",
+                "verdict": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

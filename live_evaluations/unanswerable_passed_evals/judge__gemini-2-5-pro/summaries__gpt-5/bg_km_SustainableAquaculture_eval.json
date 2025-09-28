@@ -1,0 +1,189 @@
+[
+  {
+    "question_details": {
+      "query": "Which is more effective for improving overall salmon survival rates: using vaccinations or altering cage size?",
+      "all_relevant_qu_ids": [
+        "733",
+        "742"
+      ],
+      "regenerated_qu_ids": [
+        "733",
+        "742"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "openai/gpt-5",
+      "summary_provider": null,
+      "relevant_summary": "Evidence from controlled studies reported higher survival rates in vaccinated salmon compared to unvaccinated controls across multiple pathogens and locations, including Aeromonas salmonicida spp. achromogenes and Yersinia ruckeri in Iceland and Norway, marine flexibacteriosis and bacterial kidney disease in Australia and Canada, and infectious salmon anaemia in Norway [733]. In contrast, altering cage size was associated with lower levels of amoebic gill disease in salmon in a replicated study in Australia, with no survival outcomes reported [742].",
+      "summary_action_ids": [
+        "733",
+        "742"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "Evidence from controlled studies reported higher survival rates in vaccinated salmon compared to unvaccinated controls across multiple pathogens and locations.",
+        "Vaccinated salmon showed higher survival rates against Aeromonas salmonicida spp.",
+        "achromogenes and Yersinia ruckeri in Iceland and Norway.",
+        "Vaccinated salmon showed higher survival rates against marine flexibacteriosis and bacterial kidney disease in Australia and Canada.",
+        "Vaccinated salmon showed higher survival rates against infectious salmon anaemia in Norway.",
+        "In a replicated study in Australia, altering cage size was associated with lower levels of amoebic gill disease in salmon.",
+        "No survival outcomes were reported for the study on altering cage size and its effect on amoebic gill disease."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.8571428571428571,
+            "statement_judgements": [
+              {
+                "statement": "Evidence from controlled studies reported higher survival rates in vaccinated salmon compared to unvaccinated controls across multiple pathogens and locations.",
+                "reasoning": "The context provides evidence from controlled studies in multiple locations (Iceland, Norway, Australia, Canada) concerning multiple pathogens (Aeromonas salmonicida spp.achromogenes, Yersinia ruckeri, marine flexibacteriosis, bacterial kidney disease, and infectious salmon anaemia). In each case, vaccination resulted in 'higher survival rates,' 'higher survival,' or 'similar results' (which refers to higher survival), substantiating the statement entirely.",
+                "verdict": true
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against Aeromonas salmonicida spp.",
+                "reasoning": "The context states that a controlled study found 'higher survival rates in vaccinated salmon compared to unvaccinated control groups. This was post exposure to the disease-causing bacteria, Aeromonas salmonicida spp.achromogenes'. Since Aeromonas salmonicida spp.achromogenes is a subspecies of Aeromonas salmonicida spp., the statement is factually supported by the text.",
+                "verdict": true
+              },
+              {
+                "statement": "achromogenes and Yersinia ruckeri in Iceland and Norway.",
+                "reasoning": "The statement is an incomplete grammatical fragment. However, if we interpret it as a claim that studies on these bacteria occurred in these locations, it is still not fully supported. The context states that studies on 'Aeromonas salmonicida spp.achromogenes and Yersinia ruckeri' were conducted in 'Iceland and Norway, respectively'. The word 'respectively' is critical, indicating that one pathogen was studied in one country and the other in the other country. The statement's phrasing omits this detail and could be misinterpreted as both pathogens being studied in both countries. Therefore, it is not a fully accurate representation of the information provided.",
+                "verdict": false
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against marine flexibacteriosis and bacterial kidney disease in Australia and Canada.",
+                "reasoning": "The context states: 'Two controlled studies in Australia and Canadia reported higher survival in salmon infected with marine flexibacteriosis and bacterial kidney disease, post vaccination.' This directly supports the statement's claim about higher survival against these diseases in these locations ('Canadia' being a typo for Canada).",
+                "verdict": true
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against infectious salmon anaemia in Norway.",
+                "reasoning": "The context says that 'Two controlled studies in Norway reported similar results for salmon vaccinated against infectious salmon anaemia.' The term 'similar results' refers to the 'higher survival rates' mentioned in the preceding points. Therefore, the statement is fully supported by the text.",
+                "verdict": true
+              },
+              {
+                "statement": "In a replicated study in Australia, altering cage size was associated with lower levels of amoebic gill disease in salmon.",
+                "reasoning": "The context under '742: Alter cage size' states: 'A replicated study in Australia recorded lower levels of amoebic gill disease in salmon kept within larger compared to smaller cages.' Comparing larger and smaller cages is an instance of 'altering cage size'. All elements of the statement are present in the source text.",
+                "verdict": true
+              },
+              {
+                "statement": "No survival outcomes were reported for the study on altering cage size and its effect on amoebic gill disease.",
+                "reasoning": "The key message for the study on altering cage size only mentions that it 'recorded lower levels of amoebic gill disease'. The context provided for this study does not mention survival rates or outcomes. As the statement accurately reflects the absence of this information in the given source, it is considered supported.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 0.8571428571428571,
+            "statement_judgements": [
+              {
+                "statement": "Evidence from controlled studies reported higher survival rates in vaccinated salmon compared to unvaccinated controls across multiple pathogens and locations.",
+                "citations": [
+                  "733"
+                ],
+                "reasoning": "The context from citation 733 explicitly supports this. It mentions 'Two controlled studies from Iceland and Norway found higher survival rates in vaccinated salmon', 'Two controlled studies in Australia and Canadia reported higher survival', and 'Two controlled studies in Norway reported similar results'. It also lists multiple pathogens (Aeromonas salmonicida spp.achromogenes, Yersinia ruckeri, marine flexibacteriosis, bacterial kidney disease, infectious salmon anaemia) and locations (Iceland, Norway, Australia, Canada).",
+                "verdict": true
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against Aeromonas salmonicida spp.",
+                "citations": [
+                  "733"
+                ],
+                "reasoning": "The context from citation 733 states that 'Two controlled studies... found higher survival rates in vaccinated salmon... post exposure to the disease-causing bacteria, Aeromonas salmonicida spp.achromogenes'. This directly supports the statement, as spp.achromogenes is a subspecies of spp.",
+                "verdict": true
+              },
+              {
+                "statement": "achromogenes and Yersinia ruckeri in Iceland and Norway.",
+                "citations": [
+                  "733"
+                ],
+                "reasoning": "The statement is grammatically incomplete and does not make a verifiable claim. It is a fragment that lists two pathogens and two locations mentioned in the text, but it does not form a complete, supportable assertion on its own. For a statement to be supported, it must be a complete, factual claim that is fully backed by the context.",
+                "verdict": false
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against marine flexibacteriosis and bacterial kidney disease in Australia and Canada.",
+                "citations": [
+                  "733"
+                ],
+                "reasoning": "The context from citation 733 directly supports this. It reads: 'Two controlled studies in Australia and Canadia reported higher survival in salmon infected with marine flexibacteriosis and bacterial kidney disease, post vaccination.' All elements of the statement are present in the context.",
+                "verdict": true
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against infectious salmon anaemia in Norway.",
+                "citations": [
+                  "733"
+                ],
+                "reasoning": "The context from citation 733 states, 'Two controlled studies in Norway reported similar results for salmon vaccinated against infectious salmon anaemia.' The phrase 'similar results' refers back to the 'higher survival rates' mentioned in the preceding sentences, thus confirming the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "In a replicated study in Australia, altering cage size was associated with lower levels of amoebic gill disease in salmon.",
+                "citations": [
+                  "742"
+                ],
+                "reasoning": "The context from citation 742 supports this entirely. It states: 'A replicated study in Australia recorded lower levels of amoebic gill disease in salmon kept within larger compared to smaller cages.' Comparing larger to smaller cages is a form of 'altering cage size.'",
+                "verdict": true
+              },
+              {
+                "statement": "No survival outcomes were reported for the study on altering cage size and its effect on amoebic gill disease.",
+                "citations": [
+                  "742"
+                ],
+                "reasoning": "The statement claims an absence of information. The provided context from citation 742 only reports on 'lower levels of amoebic gill disease' and makes no mention of survival rates or outcomes. Therefore, based on the given context, the statement that no survival outcomes were reported is correct.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "Evidence from controlled studies reported higher survival rates in vaccinated salmon compared to unvaccinated controls across multiple pathogens and locations.",
+                "reasoning": "This statement directly addresses one of the core components of the question: the effectiveness of vaccinations. It explicitly mentions the key outcome measure, 'higher survival rates', providing strong, general evidence for the efficacy of this intervention. Therefore, it is highly relevant for evaluation.",
+                "verdict": true
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against Aeromonas salmonicida spp.",
+                "reasoning": "This statement provides a specific example that supports the general claim in Statement 1. It links vaccination to higher survival rates against a specific pathogen, which is a key mechanism through which vaccination improves overall survival. This is a relevant piece of evidence for the 'vaccination' side of the question.",
+                "verdict": true
+              },
+              {
+                "statement": "achromogenes and Yersinia ruckeri in Iceland and Norway.",
+                "reasoning": "This statement is a continuation of Statement 2, providing further specifics on the pathogens and locations where vaccinated salmon showed higher survival rates. By adding these details, it strengthens the evidence for the effectiveness of vaccination, making it relevant to the question.",
+                "verdict": true
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against marine flexibacteriosis and bacterial kidney disease in Australia and Canada.",
+                "reasoning": "Similar to the preceding statements, this provides additional, specific evidence for the effectiveness of vaccination. It demonstrates that the positive impact on survival rates is not limited to a single pathogen or region, which is important for assessing the overall effectiveness of vaccination as an intervention.",
+                "verdict": true
+              },
+              {
+                "statement": "Vaccinated salmon showed higher survival rates against infectious salmon anaemia in Norway.",
+                "reasoning": "This statement offers another concrete example of vaccination leading to increased survival rates. By adding another specific disease and location to the body of evidence, it reinforces the case for vaccination's effectiveness, which is central to the user's question.",
+                "verdict": true
+              },
+              {
+                "statement": "In a replicated study in Australia, altering cage size was associated with lower levels of amoebic gill disease in salmon.",
+                "reasoning": "This statement is relevant because it addresses the second intervention mentioned in the question: 'altering cage size'. It connects this intervention to a health outcome ('lower levels of amoebic gill disease'). Since disease is a major cause of mortality, a reduction in disease prevalence is a relevant proxy for potential improvements in survival rates.",
+                "verdict": true
+              },
+              {
+                "statement": "No survival outcomes were reported for the study on altering cage size and its effect on amoebic gill disease.",
+                "reasoning": "This statement is critically relevant because it directly addresses the primary outcome measure specified in the question: 'survival rates'. It clarifies that for the 'altering cage size' intervention, data on survival rates is explicitly missing. This information about the absence of evidence is crucial for determining whether a direct comparison between the two interventions is possible.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

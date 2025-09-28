@@ -1,0 +1,151 @@
+[
+  {
+    "question_details": {
+      "query": "What is the effectiveness of using genetically modified crops for natural pest control?",
+      "all_relevant_qu_ids": [],
+      "regenerated_qu_ids": []
+    },
+    "summary_details": {
+      "summary_model": "anthropic/claude-sonnet-4",
+      "summary_provider": null,
+      "relevant_summary": "Based on one controlled laboratory study, genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin for European corn borer control showed specific effectiveness parameters. The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize. Additionally, the pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize. This study evaluated the effects on butterflies and moths of using genetically modified crops which produce pesticide to replace conventional pesticide application.",
+      "summary_action_ids": [
+        "3895"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "In a controlled laboratory study, genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin for European corn borer control showed specific effectiveness parameters.",
+        "The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of eastern tiger swallowtail caterpillars more than pollen from non-genetically modified maize.",
+        "The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.",
+        "The pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of eastern tiger swallowtail caterpillars more than pollen from non-genetically modified maize.",
+        "The pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.",
+        "A study evaluated the effects on butterflies and moths of using genetically modified crops that produce pesticide to replace conventional pesticide application."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.8333333333333334,
+            "statement_judgements": [
+              {
+                "statement": "In a controlled laboratory study, genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin for European corn borer control showed specific effectiveness parameters.",
+                "reasoning": "The context describes a controlled laboratory study on genetically modified maize with Btk toxin. However, the study focused on the effects on non-target species (survival and growth of swallowtail caterpillars) and not on its effectiveness against the target pest, the European corn borer. The text does not mention that any 'specific effectiveness parameters' against the corn borer were measured or shown.",
+                "verdict": false
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of eastern tiger swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "reasoning": "The context under 'Survival (1 study)' explicitly states that 'pollen from genetically modified maize expressing the Bacillus thuringiensis kurstaki (Btk) toxin against European corn borer did not reduce the survival of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize'. This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "reasoning": "The context under 'Survival (1 study)' explicitly states that 'pollen from genetically modified maize expressing the Bacillus thuringiensis kurstaki (Btk) toxin against European corn borer did not reduce the survival of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize'. This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of eastern tiger swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "reasoning": "The context under 'Condition (1 study)' explicitly states that 'pollen from genetically modified maize expressing the Bacillus thuringiensis kurstaki (Btk) toxin against European corn borer did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize'. This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "reasoning": "The context under 'Condition (1 study)' explicitly states that 'pollen from genetically modified maize expressing the Bacillus thuringiensis kurstaki (Btk) toxin against European corn borer did not reduce the growth of eastern tiger swallowtail or spicebush swallowtail caterpillars more than pollen from non-genetically modified maize'. This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "A study evaluated the effects on butterflies and moths of using genetically modified crops that produce pesticide to replace conventional pesticide application.",
+                "reasoning": "The 'Key Messages' section of the context begins with the sentence: 'One study evaluated the effects on butterflies and moths of using genetically modified crops which produce pesticide to replace conventional pesticide application.' This is a direct match to the statement.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 0.0,
+            "statement_judgements": [
+              {
+                "statement": "In a controlled laboratory study, genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin for European corn borer control showed specific effectiveness parameters.",
+                "citations": [],
+                "reasoning": "The statement has no citations. According to the instructions, if a statement has no citations, it is not supported by default. Furthermore, while the context mentions a study involving GM maize with Btk toxin for European corn borer control, it does not mention or describe any 'effectiveness parameters'. The study's focus was on the effects on non-target species (butterflies and moths), not the effectiveness against the target pest.",
+                "verdict": false
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of eastern tiger swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "citations": [],
+                "reasoning": "The statement has no citations provided. According to the instructions, a statement without citations is not supported by default. Although the information is present in the context under the 'Survival (1 study)' section, the lack of a citation to this information requires a 'No' verdict.",
+                "verdict": false
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "citations": [],
+                "reasoning": "No citations were provided for this statement. As per the instructions, if a statement lacks citations, it is considered not supported by the context. The information itself is present in the 'Survival (1 study)' section, but without a citation, the verdict must be 'No'.",
+                "verdict": false
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of eastern tiger swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "citations": [],
+                "reasoning": "The statement is not supported because no citations are provided. The instructions explicitly state that a statement with no citations is not supported by default. The content of the statement can be found in the 'Condition (1 study)' section, but since it is not cited, the verdict is 'No'.",
+                "verdict": false
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "citations": [],
+                "reasoning": "No citations are listed for this statement. Following the rule that a statement without citations is not supported, the verdict must be 'No'. While the 'Condition (1 study)' section of the context does contain this information, it is not formally cited for the statement.",
+                "verdict": false
+              },
+              {
+                "statement": "A study evaluated the effects on butterflies and moths of using genetically modified crops that produce pesticide to replace conventional pesticide application.",
+                "citations": [],
+                "reasoning": "There are no citations for this statement. As per the provided instructions, a statement with no citations is considered unsupported by default. Even though the 'Key Messages' section contains a sentence that directly matches the statement, the absence of a citation leads to a 'No' verdict.",
+                "verdict": false
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 0.16666666666666666,
+            "statement_judgements": [
+              {
+                "statement": "In a controlled laboratory study, genetically modified maize expressing Bacillus thuringiensis kurstaki (Btk) toxin for European corn borer control showed specific effectiveness parameters.",
+                "reasoning": "This statement is directly relevant because it explicitly addresses the effectiveness of a genetically modified crop (maize with Btk toxin) for controlling a specific pest (European corn borer). The mention of 'specific effectiveness parameters' indicates that the study provides data on how well the GM crop works for pest control, which is the core of the user's question.",
+                "verdict": true
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of eastern tiger swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "reasoning": "This statement is not relevant to the question about the 'effectiveness' of pest control. Instead, it discusses the impact of the GM crop on a non-target species (eastern tiger swallowtail), which is a matter of environmental safety and unintended consequences, not a measure of how effectively the crop controls the intended pest.",
+                "verdict": false
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the survival of spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "reasoning": "This statement is not relevant. Similar to the previous statement, it focuses on the effects on a non-target organism (spicebush swallowtail caterpillars). The question is about the effectiveness of controlling pests, whereas this statement is about the lack of harm to a non-pest insect.",
+                "verdict": false
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of eastern tiger swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "reasoning": "This statement is not relevant because it evaluates the impact on a non-target species, specifically the growth of eastern tiger swallowtail caterpillars. This information pertains to the ecological safety of the GM crop, not its effectiveness in controlling the primary pest it was designed to target.",
+                "verdict": false
+              },
+              {
+                "statement": "The pollen from genetically modified maize expressing the Btk toxin did not reduce the growth of spicebush swallowtail caterpillars more than pollen from non-genetically modified maize.",
+                "reasoning": "This statement is not relevant. It assesses a secondary effect of the GM crop on a non-pest organism (growth of spicebush swallowtail caterpillars). The question is strictly about the efficacy of pest control, not the collateral impacts on the surrounding ecosystem.",
+                "verdict": false
+              },
+              {
+                "statement": "A study evaluated the effects on butterflies and moths of using genetically modified crops that produce pesticide to replace conventional pesticide application.",
+                "reasoning": "This statement is not relevant. It describes the scope of a study that focuses on the 'effects on butterflies and moths' (non-target species). While it mentions GM crops used for pest control, the focus of the evaluation described is on the ecological side effects, not the primary effectiveness of controlling the pests themselves.",
+                "verdict": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

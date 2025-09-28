@@ -55,8 +55,11 @@ def get_client():
     )
 
 
-def call_llm(messages, model, provider, attempts_context = LlmAttemptsContext(max_attempts=3), max_tokens=15000, reasoning_effort=None, tools=None, response_format=None):
+def call_llm(messages, model, provider, max_attempts=1, attempts_context=None, max_tokens=15000, reasoning_effort=None, response_format=None):
     logging.info(f"Calling LLM with model: {model}, provider pinned to: {provider}.")
+    if attempts_context is None:
+        attempts_context = LlmAttemptsContext(max_attempts=max_attempts)
+    print(f"making call, current attempts = {attempts_context.get_current_attempts()}")
     client = get_client()
     request_params = {
         "model":model,
@@ -71,9 +74,7 @@ def call_llm(messages, model, provider, attempts_context = LlmAttemptsContext(ma
         }
     }
 
-    if tools is not None:
-        request_params.update({"tools": tools})
-    elif response_format is not None:
+    if response_format is not None:
         request_params.update({"response_format": response_format})
     
     if provider is not None:
@@ -86,13 +87,18 @@ def call_llm(messages, model, provider, attempts_context = LlmAttemptsContext(ma
 
     try:
         attempts_context.inc_current_attempts()
+        print(f"here, change attempts num to {attempts_context.get_current_attempts()}")
         response = client.chat.completions.create(**request_params)
+        print("response set")
 
         # Usage details for logging purposes:
         usage_details = response.usage
         print(f"Token usage: completion_tokens={usage_details.completion_tokens} (reasoning_tokens={usage_details.completion_tokens_details.reasoning_tokens}), prompt_tokens={usage_details.prompt_tokens}, total_tokens={usage_details.total_tokens}, cached_tokens={usage_details.prompt_tokens_details.cached_tokens}\n")
+
     except Exception as e:
+        print(f"Exception during LLM call / usage display: {str(e)}")
         if attempts_context.get_current_attempts() < attempts_context.get_max_attempts():
+            print(f"Current attempts {attempts_context.get_current_attempts()} is less than max attempts {attempts_context.get_max_attempts()} so retrying")
             return call_llm(
                 messages=messages,
                 model=model,
@@ -100,11 +106,13 @@ def call_llm(messages, model, provider, attempts_context = LlmAttemptsContext(ma
                 attempts_context=attempts_context,
                 max_tokens=max_tokens,
                 reasoning_effort=reasoning_effort,
-                tools=tools,
                 response_format=response_format
             )
+        else:
+            print(f"Run out of max attempts {attempts_context.get_max_attempts()}, rethrowing exception.")
+            raise
 
-
+    print("successful execution")
     return response
 
 
@@ -112,6 +120,7 @@ def call_llm(messages, model, provider, attempts_context = LlmAttemptsContext(ma
 ### STATEMENT EXTRACTION.
 
 def _get_statements(question, answer, model, provider):
+    print("Getting statements.")
     ## RAGAS statement splitting prompt:
     # prompt = f"""
     #     Given a question and answer, create one or more statements from each sentence in the given answer. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
@@ -142,6 +151,7 @@ class CitedStatement(BaseModel):
 
 
 def _get_citations_from_statements(summary, statements, model, provider):
+    print("Getting citations from statements.")
     prompt = f"""
 Given a summary of information and a list of statements extracted from this summary, you must extract the document IDs cited in the summary for each statement. There may be zero or more cited IDs per statement.
 Output the statements with their extracted citations as a list of JSON objects.
@@ -190,6 +200,7 @@ class StatementVerdict(BaseModel):
 
 ## Existing RAGAS faithfulness metric:
 def _faithfulness(docs, statements, judge_model, judge_provider):
+    print("Evaluating faithfulness")
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
 
     ## True RAGAS prompt:
@@ -260,6 +271,7 @@ class CitedStatementVerdict(BaseModel):
 #   Statements with no citations are consequently judges as not supported by default, meaning unsupported statements are automatically penalised.
 #   A high score is indicative of most facts being cited and those cited documents actually supporting the facts.
 def _citation_correctness(summary, docs, statements, judge_model, judge_provider):
+    print("Evaluating citation correctness")
     cited_statements = _get_citations_from_statements(summary=summary, statements=statements, model=judge_model, provider=judge_provider)
     statements_joined_citations = [{"statement":obj["statement"], "citations": ", ".join(obj["citations"])} for obj in cited_statements]
     cited_statements_str = "\n".join([f"[Statement {i+1}: {obj["statement"]}\nCitations for statement {i+1}: {obj["citations"]}]" for i, obj in enumerate(statements_joined_citations)])
@@ -329,6 +341,7 @@ Consider the given context and following statements, then determine whether they
 #   The metric works by splitting the summary into statements, and giving a verdict on each one as to whether it is relevant to answering the question (similar to RAGAS faithfulness procedure).
 #   A high score is indicative of many statements in the summary being relevant to answering the question.
 def _relevance(question, statements, judge_model, judge_provider):
+    print("Evaluating relevance")
     statements_str = "\n".join([f"[Statement {i+1}: {s}]" for i, s in enumerate(statements)])
     prompt = f"""
 Given a question and a list of statements, determine whether each statement is relevant to answering the question. Provide a thorough and rigorous explanation for each statement before arriving at the verdict (Yes/No). Provide a final verdict for each statement in order. Output the statements, the list of citations for each statement, reasonings and verdicts as a valid list of JSON objects.\nQuestion: {question}\nStatements: {statements_str}\nResponse:\n
@@ -512,7 +525,7 @@ def get_metrics_not_done(eval_already_done, judge_model, judge_provider, judging
     return missing_metrics
 
 
-def update_done_metrics(eval_already_done, judge_model, judge_provider, new_metrics):
+def update_eval_by_models_metrics(eval_already_done, judge_model, judge_provider, new_metrics):
     found = False
     for i, judge_model_metrics in enumerate(eval_already_done):
         prev_model = judge_model_metrics["judge_model"]
@@ -597,9 +610,10 @@ def run_eval_for_summaries_file(summaries_filepath, max_summaries, eval_filepath
                     summary_statements = eval_dict["evaluation_details"]["summary_statements"]
                 else:
                     summary_statements = _get_statements(question=query, answer=relevant_summary, model=judge_model, provider=judge_provider)
+                done_metrics = []
                 evaluations = []
                 for metric in unevaluated_metrics:
-                    evaluation = evaluate_metric(
+                    current_eval = evaluate_metric(
                             judge_model=judge_model,
                             judge_provider=judge_provider,
                             metric_name=metric,
@@ -610,8 +624,9 @@ def run_eval_for_summaries_file(summaries_filepath, max_summaries, eval_filepath
                             oracle_ids=all_relevant_qu_ids,
                             context=context
                         )
-                    if evaluation is not None:
-                        evaluations.append(evaluation)
+                    if current_eval["evaluation"] is not None:
+                        evaluations.append(current_eval)
+                        done_metrics.append(metric)
                 
                 if evaluations != []:
                     if eval_dict_found:
@@ -626,11 +641,11 @@ def run_eval_for_summaries_file(summaries_filepath, max_summaries, eval_filepath
                         )
                         file_eval_dicts.append(assembled_evaluation)
 
-                    update_done_metrics(
+                    update_eval_by_models_metrics(
                         eval_already_done=eval_by_models,
                         judge_model=judge_model,
                         judge_provider=judge_provider,
-                        new_metrics=unevaluated_metrics
+                        new_metrics=done_metrics
                     )
                     summary_dicts[current_summary_idx]["eval_by_models"] = eval_by_models
                     summary_count += 1
@@ -782,6 +797,7 @@ def test():
 
 
 def test_statements():
+    start = time.monotonic()
     question =  "What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?"
     summary = "Two randomized, controlled studies evaluated treating little brown bats with a probiotic bacterium: in Canada, treatment at the time of white-nose syndrome infection increased survival and reduced disease symptoms in caged bats, whereas treatment 21 days prior did not increase survival and was associated with worse symptoms; in the USA, treatment increased survival for free-flying bats within a mine but did not increase survival for caged bats and resulted in similar disease severity to untreated bats (2008). No studies were found that evaluated vaccinating bats against the white-nose syndrome pathogen (1011), decontaminating clothing and equipment after entering caves (2006), restricting human access to bat caves (1010), or breeding bats in captivity to supplement wild populations affected by white-nose syndrome (2009).",
     model = "google/gemini-2.5-flash"
@@ -789,6 +805,10 @@ def test_statements():
     statements = _get_statements(question=question, answer=summary, model=model, provider=provider)
     for s in statements:
         print(f'"{s}"')
+    cited_statements = _get_citations_from_statements(summary=summary, statements=statements, model=model, provider=provider)
+    for cs in cited_statements:
+        print(f'"{cs}"')
+    print(f"Time taken: {time.monotonic() - start} seconds")
 
 
 def main():
@@ -797,8 +817,8 @@ def main():
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
     judge_model_provider_list = [
-        # ("google/gemini-2.5-pro", None),
-        ("google/gemini-2.5-flash", None),
+        ("google/gemini-2.5-pro", None),
+        # ("google/gemini-2.5-flash", None),
         # ("openai/gpt-5", None),
         # ("openai/gpt-5-mini", None)
     ]
@@ -814,15 +834,17 @@ def main():
             for filter_stage in FILTER_STAGES:
                 for judge_model, judge_provider in judge_model_provider_list:
                     OFFSET_TO_FIRST_SUMMARY_FILE = 0
-                    MAX_SUMMARY_FILES = 30
+                    MAX_SUMMARY_FILES = 1
                     MAX_SUMMARIES_PER_FILE = 1
 
                     cleaned_judge_model = parse_model_name(judge_model)
                     cleaned_judge_provider = parse_provider_name(judge_provider)
                     cleaned_judge_name = f"{cleaned_judge_provider}_{cleaned_judge_model}"
 
-                    summaries_dir = f"live_summaries/{qu_type}_{filter_stage}_qus_summaries/hybrid_cross-encoder/eval_annotated/_gpt-5"
-                    eval_dir = f"live_evaluations/{qu_type}_{filter_stage}_evals/judge_{cleaned_judge_name}/summaries_gpt-5"
+                    answering_model_name_cleaned = "_gpt-5"
+
+                    summaries_dir = f"live_summaries/{qu_type}_{filter_stage}_qus_summaries/hybrid_cross-encoder/eval_annotated/{answering_model_name_cleaned}"
+                    eval_dir = f"live_evaluations/{qu_type}_{filter_stage}_evals/judge_{cleaned_judge_name}/summaries_{answering_model_name_cleaned}"
 
                     logging.info("STARTING evaluation process.")
                     internal_start = time.monotonic()
@@ -853,8 +875,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-
+    test_statements()
 
 
 

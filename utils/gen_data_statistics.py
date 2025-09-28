@@ -141,6 +141,27 @@ def write_distribution_file(id_dist, filepath):
             file.write(synopsis + "," + ids + "\n")
 
 
+def parse_model_name(model):
+    model_split = model.split("/")
+    model_name = model_split[-1]
+    cleaned_name = ""
+    for char in model_name:
+        if char.isalnum():
+            cleaned_name += char
+        else:
+            cleaned_name += "-"
+    return cleaned_name
+
+
+def parse_provider_name(provider):
+    if provider is not None:
+        provider_split = provider.split("/")
+        provider_name = provider_split[0]
+        return provider_name
+    else:
+        return ""
+
+
 def get_summary_gen_qus_usage_separate(model, provider, base_qu_dir="live_questions", qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"]):
     usage = []
 
@@ -210,6 +231,94 @@ def print_viable_summaries_split(joined_model_provider_list):
     for model_provider in joined_model_provider_list:
         viable_summaries_split = get_viable_summaries_split_for_model(model_provider=model_provider)
         print(f"{model_provider}: {viable_summaries_split}")
+
+
+def get_evals_generated_separate(
+        judge_model, 
+        judge_provider, 
+        base_summaries_dir="live_summaries", 
+        qu_types=["answerable", "unanswerable"], 
+        filter_stages=["passed", "failed"], 
+        retrieval_types=["hybrid_cross-encoder"],
+        answering_models_providers_list=[
+            ("openai/gpt-5", None),
+            ("anthropic/claude-sonnet-4", None),
+            ("google/gemini-2.5-pro", None),
+            ("moonshotai/kimi-k2-0905", "fireworks/fp8")
+        ]
+    ):
+    eval_nums = []
+
+    for qu_type in qu_types:
+        for stage in filter_stages:
+            for retrieval_type in retrieval_types:
+                for answer_model, answer_provider in answering_models_providers_list:
+                    answer_model_cleaned = parse_model_name(answer_model)
+                    answer_provider_cleaned = parse_provider_name(answer_provider)
+                    answer_mp_cleaned = f"{answer_provider_cleaned}_{answer_model_cleaned}"
+                    dir = f"{base_summaries_dir}/{qu_type}_{stage}_qus_summaries/{retrieval_type}/eval_annotated/{answer_mp_cleaned}"
+                    num_summaries_evaluated = 0
+                    num_summaries_unevaluated = 0
+                    for filename in os.listdir(dir):
+                        filepath = os.path.join(dir, filename)
+                        with open(filepath, 'r', encoding="utf-8") as f:
+                            summaries = json.load(f)
+                        for summary in summaries:
+                            summary_evaluated = False
+                            for judge in summary.get("eval_by_models", []):
+                                if judge["judge_model"] == judge_model and judge["judge_provider"] == judge_provider:
+                                    summary_evaluated = True
+                            if summary_evaluated:
+                                num_summaries_evaluated += 1
+                            else:
+                                num_summaries_unevaluated +=1
+                                    
+                    eval_nums.append({
+                        "qu_type": qu_type,
+                        "filter_stage": stage,
+                        "retrieval_type": retrieval_type,
+                        "answering_model_provider": answer_mp_cleaned,
+                        "num_summaries_evaluated": num_summaries_evaluated,
+                        "num_summaries_unevaluated": num_summaries_unevaluated
+                    })
+
+    return eval_nums
+
+
+def get_evals_generated_combined(
+        judge_model, 
+        judge_provider, 
+        base_summaries_dir="live_summaries", 
+        qu_types=["answerable", "unanswerable"], 
+        filter_stages=["passed", "failed"], 
+        retrieval_types=["hybrid_cross-encoder"],
+        answering_models_providers_list=[
+            ("openai/gpt-5", None),
+            ("anthropic/claude-sonnet-4", None),
+            ("google/gemini-2.5-pro", None),
+            ("moonshotai/kimi-k2-0905", "fireworks/fp8")
+        ]
+    ):
+    num_summaries_evaluated = 0
+    num_summaries_unevaluated = 0
+
+    evals_generated = get_evals_generated_separate(
+        judge_model=judge_model, 
+        judge_provider=judge_provider, 
+        base_summaries_dir=base_summaries_dir, 
+        qu_types=qu_types, 
+        filter_stages=filter_stages,
+        retrieval_types=retrieval_types,
+        answering_models_providers_list=answering_models_providers_list,
+    )
+    for e in evals_generated:
+        num_summaries_evaluated += e["num_summaries_evaluated"]
+        num_summaries_unevaluated += e["num_summaries_unevaluated"]
+
+    return {
+        "num_summaries_evaluated": num_summaries_evaluated,
+        "num_summaries_unevaluated": num_summaries_unevaluated
+    }
     
 
 
@@ -242,27 +351,34 @@ def main():
 
     # total = get_total_num_qus(qus_dir=qus_dir)
     # print(total)
-    model_provider_list = [
+    answering_model_provider_list = [
         ("openai/gpt-5", None),
         ("anthropic/claude-sonnet-4", None),
         ("google/gemini-2.5-pro", None),
         ("moonshotai/kimi-k2-0905", "fireworks/fp8")
     ]
 
-    cleaned_mp_list = [
-        "_gpt-5",
-        "_claude-sonnet-4",
-        "_gemini-2-5-pro",
-        "fireworks_kimi-k2-0905"
-    ]
-
-    for model, provider in model_provider_list:
-        usage = get_summary_gen_qus_usage_separate(model, provider, base_qu_dir="tool_failed_questions", qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"])
-        print(f"\n\nModel: {model}, Provider: {provider}, Usage: {usage}")
-
+    ### SEE THE NUMBER OF GENERATED SUMMARIES WHICH ARE USABLE AND WHICH ARE NULL
+    # cleaned_mp_list = [f"{parse_provider_name(p)}_{parse_model_name(m)}" for m,p in model_provider_list]
     # for mp in cleaned_mp_list:
     #     viable_summaries_split = get_viable_summaries_split_for_model(model_provider=mp)
     #     print(f"{mp}: {viable_summaries_split}")
+
+    ### SEE THE NUMBER OF SUMMARIES GENERATED
+    for model, provider in answering_model_provider_list:
+        usage = get_summary_gen_qus_usage_separate(model, provider, base_qu_dir="live_questions", qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"])
+        print(f"\n\nModel: {model}, Provider: {provider}, Usage: {usage}")
+
+    ### SEE THE NUMBER OF EVALS GENERATED
+    judge_model_provider_list = [
+        ("google/gemini-2.5-pro", None),
+        ("google/gemini-2.5-flash", None),
+        ("openai/gpt-5", None),
+        ("openai/gpt-5-mini", None)
+    ]
+    for m, p in judge_model_provider_list:
+        evals_generated = get_evals_generated_combined(judge_model=m, judge_provider=p)#, base_summaries_dir="live_summaries", qu_types=["answerable", "unanswerable"], filter_stages=["passed", "failed"], retrieval_types=["hybrid_cross-encoder"], answering_models_providers_list=answering_model_provider_list)
+        print(f"\n\nJudge Model: {m}, Judge Provider: {p}, Evals Generated: {evals_generated}")
 
 
 if __name__=="__main__":

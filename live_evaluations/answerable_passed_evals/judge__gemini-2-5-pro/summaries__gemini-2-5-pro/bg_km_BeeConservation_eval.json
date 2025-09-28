@@ -1,0 +1,109 @@
+[
+  {
+    "question_details": {
+      "query": "What are the most effective ways to manage uncropped field margins on European farmland to support bumblebees?",
+      "all_relevant_qu_ids": [
+        "14",
+        "18",
+        "19",
+        "20",
+        "29"
+      ],
+      "regenerated_qu_ids": [
+        "14",
+        "18",
+        "19",
+        "20",
+        "29"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "google/gemini-2.5-pro",
+      "summary_provider": null,
+      "relevant_summary": "Uncropped field margins can be managed in several ways to support bumblebees on European farmland. Sowing margins with an agricultural nectar and pollen mix has been shown to attract more foraging bumblebees than naturally regenerated, grassy, or cropped margins [18]. In the first year, a mix of agricultural forage plants, including legumes, can attract a higher number of bumblebees than a perennial wildflower mix [18]. However, these margins may need to be re-sown every few years as their value to bumblebees degrades over time [18]. Sowing margins with a native wildflower seed mix also supports a higher abundance and species richness of foraging bumblebees compared to cropped, grassy, or naturally regenerated margins [19]. Perennial leguminous herbs within these seed mixes are particularly important for long-tongued bumblebee species [19]. Leaving field margins to regenerate naturally can result in more bumblebees than cropped margins, but the value of this approach is not consistent from year to year and is dependent on thistle species, which are often considered weeds [20]. There is no evidence on the effects of these management practices on solitary bees [18, 19, 20].",
+      "summary_action_ids": [
+        "18",
+        "19",
+        "20"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.3333333333333333,
+            "statement_judgements": [
+              {
+                "statement": "Sowing uncropped arable field margins with a native wildflower seed mix is more effective for attracting foraging bumblebees than leaving the margins grassy, cropped, or naturally regenerated.",
+                "reasoning": "This statement is fully supported by the text. Context 19 states: 'Five replicated trials in the UK showed that uncropped field margins sown with wild flowers and subsequently mown support a higher abundance (and in three trials higher species richness) of foraging bumblebees than cropped field edges (all five trials), grassy margins (four trials) or naturally regenerated uncropped margins (three trials).'",
+                "verdict": true
+              },
+              {
+                "statement": "Conservation headlands have been shown to attract more foraging bumblebees than both conventional crop fields and naturally regenerated, uncropped field margins.",
+                "reasoning": "This statement is contradicted by the text. Context 29 explicitly states that conservation headlands 'do not attract more foraging bumblebees than conventional crop fields.' It also states that one trial found 'fewer bees on conservation headlands than in naturally regenerated, uncropped field margins.' Therefore, the statement that they attract more bees than both is false.",
+                "verdict": false
+              },
+              {
+                "statement": "Four replicated trials showed that field margins sown with perennial leguminous flowering plants attract significantly more foraging bumblebees than grassy margins, and evidence also shows these mixes attract more bumblebees than a perennial wildflower mix.",
+                "reasoning": "This statement is fully supported by the text. Context 18 states: 'Four replicated trials showed that field margins sown with perennial leguminous flowering plants attract significantly more foraging bumblebees than naturally regenerated (two trials), grassy (four trials) or cropped (three trials) field margins.' This supports the first part of the statement. The same section also states: 'Three replicated trials showed that a mix of agricultural forage plants including legumes... attracts greater numbers of bumblebees than a perennial wildflower mix, at least in the first year.' This supports the second part of the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "All studies on field margin management for bees, including those on grassy strips, wildflower mixes, and natural regeneration, have found no evidence regarding the effects on solitary bees.",
+                "reasoning": "This statement is not fully supported. While Contexts 18, 19, and 20 explicitly state, 'We have captured no evidence on the effects of field margin management on solitary bees,' Context 14, which discusses grassy strips, does not contain this specific disclaimer. For the verdict to be 'Yes', all parts of the statement must be fully supported, and the absence of this specific sentence in the section on grassy strips means the statement is not fully supported by the provided text.",
+                "verdict": false
+              },
+              {
+                "statement": "The benefit of naturally regenerated uncropped field margins for bees is consistently high from year to year and is primarily derived from thistle species.",
+                "reasoning": "This statement is not fully supported because one of its claims is directly contradicted. Context 20 states, 'Two trials found that the value of naturally regenerated uncropped field margins for bees was not consistent from year to year.' This contradicts the claim that the benefit is 'consistently high'. While the context does mention that the value is based on thistle species, the first part of the statement is false, which makes the entire statement false.",
+                "verdict": false
+              },
+              {
+                "statement": "Margins sown with agricultural legume plants provide long-lasting value to bumblebees and do not need to be re-sown frequently.",
+                "reasoning": "This statement is directly contradicted by the context. Context 18 explicitly states, 'Three trials in the UK found evidence that margins sown with agricultural legume plants degrade in their value to bumblebees and would need to be re-sown every few years.' This is the opposite of the statement's claim.",
+                "verdict": false
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 0.8,
+            "statement_judgements": [
+              {
+                "statement": "Sowing wildflowers, particularly legumes like red clover and bird's-foot-trefoil, in field margins provides a continuous source of nectar and pollen for bumblebees throughout their colony cycle.",
+                "reasoning": "This statement is directly relevant as it proposes a specific and widely endorsed management technique (sowing targeted wildflowers) for uncropped field margins. It explicitly links this action to the goal of supporting bumblebees by explaining the mechanism (providing a continuous food source). This addresses the core of the user's question about effective management strategies.",
+                "verdict": true
+              },
+              {
+                "statement": "Neonicotinoid pesticides used on crops adjacent to field margins can contaminate the nectar and pollen of wildflowers growing in those margins, leading to sublethal effects that impair bumblebee colony development and foraging efficiency.",
+                "reasoning": "This statement is highly relevant because the effectiveness of any field margin management strategy is dependent on the surrounding farm environment. It highlights a critical factor (pesticide drift) that can undermine the benefits of a well-managed margin. Understanding and mitigating such risks is essential for developing a truly 'effective' plan, making this information crucial context for any management decision.",
+                "verdict": true
+              },
+              {
+                "statement": "Annual cutting of field margins in late summer or early autumn, after most flowers have set seed but before bumblebee queens have begun to hibernate, is often recommended. This practice can help maintain plant species diversity and prevent the encroachment of coarse grasses and scrub.",
+                "reasoning": "This statement is directly relevant because it details a specific management action (timed annual cutting) for field margins. It provides a clear 'how-to' and 'when-to' that is justified by both the needs of the floral community (which bumblebees depend on) and the life cycle of the bumblebees themselves (avoiding disturbance to hibernating queens). This is a foundational practice for effective margin management.",
+                "verdict": true
+              },
+              {
+                "statement": "Many bumblebee species nest underground in pre-existing cavities, such as old rodent burrows. Leaving some areas of tussocky grass undisturbed within or at the edge of field margins can provide crucial nesting and hibernation sites for queen bees.",
+                "reasoning": "This statement is highly relevant as it addresses a critical requirement for bumblebees beyond foraging—shelter for nesting and overwintering. It proposes a specific management action (leaving tussocky grass) that can be implemented within field margins. An effective management strategy must be holistic and support the entire life cycle of the species, making information about nesting habitat essential.",
+                "verdict": true
+              },
+              {
+                "statement": "The Asian hornet (Vespa velutina), an invasive species in Europe, is a significant predator of honeybees and other pollinators, including bumblebees.",
+                "reasoning": "This statement is not relevant to the specific question asked. While it identifies a threat to bumblebees in Europe, it does not offer a strategy for managing 'uncropped field margins' to counter this threat. The question is about habitat management within the field margin itself, whereas controlling an invasive predator is a separate pest-control activity.",
+                "verdict": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

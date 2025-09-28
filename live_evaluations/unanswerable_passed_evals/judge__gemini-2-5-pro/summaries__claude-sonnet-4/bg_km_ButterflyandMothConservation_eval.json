@@ -1,0 +1,171 @@
+[
+  {
+    "question_details": {
+      "query": "What is the effect of changing wind turbine colour on butterfly and moth attraction?",
+      "all_relevant_qu_ids": [
+        "3844"
+      ],
+      "regenerated_qu_ids": [
+        "3844"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "anthropic/claude-sonnet-4",
+      "summary_provider": null,
+      "relevant_summary": "No studies have been found that evaluated the effects of changing wind turbine color on butterfly and moth attraction. Action 3844 specifically states that no studies were found that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths. Similarly, action 1959 indicates that no studies were found that evaluated the effects of painting turbines to reduce insect attraction on populations. Action 3843 confirms that no studies were found that evaluated the effects on butterflies and moths of removing or changing turbine lighting to reduce insect attraction. While action 258 describes a single experiment showing that thick black stripes on wind turbine blades made them more conspicuous to an American kestrel, this study focused on bird visibility rather than butterfly and moth attraction.",
+      "summary_action_ids": [
+        "3844",
+        "1959",
+        "3843",
+        "258"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "No studies have been found that evaluated the effects of changing wind turbine color on butterfly and moth attraction.",
+        "No studies were found that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths.",
+        "No studies were found that evaluated the effects of painting turbines to reduce insect attraction on populations.",
+        "No studies were found that evaluated the effects on butterflies and moths of removing or changing turbine lighting to reduce insect attraction.",
+        "A single experiment showed that thick black stripes on wind turbine blades made the blades more conspicuous to an American kestrel.",
+        "The study on the effect of striped turbine blades on an American kestrel focused on bird visibility rather than butterfly and moth attraction."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.8333333333333334,
+            "statement_judgements": [
+              {
+                "statement": "No studies have been found that evaluated the effects of changing wind turbine color on butterfly and moth attraction.",
+                "reasoning": "The context, under heading 3844, explicitly states: \"We found no studies that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths.",
+                "reasoning": "The context provides this as a direct quote under the heading '3844: Change turbine colour to reduce insect attraction'. The Key Message is: \"We found no studies that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths.\"",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects of painting turbines to reduce insect attraction on populations.",
+                "reasoning": "The context, under heading 1959, specifies that no studies were found evaluating the effects... \"on bat populations.\" The statement uses the more general term \"on populations,\" which is not what is specified in the text. The text only supports the claim for 'bat populations', not populations in general.",
+                "verdict": false
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on butterflies and moths of removing or changing turbine lighting to reduce insect attraction.",
+                "reasoning": "The context, under heading 3843, provides this as a direct quote in its Key Message: \"We found no studies that evaluated the effects on butterflies and moths of removing or changing turbine lighting to reduce insect attraction.\"",
+                "verdict": true
+              },
+              {
+                "statement": "A single experiment showed that thick black stripes on wind turbine blades made the blades more conspicuous to an American kestrel.",
+                "reasoning": "The context, under heading 258, directly supports this. It says: \"A single ex situ experiment found that thick black stripes running across a wind turbine’s blades made them more conspicuous to an American kestrel than control (unpatterned) blades...\"",
+                "verdict": true
+              },
+              {
+                "statement": "The study on the effect of striped turbine blades on an American kestrel focused on bird visibility rather than butterfly and moth attraction.",
+                "reasoning": "The context supports this statement. The entry for action 258 is titled \"Paint wind turbines to increase their visibility\" and its key message states the stripes made the blades \"more conspicuous to an American kestrel\". This indicates a focus on bird visibility. By contrast, other sections (3844, 3843) explicitly discuss studies (or lack thereof) related to \"butterfly and moth\" attraction, showing a clear distinction in focus within the provided text.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "citation_correctness",
+          "evaluation": {
+            "score": 0.6666666666666666,
+            "statement_judgements": [
+              {
+                "statement": "No studies have been found that evaluated the effects of changing wind turbine color on butterfly and moth attraction.",
+                "citations": [
+                  "3844",
+                  "1959"
+                ],
+                "reasoning": "The statement is not fully supported by all the cited context. Citation 3844 does support the statement, as it says, 'We found no studies that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths.' However, citation 1959 does not support the statement. It discusses the effects of painting turbines 'on bat populations,' not on 'butterfly and moth attraction.' Since all parts of a statement must be fully supported by the cited information, and one of the citations is irrelevant to the claim, the verdict is 'No'.",
+                "verdict": false
+              },
+              {
+                "statement": "No studies were found that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths.",
+                "citations": [
+                  "3844"
+                ],
+                "reasoning": "The cited context 3844 states, 'We found no studies that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths.' This is a direct, verbatim match for the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects of painting turbines to reduce insect attraction on populations.",
+                "citations": [
+                  "1959"
+                ],
+                "reasoning": "The statement is an overgeneralization of the information in the cited text. The context specifically mentions that no studies were found evaluating the effects 'on bat populations.' The statement broadens this to 'on populations' in general. The source does not support this broader claim, only the specific one about bat populations.",
+                "verdict": false
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on butterflies and moths of removing or changing turbine lighting to reduce insect attraction.",
+                "citations": [
+                  "3843"
+                ],
+                "reasoning": "The cited context 3843 states, 'We found no studies that evaluated the effects on butterflies and moths of removing or changing turbine lighting to reduce insect attraction.' The statement is a verbatim quote from the source material.",
+                "verdict": true
+              },
+              {
+                "statement": "A single experiment showed that thick black stripes on wind turbine blades made the blades more conspicuous to an American kestrel.",
+                "citations": [
+                  "258"
+                ],
+                "reasoning": "The cited context 258 states, 'A single ex situ experiment found that thick black stripes running across a wind turbine’s blades made them more conspicuous to an American kestrel than control (unpatterned) blades...' The statement accurately reports this finding.",
+                "verdict": true
+              },
+              {
+                "statement": "The study on the effect of striped turbine blades on an American kestrel focused on bird visibility rather than butterfly and moth attraction.",
+                "citations": [
+                  "258"
+                ],
+                "reasoning": "The context text 258 is a key message for the action 'Paint wind turbines to increase their visibility.' It describes an experiment measuring how 'conspicuous' blades were to an 'American kestrel,' which is a bird. The text makes no mention of butterflies, moths, or insect attraction. This supports the conclusion that the study's focus was on bird visibility.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 0.5,
+            "statement_judgements": [
+              {
+                "statement": "No studies have been found that evaluated the effects of changing wind turbine color on butterfly and moth attraction.",
+                "reasoning": "This statement directly addresses the user's question by stating that there is no available research on the specific topic of how wind turbine color affects butterfly and moth attraction. It is highly relevant as it answers the question by highlighting a knowledge gap.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects of changing turbine colour to reduce attraction to butterflies and moths.",
+                "reasoning": "This statement is directly relevant as it specifically addresses whether changing turbine color has been studied as a method to reduce butterfly and moth attraction. It confirms the lack of scientific evidence on this topic, thus directly answering the user's query.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects of painting turbines to reduce insect attraction on populations.",
+                "reasoning": "This statement is relevant because butterflies and moths are insects. By stating that no studies were found on the broader category of 'insect attraction', it implies that no studies were found on the more specific sub-category of 'butterfly and moth attraction'.",
+                "verdict": true
+              },
+              {
+                "statement": "No studies were found that evaluated the effects on butterflies and moths of removing or changing turbine lighting to reduce insect attraction.",
+                "reasoning": "The question is specifically about the effect of changing turbine 'colour'. This statement discusses changing turbine 'lighting'. Although the target species (butterflies and moths) are the same, the method of mitigation is different, making this statement irrelevant to the question asked.",
+                "verdict": false
+              },
+              {
+                "statement": "A single experiment showed that thick black stripes on wind turbine blades made the blades more conspicuous to an American kestrel.",
+                "reasoning": "This statement is not relevant. The question is about the attraction of butterflies and moths. This statement concerns the visibility of turbine blades to a bird (American kestrel), which is a different species and a different effect (conspicuousness vs. attraction).",
+                "verdict": false
+              },
+              {
+                "statement": "The study on the effect of striped turbine blades on an American kestrel focused on bird visibility rather than butterfly and moth attraction.",
+                "reasoning": "This statement is not relevant as it provides no information about the effect of turbine color on butterflies and moths. It only serves to clarify the irrelevance of another study (mentioned in Statement 5) by explicitly stating that its focus was on birds, not butterflies or moths.",
+                "verdict": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,158 @@
+[
+  {
+    "question_details": {
+      "query": "How do the effects of creating short versus long flexible habitats on subtidal artificial structures compare for fish and invertebrate populations in Australia?",
+      "all_relevant_qu_ids": [
+        "3450",
+        "3451"
+      ],
+      "regenerated_qu_ids": [
+        "3450",
+        "3451"
+      ]
+    },
+    "summary_details": {
+      "summary_model": "google/gemini-2.5-pro",
+      "summary_provider": null,
+      "relevant_summary": "The creation of long flexible habitats (>50 mm) on subtidal artificial structures was found in two studies to support macroalgae, non-mobile invertebrates, and fish species that were not present on surfaces without these habitats [3451]. One study on long flexible habitats noted an alteration in the composition of the non-mobile invertebrate community [3451], while two studies on short flexible habitats (1–50 mm) found mixed effects on the composition of both mobile and non-mobile invertebrate communities [3450]. Furthermore, one study indicated that short flexible habitats did not lead to an increase in the species richness of mobile or non-mobile invertebrates [3450].\n\nIn terms of population abundance, three studies on short flexible habitats showed mixed effects on the abundance of mobile and non-mobile invertebrates [3450]. Similarly, two out of three studies on long flexible habitats reported mixed effects on the abundance of these invertebrates [3451]. However, one study on long habitats found that they supported a higher combined biomass of macroalgae and invertebrates, primarily mussels, compared to structure surfaces without such habitats [3451]. For fish populations, two studies on long habitats revealed mixed effects on the abundance of fish and seahorses [3451]. A single study on short habitats also noted mixed effects on seahorse abundance [3450]. Finally, one study reported that seahorses used the long flexible habitats created on subtidal artificial structures [3451].",
+      "summary_action_ids": [
+        "3451",
+        "3450"
+      ]
+    },
+    "evaluation_details": {
+      "judge_model": "google/gemini-2.5-pro",
+      "judge_provider": null,
+      "summary_statements": [
+        "The creation of long flexible habitats (>50 mm) on subtidal artificial structures was found to support macroalgae, non-mobile invertebrates, and fish species that were not present on surfaces without the flexible habitats.",
+        "Long flexible habitats altered the composition of the non-mobile invertebrate community.",
+        "Short flexible habitats (1–50 mm) had mixed effects on the composition of both mobile and non-mobile invertebrate communities.",
+        "Short flexible habitats did not lead to an increase in the species richness of mobile or non-mobile invertebrates.",
+        "Short flexible habitats showed mixed effects on the abundance of mobile and non-mobile invertebrates.",
+        "Long flexible habitats had mixed effects on the abundance of mobile and non-mobile invertebrates.",
+        "Long habitats supported a higher combined biomass of macroalgae and invertebrates, primarily mussels, compared to structure surfaces without such habitats.",
+        "For fish populations, long habitats had mixed effects on the abundance of fish and seahorses.",
+        "Short habitats had mixed effects on seahorse abundance.",
+        "Seahorses used the long flexible habitats created on subtidal artificial structures."
+      ],
+      "evaluations": [
+        {
+          "metric": "faithfulness",
+          "evaluation": {
+            "score": 0.5,
+            "statement_judgements": [
+              {
+                "statement": "The creation of long flexible habitats (>50 mm) on subtidal artificial structures was found to support macroalgae, non-mobile invertebrates, and fish species that were not present on surfaces without the flexible habitats.",
+                "reasoning": "The statement claims that long habitats supported macroalgae, non-mobile invertebrates, AND fish species. The context document, under section 3451, states that two studies reported these habitats \"supported macroalgae and non-mobile invertebrate or fish species\" that were previously absent. The use of \"or\" in the source text ('invertebrate or fish') indicates that support was found for either invertebrates or for fish, but not necessarily for both, in addition to macroalgae. The statement's use of \"and\" is a stronger assertion that is not fully supported by the provided text.",
+                "verdict": false
+              },
+              {
+                "statement": "Long flexible habitats altered the composition of the non-mobile invertebrate community.",
+                "reasoning": "The context, under section 3451 'Invertebrate community composition', explicitly states that one study \"reported that creating long flexible habitats on subtidal artificial structures altered the non-mobile invertebrate community composition on structure surfaces.\" This is a direct confirmation of the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Short flexible habitats (1–50 mm) had mixed effects on the composition of both mobile and non-mobile invertebrate communities.",
+                "reasoning": "The statement claims mixed effects on 'both' mobile and non-mobile communities. The context, in section 3450 under 'Invertebrate community composition', states that the studies found \"mixed effects on the mobile and/or non-mobile invertebrate community composition\". The term \"and/or\" means the effect could have been on one group, the other, or both, but does not guarantee it was on both. Therefore, the statement is not fully supported.",
+                "verdict": false
+              },
+              {
+                "statement": "Short flexible habitats did not lead to an increase in the species richness of mobile or non-mobile invertebrates.",
+                "reasoning": "The context, in section 3450 under 'Invertebrate richness/diversity', states that one study \"found that creating short flexible habitats on subtidal artificial structures did not increase the mobile or non-mobile invertebrate species richness on structure surfaces.\" This directly supports the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Short flexible habitats showed mixed effects on the abundance of mobile and non-mobile invertebrates.",
+                "reasoning": "The statement claims mixed effects on the abundance of 'mobile and non-mobile invertebrates'. The source text (section 3450, 'Invertebrate abundance') reports \"mixed effects on the mobile and/or non-mobile invertebrate abundance\". The use of 'and/or' indicates that the effect was not necessarily on both groups. Furthermore, the text specifies that \"One of the studies found no effect on mobile invertebrate abundance,\" which directly contradicts the claim that there were mixed effects for both groups across the studies.",
+                "verdict": false
+              },
+              {
+                "statement": "Long flexible habitats had mixed effects on the abundance of mobile and non-mobile invertebrates.",
+                "reasoning": "The statement claims mixed effects on the abundance of 'mobile and non-mobile invertebrates'. The corresponding text in section 3451 ('Invertebrate abundance') states that studies found \"mixed effects on the mobile and/or non-mobile invertebrate abundance\". The term 'and/or' means the effect could have been on one group, the other, or both, but does not guarantee it was on both. Thus, the statement makes a stronger claim than what is explicitly supported by the text.",
+                "verdict": false
+              },
+              {
+                "statement": "Long habitats supported a higher combined biomass of macroalgae and invertebrates, primarily mussels, compared to structure surfaces without such habitats.",
+                "reasoning": "The context, under section 3451 'Overall abundance', directly supports this. It says, \"One replicated, controlled study...reported that long flexible habitats...supported higher combined macroalgae and invertebrate (mostly mussels) biomass than structure surfaces without flexible habitats\". The statement is a correct summary of this finding.",
+                "verdict": true
+              },
+              {
+                "statement": "For fish populations, long habitats had mixed effects on the abundance of fish and seahorses.",
+                "reasoning": "The statement uses the word 'and', implying mixed effects were seen for both fish and seahorses. The context, under section 3451 'Fish abundance', states there were \"mixed effects on the abundance of fishes or seahorses\". The use of 'or' in the source text means the effect could apply to either group, but not necessarily both. Therefore, the statement is not fully supported.",
+                "verdict": false
+              },
+              {
+                "statement": "Short habitats had mixed effects on seahorse abundance.",
+                "reasoning": "The context, in section 3450 under 'Fish abundance', explicitly states that one study \"found that creating short flexible habitats on subtidal artificial structures had mixed effects on the seahorse abundance\". This is a direct match with the statement.",
+                "verdict": true
+              },
+              {
+                "statement": "Seahorses used the long flexible habitats created on subtidal artificial structures.",
+                "reasoning": "The context, in section 3451 under 'BEHAVIOUR', contains a subsection titled 'Use (1 study)' which reports that \"long flexible habitats created on subtidal artificial structures were used by seahorses.\" This directly confirms the statement.",
+                "verdict": true
+              }
+            ]
+          }
+        },
+        {
+          "metric": "relevance",
+          "evaluation": {
+            "score": 1.0,
+            "statement_judgements": [
+              {
+                "statement": "The creation of long flexible habitats (>50 mm) on subtidal artificial structures was found to support macroalgae, non-mobile invertebrates, and fish species that were not present on surfaces without the flexible habitats.",
+                "reasoning": "This statement is relevant because it describes a specific effect of 'long flexible habitats' on both 'fish' and 'invertebrate' populations, namely the support of new species. This directly addresses one side of the 'short versus long' comparison that the question requires.",
+                "verdict": true
+              },
+              {
+                "statement": "Long flexible habitats altered the composition of the non-mobile invertebrate community.",
+                "reasoning": "This statement is relevant as it details a specific ecological effect (altered community composition) of 'long flexible habitats' on 'invertebrate populations'. This is a key piece of information needed to compare the effects of long habitats with those of short habitats.",
+                "verdict": true
+              },
+              {
+                "statement": "Short flexible habitats (1–50 mm) had mixed effects on the composition of both mobile and non-mobile invertebrate communities.",
+                "reasoning": "This statement is relevant because it provides the necessary counterpart to statements about long habitats. It describes the effect of 'short flexible habitats' on 'invertebrate' community composition, allowing for a direct comparison between the two habitat lengths as requested by the question.",
+                "verdict": true
+              },
+              {
+                "statement": "Short flexible habitats did not lead to an increase in the species richness of mobile or non-mobile invertebrates.",
+                "reasoning": "This statement is relevant because it presents a specific finding about 'short flexible habitats' and their impact on 'invertebrate' species richness. This data point is crucial for comparison with the effects of long habitats on species richness (as implied in Statement 1).",
+                "verdict": true
+              },
+              {
+                "statement": "Short flexible habitats showed mixed effects on the abundance of mobile and non-mobile invertebrates.",
+                "reasoning": "This statement is relevant because it addresses the effect of 'short habitats' on the abundance of 'invertebrate populations'. This information is essential for one part of the comparative analysis between short and long habitats.",
+                "verdict": true
+              },
+              {
+                "statement": "Long flexible habitats had mixed effects on the abundance of mobile and non-mobile invertebrates.",
+                "reasoning": "This statement is relevant because it provides the other side of the comparison for invertebrate abundance, focusing on 'long habitats'. When combined with Statement 5, it allows for a direct comparison, showing that both habitat lengths had similar 'mixed effects' on invertebrate abundance, which directly answers a component of the question.",
+                "verdict": true
+              },
+              {
+                "statement": "Long habitats supported a higher combined biomass of macroalgae and invertebrates, primarily mussels, compared to structure surfaces without such habitats.",
+                "reasoning": "This statement is relevant because it quantifies an important ecological effect (increased biomass) of 'long habitats' on 'invertebrates'. This contributes to understanding the overall impact of long habitats, which is necessary for a comprehensive comparison with the effects of short habitats.",
+                "verdict": true
+              },
+              {
+                "statement": "For fish populations, long habitats had mixed effects on the abundance of fish and seahorses.",
+                "reasoning": "This statement is relevant because it directly addresses the effect of 'long habitats' on 'fish populations'. This provides one half of the required comparison for fish, which is a key component of the user's question.",
+                "verdict": true
+              },
+              {
+                "statement": "Short habitats had mixed effects on seahorse abundance.",
+                "reasoning": "This statement is relevant because it describes the effect of 'short habitats' on a specific type of fish (seahorses). This allows for a direct comparison with Statement 8, which mentions the effect of long habitats on seahorses, thus helping to answer the question's comparative aspect regarding fish populations.",
+                "verdict": true
+              },
+              {
+                "statement": "Seahorses used the long flexible habitats created on subtidal artificial structures.",
+                "reasoning": "This statement is relevant because it describes a direct interaction between a type of 'fish' (seahorses) and 'long flexible habitats'. While it describes usage rather than a population-level effect, this behavior is the mechanism that leads to the effects on abundance mentioned in other statements. It provides crucial context for understanding and comparing the effects of different habitat lengths on fish.",
+                "verdict": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
