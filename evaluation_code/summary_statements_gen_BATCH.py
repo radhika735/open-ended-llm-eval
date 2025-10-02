@@ -288,7 +288,7 @@ def append_to_json_file(data_list, filepath):
 
 ### BATCH REQUEST FILES CREATION
 
-def make_summary_stmts_batch_request_file_for_file(summaries_filepath, batch_request_filepath):
+def make_summary_stmts_batch_request_file_for_file(summaries_filepath, batch_results_filepath):
     try:
         file_summary_dicts = read_json_file(summaries_filepath)
     except RetrievalError as e:
@@ -326,8 +326,8 @@ def make_summary_stmts_batch_request_file_for_file(summaries_filepath, batch_req
         if summary_count > 0:
             # write the new requests to batch request file
             for key, prompt in requests:
-                append_to_gemini_batch_file(batch_filepath=batch_request_filepath, key=key, prompt=prompt)
-            logging.info(f"Wrote {summary_count} Gemini batch requests to batch request file {batch_request_filepath}.")
+                append_to_gemini_batch_file(batch_filepath=batch_results_filepath, key=key, prompt=prompt)
+            logging.info(f"Wrote {summary_count} Gemini batch requests to batch request file {batch_results_filepath}.")
 
             # overwrite the summaries file (it will contain the updated gen_summary_stmts_request_made field)
             write_to_json_file(data_list=summary_dicts, filepath=summaries_filepath)
@@ -350,14 +350,14 @@ def make_summary_stmts_batch_request_files_for_dir(
         logging.error(f"Summaries directory {summaries_dir} does not exist.")
         return
     else:
-        logging.info(f"Starting summary statements batch request files gen of summaries in directory : {summaries_dir}")
+        logging.info(f"Starting creation of batch files (requests) for summary statement generation: for summaries in directory {summaries_dir}")
         summaries_filenames = [name for name in sorted(os.listdir(summaries_dir)) if name.endswith(".json")]
 
         for summaries_filename in summaries_filenames:
             batch_request_filename = summaries_filename.replace("summaries.json", "_StmtGenRequest.jsonl")
             make_summary_stmts_batch_request_file_for_file(
                 summaries_filepath = os.path.join(summaries_dir, summaries_filename),
-                batch_request_filepath=os.path.join(batch_request_dir, batch_request_filename)
+                batch_results_filepath=os.path.join(batch_request_dir, batch_request_filename)
             )
 
 
@@ -488,7 +488,30 @@ def receive_batch_results(max_batch_checks=1000):
         logging.info("Finished checking all batch jobs for results.")
 
 
-def process_batch_results():
+def process_batch_results_for_dir(qu_type, filter_stage, retrieval_type, answering_model_provider):
+    summaries_dir = os.path.join("live_summaries",f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_model_provider, "stmt_gen_annotated")
+    statements_dir = os.path.join("live_summaries",f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_model_provider, "stmts_and_cited_stmts")
+    batch_results_dir = os.path.join("batch_gen", "stmt_gen", "results", f"{qu_type}_{filter_stage}_qus", retrieval_type, f"summaries_{answering_model_provider}")
+    if not os.path.exists(summaries_dir):
+        logging.error(f"Summaries directory {summaries_dir} does not exist.")
+        return
+    else:
+        logging.info(f"Starting processing batch results for summary statement generation: for summaries in directory {summaries_dir}")
+        summaries_filenames = [name for name in sorted(os.listdir(summaries_dir)) if name.endswith(".json")]
+
+        for summaries_filename in summaries_filenames:
+            statements_filename = summaries_filename.replace("summaries.json", "statements.json")
+            batch_results_filename = summaries_filename.replace("summaries.json", "_StmtGenResults.jsonl")
+            make_summary_stmts_batch_request_file_for_file(
+                summaries_filepath = os.path.join(summaries_dir, summaries_filename),
+                statements_filepath = os.path.join(statements_dir, statements_filename),
+                batch_results_filepath=os.path.join(batch_results_dir, batch_results_filename)
+            )
+
+
+
+
+def process_batch_results_all():
     qu_types = ["answerable", "unanswerable"]
     filter_stages = ["passed", "failed"]
     retrieval_types = ["hybrid_cross-encoder"]
@@ -502,45 +525,12 @@ def process_batch_results():
         for filter_stage in filter_stages:
             for retrieval_type in retrieval_types:
                 for answering_model_provider in answering_model_providers:
-                    pass
-                    # results_dir = os.path.join("batch_gen", "stmt_gen", "results", f"{qu_type}_{filter_stage}_qus", retrieval_type, f"summaries_{answering_model_provider}")
-                    # if not os.path.exists(results_dir):
-                    #     continue
-                    # results_filenames = [name for name in sorted(os.listdir(results_dir)) if name.endswith("_StmtGenResults.jsonl")]
-                    # for results_filename in results_filenames:
-                    #     results_filepath = os.path.join(results_dir, results_filename)
-                    #     try:
-                    #         with open(results_filepath, 'r', encoding='utf-8') as f:
-                    #             lines = f.readlines()
-                    #     except FileNotFoundError:
-                    #         logging.error(f"Results file {results_filepath} not found.")
-                    #         continue
-                        
-                    #     statements_generated_count = 0
-                    #     summary_stmts_list = []
-                    #     for line in lines:
-                    #         try:
-                    #             result_obj = json.loads(line)
-                    #             key = result_obj.get("key")
-                    #             response_parts = result_obj.get("response", {}).get("contents", [])
-                    #             if response_parts and len(response_parts) > 0:
-                    #                 response_text = response_parts[0].get("parts", [{}])[0].get("text", "")
-                    #                 statements = parse_statements_response(response_text)
-                    #                 statements_generated_count += len(statements)
-                    #                 summary_stmts_list.append({
-                    #                     "key": key,
-                    #                     "statements": statements
-                    #                 })
-                    #             else:
-                    #                 logging.warning(f"No response contents found for key {key} in results file {results_filepath}.")
-                    #         except json.JSONDecodeError as e:
-                    #             logging.error(f"Error decoding JSON line in results file {results_filepath}: {str(e)}.")
-                    #             continue
-                        
-                    #     if statements_generated_count > 0:
-                    #         output_summary_stmts_filepath = results_filepath.replace("results", "final").replace("_StmtGenResults.jsonl", "_SummaryStmts.json
-
-
+                    process_batch_results_for_dir(
+                        qu_type=qu_type,
+                        filter_stage=filter_stage,
+                        retrieval_type=retrieval_type,
+                        answering_model_provider=answering_model_provider
+                    )
 
 ### FULL PROCESS
 
