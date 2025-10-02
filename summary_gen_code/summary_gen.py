@@ -212,7 +212,7 @@ def call_llm(messages, model, provider):
     except ValueError as e:
         raise FatalAPIError(f"Error initializing OpenAI client: {e}")
     
-    try:model
+    try:
         if provider is not None:
             response = client.chat.completions.create(
                 model=model,
@@ -550,7 +550,7 @@ def get_questions_from_file(filename):
     
 
 
-def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dirs, summary_filename, model_provider_list):
+def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dirs, summary_out_sub_dirs, summary_filename, model_provider_list):
     try:
         file_qu_dicts = get_questions_from_file(queries_filepath)
     except RetrievalError as e:
@@ -584,9 +584,10 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dirs
                     cleaned_model_name = parse_model_name(model)
                     cleaned_provider_name = parse_provider_name(provider)
                     summary_out_filepaths = []
-                    for dir in summary_out_base_dirs:
-                        summary_out_filepaths.append(os.path.join(dir, f"{cleaned_provider_name}_{cleaned_model_name}", summary_filename))
-                    
+                    for base_dir in summary_out_base_dirs:
+                        for sub_dir in summary_out_sub_dirs:
+                            summary_out_filepaths.append(os.path.join(base_dir, f"{cleaned_provider_name}_{cleaned_model_name}", sub_dir, summary_filename))
+
                     assembled_summary = assemble_summary_details(qu_details=qu_dict, llm_response=response, tool_use_track=tool_calls, model=model, provider=provider)
                     
                     new_summaries_and_outfiles.append((assembled_summary, summary_out_filepaths))
@@ -604,7 +605,15 @@ def run_summary_gen_for_qu_file(queries_filepath, max_qus, summary_out_base_dirs
 
 
 
-def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_dirs, offset_to_first_qu_file=0, max_qu_files=1, max_qus_per_file=1): 
+def run_summary_gen_for_qu_dir(
+        qus_dir, 
+        model_provider_list, 
+        summary_out_base_dirs, 
+        summary_out_sub_dirs,
+        offset_to_first_qu_file=0, 
+        max_qu_files=1, 
+        max_qus_per_file=1
+    ): 
     if not os.path.exists(qus_dir):
         logging.error(f"Questions directory {qus_dir} does not exist.")
         return
@@ -620,6 +629,7 @@ def run_summary_gen_for_qu_dir(qus_dir, model_provider_list, summary_out_base_di
                 queries_filepath = os.path.join(qus_dir, qus_filename),
                 max_qus = max_qus_per_file,
                 summary_out_base_dirs = summary_out_base_dirs, 
+                summary_out_sub_dirs = summary_out_sub_dirs,
                 summary_filename = summary_filename, 
                 model_provider_list = model_provider_list
             )
@@ -652,11 +662,9 @@ def main():
 
     outer_summaries_dir = f"live_summaries/{QU_TYPE}_{FILTER_STAGE}_qus_summaries"
     retrieval_subdir = f"{RETRIEVAL_TYPE}" if RETRIEVAL_TYPE != "hybrid" else f"{RETRIEVAL_TYPE}_{FUSION_TYPE.replace(' ','-')}"
-    summary_out_base_dirs = [
-        os.path.join(outer_summaries_dir, retrieval_subdir, "all_eval_stages"),
-        os.path.join(outer_summaries_dir, retrieval_subdir, "eval_annotated"),
-        os.path.join(f"summary_gen_data/{QU_TYPE}_{FILTER_STAGE}_qus_summaries", retrieval_subdir)
-    ]
+    summary_out_base_dirs = [os.path.join(outer_summaries_dir, retrieval_subdir)]
+    summary_out_sub_dirs = ["orig_summaries", "stmt_gen_annotated"]
+
 
     logging.info("STARTING summary generation process.")
     start_usage = {}
@@ -671,7 +679,8 @@ def main():
         run_summary_gen_for_qu_dir(
             qus_dir = qus_dir,
             model_provider_list=MODEL_PROVIDER_LIST, 
-            summary_out_base_dirs=summary_out_base_dirs, 
+            summary_out_base_dirs=summary_out_base_dirs,
+            summary_out_sub_dirs=summary_out_sub_dirs, 
             max_qu_files=MAX_QU_FILES,
             offset_to_first_qu_file=OFFSET_TO_FIRST_QU_FILE,
             max_qus_per_file=MAX_QUS_PER_FILE

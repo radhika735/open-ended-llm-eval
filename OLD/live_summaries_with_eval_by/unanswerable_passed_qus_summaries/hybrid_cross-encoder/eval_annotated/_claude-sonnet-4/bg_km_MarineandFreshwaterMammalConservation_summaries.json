@@ -1,0 +1,432 @@
+[
+  {
+    "query": "What is the most cost-effective method for reducing lethal vessel strikes on large whales?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available evidence from action documents, setting and enforcing vessel speed limits appears to be the only intervention with demonstrated effectiveness for reducing lethal vessel strikes on large whales. Action 2777 indicates that two studies evaluated this method. In the North Atlantic Ocean, setting vessel speed limits during specific periods in key habitats resulted in fewer North Atlantic right whale deaths caused by collisions. Additionally, in the Indian River estuarine system, fewer manatee deaths were recorded after speed limits were set and enforced in all areas. \n\nOther potential interventions identified include diverting shipping routes (action 2754), using observers on board vessels to detect mammals and allow vessel course or speed to be altered (action 2755), using remote tools to detect mammals in an area and allow vessel course or speed to be altered (action 2757), reducing shipping along inland waterways (action 2763), and designating Particularly Sensitive Sea Areas to regulate impactful maritime activities (action 2223). However, no studies were found that evaluated the effects of these alternative approaches on marine mammal populations.\n\nFor additional context, action 3531 found that limiting vessel speeds was effective for reptiles, with vessels travelling at lower speeds causing fewer catastrophic injuries to artificial loggerhead turtle shells and fewer boat-related injuries to spectacled caiman in waterways with enforced speed limits.",
+    "summary_action_ids": [
+      "2777",
+      "2754",
+      "2755",
+      "2757",
+      "2763",
+      "2223",
+      "3531"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"vessel strikes whales marine mammals shipping\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2754\",\n    \"action_title\": \"Divert shipping routes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2755\",\n    \"action_title\": \"Use observers on board vessels to detect mammals and allow vessel course or speed to be altered\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2777\",\n    \"action_title\": \"Set and enforce vessel speed limits\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"lethal vessel strikes whales cost effective\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2754\",\n    \"action_title\": \"Divert shipping routes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2755\",\n    \"action_title\": \"Use observers on board vessels to detect mammals and allow vessel course or speed to be altered\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2777\",\n    \"action_title\": \"Set and enforce vessel speed limits\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"ship whale collision maritime mammal protection\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"2754\",\n    \"action_title\": \"Divert shipping routes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2755\",\n    \"action_title\": \"Use observers on board vessels to detect mammals and allow vessel course or speed to be altered\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2777\",\n    \"action_title\": \"Set and enforce vessel speed limits\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2763\",\n    \"action_title\": \"Reduce shipping along inland waterways\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2223\",\n    \"action_title\": \"Designate a Particularly Sensitive Sea Area (PSSA) to regulate impactful maritime activities\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2754\"}",
+            "return_val": "{\n  \"action_id\": \"2754\",\n  \"action_title\": \"Divert shipping routes\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of diverting shipping routes on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2755\"}",
+            "return_val": "{\n  \"action_id\": \"2755\",\n  \"action_title\": \"Use observers on board vessels to detect mammals and allow vessel course or speed to be altered\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using observers on board vessels to detect mammals and allow vessel course or speed to be altered.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2777\"}",
+            "return_val": "{\n  \"action_id\": \"2777\",\n  \"action_title\": \"Set and enforce vessel speed limits\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects on marine and freshwater mammals of setting and enforcing vessel speed limits. One study was in the Indian River estuarine system\\u00a0(USA) and the other in the North Atlantic Ocean\\u00a0(USA).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): One before-and-after study in the Indian River estuarine system\\u00a0found similar numbers of manatee deaths before and after vessel speed limits were set in \\u2018zones\\u2019, but fewer deaths were recorded after speed limits were set and enforced in all areas. One before-and-after study in the North Atlantic Ocean\\u00a0found that setting vessel speed limits during specific periods in key habitats resulted in fewer North Atlantic right whale deaths caused by collisions.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2763\"}",
+            "return_val": "{\n  \"action_id\": \"2763\",\n  \"action_title\": \"Reduce shipping along inland waterways\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of reducing shipping along inland waterways on freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2223\"}",
+            "return_val": "{\n  \"action_id\": \"2223\",\n  \"action_title\": \"Designate a Particularly Sensitive Sea Area (PSSA) to regulate impactful maritime activities\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of designating a Particularly Sensitive Sea Area on subtidal benthic invertebrate populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"speed limits vessel cost whale conservation\", \"k\": 5}",
+            "return_val": "[\n  {\n    \"action_id\": \"2777\",\n    \"action_title\": \"Set and enforce vessel speed limits\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2754\",\n    \"action_title\": \"Divert shipping routes\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3531\",\n    \"action_title\": \"Limit vessel speeds\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2757\",\n    \"action_title\": \"Use remote tools to detect mammals in an area and allow vessel course or speed to be altered\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2838\",\n    \"action_title\": \"Introduce and enforce regulations for marine and freshwater mammal watching tours\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3531\"}",
+            "return_val": "{\n  \"action_id\": \"3531\",\n  \"action_title\": \"Limit vessel speeds\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects of limiting vessel speeds on reptiles. One study was in each of Australia, Costa Rica and the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\n\\u00a0\\nPOPULATION RESPONSE (2 STUDIES)\\n\\nSurvival (2 studies): One replicated, site comparison study in Costa Rica found that in waterways with enforced speed limits, fewer spectacled caiman were found dead with boat-related injuries compared to waterways with no speed limits. One replicated study in the USA found that vessels travelling at lower speeds caused fewer catastrophic injuries to artificial loggerhead turtle shells, though vessels with jet motors caused no catastrophic injuries at any speed tested.\\nCondition (1 study): One replicated, site comparison study in Costa Rica found that in waterways with enforced speed limits, fewer spectacled caiman were found with boat-related injuries compared to waterways with no speed limits.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nBehaviour change (1 study): One replicated study in Australia found that green turtles were more likely to flee from vessels travelling at lower speeds.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2757\"}",
+            "return_val": "{\n  \"action_id\": \"2757\",\n  \"action_title\": \"Use remote tools to detect mammals in an area and allow vessel course or speed to be altered\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of using remote tools to detect mammals in an area and allow vessel course or speed to be altered.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"maritime collision reduction whale protection measures\", \"k\": 5, \"offset\": 0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2754\",\n    \"action_title\": \"Divert shipping routes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2777\",\n    \"action_title\": \"Set and enforce vessel speed limits\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2821\",\n    \"action_title\": \"Use catch and hook protection devices on fishing gear\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2755\",\n    \"action_title\": \"Use observers on board vessels to detect mammals and allow vessel course or speed to be altered\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2904\",\n    \"action_title\": \"Modify vessels to reduce noise disturbance\",\n    \"rank\": 5\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\": \"Based on the available evidence from action documents, setting and enforcing vessel speed limits appears to be the only intervention with demonstrated effectiveness for reducing lethal vessel strikes on large whales. Action 2777 indicates that two studies evaluated this method. In the North Atlantic Ocean, setting vessel speed limits during specific periods in key habitats resulted in fewer North Atlantic right whale deaths caused by collisions. Additionally, in the Indian River estuarine system, fewer manatee deaths were recorded after speed limits were set and enforced in all areas. \\n\\nOther potential interventions identified include diverting shipping routes (action 2754), using observers on board vessels to detect mammals and allow vessel course or speed to be altered (action 2755), using remote tools to detect mammals in an area and allow vessel course or speed to be altered (action 2757), reducing shipping along inland waterways (action 2763), and designating Particularly Sensitive Sea Areas to regulate impactful maritime activities (action 2223). However, no studies were found that evaluated the effects of these alternative approaches on marine mammal populations.\\n\\nFor additional context, action 3531 found that limiting vessel speeds was effective for reptiles, with vessels travelling at lower speeds causing fewer catastrophic injuries to artificial loggerhead turtle shells and fewer boat-related injuries to spectacled caiman in waterways with enforced speed limits.\", \"action_ids\": [\"2777\",\"2754\",\"2755\",\"2757\",\"2763\",\"2223\",\"3531\"], \"query\": \"What is the most cost-effective method for reducing lethal vessel strikes on large whales?\"}",
+            "return_val": "{\n  \"query\": \"What is the most cost-effective method for reducing lethal vessel strikes on large whales?\",\n  \"relevant_summary\": \"Based on the available evidence from action documents, setting and enforcing vessel speed limits appears to be the only intervention with demonstrated effectiveness for reducing lethal vessel strikes on large whales. Action 2777 indicates that two studies evaluated this method. In the North Atlantic Ocean, setting vessel speed limits during specific periods in key habitats resulted in fewer North Atlantic right whale deaths caused by collisions. Additionally, in the Indian River estuarine system, fewer manatee deaths were recorded after speed limits were set and enforced in all areas. \\n\\nOther potential interventions identified include diverting shipping routes (action 2754), using observers on board vessels to detect mammals and allow vessel course or speed to be altered (action 2755), using remote tools to detect mammals in an area and allow vessel course or speed to be altered (action 2757), reducing shipping along inland waterways (action 2763), and designating Particularly Sensitive Sea Areas to regulate impactful maritime activities (action 2223). However, no studies were found that evaluated the effects of these alternative approaches on marine mammal populations.\\n\\nFor additional context, action 3531 found that limiting vessel speeds was effective for reptiles, with vessels travelling at lower speeds causing fewer catastrophic injuries to artificial loggerhead turtle shells and fewer boat-related injuries to spectacled caiman in waterways with enforced speed limits.\",\n  \"action_ids\": [\n    \"2777\",\n    \"2754\",\n    \"2755\",\n    \"2757\",\n    \"2763\",\n    \"2223\",\n    \"3531\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2754",
+      "2777",
+      "2755",
+      "2756",
+      "2757",
+      "2758",
+      "2759",
+      "2760",
+      "2761",
+      "2762"
+    ],
+    "regenerated_ids": [
+      "2754",
+      "2755",
+      "2756",
+      "2757",
+      "2758",
+      "2759",
+      "2760",
+      "2761",
+      "2762",
+      "2777"
+    ],
+    "eval_by_models": [
+      {
+        "judge_model": "google/gemini-2.5-pro",
+        "judge_provider": null,
+        "metrics": [
+          "faithfulness",
+          "citation_correctness",
+          "relevance"
+        ]
+      },
+      {
+        "judge_model": "google/gemini-2.5-flash",
+        "judge_provider": null,
+        "metrics": [
+          "faithfulness",
+          "citation_correctness",
+          "relevance"
+        ]
+      }
+    ],
+    "summary_statements_generated": true
+  },
+  {
+    "query": "What is the long-term impact of climate change on the effectiveness of legally protected marine areas for cetaceans?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "Based on the available action documents, there is limited direct evidence about the long-term impact of climate change on the effectiveness of legally protected marine areas for cetaceans. Action 2912 identifies that legally protecting areas where climate change impacts are predicted to be less severe has not been evaluated in any studies for marine and freshwater mammal populations. Similarly, action 2222 shows that creating marine protected areas or setting legal protection levels where natural climate refugia occur to promote species persistence and recovery facing climate change has not been evaluated in any studies. Action 2913 indicates that establishing networks of legally protected areas also lacks direct evaluation studies for marine and freshwater mammal populations. However, action 2915 provides some evidence on the effectiveness of legally protecting habitat for marine and freshwater mammals, showing that four studies found varied results: one study in the North Atlantic Ocean found Mediterranean monk seal populations increased during eight years after legal protection, while a North Sea study found bottlenose dolphin populations remained similar in size before and after protection. Additionally, a South Pacific Ocean study found higher survival rates for Hector's dolphins after coastal legal protection, and a Port River estuary study showed reduced human-caused strandings of Indo-Pacific bottlenose dolphins after legal protection was established.",
+    "summary_action_ids": [
+      "2912",
+      "2222",
+      "2913",
+      "2915"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"climate change marine protected areas cetaceans whales dolphins\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2222\",\n    \"action_title\": \"Create a Marine Protected Area or set levels of legal protection where natural climate refugia occur to further promote the persistence and recovery of species facing climate change\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2912\",\n    \"action_title\": \"Legally protect areas where climate change impacts are predicted to be less severe\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2838\",\n    \"action_title\": \"Introduce and enforce regulations for marine and freshwater mammal watching tours\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2897\",\n    \"action_title\": \"Use \\u2018soft start\\u2019 procedures to deter marine and freshwater mammals to reduce noise exposure\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2777\",\n    \"action_title\": \"Set and enforce vessel speed limits\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2925\",\n    \"action_title\": \"Rehabilitate and release injured, sick or weak marine and freshwater mammals\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2780\",\n    \"action_title\": \"Prohibit or restrict hunting of marine and freshwater mammal species\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2808\",\n    \"action_title\": \"Use acoustic devices on fishing gear\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2821\",\n    \"action_title\": \"Use catch and hook protection devices on fishing gear\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2902\",\n    \"action_title\": \"Limit, cease or prohibit the use of sonars\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"long-term climate change marine areas effectiveness protection\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2912\",\n    \"action_title\": \"Legally protect areas where climate change impacts are predicted to be less severe\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2222\",\n    \"action_title\": \"Create a Marine Protected Area or set levels of legal protection where natural climate refugia occur to further promote the persistence and recovery of species facing climate change\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2913\",\n    \"action_title\": \"Establish a network of legally protected areas\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2915\",\n    \"action_title\": \"Legally protect habitat for marine and freshwater mammals\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2230\",\n    \"action_title\": \"Designate a Marine Protected Area with a zonation system of activity restrictions\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2682\",\n    \"action_title\": \"Cease or prohibit all types of fishing in a marine protected area\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"3827\",\n    \"action_title\": \"Employ adaptive management methods to achieve long-term goals\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2239\",\n    \"action_title\": \"Designate a Marine Protected Area and introduce some fishing restrictions (types unspecified)\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2655\",\n    \"action_title\": \"Establish long-term fishery closures\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2664\",\n    \"action_title\": \"Establish temporary fishery closures\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2222\"}",
+            "return_val": "{\n  \"action_id\": \"2222\",\n  \"action_title\": \"Create a Marine Protected Area or set levels of legal protection where natural climate refugia occur to further promote the persistence and recovery of species facing climate change\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of creating a marine protected area or setting levels of legal protection where natural climate refugia occur to further promote the persistence and recovery of species facing climate change on subtidal benthic invertebrate populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2912\"}",
+            "return_val": "{\n  \"action_id\": \"2912\",\n  \"action_title\": \"Legally protect areas where climate change impacts are predicted to be less severe\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of legally protecting areas where climate change impacts are predicted to be less severe on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2913\"}",
+            "return_val": "{\n  \"action_id\": \"2913\",\n  \"action_title\": \"Establish a network of legally protected areas\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of establishing a network of legally protected areas on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2915\"}",
+            "return_val": "{\n  \"action_id\": \"2915\",\n  \"action_title\": \"Legally protect habitat for marine and freshwater mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nFour studies evaluated the effects of legally protecting habitat for marine and freshwater mammals. One study was in each of the North Atlantic Ocean\\u00a0(Portugal), the South Pacific Ocean\\u00a0(New Zealand), the North Sea\\u00a0(UK) and the Port River estuary (Australia).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (2 studies): One before-and-after study in the North Atlantic Ocean\\u00a0found that a population of Mediterranean monk seals increased during eight years after the islands they inhabited were legally protected. One before-and-after study in the North Sea found that a population of bottlenose dolphins was estimated to be a similar size before and after part of its range was protected.\\nSurvival (2 studies): One before-and-after study in the South Pacific Ocean\\u00a0found that the survival rate of Hector\\u2019s dolphins was higher after a coastal area was legally protected than before. One before-and-after study in the Port River estuary\\u00a0found that after the area became legally protected a similar number of Indo-Pacific bottlenose dolphin strandings were recorded compared to before protection, but the number of strandings caused by humans decreased.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3827\"}",
+            "return_val": "{\n  \"action_id\": \"3827\",\n  \"action_title\": \"Employ adaptive management methods to achieve long-term goals\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of employing adaptive management methods to achieve long-term goals on marine fish populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"climate change ocean temperature sea level marine mammals\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2912\",\n    \"action_title\": \"Legally protect areas where climate change impacts are predicted to be less severe\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2925\",\n    \"action_title\": \"Rehabilitate and release injured, sick or weak marine and freshwater mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2838\",\n    \"action_title\": \"Introduce and enforce regulations for marine and freshwater mammal watching tours\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2917\",\n    \"action_title\": \"Cease or prohibit activities that cause disturbance in sensitive areas for marine and freshwater mammals\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2222\",\n    \"action_title\": \"Create a Marine Protected Area or set levels of legal protection where natural climate refugia occur to further promote the persistence and recovery of species facing climate change\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3495\",\n    \"action_title\": \"Regulate temperature of water discharged from power plants\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2780\",\n    \"action_title\": \"Prohibit or restrict hunting of marine and freshwater mammal species\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2219\",\n    \"action_title\": \"Transplant captive-bred or hatchery-reared individuals of habitat-forming (biogenic) species that are resistant to climate change\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2926\",\n    \"action_title\": \"Hand-rear orphaned or abandoned marine and freshwater mammal young\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2914\",\n    \"action_title\": \"Manage water levels and flow in rivers to maintain deep pools and connectivity\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"marine protected area effectiveness cetacean population\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2915\",\n    \"action_title\": \"Legally protect habitat for marine and freshwater mammals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2681\",\n    \"action_title\": \"Cease or prohibit all fishing activity in a marine protected area with limited exceptions\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2809\",\n    \"action_title\": \"Include fishers in management groups for marine protected areas\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2680\",\n    \"action_title\": \"Restrict fishing activity (types unspecified) in a marine protected area\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2237\",\n    \"action_title\": \"Designate a Marine Protected Area and prohibit the harvesting of conch\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2239\",\n    \"action_title\": \"Designate a Marine Protected Area and introduce some fishing restrictions (types unspecified)\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2238\",\n    \"action_title\": \"Designate a Marine Protected Area and prohibit the harvesting of sea urchins\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2777\",\n    \"action_title\": \"Set and enforce vessel speed limits\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2229\",\n    \"action_title\": \"Designate a Marine Protected Area and prohibit all towed (mobile) fishing gear\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2780\",\n    \"action_title\": \"Prohibit or restrict hunting of marine and freshwater mammal species\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3495\"}",
+            "return_val": "{\n  \"action_id\": \"3495\",\n  \"action_title\": \"Regulate temperature of water discharged from power plants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects of regulating temperature of water discharged from power plants. This study was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (1 STUDY)\\n\\nUse (1 study): One study in the USA reported that power plant water cooling canals were occupied by a population of American crocodiles.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2219\"}",
+            "return_val": "{\n  \"action_id\": \"2219\",\n  \"action_title\": \"Transplant captive-bred or hatchery-reared individuals of habitat-forming (biogenic) species that are resistant to climate change\",\n  \"key_messages\": \"Key Messages:\\n\\u00a0\\u00a0\\u00a0\\u00a0 We found no studies that evaluated the effects of transplanting captive-bred or hatchery-reared individuals of habitat-forming/biogenic species that are resistant to climate change on subtidal benthic invertebrate populations.\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"What is the long-term impact of climate change on the effectiveness of legally protected marine areas for cetaceans?\", \"summary\": \"Based on the available action documents, there is limited direct evidence about the long-term impact of climate change on the effectiveness of legally protected marine areas for cetaceans. Action 2912 identifies that legally protecting areas where climate change impacts are predicted to be less severe has not been evaluated in any studies for marine and freshwater mammal populations. Similarly, action 2222 shows that creating marine protected areas or setting legal protection levels where natural climate refugia occur to promote species persistence and recovery facing climate change has not been evaluated in any studies. Action 2913 indicates that establishing networks of legally protected areas also lacks direct evaluation studies for marine and freshwater mammal populations. However, action 2915 provides some evidence on the effectiveness of legally protecting habitat for marine and freshwater mammals, showing that four studies found varied results: one study in the North Atlantic Ocean found Mediterranean monk seal populations increased during eight years after legal protection, while a North Sea study found bottlenose dolphin populations remained similar in size before and after protection. Additionally, a South Pacific Ocean study found higher survival rates for Hector's dolphins after coastal legal protection, and a Port River estuary study showed reduced human-caused strandings of Indo-Pacific bottlenose dolphins after legal protection was established.\", \"action_ids\": [\"2912\",\"2222\",\"2913\",\"2915\"]}",
+            "return_val": "{\n  \"query\": \"What is the long-term impact of climate change on the effectiveness of legally protected marine areas for cetaceans?\",\n  \"relevant_summary\": \"Based on the available action documents, there is limited direct evidence about the long-term impact of climate change on the effectiveness of legally protected marine areas for cetaceans. Action 2912 identifies that legally protecting areas where climate change impacts are predicted to be less severe has not been evaluated in any studies for marine and freshwater mammal populations. Similarly, action 2222 shows that creating marine protected areas or setting legal protection levels where natural climate refugia occur to promote species persistence and recovery facing climate change has not been evaluated in any studies. Action 2913 indicates that establishing networks of legally protected areas also lacks direct evaluation studies for marine and freshwater mammal populations. However, action 2915 provides some evidence on the effectiveness of legally protecting habitat for marine and freshwater mammals, showing that four studies found varied results: one study in the North Atlantic Ocean found Mediterranean monk seal populations increased during eight years after legal protection, while a North Sea study found bottlenose dolphin populations remained similar in size before and after protection. Additionally, a South Pacific Ocean study found higher survival rates for Hector's dolphins after coastal legal protection, and a Port River estuary study showed reduced human-caused strandings of Indo-Pacific bottlenose dolphins after legal protection was established.\",\n  \"action_ids\": [\n    \"2912\",\n    \"2222\",\n    \"2913\",\n    \"2915\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2912",
+      "2913",
+      "2915"
+    ],
+    "regenerated_ids": [
+      "2912",
+      "2913",
+      "2915"
+    ]
+  },
+  {
+    "query": "Which type of public education campaign is most successful at reducing plastic litter ingestion by river dolphins in South America?",
+    "model": "anthropic/claude-sonnet-4",
+    "provider": null,
+    "relevant_summary": "The action documents do not contain specific information about public education campaigns targeting plastic litter ingestion by river dolphins in South America. The search revealed limited relevant evidence: Action 2935 found that educational whale-watching tours in the South Pacific Ocean (Peru) resulted in participants being more willing to cut their fishing nets to save entangled dolphins, but this specifically addressed entanglement rather than plastic ingestion. Action 2895 found no studies that evaluated the effects of removing litter from marine and freshwater environments on marine and freshwater mammal populations. Action 2932 mentioned Amazon river dolphins in captivity but found that most captive-born Amazon river dolphins did not survive in captivity (USA, China, Indonesia and Venezuela). The multimedia campaign evidence from Action 1571 showed successful conservation education programs for various primate species in different countries, but did not specifically address marine mammals or plastic pollution. Action 3682 demonstrated that education and awareness campaigns could be effective for reptile conservation, with examples showing reduced killing and increased survival rates, but again did not address marine mammals or plastic pollution specifically.",
+    "summary_action_ids": [
+      "2935",
+      "2895",
+      "2932",
+      "1571",
+      "3682"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"public education campaign plastic litter river dolphins South America\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2935\",\n    \"action_title\": \"Educate the public to improve behaviour towards marine and freshwater mammals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3682\",\n    \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2932\",\n    \"action_title\": \"Breed marine and freshwater mammals in captivity\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2423\",\n    \"action_title\": \"Provide education programmes to improve behaviour towards mammals and reduce threats\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3389\",\n    \"action_title\": \"Raise public awareness about marshes or swamps\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1148\",\n    \"action_title\": \"Water primrose: Public education\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2422\",\n    \"action_title\": \"Use campaigns and public information to improve behaviour towards mammals and reduce threats\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1000\",\n    \"action_title\": \"Educate the public to improve perception of bats to improve behaviour towards bats\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2935\"}",
+            "return_val": "{\n  \"action_id\": \"2935\",\n  \"action_title\": \"Educate the public to improve behaviour towards marine and freshwater mammals\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects of educating the public to improve behaviour towards marine and freshwater mammals. One study was in each of the North Atlantic Ocean\\u00a0(USA), the Sundarbans mangroves\\u00a0(Bangladesh) and the South Pacific Ocean\\u00a0(Peru).\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (3 STUDIES)\\n\\nChange in human behaviour (3 studies): Three before-and-after studies in the North Atlantic Ocean, the Sundarbans mangroves\\u00a0and the South Pacific Ocean\\u00a0found that after educational whale-watching tours\\u00a0or an educational exhibition, participants were more willing to change their behaviour to support marine conservation, to donate money to marine conservation, or to cut their fishing nets to save entangled dolphins.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2932\"}",
+            "return_val": "{\n  \"action_id\": \"2932\",\n  \"action_title\": \"Breed marine and freshwater mammals in captivity\",\n  \"key_messages\": \"Key Messages:\\n\\nSix studies evaluated the effects of breeding marine and freshwater mammals in captivity. Three studies were in the USA, one study was also in China, Indonesia and Venezuela, and one study was in each of South Africa, Hong Kong\\u00a0and China.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (6 STUDIES)\\n\\nReproductive success (2 studies): One study in Hong Kong\\u00a0found that four of six female Indo-Pacific dolphins successfully conceived during a controlled captive breeding programme and gave birth to a total of nine calves. One study in China\\u00a0found that wild-caught Yangtze finless porpoises successfully reproduced in semi-captive conditions.\\nSurvival (4 studies): Two studies in South Africa\\u00a0and the USA\\u00a0found that a captive-born common bottlenose dolphin, and a captive-born and hand-reared common bottlenose dolphin, survived in captivity for at least two and a half years and four years respectively. One review in the USA\\u00a0found that 80% of common bottlenose dolphins born in captivity over two decades survived, and survival increased with improved husbandry techniques. One review in the USA, China, Indonesia and Venezuela\\u00a0found that most captive-born Amazon river dolphins, narrow-ridged finless porpoises and Irrawaddy dolphins did not survive in captivity.\\nCondition (1 study): One study in China\\u00a0found that a population of Yangtze finless porpoises breeding in semi-captive conditions had low genetic diversity.\\n\\nBEHAVIOUR (1 STUDY)\\n\\nBehaviour change (1 study): One study in the USA\\u00a0found that a captive-born and hand-reared common bottlenose dolphin displayed normal behaviour for the species and joined a dolphin social group in captivity.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2423\"}",
+            "return_val": "{\n  \"action_id\": \"2423\",\n  \"action_title\": \"Provide education programmes to improve behaviour towards mammals and reduce threats\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of providing education programmes to improve behaviour towards mammals and reduce threats. One study was in South Africa\\u00a0and one was in the USA.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (1 STUDY)\\n\\nAbundance (1 study): A before-and-after study in South Africa\\u00a0found that educating ranchers on ways of reducing livestock losses, along with stricter hunting policies, increased leopard density.\\nSurvival (1 study): A before-and-after study in South Africa\\u00a0found that educating ranchers on ways of reducing livestock losses, along with stricter hunting policies, reduced leopard mortalities.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (1 STUDY)\\n\\nHuman behaviour change (1 study): A replicated, controlled, before-and-after study in the USA\\u00a0found that visiting households to educate about the danger of garbage to black bears did not increase use of wildlife-resistant dumpsters.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2422\"}",
+            "return_val": "{\n  \"action_id\": \"2422\",\n  \"action_title\": \"Use campaigns and public information to improve behaviour towards mammals and reduce threats\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo studies evaluated the effects of using campaigns and public information to improve behaviour towards mammals and reduce threats. One study was in the USA\\u00a0and one was in Lao People's Democratic Republic.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (0 STUDIES)\\nOTHER (2 STUDIES)\\n\\nHuman behaviour change (2 studies): A randomized, replicated, controlled, before-and-after study in the USA\\u00a0found that displaying education signs did not reduce the percentage of garbage containers that were accessible to black bears. A controlled, before-and-after study in Lao People's Democratic Republic\\u00a0found that a social marketing campaign promoting a telephone hotline increased reporting of illegal hunting.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"plastic pollution dolphins marine mammals South America\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2808\",\n    \"action_title\": \"Use acoustic devices on fishing gear\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2838\",\n    \"action_title\": \"Introduce and enforce regulations for marine and freshwater mammal watching tours\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2924\",\n    \"action_title\": \"Rescue and release stranded or trapped marine and freshwater mammals\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2823\",\n    \"action_title\": \"Install exclusion and/or escape devices for mammals on fishing nets\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2915\",\n    \"action_title\": \"Legally protect habitat for marine and freshwater mammals\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2897\",\n    \"action_title\": \"Use \\u2018soft start\\u2019 procedures to deter marine and freshwater mammals to reduce noise exposure\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"2816\",\n    \"action_title\": \"Use acoustic devices on moorings\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2856\",\n    \"action_title\": \"Use baited lines instead of nets for shark control\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"2932\",\n    \"action_title\": \"Breed marine and freshwater mammals in captivity\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2815\",\n    \"action_title\": \"Use acoustic devices on fishing vessels\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"plastic pollution marine litter ingestion\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2204\",\n    \"action_title\": \"Remove litter from the marine environment\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2202\",\n    \"action_title\": \"Limit, cease or prohibit discharge of solid waste overboard from vessels\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2895\",\n    \"action_title\": \"Remove litter from marine and freshwater environments\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2203\",\n    \"action_title\": \"Install stormwater traps or grids\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2893\",\n    \"action_title\": \"Limit, cease or prohibit discharge of solid waste overboard from vessels\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2206\",\n    \"action_title\": \"Recover lost fishing gear\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"3164\",\n    \"action_title\": \"Remove debris from brackish/saline swamps\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2894\",\n    \"action_title\": \"Install stormwater traps or grids\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"3161\",\n    \"action_title\": \"Remove debris from freshwater marshes\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"3163\",\n    \"action_title\": \"Remove debris from freshwater swamps\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2204\"}",
+            "return_val": "{\n  \"action_id\": \"2204\",\n  \"action_title\": \"Remove litter from the marine environment\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of removing litter from the marine environment on subtidal benthic invertebrate populations.\\n\\n\\u00a0\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2895\"}",
+            "return_val": "{\n  \"action_id\": \"2895\",\n  \"action_title\": \"Remove litter from marine and freshwater environments\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of removing litter from marine and freshwater environments on marine and freshwater mammal populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"river dolphin Amazon South America conservation\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2932\",\n    \"action_title\": \"Breed marine and freshwater mammals in captivity\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2786\",\n    \"action_title\": \"Introduce alternative sources of bait to replace the use of marine and freshwater mammals\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2924\",\n    \"action_title\": \"Rescue and release stranded or trapped marine and freshwater mammals\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"2915\",\n    \"action_title\": \"Legally protect habitat for marine and freshwater mammals\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"2816\",\n    \"action_title\": \"Use acoustic devices on moorings\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"2914\",\n    \"action_title\": \"Manage water levels and flow in rivers to maintain deep pools and connectivity\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"3762\",\n    \"action_title\": \"Alter incubation temperatures to achieve optimal/desired sex ratio: Tortoises, terrapins, side-necked & softshell turtles\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"615\",\n    \"action_title\": \"Artificially incubate and hand-rear parrots in captivity\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1455\",\n    \"action_title\": \"Create/preserve primate habitat on islands before dam construction\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"2856\",\n    \"action_title\": \"Use baited lines instead of nets for shark control\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\": \"education awareness campaign effectiveness marine conservation\", \"k\": 10}",
+            "return_val": "[\n  {\n    \"action_id\": \"2281\",\n    \"action_title\": \"Provide educational or other training programmes about the marine environment to improve behaviours towards marine invertebrates\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3682\",\n    \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1718\",\n    \"action_title\": \"Provide education programmes about shrublands\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"162\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1571\",\n    \"action_title\": \"Implement multimedia campaigns using theatre, film, print media, discussions\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"831\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"1849\",\n    \"action_title\": \"Lobby, campaign or demonstrate to protect peatlands\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"2424\",\n    \"action_title\": \"Provide science-based films, radio programmes, or books about mammals to improve behaviour towards mammals and reduce threats\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"59\",\n    \"action_title\": \"Raise awareness amongst the general public through campaigns and public information\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"1717\",\n    \"action_title\": \"Raise awareness amongst the general public\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2281\"}",
+            "return_val": "{\n  \"action_id\": \"2281\",\n  \"action_title\": \"Provide educational or other training programmes about the marine environment to improve behaviours towards marine invertebrates\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study examined the effects of providing educational or other training programmes about the marine environment on subtidal benthic invertebrate populations. The study took place in Hong Kong.\\n\\n\\u00a0\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (0 STUDIES)\\nBEHAVIOUR (1 STUDY)\\n\\nBehaviour change (1 study):\\u00a0One replicated, before-and-after survey study in Hong Kong\\u00a0found that a conservation education programme on the Asian horseshoe crab in secondary schools significantly increased the students\\u2019 behaviour towards Asian horseshoe crab conservation.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"2424\"}",
+            "return_val": "{\n  \"action_id\": \"2424\",\n  \"action_title\": \"Provide science-based films, radio programmes, or books about mammals to improve behaviour towards mammals and reduce threats\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects on mammals of providing science-based films, radio programmes, or books about mammals to improve behaviour towards mammals and reduce threats.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this intervention during our systematic journal and report searches. Therefore, we have no evidence to indicate whether or not the intervention has any desirable or harmful effects.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"1571\"}",
+            "return_val": "{\n  \"action_id\": \"1571\",\n  \"action_title\": \"Implement multimedia campaigns using theatre, film, print media, discussions\",\n  \"key_messages\": \"Key Messages:\\n\\nTwo before-and-after studies in Belize\\u00a0found that black howler monkey numbers increased by 61-138% over 3\\u201313 years after the implementation of a multimedia campaign\\u00a0or the opening of a museum for wildlife education, alongside other interventions.\\nTwo before-and-after studies in Brazil\\u00a0and Colombia\\u00a0found that the implementation of education programs focusing on tamarins improved attitudes\\u00a0towards- and knowledge\\u00a0about tamarins.\\nOne study in the Republic of Congo\\u00a0found that large numbers of people were informed about lowland gorillas through multimedia campaigns using theatre and film.\\nOne before-and-after study in Madagascar\\u00a0found that poaching of diademed sifakas and black and white ruffed lemurs appeared to have ceased after the distribution of conservation books in local primary schools.\\nOne before-and-after study in India\\u00a0found that numbers of hoolock gibbons increased by 66% over five years after the implementation of an education and awareness programme, alongside other interventions.\\nOne before-and-after study in four African countries found that the level of knowledge about primates of visitors to a sanctuary housing guenons, mangabeys, chimpanzees and bonobos increased after the implementation of an education programme.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\": \"3682\"}",
+            "return_val": "{\n  \"action_id\": \"3682\",\n  \"action_title\": \"Use education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats\",\n  \"key_messages\": \"Key Messages:\\n\\nSeven studies evaluated the effects of using education and/or awareness campaigns to improve behaviour towards reptiles and reduce threats. One study was in each of Costa Rica, India, the Philippines, Dominica, the USA, Saint Kitts\\u00a0and Colombia.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (1 studies): One before-and-after study in the Philippines\\u00a0found that following a communication, education, and public awareness campaign, the population of Philippine crocodiles increased.\\nReproductive success (1 study): One study in Costa Rica\\u00a0found that during a community-based education programme the percentage of leatherback turtle nests lost to poaching decreased.\\nSurvival (3 studies): Two before-and-after studies in the Philippines\\u00a0and Dominica\\u00a0found that following education and awareness campaigns, one in combination with use of road signs, human killing of Philippine crocodiles\\u00a0decreased and there were fewer road-deaths of lesser Antillean iguanas\\u00a0compared to before the campaigns began. One study in India\\u00a0reported that following education and awareness campaigns in combination with creating a network of local snake experts, local snake experts reported that they intervened to save 276 non-venomous snakes from being killed over six years.\\n\\nBEHAVIOUR (0 STUDIES)\\nOTHER (5 STUDIES)\\n\\nHuman behaviour change (3 studies): One replicated study in Colombia\\u00a0found that in areas with conservation initiatives relating to turtles, more people reported changing consumption habitats and fewer people reported using turtles for food compared to in areas with no initiatives, however, stated rates of hunting, buying and selling of turtles remained similar. One study in Saint Kitts\\u00a0found that attending an educational summer camp on turtle conservation had mixed effects on reported behaviours in relation to sea turtles of attendees and their parents/guardians, and mixed effects on whether they took part in conservation activities after the camp. One study in the USA\\u00a0found that providing an information leaflet did not decrease the number of hotel rooms that left lights on at night compared to when no leaflet was provided.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\": \"Which type of public education campaign is most successful at reducing plastic litter ingestion by river dolphins in South America?\", \"summary\": \"The action documents do not contain specific information about public education campaigns targeting plastic litter ingestion by river dolphins in South America. The search revealed limited relevant evidence: Action 2935 found that educational whale-watching tours in the South Pacific Ocean (Peru) resulted in participants being more willing to cut their fishing nets to save entangled dolphins, but this specifically addressed entanglement rather than plastic ingestion. Action 2895 found no studies that evaluated the effects of removing litter from marine and freshwater environments on marine and freshwater mammal populations. Action 2932 mentioned Amazon river dolphins in captivity but found that most captive-born Amazon river dolphins did not survive in captivity (USA, China, Indonesia and Venezuela). The multimedia campaign evidence from Action 1571 showed successful conservation education programs for various primate species in different countries, but did not specifically address marine mammals or plastic pollution. Action 3682 demonstrated that education and awareness campaigns could be effective for reptile conservation, with examples showing reduced killing and increased survival rates, but again did not address marine mammals or plastic pollution specifically.\", \"action_ids\": [\"2935\",\"2895\",\"2932\",\"1571\",\"3682\"]}",
+            "return_val": "{\n  \"query\": \"Which type of public education campaign is most successful at reducing plastic litter ingestion by river dolphins in South America?\",\n  \"relevant_summary\": \"The action documents do not contain specific information about public education campaigns targeting plastic litter ingestion by river dolphins in South America. The search revealed limited relevant evidence: Action 2935 found that educational whale-watching tours in the South Pacific Ocean (Peru) resulted in participants being more willing to cut their fishing nets to save entangled dolphins, but this specifically addressed entanglement rather than plastic ingestion. Action 2895 found no studies that evaluated the effects of removing litter from marine and freshwater environments on marine and freshwater mammal populations. Action 2932 mentioned Amazon river dolphins in captivity but found that most captive-born Amazon river dolphins did not survive in captivity (USA, China, Indonesia and Venezuela). The multimedia campaign evidence from Action 1571 showed successful conservation education programs for various primate species in different countries, but did not specifically address marine mammals or plastic pollution. Action 3682 demonstrated that education and awareness campaigns could be effective for reptile conservation, with examples showing reduced killing and increased survival rates, but again did not address marine mammals or plastic pollution specifically.\",\n  \"action_ids\": [\n    \"2935\",\n    \"2895\",\n    \"2932\",\n    \"1571\",\n    \"3682\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "2893",
+      "2894",
+      "2895",
+      "2935",
+      "2837",
+      "2877"
+    ],
+    "regenerated_ids": [
+      "2893",
+      "2894",
+      "2895",
+      "2935"
+    ]
+  }
+]

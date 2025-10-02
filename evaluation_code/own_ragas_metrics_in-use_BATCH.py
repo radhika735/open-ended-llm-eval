@@ -110,33 +110,46 @@ def get_genai_client():
 
 def write_gemini_batch_file(batch_filepath, key, prompt, response_format=None, max_reasoning_tokens=8192):
     request_body = {
-        "contents": prompt,
+        "contents": [{"parts": [{"text": prompt}]}],
     }
     if response_format is not None:
-        request_body.update({
-            "config": types.GenerateContentConfig(
-                thinking_config=types.ThinkingConfig(thinking_budget=max_reasoning_tokens),
-                response_mime_type="application/json",
-                response_schema=response_format
-            )
-        })
+        config = types.GenerateContentConfig(
+            thinking_config=types.ThinkingConfig(thinking_budget=max_reasoning_tokens),
+            response_mime_type="application/json",
+            response_schema=response_format
+        )
     else:
-        request_body.update({
-            "config": types.GenerateContentConfig(
-                thinking_config=types.ThinkingConfig(thinking_budget=max_reasoning_tokens),
-            )
-        })
+        config = types.GenerateContentConfig(
+            thinking_config=types.ThinkingConfig(thinking_budget=max_reasoning_tokens),
+        )
 
+    if hasattr(config, 'to_dict'):
+        request_body["config"] = config.to_dict()
+    elif hasattr(config, 'to_json'):
+        request_body["config"] = json.loads(config.to_json())
+    else:
+        plain_config = {
+            "thinking_config": {"thinking_budget": max_reasoning_tokens}
+        }
+        if response_format is not None:
+            plain_config.update({
+                "response_mime_type": "application/json",
+                "response_schema": response_format
+            })
+        request_body["config"] = plain_config
+    
+    
     request_obj = {
         "key": key,
         "request": request_body
     }
 
     if not batch_filepath.endswith(".jsonl"):
-        raise ValueError("OpenAI batch endpoint only supports .jsonl files currently.")
+        raise ValueError("Gemini batch endpoint only supports .jsonl files currently.")
+    os.makedirs(os.path.dirname(batch_filepath), exist_ok=True)
     with open(batch_filepath, 'a') as f:
         f.write(json.dumps(request_obj) + "\n")
-    logging.debug(f"Wrote OpenAI batch request with custom id {key} to file {batch_filepath}.")
+    logging.debug(f"Wrote Gemini batch request with custom id {key} to file {batch_filepath}.")
 
 
 def make_gemini_batch_request(batch_filepath, judge_model="models/gemini-2.5-pro"):
@@ -160,12 +173,58 @@ def make_gemini_batch_request(batch_filepath, judge_model="models/gemini-2.5-pro
         }
     )
     logging.info(f"Created Gemini batch job: {file_batch_job.name}")
+    return file_batch_job
 
 
-def check_gemini_batch_status(batch_obj):
+def check_gemini_batch_status(batch_job_name):
     client = get_genai_client()
-    batch = client.batches.get(name=batch_obj.name)
-    print(batch)
+    batch_job = client.batches.get(name=batch_job_name)
+    completed_states = set([
+        'JOB_STATE_SUCCEEDED',
+        'JOB_STATE_FAILED',
+        'JOB_STATE_CANCELLED',
+        'JOB_STATE_EXPIRED',
+    ])
+    if batch_job.state.name not in completed_states:
+        logging.info(f"Current state: {batch_job.state.name}")
+    else:
+        logging.info(f"Job finished with state: {batch_job.state.name}")
+        if batch_job.state.name == 'JOB_STATE_FAILED':
+            logging.error(f"Error: {batch_job.error}")
+    return batch_job
+
+
+def get_gemini_batch_results(batch_job_name, output_filepath):
+    client = get_genai_client()
+    batch_job = client.batches.get(name=batch_job_name)
+    if batch_job.state.name == 'JOB_STATE_SUCCEEDED':
+        # If batch job was created with a file
+        if batch_job.dest and batch_job.dest.file_name:
+            # Results are in a file
+            result_file_name = batch_job.dest.file_name
+            logging.info(f"Results are in file: {result_file_name}")
+
+            logging.info("Downloading result file content...")
+            file_content = client.files.download(file=result_file_name)
+            
+            text_content = file_content.decode('utf-8')
+            with open(output_filepath, 'w', encoding='utf-8') as f:
+                f.write(text_content)
+
+    else:
+        print(f"Batch job not completed. Current state: {batch_job.state.name}")
+
+
+def check_num_open_gemini_batch_jobs():
+    client = get_genai_client()
+    open_states = set([
+        'JOB_STATE_PENDING',
+        'JOB_STATE_RUNNING',
+        'JOB_STATE_QUEUED',
+    ])
+    batch_jobs = client.batches.list(config={"page_size": 10})
+    for batch_job in batch_jobs:
+        print(f"Batch job: {batch_job.name}, state {batch_job.state}")
 
 # check openai rate limits how many credits need to put on there.
 
@@ -197,6 +256,30 @@ Given a question and answer, create one or more statements from each sentence in
     ).strip()
     statements = sent_tokenize(response)
     return statements
+
+
+def get_statements_prompt(question, answer):
+    print("Getting statements.")
+    ## RAGAS statement splitting prompt:
+    # prompt = f"""
+    #     Given a question and answer, create one or more statements from each sentence in the given answer. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
+    # """.strip()
+
+    ## Own prompt:
+    prompt = f"""
+Given a question and answer, create one or more statements from each sentence in the given answer. The answer will likely have references of numerical document ids especially at the end of sentences - YOU MUST NOT MENTION THESE REFERENCES OR NUMERICAL IDS IN ANY OF THE STATEMENTS YOU EXTRACT. Each statement should be fully understandable by itself, which means it needs to be self-contained. This means there should be no pronouns in the statements. Output the statements in the following format strictly. [Statement n]: ... where the n is the statement number.\nquestion: {question}\nanswer: {answer}\nStatements:\n
+    """.strip()
+    return prompt
+
+    
+def parse_statements_response(response):
+    # Splitting statements
+    response = re.sub(
+        r"^.*?[0-9]+\]*[:\.]\s(.*?)", r"\1", response, flags=re.MULTILINE
+    ).strip()
+    statements = sent_tokenize(response)
+    return statements
+
 
 
 class CitedStatement(BaseModel):
@@ -238,7 +321,19 @@ Statements: {statements}
     except json.JSONDecodeError as e:
         logging.error(f"During citation extraction from statements, error decoding JSON response from model {model} with provider {provider}: {str(e)}. Response was: {response_content}")
         raise e
-    return cited_statements
+    return 
+
+
+def get_citations_from_stmts_prompt_and_format(summary, statements):
+    prompt = f"""
+Given a summary of information and a list of statements extracted from this summary, you must extract the document IDs cited in the summary for each statement. There may be zero or more cited IDs per statement.
+Output the statements with their extracted citations as a list of JSON objects.
+
+Summary: {summary}
+Statements: {statements}
+    """.strip()
+
+    return prompt, list[CitedStatement]
 
 
 
@@ -739,8 +834,21 @@ def run_eval_for_summaries_dir(summaries_dir, eval_out_dir, judge_model, judge_p
 
 
 
-def batch_gen_summary_statements_for_file(summaries_filepath, statements_filepath, context : ActionParsingContext, max_summaries):
-    pass
+def batch_gen_summary_statements_for_file(summaries_filepath, stmts_filepath, context : ActionParsingContext, max_summaries):
+    try:
+        file_summary_dicts = read_json_file(summaries_filepath)
+    except RetrievalError as e:
+        logging.error(f"Unable to load summaries for evaluation from file {summaries_filepath}: {e}")
+        return
+    try:
+        file_stmt_dicts = read_json_file(stmts_filepath)
+    except RetrievalError as e:
+        logging.error(f"Unable to load existing statements from file {stmts_filepath}: {e}. Starting fresh statement generation for this file.")
+        file_stmt_dicts = []
+        
+    summary_dicts = copy.deepcopy(file_summary_dicts)
+
+    
 
 
 
@@ -757,22 +865,46 @@ def batch_gen_summary_statements_for_dir(summaries_dir, statements_out_dir, cont
             statements_filename = summaries_filename.replace("summaries", "statements")
             batch_gen_summary_statements_for_file(
                 summaries_filepath = os.path.join(summaries_dir, summaries_filename),
-                statements_filepath = os.path.join(statements_out_dir, statements_filename)
+                stmts_filepath = os.path.join(statements_out_dir, statements_filename)
             )
+
+# class LocalBatchObj():
+#     def __init__(self, name, display_name, state, error, create_time, start_time, end_time, update_time, model, src, dest):
+#         self.name = name
+#         self.display_name = display_name
+#         self.state = state
+#         self.error = error
+#         self.create_time = create_time
+#         self.start_time = start_time
+#         self.end_time = end_time
+#         self.update_time = update_time
+#         self.model = model
+#         self.src = src
+#         self.dest = dest
 
     
 def test_batch_request():
-    pass
+    base_summaries_dir = "live_summaries"
+    subdir = os.path.join("answerable_passed_qus_summaries","hybrid_cross-encoder","stmts_and_cited_stmts","_gpt-5")
+    filename = "bg_km_AmphibianConservation_statements.json"
+    with open(os.path.join(base_summaries_dir, subdir, filename), 'r', encoding='utf-8') as f:
+        summary_dicts = json.load(f)
+    usable = summary_dicts[2]
+    used = summary_dicts[1]
+    batch_filepath = os.path.join("batch_summaries_test", subdir, filename.replace(".json", "_batch.jsonl")) 
+    prompt = get_statements_prompt(question=usable["question_details"]["query"], answer=usable["summary_details"]["relevant_summary"])
+    # write_gemini_batch_file(batch_filepath=batch_filepath, key=usable["question_details"]["query"], prompt=prompt)
+    # batch_obj = make_gemini_batch_request(batch_filepath=batch_filepath)
+    batch_obj_attributes = {"name": "batches/iqzh64wx6to8mkslu7xb3js6yobego5mczs0", "display_name": "file-batch-job batch_summaries_test--answerable_passed_qus_summaries--hybrid_cross-encoder--stmts_and_cited_stmts--_gpt-5--bg_km_AmphibianConservation_statements_batch.jsonl", "state": "JOB_STATE_PENDING", "error": None, "create_time": "2025-09-29T01:25:58.946937+00:00", "start_time": None, "end_time": None, "update_time": "2025-09-29T01:25:58.946937+00:00", "model": "models/gemini-2.5-pro", "src": None, "dest": None}
+    # name='batches/iqzh64wx6to8mkslu7xb3js6yobego5mczs0' display_name='file-batch-job batch_summaries_test--answerable_passed_qus_summaries--hybrid_cross-encoder--stmts_and_cited_stmts--_gpt-5--bg_km_AmphibianConservation_statements_batch.jsonl' state=<JobState.JOB_STATE_PENDING: 'JOB_STATE_PENDING'> error=None create_time=datetime.datetime(2025, 9, 29, 1, 25, 58, 946937, tzinfo=TzInfo(UTC)) start_time=None end_time=None update_time=datetime.datetime(2025, 9, 29, 1, 25, 58, 946937, tzinfo=TzInfo(UTC)) model='models/gemini-2.5-pro' src=None dest=None
+    # with open(os.path.join("batch_summaries_test", "batchobjname.txt"), 'w', encoding='utf-8') as f:
+        # f.write(batch_obj.name)
+    checkbatch = check_gemini_batch_status(batch_job_name=batch_obj_attributes["name"])
+    # print(checkbatch)
+    time_taken = checkbatch.end_time - checkbatch.create_time
+    # print(time_taken)
 
-
-def test_statements():
-    question =  "What evidence exists for the effectiveness of different strategies to combat white-nose syndrome in bats?"
-    summary = "Two randomized, controlled studies evaluated treating little brown bats with a probiotic bacterium: in Canada, treatment at the time of white-nose syndrome infection increased survival and reduced disease symptoms in caged bats, whereas treatment 21 days prior did not increase survival and was associated with worse symptoms; in the USA, treatment increased survival for free-flying bats within a mine but did not increase survival for caged bats and resulted in similar disease severity to untreated bats (2008). No studies were found that evaluated vaccinating bats against the white-nose syndrome pathogen (1011), decontaminating clothing and equipment after entering caves (2006), restricting human access to bat caves (1010), or breeding bats in captivity to supplement wild populations affected by white-nose syndrome (2009).",
-    model = "google/gemini-2.5-flash"
-    provider = None
-    statements = _get_statements(question=question, answer=summary, model=model, provider=provider)
-    for s in statements:
-        print(f'"{s}"')
+    check_num_open_gemini_batch_jobs()
 
 
 def gen_evals_realtime():
