@@ -293,8 +293,33 @@ def print_failed_summary_stmts_flag():
                                             break
 
 
+def add_batch_job_successful_field():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+
+                batch_job_names_filepath = os.path.join("batch_gen", "stmt_gen", "requested", f"{qu_type}_{filter_stage}_qus", retrieval_type, f"summaries_{answering_mp}", "batch_job_names.json")
+                with open(batch_job_names_filepath, 'r', encoding='utf-8') as f:
+                    batch_job_names_data = json.load(f)
+                
+                for job_details in batch_job_names_data:
+                    if "batch_job_completed" in job_details and job_details["batch_job_completed"] is True:
+                        if "batch_job_successful" not in job_details:
+                            job_details["batch_job_successful"] = True
+
+                with open(batch_job_names_filepath, 'w', encoding='utf-8') as f:
+                    json.dump(batch_job_names_data, f, indent=2, ensure_ascii=False)
+
+
 if __name__ == "__main__":
     ## FUNCTIONS GET OUTDATED QUICKLY - CHECK CAREFULLY BEFORE RUNNING
-
-    print_failed_summary_stmts_flag()
-    
+    pass    

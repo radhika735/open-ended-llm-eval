@@ -1,4 +1,4 @@
-# some parts copied heavily from "Evaluation of RAG Metrics for Question Answering in the Telecom Domain" paper
+# STATEMENT EXTRACTION functions (get_statements_prompt and parse_statements_response) copied heavily from "Evaluation of RAG Metrics for Question Answering in the Telecom Domain" paper
 import os
 import json
 import shutil
@@ -110,9 +110,16 @@ def check_gemini_batch_status(batch_job_name):
 
 # Prepends new batch results to output file (file containing results of previous batches)
 def prepend_gemini_batch_results(batch_job_name, output_filepath):
-    success = False
+    batch_job_completed = False
+    batch_job_successful = False
     client = get_genai_client()
     batch_job = client.batches.get(name=batch_job_name)
+    completed_states = [
+        'JOB_STATE_SUCCEEDED',
+        'JOB_STATE_FAILED',
+        'JOB_STATE_CANCELLED',
+        'JOB_STATE_EXPIRED'
+    ]
     if batch_job.state.name == 'JOB_STATE_SUCCEEDED':
         logging.info(f"Batch job {batch_job.name} completed successfully.")
 
@@ -131,13 +138,20 @@ def prepend_gemini_batch_results(batch_job_name, output_filepath):
         os.makedirs(os.path.dirname(output_filepath), exist_ok=True)
         with open(output_filepath, 'w', encoding='utf-8') as f:
             f.write(text_content + existing_content)
-        success = True
+        batch_job_completed = True
+        batch_job_successful = True
+    
+    elif batch_job.state.name in completed_states:
+        logging.warning(f"Batch job {batch_job.name} completed with state: {batch_job.state.name}.")
+        batch_job_completed = True
+        batch_job_successful = False
 
     else:
         logging.info(f"Batch job not completed successfully. Current state: {batch_job.state.name}")
-        success = False
+        batch_job_completed = False
+        batch_job_successful = False
 
-    return success
+    return batch_job_completed, batch_job_successful
 
 
 def check_num_open_gemini_batch_jobs():
@@ -151,8 +165,6 @@ def check_num_open_gemini_batch_jobs():
     open_jobs = [job for job in batch_jobs if job.state.name in open_states]
     num_open_jobs = len(open_jobs)
     return num_open_jobs
-
-# check openai rate limits how many credits need to put on there.
 
 
 
@@ -182,18 +194,7 @@ def parse_statements_response(response):
 
 
 
-### ACTION DOCS PARSING AND RETRIEVAL
-
-def get_oracle_actions(id_list, context : ActionParsingContext):
-    parsed_actions = []
-    for id in id_list:
-        parsed_actions.append(get_parsed_action_by_id(id=id, context=context))
-
-    return parsed_actions
-
-
-
-### FULL METRIC EVALUATION PIPELINE
+### UTILITY FUNCTIONS
 
 
 def assemble_summary_stmts(summary_obj, statements, summary_statements_model):
@@ -291,7 +292,9 @@ def read_jsonl_file(filepath):
         raise RetrievalError(f"File {filepath} not found.")
 
 
+
 ### BATCH REQUEST FILES CREATION
+
 
 def make_summary_stmts_batch_request_file_for_file(summaries_filepath, batch_results_filepath):
     try:
@@ -392,6 +395,7 @@ def make_summary_stmts_batch_request_files_all(
 
 ### SENDING BATCH REQUESTS
 
+
 def send_batch_requests(
         max_batch_requests=None,
         qu_types = ["answerable", "unanswerable"],
@@ -456,7 +460,9 @@ def send_batch_requests(
                         return
 
 
+
 ### RECEIVING BATCH RESULTS
+
 
 def receive_batch_results(
         max_batch_checks=None,
@@ -490,10 +496,15 @@ def receive_batch_results(
                                 batch_job_name = job_details["batch_job_name"]
                                 batch_request_filepath = job_details["batch_filepath"]
                                 output_filepath = batch_request_filepath.replace("requested", "results").replace("_StmtGenRequest.jsonl", "_StmtGenResults.jsonl")
-                                success = prepend_gemini_batch_results(batch_job_name=batch_job_name, output_filepath=output_filepath)
-                                if success:
+                                completed, successful = prepend_gemini_batch_results(batch_job_name=batch_job_name, output_filepath=output_filepath)
+                                if completed:
                                     job_details["batch_job_completed"] = True
-                                    logging.info(f"Wrote Gemini batch results for job {batch_request_filepath} to file {output_filepath}")
+                                    if successful:
+                                        job_details["batch_job_successful"] = True
+                                        logging.info(f"Wrote Gemini batch results for job {batch_request_filepath} to file {output_filepath}")
+                                    else:
+                                        job_details["batch_job_successful"] = False
+                                        logging.warning(f"Gemini batch job {batch_request_filepath} completed but was not successful.")
                                 else:
                                     job_details["batch_job_completed"] = False
                                 batch_checks_made += 1
@@ -573,21 +584,30 @@ def process_batch_results_for_file(
                 # check if the (most recent) batch job corresponding to this batch_job_filepath has completed
                 batch_job_exists = False
                 batch_job_completed = False
+                batch_job_successful = False
                 for job_details in batch_job_names:
                     if job_details["batch_filepath"] == batch_requests_filepath:
                         batch_job_exists = True
                         batch_job_completed = job_details.get("batch_job_completed", False)
+                        batch_job_successful = job_details.get("batch_job_successful", False)
                         break
 
                 if not batch_job_exists:
                     logging.warning(f"No batch job found for file {batch_requests_filepath}. Cannot process batch results for summary to query {query} in file {summaries_filepath}.")
                     print(f"No batch job found for file {batch_requests_filepath}. Cannot process batch results for summary to query {query} in file {summaries_filepath}.")
                     continue
-                elif not batch_job_completed:
+                elif not batch_job_completed: # batch job exists but not completed
                     logging.info(f"Skipping processing batch results for summary to query {query} in file {summaries_filepath} as the corresponding batch job for file {batch_requests_filepath} has not completed yet.")
                     continue
+                elif not batch_job_successful: # batch job exists and completed but was not successful
+                    logging.warning(f"While processing batch results, found that batch job for file {batch_requests_filepath} completed UNSUCCESSFULLY. Resetting gen_summary_stmts_request_made and gen_summary_stmts_received flags to False for summary to query {query} in file {summaries_filepath}")
+                    print(f"While processing batch results, found that batch job for file {batch_requests_filepath} completed UNSUCCESSFULLY. Resetting gen_summary_stmts_request_made and gen_summary_stmts_received flags to False for summary to query {query} in file {summaries_filepath}")
+                    # Reset the gen_summary_stmts_request_made field to False so that statement generation for this summary can be requested again.
+                    summary_dict["gen_summary_stmts_request_made"] = False
+                    summary_dict["gen_summary_stmts_received"] = False
+                    continue
                 
-                # the batch job exists and has completed.
+                # the batch job exists, has completed and was successful.
 
                 # find the batch result corresponding to this summary (by key)
                 batch_result_found = False
@@ -602,9 +622,9 @@ def process_batch_results_for_file(
                         result_statements = parse_statements_response(response=llm_output)
                         break
 
-                if not batch_result_found:# this condition should not happen given that the batch job exists and has completed
-                    logging.error(f"Batch job recorded completed but no batch result found for key {batch_job_key} in file {batch_results_filepath}. Resetting gen_summary_stmts_request_made and gen_summary_stmts_received flags to False for this summary.")
-                    print(f"Batch job recorded completed but no batch result found for key {batch_job_key} in file {batch_results_filepath}. Resetting gen_summary_stmts_request_made and gen_summary_stmts_received flags to False for this summary.")
+                if not batch_result_found:# this condition should not happen given that the batch job exists and has completed successfully
+                    logging.error(f"Batch job recorded as having completed successfully but no batch result found for key {batch_job_key} in file {batch_results_filepath}. Resetting gen_summary_stmts_request_made and gen_summary_stmts_received flags to False for this summary.")
+                    print(f"Batch job recorded as having completed successfully but no batch result found for key {batch_job_key} in file {batch_results_filepath}. Resetting gen_summary_stmts_request_made and gen_summary_stmts_received flags to False for this summary.")
                     # Reset the gen_summary_stmts_request_made field to False so that statement generation for this summary can be requested again.
                     summary_dict["gen_summary_stmts_request_made"] = False
                     summary_dict["gen_summary_stmts_received"] = False
@@ -653,7 +673,6 @@ def process_batch_results_for_file(
         logging.info(f"Updated summaries file {summaries_filepath} (gen_summary_stmts_request_made and) gen_summary_stmts_received fields.")
 
     
-
 def process_batch_results_for_dir(qu_type, filter_stage, retrieval_type, cleaned_summary_model_provider):
     summaries_dir = os.path.join("live_summaries",f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, cleaned_summary_model_provider, "stmt_gen_annotated")
     statements_dir = os.path.join("live_summaries",f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, cleaned_summary_model_provider, "stmts")
@@ -705,6 +724,8 @@ def process_batch_results_all(
 
 
 ### CHECK IF ALL SUMMARY STATEMENTS HAVE BEEN GENERATED AND STORED
+
+
 def check_all_summary_stmts_generated_for_file(summaries_filepath):
     try:
         file_summary_dicts = read_json_file(summaries_filepath)
@@ -780,7 +801,7 @@ def check_all_summary_stmts_generated_for_all(
 
 
 
-### UTILITY FUNCTION:
+### DISPLAYING STATUS:
 
 
 def print_running_jobs():
@@ -891,7 +912,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # print_running_jobs()
     main()
 
 
