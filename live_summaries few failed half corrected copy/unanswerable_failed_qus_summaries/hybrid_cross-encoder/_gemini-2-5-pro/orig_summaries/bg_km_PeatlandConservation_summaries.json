@@ -1,0 +1,81 @@
+[
+  {
+    "query": "What is the most cost-effective way to control problematic plants on peatlands?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study found that using herbicide to control shrubs in fens, along with other interventions, led to changes in the overall plant community composition but could not prevent increases in shrub cover over time [1776]. It also prevented increases in plant species richness [1776]. No studies were found that evaluated the effects of using covers or barriers to control problematic plants on peatland vegetation [1775], or of physically damaging problematic plants [1769].",
+    "summary_action_ids": [
+      "1776",
+      "1775",
+      "1769"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"cost-effective control of problematic plants on peatlands\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1776\",\n    \"action_title\": \"Use herbicide to control problematic plants\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1775\",\n    \"action_title\": \"Use covers/barriers to control problematic plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1769\",\n    \"action_title\": \"Physically damage problematic plants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1776\"}",
+            "return_val": "{\n  \"action_id\": \"1776\",\n  \"action_title\": \"Use herbicide to control problematic plants\",\n  \"key_messages\": \"Key Messages:\\n\\nOne study evaluated the effects on peatland vegetation of using herbicide to control problematic plants. The study was in fens.\\nPlant community composition (1 study): One replicated, controlled, before-and-after study in fens in the USA found that applying herbicide to shrubs (along with other interventions) changed the overall plant community composition.\\nTree/shrub cover (1 study): The same study\\u00a0found that\\u00a0applying herbicide to shrubs (along with other interventions) could not prevent increases in shrub cover over time.\\nOverall plant richness/diversity (1 study): The same study\\u00a0found that applying herbicide to shrubs (along with other interventions) prevented increases in plant species richness.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1775\"}",
+            "return_val": "{\n  \"action_id\": \"1775\",\n  \"action_title\": \"Use covers/barriers to control problematic plants\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of using covers or barriers to control problematic plants.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1769\"}",
+            "return_val": "{\n  \"action_id\": \"1769\",\n  \"action_title\": \"Physically damage problematic plants\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects,\\u00a0on peatland vegetation, of physically damaging problematic plants.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1776\",\"1775\",\"1769\"],\"summary\":\"One study found that using herbicide to control shrubs in fens, along with other interventions, led to changes in the overall plant community composition but could not prevent increases in shrub cover over time [1776]. It also prevented increases in plant species richness [1776]. No studies were found that evaluated the effects of using covers or barriers to control problematic plants on peatland vegetation [1775], or of physically damaging problematic plants [1769].\",\"query\":\"What is the most cost-effective way to control problematic plants on peatlands?\"}",
+            "return_val": "{\n  \"query\": \"What is the most cost-effective way to control problematic plants on peatlands?\",\n  \"relevant_summary\": \"One study found that using herbicide to control shrubs in fens, along with other interventions, led to changes in the overall plant community composition but could not prevent increases in shrub cover over time [1776]. It also prevented increases in plant species richness [1776]. No studies were found that evaluated the effects of using covers or barriers to control problematic plants on peatland vegetation [1775], or of physically damaging problematic plants [1769].\",\n  \"action_ids\": [\n    \"1776\",\n    \"1775\",\n    \"1769\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1767",
+      "1768",
+      "1769",
+      "1770",
+      "1771",
+      "1772",
+      "1773",
+      "1774",
+      "1775",
+      "1776",
+      "1777"
+    ],
+    "regenerated_ids": [
+      "1767",
+      "1768",
+      "1769",
+      "1770",
+      "1772",
+      "1773",
+      "1774",
+      "1775",
+      "1776",
+      "1777",
+      "1840"
+    ]
+  }
+]

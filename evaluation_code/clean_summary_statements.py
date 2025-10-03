@@ -16,8 +16,8 @@ def basic_folder_rename():
     for qu_type in qu_types:
         for filter_stage in filter_stages:
             for answering_mp in answering_mps:
-                orig = os.path.join(base_dir, f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "eval_annotated")
-                new = os.path.join(base_dir, f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmt_gen_annotated")
+                orig = os.path.join(base_dir, f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmts")
+                new = os.path.join(base_dir, f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmts")
                 if os.path.exists(orig):
                     os.rename(orig, new)
 
@@ -101,7 +101,7 @@ def annotate_summary_statements():
                     eval_filename = summary_filename.replace("summaries", "eval")
                     eval_filepath = os.path.join("live_evaluations_realtime_api", f"{qu_type}_{filter_stage}_evals", "judge__gemini-2-5-pro", f"summaries_{answering_model_provider}", eval_filename)
                     out_filename = summary_filename.replace("summaries", "statements")
-                    outpath = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, "stmts_and_cited_stmts", answering_model_provider, out_filename)
+                    outpath = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, "stmts", answering_model_provider, out_filename)
                     if not os.path.exists(eval_filepath):
                         eval_data = []
                     else:
@@ -166,18 +166,6 @@ def swap_dir_hierarchy():
     ]
     base_dir = "live_summaries"
 
-    # for qu_type in qu_types:
-    #     for filter_stage in filter_stages:
-    #         outer_summaries_dir = os.path.join(base_dir, f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, "eval_annotated")
-    #         for answering_model_provider in os.listdir(outer_summaries_dir):
-    #             full_summaries_dir = os.path.join(outer_summaries_dir, answering_model_provider)
-    #             for summary_filename in os.listdir(full_summaries_dir):
-    #                 orig = os.path.join(full_summaries_dir, summary_filename)
-    #                 new_dir = os.path.join(base_dir, f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, "eval_annotated", summary_filename.replace("summaries", "stmts_and_cited_stmts"), answering_model_provider)
-    #                 os.makedirs(new_dir, exist_ok=True)
-    #                 new = os.path.join(new_dir, summary_filename)
-    #                 os.rename(orig, new)
-    #             os.rmdir(full_summaries_dir)
     for qu_type in qu_types:
         for filter_stage in filter_stages:
             for answering_mp in answering_mps:
@@ -218,7 +206,95 @@ def reset_summary_statements_flags():
                             json.dump(data, f, indent=2, ensure_ascii=False)
 
 
+def add_summary_stmts_model_field():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+    base_dir = "live_summaries"
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+                dir_type = "stmts"
+                full_dir = os.path.join(base_dir, f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, dir_type)
+                if os.path.exists(full_dir):
+                    for filename in os.listdir(full_dir):
+                        filepath = os.path.join(full_dir, filename)
+                        with open(filepath, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                        for entry in data:
+                            if entry["summary_details"]["relevant_summary"] is not None:
+                                if "summary_statements" in entry["summary_details"]:
+                                    if len(entry["summary_details"]["summary_statements"]) == 0:
+                                        print("\n\n\n")
+                                        print(entry["summary_details"]["relevant_summary"])
+                                        print(entry["summary_details"]["summary_statements"])
+
+                                # if entry["summary_details"].get("summary_statements_model", None) is None:
+                                    # statements = entry["summary_details"]["summary_statements"]
+                                    # del entry["summary_details"]["summary_statements"]
+                                    # entry["summary_details"]["summary_statements_model"] = "gemini-2.5-pro"
+                                    # entry["summary_details"]["summary_statements"] = statements
+
+                                # print(entry["summary_details"]["summary_statements_model"])
+                                # print(entry["summary_details"]["summary_statements"][0])
+                                # print("\n\n")
+
+                        #     if entry["summary_details"].get("summary_statements_model", None) is None:
+                        #         statements = entry["summary_details"]["summary_statements"]
+                        #         entry["summary_details"]["summary_statements_model"] = "gemini-2.5-pro"
+                        # with open(filepath, 'w', encoding='utf-8') as f:
+                        #     json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+
+def print_failed_summary_stmts_flag():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+                summaries_dir = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmt_gen_annotated")
+                statements_dir = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmts")
+                for statements_filename in sorted(os.listdir(statements_dir)):
+                    statements_filepath = os.path.join(statements_dir, statements_filename)
+                    with open(statements_filepath, 'r', encoding='utf-8') as f:
+                        statements_data = json.load(f)
+                    for stmt_entry in statements_data:
+                        if stmt_entry["summary_details"]["relevant_summary"] is not None:
+                            if "summary_statements" in stmt_entry["summary_details"]:
+                                if len(stmt_entry["summary_details"]["summary_statements"]) == 0:
+                                    print("\n\n\n")
+                                    print(f"File: {statements_filepath}")
+                                    print(stmt_entry["summary_details"]["relevant_summary"])
+                                    print(stmt_entry["summary_details"]["summary_statements"])
+
+                                    # Find corresponding entry in summaries file
+                                    summaries_filepath = os.path.join(summaries_dir, statements_filename.replace("statements", "summaries"))
+                                    with open(summaries_filepath, 'r', encoding='utf-8') as f:
+                                        summaries_data = json.load(f)
+                                    for summary_entry in summaries_data:
+                                        if summary_entry["relevant_summary"] == stmt_entry["summary_details"]["relevant_summary"] and summary_entry["query"] == stmt_entry["question_details"]["query"]:
+                                            print("Found matching summary entry.")
+                                            print(f"gen_summary_stmts_request_made: {summary_entry.get('gen_summary_stmts_request_made', None)}")
+                                            print(f"gen_summary_stmts_received: {summary_entry.get('gen_summary_stmts_received', None)}")
+                                            break
+
 
 if __name__ == "__main__":
-    # reset_summary_statements_flags()
-    pass
+    ## FUNCTIONS GET OUTDATED QUICKLY - CHECK CAREFULLY BEFORE RUNNING
+
+    print_failed_summary_stmts_flag()
+    

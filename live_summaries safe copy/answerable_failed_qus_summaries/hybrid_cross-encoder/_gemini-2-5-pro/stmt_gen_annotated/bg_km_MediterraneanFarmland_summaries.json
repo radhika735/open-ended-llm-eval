@@ -1,0 +1,795 @@
+[
+  {
+    "query": "To improve soil fertility, how does adding compost compare to adding manure?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "One study in Turkey found that adding either compost or manure resulted in higher organic matter content and larger soil aggregations (911). Additionally, four studies in India, Spain, and Turkey reported higher crop yields with the application of either manure or compost (911). \n\nWhen focusing on manure, studies have shown varied outcomes. Five studies indicated an increase in soil organic matter with manure application, whereas three studies found no change (1363). Similarly, some studies reported an increase in nitrogen, phosphorus, and potassium levels, while others observed no significant differences (1363). In terms of soil structure, manure was found to improve soil stability in three studies and reduce erosion in one (1363). On the other hand, the application of manure was associated with higher emissions of carbon dioxide and nitrous oxide in two separate studies (1363). Furthermore, three controlled, replicated studies conducted in the UK and the USA revealed an increase in microbial biomass with the application of either manure or compost (911). A review, along with three other studies, indicated that the application of manure is associated with higher carbon levels in the soil (911).",
+    "summary_action_ids": [
+      "911",
+      "1363"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"compost vs manure for soil fertility\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"911\",\n    \"action_title\": \"Amend the soil with manures and agricultural composts\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1363\",\n    \"action_title\": \"Soil: Add manure to the soil\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"911\"}",
+            "return_val": "{\n  \"action_id\": \"911\",\n  \"action_title\": \"Amend the soil with manures and agricultural composts\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity loss: Three controlled, replicated studies from the UK and USA found higher microbial biomass when manure or compost was applied, and higher microbial respiration when poultry manure was applied.\\nErosion: One controlled, randomized, replicated study from India found lower soil loss and water runoff with manure application in combination with other treatments.\\nNutrient management: Four studies from Canada, Spain, the UK and the USA measured the effect of a variety of manure types on soil nutrient levels. Of these, three randomized, replicated studies (two also controlled) found reduced nutrient loss and higher nitrogen levels when farmyard or poultry manure was applied. One also found lower nutrient loss when farmyard manure (rather than poultry manure or slurry) was applied in winter rather than autumn. One controlled replicated study found higher nitrate leaching.\\nSoil organic carbon: Four studies (including three controlled, replicated studies (one also randomized) and a review) from India, Japan and the UK found higher carbon levels when manures were applied.\\nSoil organic matter: One controlled, randomized, replicated study from Turkey found higher organic matter, larger soil aggregations and a positive effect on soil physical properties when manure and compost were applied. Two studies from Denmark and Germany found no effect of manure on organic matter levels.\\nYield: Four controlled, replicated studies (including three also randomized) from India, Spain and Turkey found higher crop yields when manures or compost were applied. One study found higher yields when manure were applied in combination with cover crops.\\nSoil types covered: Clay loam, fine sandy-silty loam, loam, loamy, sandy loam, sandy clay loam, silty loam, and sandy silt loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1363\"}",
+            "return_val": "{\n  \"action_id\": \"1363\",\n  \"action_title\": \"Soil: Add manure to the soil\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (8 studies): Five replicated, controlled studies (two randomized) from Italy, Tunisia, Turkey, and the USA\\u00a0found more organic matter in soils with added manure, compared to soils without it. Three replicated, randomized, controlled studies from Italy, Spain, and Greece\\u00a0found similar amounts of organic matter in plots with or without added manure.\\nNutrients (5 studies)\\n\\nNitrogen (5 studies): Three replicated, controlled, studies (one randomized) from Italy\\u00a0and Tunisia\\u00a0found more nitrogen in soils with added manure, compared to soils without it, in some comparisons. Two replicated, randomized, controlled studies from Greece\\u00a0and Italy\\u00a0found similar amounts of nitrogen in soils with or without added manure.\\nPhosphorus (3 studies): One replicated, randomized, controlled study from Greece\\u00a0found more phosphorus in soils with added manure, compared to soils without it. One replicated, randomized, controlled study from Italy\\u00a0found similar amounts of phosphorus in soils with or without added manure. One replicated, controlled study from Italy\\u00a0found inconsistent differences in phosphorus between soils with or without added manure. \\nPotassium (2 studies): Two replicated, randomized, controlled studies from Italy\\u00a0and Greece found more potassium in soils with added manure, compared to soils without it.\\npH (3 studies): One replicated, randomized, controlled study from Tunisia\\u00a0found lower pH levels in soils with added manure, compared to soils without it. One replicated, controlled study from Italy found higher pH levels in soils with added manure. One replicated, randomized, controlled study from Italy\\u00a0found similar pH level in soils with or without added manure.\\n\\nSoil organisms (3 studies)\\n\\nMicrobial biomass (2 studies): Two replicated, randomized, controlled studies from Italy\\u00a0and Spain\\u00a0found similar amounts of microbial biomass in soils with or without added manure.\\nNematodes (1 study): One replicated, randomized, controlled study from Greece\\u00a0found similar numbers of nematodes in soils with or without added manure.\\n\\nSoil erosion and aggregation (4 studies): One replicated, randomized, controlled study from Spain found less erosion in plots with added manure, compared to plots without added manure. Three replicated, randomized, controlled studies from Spain\\u00a0and Turkey\\u00a0found higher soil stability in plots with added manure, compared to plots without added manure, in some or all comparisons. One replicated, controlled study from the USA\\u00a0found similar soil stability in plots with or without added manure.\\nGreenhouse gases (2 studies): One replicated, controlled study from the USA\\u00a0found higher carbon dioxide emissions in plots with added manure, compared to plots without added manure. One replicated, randomized, controlled study from Spain\\u00a0found higher nitrous oxide emissions in plots with added manure, compared to plots without added manure.\\nImplementation options (1 study): One study from Tunisia\\u00a0found no differences in organic matter or pH between soils with different amounts of added manure, but found less nitrate in soils with less added fertilizer.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"911\",\"1363\"],\"query\":\"To improve soil fertility, how does adding compost compare to adding manure?\",\"summary\":\"One study in Turkey found that adding either compost or manure resulted in higher organic matter content and larger soil aggregations (911). Additionally, four studies in India, Spain, and Turkey reported higher crop yields with the application of either manure or compost (911). \\n\\nWhen focusing on manure, studies have shown varied outcomes. Five studies indicated an increase in soil organic matter with manure application, whereas three studies found no change (1363). Similarly, some studies reported an increase in nitrogen, phosphorus, and potassium levels, while others observed no significant differences (1363). In terms of soil structure, manure was found to improve soil stability in three studies and reduce erosion in one (1363). On the other hand, the application of manure was associated with higher emissions of carbon dioxide and nitrous oxide in two separate studies (1363). Furthermore, three controlled, replicated studies conducted in the UK and the USA revealed an increase in microbial biomass with the application of either manure or compost (911). A review, along with three other studies, indicated that the application of manure is associated with higher carbon levels in the soil (911).\"}",
+            "return_val": "{\n  \"query\": \"To improve soil fertility, how does adding compost compare to adding manure?\",\n  \"relevant_summary\": \"One study in Turkey found that adding either compost or manure resulted in higher organic matter content and larger soil aggregations (911). Additionally, four studies in India, Spain, and Turkey reported higher crop yields with the application of either manure or compost (911). \\n\\nWhen focusing on manure, studies have shown varied outcomes. Five studies indicated an increase in soil organic matter with manure application, whereas three studies found no change (1363). Similarly, some studies reported an increase in nitrogen, phosphorus, and potassium levels, while others observed no significant differences (1363). In terms of soil structure, manure was found to improve soil stability in three studies and reduce erosion in one (1363). On the other hand, the application of manure was associated with higher emissions of carbon dioxide and nitrous oxide in two separate studies (1363). Furthermore, three controlled, replicated studies conducted in the UK and the USA revealed an increase in microbial biomass with the application of either manure or compost (911). A review, along with three other studies, indicated that the application of manure is associated with higher carbon levels in the soil (911).\",\n  \"action_ids\": [\n    \"911\",\n    \"1363\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1362",
+      "1363",
+      "1346",
+      "1347"
+    ],
+    "regenerated_ids": [
+      "1362",
+      "1363",
+      "1366"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "What are the potential negative impacts of using no-tillage systems in arable fields in a Mediterranean climate?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "In a Mediterranean climate, some studies have found that no-tillage systems can have negative impacts on crop yields and the environment. For instance, in some comparisons, no-tillage has been associated with lower yields of cereals, fruits and vegetables, and sunflower seeds (1358). Additionally, reduced tillage has been found in some studies to result in less nitrogen in the soil, as well as reduced microbial biomass (1371). Other negative impacts observed in some studies include lower water-stability of soil aggregates, smaller soil aggregates, and increased emissions of carbon dioxide and nitrous oxide from the soil (1371). Furthermore, one study found that shallower tillage led to more soil erosion (1371). In one study in Spain, lower straw yields were found in plots with no tillage compared to reduced tillage (1358).",
+    "summary_action_ids": [
+      "1358",
+      "1371"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"negative impacts of no-tillage systems in a Mediterranean climate\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"126\",\n    \"action_title\": \"Reduce tillage\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1371\",\n    \"action_title\": \"Soil: Use reduced tillage in arable fields\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1358\",\n    \"action_title\": \"Crop production: Use no tillage instead of reduced tillage\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"126\"}",
+            "return_val": "{\n  \"action_id\": \"126\",\n  \"action_title\": \"Reduce tillage\",\n  \"key_messages\": \"Key Messages:\\n\\nA total of 42 individual studies (including seven replicated, controlled and randomized studies and six reviews) from Belgium, Denmark, France, Germany, Hungary, Ireland, Lithuania, the Netherlands, Slovakia, Switzerland and the UK investigated the effects of reducing tillage on farmland wildlife. Thirty-four studies (of which 21 were replicated and controlled and seven also randomized, and five reviews) from nine European countries found some positive effects on earthworms, some invertebrates (other than earthworms), weeds or farmland birds, of reducing tillage compared to conventional management. Positive effects included increased biomass, species richness or abundance of earthworms, greater abundance of some invertebrates other than earthworms, increased numbers of some weeds and/or weed species, higher Eurasian skylark nest density, earlier laying date and shorter foraging distances on reduced tillage fields, and greater abundance of some birds - including Eurasian skylark, seed-eating songbirds and gamebirds in late winter on non-inversion or conservation tillage. A review found tillage had negative effects on invertebrate numbers and no-till systems had more invertebrate bird food resources.\\nTwenty-six studies (of which 13 replicated and controlled and three also randomized, and five reviews) from nine European countries found reducing tillage had either negative, no effect or no consistent effects on abundance, biomass, or species richness of some invertebrates (other than earthworms), earthworm abundance, biomass, or species richness, number of different plant species found as seeds, number of some weed species, mammal abundance, some bird species, and one study found bird preferences for conservation tillage fields decreased over time. Two studies found that crop type affected the number of weeds under different tillage regimes.\\nOne small replicated trial in the UK compared bird numbers under two different forms of reduced tillage, and found more birds from species that make up the \\u2018Farmland Bird Index\\u2019 on broadcast than non-inversion tillage fields.\\nTwo studies looked at the long-term effects of reduced tillage on earthworms (after ten years). One study found higher earthworm biomass under reduced tillage, the other study found earthworm abundance was the same between conventional and reduced tillage plots.\\nThree of the studies mentioned above did not distinguish between the effects of reducing tillage and reduced pesticide and/or fertilizer inputs.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1371\"}",
+            "return_val": "{\n  \"action_id\": \"1371\",\n  \"action_title\": \"Soil: Use reduced tillage in arable fields\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (14 studies): One meta-analysis from multiple Mediterranean countries\\u00a0found more organic matter in soils with reduced tillage, compared to conventional tillage. Eleven replicated studies (ten randomized and controlled, one site comparison) from Italy, Spain, Syria, and the USA\\u00a0found more organic matter in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. Two replicated, randomized, controlled studies from Spain and the USA\\u00a0found similar amounts of organic matter in soils with reduced tillage or conventional tillage, in all comparisons. No studies found less organic matter in soils with reduced tillage, compared to conventional tillage.\\n\\n\\nNutrients (15 studies)\\n\\nNitrogen (14 studies): Seven replicated studies (five randomized and controlled, one site comparison) from Italy, Spain, and the USA\\u00a0found more nitrogen in soils with reduced tillage, compared to conventional tillage, in some comparisons. Three of these studies\\u00a0also found less nitrogen in some comparisons. Two replicated, randomized, controlled studies from Spain found less nitrogen in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. Five replicated, randomized, controlled studies from Spain, Syria, and the USA\\u00a0found similar amounts of nitrogen in soils with reduced tillage or conventional tillage, in all comparisons.\\nPhosphorus (6 studies): Five replicated, randomized, controlled studies from Italy, Spain, and the USA\\u00a0found more phosphorus in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of phosphorus in soils with reduced tillage, compared to conventional tillage, in all comparisons.\\nPotassium (3 studies): Two replicated, randomized, controlled studies from Spain\\u00a0found more potassium in soils with reduced tillage, compared to conventional tillage, in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of potassium in soils with reduced tillage, compared to conventional tillage, in all comparisons.\\npH (1 study): One replicated, randomized, controlled study from Spain\\u00a0found similar pH levels in soils with reduced tillage or conventional tillage.\\n\\nSoil organisms (16 studies)\\n\\nMicrobial biomass (15 studies): Eleven replicated, randomized, controlled studies from Italy, Spain, and the USA\\u00a0found more microbial biomass in soils with reduced tillage, compared to conventional tillage, in some comparisons. Two replicated, randomized, controlled studies from Spain and Syria\\u00a0found less microbial biomass in soils with reduced tillage, compared to conventional tillage, in some comparisons. Two replicated, randomized, controlled studies from Spain\\u00a0found similar amounts of microbial biomass in soils with reduced tillage or conventional tillage, in all comparisons.\\nBacteria (1 study): One replicated, randomized, controlled study from Spain\\u00a0found more denitrifying bacteria in soils with reduced tillage, compared to conventional tillage.\\nOther soil organisms (2 studies): One replicated, controlled study from the USA\\u00a0found similar numbers of mites and nematodes, but differences in mite and nematode communities, in soils with reduced tillage, compared to conventional tillage. One replicated site comparison from the USA\\u00a0found more earthworms in fields with fewer passes of the plough, in one of three comparisons.\\n\\nSoil erosion and aggregation (9 studies)\\n\\nSoil aggregation (8 studies): Three replicated, randomized, controlled studies from Spain\\u00a0found that soil aggregates had higher water-stability in plots with reduced tillage, compared to conventional tillage, in some comparisons. One of these studies\\u00a0also found that soil aggregates had lower water-stability in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found that water-stability was similar in plots with reduced tillage or conventional tillage. One replicated, randomized, controlled study from Spain\\u00a0found more large aggregates in soils with reduced tillage, compared to conventional tillage, in one of two comparisons. One replicated, randomized, controlled study from Spain\\u00a0found smaller aggregates in soils with reduced tillage, compared to conventional tillage. Three replicated, randomized, controlled studies from Spain and the USA\\u00a0found similar amounts of aggregation in soils with reduced tillage or conventional tillage.\\nSoil erosion (1 study): One replicated, randomized, controlled study from Egypt\\u00a0found less erosion with less tillage (one pass with the tractor, compared to two), but found more erosion with shallower tillage, compared to deeper.\\n\\nGreenhouse gases (11 studies)\\n\\nCarbon dioxide (9 studies): Three replicated, randomized, controlled studies from Spain\\u00a0found more carbon dioxide in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. Three replicated, randomized, controlled studies from Spain and the USA\\u00a0found less carbon dioxide in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. Three controlled studies from Italy, Spain, and the USA\\u00a0found similar amounts of carbon dioxide in soils with reduced tillage or conventional tillage, in all comparisons.\\nNitrous oxide (3 studies): Two replicated, randomized, controlled studies from Spain and the USA\\u00a0found more nitrous oxide in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. One controlled study from the USA\\u00a0found similar amounts of nitrous oxide in soils with reduced tillage or conventional tillage, in all comparisons.\\nMethane (1 study): One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of methane in soils with reduced tillage or conventional tillage.\\n\\nImplementation options (1 study): One replicated, randomized, controlled study from Egypt\\u00a0found that less soil was lost in runoff water from plots that were tilled at slower tractor speeds.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1358\"}",
+            "return_val": "{\n  \"action_id\": \"1358\",\n  \"action_title\": \"Crop production: Use no tillage instead of reduced tillage\",\n  \"key_messages\": \"Key Messages:\\nCrop yield (15 studies)\\n\\nCereals (7 studies): Three replicated, randomized, controlled studies from Spain\\u00a0found higher cereal yields in plots with no tillage, compared to reduced tillage. One of these studies\\u00a0also found lower cereal yields in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found lower cereal yields in plots with no tillage, compared to reduced tillage, in some comparisons. Three replicated, randomized, controlled studies from Australia, Lebanon, and Spain\\u00a0found similar cereal yields in plots with no tillage or reduced tillage, in all comparisons. \\nFruits and vegetables (3 studies): Three replicated, randomized, controlled studies from Italy\\u00a0found lower fruit or vegetable yields in plots with no tillage, compared to reduced tillage, in some comparisons. Two of these studies\\u00a0also found higher yields, in some comparisons.\\nLegumes (3 studies): Two replicated, controlled studies from Italy\\u00a0and Spain found higher legume yields in plots with no tillage, compared to reduced tillage, in some or all comparisons. One replicated, controlled study from Lebanon\\u00a0found similar legume yields in plots with no tillage, compared to reduced tillage.\\nOilseeds (1 study): One replicated, randomized, controlled study from Spain\\u00a0found lower sunflower seed yields in plots with no tillage, compared to reduced tillage, in some comparisons.\\nCrop residues (6 studies): Three replicated, controlled studies from Lebanon\\u00a0and Spain\\u00a0found higher straw yields in plots with no tillage, compared to reduced tillage, in some or all comparisons. One replicated, randomized, controlled study from Spain\\u00a0found lower straw yields in plots with no tillage, compared to reduced tillage. Two replicated, controlled studies from Italy and Spain\\u00a0found similar straw yields in plots with no tillage or reduced tillage.\\n\\nCrop quality (3 studies): One replicated, randomized, controlled study from Spain\\u00a0found larger peas, and more peas in a pod, in plots with no tillage, compared to reduced tillage, in one of four comparisons. One replicated, controlled study from Italy\\u00a0found similarly sized faba beans, and similar numbers of beans in a pod, in plots with no tillage, compared to reduced tillage. One replicated, randomized, controlled study from Spain\\u00a0found differences in the nutritional values of sunflower seeds in plots with no tillage, compared to reduced tillage.\\n\\n\\u00b7 Crop yield (15 studies)\\no Cereals (7 studies): Three replicated, randomized, controlled studies from Spain ADDIN EN.CITE  ADDIN EN.CITE.DATA    2,4,13    found higher cereal yields in plots with no tillage, compared to reduced tillage. One of these studies ADDIN EN.CITE Ang\\u00e1s200610410410417Ang\\u00e1s, P.Lampurlan\\u00e9s, J.Cantero-Mart\\u00ednez, C.Tillage and N fertilization: Effects on N dynamics and Barley yield under semiarid Mediterranean conditionsSoil and Tillage ResearchSoil and Tillage Research59-71871Conservation tillageNitrogen fertilizationN fertilizer efficiencyPhysiological N use efficiency20065//0167-1987http://www.sciencedirect.com/science/article/pii/S0167198705000991http://dx.doi.org/10.1016/j.still.2005.02.0362 also found lower cereal yields in some comparisons. One replicated, randomized, controlled study from Spain ADDIN EN.CITE L\\u00f3pez-Garrido201486868617L\\u00f3pez-Garrido, R.Madej\\u00f3n, E.Le\\u00f3n-Camacho, M.Gir\\u00f3n, I.Moreno, F.Murillo, J. M.Reduced tillage as an alternative to no-tillage under Mediterranean conditions: A case studySoil and Tillage ResearchSoil and Tillage Research40-47140Tillage systemsSoil conditionsCrop performanceSeed qualitySunflower20147//0167-1987http://www.sciencedirect.com/science/article/pii/S0167198714000300http://dx.doi.org/10.1016/j.still.2014.02.00811 found lower cereal yields in plots with no tillage, compared to reduced tillage, in some comparisons. Three replicated, randomized, controlled studies from Australia ADDIN EN.CITE Manalil201419119119117Manalil, SudheeshFlower, KenSoil water conservation and nitrous oxide emissions from different crop sequences and fallow under Mediterranean conditionsSoil and Tillage ResearchSoil and Tillage Research123-129143AustraliaDroughtFallowNitrous oxide201411//0167-1987http://www.sciencedirect.com/science/article/pii/S0167198714001214http://dx.doi.org/10.1016/j.still.2014.06.00612, Lebanon ADDIN EN.CITE Yau201077777717Yau, S. K.Sidahmed, M.Haidar, M.Conservation versus Conventional Tillage on Performance of Three Different CropsAgronomy JournalAgronomy Journal269-2761022010Madison, WIAmerican Society of Agronomyhttp://dx.doi.org/10.2134/agronj2009.024210.2134/agronj2009.0242English3, and Spain ADDIN EN.CITE Hernanz200284848417Hernanz, J. L.L\\u00f3pez, R.Navarrete, L.S\\u00e1nchez-Gir\\u00f3n, V.Long-term effects of tillage systems and rotations on soil structural stability and organic carbon stratification in semiarid central SpainSoil and Tillage ResearchSoil and Tillage Research129-141662Long-term effectTillageCrop rotationAggregate stabilitySoil organic carbonSemiarid conditions20027//0167-1987http://www.sciencedirect.com/science/article/pii/S0167198702000211http://dx.doi.org/10.1016/S0167-1987(02)00021-11 found similar cereal yields in plots with no tillage or reduced tillage, in all comparisons.\\no Fruits and vegetables (3 studies): Three replicated, randomized, controlled studies from Italy ADDIN EN.CITE  ADDIN EN.CITE.DATA   9,10,15   found lower fruit or vegetable yields in plots with no tillage, compared to reduced tillage, in some comparisons. Two of these studies ADDIN EN.CITE  ADDIN EN.CITE.DATA    9,15    also found higher yields, in some comparisons.\\no Legumes (3 studies): Two replicated, controlled studies from Italy ADDIN EN.CITE Giambalvo201210710710717Giambalvo, DarioRuisi, PaoloSaia, SergioDi Miceli, GiuseppeFrenda, Alfonso SalvatoreAmato, GaetanoFaba bean grain yield, N2 fixation, and weed infestation in a long-term tillage experiment under rainfed Mediterranean conditionsPlant and SoilPlant and Soil215-227360120122012//1573-5036http://dx.doi.org/10.1007/s11104-012-1224-510.1007/s11104-012-1224-57 and Spain ADDIN EN.CITE Sant\\u00edn-Montany\\u00e1201483838317Sant\\u00edn-Montany\\u00e1, M. I.Zambrana, E.Fern\\u00e1ndez-Getino, A. P.Tenorio, J. L.Dry pea (Pisum sativum L.) yielding and weed infestation response, under different tillage conditionsCrop ProtectionCrop Protection122-12865DiversityLegume-cropsSemi-arid conditionsYieldWeeds201411//0261-2194http://www.sciencedirect.com/science/article/pii/S0261219414002373http://dx.doi.org/10.1016/j.cropro.2014.07.017\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the potential negative impacts of using no-tillage systems in arable fields in a Mediterranean climate?\",\"action_ids\":[\"1358\",\"1371\"],\"summary\":\"In a Mediterranean climate, some studies have found that no-tillage systems can have negative impacts on crop yields and the environment. For instance, in some comparisons, no-tillage has been associated with lower yields of cereals, fruits and vegetables, and sunflower seeds (1358). Additionally, reduced tillage has been found in some studies to result in less nitrogen in the soil, as well as reduced microbial biomass (1371). Other negative impacts observed in some studies include lower water-stability of soil aggregates, smaller soil aggregates, and increased emissions of carbon dioxide and nitrous oxide from the soil (1371). Furthermore, one study found that shallower tillage led to more soil erosion (1371). In one study in Spain, lower straw yields were found in plots with no tillage compared to reduced tillage (1358).\"}",
+            "return_val": "{\n  \"query\": \"What are the potential negative impacts of using no-tillage systems in arable fields in a Mediterranean climate?\",\n  \"relevant_summary\": \"In a Mediterranean climate, some studies have found that no-tillage systems can have negative impacts on crop yields and the environment. For instance, in some comparisons, no-tillage has been associated with lower yields of cereals, fruits and vegetables, and sunflower seeds (1358). Additionally, reduced tillage has been found in some studies to result in less nitrogen in the soil, as well as reduced microbial biomass (1371). Other negative impacts observed in some studies include lower water-stability of soil aggregates, smaller soil aggregates, and increased emissions of carbon dioxide and nitrous oxide from the soil (1371). Furthermore, one study found that shallower tillage led to more soil erosion (1371). In one study in Spain, lower straw yields were found in plots with no tillage compared to reduced tillage (1358).\",\n  \"action_ids\": [\n    \"1358\",\n    \"1371\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1355",
+      "1397",
+      "1369",
+      "1384",
+      "1405"
+    ],
+    "regenerated_ids": [
+      "1355",
+      "1397",
+      "1369",
+      "1358",
+      "1370"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "For arable fields in the Mediterranean, how does a no-tillage system compare with a reduced tillage system for improving soil health?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A meta-analysis covering multiple Mediterranean countries indicated that reduced tillage resulted in higher organic matter in soils when compared to conventional tillage [1371]. Further studies in Italy, Spain, Syria, and the USA also found increased organic matter in soils with reduced tillage compared to conventional tillage, though two studies found similar levels [1371]. In terms of soil organisms, eleven studies in Italy, Spain, and the USA observed more microbial biomass in soils with reduced tillage versus conventional tillage [1371]. The impact of reduced tillage on soil nutrients like nitrogen, phosphorus, and potassium showed mixed results, with some studies reporting increases, some decreases, and others no significant difference compared to conventional tillage [1371]. For no-tillage systems, nine controlled studies in Spain and the USA found a greater amount of water in the soil compared to tilled soils, and one study in Spain noted that barley used water more efficiently in no-tillage plots [1384]. However, there were no studies found concerning pathogens, pesticides, nutrients or sediments for no-tillage systems in the provided information [1384].",
+    "summary_action_ids": [
+      "1371",
+      "1384"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"no-tillage vs reduced tillage soil health Mediterranean arable fields\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1371\",\n    \"action_title\": \"Soil: Use reduced tillage in arable fields\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1384\",\n    \"action_title\": \"Water: Use no tillage in arable fields\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1399\",\n    \"action_title\": \"Pest regulation: Use reduced tillage in arable fields\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1371\"}",
+            "return_val": "{\n  \"action_id\": \"1371\",\n  \"action_title\": \"Soil: Use reduced tillage in arable fields\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (14 studies): One meta-analysis from multiple Mediterranean countries\\u00a0found more organic matter in soils with reduced tillage, compared to conventional tillage. Eleven replicated studies (ten randomized and controlled, one site comparison) from Italy, Spain, Syria, and the USA\\u00a0found more organic matter in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. Two replicated, randomized, controlled studies from Spain and the USA\\u00a0found similar amounts of organic matter in soils with reduced tillage or conventional tillage, in all comparisons. No studies found less organic matter in soils with reduced tillage, compared to conventional tillage.\\n\\n\\nNutrients (15 studies)\\n\\nNitrogen (14 studies): Seven replicated studies (five randomized and controlled, one site comparison) from Italy, Spain, and the USA\\u00a0found more nitrogen in soils with reduced tillage, compared to conventional tillage, in some comparisons. Three of these studies\\u00a0also found less nitrogen in some comparisons. Two replicated, randomized, controlled studies from Spain found less nitrogen in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. Five replicated, randomized, controlled studies from Spain, Syria, and the USA\\u00a0found similar amounts of nitrogen in soils with reduced tillage or conventional tillage, in all comparisons.\\nPhosphorus (6 studies): Five replicated, randomized, controlled studies from Italy, Spain, and the USA\\u00a0found more phosphorus in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of phosphorus in soils with reduced tillage, compared to conventional tillage, in all comparisons.\\nPotassium (3 studies): Two replicated, randomized, controlled studies from Spain\\u00a0found more potassium in soils with reduced tillage, compared to conventional tillage, in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of potassium in soils with reduced tillage, compared to conventional tillage, in all comparisons.\\npH (1 study): One replicated, randomized, controlled study from Spain\\u00a0found similar pH levels in soils with reduced tillage or conventional tillage.\\n\\nSoil organisms (16 studies)\\n\\nMicrobial biomass (15 studies): Eleven replicated, randomized, controlled studies from Italy, Spain, and the USA\\u00a0found more microbial biomass in soils with reduced tillage, compared to conventional tillage, in some comparisons. Two replicated, randomized, controlled studies from Spain and Syria\\u00a0found less microbial biomass in soils with reduced tillage, compared to conventional tillage, in some comparisons. Two replicated, randomized, controlled studies from Spain\\u00a0found similar amounts of microbial biomass in soils with reduced tillage or conventional tillage, in all comparisons.\\nBacteria (1 study): One replicated, randomized, controlled study from Spain\\u00a0found more denitrifying bacteria in soils with reduced tillage, compared to conventional tillage.\\nOther soil organisms (2 studies): One replicated, controlled study from the USA\\u00a0found similar numbers of mites and nematodes, but differences in mite and nematode communities, in soils with reduced tillage, compared to conventional tillage. One replicated site comparison from the USA\\u00a0found more earthworms in fields with fewer passes of the plough, in one of three comparisons.\\n\\nSoil erosion and aggregation (9 studies)\\n\\nSoil aggregation (8 studies): Three replicated, randomized, controlled studies from Spain\\u00a0found that soil aggregates had higher water-stability in plots with reduced tillage, compared to conventional tillage, in some comparisons. One of these studies\\u00a0also found that soil aggregates had lower water-stability in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found that water-stability was similar in plots with reduced tillage or conventional tillage. One replicated, randomized, controlled study from Spain\\u00a0found more large aggregates in soils with reduced tillage, compared to conventional tillage, in one of two comparisons. One replicated, randomized, controlled study from Spain\\u00a0found smaller aggregates in soils with reduced tillage, compared to conventional tillage. Three replicated, randomized, controlled studies from Spain and the USA\\u00a0found similar amounts of aggregation in soils with reduced tillage or conventional tillage.\\nSoil erosion (1 study): One replicated, randomized, controlled study from Egypt\\u00a0found less erosion with less tillage (one pass with the tractor, compared to two), but found more erosion with shallower tillage, compared to deeper.\\n\\nGreenhouse gases (11 studies)\\n\\nCarbon dioxide (9 studies): Three replicated, randomized, controlled studies from Spain\\u00a0found more carbon dioxide in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. Three replicated, randomized, controlled studies from Spain and the USA\\u00a0found less carbon dioxide in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. Three controlled studies from Italy, Spain, and the USA\\u00a0found similar amounts of carbon dioxide in soils with reduced tillage or conventional tillage, in all comparisons.\\nNitrous oxide (3 studies): Two replicated, randomized, controlled studies from Spain and the USA\\u00a0found more nitrous oxide in soils with reduced tillage, compared to conventional tillage, in some or all comparisons. One controlled study from the USA\\u00a0found similar amounts of nitrous oxide in soils with reduced tillage or conventional tillage, in all comparisons.\\nMethane (1 study): One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of methane in soils with reduced tillage or conventional tillage.\\n\\nImplementation options (1 study): One replicated, randomized, controlled study from Egypt\\u00a0found that less soil was lost in runoff water from plots that were tilled at slower tractor speeds.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1384\"}",
+            "return_val": "{\n  \"action_id\": \"1384\",\n  \"action_title\": \"Water: Use no tillage in arable fields\",\n  \"key_messages\": \"Key Messages:\\nWater use (1 study): One replicated, randomized, controlled study from Spain\\u00a0found that barley used water more efficiently in plots without tillage, compared to plots with tillage, in some comparisons.\\nWater availability (14 studies): Nine controlled studies (eight replicated and randomized) from Spain\\u00a0and the USA\\u00a0found more water in soils without tillage, compared to soils with tillage, in some or all comparisons. One replicated, randomized, controlled study from Lebanon\\u00a0found less water in soils without tillage, compared to soils with tillage, in some comparisons. Three replicated, controlled studies (two randomized) from Spain\\u00a0and the USA\\u00a0sometimes found more water, and sometimes found less water, in soils without tillage, compared to soils with tillage. One replicated, randomized, controlled study from Spain\\u00a0found lower porosity in soils without tillage, compared to soils with tillage, in some comparisons.\\nPathogens and pesticides (0 studies)\\nNutrients (0 studies)\\nSediments (0 studies)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"1371\",\"1384\"],\"summary\":\"A meta-analysis covering multiple Mediterranean countries indicated that reduced tillage resulted in higher organic matter in soils when compared to conventional tillage [1371]. Further studies in Italy, Spain, Syria, and the USA also found increased organic matter in soils with reduced tillage compared to conventional tillage, though two studies found similar levels [1371]. In terms of soil organisms, eleven studies in Italy, Spain, and the USA observed more microbial biomass in soils with reduced tillage versus conventional tillage [1371]. The impact of reduced tillage on soil nutrients like nitrogen, phosphorus, and potassium showed mixed results, with some studies reporting increases, some decreases, and others no significant difference compared to conventional tillage [1371]. For no-tillage systems, nine controlled studies in Spain and the USA found a greater amount of water in the soil compared to tilled soils, and one study in Spain noted that barley used water more efficiently in no-tillage plots [1384]. However, there were no studies found concerning pathogens, pesticides, nutrients or sediments for no-tillage systems in the provided information [1384].\",\"query\":\"For arable fields in the Mediterranean, how does a no-tillage system compare with a reduced tillage system for improving soil health?\"}",
+            "return_val": "{\n  \"query\": \"For arable fields in the Mediterranean, how does a no-tillage system compare with a reduced tillage system for improving soil health?\",\n  \"relevant_summary\": \"A meta-analysis covering multiple Mediterranean countries indicated that reduced tillage resulted in higher organic matter in soils when compared to conventional tillage [1371]. Further studies in Italy, Spain, Syria, and the USA also found increased organic matter in soils with reduced tillage compared to conventional tillage, though two studies found similar levels [1371]. In terms of soil organisms, eleven studies in Italy, Spain, and the USA observed more microbial biomass in soils with reduced tillage versus conventional tillage [1371]. The impact of reduced tillage on soil nutrients like nitrogen, phosphorus, and potassium showed mixed results, with some studies reporting increases, some decreases, and others no significant difference compared to conventional tillage [1371]. For no-tillage systems, nine controlled studies in Spain and the USA found a greater amount of water in the soil compared to tilled soils, and one study in Spain noted that barley used water more efficiently in no-tillage plots [1384]. However, there were no studies found concerning pathogens, pesticides, nutrients or sediments for no-tillage systems in the provided information [1384].\",\n  \"action_ids\": [\n    \"1371\",\n    \"1384\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1370",
+      "1369",
+      "1371"
+    ],
+    "regenerated_ids": [
+      "1370",
+      "1358",
+      "1385",
+      "1398"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "What are the potential drawbacks for crop production when planting ground cover in Mediterranean orchards or vineyards?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Potential drawbacks to planting ground cover in Mediterranean orchards or vineyards include the possibility of reduced nitrogen and phosphorus levels in the soil. For example, one study in the USA found less nitrogen in soils with ground cover in some comparisons (1367), and two studies in Spain and the USA found less phosphorus in soils with seeded cover crops compared to tilled soils in some instances (1367). Additionally, some studies have noted other soil changes, such as lower pH levels and increased emissions of carbon dioxide or nitrous oxide from the soil when cover crops are present (1367).",
+    "summary_action_ids": [
+      "1367"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"drawbacks of ground cover in Mediterranean orchards\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1367\",\n    \"action_title\": \"Soil: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1404\",\n    \"action_title\": \"Pollination: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1413\",\n    \"action_title\": \"Other biodiversity: Plant or maintain ground cover in orchards or vineyards\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1367\"}",
+            "return_val": "{\n  \"action_id\": \"1367\",\n  \"action_title\": \"Soil: Plant or maintain ground cover in orchards or vineyards\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (12 studies): Ten studies (eight replicated, randomized, and controlled, and two site comparisons) from Chile, France, Spain, and the USA\\u00a0found more organic matter in soils with ground cover, compared to soils without ground cover, in some or all comparisons. Two meta-analyses of studies from Mediterranean climates\\u00a0also found more organic matter in plots with ground cover.\\n\\nImplementation options (4 studies): One study from France\\u00a0found more organic matter in soils with permanent ground cover, compared to temporary ground cover, in one of three comparisons. Two studies from the USA\\u00a0found similar amounts of organic matter in soils with resident vegetation or seeded cover crops. One study from Spain\\u00a0found more organic matter where cover crops were incorporated into the soil.\\n\\nNutrients (12 studies)\\n\\nNitrogen (9 studies): Five studies (four replicated, randomized, and controlled, and one site comparison) from Chile and Spain\\u00a0found more nitrogen in soils with ground cover, compared to soils without ground cover, in some or all comparisons. One replicated, randomized, controlled study from the USA\\u00a0found less nitrogen in soils with ground cover, in some comparisons. Two replicated, randomized, controlled studies from Spain\\u00a0and the USA\\u00a0found inconsistent differences in nitrogen between soils with or without ground cover. One replicated site comparison from France\\u00a0found similar amounts of nitrogen in soils with or without ground cover.  \\n\\nImplementation options (5 studies): Two studies from Spain\\u00a0and the USA\\u00a0found more nitrogen in soils that were cover cropped with legumes, compared to non-legumes, in some\\u00a0or all comparisons. Two studies from vineyards in the USA\\u00a0found similar amounts of nitrogen in soils with resident vegetation or seeded cover crops. One of these studies\\u00a0also found similar amounts of nitrogen in soils with different types of seeded cover crops, and in soils with or without tillage (both with ground cover). One study from Spain\\u00a0found more nitrogen where cover crops were incorporated into the soil. \\n\\n\\nPhosphorus (4 studies): One replicated site comparison from France\\u00a0found more phosphorus in soils with ground cover, compared to bare soils, in one of six comparisons. Two studies (one replicated, randomized, and controlled, and one site comparison) from Spain\\u00a0and the USA found less phosphorus in soils with seeded cover crops, compared to tilled soils, in some comparisons. One replicated, randomized, controlled study from Chile found similar amounts of phosphorus in soils with seeded cover crops and bare soils.  \\n\\nImplementation options (3 studies): One study from France\\u00a0found more phosphorus in soils with permanent ground cover, compared to temporary ground cover, in one of three comparisons. One study from the USA\\u00a0found similar amounts of phosphorus in soils with resident vegetation or seeded cover crops. One study from Spain\\u00a0found different amounts of phosphorus in soils with different types of seeded cover crops. \\n\\n\\nPotassium (3 studies): One replicated, randomized, controlled study from Chile found more potassium in soils with seeded cover crops, compared to bare soils. Two site comparisons (one replicated) from France\\u00a0and Spain\\u00a0found similar amounts of potassium in soils with ground cover, compared to tilled or bare soil.  \\n\\nImplementation options (1 study): One study from the USA\\u00a0found similar amounts of potassium in soils with resident vegetation or seeded cover crops. \\n\\n\\npH (4 studies): Two studies (one replicated, randomized, and controlled, and one site comparison) from Spain\\u00a0and the USA\\u00a0found lower pH levels in soils with ground cover, compared to soils without ground cover. One replicated, randomized, controlled study from Chile found higher pH levels in soils with ground cover. One replicated site comparison from France\\u00a0found similar pH levels in soils with or without ground cover.\\n\\n\\n\\nSoil organisms (6 studies)\\n\\nMicrobial biomass (4 studies): Four replicated studies (three randomized and controlled, one site comparison) from France\\u00a0and the USA\\u00a0found more microbial biomass in soils with ground cover, compared to bare or tilled soils, in some or all comparisons.  \\n\\nImplementation options (1 study): One study from France\\u00a0found more microbial biomass in soils with permanent ground cover, compared to temporary ground cover, in some comparisons. \\n\\n\\nFungi (2 studies): One replicated, controlled study from the USA\\u00a0found more symbiotic fungi (mycorrhizae) in soils with seeded cover crops, compared to tilled soils, in some comparisons, but found similar numbers of roots that were colonized by mycorrhizae. One replicated, randomized, controlled study from the USA\\u00a0found inconsistent differences in mycorrhizae in soils with seeded cover crops or tilled soils. \\nBacteria (1 study): One replicated, randomized, controlled study from Spain\\u00a0found more bacteria, but similar levels of bacterial diversity, in soils with ground cover, compared to bare soils. \\nNematodes (1 study): One replicated site comparison from France\\u00a0found more nematodes in soils with ground cover, compared to bare soils.  \\n\\nImplementation options (1 study): One study from France\\u00a0found more nematodes in soils with permanent ground cover, compared to temporary ground cover, in one of three comparisons.\\n\\n\\n\\nSoil erosion and aggregation (10 studies)\\n\\nSoil erosion (7 studies): Six replicated, randomized, controlled studies from Chile, Italy, Spain, and the USA\\u00a0found less erosion of soils with ground cover, compared to bare or tilled soils, in some comparisons\\u00a0or all comparisons. One replicated, controlled study from France\\u00a0found similar amounts of erosion in plots with or without ground cover.  \\n\\nImplementation options (1 study): One study from Italy\\u00a0found the least erosion with permanent cover crops, and the most erosion with temporary cover crops. \\n\\n\\nSoil aggregation (5 studies): Four replicated, randomized, controlled studies from Chile and Spain\\u00a0found that soil aggregates were more water-stable in plots with seeded cover crops, compared to tilled or bare soils, in some or all comparisons. One site comparison from Spain found inconsistent differences in water stability between soils with seeded cover crops and bare soils.\\n\\nGreenhouse gases (3 studies): Two replicated, randomized, controlled studies from a vineyard in the USA\\u00a0found more carbon dioxide\\u00a0or nitrous oxide\\u00a0in soils with cover crops, compared to tilled soils. One replicated, randomized, controlled study from an olive orchard in Spain\\u00a0found similar amounts of carbon dioxide in soils with cover crops, compared to tilled soils.\\n\\n\\nImplementation options (1 study): One study from the USA\\u00a0found similar amounts of carbon dioxide in soils with different types of ground cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1404\"}",
+            "return_val": "{\n  \"action_id\": \"1404\",\n  \"action_title\": \"Pollination: Plant or maintain ground cover in orchards or vineyards\",\n  \"key_messages\": \"Key Messages:\\nPollination (0 studies)\\nCrop visitation (0 studies)\\nPollinator numbers (0 studies)\\nImplementation options (1 study): One replicated site comparison from Greece\\u00a0found more bee species and more deposited pollen grains in managed olive orchards, compared to abandoned olive orchards, which differed in ground cover.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1413\"}",
+            "return_val": "{\n  \"action_id\": \"1413\",\n  \"action_title\": \"Other biodiversity: Plant or maintain ground cover in orchards or vineyards\",\n  \"key_messages\": \"Key Messages:\\nAmphibians (0 studies)\\nBirds (1 study): One site comparison from Spain\\u00a0found more birds and higher bird diversity in a vineyard with resident vegetation (without tillage), compared to a vineyard with bare soil (with conventional tillage), between the vine rows.\\nInvertebrates (0 studies)\\nFungi (1 study): One replicated, randomized, controlled study from Portugal\\u00a0found more mushrooms and mushroom species in plots with cover crops (without tillage), compared to plots without cover crops (with conventional tillage).\\nMammals (0 studies)\\nPlants (0 studies)\\nReptiles (0 studies)\\nImplementation options (3 studies): One site comparison from Spain\\u00a0found more birds and higher bird diversity in a vineyard with mown resident vegetation, compared to a vineyard with herbicide-treated resident vegetation, between the vine rows. One replicated, randomized, controlled study from Portugal\\u00a0found fewer mushrooms and fewer mushroom species, but similar mushroom diversity, in plots with seeded cover crops, compared to resident vegetation. One replicated site comparison from Greece\\u00a0found more flowering plant species, and higher flowering plant cover, in managed orchards, compared to abandoned orchards.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"Potential drawbacks to planting ground cover in Mediterranean orchards or vineyards include the possibility of reduced nitrogen and phosphorus levels in the soil. For example, one study in the USA found less nitrogen in soils with ground cover in some comparisons (1367), and two studies in Spain and the USA found less phosphorus in soils with seeded cover crops compared to tilled soils in some instances (1367). Additionally, some studies have noted other soil changes, such as lower pH levels and increased emissions of carbon dioxide or nitrous oxide from the soil when cover crops are present (1367).\",\"action_ids\":[\"1367\"],\"query\":\"What are the potential drawbacks for crop production when planting ground cover in Mediterranean orchards or vineyards?\"}",
+            "return_val": "{\n  \"query\": \"What are the potential drawbacks for crop production when planting ground cover in Mediterranean orchards or vineyards?\",\n  \"relevant_summary\": \"Potential drawbacks to planting ground cover in Mediterranean orchards or vineyards include the possibility of reduced nitrogen and phosphorus levels in the soil. For example, one study in the USA found less nitrogen in soils with ground cover in some comparisons (1367), and two studies in Spain and the USA found less phosphorus in soils with seeded cover crops compared to tilled soils in some instances (1367). Additionally, some studies have noted other soil changes, such as lower pH levels and increased emissions of carbon dioxide or nitrous oxide from the soil when cover crops are present (1367).\",\n  \"action_ids\": [\n    \"1367\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1352"
+    ],
+    "regenerated_ids": [
+      "1352",
+      "1382",
+      "1395"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "What does the evidence say about how adding different organic amendments to soil affects greenhouse gas emissions on Mediterranean farmland?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "When slurry is added to the soil, two studies in Spain found higher carbon dioxide emissions, while one study showed no difference (1365). One study in Spain indicated that less methane was absorbed by soils with added slurry, whereas three other studies found similar methane fluxes (1365). Additionally, five studies in Spain reported higher nitrous oxide emissions in soils with added slurry, compared to one study that found similar emissions (1365). When comparing digested and untreated slurry, a Spanish study found similar nitrous oxide emissions, and another study found similar carbon dioxide and methane emissions (1365).\n\nWhen comparing organic to inorganic fertilizers, four studies in Italy and Spain noted higher carbon dioxide emissions from plots with organic fertilizer, with one Spanish study finding similar emissions (1366). In terms of methane, two Spanish studies revealed that more methane was absorbed by soils with organic fertilizer, while two other studies showed similar absorption amounts (1366). For nitrous oxide, three studies, including a meta-analysis, reported lower emissions from plots with organic fertilizer, whereas five studies in Spain found similar emissions (1366). The meta-analysis also indicated lower nitrous oxide emissions after adding solid organic fertilizer, but not liquid organic fertilizer, compared to inorganic fertilizer (1366). Furthermore, one study in Spain found that plots with slurry absorbed methane, while plots with manure emitted it (1366).\n\nRegarding the exclusion of grazers, one study in Spain found more carbon dioxide in the soil of ungrazed plots compared to grazed plots, while a US study found similar amounts (1375). Another study in the USA found less methane in the soils of ungrazed plots compared to cattle-grazed plots (1375).",
+    "summary_action_ids": [
+      "1365",
+      "1366",
+      "1375"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"organic amendments soil greenhouse gas emissions on Mediterranean farmland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1365\",\n    \"action_title\": \"Soil: Add slurry to the soil\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1366\",\n    \"action_title\": \"Soil: Use organic fertilizer instead of inorganic\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1375\",\n    \"action_title\": \"Soil: Exclude grazers\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1365\"}",
+            "return_val": "{\n  \"action_id\": \"1365\",\n  \"action_title\": \"Soil: Add slurry to the soil\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (4 studies): Three studies (two replicated, randomized, controlled; one meta-analysis) from Spain\\u00a0and multiple Mediterranean countries\\u00a0found similar amounts of organic matter in soils with or without added slurry. One replicated, randomized, controlled study from Spain\\u00a0found more organic matter in soils with added slurry, compared to soils without it, in some comparisons.\\nNutrients (4 studies): Two replicated, randomized, controlled studies from Spain found more nitrate in soils with added slurry, compared to soils without it. Two replicated, randomized, controlled studies from Portugal\\u00a0and Spain\\u00a0found similar amounts of nitrate in soils with or without added slurry. One of these studies\\u00a0also found more ammonium, but another one did not.\\nSoil organisms (2 studies): One replicated, randomized, controlled study from Spain\\u00a0found more microbial biomass in soils with added slurry, compared to soils without it, but another one did not.\\nSoil erosion and aggregation (1 study): One replicated, randomized, controlled study from Spain found more stable soils in plots with added slurry, compared to plots without it, in some comparisons.\\nGreenhouse gases (8 studies)\\n\\nCarbon dioxide (3 studies): Of three replicated, randomized, controlled studies from Spain, two studies\\u00a0found higher carbon dioxide emissions in soils with added slurry, compared to soils without it, but one study\\u00a0did not.\\nMethane (4 studies): One replicated, randomized, controlled study from Spain\\u00a0found that less methane was absorbed by soils with added slurry, compared to soils without it. Three replicated, randomized, controlled studies from Spain\\u00a0found similar methane fluxes in soils with or without added slurry.\\nNitrous oxide (6 studies): Five replicated, randomized, controlled studies from Spain\\u00a0found higher nitrous oxide emissions in soils with added slurry, compared to soils without it, in some or all comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar nitrous oxide emissions in soils with or without added slurry.\\n\\nImplementation options (3 studies): One replicated, randomized, controlled study from Spain\\u00a0found no differences in organic matter or greenhouse-gas emissions between plots with different amounts of slurry. One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of nitrogen in soils with or without added slurry. One replicated, randomized, controlled study from Spain\\u00a0found similar nitrous oxide emissions in soils with digested or untreated pig slurry. One replicated, randomized, controlled study from Spain\\u00a0found similar carbon dioxide and methane emissions in soils with digested or untreated slurry.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1366\"}",
+            "return_val": "{\n  \"action_id\": \"1366\",\n  \"action_title\": \"Soil: Use organic fertilizer instead of inorganic\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (13 studies): Eight replicated studies (including one meta-analysis) from France, Italy, Spain, Turkey, and Mediterranean countries\\u00a0found more organic matter in soils with organic fertilizer, compared to inorganic fertilizer, in some comparisons. Five replicated, randomized, controlled studies from Greece, Spain, and the USA\\u00a0found similar amounts of organic matter in soils with organic or inorganic fertilizer.\\nNutrients (14 studies)\\n\\nNitrogen (9 studies): Four replicated studies (three controlled, two randomized; one site comparison) from France, Italy, and Spain\\u00a0found more nitrogen in soils with organic fertilizers, compared to inorganic fertilizer, in some comparisons. Five replicated, randomized, controlled studies from Greece, Spain, and the USA\\u00a0found similar amounts of nitrogen in soils with organic or inorganic fertilizer.\\nAmmonium (3 studies): Two replicated, randomized, controlled studies from Italy\\u00a0and Spain found more ammonium in soils with organic fertilizer, compared inorganic fertilizer, in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of ammonium in soils with organic or inorganic fertilizer.\\nNitrate (3 studies): One replicated, randomized, controlled study from Spain\\u00a0found less nitrate in soils with organic fertilizer, compared to inorganic fertilizer, in some comparisons. Two replicated, randomized, controlled studies from Portugal\\u00a0and Spain\\u00a0found similar amounts of nitrate in soils with organic or inorganic fertilizer.\\nPhosphorus (5 studies): Three replicated, randomized, controlled studies from Italy\\u00a0and Spain found more phosphorus in soils with organic fertilizer, compared to inorganic fertilizer, in some or all comparisons. One replicated site comparison from France\\u00a0found less phosphorous in soils with organic fertilizer, in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of phosphorous in soils with organic or inorganic fertilizer. \\nPotassium (6 studies): Three replicated, randomized, controlled studies from Italy\\u00a0and Spain found more potassium in soils with organic fertilizer, compared to inorganic fertilizer, in some comparisons. Three replicated studies (two controlled, one site comparison) from France\\u00a0and Spain\\u00a0found similar amounts of potassium in soils with organic or inorganic fertilizer.\\npH (6 studies): Four replicated studies (three randomized and controlled, one site comparison) from France, Italy, and Spain\\u00a0found similar pH levels in soils with organic or inorganic fertilizer. One replicated, controlled study from Italy\\u00a0found higher pH levels in soils with organic fertilizer, in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found lower pH levels in soils with organic fertilizer, in some comparisons.\\n\\nSoil organisms (7 studies)\\n\\nMicrobial biomass (4 studies): Four replicated studies (three randomized and controlled, one site comparison) from France, Italy, and Spain\\u00a0found more microbial biomass in soils with organic fertilizer, compared to inorganic fertilizer, in some comparisons.\\nOther soil organisms (4 studies): One replicated, randomized, controlled study from Spain\\u00a0found fewer bacteria in soils with organic fertilizer, compared to inorganic fertilizer, in one comparison. One replicated site comparison from France\\u00a0found fewer nematodes in plots with organic fertilizer, compared to inorganic fertilizer, in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found fewer mites in plots with organic fertilizer, compared to inorganic fertilizer. One replicated, randomized, controlled study from Italy\\u00a0found inconsistent differences in microbes between plots with organic or inorganic fertilizer.\\n\\nSoil erosion and aggregation (5 studies): Three replicated, randomized, controlled studies from Turkey\\u00a0and Spain\\u00a0found greater aggregation in soils with organic fertilizer, compared to inorganic fertilizer, in some or all comparisons. Two replicated, randomized, controlled studies from Spain\\u00a0and the USA\\u00a0found no difference in aggregation between soils with organic or inorganic fertilizer.\\nGreenhouse gases (11 studies)\\n\\nCarbon dioxide (5 studies): Four replicated, randomized, controlled studies from Italy\\u00a0and Spain\\u00a0found higher carbon dioxide emissions from plots with organic fertilizer, compared to inorganic fertilizer, in some comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar carbon dioxide emissions from plots with organic or inorganic fertilizer.\\nMethane (4 studies): Two replicated, randomized, controlled studies from Spain\\u00a0found that more methane was absorbed by soils with organic fertilizer, compared to inorganic fertilizer, in some comparisons. Two replicated, randomized, controlled studies from Spain\\u00a0found that similar amounts of methane were absorbed by soils with organic or inorganic fertilizer.\\nNitrous oxide (8 studies): Five replicated, randomized, controlled studies from Spain\\u00a0found similar nitrous oxide emissions from plots with organic or inorganic fertilizer. Three studies (including one meta-analysis and two replicated, randomized, controlled studies) from Spain, the USA, and Mediterranean countries\\u00a0found lower nitrous oxide emissions from plots with organic fertilizer, compared to inorganic fertilizer, in some comparisons.\\n\\nImplementation options (4 studies): One study from Spain found that plots with slurry absorbed methane, but plots with manure emitted methane. One study from Italy\\u00a0found more organic matter, nutrients, and microbial biomass in plots fertilized with compost, compared to manure. One meta-analysis\\u00a0found lower nitrous oxide emissions after adding solid organic fertilizer, but not liquid organic fertilizer, compared to inorganic fertilizer. One study\\u00a0found inconsistent differences in soil bacteria with a single or double application of organic fertilizer.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1375\"}",
+            "return_val": "{\n  \"action_id\": \"1375\",\n  \"action_title\": \"Soil: Exclude grazers\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (1 study): One replicated site comparison in shrublands in Spain\\u00a0found less carbon in soils at ungrazed sites, compared to cow-and-sheep-grazed sites.\\nNutrients (3 studies): Three replicated studies (one controlled, two site comparisons) from the USA and Spain\\u00a0found less nitrogen in soils in ungrazed areas, compared to sheep- or cattle-grazed areas, in some or all comparisons. One of these studies\\u00a0found more phosphorus in soils at ungrazed sites, compared to grazed sites.\\nSoil organisms (1 study): One controlled study on a streambank in the USA\\u00a0found more nematodes and more diverse nematode communities in an area with goats and sheep excluded.\\nSoil erosion and aggregation (0 studies)\\nGreenhouse gases (3 studies): One replicated site comparison in shrublands in Spain\\u00a0found more carbon dioxide in soils (soil respiration) in ungrazed plots, compared to sheep- or cattle-grazed plots. One replicated, randomized, controlled study in grassland in the USA\\u00a0found similar amounts of carbon dioxide in soils (soil respiration) in ungrazed and cattle-grazed sites. One replicated, randomized, controlled study in wet grasslands in the USA\\u00a0found less methane in soils in ungrazed plots, compared to cattle-grazed plots.\\nImplementation options (1 study): One replicated site comparison in shrubland in Spain\\u00a0found less carbon and nitrogen in untilled soils that were grazed, compared to ungrazed, but found no differences in tilled soils that were grazed or ungrazed.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What does the evidence say about how adding different organic amendments to soil affects greenhouse gas emissions on Mediterranean farmland?\",\"action_ids\":[\"1365\",\"1366\",\"1375\"],\"summary\":\"When slurry is added to the soil, two studies in Spain found higher carbon dioxide emissions, while one study showed no difference (1365). One study in Spain indicated that less methane was absorbed by soils with added slurry, whereas three other studies found similar methane fluxes (1365). Additionally, five studies in Spain reported higher nitrous oxide emissions in soils with added slurry, compared to one study that found similar emissions (1365). When comparing digested and untreated slurry, a Spanish study found similar nitrous oxide emissions, and another study found similar carbon dioxide and methane emissions (1365).\\n\\nWhen comparing organic to inorganic fertilizers, four studies in Italy and Spain noted higher carbon dioxide emissions from plots with organic fertilizer, with one Spanish study finding similar emissions (1366). In terms of methane, two Spanish studies revealed that more methane was absorbed by soils with organic fertilizer, while two other studies showed similar absorption amounts (1366). For nitrous oxide, three studies, including a meta-analysis, reported lower emissions from plots with organic fertilizer, whereas five studies in Spain found similar emissions (1366). The meta-analysis also indicated lower nitrous oxide emissions after adding solid organic fertilizer, but not liquid organic fertilizer, compared to inorganic fertilizer (1366). Furthermore, one study in Spain found that plots with slurry absorbed methane, while plots with manure emitted it (1366).\\n\\nRegarding the exclusion of grazers, one study in Spain found more carbon dioxide in the soil of ungrazed plots compared to grazed plots, while a US study found similar amounts (1375). Another study in the USA found less methane in the soils of ungrazed plots compared to cattle-grazed plots (1375).\"}",
+            "return_val": "{\n  \"query\": \"What does the evidence say about how adding different organic amendments to soil affects greenhouse gas emissions on Mediterranean farmland?\",\n  \"relevant_summary\": \"When slurry is added to the soil, two studies in Spain found higher carbon dioxide emissions, while one study showed no difference (1365). One study in Spain indicated that less methane was absorbed by soils with added slurry, whereas three other studies found similar methane fluxes (1365). Additionally, five studies in Spain reported higher nitrous oxide emissions in soils with added slurry, compared to one study that found similar emissions (1365). When comparing digested and untreated slurry, a Spanish study found similar nitrous oxide emissions, and another study found similar carbon dioxide and methane emissions (1365).\\n\\nWhen comparing organic to inorganic fertilizers, four studies in Italy and Spain noted higher carbon dioxide emissions from plots with organic fertilizer, with one Spanish study finding similar emissions (1366). In terms of methane, two Spanish studies revealed that more methane was absorbed by soils with organic fertilizer, while two other studies showed similar absorption amounts (1366). For nitrous oxide, three studies, including a meta-analysis, reported lower emissions from plots with organic fertilizer, whereas five studies in Spain found similar emissions (1366). The meta-analysis also indicated lower nitrous oxide emissions after adding solid organic fertilizer, but not liquid organic fertilizer, compared to inorganic fertilizer (1366). Furthermore, one study in Spain found that plots with slurry absorbed methane, while plots with manure emitted it (1366).\\n\\nRegarding the exclusion of grazers, one study in Spain found more carbon dioxide in the soil of ungrazed plots compared to grazed plots, while a US study found similar amounts (1375). Another study in the USA found less methane in the soils of ungrazed plots compared to cattle-grazed plots (1375).\",\n  \"action_ids\": [\n    \"1365\",\n    \"1366\",\n    \"1375\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1362",
+      "1363",
+      "1364",
+      "1365",
+      "1366"
+    ],
+    "regenerated_ids": [
+      "1345",
+      "1362",
+      "1363",
+      "1364",
+      "1365",
+      "1366"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "What are the effects of different soil amendments on soil organisms in Mediterranean farmland?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": {
+      "erroneous_summary": "A controlled, randomized, replicated trial in Italy discovered that the application of a high dosage of compost resulted in an elevation of microbial biomass (889). In addition, it was observed in five controlled trials in China and India, as well as a study in Japan, that soils treated with a combination of manure and inorganic fertilizers showed increased microbial biomass and activity (902). An increase in microbial diversity was also noted in one of these trials (902)."
+    },
+    "summary_action_ids": [
+      "889",
+      "902"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of soil amendments on soil organisms in Mediterranean farmland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"728\",\n    \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"902\",\n    \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"889\",\n    \"action_title\": \"Amend the soil with composts not otherwise specified\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"728\"}",
+            "return_val": "{\n  \"action_id\": \"728\",\n  \"action_title\": \"Incorporate plant remains into the soil that produce weed-controlling chemicals\",\n  \"key_messages\": \"Key Messages:\\nWeeds: Six studies (including six randomised, replicated, controlled tests) from Asia, Europe and North America examined the effect of allelopathic plant remains on weeds by comparing amended soils with weeded controls. Three studies found a reduction in weed growth, and three found effects varied between years, weed groups, or the type of weeding method in controls.Four studies from Asia \\u00a0and North America examined the effect on weeds by comparing amended soils with unweeded controls. Two studies found a reduction in weed growth, but one found that residues applied too far in advance of crop planting had the reverse effect. Two studies found that effects varied between trials, weed species or the type of residue used.Two studies, including one randomised, replicated, controlled laboratory study, found that the decrease in weeds did not last beyond a few days or weeks after residue incorporation. Pests: One randomised, replicated, controlled study in the Philippines found mixed effects on pests. Crop growth: Two of three studies found crop growth was inhibited by allelopathic plant remains, but this could be minimised by changing the timing of application. One study found effects varied between years. Yield: Three\\u00a0randomised, replicated, controlled studies compared yields in amended plots with weeded controls and found positive, negative and\\u00a0mixed effects. Three studies compared amended plots with unweeded controls, two found positive effects on yield and one found mixed effects (depending on the crop). Profit: One study found that amending soils increased profit compared to unweeded controls, but not compared to weeded controls.\\n\\u00a0\\nCrops studied were beans, cotton, maize, rice and wheat.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"902\"}",
+            "return_val": "{\n  \"action_id\": \"902\",\n  \"action_title\": \"Amend the soil using a mix of organic and inorganic amendments\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity: Five controlled trials from China and India (four also randomized and replicated), and one study from Japan found higher microbial biomass and activity in soils with a mix of manure and inorganic fertilizers. Manure alone also increased microbial biomass. One trial found increased microbial diversity.\\nErosion: One controlled, replicated trial from India found that mixed amendments were more effective at reducing the size of cracks in dry soil than inorganic fertilizers alone or no fertilizer.\\nSOC loss: Four controlled, randomized, replicated trials and one controlled trial from China and India found more organic carbon in soils with mixed fertilizers. Manure alone also increased organic carbon. One trial also found more carbon in soil amended with inorganic fertilizers and lime.\\nSOM loss: Two controlled, randomized, replicated trials from China and India found more nutrients in soils with manure and inorganic fertilizers. One controlled, randomized, replicated trial from China found inconsistent effects of using mixed manure and inorganic fertilizers.\\nYield: Two controlled, randomized, replicated trials from China found increased maize Zea mays yield in soils with mixed manure and inorganic fertilizer amendments.\\nSOIL TYPES COVERED: clay, clay loam, sandy-loam, silt clay loam, silty-loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"889\"}",
+            "return_val": "{\n  \"action_id\": \"889\",\n  \"action_title\": \"Amend the soil with composts not otherwise specified\",\n  \"key_messages\": \"Key Messages:\\nOne controlled, randomized, replicated trial in Italy found that applying a high rate of compost increased soil organic matter levels, microbial biomass and fruit yield.\\n \\nSOIL TYPES COVERED: Silty-clay.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":3,\"query_string\":\"effects of soil amendments on soil organisms in Mediterranean farmland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"889\",\n    \"action_title\": \"Amend the soil with composts not otherwise specified\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3310\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: freshwater wetlands\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3270\",\n    \"action_title\": \"Transplant or replace wetland soil: freshwater marshes\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"action_ids\":[\"889\",\"902\"],\"summary\":\"A controlled, randomized, replicated trial in Italy discovered that the application of a high dosage of compost resulted in an elevation of microbial biomass (889). In addition, it was observed in five controlled trials in China and India, as well as a study in Japan, that soils treated with a combination of manure and inorganic fertilizers showed increased microbial biomass and activity (902). An increase in microbial diversity was also noted in one of these trials (902).\",\"query\":\"effects of soil amendments on soil organisms in Mediterranean farmland\"}",
+            "return_val": "{\n  \"query\": \"effects of soil amendments on soil organisms in Mediterranean farmland\",\n  \"relevant_summary\": \"A controlled, randomized, replicated trial in Italy discovered that the application of a high dosage of compost resulted in an elevation of microbial biomass (889). In addition, it was observed in five controlled trials in China and India, as well as a study in Japan, that soils treated with a combination of manure and inorganic fertilizers showed increased microbial biomass and activity (902). An increase in microbial diversity was also noted in one of these trials (902).\",\n  \"action_ids\": [\n    \"889\",\n    \"902\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1362",
+      "1363",
+      "1364",
+      "1365"
+    ],
+    "regenerated_ids": [
+      "1345",
+      "1362",
+      "1363",
+      "1364",
+      "1365",
+      "1366"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "To improve water availability on my arable farm in a Mediterranean climate, what management practices can I use?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "The action \"Manage natural water bodies in arid areas to prevent desiccation\" is suggested, but no studies were found to evaluate its effects (2027). Other actions include providing buffer strips alongside water courses, which can positively influence biodiversity (120), and growing cover crops, which can reduce weeds (1394). Additionally, taking field corners out of management has been linked to higher grey partridge survival (128), reducing field size can increase butterfly and burnet moth populations (3974), and converting to organic farming may boost the richness and abundance of butterflies and moths (3907).",
+    "summary_action_ids": [
+      "2027",
+      "120",
+      "1394",
+      "128",
+      "3974",
+      "3907"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"water availability on arable farm in a Mediterranean climate\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3169\",\n    \"action_title\": \"Modify crop farming practices in watershed to reduce pollution: brackish/saline swamps\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3168\",\n    \"action_title\": \"Modify crop farming practices in watershed to reduce pollution: freshwater swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2027\",\n    \"action_title\": \"Manage natural water bodies in arid areas to prevent desiccation\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"water management on arable farm\",\"k\":10}",
+            "return_val": "[\n  {\n    \"action_id\": \"3167\",\n    \"action_title\": \"Modify crop farming practices in watershed to reduce pollution: brackish/salt marshes\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"3169\",\n    \"action_title\": \"Modify crop farming practices in watershed to reduce pollution: brackish/saline swamps\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3168\",\n    \"action_title\": \"Modify crop farming practices in watershed to reduce pollution: freshwater swamps\",\n    \"rank\": 3\n  },\n  {\n    \"action_id\": \"3166\",\n    \"action_title\": \"Modify crop farming practices in watershed to reduce pollution: freshwater marshes\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"3907\",\n    \"action_title\": \"Convert to organic farming\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"128\",\n    \"action_title\": \"Take field corners out of management\",\n    \"rank\": 6\n  },\n  {\n    \"action_id\": \"120\",\n    \"action_title\": \"Provide buffer strips alongside water courses (rivers and streams)\",\n    \"rank\": 7\n  },\n  {\n    \"action_id\": \"3974\",\n    \"action_title\": \"Reduce field size (or maintain small fields)\",\n    \"rank\": 8\n  },\n  {\n    \"action_id\": \"1394\",\n    \"action_title\": \"Pest regulation: Grow cover crops in arable fields\",\n    \"rank\": 9\n  },\n  {\n    \"action_id\": \"25\",\n    \"action_title\": \"Convert to organic farming\",\n    \"rank\": 10\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3907\"}",
+            "return_val": "{\n  \"action_id\": \"3907\",\n  \"action_title\": \"Convert to organic farming\",\n  \"key_messages\": \"Key Messages:\\n\\nThirteen studies evaluated the effects on butterflies and moths of converting to organic farming. Six studies were in Sweden, three were in the UK\\u00a0and one was in each of Canada, Switzerland, Germany\\u00a0and Taiwan.\\n\\nCOMMUNITY RESPONSE (13 STUDIES)\\n\\nRichness/diversity (13 studies): Seven of 11 replicated, site comparison studies (including five paired studies) in Sweden, the UK, Canada, Switzerland, Germany\\u00a0and Taiwan\\u00a0found that organic arable farms had a greater species richness of butterflies, burnet moths\\u00a0and all moths\\u00a0than conventionally managed farms. However, three of these studies only found this in intensively managed not in more diverse landscapes,only in the first of three study years, and in farms managed organically for &lt;6 years but not 15\\u201323 years. Four of the studies found that organic arable\\u00a0and mixed\\u00a0farms had a similar species richness of macro-moths\\u00a0and butterflies\\u00a0to conventionally managed farms. Two of these studies also found that on organic and conventionally managed farms within a landscape with a high proportion of organic farms there was higher species richness of butterflies\\u00a0and burnet moths\\u00a0than either type of farm in a landscape with a high proportion of conventional farms. One before-and-after study in the UK\\u00a0found that within 4 years after a mixed farm converted to organic management (along with increasing the proportion of grassland and reducing grazing intensity) the species richness of large moths increased. One replicated, site comparison study in Sweden\\u00a0found that organic mixed farms had a more consistent species richness of butterflies across the farm, but a similar consistency through the summer and between years, compared to conventional farms.\\n\\nPOPULATION RESPONSE (12 STUDIES)\\n\\nAbundance (12 studies): Seven of 11 replicated, site comparison studies (including five paired studies) in Sweden, the UK, Canada, Switzerland, Germany\\u00a0and Taiwan\\u00a0found that organic arable farms had a greater abundance of butterflies, burnet moths, and all moths, than conventionally managed farms, and that butterfly abundance increased with time since farms had been converted to organic management. However, three of these studies only found this in intensively managed not in more diverse landscapes, and in farms managed organically for &lt;6 years but not 15\\u201323 years. One of these studies also found that on organic and conventionally managed farms within a landscape with a high proportion of organic farms there was higher abundance of butterflies than either type of farm in a landscape with a high proportion of conventional farms. The other four found that organic arable\\u00a0and mixed\\u00a0farms had a similar abundance of macro-moths\\u00a0and butterflies\\u00a0to conventionally managed farms. One before-and-after study in the UK\\u00a0found that within 4 years after a mixed farm converted to organic management (along with increasing the proportion of grassland and reducing grazing intensity) the total abundance of large moths, and the abundance of lunar underwing moths and 5 out of 23 butterfly species, increased, but the abundance of two butterfly species decreased.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1394\"}",
+            "return_val": "{\n  \"action_id\": \"1394\",\n  \"action_title\": \"Pest regulation: Grow cover crops in arable fields\",\n  \"key_messages\": \"Key Messages:\\nPest regulation (1 study): One replicated, randomized, controlled study from the USA\\u00a0found that fewer aphids were parasitized in plots with cover crops (living mulches) between broccoli plants, compared to plots without cover crops, in some comparisons.\\nCrop damage (6 studies): Three controlled studies (two replicated and randomized) from the USA\\u00a0found similar numbers of diseased broccoli seedlings\\u00a0or tomato plants\\u00a0in plots with or without winter cover crops. Two replicated, randomized, controlled studies from the USA\\u00a0found less-severely diseased lettuces in plots with winter cover crops, compared to winter fallows, in some comparisons. One replicated, randomized, controlled study from the USA\\u00a0found inconsistent differences in tomato damage between plots with cover crops or fallows.\\nRatio of natural enemies to pests (0 studies)\\nPest numbers (14 studies)\\n\\nWeeds (8 studies): Four replicated, randomized, controlled studies from Israel\\u00a0and Italy found fewer weeds in plots with cover crops, compared to plots without them, in some or all comparisons. One replicated, randomized, controlled study from the USA\\u00a0found more weeds in plots with winter cover crops, compared to plots without them, in some comparisons. Two replicated, controlled studies (one randomized) from Italy\\u00a0and the USA\\u00a0found that winter cover crops had inconsistent effects on weeds (sometimes more, sometimes fewer, compared to plots without winter cover crops). One controlled study from the USA\\u00a0found similar amounts of weeds in plots with winter cover crops or fallows.\\nWeed species (2 studies): One replicated, randomized, controlled study from Italy\\u00a0found fewer weed species in plots with winter cover crops, compared to plots without them, in one of three comparisons. One replicated, randomized, controlled study from the USA\\u00a0found different weed communities in plots with or without winter cover crops.\\nOther pests (6 studies): Two replicated, randomized, controlled studies from the USA\\u00a0found fewer aphids in plots with cover crops (living mulches) between broccoli plants, compared to plots without cover crops, in some comparisons. One replicated, randomized, controlled study from the USA\\u00a0found more mites (in some comparisons), but similar numbers of centipedes and springtails, in plots with winter cover crops, compared to plots without them. One replicated, randomized, controlled study from the USA\\u00a0found similar numbers of leafminers in plots with or without winter cover crops. One replicated, randomized, controlled study from the USA\\u00a0found similar amounts of fungus in soils with or without winter cover crops. One replicated, randomized, controlled study from the USA\\u00a0found inconsistent differences in nematode numbers between soils with cover crops or fallows.\\n\\nNatural enemy numbers (0 studies)\\nImplementation options (13 studies): Nine studies from Israel, Italy, and the USA\\u00a0found that different cover crops had different effects on crop damage\\u00a0or pest numbers. Two studies from the USA\\u00a0found that different cover crops (living mulches) did not have different effects on pest regulation\\u00a0or pest numbers. Two studies from the USA\\u00a0found that different methods of seeding cover crops had different effects on pest numbers.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"120\"}",
+            "return_val": "{\n  \"action_id\": \"120\",\n  \"action_title\": \"Provide buffer strips alongside water courses (rivers and streams)\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies      (including one replicated site comparison) from the Netherlands and the UK reported that the provision of riparian buffer strips had a positive      influence on plant, invertebrate and bird diversity or abundance, and supported vegetation associated with habitats preferred      by water voles.\\n\\n\\nTwo replicated site      comparison studies from France and Ireland found that the provision of      riparian buffer strips on farms did not result in an increase in the number of      plant species when compared to farms without buffer strips.\\n\\n\\nOne replicated site      comparison study found ground beetle diversity was higher in grazed      riparian zones and narrow fenced strips than in wide riparian buffer      strips. However the ground beetle assemblages in      wide riparian buffer strips were more distinct from the adjacent pasture      field assemblages than either the grazed riparian zones or narrow fenced      strips.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2027\"}",
+            "return_val": "{\n  \"action_id\": \"2027\",\n  \"action_title\": \"Manage natural water bodies in arid areas to prevent desiccation\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of managing natural water bodies in arid areas to prevent desiccation on bat populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"128\"}",
+            "return_val": "{\n  \"action_id\": \"128\",\n  \"action_title\": \"Take field corners out of management\",\n  \"key_messages\": \"Key Messages:\\n\\nA      replicated site comparison study in the UK found that      taking field corners out of management was positively correlated with grey      partridge overwinter survival. However it had no effect on grey partridge brood      size, the ratio of young to old birds or year-on-year density changes.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3974\"}",
+            "return_val": "{\n  \"action_id\": \"3974\",\n  \"action_title\": \"Reduce field size (or maintain small fields)\",\n  \"key_messages\": \"Key Messages:\\n\\nFive studies evaluated the effects of reducing field size on butterflies and moths. Two studies were in Switzerland, and one was in each of Germany, Sweden and the Czech Republic and Poland.\\n\\nCOMMUNITY RESPONSE (5 STUDIES)\\n\\nRichness/diversity (5 studies): Two of four replicated, site comparison studies in Sweden, the Czech Republic and Poland and Switzerland found that arable farms (in more diverse landscapes) and landscapes with smaller fields had a higher species richness of butterflies and burnet moths than areas with larger fields. The other two studies found that mixed farms and landscapes with smaller fields had a similar species richness of butterflies to areas with larger fields. One before-and-after study in Germany found that after reducing field size by increasing the length of field edges on a farm, along with increasing the area of meadows and field margins, the species richness of butterflies and burnet moths increased.\\n\\nPOPULATION RESPONSE (4 STUDIES)\\n\\nAbundance (4 studies): Four replicated, site comparison studies in Sweden, the Czech Republic and Poland and Switzerland found that arable and mixed farms and landscapes with smaller fields had a higher abundance of butterflies and burnet moths than areas with larger fields.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"The action \\\"Manage natural water bodies in arid areas to prevent desiccation\\\" is suggested, but no studies were found to evaluate its effects (2027). Other actions include providing buffer strips alongside water courses, which can positively influence biodiversity (120), and growing cover crops, which can reduce weeds (1394). Additionally, taking field corners out of management has been linked to higher grey partridge survival (128), reducing field size can increase butterfly and burnet moth populations (3974), and converting to organic farming may boost the richness and abundance of butterflies and moths (3907).\",\"query\":\"To improve water availability on my arable farm in a Mediterranean climate, what management practices can I use?\",\"action_ids\":[\"2027\",\"120\",\"1394\",\"128\",\"3974\",\"3907\"]}",
+            "return_val": "{\n  \"query\": \"To improve water availability on my arable farm in a Mediterranean climate, what management practices can I use?\",\n  \"relevant_summary\": \"The action \\\"Manage natural water bodies in arid areas to prevent desiccation\\\" is suggested, but no studies were found to evaluate its effects (2027). Other actions include providing buffer strips alongside water courses, which can positively influence biodiversity (120), and growing cover crops, which can reduce weeds (1394). Additionally, taking field corners out of management has been linked to higher grey partridge survival (128), reducing field size can increase butterfly and burnet moth populations (3974), and converting to organic farming may boost the richness and abundance of butterflies and moths (3907).\",\n  \"action_ids\": [\n    \"2027\",\n    \"120\",\n    \"1394\",\n    \"128\",\n    \"3974\",\n    \"3907\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1357",
+      "1377",
+      "1378",
+      "1379",
+      "1380",
+      "1381",
+      "1383",
+      "1384",
+      "1385",
+      "1386"
+    ],
+    "regenerated_ids": [
+      "1357",
+      "1377",
+      "1378",
+      "1383",
+      "1384",
+      "1385",
+      "1386",
+      "1387"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "How do habitat creation actions, such as planting hedgerows or restoring watercourses, impact biodiversity on Mediterranean farmland?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Three studies investigated the effects of planting or maintaining hedgerows on farmland, with two in the UK and one in Switzerland (2383). One replicated, site comparison study in the UK and Switzerland found that retaining and enhancing hedgerows and other field boundary features was associated with higher brown hare density in arable sites but not in grassland sites (2383). Another replicated, site comparison study in the UK found that establishing hedgerows alongside arable land increased small mammal abundance (2383). However, a different study found that Irish hare numbers did not increase (2383). With regards to restoring watercourses, one replicated site comparison study in the USA found similar amounts of water in soils in restored and remnant riparian habitats (1388). Another replicated site comparison from the USA found more weeds in orchards next to restored riparian habitats compared to remnant habitats(1402).",
+    "summary_action_ids": [
+      "2383",
+      "1388",
+      "1402"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"k\":3,\"query_string\":\"habitat creation on farmaland and biodiversity\",\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"3480\",\n    \"action_title\": \"Create suitable habitats to offset habitat lost within development footprint\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2265\",\n    \"action_title\": \"Offset habitat loss from human activity by restoring or creating habitats elsewhere\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1739\",\n    \"action_title\": \"Retain/create habitat corridors in areas of energy production or mining\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"habitat creation on Mediterranean farmland and biodiversity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2262\",\n    \"action_title\": \"Repurpose obsolete offshore structures to act as artificial reefs\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2258\",\n    \"action_title\": \"Create artificial reefs\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3520\",\n    \"action_title\": \"Provide or retain set-aside areas on farmland\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"planting hedgerows on farmland\",\"k\":3,\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"2383\",\n    \"action_title\": \"Plant new or maintain existing hedgerows on farmland\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2382\",\n    \"action_title\": \"Manage hedgerows to benefit wildlife on farmland\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3976\",\n    \"action_title\": \"Plant new hedges\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"restoring watercourses on farmland\",\"k\":3,\"offset\":0}",
+            "return_val": "[\n  {\n    \"action_id\": \"1402\",\n    \"action_title\": \"Pest regulation: Restore habitat along watercourses\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1388\",\n    \"action_title\": \"Water: Restore habitat along watercourses\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2015\",\n    \"action_title\": \"Prevent pollution from agricultural land or forestry from entering watercourses\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2383\"}",
+            "return_val": "{\n  \"action_id\": \"2383\",\n  \"action_title\": \"Plant new or maintain existing hedgerows on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nThree studies evaluated the effects on mammals of planting new or maintaining existing hedgerows on farmland. Two studies were in the UK and one was in Switzerland.\\n\\nCOMMUNITY RESPONSE (0 STUDIES)\\nPOPULATION RESPONSE (3 STUDIES)\\n\\nAbundance (3 studies): One of two replicated, site comparison studies, in the UK and Switzerland, found that retaining and enhancing hedgerows along with other field boundary features was associated with higher brown hare density in arable sites but not in grassland sites while the other study found that Irish hare numbers did not increase. A replicated, site comparison study in the UK found that establishing hedgerows alongside arable land increased small mammal abundance.\\n\\nBEHAVIOUR (0 STUDIES)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"3520\"}",
+            "return_val": "{\n  \"action_id\": \"3520\",\n  \"action_title\": \"Provide or retain set-aside areas on farmland\",\n  \"key_messages\": \"Key Messages:\\n\\nWe found no studies that evaluated the effects of providing or retaining set-aside areas on farmland on reptile populations.\\n\\n\\u2018We found no studies\\u2019 means that we have not yet found any studies that have directly evaluated this action during our systematic journal and report searches. Therefore we have been unable to assess whether or not the action is effective or has any harmful impacts. Please get in touch if you know of such a study for this action.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1388\"}",
+            "return_val": "{\n  \"action_id\": \"1388\",\n  \"action_title\": \"Water: Restore habitat along watercourses\",\n  \"key_messages\": \"Key Messages:\\nWater use (0 studies)\\nWater availability (1 study): One replicated site comparison in the USA\\u00a0found similar amounts of water, in soils, in restored and remnant riparian habitats.\\nPathogens and pesticides (0 studies)\\nNutrients (0 studies)\\nSediments (0 studies)\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1402\"}",
+            "return_val": "{\n  \"action_id\": \"1402\",\n  \"action_title\": \"Pest regulation: Restore habitat along watercourses\",\n  \"key_messages\": \"Key Messages:\\nPest regulation (0 studies)\\nCrop damage (0 studies)\\nRatio of natural enemies to pests (0 studies)\\nPest numbers (1 study): One replicated site comparison from the USA\\u00a0found more weeds in orchards next to restored riparian habitats, compared to remnant habitats.\\nNatural enemy numbers (0 studies)\\nImplementation options (1 study): One replicated, site comparison from the USA\\u00a0found more weeds in orchards next to older restored sites, compared to younger restored sites.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"How do habitat creation actions, such as planting hedgerows or restoring watercourses, impact biodiversity on Mediterranean farmland?\",\"summary\":\"Three studies investigated the effects of planting or maintaining hedgerows on farmland, with two in the UK and one in Switzerland (2383). One replicated, site comparison study in the UK and Switzerland found that retaining and enhancing hedgerows and other field boundary features was associated with higher brown hare density in arable sites but not in grassland sites (2383). Another replicated, site comparison study in the UK found that establishing hedgerows alongside arable land increased small mammal abundance (2383). However, a different study found that Irish hare numbers did not increase (2383). With regards to restoring watercourses, one replicated site comparison study in the USA found similar amounts of water in soils in restored and remnant riparian habitats (1388). Another replicated site comparison from the USA found more weeds in orchards next to restored riparian habitats compared to remnant habitats(1402).\",\"action_ids\":[\"2383\",\"1388\",\"1402\"]}",
+            "return_val": "{\n  \"query\": \"How do habitat creation actions, such as planting hedgerows or restoring watercourses, impact biodiversity on Mediterranean farmland?\",\n  \"relevant_summary\": \"Three studies investigated the effects of planting or maintaining hedgerows on farmland, with two in the UK and one in Switzerland (2383). One replicated, site comparison study in the UK and Switzerland found that retaining and enhancing hedgerows and other field boundary features was associated with higher brown hare density in arable sites but not in grassland sites (2383). Another replicated, site comparison study in the UK found that establishing hedgerows alongside arable land increased small mammal abundance (2383). However, a different study found that Irish hare numbers did not increase (2383). With regards to restoring watercourses, one replicated site comparison study in the USA found similar amounts of water in soils in restored and remnant riparian habitats (1388). Another replicated site comparison from the USA found more weeds in orchards next to restored riparian habitats compared to remnant habitats(1402).\",\n  \"action_ids\": [\n    \"2383\",\n    \"1388\",\n    \"1402\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1361",
+      "1373",
+      "1374",
+      "1388",
+      "1401",
+      "1402",
+      "1407",
+      "1408",
+      "1415",
+      "1416"
+    ],
+    "regenerated_ids": [
+      "1395",
+      "1400",
+      "1401",
+      "1402",
+      "1404",
+      "1406",
+      "1407",
+      "1408",
+      "1413",
+      "1414",
+      "1415",
+      "1416"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "How do additions of compost, manure, and slurry compare in their effects on soil organic matter and nutrients in Mediterranean farmland?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "A study in Turkey found that applying both manure and compost increased soil organic matter and improved soil structure (911). In contrast, adding slurry had mixed effects on soil organic matter. While one study in Spain noted an increase in organic matter with slurry application in some instances (1365), three other studies across Spain and multiple Mediterranean countries found no significant change (1365). In terms of nutrient content, the application of farmyard or poultry manure was found to decrease nutrient loss and increase nitrogen levels in three studies conducted in Canada, Spain, the UK, and the USA (911). One of these studies also indicated that applying farmyard manure in winter was more effective at reducing nutrient loss than applying poultry manure or slurry in autumn (911). However, another study showed that manure application could lead to higher nitrate leaching (911). The effects of slurry on soil nutrients were also varied. Two studies in Spain reported higher nitrate concentrations in soils with added slurry (1365), while two other studies in Portugal and Spain found no significant difference (1365). Additionally, one study in Spain found an increase in ammonium levels with slurry application, but another study did not observe the same effect (1365).",
+    "summary_action_ids": [
+      "911",
+      "1365"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"effects of compost manure and slurry on soil organic matter and nutrients in Mediterranean farmland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"911\",\n    \"action_title\": \"Amend the soil with manures and agricultural composts\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1365\",\n    \"action_title\": \"Soil: Add slurry to the soil\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"3311\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"911\"}",
+            "return_val": "{\n  \"action_id\": \"911\",\n  \"action_title\": \"Amend the soil with manures and agricultural composts\",\n  \"key_messages\": \"Key Messages:\\nBiodiversity loss: Three controlled, replicated studies from the UK and USA found higher microbial biomass when manure or compost was applied, and higher microbial respiration when poultry manure was applied.\\nErosion: One controlled, randomized, replicated study from India found lower soil loss and water runoff with manure application in combination with other treatments.\\nNutrient management: Four studies from Canada, Spain, the UK and the USA measured the effect of a variety of manure types on soil nutrient levels. Of these, three randomized, replicated studies (two also controlled) found reduced nutrient loss and higher nitrogen levels when farmyard or poultry manure was applied. One also found lower nutrient loss when farmyard manure (rather than poultry manure or slurry) was applied in winter rather than autumn. One controlled replicated study found higher nitrate leaching.\\nSoil organic carbon: Four studies (including three controlled, replicated studies (one also randomized) and a review) from India, Japan and the UK found higher carbon levels when manures were applied.\\nSoil organic matter: One controlled, randomized, replicated study from Turkey found higher organic matter, larger soil aggregations and a positive effect on soil physical properties when manure and compost were applied. Two studies from Denmark and Germany found no effect of manure on organic matter levels.\\nYield: Four controlled, replicated studies (including three also randomized) from India, Spain and Turkey found higher crop yields when manures or compost were applied. One study found higher yields when manure were applied in combination with cover crops.\\nSoil types covered: Clay loam, fine sandy-silty loam, loam, loamy, sandy loam, sandy clay loam, silty loam, and sandy silt loam.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1365\"}",
+            "return_val": "{\n  \"action_id\": \"1365\",\n  \"action_title\": \"Soil: Add slurry to the soil\",\n  \"key_messages\": \"Key Messages:\\nOrganic matter (4 studies): Three studies (two replicated, randomized, controlled; one meta-analysis) from Spain\\u00a0and multiple Mediterranean countries\\u00a0found similar amounts of organic matter in soils with or without added slurry. One replicated, randomized, controlled study from Spain\\u00a0found more organic matter in soils with added slurry, compared to soils without it, in some comparisons.\\nNutrients (4 studies): Two replicated, randomized, controlled studies from Spain found more nitrate in soils with added slurry, compared to soils without it. Two replicated, randomized, controlled studies from Portugal\\u00a0and Spain\\u00a0found similar amounts of nitrate in soils with or without added slurry. One of these studies\\u00a0also found more ammonium, but another one did not.\\nSoil organisms (2 studies): One replicated, randomized, controlled study from Spain\\u00a0found more microbial biomass in soils with added slurry, compared to soils without it, but another one did not.\\nSoil erosion and aggregation (1 study): One replicated, randomized, controlled study from Spain found more stable soils in plots with added slurry, compared to plots without it, in some comparisons.\\nGreenhouse gases (8 studies)\\n\\nCarbon dioxide (3 studies): Of three replicated, randomized, controlled studies from Spain, two studies\\u00a0found higher carbon dioxide emissions in soils with added slurry, compared to soils without it, but one study\\u00a0did not.\\nMethane (4 studies): One replicated, randomized, controlled study from Spain\\u00a0found that less methane was absorbed by soils with added slurry, compared to soils without it. Three replicated, randomized, controlled studies from Spain\\u00a0found similar methane fluxes in soils with or without added slurry.\\nNitrous oxide (6 studies): Five replicated, randomized, controlled studies from Spain\\u00a0found higher nitrous oxide emissions in soils with added slurry, compared to soils without it, in some or all comparisons. One replicated, randomized, controlled study from Spain\\u00a0found similar nitrous oxide emissions in soils with or without added slurry.\\n\\nImplementation options (3 studies): One replicated, randomized, controlled study from Spain\\u00a0found no differences in organic matter or greenhouse-gas emissions between plots with different amounts of slurry. One replicated, randomized, controlled study from Spain\\u00a0found similar amounts of nitrogen in soils with or without added slurry. One replicated, randomized, controlled study from Spain\\u00a0found similar nitrous oxide emissions in soils with digested or untreated pig slurry. One replicated, randomized, controlled study from Spain\\u00a0found similar carbon dioxide and methane emissions in soils with digested or untreated slurry.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":3,\"query_string\":\"effects of compost manure and slurry on soil organic matter and nutrients in Mediterranean farmland\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"3311\",\n    \"action_title\": \"Add below-ground organic matter before/after planting trees/shrubs: brackish/saline wetlands\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1366\",\n    \"action_title\": \"Soil: Use organic fertilizer instead of inorganic\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"1378\",\n    \"action_title\": \"Water: Add manure to the soil\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"summary\":\"A study in Turkey found that applying both manure and compost increased soil organic matter and improved soil structure (911). In contrast, adding slurry had mixed effects on soil organic matter. While one study in Spain noted an increase in organic matter with slurry application in some instances (1365), three other studies across Spain and multiple Mediterranean countries found no significant change (1365). In terms of nutrient content, the application of farmyard or poultry manure was found to decrease nutrient loss and increase nitrogen levels in three studies conducted in Canada, Spain, the UK, and the USA (911). One of these studies also indicated that applying farmyard manure in winter was more effective at reducing nutrient loss than applying poultry manure or slurry in autumn (911). However, another study showed that manure application could lead to higher nitrate leaching (911). The effects of slurry on soil nutrients were also varied. Two studies in Spain reported higher nitrate concentrations in soils with added slurry (1365), while two other studies in Portugal and Spain found no significant difference (1365). Additionally, one study in Spain found an increase in ammonium levels with slurry application, but another study did not observe the same effect (1365).\",\"action_ids\":[\"911\",\"1365\"],\"query\":\"How do additions of compost, manure, and slurry compare in their effects on soil organic matter and nutrients in Mediterranean farmland?\"}",
+            "return_val": "{\n  \"query\": \"How do additions of compost, manure, and slurry compare in their effects on soil organic matter and nutrients in Mediterranean farmland?\",\n  \"relevant_summary\": \"A study in Turkey found that applying both manure and compost increased soil organic matter and improved soil structure (911). In contrast, adding slurry had mixed effects on soil organic matter. While one study in Spain noted an increase in organic matter with slurry application in some instances (1365), three other studies across Spain and multiple Mediterranean countries found no significant change (1365). In terms of nutrient content, the application of farmyard or poultry manure was found to decrease nutrient loss and increase nitrogen levels in three studies conducted in Canada, Spain, the UK, and the USA (911). One of these studies also indicated that applying farmyard manure in winter was more effective at reducing nutrient loss than applying poultry manure or slurry in autumn (911). However, another study showed that manure application could lead to higher nitrate leaching (911). The effects of slurry on soil nutrients were also varied. Two studies in Spain reported higher nitrate concentrations in soils with added slurry (1365), while two other studies in Portugal and Spain found no significant difference (1365). Additionally, one study in Spain found an increase in ammonium levels with slurry application, but another study did not observe the same effect (1365).\",\n  \"action_ids\": [\n    \"911\",\n    \"1365\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1362",
+      "1363",
+      "1364",
+      "1365"
+    ],
+    "regenerated_ids": [
+      "1362",
+      "1363",
+      "1365",
+      "1366"
+    ],
+    "gen_summary_stmts_request_made": true
+  },
+  {
+    "query": "What are the effects of excluding grazing animals on plant biodiversity in grasslands and shrublands in Mediterranean climates?",
+    "model": "google/gemini-2.5-pro",
+    "provider": null,
+    "relevant_summary": "Of eight studies that looked at the effects of excluding livestock, four found an increase in the biomass, species richness, density and cover of understory plants, while the other four found mixed or no effect (1205). Three of four studies also found that excluding livestock increased the size and density of regenerating trees (1205).\n\nIn freshwater marshes in Morocco, the exclusion of livestock had varied effects. One study found that after more than 30 years of exclusion, plant species richness was similar to grazed areas in a dry year but greater in a wet year (2966). In the same study, while the number of wetland-characteristic plant species was similar, their overall abundance was greater in the excluded areas (2966). Other studies in Morocco showed that marshes with livestock excluded had a different overall plant community, but that overall plant species richness was typically similar to grazed sites (2966).",
+    "summary_action_ids": [
+      "1205",
+      "2966"
+    ],
+    "tool_call_details": [
+      {
+        "iteration_num": 1,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"grazing exclusion effects on plant biodiversity in Mediterranean climates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1205\",\n    \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1773\",\n    \"action_title\": \"Use grazing to control problematic plants\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"746\",\n    \"action_title\": \"Exclude domestic animals or wild hogs by fencing\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 2,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1205\"}",
+            "return_val": "{\n  \"action_id\": \"1205\",\n  \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n  \"key_messages\": \"Key Messages:\\n\\nFour of eight studies (including two replicated, randomized, controlled studies) in Argentina, Australia, Belgium, Israel, New Zealand, Spain, West Africa and the USA found that excluding livestock using wire fences increased  biomass , species richness, density and cover of understory plants. The other four studies\\u00a0found mixed effects or no effect of livestock exclusion on understory plants.\\nThree of four studies (including one replicated, randomized, controlled study) in Mexico, Kenya, Israel and Panama found that excluding livestock using wire fences increased the size and density of regenerating trees and the number of regenerating trees. One study\\u00a0found livestock exclusion decreased tree density but not tree size.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"746\"}",
+            "return_val": "{\n  \"action_id\": \"746\",\n  \"action_title\": \"Exclude domestic animals or wild hogs by fencing\",\n  \"key_messages\": \"Key Messages:\\n\\nThree replicated, site comparison studies in the USA found that excluding livestock from streams or ponds did not increase numbers of amphibian species or overall abundance, but did increase larval abundance and abundance of green frog metamorphs. Two studies found that the abundance of green frogs and/or American toads was higher with grazing.\\nOne randomized, replicated, controlled, before-and-after study in the USA found that excluding cattle from ponds did not increase numbers of eggs or larval survival of Columbia spotted frogs. One before-and-after study in the UK found that pond restoration that included livestock exclusion increased pond use by breeding natterjack toads.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 3,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"offset\":3,\"query_string\":\"grazing exclusion effects on plant biodiversity in Mediterranean climates\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"2975\",\n    \"action_title\": \"Change season/timing of livestock grazing: brackish/salt marshes\",\n    \"rank\": 4\n  },\n  {\n    \"action_id\": \"1420\",\n    \"action_title\": \"Other biodiversity: Use rotational grazing\",\n    \"rank\": 5\n  },\n  {\n    \"action_id\": \"3120\",\n    \"action_title\": \"Use herbicide to control problematic plants: freshwater marshes\",\n    \"rank\": 6\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 4,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"grazing exclusion plant biodiversity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1205\",\n    \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"1420\",\n    \"action_title\": \"Other biodiversity: Use rotational grazing\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"1773\",\n    \"action_title\": \"Use grazing to control problematic plants\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 5,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"1420\"}",
+            "return_val": "{\n  \"action_id\": \"1420\",\n  \"action_title\": \"Other biodiversity: Use rotational grazing\",\n  \"key_messages\": \"Key Messages:\\nAmphibians (0 studies)\\nBirds (0 studies)\\nInvertebrates (0 studies)\\nMammals (0 studies)\\nPlants (2 studies): One before-and-after study in grasslands in the USA\\u00a0found a higher cover of native plants after the adoption of rotational grazing. One replicated, controlled study in grasslands in the USA\\u00a0found that the density and mortality of a native plant species did not differ between plots with rotational or continuous grazing, but plants had more reproductive stems in plots with rotational grazing, in two of three years. This study also found that plants were larger under rotational grazing, in some comparisons, but smaller in other comparisons.\\nReptiles (0 studies)\\nImplementation options (0 studies)\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 6,
+        "tools_called": [
+          {
+            "function_name": "search_actions",
+            "args": "{\"query_string\":\"livestock exclusion plant diversity\"}",
+            "return_val": "[\n  {\n    \"action_id\": \"1205\",\n    \"action_title\": \"Use wire fences within grazing areas to exclude livestock from specific forest sections\",\n    \"rank\": 1\n  },\n  {\n    \"action_id\": \"2966\",\n    \"action_title\": \"Exclude or remove livestock from historically grazed freshwater marshes\",\n    \"rank\": 2\n  },\n  {\n    \"action_id\": \"2967\",\n    \"action_title\": \"Exclude or remove livestock from historically grazed brackish/salt marshes\",\n    \"rank\": 3\n  }\n]"
+          }
+        ]
+      },
+      {
+        "iteration_num": 7,
+        "tools_called": [
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2966\"}",
+            "return_val": "{\n  \"action_id\": \"2966\",\n  \"action_title\": \"Exclude or remove livestock from historically grazed freshwater marshes\",\n  \"key_messages\": \"Key Messages:\\n\\nTen studies evaluated the effects, on vegetation, of excluding or removing livestock from historically grazed freshwater marshes. Seven studies were in the USA, two were in Morocco\\u00a0and one was in Australia. In all 10 studies the focal livestock included cattle (mixed with sheep in the two\\u00a0studies in Morocco). Two studies in the USA\\u00a0were based on the same experimental set-up, and the two studies in Morocco shared some study sites.\\n\\nVEGETATION COMMUNITY\\n\\nCommunity composition (4 studies): Two site comparison studies in Morocco\\u00a0and the USA\\u00a0reported that marshes/pools fenced to exclude livestock for 3\\u201330 years contained a different overall plant community to grazed sites. In the USA, the precise effect depended on the time since exclusion. Two replicated, randomized, paired, controlled studies in marshes in Australia\\u00a0and the USA\\u00a0found that fencing to exclude cattle typically had no significant effect on the overall plant community composition after 1\\u201314 years. One of the studies\\u00a0also found that the plant community in fenced and grazed marshes was of similar quality, relative to pristine local marshes.\\nRelative abundance (3 studies): Of three replicated, randomized, paired, controlled studies that reported data on the relative abundance of plant groups, two studies (based on one experimental set-up) in the USA\\u00a0found that ephemeral pools fenced to exclude cattle for 1\\u201310 years had similar or greater cover of grasses relative to forbs than pools that remained grazed. The other study, also in the USA, found that the relative abundance of forbs, grass-like plants and shrubs was similar in marshes fenced to exclude cattle for 1\\u20133 years and marshes that remained grazed.\\nOverall richness/diversity (6 studies): Four replicated studies (two also randomized, paired, controlled) in the USA, Morocco\\u00a0and Australia\\u00a0found that marshes/pools fenced to exclude cattle, for 1\\u201330 years, typically had similar overall plant species richness to sites that remained grazed. One of the studies\\u00a0found that the same was true for overall plant diversity. One replicated, site comparison study of ephemeral pools in Morocco\\u00a0found that pools fenced to exclude livestock for &gt;30 years had similar (in a dry year) or greater (in a wet year) plant species richness compared to pools that remained grazed. One site comparison study in the USA\\u00a0found that marshes fenced to exclude cattle for 3\\u201313 years contained fewer plant species than grazed marshes, and had similar or lower plant diversity.\\nCharacteristic plant richness/diversity (1 study): One site comparison study of ephemeral pools in Morocco\\u00a0found that pools fenced to exclude livestock for &gt;30 years contained a similar number of wetland-characteristic plant species to pools that remained grazed.\\nNative/non-target richness/diversity (3 studies): Of three replicated, randomized, paired, controlled studies that reported data on native plant species richness, two studies (based on one experimental set-up) in the USA\\u00a0found that fencing ephemeral pools to exclude cattle for 1\\u201310 years typically reduced native plant species richness. The other study, also in the USA, found that native plant species richness was similar in marshes fenced to exclude cattle for 1\\u20133 years and marshes that remained grazed.\\n\\nVEGETATION ABUNDANCE\\n\\nOverall abundance (3 studies): Two replicated, site comparison studies in the USA\\u00a0and Morocco\\u00a0found that ponds/pools fenced to exclude cattle for &gt;10 years contained more vegetation than sites that remained grazed. This was measured in terms of emergent cover around pond margins\\u00a0or peak above-ground biomass in ephemeral pools. One replicated, randomized, paired, controlled study in Australia\\u00a0found that marshes fenced to exclude cattle for \\u22644 years contained similar above-ground vegetation biomass to marshes that remained grazed.\\nCharacteristic plant abundance (1 study): One site comparison study of ephemeral pools in Morocco\\u00a0found that the overall abundance of wetland-characteristic plant species was greater in pools fenced to exclude livestock for &gt;30 years than in pools that remained grazed.\\nHerb abundance (1 study): One replicated, randomized, paired, controlled, before-and-after study in the USA\\u00a0found that fencing pastures to exclude cattle typically increased herb cover in wetlands along creeks, but had no significant effect on herb cover within spring wetlands.\\nIndividual species abundance (2 studies): Two replicated, randomized, paired, controlled studies in freshwater marshes in Australia\\u00a0and the USA\\u00a0quantified the effect of this action on the abundance of individual plant species (see original papers for data).\\n\\nVEGETATION STRUCTURE\\n\\nVisual obstruction (1 study): One replicated, site comparison study in the USA\\u00a0found that ponds fenced to exclude cattle for &gt;10 years had greater horizontal vegetation cover, around their margins, than ponds that remained grazed.\\nHeight (2 studies): Two replicated studies (one also randomized, paired, controlled, before-and-after) in the USA\\u00a0found that fencing ponds to exclude cattle, for 1\\u20133 or &gt;10 years, increased the height of vegetation around their margins.\"\n}"
+          },
+          {
+            "function_name": "get_action_details",
+            "args": "{\"action_id\":\"2967\"}",
+            "return_val": "{\n  \"action_id\": \"2967\",\n  \"action_title\": \"Exclude or remove livestock from historically grazed brackish/salt marshes\",\n  \"key_messages\": \"Key Messages:\\n\\nFifteen studies evaluated the effects, on vegetation, of excluding or removing livestock from historically grazed brackish/salt marshes. There were five studies in Germany. There were two studies in the UK, Denmark\\u00a0and the Netherlands. There was one study in each of the USA, Sweden, France\\u00a0and Argentina. Livestock were sheep, cattle, sheep and cattle, cattle and horses,\\u00a0or unspecified. There was overlap in the sites used in two studies. Two other studies\\u00a0took place in one marsh, but with different experimental set-ups.\\n\\nVEGETATION COMMUNITY\\n\\nOverall extent (1 study): One controlled study of a salt marsh in Germany\\u00a0reported that in a plot fenced to exclude cattle for eight years, the total vegetated area was greater than in a plot that remained grazed.\\nCommunity types (1 study): One site comparison study of brackish and salt marshes in Germany\\u00a0reported that reducing (or stopping) grazing affected the nature of transitions between vegetation types over time, but that the precise effect varied with environmental conditions.\\nCommunity composition (5 studies): Three paired studies (two also replicated and controlled) in brackish/salt marshes in France, Argentina\\u00a0and the Netherlands\\u00a0reported that the effect of excluding livestock for 5\\u201330 years on the overall plant community composition depended on plot elevation/flooding regime. In one of these studies, the effect of livestock exclusion was not separated from the effect of general legal protection. Two studies in one salt marsh in Denmark\\u00a0reported that excluding livestock had little effect on the identity of plant species in the community after six years.\\nOverall richness/diversity (6 studies): Two studies (one controlled, one before-and-after) in one salt marsh in Denmark\\u00a0reported that excluding sheep and cattle for 6\\u20137 years had no effect on overall plant species richness. One replicated, paired, controlled study in a salt marsh in the Netherlands\\u00a0reported that plots fenced to exclude cattle for seven years had lower plant species richness than areas that remained grazed. Two controlled studies (one also replicated and paired) in salt marshes in Germany\\u00a0found that the effect of removing sheep on overall plant species richness depended on the scale of measurement and the grazing intensity used for comparison \\u2013 with inconsistent results across these studies even for similar scales and intensities. One paired, site comparison study of salt marshes in Argentina\\u00a0found that the effect of excluding cattle (along with legal protection) increased plant species richness at lower elevations, but did not significantly affect plant diversity at any elevation.\\n\\nVEGETATION ABUNDANCE\\n\\nOverall abundance (4 studies): Three studies (two controlled, one before-and-after) in salt marshes in the UK\\u00a0and Denmark\\u00a0reported that excluding livestock for 2\\u20136 years maintained or increased overall vegetation abundance (although in one study, only by a small amount). One controlled study in a salt marsh in Germany\\u00a0found that a paddock left ungrazed for 16\\u201318 years had greater overall vegetation cover than lightly or heavily grazed paddocks, but lower cover than a moderately grazed paddock.\\nIndividual species abundance (11 studies): Eleven studies\\u00a0quantified the effect of this action on the abundance of individual plant species. For example, five studies (four controlled, one before-and-after) on salt marshes in the UK, Denmark, Germany\\u00a0and the Netherlands\\u00a0reported that excluding livestock for 2\\u20138 years reduced (or prevented increases in) cover of saltmarsh grass Puccinellia maritima. However, two controlled studies (one also replicated and paired) on salt marshes in Denmark\\u00a0and Sweden\\u00a0reported greater saltmarsh grass cover in areas fenced to exclude livestock for 1\\u20136 years than in areas that remained grazed. Four studies (three controlled, one before-and-after) on salt marshes in Denmark\\u00a0and Germany\\u00a0reported that excluding or removing livestock for 4\\u201316 years increased cover of sea purslane Halimione portulacoides.\\n\\nVEGETATION STRUCTURE\\n\\nHeight (5 studies): Five controlled studies (two also replicated and paired) in salt marshes in Sweden\\u00a0and Germany,\\u00a0and brackish wet grassland in the UK,\\u00a0found that ungrazed plots (livestock excluded or removed) contained taller vegetation than plots that remained grazed. Vegetation was surveyed after one month, 1\\u20138 years\\u00a0or 16\\u201322 years.\"\n}"
+          }
+        ]
+      },
+      {
+        "iteration_num": 8,
+        "tools_called": [
+          {
+            "function_name": "get_formatted_result",
+            "args": "{\"query\":\"What are the effects of excluding grazing animals on plant biodiversity in grasslands and shrublands in Mediterranean climates?\",\"summary\":\"Of eight studies that looked at the effects of excluding livestock, four found an increase in the biomass, species richness, density and cover of understory plants, while the other four found mixed or no effect (1205). Three of four studies also found that excluding livestock increased the size and density of regenerating trees (1205).\\n\\nIn freshwater marshes in Morocco, the exclusion of livestock had varied effects. One study found that after more than 30 years of exclusion, plant species richness was similar to grazed areas in a dry year but greater in a wet year (2966). In the same study, while the number of wetland-characteristic plant species was similar, their overall abundance was greater in the excluded areas (2966). Other studies in Morocco showed that marshes with livestock excluded had a different overall plant community, but that overall plant species richness was typically similar to grazed sites (2966).\",\"action_ids\":[\"1205\",\"2966\"]}",
+            "return_val": "{\n  \"query\": \"What are the effects of excluding grazing animals on plant biodiversity in grasslands and shrublands in Mediterranean climates?\",\n  \"relevant_summary\": \"Of eight studies that looked at the effects of excluding livestock, four found an increase in the biomass, species richness, density and cover of understory plants, while the other four found mixed or no effect (1205). Three of four studies also found that excluding livestock increased the size and density of regenerating trees (1205).\\n\\nIn freshwater marshes in Morocco, the exclusion of livestock had varied effects. One study found that after more than 30 years of exclusion, plant species richness was similar to grazed areas in a dry year but greater in a wet year (2966). In the same study, while the number of wetland-characteristic plant species was similar, their overall abundance was greater in the excluded areas (2966). Other studies in Morocco showed that marshes with livestock excluded had a different overall plant community, but that overall plant species richness was typically similar to grazed sites (2966).\",\n  \"action_ids\": [\n    \"1205\",\n    \"2966\"\n  ]\n}"
+          }
+        ]
+      }
+    ],
+    "all_relevant_action_ids": [
+      "1375",
+      "1417"
+    ],
+    "regenerated_ids": [
+      "1403",
+      "1417"
+    ],
+    "gen_summary_stmts_request_made": true
+  }
+]
