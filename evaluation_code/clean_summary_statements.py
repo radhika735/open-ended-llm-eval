@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 
 def basic_folder_rename():
     qu_types = ["answerable", "unanswerable"]
@@ -320,6 +321,158 @@ def add_batch_job_successful_field():
                     json.dump(batch_job_names_data, f, indent=2, ensure_ascii=False)
 
 
+def create_cited_stmt_gen_annotated_dirs():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+                stmts_dir = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmts")
+                new_dir = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "cited_stmt_gen_annotated")
+                shutil.copytree(stmts_dir, new_dir)
+
+
+def del_cited_stmt_gen_annotated_dirs():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+                dir_to_delete = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmts copy")
+                if os.path.exists(dir_to_delete):
+                    shutil.rmtree(dir_to_delete)
+
+
+def check_all_summary_statement_model_fields_exist():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+                full_dir = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmts")
+                for filename in os.listdir(full_dir):
+                    filepath = os.path.join(full_dir, filename)
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    for entry in data:
+                        if entry["summary_details"]["relevant_summary"] is not None:
+
+                            if entry["summary_details"].get("summary_statements_model", None) is None:
+                                print("PROBLEM:")
+                                print(f"File: {filepath}")
+                                print(entry["summary_details"]["relevant_summary"])
+                                print(entry["summary_details"]["summary_statements"])
+                                print(entry["summary_details"].get("summary_statements_model", None))
+                                print("\n\n")
+
+
+def add_summary_statement_model_fields():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+                full_dir = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, "stmts")
+                for filename in os.listdir(full_dir):
+                    filepath = os.path.join(full_dir, filename)
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    for entry in data:
+                        if entry["summary_details"]["relevant_summary"] is not None:
+
+                            if entry["summary_details"].get("summary_statements_model", None) is None:
+                                stmts = entry["summary_details"]["summary_statements"]
+                                del entry["summary_details"]["summary_statements"]
+                                entry["summary_details"]["summary_statements_model"] = "gemini-2.5-pro"
+                                entry["summary_details"]["summary_statements"] = stmts
+
+                    with open(filepath, 'w', encoding='utf-8') as f:
+                        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+
+def reset_gen_cited_stmts_request_made_fields():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+                dir_type = "cited_stmt_gen_annotated"
+                full_dir = os.path.join("live_summaries", f"{qu_type}_{filter_stage}_qus_summaries", retrieval_type, answering_mp, dir_type)
+                for filename in os.listdir(full_dir):
+                    filepath = os.path.join(full_dir, filename)
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    for entry in data:
+                        if "gen_cited_stmts_request_made" in entry:
+                            del entry["gen_cited_stmts_request_made"]
+
+                    with open(filepath, 'w', encoding='utf-8') as f:
+                        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def del_unrequested_cited_stmt_gen_batch_files():
+    qu_types = ["answerable", "unanswerable"]
+    filter_stages = ["passed", "failed"]
+    retrieval_type = "hybrid_cross-encoder"
+    answering_mps = [
+        "_claude-sonnet-4",
+        "_gemini-2-5-pro",
+        "_gpt-5",
+        "fireworks_kimi-k2-0905"
+    ]
+    for qu_type in qu_types:
+        for filter_stage in filter_stages:
+            for answering_mp in answering_mps:
+                full_dir = os.path.join("batch_gen", "cited_stmt_gen", "unrequested", f"{qu_type}_{filter_stage}_qus", retrieval_type, f"summaries_{answering_mp}")
+                filenames = [name for name in os.listdir(full_dir)]
+                for filename in filenames:
+                    filepath = os.path.join(full_dir, filename)
+                    # print(filepath)
+                    os.remove(filepath)
+
+
 if __name__ == "__main__":
     ## FUNCTIONS GET OUTDATED QUICKLY - CHECK CAREFULLY BEFORE RUNNING
-    pass    
+
+    # print("No function running.")
+    # pass
+
+    del_unrequested_cited_stmt_gen_batch_files()
