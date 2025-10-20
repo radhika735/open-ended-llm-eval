@@ -1172,6 +1172,399 @@ def examine_schema():
     print(cited_statements_response_schema)
 
 
+
+def test_structured_batch_file_request_1():
+    num = "1"
+    query = "How does the success of providing artificial nest sites for solitary bees compare to providing them for bumblebees?"
+    relevant_summary = "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees, with solitary bees showing much higher success rates. For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries including Europe, North and South America and Asia (Action 47). Occupancy rates for solitary bee nest boxes, where reported, were between 1 and 26% of available cavities (Action 80). The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site, as demonstrated in three trials on agricultural land (Action 47). One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes (Action 47). In contrast, bumblebee nest box success is much lower. Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various nest box designs, while seven earlier trials in the UK, USA or Canada showed overall uptake rates between 10% and 48% (Action 48). Two replicated trials tested bumblebee nest boxes and both found very low uptake of 2% or less (Action 80). Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees, with seven replicated trials finding between 6% and 58% occupancy, but even these rates are often lower than solitary bee success rates (Action 48). However, there is no evidence captured for the effects of providing nest boxes on bumblebee populations (Action 48).",
+    statements = [
+        "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees.",
+        "Solitary bees show much higher success rates in occupying artificial nest sites than bumblebees do.",
+        "For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries, including Europe, North and South America, and Asia.",
+        "Reported occupancy rates for solitary bee nest boxes were between 1% and 26% of available cavities.",
+        "The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site.",
+        "The doubling of occupied solitary bee nests was demonstrated in three trials on agricultural land.",
+        "One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes.",
+        "In contrast to solitary bees, bumblebee nest box success is much lower.",
+        "Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various bumblebee nest box designs.",
+        "Seven earlier trials in the UK, USA, or Canada showed overall bumblebee nest box uptake rates between 10% and 48%.",
+        "Two replicated trials that tested bumblebee nest boxes both found very low uptake of 2% or less.",
+        "Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees.",
+        "Seven replicated trials of underground bumblebee nest boxes found between 6% and 58% occupancy.",
+        "The occupancy rates for even the most effective bumblebee nest boxes are often lower than solitary bee success rates.",
+        "There is no evidence captured for the effects of providing nest boxes on bumblebee populations."
+    ]
+
+    cited_statements_format = {
+        "type": "ARRAY",
+        "items": {
+            "type": "OBJECT",
+            "properties": {
+                "statement": {"type": "STRING"},
+                "citations": {
+                    "type": "ARRAY",
+                    "items": {"type": "STRING"}
+                },
+            },
+            "required": ["statement", "citations"],
+            "additionalProperties": False,
+        }
+    }
+
+
+
+def test_simple_inline_request():
+    prompt = "List five fruits."
+    client = get_genai_client()
+    inline_requests = [{
+        'contents': [{
+            'parts': [{'text': prompt}],
+        }],
+
+    }]
+    
+    inline_batch_job = client.batches.create(
+        model="gemini-2.5-pro",
+        src = inline_requests,
+        config={
+            'display_name': "simple_inline_test"
+        },
+    )
+
+    print(inline_batch_job)
+    with open(os.path.join("batch_cited_stmt_gen_test", "simple_inline_batchjobname.txt"), 'w', encoding='utf-8') as f:
+        f.write(inline_batch_job.name)
+
+
+
+def test_structured_new_batch_file_request_1():
+    num = "1"
+
+    query = "How does the success of providing artificial nest sites for solitary bees compare to providing them for bumblebees?"
+    relevant_summary = "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees, with solitary bees showing much higher success rates. For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries including Europe, North and South America and Asia (Action 47). Occupancy rates for solitary bee nest boxes, where reported, were between 1 and 26% of available cavities (Action 80). The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site, as demonstrated in three trials on agricultural land (Action 47). One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes (Action 47). In contrast, bumblebee nest box success is much lower. Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various nest box designs, while seven earlier trials in the UK, USA or Canada showed overall uptake rates between 10% and 48% (Action 48). Two replicated trials tested bumblebee nest boxes and both found very low uptake of 2% or less (Action 80). Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees, with seven replicated trials finding between 6% and 58% occupancy, but even these rates are often lower than solitary bee success rates (Action 48). However, there is no evidence captured for the effects of providing nest boxes on bumblebee populations (Action 48).",
+    statements = [
+        "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees.",
+        "Solitary bees show much higher success rates in occupying artificial nest sites than bumblebees do.",
+        "For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries, including Europe, North and South America, and Asia.",
+        "Reported occupancy rates for solitary bee nest boxes were between 1% and 26% of available cavities.",
+        "The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site.",
+        "The doubling of occupied solitary bee nests was demonstrated in three trials on agricultural land.",
+        "One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes.",
+        "In contrast to solitary bees, bumblebee nest box success is much lower.",
+        "Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various bumblebee nest box designs.",
+        "Seven earlier trials in the UK, USA, or Canada showed overall bumblebee nest box uptake rates between 10% and 48%.",
+        "Two replicated trials that tested bumblebee nest boxes both found very low uptake of 2% or less.",
+        "Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees.",
+        "Seven replicated trials of underground bumblebee nest boxes found between 6% and 58% occupancy.",
+        "The occupancy rates for even the most effective bumblebee nest boxes are often lower than solitary bee success rates.",
+        "There is no evidence captured for the effects of providing nest boxes on bumblebee populations."
+    ]
+
+    query2 = "What actions related to reducing farming intensity can be taken to benefit wild bees?"
+    relevant_summary2 = "Several actions related to reducing farming intensity can benefit wild bees. Four replicated trials in Europe have compared farmland meadows managed extensively with conventionally farmed meadows, with two trials finding enhanced numbers and diversity of wild bees on meadows with a delayed first cut and little agrochemical use (Action 22). Reducing grazing intensity on pastures can increase the abundance of cavity-nesting bees and wasps, as shown by one replicated trial demonstrating that reducing summer cattle grazing intensity increased bee abundance (Action 23). \n\nEvidence on reduced tillage shows mixed results - two replicated trials on squash farms in the USA had contrasting outcomes, with one showing no difference in bee abundance between tilled and untilled farms, while another found three times more squash bees on no-till farms than on conventional farms (Action 11).\n\nConverting to organic farming shows equivocal evidence - three replicated trials in Europe or Canada demonstrated higher wild bee abundance under organic arable farming than conventional farming, with one trial showing higher bee diversity in organically farmed wheat fields. However, three other replicated trials in Europe or the USA found no significant difference in bumblebee numbers, bumblebee species, or wild bees visiting flowering crops between conventional and organic farms (Action 25).\n\nRegarding pesticide reduction, one replicated trial in the USA showed that numbers of foraging bees on squash farms are not affected by the responsible use of pesticides (Action 27). Agri-environment schemes have shown variable results - four replicated trials in Europe demonstrated enhanced diversity and/or abundance of foraging wild bees under various European agri-environment schemes compared to conventionally-managed fields, while four other replicated trials found no enhancement in bee numbers or species under agri-environment schemes (Action 24).",
+    statements2 = [
+        "Several actions related to reducing farming intensity can benefit wild bees.",
+        "Two replicated trials in Europe found enhanced numbers and diversity of wild bees on farmland meadows with a delayed first cut and little agrochemical use compared to conventionally farmed meadows.",
+        "Reducing grazing intensity on pastures can increase the abundance of cavity-nesting bees and wasps.",
+        "One replicated trial demonstrated that reducing summer cattle grazing intensity increased bee abundance.",
+        "Evidence on the effect of reduced tillage on bees shows mixed results.",
+        "One replicated trial on squash farms in the USA showed no difference in bee abundance between tilled and untilled farms.",
+        "Another replicated trial on squash farms in the USA found three times more squash bees on no-till farms than on conventional farms.",
+        "Converting to organic farming shows equivocal evidence for benefitting wild bees.",
+        "Three replicated trials in Europe or Canada demonstrated higher wild bee abundance under organic arable farming than under conventional farming.",
+        "One trial showed higher bee diversity in organically farmed wheat fields.",
+        "Three other replicated trials in Europe or the USA found no significant difference in bumblebee numbers, bumblebee species, or wild bees visiting flowering crops between conventional and organic farms.",
+        "One replicated trial in the USA showed that numbers of foraging bees on squash farms are not affected by the responsible use of pesticides.",
+        "Agri-environment schemes have shown variable results for wild bees.",
+        "Four replicated trials in Europe demonstrated enhanced diversity and/or abundance of foraging wild bees under various European agri-environment schemes compared to conventionally-managed fields.",
+        "Four other replicated trials found no enhancement in bee numbers or species under agri-environment schemes."
+    ]
+
+    batch_filepath = os.path.join("batch_cited_stmt_gen_test", f"structured_new_request_file{num}.jsonl")
+    cited_statements_format = {
+        "type": "ARRAY",
+        "items": {
+            "type": "OBJECT",
+            "properties": {
+                "statement": {"type": "STRING"},
+                "citations": {
+                    "type": "ARRAY",
+                    "items": {"type": "STRING"}
+                },
+            },
+            "required": ["statement", "citations"],
+            "additionalProperties": False,
+        }
+    }
+
+    prompt = get_citations_from_stmts_prompt(summary=relevant_summary, statements=statements)
+    key = f"TEST_structured_new__cited_stmt_gen___claude-sonnet-4__{query}"
+    append_to_gemini_batch_file(batch_filepath=batch_filepath, prompt=prompt, key=key, response_format=cited_statements_format)
+    prompt2 = get_citations_from_stmts_prompt(summary=relevant_summary2, statements=statements2)
+    key2 = f"TEST_structured_new__cited_stmt_gen___claude-sonnet-4__{query2}"
+    append_to_gemini_batch_file(batch_filepath=batch_filepath, prompt=prompt2, key=key2, response_format=cited_statements_format)
+    batch_job = make_gemini_batch_request(batch_filepath=batch_filepath)
+
+    with open(os.path.join("batch_cited_stmt_gen_test", f"batchjobname__structured_new_{num}.txt"), 'w', encoding='utf-8') as f:
+        f.write(batch_job.name)
+
+
+
+def test_structured_new_batch_file_request_2():
+    num = "2"
+
+    query = "How does the success of providing artificial nest sites for solitary bees compare to providing them for bumblebees?"
+    relevant_summary = "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees, with solitary bees showing much higher success rates. For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries including Europe, North and South America and Asia (Action 47). Occupancy rates for solitary bee nest boxes, where reported, were between 1 and 26% of available cavities (Action 80). The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site, as demonstrated in three trials on agricultural land (Action 47). One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes (Action 47). In contrast, bumblebee nest box success is much lower. Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various nest box designs, while seven earlier trials in the UK, USA or Canada showed overall uptake rates between 10% and 48% (Action 48). Two replicated trials tested bumblebee nest boxes and both found very low uptake of 2% or less (Action 80). Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees, with seven replicated trials finding between 6% and 58% occupancy, but even these rates are often lower than solitary bee success rates (Action 48). However, there is no evidence captured for the effects of providing nest boxes on bumblebee populations (Action 48).",
+    statements = [
+        "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees.",
+        "Solitary bees show much higher success rates in occupying artificial nest sites than bumblebees do.",
+        "For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries, including Europe, North and South America, and Asia.",
+        "Reported occupancy rates for solitary bee nest boxes were between 1% and 26% of available cavities.",
+        "The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site.",
+        "The doubling of occupied solitary bee nests was demonstrated in three trials on agricultural land.",
+        "One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes.",
+        "In contrast to solitary bees, bumblebee nest box success is much lower.",
+        "Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various bumblebee nest box designs.",
+        "Seven earlier trials in the UK, USA, or Canada showed overall bumblebee nest box uptake rates between 10% and 48%.",
+        "Two replicated trials that tested bumblebee nest boxes both found very low uptake of 2% or less.",
+        "Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees.",
+        "Seven replicated trials of underground bumblebee nest boxes found between 6% and 58% occupancy.",
+        "The occupancy rates for even the most effective bumblebee nest boxes are often lower than solitary bee success rates.",
+        "There is no evidence captured for the effects of providing nest boxes on bumblebee populations."
+    ]
+
+    query2 = "What actions related to reducing farming intensity can be taken to benefit wild bees?"
+    relevant_summary2 = "Several actions related to reducing farming intensity can benefit wild bees. Four replicated trials in Europe have compared farmland meadows managed extensively with conventionally farmed meadows, with two trials finding enhanced numbers and diversity of wild bees on meadows with a delayed first cut and little agrochemical use (Action 22). Reducing grazing intensity on pastures can increase the abundance of cavity-nesting bees and wasps, as shown by one replicated trial demonstrating that reducing summer cattle grazing intensity increased bee abundance (Action 23). \n\nEvidence on reduced tillage shows mixed results - two replicated trials on squash farms in the USA had contrasting outcomes, with one showing no difference in bee abundance between tilled and untilled farms, while another found three times more squash bees on no-till farms than on conventional farms (Action 11).\n\nConverting to organic farming shows equivocal evidence - three replicated trials in Europe or Canada demonstrated higher wild bee abundance under organic arable farming than conventional farming, with one trial showing higher bee diversity in organically farmed wheat fields. However, three other replicated trials in Europe or the USA found no significant difference in bumblebee numbers, bumblebee species, or wild bees visiting flowering crops between conventional and organic farms (Action 25).\n\nRegarding pesticide reduction, one replicated trial in the USA showed that numbers of foraging bees on squash farms are not affected by the responsible use of pesticides (Action 27). Agri-environment schemes have shown variable results - four replicated trials in Europe demonstrated enhanced diversity and/or abundance of foraging wild bees under various European agri-environment schemes compared to conventionally-managed fields, while four other replicated trials found no enhancement in bee numbers or species under agri-environment schemes (Action 24).",
+    statements2 = [
+        "Several actions related to reducing farming intensity can benefit wild bees.",
+        "Two replicated trials in Europe found enhanced numbers and diversity of wild bees on farmland meadows with a delayed first cut and little agrochemical use compared to conventionally farmed meadows.",
+        "Reducing grazing intensity on pastures can increase the abundance of cavity-nesting bees and wasps.",
+        "One replicated trial demonstrated that reducing summer cattle grazing intensity increased bee abundance.",
+        "Evidence on the effect of reduced tillage on bees shows mixed results.",
+        "One replicated trial on squash farms in the USA showed no difference in bee abundance between tilled and untilled farms.",
+        "Another replicated trial on squash farms in the USA found three times more squash bees on no-till farms than on conventional farms.",
+        "Converting to organic farming shows equivocal evidence for benefitting wild bees.",
+        "Three replicated trials in Europe or Canada demonstrated higher wild bee abundance under organic arable farming than under conventional farming.",
+        "One trial showed higher bee diversity in organically farmed wheat fields.",
+        "Three other replicated trials in Europe or the USA found no significant difference in bumblebee numbers, bumblebee species, or wild bees visiting flowering crops between conventional and organic farms.",
+        "One replicated trial in the USA showed that numbers of foraging bees on squash farms are not affected by the responsible use of pesticides.",
+        "Agri-environment schemes have shown variable results for wild bees.",
+        "Four replicated trials in Europe demonstrated enhanced diversity and/or abundance of foraging wild bees under various European agri-environment schemes compared to conventionally-managed fields.",
+        "Four other replicated trials found no enhancement in bee numbers or species under agri-environment schemes."
+    ]
+
+    batch_filepath = os.path.join("batch_cited_stmt_gen_test", f"structured_new_request_file{num}.jsonl")
+    cited_statements_format = {
+        "type": "ARRAY",
+        "items": {
+            "type": "OBJECT",
+            "properties": {
+                "statement": {"type": "STRING"},
+                "citations": {
+                    "type": "ARRAY",
+                    "items": {"type": "STRING"}
+                },
+            },
+            "required": ["statement", "citations"]
+        }
+    }
+
+    prompt = get_citations_from_stmts_prompt(summary=relevant_summary, statements=statements)
+    key = f"TEST_structured_new__cited_stmt_gen___claude-sonnet-4__{query}"
+    append_to_gemini_batch_file(batch_filepath=batch_filepath, prompt=prompt, key=key, response_format=cited_statements_format)
+    prompt2 = get_citations_from_stmts_prompt(summary=relevant_summary2, statements=statements2)
+    key2 = f"TEST_structured_new__cited_stmt_gen___claude-sonnet-4__{query2}"
+    append_to_gemini_batch_file(batch_filepath=batch_filepath, prompt=prompt2, key=key2, response_format=cited_statements_format)
+    batch_job = make_gemini_batch_request(batch_filepath=batch_filepath)
+
+    with open(os.path.join("batch_cited_stmt_gen_test", f"batchjobname__structured_new_{num}.txt"), 'w', encoding='utf-8') as f:
+        f.write(batch_job.name)
+
+
+
+def test_structured_new_batch_file_request_3():
+    num = "3"
+
+    query = "How does the success of providing artificial nest sites for solitary bees compare to providing them for bumblebees?"
+    relevant_summary = "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees, with solitary bees showing much higher success rates. For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries including Europe, North and South America and Asia (Action 47). Occupancy rates for solitary bee nest boxes, where reported, were between 1 and 26% of available cavities (Action 80). The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site, as demonstrated in three trials on agricultural land (Action 47). One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes (Action 47). In contrast, bumblebee nest box success is much lower. Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various nest box designs, while seven earlier trials in the UK, USA or Canada showed overall uptake rates between 10% and 48% (Action 48). Two replicated trials tested bumblebee nest boxes and both found very low uptake of 2% or less (Action 80). Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees, with seven replicated trials finding between 6% and 58% occupancy, but even these rates are often lower than solitary bee success rates (Action 48). However, there is no evidence captured for the effects of providing nest boxes on bumblebee populations (Action 48).",
+    statements = [
+        "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees.",
+        "Solitary bees show much higher success rates in occupying artificial nest sites than bumblebees do.",
+        "For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries, including Europe, North and South America, and Asia.",
+        "Reported occupancy rates for solitary bee nest boxes were between 1% and 26% of available cavities.",
+        "The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site.",
+        "The doubling of occupied solitary bee nests was demonstrated in three trials on agricultural land.",
+        "One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes.",
+        "In contrast to solitary bees, bumblebee nest box success is much lower.",
+        "Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various bumblebee nest box designs.",
+        "Seven earlier trials in the UK, USA, or Canada showed overall bumblebee nest box uptake rates between 10% and 48%.",
+        "Two replicated trials that tested bumblebee nest boxes both found very low uptake of 2% or less.",
+        "Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees.",
+        "Seven replicated trials of underground bumblebee nest boxes found between 6% and 58% occupancy.",
+        "The occupancy rates for even the most effective bumblebee nest boxes are often lower than solitary bee success rates.",
+        "There is no evidence captured for the effects of providing nest boxes on bumblebee populations."
+    ]
+
+    query2 = "What actions related to reducing farming intensity can be taken to benefit wild bees?"
+    relevant_summary2 = "Several actions related to reducing farming intensity can benefit wild bees. Four replicated trials in Europe have compared farmland meadows managed extensively with conventionally farmed meadows, with two trials finding enhanced numbers and diversity of wild bees on meadows with a delayed first cut and little agrochemical use (Action 22). Reducing grazing intensity on pastures can increase the abundance of cavity-nesting bees and wasps, as shown by one replicated trial demonstrating that reducing summer cattle grazing intensity increased bee abundance (Action 23). \n\nEvidence on reduced tillage shows mixed results - two replicated trials on squash farms in the USA had contrasting outcomes, with one showing no difference in bee abundance between tilled and untilled farms, while another found three times more squash bees on no-till farms than on conventional farms (Action 11).\n\nConverting to organic farming shows equivocal evidence - three replicated trials in Europe or Canada demonstrated higher wild bee abundance under organic arable farming than conventional farming, with one trial showing higher bee diversity in organically farmed wheat fields. However, three other replicated trials in Europe or the USA found no significant difference in bumblebee numbers, bumblebee species, or wild bees visiting flowering crops between conventional and organic farms (Action 25).\n\nRegarding pesticide reduction, one replicated trial in the USA showed that numbers of foraging bees on squash farms are not affected by the responsible use of pesticides (Action 27). Agri-environment schemes have shown variable results - four replicated trials in Europe demonstrated enhanced diversity and/or abundance of foraging wild bees under various European agri-environment schemes compared to conventionally-managed fields, while four other replicated trials found no enhancement in bee numbers or species under agri-environment schemes (Action 24).",
+    statements2 = [
+        "Several actions related to reducing farming intensity can benefit wild bees.",
+        "Two replicated trials in Europe found enhanced numbers and diversity of wild bees on farmland meadows with a delayed first cut and little agrochemical use compared to conventionally farmed meadows.",
+        "Reducing grazing intensity on pastures can increase the abundance of cavity-nesting bees and wasps.",
+        "One replicated trial demonstrated that reducing summer cattle grazing intensity increased bee abundance.",
+        "Evidence on the effect of reduced tillage on bees shows mixed results.",
+        "One replicated trial on squash farms in the USA showed no difference in bee abundance between tilled and untilled farms.",
+        "Another replicated trial on squash farms in the USA found three times more squash bees on no-till farms than on conventional farms.",
+        "Converting to organic farming shows equivocal evidence for benefitting wild bees.",
+        "Three replicated trials in Europe or Canada demonstrated higher wild bee abundance under organic arable farming than under conventional farming.",
+        "One trial showed higher bee diversity in organically farmed wheat fields.",
+        "Three other replicated trials in Europe or the USA found no significant difference in bumblebee numbers, bumblebee species, or wild bees visiting flowering crops between conventional and organic farms.",
+        "One replicated trial in the USA showed that numbers of foraging bees on squash farms are not affected by the responsible use of pesticides.",
+        "Agri-environment schemes have shown variable results for wild bees.",
+        "Four replicated trials in Europe demonstrated enhanced diversity and/or abundance of foraging wild bees under various European agri-environment schemes compared to conventionally-managed fields.",
+        "Four other replicated trials found no enhancement in bee numbers or species under agri-environment schemes."
+    ]
+
+    batch_filepath = os.path.join("batch_cited_stmt_gen_test", f"structured_new_request_file{num}.jsonl")
+    cited_statements_format = {
+        "type": "ARRAY",
+        "items": {
+            "type": "OBJECT",
+            "properties": {
+                "statement": {"type": "STRING", "description": "One of the provided statements."},
+                "citations": {
+                    "type": "ARRAY",
+                    "description": "List of citations (action numbers) that support the statement.",
+                    "items": {"type": "STRING", "description": "An action number (e.g. 250) that supports the statement."}
+                },
+            },
+            "required": ["statement", "citations"]
+        }
+    }
+
+    prompt = get_citations_from_stmts_prompt(summary=relevant_summary, statements=statements)
+    key = f"TEST_structured_new__cited_stmt_gen___claude-sonnet-4__{query}"
+    append_to_gemini_batch_file(batch_filepath=batch_filepath, prompt=prompt, key=key, response_format=cited_statements_format)
+    prompt2 = get_citations_from_stmts_prompt(summary=relevant_summary2, statements=statements2)
+    key2 = f"TEST_structured_new__cited_stmt_gen___claude-sonnet-4__{query2}"
+    append_to_gemini_batch_file(batch_filepath=batch_filepath, prompt=prompt2, key=key2, response_format=cited_statements_format)
+    batch_job = make_gemini_batch_request(batch_filepath=batch_filepath)
+
+    with open(os.path.join("batch_cited_stmt_gen_test", f"batchjobname__structured_new_{num}.txt"), 'w', encoding='utf-8') as f:
+        f.write(batch_job.name)
+
+
+def test_structured_new_batch_file_request_4():
+    num = "4"
+
+    query = "How does the success of providing artificial nest sites for solitary bees compare to providing them for bumblebees?"
+    relevant_summary = "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees, with solitary bees showing much higher success rates. For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries including Europe, North and South America and Asia (Action 47). Occupancy rates for solitary bee nest boxes, where reported, were between 1 and 26% of available cavities (Action 80). The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site, as demonstrated in three trials on agricultural land (Action 47). One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes (Action 47). In contrast, bumblebee nest box success is much lower. Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various nest box designs, while seven earlier trials in the UK, USA or Canada showed overall uptake rates between 10% and 48% (Action 48). Two replicated trials tested bumblebee nest boxes and both found very low uptake of 2% or less (Action 80). Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees, with seven replicated trials finding between 6% and 58% occupancy, but even these rates are often lower than solitary bee success rates (Action 48). However, there is no evidence captured for the effects of providing nest boxes on bumblebee populations (Action 48).",
+    statements = [
+        "The success of providing artificial nest sites differs significantly between solitary bees and bumblebees.",
+        "Solitary bees show much higher success rates in occupying artificial nest sites than bumblebees do.",
+        "For solitary bees, 29 out of 30 replicated trials showed occupancy by bees across 10 countries, including Europe, North and South America, and Asia.",
+        "Reported occupancy rates for solitary bee nest boxes were between 1% and 26% of available cavities.",
+        "The number of occupied solitary bee nests can double over three years with repeated nest box provision at a given site.",
+        "The doubling of occupied solitary bee nests was demonstrated in three trials on agricultural land.",
+        "One study estimated that the number of foraging Osmia bees had increased in fields with nest boxes compared to fields without nest boxes.",
+        "In contrast to solitary bees, bumblebee nest box success is much lower.",
+        "Three replicated trials since 1989 in the UK showed very low uptake rates of 0-2.5% for various bumblebee nest box designs.",
+        "Seven earlier trials in the UK, USA, or Canada showed overall bumblebee nest box uptake rates between 10% and 48%.",
+        "Two replicated trials that tested bumblebee nest boxes both found very low uptake of 2% or less.",
+        "Underground nest boxes buried 5-10 cm underground with entrance pipes are generally the most effective for bumblebees.",
+        "Seven replicated trials of underground bumblebee nest boxes found between 6% and 58% occupancy.",
+        "The occupancy rates for even the most effective bumblebee nest boxes are often lower than solitary bee success rates.",
+        "There is no evidence captured for the effects of providing nest boxes on bumblebee populations."
+    ]
+
+    query2 = "What actions related to reducing farming intensity can be taken to benefit wild bees?"
+    relevant_summary2 = "Several actions related to reducing farming intensity can benefit wild bees. Four replicated trials in Europe have compared farmland meadows managed extensively with conventionally farmed meadows, with two trials finding enhanced numbers and diversity of wild bees on meadows with a delayed first cut and little agrochemical use (Action 22). Reducing grazing intensity on pastures can increase the abundance of cavity-nesting bees and wasps, as shown by one replicated trial demonstrating that reducing summer cattle grazing intensity increased bee abundance (Action 23). \n\nEvidence on reduced tillage shows mixed results - two replicated trials on squash farms in the USA had contrasting outcomes, with one showing no difference in bee abundance between tilled and untilled farms, while another found three times more squash bees on no-till farms than on conventional farms (Action 11).\n\nConverting to organic farming shows equivocal evidence - three replicated trials in Europe or Canada demonstrated higher wild bee abundance under organic arable farming than conventional farming, with one trial showing higher bee diversity in organically farmed wheat fields. However, three other replicated trials in Europe or the USA found no significant difference in bumblebee numbers, bumblebee species, or wild bees visiting flowering crops between conventional and organic farms (Action 25).\n\nRegarding pesticide reduction, one replicated trial in the USA showed that numbers of foraging bees on squash farms are not affected by the responsible use of pesticides (Action 27). Agri-environment schemes have shown variable results - four replicated trials in Europe demonstrated enhanced diversity and/or abundance of foraging wild bees under various European agri-environment schemes compared to conventionally-managed fields, while four other replicated trials found no enhancement in bee numbers or species under agri-environment schemes (Action 24).",
+    statements2 = [
+        "Several actions related to reducing farming intensity can benefit wild bees.",
+        "Two replicated trials in Europe found enhanced numbers and diversity of wild bees on farmland meadows with a delayed first cut and little agrochemical use compared to conventionally farmed meadows.",
+        "Reducing grazing intensity on pastures can increase the abundance of cavity-nesting bees and wasps.",
+        "One replicated trial demonstrated that reducing summer cattle grazing intensity increased bee abundance.",
+        "Evidence on the effect of reduced tillage on bees shows mixed results.",
+        "One replicated trial on squash farms in the USA showed no difference in bee abundance between tilled and untilled farms.",
+        "Another replicated trial on squash farms in the USA found three times more squash bees on no-till farms than on conventional farms.",
+        "Converting to organic farming shows equivocal evidence for benefitting wild bees.",
+        "Three replicated trials in Europe or Canada demonstrated higher wild bee abundance under organic arable farming than under conventional farming.",
+        "One trial showed higher bee diversity in organically farmed wheat fields.",
+        "Three other replicated trials in Europe or the USA found no significant difference in bumblebee numbers, bumblebee species, or wild bees visiting flowering crops between conventional and organic farms.",
+        "One replicated trial in the USA showed that numbers of foraging bees on squash farms are not affected by the responsible use of pesticides.",
+        "Agri-environment schemes have shown variable results for wild bees.",
+        "Four replicated trials in Europe demonstrated enhanced diversity and/or abundance of foraging wild bees under various European agri-environment schemes compared to conventionally-managed fields.",
+        "Four other replicated trials found no enhancement in bee numbers or species under agri-environment schemes."
+    ]
+
+    batch_filepath = os.path.join("batch_cited_stmt_gen_test", f"structured_new_request_file{num}.jsonl")
+    cited_statements_format = {
+        "type": "ARRAY",
+        "items": {
+            "type": "OBJECT",
+            "properties": {
+                "statement": {"type": "STRING", "description": "One of the provided statements."},
+                "citations": {
+                    "type": "ARRAY",
+                    "description": "List of citations (action numbers) given for the statement. Can be empty if no citations are given in the summary for this statement.",
+                    "items": {"type": "STRING", "description": "An action number (e.g. 250) that supports the statement."}
+                },
+            },
+            "required": ["statement", "citations"]
+        }
+    }
+
+    prompt = get_citations_from_stmts_prompt(summary=relevant_summary, statements=statements)
+    key = f"TEST_structured_new__cited_stmt_gen___claude-sonnet-4__{query}"
+    append_to_gemini_batch_file(batch_filepath=batch_filepath, prompt=prompt, key=key, response_format=cited_statements_format)
+    prompt2 = get_citations_from_stmts_prompt(summary=relevant_summary2, statements=statements2)
+    key2 = f"TEST_structured_new__cited_stmt_gen___claude-sonnet-4__{query2}"
+    append_to_gemini_batch_file(batch_filepath=batch_filepath, prompt=prompt2, key=key2, response_format=cited_statements_format)
+    batch_job = make_gemini_batch_request(batch_filepath=batch_filepath)
+
+    with open(os.path.join("batch_cited_stmt_gen_test", f"batchjobname__structured_new_{num}.txt"), 'w', encoding='utf-8') as f:
+        f.write(batch_job.name)
+
+
+
+
+def test_structured_new_batch_file_response(num : str):
+    client = get_genai_client()
+    with open(os.path.join("batch_cited_stmt_gen_test", f"batchjobname__structured_new_{num}.txt"), 'r', encoding='utf-8') as f:
+        job_name = f.read().strip()
+    batch_job = client.batches.get(name=job_name)
+
+    if batch_job.state.name == 'JOB_STATE_SUCCEEDED':
+        print(f"Batch job {batch_job.name} completed successfully.")
+
+        result_file_name = batch_job.dest.file_name
+
+        file_content = client.files.download(file=result_file_name)
+        text_content = file_content.decode('utf-8')
+
+        # Prepend new batch result to output file
+        output_filepath = os.path.join("batch_cited_stmt_gen_test", f"structured_new_batch_results{num}.jsonl")
+        os.makedirs(os.path.dirname(output_filepath), exist_ok=True)
+        with open(output_filepath, 'w', encoding='utf-8') as f:
+            f.write(text_content)
+    else:
+        print("Batch job not completed:", batch_job.state.name)
+
+
+def load_result_test_structured_new_batch_file_response(num: str):
+    output_filepath = os.path.join("batch_cited_stmt_gen_test", f"structured_new_batch_results{num}.jsonl")
+    cited_statements_list = []
+    with open(output_filepath, 'r', encoding='utf-8') as f:
+        for line in f:
+            data = json.loads(line)
+            key = data["key"]
+            response_raw = data["response"]["candidates"][0]["content"]["parts"][0]["text"]
+            response_formatted = json.loads(response_raw)
+            cited_statements_list.append({"key": key, "response": response_formatted})
+    with open(os.path.join("batch_cited_stmt_gen_test", f"structured_new_batch_results_parsed{num}.json"), 'w', encoding='utf-8') as f:
+        json.dump(cited_statements_list, f, indent=2)
+
+
 def main():
     qu_types = ["answerable", "unanswerable"]
     filter_stages = ["passed", "failed"]
@@ -1193,5 +1586,20 @@ def main():
 if __name__ == "__main__":
     # main()
     # examine_schema()
-    test_file_batch_request()
+    # test_file_batch_request()
+
+    # test_structured_new_batch_file_request_1() # got error no such field 'additionalProperties'
+    
+    # test_structured_new_batch_file_request_2() # didn't get an error, WORKED
+    # test_structured_new_batch_file_response(num="2") # WORKED
+    # load_result_test_structured_new_batch_file_response(num="2")
+
+    # test_structured_new_batch_file_request_3() # worked with better format, but now all statements have citations even though in previous run they didn't. Could be due to example's influence against empty lists?
+    # test_structured_new_batch_file_response(num="3")
+    # load_result_test_structured_new_batch_file_response(num="3") 
+
+    # test_structured_new_batch_file_request_4()
+    # test_structured_new_batch_file_response(num="4")
+    load_result_test_structured_new_batch_file_response(num="4")
+
 

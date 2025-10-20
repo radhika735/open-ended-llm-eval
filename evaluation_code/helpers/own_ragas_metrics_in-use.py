@@ -14,7 +14,6 @@ import nltk
 for resource in ["punkt", "punkt_tab"]:
     nltk.download(resource, quiet=True)
 from nltk.tokenize import sent_tokenize
-import numpy as np
 from pydantic import BaseModel, Field
 
 from utils.action_parsing import ActionParsingContext, get_parsed_action_by_id, get_parsed_action_as_str
@@ -119,6 +118,7 @@ def call_llm(messages, model, provider, max_attempts=1, attempts_context=None, m
 
 ### STATEMENT EXTRACTION.
 
+
 def _get_statements(question, answer, model, provider):
     print("Getting statements.")
     ## RAGAS statement splitting prompt:
@@ -143,6 +143,10 @@ Given a question and answer, create one or more statements from each sentence in
     ).strip()
     statements = sent_tokenize(response)
     return statements
+
+
+
+### CITED STATEMENT EXTRACTION
 
 
 class CitedStatement(BaseModel):
