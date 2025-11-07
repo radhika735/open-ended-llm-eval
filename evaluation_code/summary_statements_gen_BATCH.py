@@ -886,7 +886,8 @@ def main():
         qu_types=qu_types,
         filter_stages=filter_stages,
         retrieval_types=retrieval_types,
-        summary_model_providers=answering_model_providers
+        summary_model_providers=answering_model_providers,
+        max_batch_requests=5
     )
 
 
